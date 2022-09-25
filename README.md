@@ -29,4 +29,4 @@
 
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=mcpeapsunterstrichhd&show_icons=true&theme=dark&locale=en" alt="mcpeapsunterstrichhd" /></p>
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=mcpeapsunterstrichhd&" alt="mcpeapsunterstrichhd" /></p>
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=mcpeapsunterstrichhd&theme=dark" alt="mcpeapsunterstrichhd" /></p>
