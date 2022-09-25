@@ -1,11 +1,11 @@
-<h1 align="center">Hi 👋, I'm mcpeaps_HD</h1>
+<h1 align="center">Aps, Fabian: aka mcpeaps_HD</h1>
 <h3 align="center">A Java DEV</h3>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=mcpeapsunterstrichhd&label=Profile%20views&color=0e75b6&style=flat" alt="mcpeapsunterstrichhd" /> </p>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=mcpeapsunterstrichhd&label=Profile%20views&color=000000&style=flat" alt="mcpeapsunterstrichhd" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=mcpeapsunterstrichhd" alt="mcpeapsunterstrichhd" /></a> </p>
 
-- 🔭 I’m currently working on [School-Repo](https://github.com/comboomPunkTsucht/OSZIMT-repo-ITA12_aps)
+- That is what i hvavdone in school [school-repo](https://github.com/comboomPunkTsucht/OSZIMT-repo-ITA12_aps)
 
 - 🌱 I’m currently learning **Java**
 
@@ -13,7 +13,7 @@
 
 - 💬 Ask me about **Java**
 
-- 📫 How to reach me **mcpeaps_HD@outlook.com**
+- my e-mail-adress **mcpeaps_HD@outlook.com**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
@@ -25,9 +25,8 @@
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> </p>
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=mcpeapsunterstrichhd&show_icons=true&locale=en&layout=compact" alt="mcpeapsunterstrichhd" /></p>
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=mcpeapsunterstrichhd&show_icons=true&theme=dark&locale=en&layout=compact" alt="mcpeapsunterstrichhd" /></p>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=mcpeapsunterstrichhd&show_icons=true&locale=en" alt="mcpeapsunterstrichhd" /></p>
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=mcpeapsunterstrichhd&show_icons=true&theme=dark&locale=en" alt="mcpeapsunterstrichhd" /></p>
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=mcpeapsunterstrichhd&" alt="mcpeapsunterstrichhd" /></p>
-
