@@ -38,15 +38,24 @@ module.exports = {
 			"winter",
 			{
 				comboompunksucht: {
-					primary: "#000000",
-					secondary: "#00ff00",
-					accent: "#ff0000",
-					neutral: "#78716c",
-					"base-100": "#6b7280",
-					info: "#0000ff",
-					success: "#00ff00",
-					warning: "#ffff00",
-					error: "#ff0000",
+          
+					"primary": "#000000",
+          
+					"secondary": "#00ff00",
+							 
+					"accent": "#ff0000",
+							 
+					"neutral": "#00ff00",
+							 
+					"base-100": "#4c4c4c",
+							 
+					"info": "#0000ff",
+							 
+					"success": "#00ff00",
+							 
+					"warning": "#ffff00",
+							 
+					"error": "#ff0000",
 				},
 			},
 		], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
