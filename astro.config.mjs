@@ -10,6 +10,11 @@ export default defineConfig({
   site: 'https:///mcpeapsunterstrichhd.github.io',
   base: '/mcpeapsUnterstrichHD',
   integrations: [mdx(), sitemap({
+        customPages: [
+          'https://mcpeapsunterstrichhd.github.io/mcpeapsUnterstrichHD/',
+          'https://mcpeapsunterstrichhd.github.io/mcpeapsUnterstrichHD/cv/',
+          'https://linktr.ee/mcpeaps_hd'
+        ],
         changefreq: 'daily',
         lastmod: new Date(),
         priority: 0.9,
