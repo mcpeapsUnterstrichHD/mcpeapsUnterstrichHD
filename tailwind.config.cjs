@@ -2,7 +2,22 @@
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+			  'semi-light-italic': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-SemiLightItalic.ttf', 'sans-serif'],
+			  'semi-light': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-SemiLight.ttf', 'sans-serif'],
+			  'semi-bold-italic': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-SemiBoldItalic.ttf', 'sans-serif'],
+			  'semi-bold': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-SemiBold.ttf', 'sans-serif'],
+			  'regular': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-Regular.ttf', 'sans-serif'],
+			  'light-italic': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-LightItalic.ttf', 'sans-serif'],
+			  'light': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-Light.ttf', 'sans-serif'],
+			  'italic': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-Italic.ttf', 'sans-serif'],
+			  'extra-light-italic': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-ExtraLightItalic.ttf', 'sans-serif'],
+			  'extra-light': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-ExtraLight.ttf', 'sans-serif'],
+			  'bold-italic': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-BoldItalic.ttf', 'sans-serif'],
+			  'bold': ['/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-Bold.ttf', 'sans-serif'],
+			},
+		  },
 	},
 	plugins: [require("@tailwindcss/typography"), require("daisyui")],
 	daisyui: {
