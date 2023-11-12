@@ -1,10 +1,66 @@
+---
+import { ThemeSwitch } from "astro-color-scheme";
+---
+
 <style>
     @import "https://www.nerdfonts.com/assets/css/webfont.css";
+
+    html {
+    --background-color: white;
+    --text-color: black;
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  .dark {
+    --background-color: black;
+    --text-color: white;
+  }
+  /* OR */
+  [data-theme="dark"] {
+    --background-color: black;
+    --text-color: white;
+  }
   </style>
 <div
     class="block sticky pointer-events-none bottom-10 bg-base-200 justify-center h-12 [mask-image:linear-gradient(transparent,#000000)]"
 >
 </div>
+<div class="py-3 text-base menu grow shrink menu-md overflow-y-auto">
+    <ThemeSwitch strategy="select">
+      <select>
+        <option value="system">System</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+        <option value="cupcake">Cupcake</option>
+        <option value="bumblebee">Bumblebee</option>
+        <option value="emerald">Emerald</option>
+        <option value="corporate">Corporate</option>
+        <option value="synthwave">Synthwave</option>
+        <option value="retro">Retro</option>
+        <option value="cyberpunk">Cyberpunk</option>
+        <option value="valentine">Valentine</option>
+        <option value="halloween">Halloween</option>
+        <option value="garden">Garden</option>
+        <option value="forest">Forest</option>
+        <option value="aqua">Aqua</option>
+        <option value="lofi">Lofi</option>
+        <option value="pastel">Pastel</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="wireframe">Wireframe</option>
+        <option value="black">Black</option>
+        <option value="luxury">Luxury</option>
+        <option value="dracula">Dracula</option>
+        <option value="cmyk">CMYK</option>
+        <option value="autumn">Autumn</option>
+        <option value="business">Business</option>
+        <option value="acid">Acid</option>
+        <option value="lemonade">Lemonade</option>
+        <option value="night">Night</option>
+        <option value="coffee">Coffee</option>
+        <option value="winter">Winter</option>
+      </select>
+    </ThemeSwitch>            
+  </div>
 
 <div class="social-icons px-4 pb-5 pt-1 flex self-center justify-center sticky bottom-0 bg-base-200">
     <a
