@@ -4,15 +4,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'CaskaydiaCove NFM': [
+        'CaskaydiaCove-NFM': [
           '/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-Regular.ttf',
           'monospace',
         ],
-        'CaskaydiaCove NF': [
+        'CaskaydiaCove-NF': [
           '/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFont-Regular.ttf',
           'serif',
         ],
-        'CaskaydiaCove NFP': [
+        'CaskaydiaCove-NFP': [
           '/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontPropo-Regular.ttf',
           'sans-serif',
         ],

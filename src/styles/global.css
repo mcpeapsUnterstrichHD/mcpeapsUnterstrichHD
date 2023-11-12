@@ -3896,6 +3896,15 @@ html {
   outline-color: hsl(var(--bc) / 0.2);
 }
 
+.select-accent {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+}
+
+.select-accent:focus {
+  outline-color: hsl(var(--a) / 1);
+}
+
 .select-disabled,
   .select:disabled,
   .select[disabled] {
@@ -4099,6 +4108,21 @@ html {
   border-top-left-radius: 0;
   border-bottom-right-radius: inherit;
   border-top-right-radius: inherit;
+}
+
+.select-lg {
+  height: 4rem;
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 2;
+  min-height: 4rem;
+}
+
+[dir="rtl"] .select-lg {
+  padding-right: 1.5rem;
+  padding-left: 2rem;
 }
 
 .avatar.online:before {
@@ -4605,6 +4629,10 @@ html {
 
 .text-justify {
   text-align: justify;
+}
+
+.font-CaskaydiaCove-NFP {
+  font-family: /mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontPropo-Regular.ttf, sans-serif;
 }
 
 .text-2xl {
