@@ -9,5 +9,9 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https:///mcpeapsunterstrichhd.github.io',
   base: '/mcpeapsUnterstrichHD',
-  integrations: [mdx(), sitemap(), tailwind()]
+  integrations: [mdx(), sitemap({
+        changefreq: 'daily',
+        lastmod: new Date(),
+        priority: 0.9,
+      }), tailwind()]
 });
