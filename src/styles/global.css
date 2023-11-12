@@ -62,6 +62,7 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+  font-family: 'CaskaydiaCove NFP', sans-serif;
 }
 
 /*
@@ -100,6 +101,7 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
+  font-family: 'CaskaydiaCove NFP', sans-serif;
 }
 
 /*
@@ -129,7 +131,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'CaskaydiaCove NFM' ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -325,6 +327,7 @@ hr,
 figure,
 p,
 pre {
+  font-family: 'CaskaydiaCove NFP', sans-serif;
   margin: 0;
 }
 
