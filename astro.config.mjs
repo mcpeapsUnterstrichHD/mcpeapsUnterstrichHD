@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
+import prefetch from '@astrojs/prefetch';
 //import bootstrap from 'bootstrap';
 
 
@@ -18,5 +19,7 @@ export default defineConfig({
         changefreq: 'daily',
         lastmod: new Date(),
         priority: 0.9,
-      }), tailwind()]
+      }), tailwind(),prefetch({
+        intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", "a[href^='/mcpeapsUnterstrichHD/cv']"],
+      })]
 });
