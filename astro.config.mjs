@@ -18,6 +18,8 @@ export default defineConfig({
         lastmod: new Date(),
         priority: 0.9,
       }), tailwind(),prefetch({
-        intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", "a[href^='/mcpeapsUnterstrichHD/lebenslauf']", "a[href^='/mcpeapsUnterstrichHD/projekte']"],
+        intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", 
+                         "a[href^='mcpeapsUnterstrichHD/lebenslauf']", 
+                         "a[href^='/mcpeapsUnterstrichHD/projekte']"],
       })]
 });
