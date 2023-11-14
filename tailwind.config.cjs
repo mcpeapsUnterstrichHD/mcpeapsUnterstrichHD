@@ -1,13 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
-		extend: {},
-	},
-	plugins: [require("@tailwindcss/typography"),require("daisyui")],
-	daisyui: {
-		themes: true, // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
-		darkTheme: "dark", // name of one of the included themes for dark mode
-		logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
-	  }
-}
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        'CaskaydiaCove-NFM': [
+          '/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontMono-Regular.ttf',
+          'monospace',
+        ],
+        'CaskaydiaCove-NF': [
+          '/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFont-Regular.ttf',
+          'serif',
+        ],
+        'CaskaydiaCove-NFP': [
+          '/mcpeapsUnterstrichHD/CaskaydiaCoveNerdFontPropo-Regular.ttf',
+          'sans-serif',
+        ],
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  daisyui: {
+    themes: true,
+    darkTheme: 'class',
+    darkMode: 'class',
+    base: true,
+    styled: true,
+    utils: true,
+    rtl: false,
+    logs: false,
+  },
+};

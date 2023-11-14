@@ -7,23 +7,32 @@ import SideBar from "../components/SideBar.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
 const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, includeSidebar = true, sideBarActiveItemID } = Astro.props;
+
+import { ThemeSwitch } from "astro-color-scheme";
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="lofi">
+<html lang="de" class="black" data-theme="black">
   <head>
+    <script>
+      import Swup from 'swup';
+      const swup = new Swup();  
+    </script>
     <BaseHead title={title} description={description} image={image} />
+    <link rel="sitemap" href="/mcpeapsUnterstrichHD/sitemap-index.xml" />
   </head>
-  <body>
+  <body class="font-CaskaydiaCove-NFP">
     <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content bg-base-100">
         <Header title={SITE_TITLE} />
+        
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
             <slot />
           </main>
         </div>
+        <div class="divider my-0"></div>
         <Footer />
       </div>
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
