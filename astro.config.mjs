@@ -12,14 +12,12 @@ export default defineConfig({
   base: '/mcpeapsUnterstrichHD',
   integrations: [mdx(), sitemap({
         customPages: [
-          'https://mcpeapsunterstrichhd.github.io/mcpeapsUnterstrichHD/',
-          'https://mcpeapsunterstrichhd.github.io/mcpeapsUnterstrichHD/cv/',
           'https://linktr.ee/mcpeaps_hd'
         ],
         changefreq: 'daily',
         lastmod: new Date(),
         priority: 0.9,
       }), tailwind(),prefetch({
-        intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", "a[href^='/mcpeapsUnterstrichHD/cv']"],
+        intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", "a[href^='/mcpeapsUnterstrichHD/lebenslauf']", "a[href^='/mcpeapsUnterstrichHD/projekte']"],
       })]
 });
