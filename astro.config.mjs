@@ -19,6 +19,7 @@ export default defineConfig({
         priority: 0.9,
       }), tailwind(),prefetch({
         intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", 
+                         "a[href^='/mcpeapsUnterstrichHD/impressum']",
                          "a[href^='mcpeapsUnterstrichHD/lebenslauf']", 
                          "a[href^='/mcpeapsUnterstrichHD/projekte']"],
       })]
