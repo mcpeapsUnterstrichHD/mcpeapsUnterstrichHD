@@ -4,6 +4,23 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
 <BaseLayout title="Lebenslauf" sideBarActiveItemID="lebenslauf">
+  <style>
+    .rating {
+        unicode-bidi: bidi-override;
+        text-align: center;
+    }
+  
+    .rating > span {
+        display: inline-block;
+        position: relative;
+        width: 1.1em;
+    }
+  
+    .rating > span:before {
+        content: "\2606";
+        position: absolute;
+    }
+  </style>
   <main>
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Profil</div>
@@ -83,25 +100,125 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Fähigkeiten</div>
   </div>
 
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Java</li>
-    <li>Swift(SwiftUI)</li>
-    <li>Cisco IOS</li>
-    <li>Micriosoft 365</li>
-    <li>Visual Studio Code</li>
-    <li>Apple Logic Pro </li>
-    <li>Apple Xode 14+</li>
-    <li>Apple macOS</li>
-    <li>Apple iOS</li>
-    <li>Apple iPadOS</li>
-    <li>Apple xrOS</li>
-    <li>Linux</li>
-    <li>Windows</li>
-    <li>Microsoft Teams</li>
-    <li>Eclipse</li>
-    <li>MySQL</li>
-    <li>MySQL Comunity Server</li>
-    <li>MySQLWorckbench</li>
+  <ul class="list-disc md:columns-2 columns-10 mx">
+    <li>Java 
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+  </li>
+    <li>Swift(SwiftUI)
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Cisco IOS
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Micriosoft 365
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Visual Studio Code
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Apple Logic Pro
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Apple Xode 14+
+<div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Apple macOS
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span>★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Apple iOS
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Apple iPadOS
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Apple xrOS
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Linux
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Windows
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Microsoft Teams
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>Eclipse
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>MySQL
+<div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>MySQL Comunity Server
+<div class="rating">
+        <span>★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
+    <li>MySQLWorckbench
+<div class="rating">
+        <span>★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+    </li>
   </ul>
 </main>
 </BaseLayout>
+
+
+
+<!--div>
+<div x-data="{ rating: 3 }">
+<div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+</div!-->
