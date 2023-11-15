@@ -14,17 +14,22 @@
   "dependencies": {
     "@astrojs/mdx": "^1.0.3",
     "@astrojs/prefetch": "^0.4.1",
+    "@astrojs/react": "^3.0.4",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.0",
+    "@jop-software/astro-cookieconsent": "^2.0.0",
     "astro": "^3.5.1",
     "astro-color-scheme": "^1.1.2",
     "daisyui": "^3.2.1",
     "dayjs": "^1.11.9",
     "npm": "^10.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sharp": "^0.32.5",
     "swup": "^4.4.2",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.3.5",
+    "vanilla-cookieconsent": "^2.9.2"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",

@@ -9,17 +9,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, includeSidebar = true, sideBarActiveItemID } = Astro.props;
 
 import { ThemeSwitch } from "astro-color-scheme";
+
+import Swup from 'swup';
 ---
 
 <!DOCTYPE html>
 <html lang="de" class="black" data-theme="black">
   <head>
-    <script>
-      import Swup from 'swup';
-      const swup = new Swup();  
-    </script>
     <BaseHead title={title} description={description} image={image} />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
     <link rel="sitemap" href="/mcpeapsUnterstrichHD/sitemap-index.xml" />
+    <script>import Swup from "swup";
+
+      const swup = new Swup();
+    </script>
   </head>
   <body class="font-CaskaydiaCove-NFP">
     <div class="bg-base-100 drawer lg:drawer-open">
@@ -37,5 +40,8 @@ import { ThemeSwitch } from "astro-color-scheme";
       </div>
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+    <script defer src="../components/cookieconsent-init.js"></script>
   </body>
 </html>
