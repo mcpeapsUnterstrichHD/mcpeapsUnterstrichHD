@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SideBar from "../components/SideBar.astro";
+import CookieBanner from '../components/CookieBanner.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
@@ -17,7 +18,6 @@ import Swup from 'swup';
 <html lang="de" class="black" data-theme="black">
   <head>
     <BaseHead title={title} description={description} image={image} />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
     <link rel="sitemap" href="/mcpeapsUnterstrichHD/sitemap-index.xml" />
     <script>import Swup from "swup";
 
@@ -32,6 +32,7 @@ import Swup from 'swup';
         
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
+            <CookieBanner />
             <slot />
           </main>
         </div>
@@ -40,8 +41,5 @@ import Swup from 'swup';
       </div>
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-    <script defer src="../components/cookieconsent-init.js"></script>
   </body>
 </html>

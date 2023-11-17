@@ -23,6 +23,7 @@
     "astro-color-scheme": "^1.1.2",
     "daisyui": "^3.2.1",
     "dayjs": "^1.11.9",
+    "js-cookie": "^3.0.5",
     "npm": "^10.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
