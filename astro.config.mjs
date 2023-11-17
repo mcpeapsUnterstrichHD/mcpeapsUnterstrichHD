@@ -4,8 +4,9 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
-
 import cookieconsent from "@jop-software/astro-cookieconsent";
+
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,5 +19,7 @@ export default defineConfig({
     priority: 0.9
   }), tailwind(), prefetch({
     intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", "a[href^='/mcpeapsUnterstrichHD/impressum']", "a[href^='/mcpeapsUnterstrichHD/lebenslauf']", "a[href^='/mcpeapsUnterstrichHD/projekte']"]
-  }), react(), cookieconsent()]
+  }), react(), cookieconsent()],
+  output: "server",
+  adapter: netlify()
 });
