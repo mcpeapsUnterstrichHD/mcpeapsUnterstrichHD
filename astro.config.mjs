@@ -20,6 +20,6 @@ export default defineConfig({
   }), tailwind(), prefetch({
     intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", "a[href^='/mcpeapsUnterstrichHD/impressum']", "a[href^='/mcpeapsUnterstrichHD/lebenslauf']", "a[href^='/mcpeapsUnterstrichHD/projekte']"]
   }), react(), cookieconsent()],
-  output: "server",
+  output: "hybrid",
   adapter: netlify()
 });
