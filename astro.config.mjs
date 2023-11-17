@@ -11,7 +11,7 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mcpeapsunterstrichhd.github.io',
-  //base: '/mcpeapsUnterstrichHD',
+  base: '/mcpeapsUnterstrichHD',
   integrations: [mdx(), sitemap({
     customPages: ['https://linktr.ee/mcpeaps_hd'],
     changefreq: 'daily',
