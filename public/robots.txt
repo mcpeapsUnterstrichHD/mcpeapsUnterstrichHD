@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mcpeapsunterstrichhd.github.io/mcpeapsUnterstrichHD/sitemap-index.xml
+Sitemap: /sitemap-index.xml

@@ -10,15 +10,15 @@ import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mcpeapsunterstrichhd.github.io',
-  base: '/mcpeapsUnterstrichHD',
+  site: 'mcpeapsunterstrichhd.netlify.app',
+  //base: '/mcpeapsUnterstrichHD',
   integrations: [mdx(), sitemap({
     customPages: ['https://linktr.ee/mcpeaps_hd'],
     changefreq: 'daily',
     lastmod: new Date(),
     priority: 0.9
   }), tailwind(), prefetch({
-    intentSelector: ["a[href^='/mcpeapsUnterstrichHD']", "a[href^='/mcpeapsUnterstrichHD/impressum']", "a[href^='/mcpeapsUnterstrichHD/lebenslauf']", "a[href^='/mcpeapsUnterstrichHD/projekte']"]
+    intentSelector: ["a[href^='/']", "a[href^='/impressum']", "a[href^='/lebenslauf']", "a[href^='/projekte']"]
   }), react(), cookieconsent()],
   output: "hybrid",
   adapter: netlify()
