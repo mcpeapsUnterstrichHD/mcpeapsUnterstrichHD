@@ -20,6 +20,6 @@ export default defineConfig({
   }), tailwind(), prefetch({
     intentSelector: ["a[href^='/']", "a[href^='/impressum']", "a[href^='/lebenslauf']", "a[href^='/projekte']"]
   }), react(), cookieconsent()],
-  output: "hybrid",
+  output: "server",//"hybrid",
   adapter: netlify()
 });
