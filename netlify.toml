@@ -4,7 +4,7 @@ package = "@netlify/plugin-sitemap"
   [plugins.inputs]
   baseUrl = "https://mahd.netlify.app"
   changeFreq = "daily"
-  priority = 0.5
+  priority = 0.9
   prettyURLs = true
   # Append missing trailing slash to pretty URL
   trailingSlash = true
