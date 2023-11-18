@@ -28,3 +28,14 @@ package = "@netlify/plugin-sitemap"
 		"google",
 		"yandex"
 	]
+
+
+
+
+
+plugins:
+  - package: netlify-plugin-chromium
+    inputs:
+      packageManager: npm
+      setChromePathInEnv: false
+      failBuildOnError: false
