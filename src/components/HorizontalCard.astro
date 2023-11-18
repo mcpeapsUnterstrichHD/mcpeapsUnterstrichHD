@@ -2,25 +2,31 @@
 const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+
+const getImgClass = () => {
+  if (img === '/OSZimt-Logo-l.png') {
+    return "rounded-lg bg-white";
+  } else if (img === '/Logo-transparet.PNG') {
+    return "rounded-lg bg-black";
+  } else {
+    return "rounded-lg";
+  }
+};
 ---
 
-<div
-  class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
->
+<div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
   <a href={url} target={target}>
     <div class="hero-content flex-col md:flex-row">
-      {
-        img && (
+      {img && (
         <Image
           src={img}
-           width={750}
+          width={750}
           height={422}
           format="webp"
           alt={title}
-          class={`max-w-full md:max-w-[13rem] rounded-lg ${img === '/OSZimt-Logo-l.png' ? 'bg-white' : ''}`}
+          class={`max-w-full md:max-w-[13rem] ${getImgClass()}`}
         />
-        )
-      }
+      )}
       <div class="grow w-full">
         <h1 class="text-xl font-bold">
           {title}
@@ -28,14 +34,12 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-end">
-          {
-            tags &&
-              tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                  {tag}
-                </a>
-              ))
-          }
+          {tags &&
+            tags.map((tag) => (
+              <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                {tag}
+              </a>
+            ))}
         </div>
       </div>
     </div>
