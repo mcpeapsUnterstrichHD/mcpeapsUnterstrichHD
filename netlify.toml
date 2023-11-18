@@ -9,9 +9,6 @@ package = "@netlify/plugin-sitemap"
   # Append missing trailing slash to pretty URL
   trailingSlash = true
 
-  [build]
-  publish = "public"
-
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"
 
