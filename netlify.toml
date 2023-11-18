@@ -2,7 +2,7 @@
 package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]
-  filePath = "/public/sitemap.xml"
+  filePath = "/sitemap.xml"
   baseUrl = "https://mahd.netlify.app"
   changeFreq = "daily"
   priority = 0.9
