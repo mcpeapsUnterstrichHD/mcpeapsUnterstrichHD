@@ -33,7 +33,7 @@ package = "@netlify/plugin-sitemap"
 
 
 
-[[plugins]]"
+[[plugins]]
   package = "netlify-plugin-chromium"
     [plugins.inputs]
       packageManager = "npm"
