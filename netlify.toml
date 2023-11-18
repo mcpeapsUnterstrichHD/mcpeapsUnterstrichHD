@@ -33,9 +33,9 @@ package = "@netlify/plugin-sitemap"
 
 
 
-plugins:
-  - package: netlify-plugin-chromium
-    inputs:
-      packageManager: npm
-      setChromePathInEnv: false
-      failBuildOnError: false
+[[plugins]]"
+  package = "netlify-plugin-chromium"
+    [plugins.inputs]
+      packageManager = "npm"
+      setChromePathInEnv = false
+      failBuildOnError = false
