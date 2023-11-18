@@ -25,6 +25,7 @@
     "daisyui": "^3.2.1",
     "dayjs": "^1.11.9",
     "js-cookie": "^3.0.5",
+    "netlify-plugin-image-optim": "^0.4.0",
     "npm": "^10.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

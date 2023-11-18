@@ -29,13 +29,12 @@ package = "@netlify/plugin-sitemap"
 		"yandex"
 	]
 
-
-
-
-
 [[plugins]]
   package = "netlify-plugin-chromium"
     [plugins.inputs]
       packageManager = "npm"
       setChromePathInEnv = false
       failBuildOnError = false
+
+[[plugins]]
+package = "netlify-plugin-image-optim"
