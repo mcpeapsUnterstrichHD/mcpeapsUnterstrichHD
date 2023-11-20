@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import presentation from "../data/presentation";
 ---
 
 <BaseLayout title="Lebenslauf" sideBarActiveItemID="lebenslauf">
@@ -23,11 +24,11 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </style>
   <main>
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profil</div>
+    <div class="text-3xl w-full font-bold">{presentation.title}</div>
   </div>
 
   <div class="mb-10 text-justify">
-    Ich bin Aps Fabian, ein IT-Assistent in Ausbildung mit Geburtsdatum am 6. Juni 2003. Derzeit lebe ich in der Ludwig-Renn-Straße 33, 12679 Berlin, Deutschland.
+    Ich bin ein IT-Assistent in Ausbildung.
   </div>
 
   <div class="mb-5">

@@ -1,17 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
+import presentation from "../data/presentation";
 ---
 
 <BaseLayout sideBarActiveItemID="home">
 <main>
   <div class="pb-12 mt-5">
     <div class="text-xl py-1">Hallo 👋</div>
-    <div class="text-5xl font-bold">Ich bin Aps, Fabian btw. mcpeaps_HD btw. mahd</div>
+    <div class="text-5xl font-bold">Ich bin {presentation.title}</div>
     <div class="text-3xl py-3 font-bold">Softwareentwickler und Musiker</div>
     <div class="py-2">
       <text class="text-lg">
-        Ich bin ein Softwareentwickler und Musiker (DJ/Producer) und mache alles mindestens aus Spaß und als Hobby, aber ich bin hauptberuflich Softwarentwickler.
+        {presentation.description}
       </text>
     </div>
 	<div class="text-2xl py-2 font-bold">Meine Playlist:</div>

@@ -3,6 +3,7 @@
 import ThemeSelector from "./ThemeSelector.astro";
 import '../styles/global.css';
 //lg:hidden
+import presentation from "../data/presentation";
 ---
 
 <div
@@ -19,7 +20,7 @@ import '../styles/global.css';
       </div>
     </div>
     <div class="navbar-center base-content">
-      <a class="btn btn-ghost normal-case text-xl base-content" href="/">Fabian Aps</a>
+      <a class="btn btn-ghost normal-case text-xl base-content" href="/">{presentation.title}</a>
     </div>
     <div class="navbar-end base-content">
     </div>

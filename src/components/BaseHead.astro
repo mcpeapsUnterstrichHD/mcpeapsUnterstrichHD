@@ -8,8 +8,9 @@ export interface Props {
 	description: string;
 	image?: string;
 }
+import presentation from "../data/presentation";
 
-const { title, description, image = '/profile.jpg' } = Astro.props;
+const { title, description, image = '{presentation.profile}' } = Astro.props;
 ---
 <style>
 
