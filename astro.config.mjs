@@ -6,8 +6,8 @@ import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import cookieconsent from "@jop-software/astro-cookieconsent";
 
-//import netlify from "@astrojs/netlify/functions";
-import netlify from '@astrojs/netlify/edge-functions';
+import netlify from "@astrojs/netlify/functions";
+//import netlify from '@astrojs/netlify/edge-functions';
 
 // https://astro.build/config
 export default defineConfig({
