@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import Link from "../components/Link.astro";
 import presentation from "../data/presentation";
 ---
 
@@ -29,6 +30,20 @@ import presentation from "../data/presentation";
 
   <div class="mb-10 text-justify">
     Ich bin ein IT-Assistent in Ausbildung.
+    <br/>
+    <Link
+            href={`mailto:${presentation.mail}`}
+            label={'E-Mail: '+ presentation.mail}
+    />
+    <br/>
+    <Link
+            href={`https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337`}
+            label={'Adresse: Ludwig-Renn-Straße 33, 12679 Berlin, Deutschland'}
+    />
+    <br/>
+    Telefonnummer: +4917645172171
+    <br/>
+    Geburtsodatum: 06.06.2003          
   </div>
 
   <div class="mb-5">
