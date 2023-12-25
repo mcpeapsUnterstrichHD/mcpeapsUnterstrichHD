@@ -3,9 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="404: Not Found">
-  <div class="nf nf-md-emoticon_sad_outline icon"></div>
-    <h1>404 Page Not Found</h1>
-    <p id="sadText"></p>
+  <div class="nf nf-md-emoticon_sad_outline icon text-base-content"></div>
+    <h1 class="text-base-content" >404 Page Not Found</h1>
+    <p class="text-base-content" id="sadText"> </p>
     <script>
         const sadTexts = [
         "Oops! The page you're looking for doesn't exist.",
@@ -132,7 +132,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         ];
         document.getElementById("sadText").innerHTML = sadTexts[Math.floor(Math.random() * sadTexts.length)];
     </script>
-    <a class="btn btn-accent mt-9" href="/">Home</a>
   </div>
   <style>
     @import "https://www.nerdfonts.com/assets/css/webfont.css";
