@@ -29,18 +29,18 @@ import Swup from 'swup';
     <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content bg-base-100">
-        <Header title={SITE_TITLE} class="base-content" />
+        <Header title={SITE_TITLE} class="base-content glass" />
         
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
-            <CookieBanner />
+            <CookieBanner class="glass" />
             <slot />
           </main>
         </div>
         <div class="divider my-0"></div>
-        <Footer />
+        <Footer class="glass" />
       </div>
-      {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
+      {includeSidebar && <SideBar class="" sideBarActiveItemID={sideBarActiveItemID} />}
     </div>
   </body>
 </html>
