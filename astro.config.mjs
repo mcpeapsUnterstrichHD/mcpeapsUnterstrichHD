@@ -5,8 +5,11 @@ import tailwind from "@astrojs/tailwind";
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import cookieconsent from "@jop-software/astro-cookieconsent";
-
-import netlify from "@astrojs/netlify/functions";
+import AutoImport from 'astro-auto-import';
+import netlify from "@astrojs/netlify";
+import sentry from '@sentry/astro';
+import spotlightjs from '@spotlightjs/astro';
+import react_vertical_timeline_component from 'react-vertical-timeline-component';
 //import netlify from '@astrojs/netlify/edge-functions';
 
 // https://astro.build/config
@@ -20,7 +23,12 @@ export default defineConfig({
     priority: 0.9
   }), tailwind(), prefetch({
     intentSelector: ["a[href^='/']", "a[href^='/impressum']", "a[href^='/lebenslauf']", "a[href^='/projekte']"]
-  }), react(), cookieconsent()],
+  }), react(), cookieconsent(), AutoImport({imports: ['./src/components']}),mdx(),sentry(), spotlightjs()],
   output: "server",//"hybrid",
-  adapter: netlify()
+  adapter: netlify(),
+  renderer: {
+    default: "react",
+    // Wenn Sie React verwenden möchten, ändern Sie den Wert zu "react"
+    // default: "react"
+  },
 });
