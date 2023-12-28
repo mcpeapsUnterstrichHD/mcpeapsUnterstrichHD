@@ -7,14 +7,14 @@ module.exports = {
     extend: {
       fontFamily: {
         'mono': [
-          '/CaskaydiaCoveNerdFontMono-Regular.ttf', ...defaultTheme.fontFamily.mono,
+          '/caskaydiaCoveNerdFontMono-Regular.ttf', ...defaultTheme.fontFamily.mono,
         ],
         'serif': [
-  '/CaskaydiaCoveNerdFont-Regular.ttf',
+  '/caskaydiaCoveNerdFont-Regular.ttf',
   ...defaultTheme.fontFamily.serif,
 ],
 'sans': [
-  '/CaskaydiaCoveNerdFontPropo-Regular.ttf',
+  '/caskaydiaCoveNerdFontPropo-Regular.ttf',
   ...defaultTheme.fontFamily.sans,
 ],
       },
