@@ -7,8 +7,6 @@ import react from '@astrojs/react';
 import cookieconsent from "@jop-software/astro-cookieconsent";
 import AutoImport from 'astro-auto-import';
 import netlify from "@astrojs/netlify";
-import sentry from '@sentry/astro';
-import spotlightjs from '@spotlightjs/astro';
 import react_vertical_timeline_component from 'react-vertical-timeline-component';
 //import netlify from '@astrojs/netlify/edge-functions';
 
@@ -23,7 +21,7 @@ export default defineConfig({
     priority: 0.9
   }), tailwind(), prefetch({
     intentSelector: ["a[href^='/']", "a[href^='/impressum']", "a[href^='/lebenslauf']", "a[href^='/projekte']"]
-  }), react(), cookieconsent(), AutoImport({imports: ['./src/components']}),mdx(),sentry(), spotlightjs()],
+  }), react(), cookieconsent(), AutoImport({imports: ['./src/components']}),mdx()],
   output: "server",//"hybrid",
   adapter: netlify(),
   renderer: {
