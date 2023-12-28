@@ -3,10 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 import Link from "../components/Link.astro";
 import presentation from "../data/presentation";
-//import { VerticalTimeline, VerticalTimelineElement }  from 'vertical-timeline-forked';
-import pkg_react_vertical_timeline_component from 'react-vertical-timeline-component';
-const { VerticalTimelineElement, VerticalTimeline } = pkg_react_vertical_timeline_component;
-import 'react-vertical-timeline-component/style.min.css';
 ---
 
 <BaseLayout title="Lebenslauf" sideBarActiveItemID="lebenslauf">
@@ -56,90 +52,63 @@ import 'react-vertical-timeline-component/style.min.css';
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Ausbildung</div>
   </div>
-  
-  <VerticalTimeline
-  lineColor="black"
-  >
-    <VerticalTimelineElement
-      className={ "vertical-timeline-element--education" }
-      date={"08/2021 - present"}
-      visible={true}
-    >
-      <h3 class="vertical-timeline-element-title">Oberstufenzentrum Informations- & Medizintechnick</h3>
-      <p>Ausbildung zum IT-Assistent mit Fachabitur</p>
-    </VerticalTimelineElement>
-  
-    <VerticalTimelineElement
-      className={"vertical-timeline-element--education"}
-      date={"08/2010 - 06/2021"}
-      visible={true}
-    >
-      <h3 class="vertical-timeline-element-title">Carl-vonLinné-Linné-Schule, Berlin</h3>
-      <p>Grundschule + Skundarstufe I mit dem Abschluss MSA(OG)</p>
-    </VerticalTimelineElement>
-  </VerticalTimeline>
-  
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Ausbildung zum IT-Assistent mit Fachabitur"
+      subtitle="seit 08/2021 am Oberstufenzentrum Informations- & Medizintechnick, Berlin, Deutschland"
+    />
+    <TimeLineElement
+      title="Grundschule + Skundarstufe I mit dem Abschluss MSA(OG)"
+      subtitle="08/2010 bis 06/2021 an Cal-von-Linné-Schule, Berlin, Deutschland"
+    />
+  </div>
+
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Erfahrung</div>
   </div>
-  
-  <VerticalTimeline
-  lineColor="black"
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Praktikant"
+      subtitle="Von 11/2023 bis 02/2024 bei KfW Bankengruppe, Berlin, Deutschland"
+    >
+      Ansible Dokumentation, Ansible Playbook Automation, Anwendungsbetreuung
+    </TimeLineElement>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Praktikant"
+      subtitle="Von 02/2020 bis 02/2020 bei Akademie der Künste, Berlin, Deutschland"
+    >
+      Syntesizer entwiklung und Mastering
+    </TimeLineElement>
+    <TimeLineElement
+    title="Praktikant"
+    subtitle="Von 01/2019 bis 01/2019 bei Tosa Security & Service, Trebin, Deutschland"
   >
-    <VerticalTimelineElement
-      className="vertical-timeline-element--work"
-      date="11/2023 - 02/2024"
-      visible={true}
-    >
-      <h3 class="vertical-timeline-element-title">KfW Bankengruppe, Berlin</h3>
-      <p>Ansible Dokumentation, Ansible Playbook Automation, Anwendungsbetreuung</p>
-    </VerticalTimelineElement>
-  
-    <VerticalTimelineElement
-      className="vertical-timeline-element--work"
-      date="02/2020 - 02/2020"
-      visible={true}
-    >
-      <h3 class="vertical-timeline-element-title">Akademie der Künste, Berlin</h3>
-      <p>Syntesizer Entwicklung und Mastering</p>
-    </VerticalTimelineElement>
-  
-    <VerticalTimelineElement
-      className="vertical-timeline-element--work"
-      date="01/2019 - 01/2019"
-      visible={true}
-    >
-      <h3 class="vertical-timeline-element-title">Tosa Security & Service, Trebin</h3>
-      <p>Bürotätigkeiten</p>
-    </VerticalTimelineElement>
-  
-    <VerticalTimelineElement
-      className="vertical-timeline-element--work"
-      date="03/2018 - 03/2018"
-      visible={true}
-    >
-      <h3 class="vertical-timeline-element-title">Pfenigpfefer, Berlin</h3>
-      <p>Regale ein- und ausgeräumt</p>
-    </VerticalTimelineElement>
-  </VerticalTimeline>
-  
+   Bürotätigkeiten
+  </TimeLineElement>
+    <TimeLineElement
+    title="Praktikant"
+    subtitle="Von 03/2018 bis 03/2018 bei Pfenigpfefer, Berlin, Deutschland"
+  >
+    Regale ein und aus gereumt
+  </TimeLineElement>
+  </div>
+
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Ehrentamtliche Tätigkeiten</div>
   </div>
-  
-  <VerticalTimeline
-  lineColor="black"
-  >
-    <VerticalTimelineElement
-      className="vertical-timeline-element--volunteer"
-      date="06/2023"
-      visible={true}
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Volenteer bei Special Olympics World Games Berlin 2023"
+      subtitle="Von 06/2023 bis 06/2023 bei Special Olympics Germany, Berlin, Deutschland"
     >
-      <h3 class="vertical-timeline-element-title">Special Olympics Germany, Berlin</h3>
-      <p>Healty Athletes Program Check in/Check out System</p>
-    </VerticalTimelineElement>
-  </VerticalTimeline>
-  
+      Healty Athletes Program Check in/Check out System
+    </TimeLineElement>
+  </div>  
 
   <!--div class="mb-5">
     <div class="text-3xl w-full font-bold">Zertifizierungen</div>
