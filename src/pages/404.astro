@@ -130,7 +130,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         "Looks like this page is on a surreptitious adventure.",
         "This page is on a down-low assignment."
         ];
-        document.getElementById("sadText").innerHTML = sadTexts[Math.floor(Math.random() * sadTexts.length)];
+        document.getElementById("sadText")!.innerHTML = sadTexts[Math.floor(Math.random() * sadTexts.length)];
     </script>
   </div>
   <style>
