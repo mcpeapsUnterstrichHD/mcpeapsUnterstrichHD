@@ -5,8 +5,6 @@ import SideBarMenu from "./SideBarMenu.astro";
 import presentation from "../data/presentation";
 const { sideBarActiveItemID } = Astro.props;
 import { Skeleton } from "../components/ui/skeleton"
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
-
 
 
 let isLoading = true;
@@ -26,11 +24,7 @@ function handleImageLoad() {
             <astro-if test={isLoading}>
               <Skeleton class="w-[135px] h-[135px] rounded-full" />
             </astro-if>
-            <Avatar>
-              <AvatarImage src="{presentation.profile}" onLoad={handleImageLoad} />
-              <AvatarFallback>MAHD</AvatarFallback>
-            </Avatar>
-      
+            <Image class="mask mask-circle" format="webp" width={300} height={300} src={presentation.profile} alt="Profile image" on:load={handleImageLoad} />
           </div>
         </div>
       </a>
