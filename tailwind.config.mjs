@@ -1,9 +1,11 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   prefix: "",
   theme: {
@@ -15,18 +17,6 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        'mono': [
-          'caskaydiacovenerdfontmono-regular.ttf', ...defaultTheme.fontFamily.mono,
-        ],
-        'serif': [
-  'caskaydiacovenerdfont-regular.ttf',
-  ...defaultTheme.fontFamily.serif,
-],
-'sans': [
-  'caskaydiacovenerdfontpropo-regular.ttf',
-  ...defaultTheme.fontFamily.sans,
-],
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -43,10 +33,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography'),require("@tailwindcss/forms")({
-    strategy: 'base', // only generate global styles
-    //strategy: 'class', // only generate classes
-  }),
-],
-}
+  plugins: [require("tailwindcss-animate")],
 }
