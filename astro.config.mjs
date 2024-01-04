@@ -10,7 +10,6 @@ import netlify from "@astrojs/netlify";
 import react_vertical_timeline_component from 'react-vertical-timeline-component';
 //import netlify from '@astrojs/netlify/edge-functions';
 
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mahd.netlify.app',
@@ -22,15 +21,12 @@ export default defineConfig({
     priority: 0.9
   }), tailwind(), prefetch({
     intentSelector: ["a[href^='/']", "a[href^='/impressum']", "a[href^='/lebenslauf']", "a[href^='/projekte']"]
-  }), react(), cookieconsent(), AutoImport({
-    imports: ['./src/components']
-  }), mdx()],
-  output: "server",
-  //"hybrid",
+  }), react(), cookieconsent(), AutoImport({imports: ['./src/components']}),mdx()],
+  output: "server",//"hybrid",
   adapter: netlify(),
   renderer: {
-    default: "react"
+    default: "react",
     // Wenn Sie React verwenden möchten, ändern Sie den Wert zu "react"
     // default: "react"
-  }
+  },
 });

@@ -4,14 +4,6 @@ import { Image } from "astro:assets";
 import SideBarMenu from "./SideBarMenu.astro";
 import presentation from "../data/presentation";
 const { sideBarActiveItemID } = Astro.props;
-import { Skeleton } from "../components/ui/skeleton"
-
-
-let isLoading = true;
-
-function handleImageLoad() {
-  isLoading = false;
-}
 ---
 
 <div class="drawer-side z-40">
@@ -21,10 +13,7 @@ function handleImageLoad() {
       <a href="">
         <div class="avatar transition ease-in-out hover:scale-[102%] block m-auto">
           <div class="w-[8.5rem]">
-            <astro-if test={isLoading}>
-              <Skeleton class="w-[135px] h-[135px] rounded-full" />
-            </astro-if>
-            <Image class="mask mask-circle" format="webp" width={300} height={300} src={presentation.profile} alt="Profile image" on:load={handleImageLoad} />
+            <Image class="mask mask-circle" format="webp" width={300} height={300} src={presentation.profile} alt="Profile image" />
           </div>
         </div>
       </a>

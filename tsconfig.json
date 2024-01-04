@@ -1,13 +1,17 @@
 {
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    // ...
-    "baseUrl": ".",
+    "strictNullChecks": true,
+    "baseUrl": "/Users/mahd/DEV/mcpeapsUnterstrichHD",
     "paths": {
-      "@/*": [
-        "./src/*"
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
       ]
-    }
-    // ...
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
-

@@ -1,15 +1,9 @@
 ---
 import { ThemeSwitch } from "astro-color-scheme";
-import '../styles/global.css'
-import { ModeToggle } from '../components/ModeToggle';
+import '../styles/global.css';
 ---
-
 <main data-cookie-consent="strictly-necessary">
-  <label>
-    Theme:
-  <ModeToggle client:load />
-  </label>
-<!--label>
+<!label>
         Theme:
         <ThemeSwitch class="glass" strategy="select" defaultTheme="black">
           <select class="form-select glass px-4 py-3 solid rounded select select-bordered select-accent select-md">
