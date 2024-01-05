@@ -27,7 +27,7 @@ import { Button } from "../components/ui/button"
 import Link from "../components/Link.astro";
 ---
 
-<a href={url} target={target}></a>
+<a class="" href={url} target={target}></a>
 <Card>
   <CardHeader>
     <CardTitle>{title}</CardTitle>
@@ -50,14 +50,12 @@ import Link from "../components/Link.astro";
       <Button asChild>
         <Link
             href={url}
-            label={'Hier geht es zu ${Astro.props.title}'}
+            label={'Hier geht es zu ' + title}
           /> 
       </Button>
       {tags &&
         tags.map((tag) => (
-          <a href={`${tag_url}/${tag}`} class="badge badge-outline">
             {tag}
-          </a>
         ))}
     </Badge>
   </CardFooter>
