@@ -1,19 +1,11 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import SideBar from "../components/SideBar.astro";
 import CookieBanner from '../components/CookieBanner.astro';
+import BaseHead from '../components/BaseHead.astro';
 import presentation from "../data/presentation";
-
-
-
-
+import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
 const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, includeSidebar = true, sideBarActiveItemID } = Astro.props;
-
-import { ThemeSwitch } from "astro-color-scheme";
 
 import Swup from 'swup';
 ---
@@ -48,21 +40,12 @@ import Swup from 'swup';
     </script>
   </head>
   <body>
-    <div class="bg-background drawer lg:drawer-open">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content bg-background">
-        <Header title={SITE_TITLE} class="bg-background glass" />
-        
-        <div class="md:flex md:justify-center">
-          <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
-            <CookieBanner class="glass" />
-            <slot />
-          </main>
-        </div>
-        <div class="divider my-0"></div>
-        <Footer class="glass" />
-      </div>
-      {includeSidebar && <SideBar class="" sideBarActiveItemID={sideBarActiveItemID} />}
-    </div>
+  <CookieBanner />
+  <main>
+    <slot />
+  </main>
   </body>
+  <footer>
+    <Footer />
+  </footer>
 </html>

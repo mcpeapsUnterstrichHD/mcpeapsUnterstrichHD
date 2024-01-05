@@ -12,36 +12,54 @@ const getImgClass = () => {
     return "rounded-lg";
   }
 };
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card"
+
+import { Badge } from "../components/ui/badge"
+import { Button } from "../components/ui/button"
+import Link from "../components/Link.astro";
 ---
 
-<div class="rounded-lg bg-background hover:shadow-xl transition ease-in-out hover:scale-[102%]">
-  <a href={url} target={target}>
-    <div class="hero-content flex-col md:flex-row">
-      {img && (
-        <Image
-          src={img}
-          width={750}
-          height={422}
-          format="webp"
-          alt={title}
-          class={`max-w-full md:max-w-[13rem] ${getImgClass()}`}
-        />
-      )}
-      <div class="grow w-full">
-        <h1 class="text-xl font-bold">
-          {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
-        </h1>
-        <p class="py-1 text-1xl">{desc}</p>
-        <div class="card-actions justify-end">
-          {tags &&
-            tags.map((tag) => (
-              <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                {tag}
-              </a>
-            ))}
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
+<a href={url} target={target}></a>
+<Card>
+  <CardHeader>
+    <CardTitle>{title}</CardTitle>
+    <CardDescription>{desc}</CardDescription>
+  </CardHeader>
+  <CardContent>
+    {img && (
+      <Image
+        src={img}
+        width={750}
+        height={422}
+        format="webp"
+        alt={title}
+        class={`max-w-full md:max-w-[13rem] ${getImgClass()}`}
+      />
+    )}
+  </CardContent>
+  <CardFooter>
+    <Badge>
+      <Button asChild>
+        <Link
+            href={url}
+            label={'Hier geht es zu ${Astro.props.title}'}
+          /> 
+      </Button>
+      {tags &&
+        tags.map((tag) => (
+          <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+            {tag}
+          </a>
+        ))}
+    </Badge>
+  </CardFooter>
+</Card>
+</a>
