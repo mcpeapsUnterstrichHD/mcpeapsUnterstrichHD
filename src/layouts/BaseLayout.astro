@@ -7,6 +7,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, includeSidebar = true, sideBarActiveItemID } = Astro.props;
 
 import Swup from 'swup';
+
+import { NavigationMenubar } from '../components/NavigationMenubar.tsx';
+
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
+
+
 ---
 
 <script is:inline>
@@ -38,14 +44,16 @@ import Swup from 'swup';
       const swup = new Swup();
     </script>
   </head>
-  <body>
+  <body classNamw="bg-white dark:bg-current">
+    <NavigationMenubar />
+    
     <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
     <script type="text/javascript" charset="UTF-8">
     document.addEventListener('DOMContentLoaded', function () {
     cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"dark","language":"de","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"Fabian Aps"});
     });
     </script>
-  <main class="bg-primary">
+  <main>
     <slot />
   </main>
   </body>

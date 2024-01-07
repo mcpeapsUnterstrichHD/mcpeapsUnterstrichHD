@@ -26,12 +26,10 @@ import { Badge } from "../components/ui/badge"
 import { Button } from "../components/ui/button"
 import Link from "../components/Link.astro";
 ---
-
-<a class="" href={url} target={target}></a>
-<Card>
+<Card className="text-current dark:text-white">
   <CardHeader>
-    <CardTitle>{title}</CardTitle>
-    <CardDescription>{desc}</CardDescription>
+    <CardTitle className="text-current">{title}</CardTitle>
+    <CardDescription className="text-current dark:text-white">{desc}</CardDescription>
   </CardHeader>
   <CardContent>
     {img && (
@@ -46,18 +44,18 @@ import Link from "../components/Link.astro";
     )}
   </CardContent>
   <CardFooter>
-    <Badge>
       <Button asChild>
         <Link
             href={url}
             label={'Hier geht es zu ' + title}
           /> 
       </Button>
+      <br />
+      <Badge className="text-current dark:text-white">
       {tags &&
         tags.map((tag) => (
-            {tag}
+          <a class="text-current dark:text-white">{tag}</a>
         ))}
     </Badge>
   </CardFooter>
 </Card>
-</a>
