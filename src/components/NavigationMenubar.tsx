@@ -25,6 +25,19 @@ export function NavigationMenubar() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
+          <NavigationMenuContent>
+          <Avatar>
+              <AvatarImage src="profile.jpg" />
+              <AvatarFallback>MAHD</AvatarFallback>
+          </Avatar>
+
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuContent>
+          Aps, Fabian
+          </NavigationMenuContent>
+        </NavigationMenuItem>
           <NavigationMenuTrigger>Home</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -35,11 +48,6 @@ export function NavigationMenubar() {
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                    <Avatar>
-                        <AvatarImage src="profile.jpg" />
-                        <AvatarFallback>MAHD</AvatarFallback>
-                    </Avatar>
-
                     Aps, Fabian
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">

@@ -44,7 +44,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
       const swup = new Swup();
     </script>
   </head>
-  <body classNamw="bg-white dark:bg-current">
+  <body >
+    <div className="bg-black dark:bg-white" />
+
     <NavigationMenubar />
     
     <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
@@ -56,6 +58,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
   <main>
     <slot />
   </main>
+</div>
   </body>
   <footer>
     <Footer />
