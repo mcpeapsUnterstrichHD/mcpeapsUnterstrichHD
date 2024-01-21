@@ -133,7 +133,7 @@ const sadTexts = [
         const randomSadText = getRandomSadText();
     
         return (
-            <main className="flex min-h-screen flex-col items-center p-24">
+            <main className="flex min-h-screen flex-col items-center p-4">
                 <div>
                     <div className="nf nf-md-emoticon_sad_outline text-[10em]"></div>
                     <h1 className="mt-10">404 Page Not Found</h1><br/>
