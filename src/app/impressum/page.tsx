@@ -17,9 +17,9 @@ export default function Home() {
 
             <div className="text-2xl py-2 font-bold">Kontakt:</div>
             <div className="text-lg py-1">
-              <p>E-Mail: </p><Link href="mailto:fabian.aps@comboompunksucht.app" legacyBehavior passHref><p>fabian.aps@comboompunksucht.app</p></Link>
-            <br/>
-            <p>Telefonnummer: </p><Link href="tel:+4917645172171" legacyBehavior passHref><p>+4917645172171</p></Link>
+                <div className="flex flex-row justify-between items-center">
+                <p>E-Mail: </p><Link href="mailto:fabian.aps@comboompunksucht.app" legacyBehavior passHref><p>fabian.aps@comboompunksucht.app</p></Link><p>;</p><p>Telefonnummer: </p><Link href="tel:+4917645172171" legacyBehavior passHref><p>+4917645172171</p></Link>
+                </div>
             </div>
 
             <div className="text-2xl py-2 font-bold">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</div>
