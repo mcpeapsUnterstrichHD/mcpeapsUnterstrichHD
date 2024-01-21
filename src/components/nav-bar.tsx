@@ -19,21 +19,26 @@ import { ThemeToggle } from "@/components/theme-toggle"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
+import { Separator } from "@/components/ui/separator"
+
+
 export function NavBar() {
   return (
-    <NavigationMenu className="mt-2 mr-2 ml-2 mb-2">
+    <NavigationMenu className="mt-2 mr-2 ml-2 mb-2 flex flex-row justify-between items-center">
       <NavigationMenuList>
-      <NavigationMenuItem>
+        <div className="flex justify-between">
+        <div className="flex flex-row justify-between items-center ">
+        <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink>
-                <div className="flex items-center">
-                    <div className="">
+                <div className="flex flex-row justify-between items-center">
+                    <div className="flex flex-row justify-between items-center">
                     <Avatar>
                       <AvatarImage src="https://github.com/mcpeapsUnterstrichHD.png" />
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
-                    <div className="ml-2 mr-2 text-sm font-medium">
+                    <div className="ml-2 mr-2 text-sm font-medium flex flex-row justify-between items-center">
                       Fabian Aps
                     </div>
                 </div>
@@ -85,11 +90,16 @@ export function NavBar() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+        </div>
+        <Separator orientation="vertical" />
+        <div>
         <NavigationMenuItem>
             <NavigationMenuLink>
                 <ThemeToggle />
             </NavigationMenuLink>
         </NavigationMenuItem>
+        </div>
+        </div>
       </NavigationMenuList>
     </NavigationMenu>
   )
