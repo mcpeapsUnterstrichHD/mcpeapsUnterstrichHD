@@ -7,7 +7,7 @@ export default function Home() {
 }
 
 
-export default function aboutme() {
+export function aboutme() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <h1>Fabian Aps</h1>
