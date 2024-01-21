@@ -71,7 +71,7 @@ export function NavBar() {
                       Fabian Aps
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Developer/DJ/Producer aus Leidenschaft
+                      ITler/DJ/Producer aus Leidenschaft
                     </p>
                   </a>
                 </NavigationMenuLink>
