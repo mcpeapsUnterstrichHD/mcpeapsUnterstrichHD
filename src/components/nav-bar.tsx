@@ -85,7 +85,7 @@ export function NavBar() {
               <ListItem href="/lebenslauf" title="Lebenslauf">
                 Mein aktueller Lebenslauf
               </ListItem>
-              <ListItem href="/Impressum" title="Impressum" />
+              <ListItem href="/impressum" title="Impressum" />
               
             </ul>
           </NavigationMenuContent>
