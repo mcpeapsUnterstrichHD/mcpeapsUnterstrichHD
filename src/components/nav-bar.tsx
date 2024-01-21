@@ -41,9 +41,9 @@ export function NavBar() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-        <Link href="/musik" legacyBehavior passHref>
+        <Link href="https://linktr.ee/mcpeaps_hd" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Musik
+                Linksammlung
             </NavigationMenuLink>
             </Link>
         </NavigationMenuItem>
@@ -51,7 +51,7 @@ export function NavBar() {
           <NavigationMenuTrigger>Über mich</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-5">
+              <li className="row-span-4">
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
@@ -79,9 +79,6 @@ export function NavBar() {
               </ListItem>
               <ListItem href="/lebenslauf" title="Lebenslauf">
                 Mein aktueller Lebenslauf
-              </ListItem>
-              <ListItem href="https://linktr.ee/mcpeaps_hd" title="Linksammlung">
-                Eine Verteilerseite zu Seiten Auserhalb dieser
               </ListItem>
               <ListItem href="/Impressum" title="Impressum" />
               
