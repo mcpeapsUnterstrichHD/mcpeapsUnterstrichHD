@@ -23,7 +23,7 @@ const ccnfp = localFont({
       style: 'italic',
     },
     {
-      path: './fonts/CaskaydiaCoveNerdFontPropo-Itallic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
