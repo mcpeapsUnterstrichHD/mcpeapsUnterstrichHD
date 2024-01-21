@@ -5,7 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { NavBar } from "@/components/nav-bar";
 
-import CookieConsent, { Cookies } from "react-cookie-consent";
+import CookieConsent from "react-cookie-consent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +33,6 @@ export default function RootLayout({
             <CookieConsent enableDeclineButton
               location="bottom"
               buttonText="Akzeptieren"
-              cookieName="mahd_cookie"
               style={{ background: "#2B373B" }}
               buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
               expires={150}
