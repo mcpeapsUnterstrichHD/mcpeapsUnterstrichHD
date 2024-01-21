@@ -19,9 +19,9 @@ export default function Home() {
             <div className="text-lg py-1">
                 <div className="flex flex-col items-start">
                     <div className="flex flex-row items-center">
-                        <p>E-Mail: </p><Link href="mailto:fabian.aps@comboompunksucht.app" legacyBehavior passHref><p>fabian.aps@comboompunksucht.app</p></Link></div>
+                        <Link href="mailto:fabian.aps@comboompunksucht.app" legacyBehavior passHref><p>E-Mail: fabian.aps@comboompunksucht.app</p></Link></div>
                     <div className="flex flex-row items-center">
-                    <p>Telefonnummer: </p><Link href="tel:+4917645172171" legacyBehavior passHref><p>+4917645172171</p></Link>
+                        <Link href="tel:+4917645172171" legacyBehavior passHref><p>Telefonnummer: +4917645172171</p></Link>
                     </div>
                 
                 </div>
