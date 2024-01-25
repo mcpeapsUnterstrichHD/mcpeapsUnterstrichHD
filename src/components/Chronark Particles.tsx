@@ -79,6 +79,7 @@ export default function Particles({
 		dx: number;
 		dy: number;
 		magnetism: number;
+		color: string;
 	};
 
 	const resizeCanvas = () => {
@@ -105,6 +106,7 @@ export default function Particles({
 		const dx = (Math.random() - 0.5) * 0.2;
 		const dy = (Math.random() - 0.5) * 0.2;
 		const magnetism = 0.1 + Math.random() * 4;
+		var color = 'null'
 		return {
 			x,
 			y,
@@ -116,14 +118,15 @@ export default function Particles({
 			dy,
 			magnetism,
 			translateY,
+			color,
 		};
 	};
 
-	const { theme } = useTheme()
 
-	const drawCircle = (circle: Circle) => {
+	const drawCircle = (circle: Circle, update=false ) => {
 		if (context.current) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
+			var {color} = circle;
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
@@ -134,14 +137,17 @@ export default function Particles({
 				return randomValue === 0 ? one : two;
 			};
 			
-			const darkColor = getRandomColor(`rgba(255,0,0,${alpha})`, `rgba(0,255,0,${alpha})`);
-			const lightColor = getRandomColor(`rgba(100,0,0,${alpha})`, `rgba(0,100,0,${alpha})`);			
-	
-			const fillColor = theme === "dark" ? darkColor : theme === "light" ? lightColor : "rgba(0, 0, 0, 0)";
-			context.current.fillStyle = fillColor;
+			if (color === 'null') {
+				color = getRandomColor(`rgba(255,0,0,${alpha})`, `rgba(0,255,0,${alpha})`);
+				context.current.fillStyle = color;
+			}
 	
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+			if (!update) {
+				circles.current.push(circle);
+			}
 		}
 	};
 
@@ -230,7 +236,7 @@ export default function Particles({
 						translateY: circle.translateY,
 						alpha: circle.alpha,
 					},
-					
+					false,
 				);
 			}
 		});
