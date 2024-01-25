@@ -236,7 +236,7 @@ export default function Particles({
 						translateY: circle.translateY,
 						alpha: circle.alpha,
 					},
-					false,
+					true,
 				);
 			}
 		});
