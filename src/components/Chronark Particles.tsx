@@ -14,7 +14,7 @@ interface ParticlesProps {
 
 export default function Particles({
 	className = "",
-	quantity = 2000,
+	quantity = 30,
 	staticity = 50,
 	ease = 20,
 	refresh = true,
@@ -107,7 +107,7 @@ export default function Particles({
 		const translateX = 0;
 		const translateY = 0;
 		const size = Math.floor(Math.random() * 2) + 3;
-		const alpha = Math.floor(Math.random() * (255 - 128 + 1)) + 128;
+		const alpha = 255;
 		const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
 		const dx = (Math.random() - 0.5) * 0.2;
 		const dy = (Math.random() - 0.5) * 0.2;
