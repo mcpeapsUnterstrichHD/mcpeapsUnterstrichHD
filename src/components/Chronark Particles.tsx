@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { useMousePosition } from "@/lib/mouse";
+import { useTheme } from "next-themes"
 
 interface ParticlesProps {
 	className?: string;
@@ -118,13 +119,21 @@ export default function Particles({
 		};
 	};
 
+	const { theme } = useTheme()
+
 	const drawCircle = (circle: Circle, update = false) => {
 		if (context.current) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			context.current.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+			if (theme === "dark") {
+				context.current.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+			} else if (theme === "light") {
+				context.current.fillStyle = `rgba(0, 100, 0, ${alpha})`;
+			} else {
+				context.current.fillStyle = `rgba(0, 0, 0, 0)`;
+			}
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 

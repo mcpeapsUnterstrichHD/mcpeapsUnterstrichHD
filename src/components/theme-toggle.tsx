@@ -25,13 +25,13 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-      <DropdownMenuItem onClick={() => setTheme("system")}>
+      <DropdownMenuItem onClick={() => setTheme("system")} onClickCapture={() => window.location.reload()}>
           System
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => setTheme("dark")} onClickCapture={() => window.location.reload()}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem onClick={() => setTheme("light")} onClickCapture={() => window.location.reload()}>
           Light
         </DropdownMenuItem>
       </DropdownMenuContent>
