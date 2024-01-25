@@ -119,7 +119,7 @@ export default function Particles({
 		};
 	};
 
-	const { theme } = useTheme()
+	
 
 	const drawCircle = (circle: Circle, update = false) => {
 		if (context.current) {
@@ -127,21 +127,27 @@ export default function Particles({
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			if (theme === "dark") {
-				context.current.fillStyle = `rgba(0, 255, 0, ${alpha})`;
-			} else if (theme === "light") {
-				context.current.fillStyle = `rgba(0, 100, 0, ${alpha})`;
-			} else {
-				context.current.fillStyle = `rgba(0, 0, 0, 0)`;
-			}
+	
+			// Zufällige Farbauswahl zwischen "Dark" und "Light"
+			const getRandomColor = (start: number, end: number) => {
+				const randomValue = Math.floor(Math.random() * (end - start + 1)) + start;
+				return randomValue.toString(16).padStart(6, '0');
+			};
+	
+			const darkColor = `#${getRandomColor(0xff0000, 0x00ff00)}`;
+			const lightColor = `#${getRandomColor(0x640000, 0x006400)}`;
+			const { theme } = useTheme()
+			const fillColor = theme === "dark" ? darkColor : theme === "light" ? lightColor : "rgba(0, 0, 0, 0)";
+			context.current.fillStyle = fillColor;
+	
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
-
+	
 			if (!update) {
 				circles.current.push(circle);
 			}
 		}
-	};
+	};	
 
 	const clearContext = () => {
 		if (context.current) {
