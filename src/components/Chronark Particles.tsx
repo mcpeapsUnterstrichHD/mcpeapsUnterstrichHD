@@ -127,7 +127,7 @@ export default function Particles({
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			
+
 			// Zufällige Farbauswahl zwischen "Dark" und "Light"
 			const getRandomColor = (one: string, two: string): string => {
 				const randomValue = Math.floor(Math.random() * 2); // Generates either 0 or 1
@@ -230,7 +230,7 @@ export default function Particles({
 						translateY: circle.translateY,
 						alpha: circle.alpha,
 					},
-					true,
+					
 				);
 			}
 		});
