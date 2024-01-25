@@ -119,9 +119,9 @@ export default function Particles({
 		};
 	};
 
-	
+	const { theme } = useTheme()
 
-	const drawCircle = (circle: Circle, update = false) => {
+	const drawCircle = (circle: Circle) => {
 		if (context.current) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
 			context.current.translate(translateX, translateY);
@@ -129,25 +129,21 @@ export default function Particles({
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
 	
 			// Zufällige Farbauswahl zwischen "Dark" und "Light"
-			const getRandomColor = (start: number, end: number) => {
-				const randomValue = Math.floor(Math.random() * (end - start + 1)) + start;
-				return randomValue.toString(16).padStart(6, '0');
+			const getRandomColor = (one: string, two: string): string => {
+				const randomValue = Math.floor(Math.random() * 2); // Generates either 0 or 1
+				return randomValue === 0 ? one : two;
 			};
 	
-			const darkColor = `#${getRandomColor(0xff0000, 0x00ff00)}`;
-			const lightColor = `#${getRandomColor(0x640000, 0x006400)}`;
-			const { theme } = useTheme()
+			const darkColor = getRandomColor(`rgba(255,0,0,${alpha})`, `rgba(0,255,0,${alpha})`);
+			const lightColor = getRandomColor(`rgba(100,0,0,${alpha})`, `rgba(0,100,0,${alpha})`);
+	
 			const fillColor = theme === "dark" ? darkColor : theme === "light" ? lightColor : "rgba(0, 0, 0, 0)";
 			context.current.fillStyle = fillColor;
 	
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
-	
-			if (!update) {
-				circles.current.push(circle);
-			}
 		}
-	};	
+	};
 
 	const clearContext = () => {
 		if (context.current) {
