@@ -3,9 +3,7 @@ import Particles from '@/components/Chronark Particles';
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-secondary-background via-primary-background to-secondary-background">
-      <nav className="my-16 animate-fade-in">
-      </nav>
+    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <Particles
         className="absolute inset-0 -z-10 animate-fade-in"
@@ -16,7 +14,7 @@ export default function Home() {
       </h1>
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <div className="my-16 text-center animate-fade-in">
-        <h2 className="text-sm text-secondary-foreground ">
+        <h2 className="text-xl text-secondary-foreground ">
         ITler/DJ/Producer aus Leidenschaft
         </h2>
       </div>
