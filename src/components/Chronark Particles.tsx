@@ -14,10 +14,10 @@ interface ParticlesProps {
 
 export default function Particles({
 	className = "",
-	quantity = 30,
-	staticity = 50,
+	quantity = 60,
+	staticity = 10,
 	ease = 50,
-	refresh = false,
+	refresh = true,
 }: ParticlesProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const canvasContainerRef = useRef<HTMLDivElement>(null);
@@ -107,31 +107,11 @@ export default function Particles({
 		const translateX = 0;
 		const translateY = 0;
 		const size = Math.floor(Math.random() * 2) + 3;
-		var alpha = 0;
+		const alpha = Math.floor(Math.random() * (255 - 127 + 1)) + 127;
 		const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
 		const dx = (Math.random() - 0.5) * 0.2;
 		const dy = (Math.random() - 0.5) * 0.2;
 		const magnetism = 0.1 + Math.random() * 4;
-
-		const edge = [
-			x + translateX - size, // distance from left edge
-			canvasSize.current.w - x - translateX - size, // distance from right edge
-			y + translateY - size, // distance from top edge
-			canvasSize.current.h - y - translateY - size, // distance from bottom edge
-		];
-		const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-		const remapClosestEdge = parseFloat(
-			remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
-		);
-		if (remapClosestEdge > 1) {
-			alpha += 0.02;
-			if (alpha > targetAlpha) {
-				alpha = targetAlpha;
-			}
-		} else {
-			alpha = targetAlpha * remapClosestEdge;
-		}
-
 		var color = getRandomColor(`rgba(255,0,0,${alpha})`, `rgba(0,255,0,${alpha})`);
 		return {
 			x,
@@ -208,7 +188,17 @@ export default function Particles({
 				canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
 			];
 			const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-
+			const remapClosestEdge = parseFloat(
+				remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
+			);
+			if (remapClosestEdge > 1) {
+				circle.alpha += 0.02;
+				if (circle.alpha > circle.targetAlpha) {
+					circle.alpha = circle.targetAlpha;
+				}
+			} else {
+				circle.alpha = circle.targetAlpha * remapClosestEdge;
+			}
 			circle.x += circle.dx;
 			circle.y += circle.dy;
 			circle.translateX +=
