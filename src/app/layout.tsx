@@ -83,7 +83,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head>
-        <link rel="apple-touch-icon" href="/example.png">
+        <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png">
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
