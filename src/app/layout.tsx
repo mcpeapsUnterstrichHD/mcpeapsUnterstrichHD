@@ -82,7 +82,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <head />
+      <head>
+        <link rel="apple-touch-icon" href="/example.png">
+      </head>
       <body className={ccnfp.className}>
       <ThemeProvider
             attribute="class"
