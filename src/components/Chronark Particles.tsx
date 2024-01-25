@@ -208,9 +208,6 @@ export default function Particles({
 				canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
 			];
 			const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-			const remapClosestEdge = parseFloat(
-				remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
-			);
 
 			circle.x += circle.dx;
 			circle.y += circle.dy;
