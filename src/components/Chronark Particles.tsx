@@ -96,17 +96,43 @@ export default function Particles({
 	};
 
 	const circleParams = (): Circle => {
+
+		const getRandomColor = (one: string, two: string): string => {
+			const randomValue = Math.floor(Math.random() * 2); // Generates either 0 or 1
+			return randomValue === 0 ? one : two;
+		};
+
 		const x = Math.floor(Math.random() * canvasSize.current.w);
 		const y = Math.floor(Math.random() * canvasSize.current.h);
 		const translateX = 0;
 		const translateY = 0;
 		const size = Math.floor(Math.random() * 2) + 3;
-		const alpha = 0;
+		var alpha = 0;
 		const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
 		const dx = (Math.random() - 0.5) * 0.2;
 		const dy = (Math.random() - 0.5) * 0.2;
 		const magnetism = 0.1 + Math.random() * 4;
-		var color = 'null'
+
+		const edge = [
+			x + translateX - size, // distance from left edge
+			canvasSize.current.w - x - translateX - size, // distance from right edge
+			y + translateY - size, // distance from top edge
+			canvasSize.current.h - y - translateY - size, // distance from bottom edge
+		];
+		const closestEdge = edge.reduce((a, b) => Math.min(a, b));
+		const remapClosestEdge = parseFloat(
+			remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
+		);
+		if (remapClosestEdge > 1) {
+			alpha += 0.02;
+			if (alpha > targetAlpha) {
+				alpha = targetAlpha;
+			}
+		} else {
+			alpha = targetAlpha * remapClosestEdge;
+		}
+
+		var color = getRandomColor(`rgba(255,0,0,${alpha})`, `rgba(0,255,0,${alpha})`);
 		return {
 			x,
 			y,
@@ -125,23 +151,11 @@ export default function Particles({
 
 	const drawCircle = (circle: Circle, update=false ) => {
 		if (context.current) {
-			const { x, y, translateX, translateY, size, alpha } = circle;
-			var {color} = circle;
+			const { x, y, translateX, translateY, size, color } = circle;
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-
-			// Zufällige Farbauswahl zwischen "Dark" und "Light"
-			const getRandomColor = (one: string, two: string): string => {
-				const randomValue = Math.floor(Math.random() * 2); // Generates either 0 or 1
-				return randomValue === 0 ? one : two;
-			};
-			
-			if (color === 'null') {
-				color = getRandomColor(`rgba(255,0,0,${alpha})`, `rgba(0,255,0,${alpha})`);
-				context.current.fillStyle = color;
-			}
-	
+			context.current.fillStyle = color;
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -197,14 +211,7 @@ export default function Particles({
 			const remapClosestEdge = parseFloat(
 				remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
 			);
-			if (remapClosestEdge > 1) {
-				circle.alpha += 0.02;
-				if (circle.alpha > circle.targetAlpha) {
-					circle.alpha = circle.targetAlpha;
-				}
-			} else {
-				circle.alpha = circle.targetAlpha * remapClosestEdge;
-			}
+
 			circle.x += circle.dx;
 			circle.y += circle.dy;
 			circle.translateX +=
