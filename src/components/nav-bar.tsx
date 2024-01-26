@@ -38,7 +38,7 @@ export function NavBar() {
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
-                    <div className="ml-2 mr-2 text-sm font-medium flex flex-row justify-between items-center">
+                    <div className="ml-2 mr-2 sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm font-regular flex flex-row justify-between items-center">
                       Fabian Aps
                     </div>
                 </div>
@@ -47,13 +47,13 @@ export function NavBar() {
         </NavigationMenuItem>
         <NavigationMenuItem>
         <Link href="https://linktr.ee/mcpeaps_hd" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={navigationMenuTriggerStyle() + "sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm"}>
                 Linksammlung
             </NavigationMenuLink>
             </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Über mich</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm">Über mich</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-4">
