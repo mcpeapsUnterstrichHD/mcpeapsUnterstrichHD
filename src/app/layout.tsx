@@ -84,8 +84,11 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
-        <meta name="theme-color" content="#111111" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#111111" />
+        <meta name="theme-color" content="#010101" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
         <link rel="icon" href="/favicon.ico"/>
         <meta name="robots" content="index"/>
         <meta name="viewport" content="with=device-width, initial-scale=1" />
