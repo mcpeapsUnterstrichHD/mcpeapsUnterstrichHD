@@ -94,7 +94,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <nav><NavBar /></nav>
+            <nav className="z-10"><NavBar className="z-10" /></nav>
             {children}
           </ThemeProvider>
       </body>
