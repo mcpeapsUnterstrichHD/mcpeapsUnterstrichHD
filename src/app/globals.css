@@ -50,10 +50,10 @@
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
+    @apply overflow-hidden;
   }
   body {
     @apply bg-background text-foreground;
