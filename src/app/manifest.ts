@@ -21,6 +21,11 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: 'any',
         type: 'image/x-icon',
       },
+      {
+        src: 'https://github.com/mcpeapsUnterstrichHD.png',
+        sizes: '3000x3000',
+        type: 'image/png',
+      }
     ],
   }
 }
