@@ -34,7 +34,7 @@ export function NavBar() {
                 <div className="flex flex-row justify-between items-center">
                     <div className="flex flex-row justify-between items-center">
                     <Avatar>
-                      <AvatarImage src="https://github.com/mcpeapsUnterstrichHD.png" />
+                      <AvatarImage src="https://github.com/mcpeapsUnterstrichHD.png" alt="Logo Image" />
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
