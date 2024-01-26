@@ -7,7 +7,6 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Portfolio/Impressum of Fabian Aps/mcpeaps_HD',
     start_url: 'https://mahd.comboompunksucht.app/',
     display: 'standalone',
-    display_override: ['standalone'],
     background_color: '#000000',
     theme_color: '#000000',
     lang: 'de-DE',
