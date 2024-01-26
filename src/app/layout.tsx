@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
   description: "my own portfolio/impressum website",
 };
-
+//<link rel="manifest" href="/manifest.webmanifest" />
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -86,7 +86,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta name="theme-color" content="bg-primary"/>
         <meta name="robots" content="index"/>
-        <link rel="manifest" href="/app.webmanifest" />
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
