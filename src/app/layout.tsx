@@ -84,7 +84,7 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
-        <meta name="theme-color" content="#646464"/>
+        <meta name="theme-color" content="#333333"/>
         <meta name="robots" content="index"/>
         <meta name="viewport" content="with=device-width, initial-scale=1" />
         <meta name="description" content='my own portfolio/impressum website' />
