@@ -8,6 +8,9 @@ export default function manifest(): MetadataRoute.Manifest {
     //start_url: 'https://mahd.comboompunksucht.app/',
     start_url:'/',
     display: 'standalone',
+    display_override: [
+      'standalone',
+    ],
     background_color: '#000000',
     theme_color: '#000000',
     lang: 'de-DE',
