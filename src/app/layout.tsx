@@ -87,7 +87,7 @@ export default function RootLayout({
         <meta name="theme-color" content="bg-primary"/>
         <meta name="robots" content="index"/>
         <meta name="viewport" content="with=device-width, initial-scale=1" />
-        <meta name="description" content='my own portfolio/impressum website' />"
+        <meta name="description" content='my own portfolio/impressum website' />
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
