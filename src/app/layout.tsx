@@ -86,6 +86,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta name="theme-color" content="bg-primary"/>
         <meta name="robots" content="index"/>
+        <link rel="manifest" href="/app.webmanifest" />
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
