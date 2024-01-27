@@ -60,4 +60,15 @@
     height: 100svh;
     width: 100svw;
   }
+  
+}
+
+.nametag {
+  @apply visible;
+}
+
+@media (width < 444px) {
+  .nametag {
+    @apply hidden;
+  }
 }
