@@ -102,7 +102,6 @@ export const metadata: Metadata = {
       url: 'https://github.com/mcpeapsUnterstrichHD.png',
     },
   },
-  themeColor: "#010101",
 };
 //<link rel="manifest" href="/manifest.webmanifest" />
 export default function RootLayout({
@@ -113,6 +112,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head>
+        <meta name="theme-color" content="#010101" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
