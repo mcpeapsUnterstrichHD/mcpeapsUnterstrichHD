@@ -112,6 +112,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head>
+        <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta name="theme-color" content="#010101" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
