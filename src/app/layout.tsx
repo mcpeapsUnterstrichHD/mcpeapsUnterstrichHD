@@ -77,18 +77,32 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     nocache: false,
+    noarchive: false,
+    noimageindex: false,
     "max-snippet": -1,
     "max-image-preview": "large",
     "max-video-preview": -1,
     googleBot: {
       index: true,
-      follow: false,
-      noimageindex: true,
+      follow: true,
+      nocache: false,
+      noarchive: false,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: 'https://github.com/mcpeapsUnterstrichHD.png',
+    shortcut: 'https://github.com/mcpeapsUnterstrichHD.png',
+    apple: 'https://github.com/mcpeapsUnterstrichHD.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: 'https://github.com/mcpeapsUnterstrichHD.png',
+    },
+  },
+  themeColor: "#010101",
 };
 //<link rel="manifest" href="/manifest.webmanifest" />
 export default function RootLayout({
@@ -99,16 +113,10 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head>
-        <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
-        <meta name="theme-color" content="#010101" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
-        <link rel="icon" href="/favicon.ico"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content='my own portfolio/impressum website' />
-        <meta name="robots" content="all"/>
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
