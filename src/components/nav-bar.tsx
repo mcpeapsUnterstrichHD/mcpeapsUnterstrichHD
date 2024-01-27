@@ -24,15 +24,15 @@ import { Separator } from "@/components/ui/separator"
 
 export function NavBar() {
   return (
-    <NavigationMenu className="mt-2 mr-2 ml-2 mb-2 flex flex-row justify-between items-center">
+    <NavigationMenu className="mt-2 mr-2 ml-2 mb-2 flex flex-row  items-center">
       <NavigationMenuList>
-        <div className="flex justify-between">
-        <div className="flex flex-row justify-between items-center ">
+        <div className="flex">
+        <div className="flex flex-row items-center ">
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink>
-                <div className="flex flex-row justify-between items-center">
-                    <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-row items-center">
+                    <div className="flex flex-row items-center">
                     <Avatar>
                       <AvatarImage src="https://github.com/mcpeapsUnterstrichHD.png" alt="Logo Image" />
                       <AvatarFallback>MAHD</AvatarFallback>
