@@ -73,6 +73,22 @@ const ccnfp = localFont({
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
   description: "my own portfolio/impressum website",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 //<link rel="manifest" href="/manifest.webmanifest" />
 export default function RootLayout({
