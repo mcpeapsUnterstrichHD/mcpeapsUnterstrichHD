@@ -5,12 +5,12 @@ const withPWA = require("@ducanh2912/next-pwa").default({
     swcMinify: true,
     dest: "public",
     fallbacks: {
-      image: "https://github.com/mcpeapsUnterstrichHD.png",
-      document: "/offline", // if you want to fallback to a custom page rather than /_offline
-       font: '/static/media/media/*.ttf',
-      // audio: ...,
-      // video: ...,
-    },
+        image: "https://github.com/mcpeapsUnterstrichHD.png",
+        document: "/offline",
+        font: '/static/media/*.ttf',
+        // audio: ...,
+        // video: ...,
+      },
     workboxOptions: {
       disableDevLogs: true,
     },
