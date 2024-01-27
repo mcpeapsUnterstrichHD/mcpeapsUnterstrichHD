@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '*',
     },
-    sitemap: "/sitemap.xml",
+    sitemap: "https://mahd.comboompunksucht.app/sitemap.xml",
   }
 }
