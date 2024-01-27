@@ -1,15 +1,8 @@
+import React from 'react';
 import Particles from '@/components/Chronark Particles';
 
-  return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
-      {/* ... other components */}
-      <div id="install-container" className="hidden">
-        <button id="install-button">Install App</button>
-      </div>
-    </div>
-  );
-};
-
+export default function Home() {
+  
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
