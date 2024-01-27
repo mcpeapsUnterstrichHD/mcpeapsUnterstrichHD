@@ -38,7 +38,7 @@ export function NavBar() {
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
-                    <div className="ml-2 mr-2 sm:hidden md:text-sm lg:text-sm xl:text-sm 2xl:text-sm font-regular flex flex-row justify-between items-center">
+                    <div className="ml-2 mr-2 sm:collapse md:visible lg:visible xl:visible 2xl:visible text-sm font-regular flex flex-row justify-between items-center">
                       Fabian Aps
                     </div>
                 </div>
