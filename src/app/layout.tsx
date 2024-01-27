@@ -100,7 +100,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+          <header>
             <nav className="z-10"><NavBar /></nav>
+          </header>
             {children}
           </ThemeProvider>
       </body>

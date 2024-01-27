@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 
 @layer base {
   :root {
@@ -57,7 +57,7 @@
   body {
     @apply bg-background text-foreground;
     @apply overflow-hidden;
-    height: 100dvh;
-    width: 100dvw;
+    height: 100svh;
+    width: 100svw;
   }
 }
