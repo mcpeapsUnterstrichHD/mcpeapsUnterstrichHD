@@ -90,7 +90,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
         <link rel="icon" href="/favicon.ico"/>
-        <meta name="viewport" content="with=360, initial-scale=0.89" />
+        <meta name="viewport" content="with=360px, initial-scale=0.89" />
         <meta name="description" content='my own portfolio/impressum website' />
       </head>
       <body className={ccnfp.className}>
