@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
- 
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Fabian Aps Portfolio/Impressum',
@@ -25,7 +25,7 @@ export default function manifest(): MetadataRoute.Manifest {
         src: 'https://github.com/mcpeapsUnterstrichHD.png',
         sizes: '3000x3000',
         type: 'image/png',
-        purpose: "any",
+        purpose: "maskable",
       }
     ],
   }
