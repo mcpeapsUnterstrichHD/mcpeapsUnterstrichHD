@@ -35,3 +35,7 @@ package = "netlify-plugin-image-optim"
   # optional, deploy the lighthouse report to a path under your site
   [plugins.inputs.audits]
     output_path = "/lighthouse.html"
+
+  [plugins.inputs.settings]
+      preset = "desktop" 
+	  locale = "de"
