@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import "./globals.css";
 
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import { NavBar } from "@/components/nav-bar";
 
 const ccnfp = localFont({
@@ -129,6 +129,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            
           <header>
             <nav className="z-10"><NavBar /></nav>
           </header>
