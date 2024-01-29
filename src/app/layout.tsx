@@ -133,7 +133,7 @@ export default function RootLayout({
           <div className="overflow-hidden bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
             <Particles
               className="absolute inset-0 -z-10 animate-fade-in"
-              quantity={200}
+              quantity={400}
             />
             <header>
               <nav className="z-10"><NavBar /></nav>
