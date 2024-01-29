@@ -1,48 +1,40 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+import { Button, buttonVariants } from './ui/button';
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge"
 
 interface ProjektCardProps {
   ProjektImage: string;
   ProjektImageAlt: string;
-  ProjektImageFallback: string;
   ProjektTitle: string;
-  ProjektDescription: string;
-  ProjektContent: string;
+  ProjektBadge: string;
   ProjektLink: string;
+  children: React.ReactNode;
 }
 
 const ProjektCard: React.FC<ProjektCardProps> = ({
   ProjektImage,
   ProjektImageAlt,
-  ProjektImageFallback,
   ProjektTitle,
-  ProjektDescription,
-  ProjektContent,
+  ProjektBadge,
   ProjektLink,
+  children,
 }) => {
   return (
     <Card>
       <CardHeader>
-        <div className="flex flex-row items-center gap-4 justify-center">
-          <div>
-            <Avatar>
-              <AvatarImage src={ProjektImage} alt={ProjektImageAlt} />
-              <AvatarFallback>{ProjektImageFallback}</AvatarFallback>
-            </Avatar>
-          </div>
-          <div className="flex flex-col">
             <CardTitle>{ProjektTitle}</CardTitle>
-            <CardDescription>{ProjektDescription}</CardDescription>
-          </div>
-        </div>
+            <CardDescription><Badge variant= 'default'><p>{ProjektBadge}</p></Badge></CardDescription>
       </CardHeader>
       <CardContent>
-        <p>{ProjektContent}</p>
+        {children}
       </CardContent>
       <CardFooter>
-        <Link href={ProjektLink}><p>Hier geht es zum Projekt</p></Link>
+        <div className='flex flex-col gap-4 items-center w-[500px] justify-between'>
+            <img className='w-[500px] h-[300px]' src= {ProjektImage} alt= {ProjektImageAlt} typeof='image/webp' />
+            <Link href={ProjektLink}><Button className={buttonVariants({variant: 'link'})}><p className='text-primary-foreground'>Hier geht es zum Projekt</p></Button></Link>
+        </div>
       </CardFooter>
     </Card>
   );

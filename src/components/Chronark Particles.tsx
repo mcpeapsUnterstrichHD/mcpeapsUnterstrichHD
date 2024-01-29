@@ -14,7 +14,7 @@ interface ParticlesProps {
 
 export default function Particles({
 	className = "",
-	quantity = 30,
+	quantity = 60,
 	staticity = 50,
 	ease = 20,
 	refresh = true,

@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavBar } from "@/components/nav-bar";
+import Particles from '@/components/Chronark Particles';
 
 const ccnfp = localFont({
   src: [
@@ -129,11 +130,16 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            
-          <header>
-            <nav className="z-10"><NavBar /></nav>
-          </header>
+          <div className="overflow-hidden bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
+            <Particles
+              className="absolute inset-0 -z-10 animate-fade-in"
+              quantity={200}
+            />
+            <header>
+              <nav className="z-10"><NavBar /></nav>
+            </header>
             {children}
+          </div>
           </ThemeProvider>
       </body>
     </html>
