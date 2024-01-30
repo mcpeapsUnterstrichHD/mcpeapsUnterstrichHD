@@ -4,7 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavBar } from "@/components/nav-bar";
-import Particles from '@/components/Chronark Particles';
+import Particles from '@/components/particles';
 
 const ccnfp = localFont({
   src: [

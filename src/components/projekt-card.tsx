@@ -32,7 +32,7 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
       </CardContent>
       <CardFooter>
         <div className='flex flex-col gap-4 items-center w-[500px] justify-between'>
-            <img className='w-[500px] h-[300px]' src= {ProjektImage} alt= {ProjektImageAlt} typeof='image/webp' />
+            <img className='w-[98%] h-[50%]' src= {ProjektImage} alt= {ProjektImageAlt} typeof='image/webp' />
             <Link href={ProjektLink}><Button className={buttonVariants({variant: 'link'})}><p className='text-primary-foreground'>Hier geht es zum Projekt</p></Button></Link>
         </div>
       </CardFooter>

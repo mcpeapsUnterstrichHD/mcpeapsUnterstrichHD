@@ -1,5 +1,5 @@
 import React from 'react';
-import Particles from '@/components/Chronark Particles';
+import Particles from '@/components/particles';
 
 export default function Home() {
   
