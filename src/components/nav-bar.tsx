@@ -38,7 +38,7 @@ export function NavBar() {
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
-                    <div className="ml-2 mr-2 nametag text-sm font-regular flex flex-row justify-between items-center">
+                    <div className={navigationMenuTriggerStyle() + "ml-2 mr-2 nametag text-sm font-regular flex flex-row justify-between items-center"}>
                       Fabian Aps
                     </div>
                 </div>
