@@ -28,7 +28,7 @@ export function NavBar() {
       <NavigationMenuList>
         <div className="flex justify-between">
         <div className="flex flex-row justify-between items-center ">
-        <NavigationMenuItem>
+        <NavigationMenuItem className="backdrop-blur-sm  bg-transparent rounded-full">
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink>
                 <div className="flex flex-row justify-between items-center">
@@ -38,38 +38,36 @@ export function NavBar() {
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
-                    <div className={navigationMenuTriggerStyle() + "ml-2 mr-2 nametag text-sm font-regular flex flex-row justify-between items-center"}>
+                    <div className={navigationMenuTriggerStyle() + "ml-2 mr-2 nametag text-sm font-regular flex flex-row justify-between items-center backdrop-blur-sm  bg-transparent rounded-full"}>
                       Fabian Aps
                     </div>
                 </div>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="backdrop-blur-sm  bg-transparent rounded-full">
         <Link href="https://linktr.ee/mcpeaps_hd" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle() + "sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm"}>
+            <NavigationMenuLink className={navigationMenuTriggerStyle() + "sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm backdrop-blur-sm  bg-transparent rounded-full"}>
                 Linksammlung
             </NavigationMenuLink>
             </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm">Über mich</NavigationMenuTrigger>
-          <NavigationMenuContent>
+        <NavigationMenuItem className="backdrop-blur-sm  bg-transparent rounded-full rounded-full">
+          <NavigationMenuTrigger className="sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm backdrop-blur-sm  bg-transparent rounded-full">Über mich</NavigationMenuTrigger>
+          <NavigationMenuContent className="backdrop-blur-sm  bg-transparent rounded-full">
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-4">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
+                <NavigationMenuLink className="backdrop-blur-sm  bg-transparent rounded-full" asChild>
+                  <a className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    href="/">
                     <Avatar>
                       <AvatarImage src="https://github.com/mcpeapsUnterstrichHD.png" />
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
 
-                    <div className="mb-2 mt-4 text-lg font-medium">
+                    <p className="mb-2 mt-4 text-lg font-medium">
                       Fabian Aps
-                    </div>
+                    </p>
                     <p className="text-sm leading-tight text-muted-foreground">
                       ITler/DJ/Producer aus Leidenschaft
                     </p>
@@ -93,7 +91,7 @@ export function NavBar() {
         </div>
         <Separator orientation="vertical" />
         <div>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="backdrop-blur-sm  bg-transparent rounded-full">
             <NavigationMenuLink>
                 <ThemeToggle />
             </NavigationMenuLink>

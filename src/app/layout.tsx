@@ -130,10 +130,11 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-          <div className="overflow-hidden bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
+          <div className="bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
             <Particles
               className="absolute inset-0 -z-10 animate-fade-in"
               quantity={400}
+              refresh={true}
             />
             <header>
               <nav className="z-10"><NavBar /></nav>

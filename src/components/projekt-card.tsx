@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button, buttonVariants } from './ui/button';
 import Link from "next/link";
+import Image from 'next/image';
 import { Badge } from "@/components/ui/badge"
 
 interface ProjektCardProps {
@@ -22,17 +23,17 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
   children,
 }) => {
   return (
-    <Card>
+    <Card className='backdrop-blur-sm  bg-transparent'>
       <CardHeader>
             <CardTitle>{ProjektTitle}</CardTitle>
-            <CardDescription><Badge variant= 'default'><p>{ProjektBadge}</p></Badge></CardDescription>
+            <CardDescription><Badge variant= 'default'>{ProjektBadge}</Badge></CardDescription>
       </CardHeader>
       <CardContent>
         {children}
       </CardContent>
       <CardFooter>
-        <div className='flex flex-col gap-4 items-center w-[500px] justify-between'>
-            <img className='w-[98%] h-[50%]' src= {ProjektImage} alt= {ProjektImageAlt} typeof='image/webp' />
+        <div className='flex flex-col gap-4 items-center justify-between'>
+            <Image src={ProjektImage} alt={ProjektImageAlt} width="250" height="127" />
             <Link href={ProjektLink}><Button className={buttonVariants({variant: 'link'})}><p className='text-primary-foreground'>Hier geht es zum Projekt</p></Button></Link>
         </div>
       </CardFooter>

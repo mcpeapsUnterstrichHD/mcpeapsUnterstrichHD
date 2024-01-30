@@ -2,52 +2,74 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { useMousePosition } from "@/lib/mouse";
-import { useTheme } from "next-themes";
 
 interface ParticlesProps {
-	className?: string;
-	quantity?: number;
-	staticity?: number;
-	ease?: number;
-	refresh?: boolean;
+  className?: string;
+  quantity?: number;
+  staticity?: number;
+  ease?: number;
+  refresh?: boolean;
 }
 
 export default function Particles({
-	className = "",
-	quantity = 120,
-	staticity = 50,
-	ease = 20,
-	refresh = true,
+  className = "",
+  quantity = 120,
+  staticity = 50,
+  ease = 20,
+  refresh = true,
 }: ParticlesProps) {
-	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const canvasContainerRef = useRef<HTMLDivElement>(null);
-	const context = useRef<CanvasRenderingContext2D | null>(null);
-	const circles = useRef<any[]>([]);
-	const mousePosition = useMousePosition();
-	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
-	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
-	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const context = useRef<CanvasRenderingContext2D | null>(null);
+  const circles = useRef<any[]>([]);
+  const mousePosition = useMousePosition();
+  const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
+  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
-	useEffect(() => {
-		if (canvasRef.current) {
-			context.current = canvasRef.current.getContext("2d");
-		}
-		initCanvas();
-		animate();
-		window.addEventListener("resize", initCanvas);
+  const [pageWidth, setPageWidth] = useState(window.innerWidth); // Moved to top level
+  const [pageHeight, setPageHeight] = useState(window.innerHeight); // Moved to top level
 
-		return () => {
-			window.removeEventListener("resize", initCanvas);
-		};
-	}, []);
+  useEffect(() => {
+    if (canvasRef.current) {
+      context.current = canvasRef.current.getContext("2d");
+      resizeCanvas();
+    }
+    initCanvas();
+    animate();
+    window.addEventListener("resize", resizeCanvas);
 
-	useEffect(() => {
-		onMouseMove();
-	}, [mousePosition.x, mousePosition.y]);
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+    };
+  }, []);
 
-	useEffect(() => {
-		initCanvas();
-	}, [refresh]);
+  useEffect(() => {
+    onMouseMove();
+  }, [mousePosition.x, mousePosition.y]);
+
+  useEffect(() => {
+    initCanvas();
+  }, [refresh]);
+
+  const resizeCanvas = () => {
+	if (canvasContainerRef.current && canvasRef.current && context.current) {
+	  circles.current.length = 0;
+	  setPageWidth(window.screen.availWidth);
+	  setPageHeight(window.screen.availHeight);
+	  canvasSize.current.w = pageWidth;
+	  canvasSize.current.h = pageHeight;
+	  canvasRef.current.width = pageWidth * dpr;
+	  canvasRef.current.height = pageHeight * dpr;
+	  canvasRef.current.style.width = `${pageWidth}px`;
+	  canvasRef.current.style.height = `${pageHeight}px`;
+	  context.current.scale(dpr, dpr);
+  
+	  // Recreate and redraw particles
+	  drawParticles();
+	}
+  };
+  
 
 	const initCanvas = () => {
 		resizeCanvas();
@@ -80,19 +102,6 @@ export default function Particles({
 		dy: number;
 		magnetism: number;
 		color: string;
-	};
-
-	const resizeCanvas = () => {
-		if (canvasContainerRef.current && canvasRef.current && context.current) {
-			circles.current.length = 0;
-			canvasSize.current.w = canvasContainerRef.current.offsetWidth;
-			canvasSize.current.h = canvasContainerRef.current.offsetHeight;
-			canvasRef.current.width = canvasSize.current.w * dpr;
-			canvasRef.current.height = canvasSize.current.h * dpr;
-			canvasRef.current.style.width = `${canvasSize.current.w}px`;
-			canvasRef.current.style.height = `${canvasSize.current.h}px`;
-			context.current.scale(dpr, dpr);
-		}
 	};
 
 	const circleParams = (): Circle => {
