@@ -27,8 +27,12 @@ export default function Particles({
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
-  const [pageWidth, setPageWidth] = useState(window.innerWidth); // Moved to top level
-  const [pageHeight, setPageHeight] = useState(window.innerHeight); // Moved to top level
+  const [pageWidth, setPageWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+  const [pageHeight, setPageHeight] = useState(
+    typeof window !== "undefined" ? window.innerHeight : 0
+  );
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -38,9 +42,11 @@ export default function Particles({
     initCanvas();
     animate();
     window.addEventListener("resize", resizeCanvas);
+    //window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      //window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -53,42 +59,53 @@ export default function Particles({
   }, [refresh]);
 
   const resizeCanvas = () => {
-	if (canvasContainerRef.current && canvasRef.current && context.current) {
-	  circles.current.length = 0;
-	  setPageWidth(window.screen.availWidth);
-	  setPageHeight(window.screen.availHeight);
-	  canvasSize.current.w = pageWidth;
-	  canvasSize.current.h = pageHeight;
-	  canvasRef.current.width = pageWidth * dpr;
-	  canvasRef.current.height = pageHeight * dpr;
-	  canvasRef.current.style.width = `${pageWidth}px`;
-	  canvasRef.current.style.height = `${pageHeight}px`;
-	  context.current.scale(dpr, dpr);
-  
-	  // Recreate and redraw particles
-	  drawParticles();
-	}
+    if (
+      canvasContainerRef.current &&
+      canvasRef.current &&
+      context.current
+    ) {
+      circles.current.length = 0;
+      setPageWidth(window.screen.availWidth);
+      setPageHeight(window.screen.availHeight);
+      canvasSize.current.w = pageWidth;
+      canvasSize.current.h = pageHeight;
+      canvasRef.current.width = pageWidth * dpr;
+      canvasRef.current.height = pageHeight * dpr;
+      canvasRef.current.style.width = `${pageWidth}px`;
+      canvasRef.current.style.height = `${pageHeight}px`;
+      context.current.scale(dpr, dpr);
+
+      // Recreate and redraw particles
+      drawParticles();
+    }
   };
-  
 
-	const initCanvas = () => {
-		resizeCanvas();
-		drawParticles();
-	};
+  /*const handleScroll = () => {
+    if (canvasContainerRef.current) {
+      const scrollY = window.scrollY;
+      canvasContainerRef.current.style.transform = `translateY(${scrollY}px)`;
+    }
+  };*/
 
-	const onMouseMove = () => {
-		if (canvasRef.current) {
-			const rect = canvasRef.current.getBoundingClientRect();
-			const { w, h } = canvasSize.current;
-			const x = mousePosition.x - rect.left - w / 2;
-			const y = mousePosition.y - rect.top - h / 2;
-			const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
-			if (inside) {
-				mouse.current.x = x;
-				mouse.current.y = y;
-			}
-		}
-	};
+  const initCanvas = () => {
+    resizeCanvas();
+    drawParticles();
+  };
+
+  const onMouseMove = () => {
+    if (canvasRef.current) {
+      const rect = canvasRef.current.getBoundingClientRect();
+      const { w, h } = canvasSize.current;
+      const x = mousePosition.x - rect.left - w / 2;
+      const y = mousePosition.y - rect.top - h / 2;
+      const inside =
+        x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
+      if (inside) {
+        mouse.current.x = x;
+        mouse.current.y = y;
+      }
+    }
+  };
 
 	type Circle = {
 		x: number;
@@ -247,7 +264,7 @@ export default function Particles({
 	};
 
 	return (
-		<div className={className} ref={canvasContainerRef} aria-hidden="true">
+		<div className={"fixed object-fill top-0 left-0 -z-10 animate-fade-in no-print" + className} ref={canvasContainerRef} aria-hidden="true">
 			<canvas ref={canvasRef} />
 		</div>
 	);

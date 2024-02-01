@@ -53,10 +53,12 @@
 @layer base {
   * {
     @apply border-border;
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
     @apply overflow-x-hidden;
+    @apply overscroll-contain;
     height: 100svh;
     width: 100svw;
   }
@@ -82,5 +84,21 @@
   .my-Project-grid {
     @apply grid;
     @apply grid-cols-1;
+  }
+}
+
+.timelineelement {
+  @apply p-4;
+}
+
+@media (width < 444px) {
+  .timelineelement {
+    @apply p-1;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
   }
 }

@@ -25,13 +25,13 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="backdrop-blur-sm  bg-transparent" align="end">
-      <DropdownMenuItem className="backdrop-blur-sm  bg-transparent" onClick={() => setTheme("system")} >
+      <DropdownMenuItem onClick={() => setTheme("system")} >
           System
         </DropdownMenuItem>
-        <DropdownMenuItem className="backdrop-blur-sm  bg-transparent" onClick={() => setTheme("dark")} >
+        <DropdownMenuItem onClick={() => setTheme("dark")} >
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem className="backdrop-blur-sm  bg-transparent" onClick={() => setTheme("light")} >
+        <DropdownMenuItem onClick={() => setTheme("light")} >
           Light
         </DropdownMenuItem>
       </DropdownMenuContent>

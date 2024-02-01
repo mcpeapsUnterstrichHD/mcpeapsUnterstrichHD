@@ -24,7 +24,7 @@ import { Separator } from "@/components/ui/separator"
 
 export function NavBar() {
   return (
-    <NavigationMenu className="mt-2 mr-2 ml-2 mb-2 flex flex-row justify-between items-center">
+    <NavigationMenu className="mt-2 mr-2 ml-2 mb-2 flex flex-row justify-between items-center no-print">
       <NavigationMenuList>
         <div className="flex justify-between">
         <div className="flex flex-row justify-between items-center ">

@@ -10,62 +10,116 @@ export default function Home() {
             ProjektImage="/pictures/my_Portfolio.jpeg"
             ProjektImageAlt="Portfolio Bild"
             ProjektTitle="Portfolio"
-            ProjektBadge="FOSS/WEB/NEW"
+            ProjektBadges={["FOSS","WEB","NEW"]}
             ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             <ProjektCard 
-            ProjektImage="/pictures/my_Portfolio.webp"
-            ProjektImageAlt="Projekt Bild"
-            ProjektTitle="Projekt 1"
-            ProjektBadge="test"
-            ProjektLink="https://github.com/mcpeapsUnterstrichHD"> tesrt</ProjektCard>
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
+            <ProjektCard 
+            ProjektImage="/pictures/my_Portfolio.jpeg"
+            ProjektImageAlt="Portfolio Bild"
+            ProjektTitle="Portfolio"
+            ProjektBadges={["FOSS","WEB","NEW"]}
+            ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             </div>
       </main>
     );

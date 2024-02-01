@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavBar } from "@/components/nav-bar";
 import Particles from '@/components/particles';
+import Footer from "@/components/footer";
 
 const ccnfp = localFont({
   src: [
@@ -131,15 +132,13 @@ export default function RootLayout({
             disableTransitionOnChange
           >
           <div className="bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
-            <Particles
-              className="absolute inset-0 -z-10 animate-fade-in"
-              quantity={400}
-              refresh={true}
-            />
-            <header>
-              <nav className="z-10"><NavBar /></nav>
-            </header>
-            {children}
+          <Particles
+            quantity={400}
+            refresh={true}
+          />
+            <nav className="z-10 sticky top-0 top"><NavBar /></nav>
+            <div className="z-1">{children}</div>
+            <Footer />
           </div>
           </ThemeProvider>
       </body>

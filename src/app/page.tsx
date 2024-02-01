@@ -1,5 +1,4 @@
 import React from 'react';
-import Particles from '@/components/particles';
 
 export default function Home() {
   
