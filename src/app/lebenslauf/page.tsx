@@ -3,6 +3,7 @@ import Timeline from '@mui/lab/Timeline';
 import TimeLineElement from '@/components/timeline-element';
 import SkillCard from '@/components/skill-card';
 import Link from 'next/link';
+import Footer from '@/components/footer';
 
 export default function Home() {
     return (
@@ -241,6 +242,7 @@ export default function Home() {
                 SkillImageFallback='A'
                 Skilllevel={60} />
             </div>
+            <Footer />
       </main>
     );
   }

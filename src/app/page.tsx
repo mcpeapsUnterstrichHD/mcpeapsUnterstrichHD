@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Footer from '@/components/footer';
 export default function Home() {
   
   return (
@@ -14,6 +14,7 @@ export default function Home() {
         ITler/DJ/Producer aus Leidenschaft
         </h2>
       </div>
+      <Footer />
     </div>
   );
 }

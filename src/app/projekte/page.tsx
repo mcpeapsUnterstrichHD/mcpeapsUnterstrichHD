@@ -1,5 +1,6 @@
 import React from "react";
 import ProjektCard from "@/components/projekt-card";
+import Footer from "@/components/footer";
 
 export default function Home() {
     return (
@@ -121,6 +122,7 @@ export default function Home() {
             ProjektBadges={["FOSS","WEB","NEW"]}
             ProjektLink="https://github.com/mcpeapsUnterstrichHD">Das Projekt zu diesem Portfolio</ProjektCard>
             </div>
+            <Footer />
       </main>
     );
   }

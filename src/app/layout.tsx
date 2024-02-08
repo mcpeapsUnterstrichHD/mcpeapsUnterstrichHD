@@ -138,7 +138,7 @@ export default function RootLayout({
           />
             <nav className="z-10 sticky top-0 top"><NavBar /></nav>
             <div className="z-1">{children}</div>
-            <Footer />
+            
           </div>
           </ThemeProvider>
       </body>
