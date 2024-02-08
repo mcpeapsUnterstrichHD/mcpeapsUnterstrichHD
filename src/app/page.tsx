@@ -14,7 +14,9 @@ export default function Home() {
         ITler/DJ/Producer aus Leidenschaft
         </h2>
       </div>
-      <Footer />
+      <div className='absolute inset-x-0 bottom-0'>
+        <Footer />
+      </div>
     </div>
   );
 }
