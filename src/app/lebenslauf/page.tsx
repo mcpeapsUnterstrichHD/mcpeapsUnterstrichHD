@@ -192,7 +192,7 @@ export default function Home() {
 
             <h2 className='text-3xl font-bold gap-8'>Fähigkeiten</h2>
 
-            <div className='my-Project-grid justify-center gap-8'>
+            <div className='my-Project-grid-4 justify-center gap-8'>
               <SkillCard
                 SkillTitle='Java'
                 SkillBadges={["Development", "3 Jahre"]}

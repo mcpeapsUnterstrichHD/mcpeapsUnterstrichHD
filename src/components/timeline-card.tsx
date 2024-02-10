@@ -36,11 +36,13 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
             <CardTitle>{TimeLineTitle}</CardTitle>
         </div>
         <CardDescription>
+          <div className='flex flex-wrap gap-2'>
           {TimeLineBadges.map((badge, index) => (
             <Badge key={index} variant='default'>
               {badge}
             </Badge>
           ))}
+            </div>
         </CardDescription>
       </CardHeader>
       <CardContent>{children}</CardContent>

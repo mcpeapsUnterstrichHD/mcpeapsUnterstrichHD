@@ -1,6 +1,4 @@
-"use client"
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button, buttonVariants } from './ui/button';
@@ -9,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 interface ProjektCardProps {
   ProjektImage: string;
   ProjektImageAlt: string;
+  ProjektImageBgColor:string;
   ProjektTitle: string;
   ProjektBadges: string[];
   ProjektLink: string;
@@ -18,35 +17,45 @@ interface ProjektCardProps {
 const ProjektCard: React.FC<ProjektCardProps> = ({
   ProjektImage,
   ProjektImageAlt,
+  ProjektImageBgColor,
   ProjektTitle,
   ProjektBadges,
   ProjektLink,
   children,
 }) => {
   return (
+    <Link href={ProjektLink}>
     <Card className='backdrop-blur-sm bg-transparent'>
       <CardHeader>
         <CardTitle>{ProjektTitle}</CardTitle>
         <CardDescription>
-          {ProjektBadges.map((badge, index) => (
-            <Badge key={index} variant='default'>
-              {badge}
-            </Badge>
-          ))}
+          <div className='flex flex-wrap gap-2'>
+            {ProjektBadges.map((badge, index) => (
+              <Badge key={index} variant='default'>
+                {badge}
+              </Badge>
+            ))}
+          </div>
         </CardDescription>
       </CardHeader>
-      <CardContent>{children}</CardContent>
-      <CardFooter>
-        <div className='flex flex-col gap-4 items-center justify-between'>
-          <img src={ProjektImage} alt={ProjektImage} className='w-[95%] h-1/2 content-center object-fill rounded-sm' />
-          <Link href={ProjektLink}>
-            <Button className={buttonVariants({ variant: 'link' }) + 'backdrop-blur-sm'}>
-              <p className='text-primary-foreground'>Hier geht es zum Projekt</p>
-            </Button>
-          </Link>
+      <CardContent>
+        <div className='flex flex-col gap-4 justify-between'>
+          <div>{children}</div>
         </div>
+      </CardContent>
+      <CardFooter className='flex-grow flex flex-col gap-4 items-center justify-center p-4'>
+
+
+          <div className={ProjektImageBgColor + " h-1/2 w-[95%] rounded-sm flex items-center justify-center"}>
+            <img
+              src={ProjektImage}
+              alt={ProjektImageAlt}
+              className='max-h-full max-w-full object-contain rounded-sm'
+            />
+          </div>
       </CardFooter>
     </Card>
+    </Link>
   );
 };
 

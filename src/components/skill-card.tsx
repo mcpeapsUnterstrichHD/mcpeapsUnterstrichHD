@@ -38,11 +38,13 @@ const SkillCard: React.FC<SkillCardProps> = ({
             <CardTitle>{SkillTitle}</CardTitle>
         </div>
         <CardDescription>
+          <div className='flex flex-wrap gap-2'>
           {SkillBadges.map((badge, index) => (
             <Badge key={index} variant='default'>
               {badge}
             </Badge>
           ))}
+          </div>
         </CardDescription>
       </CardHeader>
       <CardContent><Progress value={Skilllevel} /></CardContent>
