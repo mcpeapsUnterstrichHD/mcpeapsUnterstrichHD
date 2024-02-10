@@ -103,3 +103,28 @@
     display: none !important;
   }
 }
+
+@media --webkit-print {
+  .no-print {
+    display: none !important;
+  }
+}
+.show-timeline-big {
+  display: block !important;
+}
+
+@media (max-width: 600px) {
+  .show-timeline-big {
+    display: none !important;
+  }
+}
+
+.show-timeline-small {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .show-timeline-small {
+    display: block !important;
+  }
+}

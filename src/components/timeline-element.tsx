@@ -21,7 +21,7 @@ interface TimeLineElementProps {
   enddate: string;
 }
 
-const TimeLineElement: React.FC<TimeLineElementProps> = ({
+const TimeLineElementBig: React.FC<TimeLineElementProps> = ({
   TimeLineImage,
   TimeLineImageAlt,
   TimeLineImageFallback,
@@ -41,7 +41,7 @@ const TimeLineElement: React.FC<TimeLineElementProps> = ({
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent>
-                  <TimeLineCard 
+                  <TimeLineCard
                     TimeLineTitle={TimeLineTitle}
                     TimeLineBadges={TimeLineBadges}
                     TimeLineImage={TimeLineImage}
@@ -55,5 +55,35 @@ const TimeLineElement: React.FC<TimeLineElementProps> = ({
   );
 };
 
-export default TimeLineElement;
+const TimeLineElementSmall: React.FC<TimeLineElementProps> = ({
+  TimeLineImage,
+  TimeLineImageAlt,
+  TimeLineImageFallback,
+  TimeLineTitle,
+  TimeLineBadges,
+  children,
+  startdate,
+  enddate,
+}) => {
+  return (
+    <TimelineItem>
+                <TimelineSeparator>
+                  <TimelineDot />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <TimeLineCard
+                    TimeLineTitle={TimeLineTitle}
+                    TimeLineBadges={[(startdate + " - " +enddate)].concat(TimeLineBadges)}
+                    TimeLineImage={TimeLineImage}
+                    TimeLineImageAlt={TimeLineImageAlt}
+                    TimeLineImageFallback={TimeLineImageFallback}
+                  >
+                      {children}
+                    </TimeLineCard>
+                </TimelineContent>
+              </TimelineItem>
+  );
+};
 
+export { TimeLineElementBig, TimeLineElementSmall };

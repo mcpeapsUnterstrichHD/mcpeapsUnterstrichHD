@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Timeline from '@mui/lab/Timeline';
-import TimeLineElement from '@/components/timeline-element';
+import { timelineItemClasses } from '@mui/lab/TimelineItem';
+import {TimeLineElementBig, TimeLineElementSmall} from '@/components/timeline-element';
+//import TimeLineCard from '@/components/timeline-card';
 import SkillCard from '@/components/skill-card';
 import Link from 'next/link';
 import Footer from '@/components/footer';
@@ -19,18 +21,17 @@ export default function Home() {
                     <div className="flex flex-row items-center">
                         <Link href="tel:+4917645172171" legacyBehavior passHref><p className="cursor-pointer">Telefonnummer: +4917645172171</p></Link>
                     </div>
-                
+
                 </div>
     <br/>
     <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><p>Adresse: Ludwig-Renn-Straße 33, 12679 Berlin, Deutschland</p></Link>
     <br/>
-    Geburtsdatum: 06.06.2003          
+    Geburtsdatum: 06.06.2003
   </div>
 
             <h2 className='text-3xl font-bold gap-8'>Ausbildung</h2>
-
-            <Timeline position="right" className="justify-center">
-              <TimeLineElement
+            <Timeline position="right" className="justify-center flex flex-col show-timeline-big">
+              <TimeLineElementBig
                 TimeLineTitle='Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)'
                 TimeLineBadges={["Berlin", "Ausbildung", "Fachabitur", "IT", "3 Jahre"]}
                 TimeLineImage="https://www.oszimt.de/favicon.ico"
@@ -40,8 +41,8 @@ export default function Home() {
                 enddate='2024'
               >
                 <a>Ausbildung zum IT-Assistenten</a>
-              </TimeLineElement>
-              <TimeLineElement
+              </TimeLineElementBig>
+              <TimeLineElementBig
                 TimeLineTitle='Carl-von-Linné-Schule'
                 TimeLineBadges={["Berlin", "MSA(OG)"]}
                 TimeLineImage="https://linne.schule/images/Logos/linne_logo.png"
@@ -51,13 +52,43 @@ export default function Home() {
                 enddate='2021'
               >
                 <a>Algemeine Schule Grundschule + Sekundarstufe I</a>
-              </TimeLineElement>
-            </Timeline>
+          </TimeLineElementBig>
+        </Timeline>
+        <Timeline sx={{
+        [`& .${timelineItemClasses.root}:before`]: {
+          flex: 0,
+          padding: 0,
+        },
+      }} className="justify-center flex flex-col show-timeline-small">
+              <TimeLineElementSmall
+                TimeLineTitle='Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)'
+                TimeLineBadges={["Berlin", "Ausbildung", "Fachabitur", "IT", "3 Jahre"]}
+                TimeLineImage="https://www.oszimt.de/favicon.ico"
+                TimeLineImageAlt='Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo'
+                TimeLineImageFallback='OSZimt'
+                startdate='2021'
+                enddate='2024'
+              >
+                <a>Ausbildung zum IT-Assistenten</a>
+              </TimeLineElementSmall>
+              <TimeLineElementSmall
+                TimeLineTitle='Carl-von-Linné-Schule'
+                TimeLineBadges={["Berlin", "MSA(OG)"]}
+                TimeLineImage="https://linne.schule/images/Logos/linne_logo.png"
+                TimeLineImageAlt='Carl-von-Linné-Schule Logo'
+                TimeLineImageFallback='CvL'
+                startdate='2010'
+                enddate='2021'
+              >
+                <a>Algemeine Schule Grundschule + Sekundarstufe I</a>
+              </TimeLineElementSmall>
+        </Timeline>
+
 
             <h2 className='text-3xl font-bold gap-8'>Erfahrung</h2>
 
-            <Timeline position="right" className="justify-center">
-              <TimeLineElement
+            <Timeline position="right" className="justify-center flex flex-col show-timeline-big">
+              <TimeLineElementBig
                 TimeLineTitle='KfW Bankengruppe'
                 TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
                 TimeLineImage="/pictures/kfw_logo.png"
@@ -69,8 +100,8 @@ export default function Home() {
                 <a>Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ IMT</a>
                 <br />
                 <a>Automatisierungen mit Ansible + Dokumentation für Ansible in Confluence der KfW</a>
-              </TimeLineElement>
-              <TimeLineElement
+              </TimeLineElementBig>
+              <TimeLineElementBig
                 TimeLineTitle='Akademie der Künste (ADK)'
                 TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
                 TimeLineImage="https://www.adk.de/favicon.ico"
@@ -80,8 +111,8 @@ export default function Home() {
                 enddate='02.2020'
               >
                 <a>Syntezizerentwiklung</a>
-              </TimeLineElement>
-              <TimeLineElement
+              </TimeLineElementBig>
+              <TimeLineElementBig
                 TimeLineTitle='Tosa Security & Service GmbH & Co KG'
                 TimeLineBadges={["Trebin", "Security","Service", "Schülerpraktikum", "3 Tage"]}
                 TimeLineImage="https://tosa-security.de/tosa-favicon.png"
@@ -91,8 +122,8 @@ export default function Home() {
                 enddate='01.2019'
               >
                 <a>Bürotätigkeiten</a>
-              </TimeLineElement>
-              <TimeLineElement
+              </TimeLineElementBig>
+              <TimeLineElementBig
                 TimeLineTitle='Pfennigpfeiffer'
                 TimeLineBadges={["Berlin", "Einzelhandel", "Schülerpraktikum", "1 Tag"]}
                 TimeLineImage="https://www.pfennigpfeiffer.de/media/f0/ee/50/1678457663/favicon-32x32.png"
@@ -102,8 +133,62 @@ export default function Home() {
                 enddate='06.2018'
               >
                 <a>Regale einräumen</a>
-              </TimeLineElement>
-            </Timeline>
+              </TimeLineElementBig>
+        </Timeline>
+
+        <Timeline sx={{
+        [`& .${timelineItemClasses.root}:before`]: {
+          flex: 0,
+          padding: 0,
+        },
+      }} className="justify-center flex flex-col show-timeline-small">
+              <TimeLineElementSmall
+                TimeLineTitle='KfW Bankengruppe'
+                TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
+                TimeLineImage="/pictures/kfw_logo.png"
+                TimeLineImageAlt='KfW Logo'
+                TimeLineImageFallback='KfW'
+                startdate='27.11.2023'
+                enddate='02.02.2024'
+              >
+                <a>Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ IMT</a>
+                <br />
+                <a>Automatisierungen mit Ansible + Dokumentation für Ansible in Confluence der KfW</a>
+              </TimeLineElementSmall>
+              <TimeLineElementSmall
+                TimeLineTitle='Akademie der Künste (ADK)'
+                TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
+                TimeLineImage="https://www.adk.de/favicon.ico"
+                TimeLineImageAlt='ADK Logo'
+                TimeLineImageFallback='ADK'
+                startdate='02.2020'
+                enddate='02.2020'
+              >
+                <a>Syntezizerentwiklung</a>
+              </TimeLineElementSmall>
+              <TimeLineElementSmall
+                TimeLineTitle='Tosa Security & Service GmbH & Co KG'
+                TimeLineBadges={["Trebin", "Security","Service", "Schülerpraktikum", "3 Tage"]}
+                TimeLineImage="https://tosa-security.de/tosa-favicon.png"
+                TimeLineImageAlt='Tosa Security & Service GmbH & Co KG Logo'
+                TimeLineImageFallback='TSS'
+                startdate='01.2019'
+                enddate='01.2019'
+              >
+                <a>Bürotätigkeiten</a>
+              </TimeLineElementSmall>
+              <TimeLineElementSmall
+                TimeLineTitle='Pfennigpfeiffer'
+                TimeLineBadges={["Berlin", "Einzelhandel", "Schülerpraktikum", "1 Tag"]}
+                TimeLineImage="https://www.pfennigpfeiffer.de/media/f0/ee/50/1678457663/favicon-32x32.png"
+                TimeLineImageAlt='Pfennigpfeiffer Logo'
+                TimeLineImageFallback='P'
+                startdate='06.2018'
+                enddate='06.2018'
+              >
+                <a>Regale einräumen</a>
+              </TimeLineElementSmall>
+        </Timeline>
 
             <h2 className='text-3xl font-bold gap-8'>Fähigkeiten</h2>
 
