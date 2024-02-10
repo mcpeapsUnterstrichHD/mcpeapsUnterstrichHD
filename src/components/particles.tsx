@@ -264,7 +264,7 @@ export default function Particles({
 	};
 
 	return (
-		<div className={"fixed h-[100vh] h-[100dvh] w-[100vw] w-[100dvw] object-fill top-0 left-0 -z-10 animate-fade-in no-print" + className} ref={canvasContainerRef} aria-hidden="true">
+		<div className={"fixed grid items-center  h-[100vh] h-[100dvh] w-[100vw] w-[100dvw] object-fill top-0 left-0 -z-10 animate-fade-in no-print" + className} ref={canvasContainerRef} aria-hidden="true">
 			<canvas ref={canvasRef} />
 		</div>
 	);
