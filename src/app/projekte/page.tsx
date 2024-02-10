@@ -82,14 +82,14 @@ export default function Home() {
             ProjektImage="/pictures/Logo-transparet.PNG"
             ProjektImageAlt="comboom.sucht Logo"
             ProjektImageBgColor="bg-black"
-            ProjektTitle="Klassen Website"
+            ProjektTitle="comboom.sucht Website"
             ProjektBadges={["FOSS", "WEB", "MARKDOWN", "WIKI"]}
             ProjektLink="https://github.com/comboomPunkTsucht/comboom.sucht-BLOG">Das ist die Webseite meiner Freundes Gruppe.</ProjektCard>
           <ProjektCard
             ProjektImage="/pictures/Logo-transparet.PNG"
             ProjektImageAlt="comboom.sucht Logo"
             ProjektImageBgColor="bg-black"
-            ProjektTitle="Klassen App"
+            ProjektTitle="comboom.sucht App"
             ProjektBadges={["FOSS", "APP", "iOS", "SWIFT", "SWIFTUI", "HUB"]}
             ProjektLink="https://github.com/comboomPunkTsucht/comboomPunkTsucht-IOS-macOS-App">Das ist die App meiner Freundes Gruppe.</ProjektCard>
             </div>
