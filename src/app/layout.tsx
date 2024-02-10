@@ -123,6 +123,12 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
+        <meta name="application-name" content="Fabian Aps Portfolio/Impressum" />
+        <meta name="msapplication-TileColor" content="#010101" />
+        <meta name="msapplication-TileImage" content="https://github.com/mcpeapsUnterstrichHD.png" />
+        <meta charSet="UTF-8" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="sitemap" href="/sitemap.xml" />"
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
