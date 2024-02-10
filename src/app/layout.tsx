@@ -128,7 +128,7 @@ export default function RootLayout({
         <meta name="msapplication-TileImage" content="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta charSet="UTF-8" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="sitemap" href="/sitemap.xml" />"
+        <link rel="sitemap" href="/sitemap.xml" />
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
