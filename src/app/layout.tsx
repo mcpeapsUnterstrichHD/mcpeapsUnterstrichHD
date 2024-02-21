@@ -75,6 +75,7 @@ const ccnfp = localFont({
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
   description: "my own portfolio/impressum website",
+  keywords: "portfolio, website, impressum, github, linkedin, aps, fabian",
   robots: {
     index: true,
     follow: true,
@@ -129,6 +130,7 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="sitemap" href="/sitemap.xml" />
+        <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
@@ -144,7 +146,7 @@ export default function RootLayout({
           />
             <nav className="z-10 sticky top-0 top"><NavBar /></nav>
             <div className="z-1">{children}</div>
-            
+
           </div>
           </ThemeProvider>
       </body>
