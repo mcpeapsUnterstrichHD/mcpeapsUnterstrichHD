@@ -1,16 +1,17 @@
 [build]
-command = "npm run build"
-base = "."
-publish = ".next"
+	command = "npm run build"
+	base = "."
+	publish = ".next"
 
 [build.environment]
-NEXT_USE_NETLIFY_EDGE = "true"
+	NEXT_USE_NETLIFY_EDGE = "true"
+	NEXT_FORCE_EDGE_IMAGES = "true"
 
 [[plugins]]
-package = "@netlify/plugin-nextjs"
+	package = "@netlify/plugin-nextjs"
 
 [[plugins]]
-  package = "netlify-plugin-submit-sitemap"
+	package = "netlify-plugin-submit-sitemap"
 
 	[plugins.inputs]
 
@@ -30,33 +31,33 @@ package = "@netlify/plugin-nextjs"
 	]
 
 [[plugins]]
-  package = "netlify-plugin-chromium"
+	package = "netlify-plugin-chromium"
     [plugins.inputs]
-      packageManager = "npm"
-      setChromePathInEnv = false
-      failBuildOnError = false
+		packageManager = "npm"
+		setChromePathInEnv = false
+		failBuildOnError = false
 
 [[plugins]]
 package = "netlify-plugin-image-optim"
 
 [[plugins]]
-  package = "@netlify/plugin-lighthouse"
+	package = "@netlify/plugin-lighthouse"
 
-  # optional, deploy the lighthouse report to a path under your site
-  [plugins.inputs.audits]
-    output_path = "/lighthouse.html"
+	# optional, deploy the lighthouse report to a path under your site
+	[plugins.inputs.audits]
+    	output_path = "/lighthouse.html"
 
-  [plugins.inputs.settings]
-      preset = "desktop"
-	  locale = "de"
+	[plugins.inputs.settings]
+    	preset = "desktop"
+		locale = "de"
 
 [[redirects]]
-from = "/_next/static/*"
-to = "/static/:splat"
-status = 200
+	from = "/_next/static/*"
+	to = "/static/:splat"
+	status = 200
 
 [functions]
-included_files = [
-  "!node_modules/sharp/vendor/8.12.2/darwin-*/**/*",
-  "!node_modules/sharp/build/Release/sharp-darwin-*"
-]
+	included_files = [
+		"!node_modules/sharp/vendor/8.12.2/darwin-*/**/*",
+		"!node_modules/sharp/build/Release/sharp-darwin-*"
+	]
