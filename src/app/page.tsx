@@ -1,7 +1,8 @@
+'use client'
 import React from 'react';
 import Footer from '@/components/footer';
 export default function Home() {
-  
+
   return (
     <div className="overflow-hidden flex flex-col items-center justify-center w-screen h-screen">
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
@@ -20,6 +21,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-

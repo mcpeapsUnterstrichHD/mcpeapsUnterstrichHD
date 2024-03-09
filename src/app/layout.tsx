@@ -113,7 +113,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -131,6 +131,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="sitemap" href="/sitemap.xml" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
+        <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider

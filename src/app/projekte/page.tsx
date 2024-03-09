@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import ProjektCard from "@/components/projekt-card";
 import Footer from "@/components/footer";
@@ -5,9 +6,9 @@ import Footer from "@/components/footer";
 export default function Home() {
     return (
       <main className="flex max-h-screen flex-col items-center justfy-center p-4">
-        <h1 className="text-4xl gap-8 p-8">Projekte</h1>
+        <h1 className="text-6xl gap-8 p-8">Projekte</h1>
 
-        <h2 className="text-3xl gap-8 p-8">Gepinte Projekte</h2>
+        <h2 className="text-5xl gap-8 p-8">Gepinte Projekte</h2>
 
         <div className="my-Project-grid-3 justify-center gap-4 flex-shrink">
           <ProjektCard
@@ -33,7 +34,7 @@ export default function Home() {
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/searxng">Das Projekt zu Meiner Suchmaschine basiernd auf SearxNG</ProjektCard>
         </div>
 
-        <h2 className="text-3xl gap-8 p-8">Alle Projekte</h2>
+        <h2 className="text-4xl gap-8 p-8">Alle Projekte</h2>
 
             <div className="my-Project-grid-4 justify-center gap-4 flex-shrink">
             <ProjektCard

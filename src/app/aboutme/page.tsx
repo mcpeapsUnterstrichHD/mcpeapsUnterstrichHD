@@ -1,3 +1,4 @@
+'use client'
 import Footer from "@/components/footer";
 import ProjektCard from "@/components/projekt-card";
 export default function Home() {
@@ -18,10 +19,10 @@ export default function Home() {
         <a className="w-3/4 text-center">Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es Software zu entwikeln aber durch mein Praktikum bei der KfW Bankengruppe hat mir gezeigt, dass mir Anwendungsbetreung auch nicht schwer liegt, denoch mach ich die Entwicklung gerne als Hobby. Musik ist dabei auch eine Leidenschaft von mir, egal ab hören oder Produzieren. </a>
 
         	<h2 className="text-2xl py-2 font-bold">Meine Playlist:</h2>
-	        <div>
+	        <div className="w-full flex flex-wrap flex-row flex-auto items-center justify-center">
               <iframe
                   allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                  width="100%"
+                  width="95%"
                   height="450"
                   style={{ maxWidth: "100%", overflow: "hidden", borderRadius: "10px" }}
                   sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
@@ -30,9 +31,9 @@ export default function Home() {
               ></iframe>
           </div>
 	        <h2 className="text-2xl py-2 font-bold">Mein aktueller Song:</h2>
-          <div>
+          <div className="w-full flex flex-wrap flex-row flex-auto items-center justify-center">
               <iframe
-                  width="100%"
+                  width="95%"
                   height="52"
                   src="https://odesli.co/embed/?url=https%3A%2F%2Fsong.link%2Ffestival_dream&theme=dark"
                   frameBorder="0"

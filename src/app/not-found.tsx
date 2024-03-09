@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 
 const sadTexts = [
@@ -128,10 +129,10 @@ const sadTexts = [
         const randomIndex = Math.floor(Math.random() * sadTexts.length);
         return sadTexts[randomIndex];
     };
-    
+
     const NotFound = () => {
         const randomSadText = getRandomSadText();
-    
+
         return (
             <main className="flex min-h-screen flex-col items-center p-4">
                 <div>
@@ -145,5 +146,5 @@ const sadTexts = [
             </main>
         );
     };
-    
+
     export default NotFound;

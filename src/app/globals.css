@@ -78,7 +78,7 @@
 
 .my-Project-grid-4{
   @apply grid;
-  @apply grid-cols-4;
+  @apply grid-cols-1;
 }
 
 @media (width < 444px) {
@@ -90,7 +90,7 @@
 
 .my-Project-grid-3{
   @apply grid;
-  @apply grid-cols-3;
+  @apply grid-cols-1;
 }
 
 @media (width < 444px) {

@@ -1,7 +1,6 @@
+'use client'
 import Link from "next/link";
 import Footer from "@/components/footer";
-
-
 
 export default function Home() {
     return (
@@ -24,7 +23,7 @@ export default function Home() {
                     <div className="flex flex-row items-center">
                         <Link href="tel:+4917645172171" legacyBehavior passHref><p className="cursor-pointer">Telefonnummer: +4917645172171</p></Link>
                     </div>
-                
+
                 </div>
             </div>
 
