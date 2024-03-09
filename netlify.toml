@@ -19,7 +19,7 @@
 	baseUrl = "https://mahd.comboompunksucht.app"
 
 	# Path to the sitemap URL (optional, default = /sitemap.xml)
-	sitemapPath = "/sitemap.xml"
+	sitemapPath = "./.next/sitemap.xml"
 
 	# Time in seconds to not submit the sitemap after successful submission
 	ignorePeriod = 0
@@ -45,7 +45,7 @@ package = "netlify-plugin-image-optim"
 
 	# optional, deploy the lighthouse report to a path under your site
 	[plugins.inputs.audits]
-    	output_path = "/lighthouse.html"
+    	output_path = "./.next/lighthouse.html"
 
 	[plugins.inputs.settings]
     	preset = "desktop"
