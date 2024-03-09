@@ -88,6 +88,18 @@
   }
 }
 
+.my-Skill-grid-4{
+  @apply grid;
+  @apply grid-cols-4;
+}
+
+@media (width < 444px) {
+  .my-Skill-grid-4 {
+    @apply grid;
+    @apply grid-cols-1;
+  }
+}
+
 .my-Project-grid-3{
   @apply grid;
   @apply grid-cols-1;
