@@ -1,3 +1,14 @@
+[build]
+command = "npm run build"
+base = "."
+publish = ".next"
+
+[build.environment]
+NEXT_USE_NETLIFY_EDGE = "true"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"
 
@@ -28,7 +39,6 @@
 [[plugins]]
 package = "netlify-plugin-image-optim"
 
-
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
 
@@ -37,5 +47,16 @@ package = "netlify-plugin-image-optim"
     output_path = "/lighthouse.html"
 
   [plugins.inputs.settings]
-      preset = "desktop" 
+      preset = "desktop"
 	  locale = "de"
+
+[[redirects]]
+from = "/_next/static/*"
+to = "/static/:splat"
+status = 200
+
+[functions]
+included_files = [
+  "!node_modules/sharp/vendor/8.12.2/darwin-*/**/*",
+  "!node_modules/sharp/build/Release/sharp-darwin-*"
+]
