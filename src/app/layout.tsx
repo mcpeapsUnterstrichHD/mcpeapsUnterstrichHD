@@ -5,7 +5,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavBar } from "@/components/nav-bar";
 import Particles from '@/components/particles';
-import Footer from "@/components/footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const ccnfp = localFont({
   src: [
@@ -139,7 +140,7 @@ export default function RootLayout({
         <meta property="og:image" content="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta property="og:title" content="Fabian Aps Portfolio/Impressum" />
         <meta property="og:description" content="my own portfolio/impressum website" />
-        
+
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
@@ -148,6 +149,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+          <SpeedInsights />
+          <Analytics />
           <div className="bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
           <Particles
             quantity={400}
