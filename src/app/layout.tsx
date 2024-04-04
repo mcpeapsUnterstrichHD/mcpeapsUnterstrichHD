@@ -86,7 +86,9 @@ export const metadata: Metadata = {
     creatorId: '723191637950775296',
     images: [{
       url: 'https://github.com/mcpeapsUnterstrichHD.png',
-      alt: 'Logo of mcpeaps_HD' // Alt attribute for Twitter image
+      alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
+      width: 3000,
+      height: 3000
     }], // Must be an absolute URL
   },
   openGraph: {
@@ -96,7 +98,9 @@ export const metadata: Metadata = {
     url: 'https://mahd.comboompunksucht.app',
     images: [{
       url: 'https://github.com/mcpeapsUnterstrichHD.png',
-      alt: 'Logo of mcpeaps_HD' // Alt attribute for Twitter image
+      alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
+      width: 3000,
+      height: 3000
     }],
   },
   robots: {
