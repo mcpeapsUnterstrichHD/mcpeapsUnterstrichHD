@@ -77,6 +77,28 @@ export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
   description: "my own portfolio/impressum website",
   keywords: "portfolio, website, impressum, github, linkedin, aps, fabian",
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fabian Aps Portfolio/Impressum',
+    description: 'my own portfolio/impressum website',
+    siteId: '723191637950775296',
+    creator: '@mcpeaps_HD',
+    creatorId: '723191637950775296',
+    images: [{
+      url: 'https://github.com/mcpeapsUnterstrichHD.png',
+      alt: 'Logo of mcpeaps_HD' // Alt attribute for Twitter image
+    }], // Must be an absolute URL
+  },
+  openGraph: {
+    type: 'website',
+    title: 'Fabian Aps Portfolio/Impressum',
+    description: 'my own portfolio/impressum website',
+    url: 'https://mahd.comboompunksucht.app',
+    images: [{
+      url: 'https://github.com/mcpeapsUnterstrichHD.png',
+      alt: 'Logo of mcpeaps_HD' // Alt attribute for Twitter image
+    }],
+  },
   robots: {
     index: true,
     follow: true,
