@@ -155,7 +155,6 @@ export default function RootLayout({
         <link rel="sitemap" href="/sitemap.xml" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
-
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
