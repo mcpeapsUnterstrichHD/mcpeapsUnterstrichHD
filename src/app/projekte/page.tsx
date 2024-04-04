@@ -10,7 +10,7 @@ export default function Home() {
 
         <h2 className="text-5xl gap-8 p-8">Gepinte Projekte</h2>
 
-        <div className="flex flex-row flex-wrap justify-center gap-4 flex-shrink">
+        <div className="flex flex-row flex-wrap p-4 justify-center gap-4 flex-shrink">
           <ProjektCard
             ProjektImage="/pictures/my_Portfolio.jpeg"
             ProjektImageAlt="Portfolio Bild"
@@ -36,7 +36,7 @@ export default function Home() {
 
         <h2 className="text-4xl gap-8 p-8">Alle Projekte</h2>
 
-            <div className="flex flex-row flex-wrap justify-center gap-4 flex-shrink">
+            <div className="flex flex-row flex-wrap p-4 justify-center gap-4 flex-shrink">
             <ProjektCard
             ProjektImage="/pictures/my_Portfolio.jpeg"
             ProjektImageAlt="Portfolio Bild"
