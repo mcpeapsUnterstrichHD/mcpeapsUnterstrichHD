@@ -7,9 +7,11 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'my own portfolio/impressum website',
     start_url: 'https://mahd.comboompunksucht.app/',
     //start_url:'/',
-    display: 'standalone',
+    display: 'minimal-ui',
     display_override: [
+      'minimal-ui',
       'standalone',
+      "window-controls-overlay"
     ],
     background_color: '#000000',
     theme_color: '#010101',
