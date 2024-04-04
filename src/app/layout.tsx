@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   description: "my own portfolio/impressum website",
   keywords: "portfolio, website, impressum, github, linkedin, aps, fabian",
   twitter: {
-    card: 'summary_large_image',
+    card: 'app', //'summary_large_image',
     title: 'Fabian Aps Portfolio/Impressum',
     description: 'my own portfolio/impressum website',
     siteId: '723191637950775296',
