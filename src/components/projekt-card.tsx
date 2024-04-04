@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button, buttonVariants } from './ui/button';
 import { Badge } from '@/components/ui/badge';
+import  Image  from 'next/image';
 
 interface ProjektCardProps {
   ProjektImage: string;
@@ -47,10 +48,12 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
 
 
           <div className={ProjektImageBgColor + " h-1/2 w-[95%] rounded-sm flex items-center justify-center"}>
-            <img
+            <Image
               src={ProjektImage}
               alt={ProjektImageAlt}
-              className='max-h-full max-w-full object-contain rounded-sm'
+              className='object-contain rounded-sm'
+              width={1280}
+              height={720}
             />
           </div>
       </CardFooter>
