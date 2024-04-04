@@ -78,13 +78,20 @@ export const metadata: Metadata = {
   description: "my own portfolio/impressum website",
   keywords: "portfolio, website, impressum, github, linkedin, aps, fabian",
   twitter: {
-    card: 'app', //'summary_large_image',
+    card: 'summary_large_image',
     title: 'Fabian Aps Portfolio/Impressum',
     description: 'my own portfolio/impressum website',
     siteId: '723191637950775296',
     creator: '@mcpeaps_HD',
     creatorId: '723191637950775296',
     images: ['https://github.com/mcpeapsUnterstrichHD.png'], // Must be an absolute URL
+  },
+  openGraph: {
+    type: 'website',
+    title: 'Fabian Aps Portfolio/Impressum',
+    description: 'my own portfolio/impressum website',
+    url: 'https://mahd.comboompunksucht.app',
+    images: ['https://github.com/mcpeapsUnterstrichHD.png'],
   },
   robots: {
     index: true,
@@ -142,11 +149,6 @@ export default function RootLayout({
         <link rel="sitemap" href="/sitemap.xml" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
-        <meta property="og:image" content="https://github.com/mcpeapsUnterstrichHD.png" />
-        <meta property="og:title" content="Fabian Aps Portfolio/Impressum" />
-        <meta property="og:description" content="my own portfolio/impressum website" />
-        <meta property="og:url" content="https://mahd.comboompunksucht.app"/>
-
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
