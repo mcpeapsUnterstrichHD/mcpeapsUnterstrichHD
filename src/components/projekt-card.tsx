@@ -47,7 +47,7 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
       <CardFooter className='flex-grow flex flex-col gap-4 items-center justify-center p-4'>
 
 
-          <div className={ProjektImageBgColor + " h-1/2 w-[95%] rounded-sm flex items-center justify-center"}>
+          <div className={ProjektImageBgColor + "rounded-sm flex items-center justify-center"}>
             <Image
               src={ProjektImage}
               alt={ProjektImageAlt}
