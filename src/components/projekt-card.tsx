@@ -52,8 +52,6 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
               src={ProjektImage}
               alt={ProjektImageAlt}
               className='object-contain rounded-sm'
-              width={1280}
-              height={720}
             />
           </div>
       </CardFooter>
