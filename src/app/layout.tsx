@@ -77,6 +77,15 @@ export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
   description: "my own portfolio/impressum website",
   keywords: "portfolio, website, impressum, github, linkedin, aps, fabian",
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fabian Aps Portfolio/Impressum',
+    description: 'my own portfolio/impressum website',
+    siteId: '723191637950775296',
+    creator: '@mcpeaps_HD',
+    creatorId: '723191637950775296',
+    images: ['https://github.com/mcpeapsUnterstrichHD.png'], // Must be an absolute URL
+  },
   robots: {
     index: true,
     follow: true,
@@ -133,10 +142,6 @@ export default function RootLayout({
         <link rel="sitemap" href="/sitemap.xml" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
-        <meta property="twitter:image" content="/pictures/Logo-mahd.JPG" />
-        <meta property="twitter:card" content="/pictures/Logo-mahd.JPG" />
-        <meta property="twitter:title" content="Fabian Aps Portfolio/Impressum" />
-        <meta property="twitter:description" content="my own portfolio/impressum website" />
         <meta property="og:image" content="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta property="og:title" content="Fabian Aps Portfolio/Impressum" />
         <meta property="og:description" content="my own portfolio/impressum website" />
