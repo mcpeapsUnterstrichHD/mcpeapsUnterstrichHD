@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import ProjektCard from "@/components/projekt-card";
 import Footer from "@/components/footer";
