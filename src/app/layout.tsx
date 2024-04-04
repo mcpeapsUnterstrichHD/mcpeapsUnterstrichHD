@@ -140,6 +140,7 @@ export default function RootLayout({
         <meta property="og:image" content="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta property="og:title" content="Fabian Aps Portfolio/Impressum" />
         <meta property="og:description" content="my own portfolio/impressum website" />
+        <meta property="og:url" content="https://mahd.comboompunksucht.app"/>
 
       </head>
       <body className={ccnfp.className}>
