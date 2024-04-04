@@ -150,8 +150,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-          <SpeedInsights />
-          <Analytics />
+
           <div className="bg-gradient-to-tl from-primary-background via-primary-foreground to-primary-background">
           <Particles
             quantity={400}
@@ -162,6 +161,8 @@ export default function RootLayout({
 
           </div>
           </ThemeProvider>
+          <SpeedInsights />
+          <Analytics />
       </body>
     </html>
   );
