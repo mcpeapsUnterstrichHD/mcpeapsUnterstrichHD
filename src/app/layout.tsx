@@ -11,62 +11,62 @@ import { Analytics } from "@vercel/analytics/react"
 const ccnfp = localFont({
   src: [
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-Regular.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf',
       weight: '700',
       style: 'italic',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-SemiBold.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiBold.ttf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-SemiBoldItalic.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiBoldItalic.ttf',
       weight: '600',
       style: 'italic',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-SemiLight.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiLight.ttf',
       weight: '200',
       style: 'normal',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-SemiLightItalic.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiLightItalic.ttf',
       weight: '200',
       style: 'italic',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-ExtraLight.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-ExtraLight.ttf',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-ExtraLightItalic.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-ExtraLightItalic.ttf',
       weight: '100',
       style: 'italic',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-Light.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-Light.ttf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '@/fonts/CaskaydiaCoveNerdFontPropo-LightItalic.ttf',
+      path: '../fonts/CaskaydiaCoveNerdFontPropo-LightItalic.ttf',
       weight: '300',
       style: 'italic',
     },
