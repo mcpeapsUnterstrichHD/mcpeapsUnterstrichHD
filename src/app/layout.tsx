@@ -155,6 +155,15 @@ export default function RootLayout({
         <link rel="sitemap" href="/sitemap.xml" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+        <meta property="twitter:image" content="/pictures/Logo-mahd.JPG" />
+        <meta property="twitter:card" content="/pictures/Logo-mahd.JPG" />
+        <meta property="twitter:title" content="Fabian Aps Portfolio/Impressum" />
+        <meta property="twitter:description" content="my own portfolio/impressum website" />
+        <meta property="og:image" content="https://github.com/mcpeapsUnterstrichHD.png" />
+        <meta property="og:title" content="Fabian Aps Portfolio/Impressum" />
+        <meta property="og:description" content="my own portfolio/impressum website" />
+        <meta property="og:url" content="https://mahd.comboompunksucht.app"/>
+
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
