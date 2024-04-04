@@ -124,7 +124,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
-        <meta name="application-name" content="Fabian Aps Portfolio/Impressum" />
+        <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
         <meta name="msapplication-TileImage" content="https://github.com/mcpeapsUnterstrichHD.png" />
         <meta charSet="UTF-8" />
@@ -132,6 +132,14 @@ export default function RootLayout({
         <link rel="sitemap" href="/sitemap.xml" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+        <meta property="twitter:image" content="https://github.com/mcpeapsUnterstrichHD.png" />
+        <meta property="twitter:card" content="https://github.com/mcpeapsUnterstrichHD.png" />
+        <meta property="twitter:title" content="Fabian Aps Portfolio/Impressum" />
+        <meta property="twitter:description" content="my own portfolio/impressum website" />
+        <meta property="og:image" content="https://github.com/mcpeapsUnterstrichHD.png" />
+        <meta property="og:title" content="Fabian Aps Portfolio/Impressum" />
+        <meta property="og:description" content="my own portfolio/impressum website" />
+        
       </head>
       <body className={ccnfp.className}>
       <ThemeProvider
