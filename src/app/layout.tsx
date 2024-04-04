@@ -84,14 +84,20 @@ export const metadata: Metadata = {
     siteId: '723191637950775296',
     creator: '@mcpeaps_HD',
     creatorId: '723191637950775296',
-    images: ['https://github.com/mcpeapsUnterstrichHD.png'], // Must be an absolute URL
+    images: [{
+      url: 'https://github.com/mcpeapsUnterstrichHD.png:large',
+      alt: 'Logo of mcpeaps_HD' // Alt attribute for Twitter image
+    }], // Must be an absolute URL
   },
   openGraph: {
     type: 'website',
     title: 'Fabian Aps Portfolio/Impressum',
     description: 'my own portfolio/impressum website',
     url: 'https://mahd.comboompunksucht.app',
-    images: ['https://github.com/mcpeapsUnterstrichHD.png'],
+    images: [{
+      url: 'https://github.com/mcpeapsUnterstrichHD.png:large',
+      alt: 'Logo of mcpeaps_HD' // Alt attribute for Twitter image
+    }],
   },
   robots: {
     index: true,
