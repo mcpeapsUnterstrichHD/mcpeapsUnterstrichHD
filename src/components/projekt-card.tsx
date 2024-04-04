@@ -47,11 +47,11 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
       <CardFooter className='flex-grow flex flex-col gap-4 items-center justify-center p-4'>
 
 
-          <div className={ProjektImageBgColor + "rounded-sm flex items-center justify-center w-[800px] h-[480px]"}>
+          <div className={ProjektImageBgColor + "rounded-sm flex items-center justify-center"}>
             <Image
               src={ProjektImage}
               alt={ProjektImageAlt}
-              className='object-contain rounded-sm'
+              className={ ProjektImageBgColor + 'object-contain rounded-sm'}
               width={800}
               height={480}
             />
