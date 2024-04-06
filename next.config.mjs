@@ -17,6 +17,7 @@ const nextConfig = {
   reactStrictMode: false,
   experimental: {
     typedRoutes: false,
+    missingSuspenseWithCSRBailout: false,
   },
 };
 
