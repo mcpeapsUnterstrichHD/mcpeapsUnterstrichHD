@@ -1,9 +1,12 @@
 'use client'
 import Link from "next/link";
 import Footer from "@/components/footer";
+import { NavBar } from "@/components/nav-bar";
 
 export default function Home() {
-    return (
+  return (
+    <div>
+      <nav className="z-10 sticky top-0 top"><NavBar /></nav>
       <main className="flex min-h-screen flex-col items-center justify-between p-4">
         <div className="pb-12 mt-5">
             <div className="text-3xl w-full font-bold mb-2">Impressum</div>
@@ -36,5 +39,6 @@ export default function Home() {
         </div>
         <Footer />
       </main>
+      </div>
     );
   }

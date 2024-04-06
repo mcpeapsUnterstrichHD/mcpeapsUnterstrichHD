@@ -1,9 +1,12 @@
 import React from "react";
 import ProjektCard from "@/components/projekt-card";
 import Footer from "@/components/footer";
+import { NavBar } from "@/components/nav-bar";
 
 export default function Home() {
-    return (
+  return (
+    <div>
+      <nav className="z-10 sticky top-0 top"><NavBar /></nav>
       <main className="flex max-h-screen flex-col items-center justfy-center p-4">
         <h1 className="text-6xl gap-8 p-8">Projekte</h1>
 
@@ -96,5 +99,6 @@ export default function Home() {
             </div>
             <Footer />
       </main>
+    </div>
     );
   }

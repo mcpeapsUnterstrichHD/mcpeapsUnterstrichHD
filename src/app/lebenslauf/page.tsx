@@ -7,9 +7,12 @@ import {TimeLineElementBig, TimeLineElementSmall} from '@/components/timeline-el
 import SkillCard from '@/components/skill-card';
 import Link from 'next/link';
 import Footer from '@/components/footer';
+import { NavBar } from '@/components/nav-bar';
 
 export default function Home() {
-    return (
+  return (
+    <div>
+      <nav className="z-10 sticky top-0 top"><NavBar /></nav>
       <main className="flex flex-nowrap min-h-screen flex-col items-center justify-between p-4">
             <h1 className='text-4xl font-bold gap-8'>Fabian Aps</h1>
 
@@ -330,5 +333,6 @@ export default function Home() {
             </div>
             <Footer />
       </main>
+      </div>
     );
   }

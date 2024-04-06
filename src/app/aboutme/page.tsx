@@ -1,5 +1,6 @@
 'use client'
 import Footer from "@/components/footer";
+import { NavBar } from "@/components/nav-bar";
 import ProjektCard from "@/components/projekt-card";
 export default function Home() {
     const today = new Date();
@@ -10,7 +11,9 @@ export default function Home() {
     age--;
   }
 
-    return (
+  return (
+    <div>
+      <nav className="z-10 sticky top-0 top"><NavBar /></nav>
       <main className="flex min-h-screen flex-col items-center justify-between p-4">
         <h1 className="text-xl py-1">Hallo 👋</h1>
         <h1 className="text-5xl font-bold">Ich bin Fabian Aps</h1>
@@ -72,5 +75,6 @@ export default function Home() {
 
             <Footer />
       </main>
+    </div>
     );
   }

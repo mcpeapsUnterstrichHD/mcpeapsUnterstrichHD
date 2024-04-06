@@ -3,7 +3,6 @@ import localFont from 'next/font/local'
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { NavBar } from "@/components/nav-bar";
 import Particles from '@/components/particles';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
@@ -173,9 +172,7 @@ export default function RootLayout({
             quantity={400}
             refresh={true}
           />
-            <nav className="z-10 sticky top-0 top"><NavBar /></nav>
             <div className="z-1">{children}</div>
-
           </div>
           </ThemeProvider>
           <SpeedInsights />
