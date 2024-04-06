@@ -21,15 +21,15 @@ export default function Home() {
         {my_h1}
       </h1>
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
-      <div className="my-16 text-center animate-fade-in">
-        {my_h2 === 'comboom.sucht' ? 
+      <div className="text-center animate-fade-in">
+        {my_h2 === 'comboom.sucht' ?
           <Image
           src="/pictures/Logo-transparet.PNG"
           alt="Logo"
           width={300}
           height={180}
           /> :
-          <h2 className="text-xl text-secondary-foreground ">
+          <h2 className="my-16 text-xl text-secondary-foreground ">
             {my_h2}
           </h2>
         }
