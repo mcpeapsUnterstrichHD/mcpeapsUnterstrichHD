@@ -46,7 +46,7 @@ export default function Home() {
 
         <h2 className="text-2xl gap-8 p-8">Gepinte Projekte</h2>
 
-        <div className="my-Project-grid-3 justify-center gap-4 flex-shrink">
+        <div className="flex flex-wrap justify-center items-center gap-4 flex-shrink w-full max-w-screen-lg">
           <ProjektCard
             ProjektImage="/pictures/my_Portfolio.jpeg"
             ProjektImageAlt="Portfolio Bild"
