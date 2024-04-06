@@ -170,7 +170,6 @@ export default function RootLayout({
             refresh={true}
           />
             <div className="z-1">{children}</div>
-
           </div>
           </ThemeProvider>
       </body>
