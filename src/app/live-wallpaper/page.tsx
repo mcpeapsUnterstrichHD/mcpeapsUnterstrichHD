@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
-  const [my_h1, setH1] = useState('Fabian Aps');
-  const [my_h2, setH2] = useState('ITler/DJ/Producer aus Leidenschaft');
+  const searchParams = useSearchParams(); // For query string parameters
+  const [my_h1, setH1] = useState(decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps');
+  const [my_h2, setH2] = useState(decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft');
 
   useEffect(() => {
-    const searchParams = useSearchParams();
     setH1(decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps');
     setH2(decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft');
-  }, []);
+  }, [searchParams]);
 
   // Render your component with the extracted values
   return (
