@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     type: 'website',
     title: 'Live Wallpaper',
     description: 'customizable Live Wallpaper',
-    url: 'https://mahd.comboompunksucht.app',
+    url: 'https://mahd.comboompunksucht.app/live-wallpaper',
     images: [{
       url: 'https://github.com/mcpeapsUnterstrichHD.png',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
