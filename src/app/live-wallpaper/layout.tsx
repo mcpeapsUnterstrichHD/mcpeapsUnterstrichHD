@@ -70,13 +70,13 @@ const ccnfp = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Fabian Aps Portfolio/Impressum",
-  description: "my own portfolio/impressum website",
-  keywords: "portfolio, website, impressum, github, linkedin, aps, fabian",
+  title: "Live Wallpaper",
+  description: "customizable Live Wallpaper",
+  keywords: "customizable, Live, Wallpaper",
   twitter: {
     card: 'summary_large_image',
-    title: 'Fabian Aps Portfolio/Impressum',
-    description: 'my own portfolio/impressum website',
+    title: 'Live Wallpaper',
+    description: 'customizable Live Wallpaper',
     siteId: '723191637950775296',
     creator: '@mcpeaps_HD',
     creatorId: '723191637950775296',
@@ -89,8 +89,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    title: 'Fabian Aps Portfolio/Impressum',
-    description: 'my own portfolio/impressum website',
+    title: 'Live Wallpaper',
+    description: 'customizable Live Wallpaper',
     url: 'https://mahd.comboompunksucht.app',
     images: [{
       url: 'https://github.com/mcpeapsUnterstrichHD.png',
@@ -146,7 +146,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
+        <meta name="apple-mobile-web-app-title" content="Live Wallpaper" />
         <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
         <meta name="msapplication-TileImage" content="https://github.com/mcpeapsUnterstrichHD.png" />
