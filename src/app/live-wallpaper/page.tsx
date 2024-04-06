@@ -1,14 +1,16 @@
 'use client'
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
-  // Determine if using dynamic routing segments or query string parameters
-  const searchParams = useSearchParams(); // For query string parameters
+  const [my_h1, setH1] = useState('Fabian Aps');
+  const [my_h2, setH2] = useState('ITler/DJ/Producer aus Leidenschaft');
 
-  // Decode URI components directly (no need for a separate import)
-  const my_h1 = decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps';
-  const my_h2 = decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft';
-  
+  useEffect(() => {
+    const searchParams = useSearchParams();
+    setH1(decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps');
+    setH2(decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft');
+  }, []);
 
   // Render your component with the extracted values
   return (
@@ -26,4 +28,3 @@ export default function Home() {
     </div>
   );
 }
-
