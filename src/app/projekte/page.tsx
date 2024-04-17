@@ -69,6 +69,13 @@ export default function Home() {
             ProjektBadges={["FOSS","SCHOOL", "APP", "iOS", "SWIFT", "SWIFTUI", "HUB"]}
             ProjektLink="https://github.com/comboomPunkTsucht/ITA-12_App">Das ist die App der Klassen ITA 12 in der ich ich am OSZ IMT gewesen bin.</ProjektCard>
           <ProjektCard
+            ProjektImage="/pictures/ssqlr.png"
+            ProjektImageAlt="Simple SQL Runner"
+            ProjektImageBgColor="bg-black"
+            ProjektTitle="Simple SQL Runner"
+            ProjektBadges={["FOSS","SCHOOL", "JAVA", "SQL"]}
+            ProjektLink="https://github.com/comboomPunkTsucht/Simple-SQL-Runner">Das ist ein GUI-Programm zum ausführen und ausgeben von SQL Statements</ProjektCard>
+          <ProjektCard
             ProjektImage="/pictures/searxng.png"
             ProjektImageBgColor=""
             ProjektImageAlt="SearxNG Logo"
@@ -101,4 +108,4 @@ export default function Home() {
       </main>
     </div>
     );
-  }
+}
