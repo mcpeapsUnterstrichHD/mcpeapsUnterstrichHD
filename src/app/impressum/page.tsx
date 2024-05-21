@@ -12,30 +12,30 @@ export default function Home() {
             <div className="text-3xl w-full font-bold mb-2">Impressum</div>
 
             <div className="text-2xl py-2 font-bold">Angaben gemäß § 5 TMG:</div>
-            <div className="text-lg py-1">
+            <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><div className="text-lg py-1">
               Aps, Fabian<br />
               Ludwig-Renn-Straße 33<br />
               12679 Berlin, Deutschland
-            </div>
+            </div></Link>
 
             <div className="text-2xl py-2 font-bold">Kontakt:</div>
             <div className="text-lg py-1">
                 <div className="flex flex-col items-start">
                     <div className="flex flex-row items-center">
-                        <Link href="mailto:fabian.aps@comboompunksucht.app" legacyBehavior passHref><p className="cursor-pointer">E-Mail: fabian.aps@comboompunksucht.app</p></Link></div>
+                        <Link href="mailto:aps.fabian@outlook.com" legacyBehavior passHref><p className="cursor-context-menu">E-Mail: aps.fabian@outlook.com</p></Link></div>
                     <div className="flex flex-row items-center">
-                        <Link href="tel:+4917645172171" legacyBehavior passHref><p className="cursor-pointer">Telefonnummer: +4917645172171</p></Link>
+                        <Link href="tel:+4917645172171" legacyBehavior passHref><p className="cursor-context-menu">Telefonnummer: +4917645172171</p></Link>
                     </div>
 
                 </div>
             </div>
 
             <div className="text-2xl py-2 font-bold">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</div>
-            <div className="text-lg py-1">
+            <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><div className="text-lg py-1">
               Aps, Fabian<br />
               Ludwig-Renn-Straße 33<br />
               12679 Berlin, Deutschland
-            </div>
+            </div></Link>
         </div>
         <Footer />
       </main>
