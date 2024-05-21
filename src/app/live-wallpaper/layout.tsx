@@ -120,12 +120,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/pictures/logo.svg',
-    shortcut: '/pictures/logo.svg',
-    apple: '/pictures/logo.svg',
+    icon: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+    shortcut: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+    apple: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/pictures/logo.svg',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
     },
   },
 };
