@@ -18,18 +18,18 @@ export default function manifest(): MetadataRoute.Manifest {
     prefer_related_applications: false,
     icons: [
       {
-        src: 'https://github.com/mcpeapsUnterstrichHD.png',
+        src: '/pictures/logo.svg',
         sizes: 'any',
         type: 'image/x-icon',
       },
       {
-        src: 'https://github.com/mcpeapsUnterstrichHD.png',
+        src: '/pictures/logo.svg',
         sizes: '3000x3000',
         type: 'image/png',
         purpose: "maskable",
       },
       {
-        src: 'https://github.com/mcpeapsUnterstrichHD.png',
+        src: '/pictures/logo.svg',
         sizes: '3000x3000',
         type: 'image/png',
         purpose: "any",

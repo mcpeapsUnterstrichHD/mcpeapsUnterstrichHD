@@ -34,7 +34,7 @@ export function NavBar() {
                 <div className="flex flex-row justify-between items-center">
                     <div className="flex flex-row justify-between items-center">
                     <Avatar>
-                      <AvatarImage src="https://github.com/mcpeapsUnterstrichHD.png" alt="Logo Image" />
+                      <AvatarImage src="/pictures/logo.svg" alt="Logo Image" />
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
@@ -61,7 +61,7 @@ export function NavBar() {
                   <a className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/">
                     <Avatar>
-                      <AvatarImage src="https://github.com/mcpeapsUnterstrichHD.png" />
+                      <AvatarImage src="/pictures/logo.svg" />
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
 
@@ -84,7 +84,7 @@ export function NavBar() {
                 Mein aktueller Lebenslauf
               </ListItem>
               <ListItem href="/impressum" title="Impressum" />
-              
+
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
