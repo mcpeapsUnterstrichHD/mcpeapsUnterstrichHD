@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
-
-
 function GetH2() {
   const searchParams = useSearchParams(); // For query string parameters
   const [myH2, setH2] = useState(decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft');
