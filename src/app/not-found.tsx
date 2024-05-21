@@ -1,5 +1,8 @@
 'use client'
 import React from 'react';
+import { NavBar } from '@/components/nav-bar';
+import { Footer } from '@/components/footer';
+
 
 const sadTexts = [
     "Oops! The page you're looking for doesn't exist.",
@@ -134,6 +137,10 @@ const sadTexts = [
         const randomSadText = getRandomSadText();
 
         return (
+            <div>
+                <nav className="z-10 sticky top-0 top"><NavBar /></nav>
+
+
             <main className="flex min-h-screen flex-col items-center p-4">
                 <div>
                     <div className="nf nf-md-emoticon_sad_outline text-[10em]"></div>
@@ -143,7 +150,11 @@ const sadTexts = [
                 <style>{`
                     @import "https://www.nerdfonts.com/assets/css/webfont.css";
                 `}</style>
-            </main>
+                </main>
+                <div className='absolute inset-x-0 bottom-0'>
+        <Footer />
+      </div>
+                            </div>
         );
     };
 
