@@ -1,7 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import  Image  from 'next/image';
+import Image from 'next/image';
+import { Suspense } from 'react';
 
 export default function Home() {
   const searchParams = useSearchParams(); // For query string parameters
@@ -15,6 +16,7 @@ export default function Home() {
 
   // Render your component with the extracted values
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="overflow-hidden flex flex-col items-center justify-center w-screen h-screen">
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
@@ -34,6 +36,7 @@ export default function Home() {
           </h2>
         }
       </div>
-    </div>
+      </div>
+      </Suspense>
   );
 }
