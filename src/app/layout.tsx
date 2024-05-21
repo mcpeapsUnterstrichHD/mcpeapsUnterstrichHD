@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     creator: '@mcpeaps_HD',
     creatorId: '723191637950775296',
     images: [{
-      url: '/pictures/logo.svg',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
     description: 'my own portfolio/impressum website',
     url: 'https://mahd.comboompunksucht.app',
     images: [{
-      url: '/pictures/logo.svg',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
@@ -123,12 +123,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/pictures/logo.svg',
-    shortcut: '/pictures/logo.svg',
-    apple: '/pictures/logo.svg',
+    icon: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+    shortcut: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+    apple: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/pictures/logo.svg',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
     },
   },
 };
@@ -141,21 +141,21 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <link rel="apple-touch-icon" href="/pictures/logo.svg" />
+        <link rel="apple-touch-icon" href="https://mahd.comboompunksucht.app/pictures/logo.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/pictures/logo.svg" />
+        <link rel="icon" href="https://mahd.comboompunksucht.app/pictures/logo.svg" />
         <meta name="theme-color" content="#010101" />
-        <meta name="start_url" content="/" />
+        <meta name="start_url" content="https://mahd.comboompunksucht.app/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
         <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
-        <meta name="msapplication-TileImage" content="/pictures/logo.svg" />
+        <meta name="msapplication-TileImage" content="https://mahd.comboompunksucht.app/pictures/logo.svg" />
         <meta charSet="UTF-8" />
-        <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="sitemap" href="/sitemap.xml" />
+        <link rel="manifest" href="https://mahd.comboompunksucht.app/manifest.webmanifest" />
+        <link rel="sitemap" href="https://mahd.comboompunksucht.app/sitemap.xml" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
       </head>
