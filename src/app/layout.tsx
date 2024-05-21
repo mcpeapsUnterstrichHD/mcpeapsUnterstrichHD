@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     creator: '@mcpeaps_HD',
     creatorId: '723191637950775296',
     images: [{
-      url: 'https://github.com/mcpeapsUnterstrichHD.png',
+      url: '/pictures/logo.svg',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
     description: 'my own portfolio/impressum website',
     url: 'https://mahd.comboompunksucht.app',
     images: [{
-      url: 'https://github.com/mcpeapsUnterstrichHD.png',
+      url: '/pictures/logo.svg',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
@@ -123,12 +123,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: 'https://github.com/mcpeapsUnterstrichHD.png',
-    shortcut: 'https://github.com/mcpeapsUnterstrichHD.png',
-    apple: 'https://github.com/mcpeapsUnterstrichHD.png',
+    icon: '/pictures/logo.svg',
+    shortcut: '/pictures/logo.svg',
+    apple: '/pictures/logo.svg',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: 'https://github.com/mcpeapsUnterstrichHD.png',
+      url: '/pictures/logo.svg',
     },
   },
 };
@@ -141,9 +141,9 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <link rel="apple-touch-icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
+        <link rel="apple-touch-icon" href="/pictures/logo.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="https://github.com/mcpeapsUnterstrichHD.png" />
+        <link rel="icon" href="/pictures/logo.svg" />
         <meta name="theme-color" content="#010101" />
         <meta name="start_url" content="/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
@@ -152,7 +152,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
         <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
-        <meta name="msapplication-TileImage" content="https://github.com/mcpeapsUnterstrichHD.png" />
+        <meta name="msapplication-TileImage" content="/pictures/logo.svg" />
         <meta charSet="UTF-8" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="sitemap" href="/sitemap.xml" />

@@ -76,39 +76,59 @@
   }
 }
 
-.my-Project-grid-4{
+.my-Project-grid-4 {
   @apply grid;
-  @apply grid-cols-1;
+  @apply grid-cols-4;
+  @apply gap-4;
+  @apply justify-stretch;
+  @apply items-stretch;
 }
 
-@media (width < 444px) {
+@media (width < 1280px) {
   .my-Project-grid-4 {
     @apply grid;
     @apply grid-cols-1;
+    @apply gap-4;
+    @apply justify-stretch;
+    @apply items-stretch;
   }
 }
+
+
 
 .my-Skill-grid-4{
   @apply grid;
   @apply grid-cols-4;
+  @apply gap-4;
+  @apply justify-center;
+  @apply items-center;
 }
 
-@media (width < 444px) {
+@media (width < 1280px) {
   .my-Skill-grid-4 {
     @apply grid;
     @apply grid-cols-1;
+    @apply gap-4;
+    @apply justify-center;
+    @apply items-center;
   }
 }
 
 .my-Project-grid-3{
   @apply grid;
-  @apply grid-cols-1;
+  @apply grid-cols-3;
+  @apply gap-4;
+  @apply justify-stretch;
+  @apply items-stretch;
 }
 
-@media (width < 444px) {
+@media (width < 1280px) {
   .my-Project-grid-3 {
     @apply grid;
     @apply grid-cols-1;
+    @apply gap-4;
+    @apply justify-stretch;
+    @apply items-stretch;
   }
 }
 
