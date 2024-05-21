@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { NavBar } from '@/components/nav-bar';
-import { Footer } from '@/components/footer';
+import Footer from '@/components/footer';
 
 
 const sadTexts = [
