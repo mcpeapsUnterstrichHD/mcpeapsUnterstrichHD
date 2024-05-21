@@ -155,7 +155,7 @@ export default function RootLayout({
         <meta name="msapplication-TileImage" content="https://mahd.comboompunksucht.app/pictures/logo.svg" />
         <meta charSet="UTF-8" />
         <link rel="manifest" href="https://mahd.comboompunksucht.app/manifest.webmanifest" />
-        <link rel="sitemap" href="https://mahd.comboompunksucht.app/sitemap.xml" />
+        <link rel="sitemap" href="https://mahd.comboompunksucht.app/sitemap" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
       </head>
