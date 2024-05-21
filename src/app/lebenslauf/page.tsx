@@ -21,15 +21,19 @@ export default function Home() {
     <br/>
     <div className="flex flex-col items-start">
                     <div className="flex flex-row items-center">
-                        <Link href="mailto:fabian.aps@comboompunksucht.app" legacyBehavior passHref><p className="cursor-pointer">E-Mail: fabian.aps@comboompunksucht.app</p></Link></div>
+                        <Link href="mailto:aps.fabian@outlook.com" legacyBehavior passHref><p className="cursor-context-menu">E-Mail: aps.fabian@outlook.com</p></Link></div>
                     <div className="flex flex-row items-center">
-                        <Link href="tel:+4917645172171" legacyBehavior passHref><p className="cursor-pointer">Telefonnummer: +4917645172171</p></Link>
+                        <Link href="tel:+4917645172171" legacyBehavior passHref><p className="cursor-context-menu">Telefonnummer: +4917645172171</p></Link>
                     </div>
 
                 </div>
     <br/>
-    <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><p>Adresse: Ludwig-Renn-Straße 33, 12679 Berlin, Deutschland</p></Link>
-    <br/>
+    <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><div className="text-lg py-1">
+              Aps, Fabian<br />
+              Ludwig-Renn-Straße 33<br />
+              12679 Berlin, Deutschland
+          </div></Link>
+          <br />
     Geburtsdatum: 06.06.2003
   </div>
 
