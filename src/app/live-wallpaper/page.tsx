@@ -50,7 +50,7 @@ export default function Home() {
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <Suspense fallback={
         <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
-          <Skeleton className="h-[2.5rem] w-[250px] rounded" />
+          <Skeleton className="h-[5rem] w-[500px] rounded-full" />
         </h1>
       }>
         <GetH1 />
@@ -58,7 +58,7 @@ export default function Home() {
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <div className="text-center animate-fade-in">
         <Suspense fallback={<h2 className="my-16 text-xl text-secondary-foreground">
-          <Skeleton className="h-[1.75rem] w-[250px] rounded" />
+          <Skeleton className="h-[3.5rem] w-[500px] rounded-full" />
         </h2>}>
           <GetH2 />
         </Suspense>
