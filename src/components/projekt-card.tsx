@@ -26,7 +26,7 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
 }) => {
   return (
     <Link href={ProjektLink}>
-    <Card className='backdrop-blur-sm bg-transparent'>
+    <Card className='projectCard'>
       <CardHeader>
         <CardTitle>{ProjektTitle}</CardTitle>
         <CardDescription>
@@ -40,20 +40,19 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className='flex flex-col gap-4 justify-between'>
-          <div>{children}</div>
-        </div>
+        {children}
       </CardContent>
-      <CardFooter className='flex-grow flex flex-col gap-4 items-center justify-center p-4'>
-
-
-          <div className={ProjektImageBgColor + "rounded-sm flex items-center justify-center"}>
+      <CardFooter>
+          <div className={ProjektImageBgColor + "rounded-sm"}>
             <Image
               src={ProjektImage}
               alt={ProjektImageAlt}
               className={ ProjektImageBgColor + 'object-contain rounded-sm'}
-              width={800}
-              height={480}
+              width={1280}
+              height={720}
+              layout="responsive"
+              objectFit="cover"
+              priority={true}
             />
           </div>
       </CardFooter>

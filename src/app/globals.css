@@ -131,6 +131,13 @@
     @apply items-stretch;
   }
 }
+.projectCard {
+  @apply backdrop-blur-sm;
+  @apply bg-transparent;
+  @apply grid;
+  @apply grid-cols-subgrid;
+  grid-column: span 3;
+}
 
 .timelineelement {
   @apply p-4;

@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <div>
       <nav className="z-10 sticky top-0 top"><NavBar /></nav>
-      <main className="flex min-h-screen flex-col items-center justify-between p-4">
-        <h1 className="text-6xl gap-8 p-8">Projekte</h1>
+      <main className="p-4">
+        <h1 className="text-center text-6xl gap-8 p-8">Projekte</h1>
 
-        <h2 className="text-5xl gap-8 p-8">Gepinte Projekte</h2>
+        <h2 className="text-center text-5xl gap-8 p-8">Gepinte Projekte</h2>
 
 
         <div className="my-Project-grid-3">
@@ -37,7 +37,7 @@ export default function Home() {
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/searxng">Das Projekt zu Meiner Suchmaschine basiernd auf SearxNG</ProjektCard>
         </div>
 
-        <h2 className="text-4xl gap-8 p-8">Alle Projekte</h2>
+        <h2 className="text-center text-4xl gap-8 p-8">Alle Projekte</h2>
 
             <div className="my-Project-grid-4">
             <ProjektCard
