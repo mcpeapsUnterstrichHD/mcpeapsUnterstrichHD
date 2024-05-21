@@ -14,14 +14,14 @@ export default function Home() {
   return (
     <div>
       <nav className="z-10 sticky top-0 top"><NavBar /></nav>
-      <main className="flex min-h-screen flex-col items-center justify-between p-4">
-        <h1 className="text-xl py-1">Hallo 👋</h1>
-        <h1 className="text-5xl font-bold">Ich bin Fabian Aps</h1>
-        <h1 className="text-3xl py-3 font-bold">ITler/DJ/Producher</h1>
+      <main className="p-4">
+        <h1 className="text-center text-xl py-1">Hallo 👋</h1>
+        <h1 className="text-center text-5xl font-bold">Ich bin Fabian Aps</h1>
+        <h1 className="text-center text-3xl py-3 font-bold">ITler/DJ/Producher</h1>
 
         <a className="w-3/4 text-center">Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es Software zu entwikeln aber durch mein Praktikum bei der KfW Bankengruppe hat mir gezeigt, dass mir Anwendungsbetreung auch nicht schwer liegt, denoch mach ich die Entwicklung gerne als Hobby. Musik ist dabei auch eine Leidenschaft von mir, egal ab hören oder Produzieren. </a>
 
-        	<h2 className="text-2xl py-2 font-bold">Meine Playlist:</h2>
+        	<h2 className="text-center text-2xl py-2 font-bold">Meine Playlist:</h2>
 	        <div className="w-full flex flex-wrap flex-row flex-auto items-center justify-center">
               <iframe
                   allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
@@ -33,7 +33,7 @@ export default function Home() {
                   frameBorder="0"
               ></iframe>
           </div>
-	        <h2 className="text-2xl py-2 font-bold">Mein aktueller Song:</h2>
+	        <h2 className="text-center text-2xl py-2 font-bold">Mein aktueller Song:</h2>
           <div className="w-full flex flex-wrap flex-row flex-auto items-center justify-center">
               <iframe
                   width="95%"
@@ -47,7 +47,7 @@ export default function Home() {
           </div>
 
 
-        <h2 className="text-2xl gap-8 p-8">Gepinte Projekte</h2>
+        <h2 className="text-center text-2xl gap-8 p-8">Gepinte Projekte</h2>
 
         <div className="my-Project-grid-3">
           <ProjektCard
