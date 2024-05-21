@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { Suspense } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
+
+
 
 function GetH2() {
   const searchParams = useSearchParams(); // For query string parameters
@@ -47,14 +50,16 @@ export default function Home() {
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <Suspense fallback={
         <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
-          Loading...
+          <Skeleton className="h-[2.5rem] w-[250px] rounded" />
         </h1>
       }>
         <GetH1 />
       </Suspense>
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <div className="text-center animate-fade-in">
-        <Suspense fallback={<h2 className="my-16 text-xl text-secondary-foreground">Loading...</h2>}>
+        <Suspense fallback={<h2 className="my-16 text-xl text-secondary-foreground">
+          <Skeleton className="h-[1.75rem] w-[250px] rounded" />
+        </h2>}>
           <GetH2 />
         </Suspense>
       </div>
