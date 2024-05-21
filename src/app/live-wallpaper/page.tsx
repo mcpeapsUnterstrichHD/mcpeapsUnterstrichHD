@@ -16,22 +16,7 @@ export default function Home() {
 
   // Render your component with the extracted values
   return (
-    <Suspense fallback={<div className="overflow-hidden flex flex-col items-center justify-center w-screen h-screen">
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
-      <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
-        Loading...
-      </h1>
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
-      <div className="text-center animate-fade-in">
-
-          <Image
-          src="/pictures/logo.svg"
-          alt="Logo"
-          width={300}
-          height={300}
-          />
-      </div>
-      </div>}>
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="overflow-hidden flex flex-col items-center justify-center w-screen h-screen">
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
       <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
