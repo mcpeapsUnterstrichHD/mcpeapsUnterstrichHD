@@ -40,19 +40,24 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {children}
+        <div className='flex flex-col gap-4 justify-between'>
+          <div>{children}</div>
+        </div>
       </CardContent>
-      <CardFooter>
-          <div className={ProjektImageBgColor + "rounded-sm"}>
+      <CardFooter className='flex-grow flex flex-col gap-4 items-center justify-center p-4'>
+
+
+          <div className={ProjektImageBgColor + "w-[480] h-[480px] rounded-sm flex items-center justify-center"}>
             <Image
               src={ProjektImage}
               alt={ProjektImageAlt}
-              className={ ProjektImageBgColor + 'object-contain rounded-sm'}
-              width={1280}
-              height={720}
-              layout="responsive"
-              objectFit="cover"
-              priority={true}
+              className={ProjektImageBgColor + 'object-contain rounded-sm'}
+              width={480}
+              height={480}
+              layout='responsive'
+              objectFit='fill'
+              objectPosition='center'
+              priority= {true}
             />
           </div>
       </CardFooter>
