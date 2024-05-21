@@ -7,13 +7,13 @@ export default function Home() {
   return (
     <div>
       <nav className="z-10 sticky top-0 top"><NavBar /></nav>
-      <main className="flex max-h-screen flex-col items-center justfy-center p-4">
-        <h1 className="text-6xl gap-8 p-8">Projekte</h1>
+      <main className="p-4">
+        <h1 className="text-center text-6xl gap-8 p-8">Projekte</h1>
 
-        <h2 className="text-5xl gap-8 p-8">Gepinte Projekte</h2>
+        <h2 className="text-center text-5xl gap-8 p-8">Gepinte Projekte</h2>
 
 
-        <div className="flex flex-wrap justify-center items-center gap-4 flex-shrink w-full max-w-screen-lg">
+        <div className="my-Project-grid-3">
           <ProjektCard
             ProjektImage="/pictures/my_Portfolio.jpeg"
             ProjektImageAlt="Portfolio Bild"
@@ -37,9 +37,9 @@ export default function Home() {
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/searxng">Das Projekt zu Meiner Suchmaschine basiernd auf SearxNG</ProjektCard>
         </div>
 
-        <h2 className="text-4xl gap-8 p-8">Alle Projekte</h2>
+        <h2 className="text-center text-4xl gap-8 p-8">Alle Projekte</h2>
 
-            <div className="flex flex-wrap justify-center items-center gap-4 flex-shrink w-full max-w-screen-lg">
+            <div className="my-Project-grid-4">
             <ProjektCard
             ProjektImage="/pictures/my_Portfolio.jpeg"
             ProjektImageAlt="Portfolio Bild"
@@ -83,7 +83,7 @@ export default function Home() {
             ProjektBadges={["FOSS","WEB","NEW", "SEARCH ENGINE", "DOCKER"]}
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/searxng">Das Projekt zu Meiner Suchmaschine basiernd auf SearxNG</ProjektCard>
           <ProjektCard
-            ProjektImage="/pictures/Logo-mahd.JPG"
+            ProjektImage="/pictures/logo.svg"
             ProjektImageAlt="mcpeaps_HD Logo"
             ProjektImageBgColor=""
             ProjektTitle="Meine eigenen Dotfiles"
