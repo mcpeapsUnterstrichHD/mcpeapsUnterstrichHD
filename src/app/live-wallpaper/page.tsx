@@ -14,29 +14,28 @@ export default function Home() {
     setH2(decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft');
   }, [searchParams]);
 
-  // Render your component with the extracted values
   return (
     <Suspense fallback={<div>Loading...</div>}>
-    <div className="overflow-hidden flex flex-col items-center justify-center w-screen h-screen">
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
-      <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
-        {my_h1}
-      </h1>
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
-      <div className="text-center animate-fade-in">
-        {my_h2 === 'comboom.sucht' ?
-          <Image
-          src="/pictures/Logo-transparet.PNG"
-          alt="Logo"
-          width={300}
-          height={180}
-          /> :
-          <h2 className="my-16 text-xl text-secondary-foreground ">
-            {my_h2}
-          </h2>
-        }
+      <div className="overflow-hidden flex flex-col items-center justify-center w-screen h-screen">
+        <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
+        <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
+          {my_h1}
+        </h1>
+        <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
+        <div className="text-center animate-fade-in">
+          {my_h2 === 'comboom.sucht' ?
+            <Image
+            src="/pictures/Logo-transparet.PNG"
+            alt="Logo"
+            width={300}
+            height={180}
+            /> :
+            <h2 className="my-16 text-xl text-secondary-foreground ">
+              {my_h2}
+            </h2>
+          }
+        </div>
       </div>
-      </div>
-      </Suspense>
+    </Suspense>
   );
 }
