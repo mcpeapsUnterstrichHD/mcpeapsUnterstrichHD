@@ -53,7 +53,7 @@ export default function Home() {
               <TimeLineElementBig
                 TimeLineTitle='Carl-von-Linné-Schule'
                 TimeLineBadges={["Berlin", "MSA(OG)"]}
-                TimeLineImage="https://linne.schule/images/Logos/linne_logo.png"
+                TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
                 TimeLineImageAlt='Carl-von-Linné-Schule Logo'
                 TimeLineImageFallback='CvL'
                 startdate='2010'
@@ -82,7 +82,7 @@ export default function Home() {
               <TimeLineElementSmall
                 TimeLineTitle='Carl-von-Linné-Schule'
                 TimeLineBadges={["Berlin", "MSA(OG)"]}
-                TimeLineImage="https://linne.schule/images/Logos/linne_logo.png"
+                TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
                 TimeLineImageAlt='Carl-von-Linné-Schule Logo'
                 TimeLineImageFallback='CvL'
                 startdate='2010'
@@ -99,7 +99,7 @@ export default function Home() {
               <TimeLineElementBig
                 TimeLineTitle='KfW Bankengruppe'
                 TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
-                TimeLineImage="/pictures/kfw_logo.png"
+                TimeLineImage="/pictures/kfw_logo.PNG"
                 TimeLineImageAlt='KfW Logo'
                 TimeLineImageFallback='KfW'
                 startdate='27.11.2023'
@@ -153,7 +153,7 @@ export default function Home() {
               <TimeLineElementSmall
                 TimeLineTitle='KfW Bankengruppe'
                 TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
-                TimeLineImage="/pictures/kfw_logo.png"
+                TimeLineImage="/pictures/kfw_logo.PNG"
                 TimeLineImageAlt='KfW Logo'
                 TimeLineImageFallback='KfW'
                 startdate='27.11.2023'
