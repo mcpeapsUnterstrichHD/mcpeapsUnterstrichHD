@@ -83,7 +83,7 @@ export default function Home() {
             ProjektBadges={["FOSS","WEB","NEW", "SEARCH ENGINE", "DOCKER"]}
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/searxng">Das Projekt zu Meiner Suchmaschine basiernd auf SearxNG</ProjektCard>
           <ProjektCard
-            ProjektImage="/pictures/logo.png"
+            ProjektImage="/pictures/logo.PNG"
             ProjektImageAlt="mcpeaps_HD Logo"
             ProjektImageBgColor=""
             ProjektTitle="Meine eigenen Dotfiles"
