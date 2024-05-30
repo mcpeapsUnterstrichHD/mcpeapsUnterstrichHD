@@ -34,7 +34,7 @@ export function NavBar() {
                 <div className="flex flex-row justify-between items-center">
                     <div className="flex flex-row justify-between items-center">
                     <Avatar>
-                      <AvatarImage src="/pictures/logo.PNG" alt="Logo Image" />
+                      <AvatarImage src="/pictures/logo.png" alt="Logo Image" />
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
                     </div>
@@ -61,7 +61,7 @@ export function NavBar() {
                   <a className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/">
                     <Avatar>
-                      <AvatarImage src="/pictures/logo.PNG" />
+                      <AvatarImage src="/pictures/logo.png" />
                       <AvatarFallback>MAHD</AvatarFallback>
                     </Avatar>
 

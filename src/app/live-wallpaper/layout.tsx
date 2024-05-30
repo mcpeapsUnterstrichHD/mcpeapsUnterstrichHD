@@ -212,7 +212,7 @@ export const metadata: Metadata = {
     creator: '@mcpeaps_HD',
     creatorId: '723191637950775296',
     images: [{
-      url: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.png',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
@@ -224,7 +224,7 @@ export const metadata: Metadata = {
     description: 'customizable Live Wallpaper',
     url: 'https://mahd.comboompunksucht.app/live-wallpaper',
     images: [{
-      url: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.png',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
