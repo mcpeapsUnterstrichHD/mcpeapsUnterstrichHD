@@ -16,7 +16,7 @@ function GetH2() {
   return (
     myH2 === 'comboom.sucht' ?
       <Image
-        src="/pictures/Logo-transparet.png"
+        src="/pictures/Logo-transparet.PNG"
         alt="Logo"
         width={300}
         height={180}
