@@ -5,13 +5,9 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Fabian Aps Portfolio/Impressum',
     short_name: 'Fabian Aps',
     description: 'my own portfolio/impressum website',
-    start_url: 'https://mahd.comboompunksucht.app/',
-    //start_url:'/',
+    start_url: '/',
     display: 'standalone',
-    display_override: [
-      'standalone',
-      "window-controls-overlay"
-    ],
+    display_override: ["standalone", "window-controls-overlay"],
     background_color: '#000000',
     theme_color: '#010101',
     lang: 'de-DE',
@@ -33,6 +29,11 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: '3000x3000',
         type: 'image/png',
         purpose: "any",
+      },
+      {
+        src: '/icon.png',
+        sizes: '3000x3000',
+        type: 'image/png',
       }
     ],
   }
