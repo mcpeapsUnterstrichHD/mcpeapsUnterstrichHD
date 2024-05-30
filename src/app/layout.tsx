@@ -279,7 +279,7 @@ export default function RootLayout({
         <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
         <meta charSet="UTF-8" />
-        <link rel="manifest" href={"/"+ manifest.name + ".webmanifest"} />
+        <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="sitemap" href="/sitemap" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=yes, date=no, email=yes, address=yes" />
