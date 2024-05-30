@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Fabian Aps Portfolio/Impressum',
-    short_name: 'Fabian Aps Portfolio/Impressum',
+    short_name: 'Fabian Aps',
     description: 'my own portfolio/impressum website',
     start_url: 'https://mahd.comboompunksucht.app/',
     //start_url:'/',
@@ -18,18 +18,18 @@ export default function manifest(): MetadataRoute.Manifest {
     prefer_related_applications: false,
     icons: [
       {
-        src: '/pictures/logo.PNG',
+        src: '/favicon.ico',
         sizes: 'any',
         type: 'image/x-icon',
       },
       {
-        src: '/pictures/logo.PNG',
+        src: '/icon.png',
         sizes: '3000x3000',
         type: 'image/png',
         purpose: "maskable",
       },
       {
-        src: '/pictures/logo.PNG',
+        src: '/icon.png',
         sizes: '3000x3000',
         type: 'image/png',
         purpose: "any",
