@@ -90,14 +90,14 @@ export default function Home() {
             ProjektBadges={["FOSS","WEB","NEW", "Konfiguration", "DOTFILES"]}
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/dotfiles">Das Repository für meine Dotfiles.</ProjektCard>
           <ProjektCard
-            ProjektImage="/pictures/Logo-transparet.png"
+            ProjektImage="/pictures/Logo-transparet.PNG"
             ProjektImageAlt="comboom.sucht Logo"
             ProjektImageBgColor="bg-black"
             ProjektTitle="comboom.sucht Website"
             ProjektBadges={["FOSS", "WEB", "MARKDOWN", "WIKI"]}
             ProjektLink="https://github.com/comboomPunkTsucht/comboom.sucht-BLOG">Das ist die Webseite meiner Freundes Gruppe.</ProjektCard>
           <ProjektCard
-            ProjektImage="/pictures/Logo-transparet.png"
+            ProjektImage="/pictures/Logo-transparet.PNG"
             ProjektImageAlt="comboom.sucht Logo"
             ProjektImageBgColor="bg-black"
             ProjektTitle="comboom.sucht App"
