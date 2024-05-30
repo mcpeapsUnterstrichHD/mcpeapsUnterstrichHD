@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-ccnfp)'],
+        mono: ['var(--font-ccnfm)'],
+        serif: ['var(--font-ccnf)'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

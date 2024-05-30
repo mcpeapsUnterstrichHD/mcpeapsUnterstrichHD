@@ -10,196 +10,202 @@ import { Analytics } from "@vercel/analytics/react"
 const ccnfp = localFont({
   src: [
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-Regular.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf',
       weight: '700',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiBold.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-SemiBold.ttf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiBoldItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-SemiBoldItalic.ttf',
       weight: '600',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiLight.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-SemiLight.ttf',
       weight: '200',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-SemiLightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-SemiLightItalic.ttf',
       weight: '200',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-ExtraLight.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-ExtraLight.ttf',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-ExtraLightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-ExtraLightItalic.ttf',
       weight: '100',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-Light.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-Light.ttf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontPropo-LightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontPropo-LightItalic.ttf',
       weight: '300',
       style: 'italic',
     },
   ],
+  display: 'swap',
+  variable: '--font-ccnfp',
 })
 
-const ccnfn = localFont({
+const ccnfm = localFont({
   src: [
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-Regular.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-Bold.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-BoldItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-BoldItalic.ttf',
       weight: '700',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-Italic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiBold.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-SemiBold.ttf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiBoldItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-SemiBoldItalic.ttf',
       weight: '600',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiLight.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-SemiLight.ttf',
       weight: '200',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiLightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-SemiLightItalic.ttf',
       weight: '200',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-ExtraLight.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-ExtraLight.ttf',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-ExtraLightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-ExtraLightItalic.ttf',
       weight: '100',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-Light.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-Light.ttf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFontMono-LightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFontMono-LightItalic.ttf',
       weight: '300',
       style: 'italic',
     },
   ],
+  display: 'swap',
+  variable: '--font-ccnfm',
 })
 
 const ccnf = localFont({
   src: [
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-Regular.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-Bold.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-BoldItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-BoldItalic.ttf',
       weight: '700',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-Italic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-Italic.ttf',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-SemiBold.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-SemiBold.ttf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-SemiBoldItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-SemiBoldItalic.ttf',
       weight: '600',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-SemiLight.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-SemiLight.ttf',
       weight: '200',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-SemiLightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-SemiLightItalic.ttf',
       weight: '200',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-ExtraLight.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-ExtraLight.ttf',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-ExtraLightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-ExtraLightItalic.ttf',
       weight: '100',
       style: 'italic',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-Light.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-Light.ttf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../fonts/CaskaydiaCoveNerdFont-LightItalic.ttf',
+      path: './fonts/CaskaydiaCoveNerdFont-LightItalic.ttf',
       weight: '300',
       style: 'italic',
     },
   ],
+  display: 'swap',
+  variable: '--font-ccnf',
 })
 
 export const metadata: Metadata = {
@@ -271,9 +277,9 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <link rel="apple-touch-icon" href="https://mahd.comboompunksucht.app/pictures/logo.PNG" />
+        <link rel="apple-touch-icon" href="/pictures/logo.PNG" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="https://mahd.comboompunksucht.app/pictures/logo.PNG" />
+        <link rel="icon" href="/pictures/logo.PNG" />
         <meta name="theme-color" content="#010101" />
         <meta name="start_url" content="https://mahd.comboompunksucht.app/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
@@ -282,18 +288,18 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Fabian Aps Portfolio/Impressum" />
         <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
-        <meta name="msapplication-TileImage" content="https://mahd.comboompunksucht.app/pictures/logo.PNG" />
+        <meta name="msapplication-TileImage" content="/pictures/logo.PNG" />
         <meta charSet="UTF-8" />
-        <link rel="manifest" href="https://mahd.comboompunksucht.app/manifest.webmanifest" />
-        <link rel="sitemap" href="https://mahd.comboompunksucht.app/sitemap" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="sitemap" href="/sitemap" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
       </head>
-      <body className={ccnfp.className + " " + ccnfn.className + " " + ccnf.className}>
+      <body className={ccnfp.className + " " + ccnfm.className + " " + ccnf.className}>
         <style>
       {`
         @font-face {
-          font-family: ${ccnfp.className}, ${ccnfn.className}, ${ccnf.className};
+          font-family: ${ccnfp.className}, ${ccnfm.className}, ${ccnf.className};
         }
       `}
     </style>
