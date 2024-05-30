@@ -253,12 +253,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
-    shortcut: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
-    apple: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
+    icon: '/pictures/logo.PNG',
+    shortcut: '/pictures/logo.PNG',
+    apple: '/pictures/logo.PNG',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
+      url: '/pictures/logo.PNG',
     },
   },
 };
