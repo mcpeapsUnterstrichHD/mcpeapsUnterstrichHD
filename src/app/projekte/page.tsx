@@ -103,6 +103,7 @@ export default function Home() {
             ProjektTitle="comboom.sucht App"
             ProjektBadges={["FOSS", "APP", "iOS", "SWIFT", "SWIFTUI", "HUB"]}
             ProjektLink="https://github.com/comboomPunkTsucht/comboomPunkTsucht-IOS-macOS-App">Das ist die App meiner Freundes Gruppe.</ProjektCard>
+
             </div>
             <Footer />
       </main>

@@ -19,9 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-ccnfp)'],
-        mono: ['var(--font-ccnfm)'],
-        serif: ['var(--font-ccnf)'],
+        sans: ["CaskaydiaCoveNerdFontPropo", "sans-serif"],
+        mono: ["CaskaydiaCoveNerdFontMono", "monospace"],
+        serif: ["CaskaydiaCoveNerdFont", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
