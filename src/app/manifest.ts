@@ -18,18 +18,18 @@ export default function manifest(): MetadataRoute.Manifest {
     prefer_related_applications: false,
     icons: [
       {
-        src: '/pictures/logo.svg',
+        src: '/pictures/logo.PNG',
         sizes: 'any',
         type: 'image/x-icon',
       },
       {
-        src: '/pictures/logo.svg',
+        src: '/pictures/logo.PNG',
         sizes: '3000x3000',
         type: 'image/png',
         purpose: "maskable",
       },
       {
-        src: '/pictures/logo.svg',
+        src: '/pictures/logo.PNG',
         sizes: '3000x3000',
         type: 'image/png',
         purpose: "any",
