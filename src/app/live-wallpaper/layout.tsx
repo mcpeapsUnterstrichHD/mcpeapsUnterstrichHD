@@ -69,6 +69,136 @@ const ccnfp = localFont({
   ],
 })
 
+const ccnfn = localFont({
+  src: [
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-BoldItalic.ttf',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiBoldItalic.ttf',
+      weight: '600',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiLight.ttf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-SemiLightItalic.ttf',
+      weight: '200',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-ExtraLight.ttf',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-ExtraLightItalic.ttf',
+      weight: '100',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFontMono-LightItalic.ttf',
+      weight: '300',
+      style: 'italic',
+    },
+  ],
+})
+
+const ccnf = localFont({
+  src: [
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-BoldItalic.ttf',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-SemiBoldItalic.ttf',
+      weight: '600',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-SemiLight.ttf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-SemiLightItalic.ttf',
+      weight: '200',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-ExtraLight.ttf',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-ExtraLightItalic.ttf',
+      weight: '100',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/CaskaydiaCoveNerdFont-LightItalic.ttf',
+      weight: '300',
+      style: 'italic',
+    },
+  ],
+})
+
 export const metadata: Metadata = {
   title: "Live Wallpaper",
   description: "customizable Live Wallpaper",
@@ -81,7 +211,7 @@ export const metadata: Metadata = {
     creator: '@mcpeaps_HD',
     creatorId: '723191637950775296',
     images: [{
-      url: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
@@ -93,7 +223,7 @@ export const metadata: Metadata = {
     description: 'customizable Live Wallpaper',
     url: 'https://mahd.comboompunksucht.app/live-wallpaper',
     images: [{
-      url: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
       alt: 'Logo of mcpeaps_HD', // Alt attribute for Twitter image
       width: 3000,
       height: 3000
@@ -120,12 +250,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
-    shortcut: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
-    apple: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+    icon: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
+    shortcut: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
+    apple: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: 'https://mahd.comboompunksucht.app/pictures/logo.svg',
+      url: 'https://mahd.comboompunksucht.app/pictures/logo.PNG',
     },
   },
 };
@@ -138,9 +268,9 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <link rel="apple-touch-icon" href="https://mahd.comboompunksucht.app/pictures/logo.svg" />
+        <link rel="apple-touch-icon" href="https://mahd.comboompunksucht.app/pictures/logo.PNG" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="https://mahd.comboompunksucht.app/pictures/logo.svg" />
+        <link rel="icon" href="https://mahd.comboompunksucht.app/pictures/logo.PNG" />
         <meta name="theme-color" content="#010101" />
         <meta name="start_url" content="https://mahd.comboompunksucht.app/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
@@ -149,14 +279,21 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Live Wallpaper" />
         <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
-        <meta name="msapplication-TileImage" content="https://mahd.comboompunksucht.app/pictures/logo.svg" />
+        <meta name="msapplication-TileImage" content="https://mahd.comboompunksucht.app/pictures/logo.PNG" />
         <meta charSet="UTF-8" />
         <link rel="manifest" href="https://mahd.comboompunksucht.app/manifest.webmanifest" />
         <link rel="sitemap" href="https://mahd.comboompunksucht.app/sitemap" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
       </head>
-      <body className={ccnfp.className}>
+      <body className={ccnfp.className + " " + ccnfn.className + " " + ccnf.className}>
+        <style>
+      {`
+        @font-face {
+          font-family: ${ccnfp.className}, ${ccnfn.className}, ${ccnf.className};
+        }
+      `}
+    </style>
       <ThemeProvider
             attribute="class"
             defaultTheme="dark"

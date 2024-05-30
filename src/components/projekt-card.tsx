@@ -5,6 +5,7 @@ import { Button, buttonVariants } from './ui/button';
 import { Badge } from '@/components/ui/badge';
 import  Image  from 'next/image';
 
+
 interface ProjektCardProps {
   ProjektImage: string;
   ProjektImageAlt: string;
@@ -45,20 +46,18 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
         </div>
       </CardContent>
       <CardFooter className='flex-grow flex flex-col gap-4 items-center justify-center p-4'>
-
-
           <div className={ProjektImageBgColor + "w-[480] h-[480px] rounded-sm flex items-center justify-center"}>
-            <Image
-              src={ProjektImage}
-              alt={ProjektImageAlt}
-              className={ProjektImageBgColor + 'object-contain rounded-sm'}
-              width={480}
-              height={480}
-              layout='responsive'
-              objectFit='fill'
-              objectPosition='center'
-              priority= {true}
-            />
+              <Image
+                src={ProjektImage}
+                alt={ProjektImageAlt}
+                className={ProjektImageBgColor + ' object-contain rounded-sm'}
+                width={480}
+                height={480}
+                layout='responsive'
+                objectFit='fill'
+                objectPosition='center'
+                priority={true}
+              />
           </div>
       </CardFooter>
     </Card>
