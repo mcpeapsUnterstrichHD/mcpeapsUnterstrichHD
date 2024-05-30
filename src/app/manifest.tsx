@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Fabian Aps Portfolio/Impressum',
-    short_name: 'Fabian Aps Portfolio/Impressum',
+    short_name: 'Fabian Aps',
     description: 'my own portfolio/impressum website',
     start_url: 'https://mahd.comboompunksucht.app/',
     //start_url:'/',
