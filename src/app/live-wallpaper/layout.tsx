@@ -249,15 +249,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: '/pictures/logo.PNG',
-    shortcut: '/pictures/logo.PNG',
-    apple: '/pictures/logo.PNG',
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/pictures/logo.PNG',
-    },
-  },
 };
 //<link rel="manifest" href="/manifest.webmanifest" />
 export default function RootLayout({
@@ -268,9 +259,7 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <link rel="apple-touch-icon" href="/pictures/logo.PNG" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/pictures/logo.PNG" />
         <meta name="theme-color" content="#010101" />
         <meta name="start_url" content="https://mahd.comboompunksucht.app/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
@@ -279,21 +268,13 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Live Wallpaper" />
         <meta name="application-name" content="Fabian Aps" />
         <meta name="msapplication-TileColor" content="#010101" />
-        <meta name="msapplication-TileImage" content="/pictures/logo.PNG" />
         <meta charSet="UTF-8" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="sitemap" href="/sitemap" />
         <meta name="keywords" content="portfolio, website, impressum, github, linkedin, aps, fabian" />
-        <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+        <meta name="format-detection" content="telephone=yes, date=no, email=yes, address=yes" />
       </head>
       <body className={ccnfp.className + " " + ccnfn.className + " " + ccnf.className}>
-        <style>
-      {`
-        @font-face {
-          font-family: ${ccnfp.className}, ${ccnfn.className}, ${ccnf.className};
-        }
-      `}
-    </style>
       <ThemeProvider
             attribute="class"
             defaultTheme="dark"
