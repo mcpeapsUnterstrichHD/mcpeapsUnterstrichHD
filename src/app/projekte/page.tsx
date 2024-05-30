@@ -83,21 +83,21 @@ export default function Home() {
             ProjektBadges={["FOSS","WEB","NEW", "SEARCH ENGINE", "DOCKER"]}
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/searxng">Das Projekt zu Meiner Suchmaschine basiernd auf SearxNG</ProjektCard>
           <ProjektCard
-            ProjektImage="/pictures/logo.PNG"
+            ProjektImage="/pictures/logo.png"
             ProjektImageAlt="mcpeaps_HD Logo"
             ProjektImageBgColor=""
             ProjektTitle="Meine eigenen Dotfiles"
             ProjektBadges={["FOSS","WEB","NEW", "Konfiguration", "DOTFILES"]}
             ProjektLink="https://github.com/mcpeapsUnterstrichHD/dotfiles">Das Repository für meine Dotfiles.</ProjektCard>
           <ProjektCard
-            ProjektImage="/pictures/Logo-transparet.PNG"
+            ProjektImage="/pictures/Logo-transparet.png"
             ProjektImageAlt="comboom.sucht Logo"
             ProjektImageBgColor="bg-black"
             ProjektTitle="comboom.sucht Website"
             ProjektBadges={["FOSS", "WEB", "MARKDOWN", "WIKI"]}
             ProjektLink="https://github.com/comboomPunkTsucht/comboom.sucht-BLOG">Das ist die Webseite meiner Freundes Gruppe.</ProjektCard>
           <ProjektCard
-            ProjektImage="/pictures/Logo-transparet.PNG"
+            ProjektImage="/pictures/Logo-transparet.png"
             ProjektImageAlt="comboom.sucht Logo"
             ProjektImageBgColor="bg-black"
             ProjektTitle="comboom.sucht App"
