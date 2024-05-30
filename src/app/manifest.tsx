@@ -25,13 +25,13 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: "maskable",
       },
       {
-        src: '/pictures/logo.png',
+        src: '/icon.png',
         sizes: '3000x3000 48x48 72x72 96x96 128x128 256x256 512x512 1024x1024 2048x2048 4096x4096 8192x8192 192x192',
         type: 'image/png',
         purpose: "any",
       },
       {
-        src: '/pictures/logo.png',
+        src: '/icon.png',
         sizes: '3000x3000 48x48 72x72 96x96 128x128 256x256 512x512 1024x1024 2048x2048 4096x4096 8192x8192 192x192',
         type: 'image/png',
       },
