@@ -7,12 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 
 import { encrypt } from '@vercel/flags';
-import { FlagValues, type FlagValuesType } from '@vercel/flags/react';
-import { Suspense } from 'react';
-async function ConfidentialFlagValues({ values }: { values: FlagValuesType }) {
-  const encryptedFlagValues = await encrypt(values);
-  return <FlagValues values={encryptedFlagValues} />;
-}
+import { FlagValues } from '@vercel/flags/react';
 
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
@@ -104,9 +99,7 @@ export default function RootLayout({
             refresh={true}
           />
             <div className="z-1">{children}
-              <Suspense fallback={null}>
-                <ConfidentialFlagValues values={values} />
-              </Suspense>
+            <FlagValues values={values} />
             </div>
           </div>
           </ThemeProvider>
