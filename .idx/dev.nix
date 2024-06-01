@@ -4,9 +4,10 @@
     pkgs.nodejs_20
     pkgs.yarn
     pkgs.nodePackages.vercel
+    pkgs.git
   ];
-  #programs.git = {
-   # enable = true;
+  programs.git = {
+    enable = true;
    # userName  = "mcpeapsUnterstrichHD";
    # userEmail = "mcpeaps_HD@outlook.com";
    # lfs.enable = true;
@@ -91,7 +92,6 @@
   ];
   workspace ={
     onCreate = {
-    vercel-insallation = "yarn global add vercel";
     yarn-install = "yarn install";
   };
   onStart = {
