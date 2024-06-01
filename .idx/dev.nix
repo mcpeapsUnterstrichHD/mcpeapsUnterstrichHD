@@ -4,12 +4,12 @@
     pkgs.nodejs_20
     pkgs.yarn
   ];
-  programs.git = {
-    enable = true;
-    userName  = "mcpeapsUnterstrichHD";
-    userEmail = "mcpeaps_HD@outlook.com";
-    lfs.enable = true;
-  };
+  #programs.git = {
+   # enable = true;
+   # userName  = "mcpeapsUnterstrichHD";
+   # userEmail = "mcpeaps_HD@outlook.com";
+   # lfs.enable = true;
+  #};
   idx.extensions = [
     "kamikillerto.vscode-colorize"
     "faceair.ayu-one-dark" 
