@@ -10,7 +10,8 @@
    # userEmail = "mcpeaps_HD@outlook.com";
    # lfs.enable = true;
   #};
-  idx.extensions = [
+  idx = {
+    extensions = [
     "kamikillerto.vscode-colorize"
     "faceair.ayu-one-dark" 
     "edwinhuish.better-comments-next"
@@ -19,11 +20,13 @@
     "deskbtm.colorful-monorepo"
     "ParthR2031.colorful-comments"
     "gamunu.vscode-yarn"
+    
   ];
-  idx.workspace.onCreate = {
+  workspace ={
+    onCreate = {
     yarn-install = "yarn install";
   };
-  idx.workspace.onStart = {
+  onStart = {
     #nameGit = "git config user.name \"mcpeapsUnterstrichHD\"";
     #emailGit = "git config user.email \"mcpeaps_HD@outlook.com\"";
     fetchGit = "git fetch";
@@ -33,7 +36,8 @@
     commitGit = "git commit -m \"IDX Initail update\" --allow-empty";
     pushGit = "git push -u origin dev";
   };
-  idx.previews = {
+  };
+  previews = {
     previews = {
       web = {
         command = [
@@ -50,4 +54,5 @@
       };
     };
   };
+};
 }
