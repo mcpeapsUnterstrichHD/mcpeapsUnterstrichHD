@@ -24,8 +24,8 @@
     yarn-install = "yarn install";
   };
   idx.workspace.onStart = {
-    nameGit = "git config user.name \"mcpeapsUnterstrichHD\"";
-    emailGit = "git config user.email \"mcpeaps_HD@outlook.com\"";
+    #nameGit = "git config user.name \"mcpeapsUnterstrichHD\"";
+    #emailGit = "git config user.email \"mcpeaps_HD@outlook.com\"";
     fetchGit = "git fetch";
     pullGit = "git pull";
     yarn-upgrade = "yarn upgrade";
