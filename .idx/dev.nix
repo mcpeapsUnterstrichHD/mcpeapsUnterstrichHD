@@ -20,6 +20,9 @@
     fetchGit = "git fetch";
     pullGit = "git pull";
     yarn-upgrade = "yarn upgrade";
+    addGit = "git add .";
+    commitGit = "git commit -m \"IDX Initail update\" --allow-empty";
+    pushGit = "git push -u origin dev";
   };
   idx.previews = {
     previews = {
