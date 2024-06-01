@@ -17,6 +17,8 @@
     yarn-install = "yarn install";
   };
  idx.workspace.onStart = {
+    fetchGit = "git fetch";
+    pullGit = "git pull";
     yarn-upgrade = "yarn upgrade";
   };
   idx.previews = {
