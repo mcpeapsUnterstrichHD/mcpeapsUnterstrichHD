@@ -95,6 +95,7 @@
   onStart = {
     #nameGit = "git config user.name \"mcpeapsUnterstrichHD\"";
     #emailGit = "git config user.email \"mcpeaps_HD@outlook.com\"";
+    checkoutGit = "git checkout dev";
     fetchGit = "git fetch";
     pullGit = "git pull";
     yarn-upgrade = "yarn upgrade";
