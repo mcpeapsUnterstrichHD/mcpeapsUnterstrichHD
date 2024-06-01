@@ -15,9 +15,11 @@
     "gamunu.vscode-yarn"
   ];
   idx.workspace.onCreate = {
+ idx.workspace.onStart = {
     yarn-install = "yarn install";
   };
- idx.workspace.onStart = {
+    nameGit = "git config user.name \"mcpeapsUnterstrichHD\"";
+    emailGit = "git config user.email mcpeaps_HD@outlook.com ";
     fetchGit = "git fetch";
     pullGit = "git pull";
     yarn-upgrade = "yarn upgrade";
