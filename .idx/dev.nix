@@ -1,4 +1,4 @@
-{pkgs}: {
+{pkgs, ...}: {
   channel = "stable-23.11";
   packages = [
     pkgs.nodejs_20
@@ -6,12 +6,6 @@
     pkgs.nodePackages.vercel
     pkgs.git
   ];
-  programs.git = {
-    enable = true;
-   # userName  = "mcpeapsUnterstrichHD";
-   # userEmail = "mcpeaps_HD@outlook.com";
-   # lfs.enable = true;
-  #};
   idx = {
     extensions = [
     "bierner.emojisense"
