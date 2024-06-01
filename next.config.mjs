@@ -19,6 +19,9 @@ const nextConfig = {
     typedRoutes: false,
     ppr: true,
   },
+  images: {
+    domains: ['cdn.idx.dev'],
+  },
 };
 
 export default nextConfig;
