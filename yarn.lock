@@ -1062,6 +1062,13 @@
   dependencies:
     server-only "^0.0.1"
 
+"@vercel/flags@^2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@vercel/flags/-/flags-2.5.1.tgz#7b729c11af4c2006919a28ee6bea53cac793732d"
+  integrity sha512-Nwnhrea6OxzJpm+mPHe4eQoFRAJDIWlniaDieH1iEzYDdFtRWLGpf74fhnbe83P5gcfXVmxM57XZEXHIU52e8Q==
+  dependencies:
+    jose "5.2.1"
+
 "@vercel/speed-insights@^1.0.10":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@vercel/speed-insights/-/speed-insights-1.0.11.tgz#44e436bdf19d445fd34f2e335f5bc9f44b86f9de"
@@ -2636,6 +2643,11 @@ jiti@^1.21.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.0.tgz#7c97f8fe045724e136a397f7340475244156105d"
   integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
 
+jose@5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.2.1.tgz#ec3befe173896e592e2d9ef5f267d061ffb203c5"
+  integrity sha512-qiaQhtQRw6YrOaOj0v59h3R6hUY9NvxBmmnMfKemkqYmBB0tEc97NbLP7ix44VP5p9/0YHG8Vyhzuo5YBNwviA==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -3456,6 +3468,7 @@ streamsearch@^1.1.0:
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==

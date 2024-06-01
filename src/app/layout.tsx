@@ -6,7 +6,13 @@ import Particles from '@/components/particles';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 
-
+import { encrypt } from '@vercel/flags';
+import { FlagValues, type FlagValuesType } from '@vercel/flags/react';
+import { Suspense } from 'react';
+async function ConfidentialFlagValues({ values }: { values: FlagValuesType }) {
+  const encryptedFlagValues = await encrypt(values);
+  return <FlagValues values={encryptedFlagValues} />;
+}
 
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
@@ -65,6 +71,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const values = { exampleFlag: true };
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
@@ -96,7 +103,11 @@ export default function RootLayout({
             quantity={400}
             refresh={true}
           />
-            <div className="z-1">{children}</div>
+            <div className="z-1">{children}
+              <Suspense fallback={null}>
+                <ConfidentialFlagValues values={values} />
+              </Suspense>
+            </div>
           </div>
           </ThemeProvider>
           <SpeedInsights />
