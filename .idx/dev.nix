@@ -12,6 +12,7 @@
     "PulkitGangwar.nextjs-snippets"
     "deskbtm.colorful-monorepo"
     "ParthR2031.colorful-comments"
+    "gamunu.vscode-yarn"
   ];
   idx.workspace.onCreate = {
     yarn-install = "yarn install";
