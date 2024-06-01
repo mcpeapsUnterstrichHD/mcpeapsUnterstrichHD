@@ -4,6 +4,12 @@
     pkgs.nodejs_20
     pkgs.yarn
   ];
+  programs.git = {
+    enable = true;
+    userName  = "mcpeapsUnterstrichHD";
+    userEmail = "mcpeaps_HD@outlook.com";
+    lfs.enable = true;
+  };
   idx.extensions = [
     "kamikillerto.vscode-colorize"
     "faceair.ayu-one-dark" 
@@ -15,11 +21,11 @@
     "gamunu.vscode-yarn"
   ];
   idx.workspace.onCreate = {
- idx.workspace.onStart = {
     yarn-install = "yarn install";
   };
+  idx.workspace.onStart = {
     nameGit = "git config user.name \"mcpeapsUnterstrichHD\"";
-    emailGit = "git config user.email mcpeaps_HD@outlook.com ";
+    emailGit = "git config user.email \"mcpeaps_HD@outlook.com\"";
     fetchGit = "git fetch";
     pullGit = "git pull";
     yarn-upgrade = "yarn upgrade";
