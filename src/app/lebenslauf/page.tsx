@@ -48,7 +48,7 @@ export default function Home() {
                 startdate='2021'
                 enddate='2024'
               >
-                <a>Ausbildung zum IT-Assistenten</a>
+                <a>Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur</a>
               </TimeLineElementBig>
               <TimeLineElementBig
                 TimeLineTitle='Carl-von-Linné-Schule'
