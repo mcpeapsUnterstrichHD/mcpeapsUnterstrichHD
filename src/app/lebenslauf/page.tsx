@@ -17,7 +17,7 @@ export default function Home() {
             <h1 className='text-4xl font-bold gap-8'>Fabian Aps</h1>
 
             <div className="mb-10 text-justify">
-    Ich bin ein IT-Assistent in Ausbildung.
+    Ich bin ein IT-Assistent.
     <br/>
     <div className="flex flex-col items-start">
                     <div className="flex flex-row items-center">
