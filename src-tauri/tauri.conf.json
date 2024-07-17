@@ -12,17 +12,10 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "label": "main",
-        "url": "/",
-        "visible": false,
         "title": "Fabian Aps",
         "width": 1280,
         "height": 720
-      },
-      {
-				"label": "splashscreen",
-				"url": "/live-wallpaper?h1=mcpeaps_HD&h2=comboom.sucht"
-			}
+      }
     ],
     "security": {
       "csp": null
