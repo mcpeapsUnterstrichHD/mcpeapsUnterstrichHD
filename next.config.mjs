@@ -10,7 +10,7 @@ if (!isProd) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: isProd ? null : 'export',
+  output: isProd ? 'standalone' : 'export',
   trailingSlash: false,
   httpAgentOptions: {
     keepAlive: true,
