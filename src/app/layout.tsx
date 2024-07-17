@@ -6,8 +6,6 @@ import Particles from '@/components/particles';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 
-import { encrypt } from '@vercel/flags';
-import { FlagValues } from '@vercel/flags/react';
 
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
@@ -99,7 +97,6 @@ export default function RootLayout({
             refresh={true}
           />
             <div className="z-1">{children}
-            <FlagValues values={values} />
             </div>
           </div>
           </ThemeProvider>
