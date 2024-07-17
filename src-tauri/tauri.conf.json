@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "identifier": "com.comboom.sucht.mcpeapsunterstrichhd",
   "build": {
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build",
+	"beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "/bin/rm -fr ./out && mkdir ./out && echo \"<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Redirect</title><meta http-equiv='refresh' content='0; url=https://mahd.comboompunksucht.app/'><script>window.location.href='https://mahd.comboompunksucht.app/';</script></head><body></body></html>\" > ./out/index.html",
     "devUrl": "http://localhost:3000",
-    "frontendDist": "../out"
-  },
+		"frontendDist": "../out"
+	},
   "app": {
     "withGlobalTauri": true,
     "windows": [
