@@ -328,7 +328,7 @@
   @apply items-center;
 }
 
-@media (width < 444px) {
+@media (width < 600px) {
   .my-Skill-grid-4 {
     @apply grid;
     @apply grid-cols-1;
