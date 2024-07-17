@@ -10,7 +10,7 @@ if (!isProd) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: isProd ? null : 'export',
   trailingSlash: false,
   httpAgentOptions: {
     keepAlive: true,
@@ -28,7 +28,7 @@ const nextConfig = {
   reactStrictMode: false,
   experimental: {
     typedRoutes: false,
-    ppr: false,
+    ppr: isProd ? true : false,
   },
   images: {
     unoptimized: true,
