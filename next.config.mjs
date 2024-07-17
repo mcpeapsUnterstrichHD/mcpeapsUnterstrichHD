@@ -1,5 +1,16 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
+let internalHost = null;
+
+if (!isProd) {
+  const { internalIpV4 } = await import('internal-ip');
+  internalHost = await internalIpV4();
+}
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   trailingSlash: false,
   httpAgentOptions: {
     keepAlive: true,
@@ -17,11 +28,13 @@ const nextConfig = {
   reactStrictMode: false,
   experimental: {
     typedRoutes: false,
-    ppr: true,
+    ppr: false,
   },
   images: {
+    unoptimized: true,
     domains: ['cdn.idx.dev'],
   },
+  assetPrefix: isProd ? null : `http://${internalHost}:3000`,
 };
 
 export default nextConfig;
