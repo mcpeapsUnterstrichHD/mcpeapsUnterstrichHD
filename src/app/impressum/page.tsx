@@ -12,7 +12,7 @@ export default function Home() {
             <div className="text-3xl w-full font-bold mb-2">Impressum</div>
 
             <div className="text-2xl py-2 font-bold">Angaben gemäß § 5 TMG:</div>
-            <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><div className="text-lg py-1">
+            <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior passHref><div className="text-lg py-1">
               Aps, Fabian<br />
               Ludwig-Renn-Straße 33<br />
               12679 Berlin, Deutschland
@@ -31,7 +31,7 @@ export default function Home() {
             </div>
 
             <div className="text-2xl py-2 font-bold">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</div>
-            <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><div className="text-lg py-1">
+            <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior passHref><div className="text-lg py-1">
               Aps, Fabian<br />
               Ludwig-Renn-Straße 33<br />
               12679 Berlin, Deutschland

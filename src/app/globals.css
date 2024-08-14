@@ -294,7 +294,7 @@
   @apply visible;
 }
 
-@media (width < 444px) {
+@media (max-width: 600px) {
   .nametag {
     @apply hidden;
   }
@@ -308,7 +308,7 @@
   @apply items-stretch;
 }
 
-@media (width < 1280px) {
+@media (max-width: 1280px) {
   .my-Project-grid-4 {
     @apply grid;
     @apply grid-cols-1;
@@ -328,7 +328,7 @@
   @apply items-center;
 }
 
-@media (width < 600px) {
+@media (max-width: 600px) {
   .my-Skill-grid-4 {
     @apply grid;
     @apply grid-cols-1;
@@ -346,7 +346,7 @@
   @apply items-stretch;
 }
 
-@media (width < 1280px) {
+@media (max-width: 1280px) {
   .my-Project-grid-3 {
     @apply grid;
     @apply grid-cols-1;
@@ -367,7 +367,7 @@
   @apply p-4;
 }
 
-@media (width < 444px) {
+@media (max-width: 444px) {
   .timelineelement {
     @apply p-1;
   }
