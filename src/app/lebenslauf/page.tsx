@@ -28,7 +28,7 @@ export default function Home() {
 
                 </div>
     <br/>
-    <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior><div className="text-lg py-1">
+    <Link href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337" legacyBehavior passHref><div className="text-lg py-1">
               Aps, Fabian<br />
               Ludwig-Renn-Straße 33<br />
               12679 Berlin, Deutschland

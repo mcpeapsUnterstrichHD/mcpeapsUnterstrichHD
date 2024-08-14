@@ -26,7 +26,7 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
   children,
 }) => {
   return (
-    <Link href={ProjektLink}>
+    <Link href={ProjektLink} legacyBehavior passHref>
     <Card className='projectCard'>
       <CardHeader>
         <CardTitle>{ProjektTitle}</CardTitle>
