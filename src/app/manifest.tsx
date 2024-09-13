@@ -50,7 +50,6 @@ export default function manifest(): MyManifest {
         type: "image/png",
       },
     ],
-    ,
     screenshots: [
       {
         src: "/pictures/logo_3000x3000.png",
