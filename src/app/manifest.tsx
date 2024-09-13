@@ -1,6 +1,20 @@
 import { MetadataRoute } from "next";
 
-export default function manifest(): MetadataRoute.Manifest {
+type Screenshot = {
+  src: string;
+  type?: string;
+  sizes?: string;
+};
+
+interface CustomScreenshot extends Screenshot {
+  form_factor?: string; // Optional form factor property
+  label?: string; // Optional label property
+}
+interface MyManifest extends MetadataRoute.Manifest {
+  screenshots: CustomScreenshot[];
+}
+
+export default function manifest(): MyManifest {
   return {
     name: "Fabian Aps",
     short_name: "Fabian Aps",
@@ -34,6 +48,23 @@ export default function manifest(): MetadataRoute.Manifest {
         src: "/pictures/logo.PNG",
         sizes: "any",
         type: "image/png",
+      },
+    ],
+    ,
+    screenshots: [
+      {
+        src: "/pictures/logo_3000x3000.png",
+        sizes: "3000x3000",
+        type: "image/png",
+        form_factor: "wide",
+        label: "Logo of mcpeaps_HD",
+      },
+      {
+        src: "/pictures/logo_3000x3000.png",
+        sizes: "3000x3000",
+        type: "image/png",
+        form_factor: "narrow",
+        label: "Logo of mcpeaps_HD",
       },
     ],
   };
