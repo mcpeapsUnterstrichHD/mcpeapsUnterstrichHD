@@ -1,42 +1,48 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import Image from 'next/image';
-import { Suspense } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+"use client";
+import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Suspense } from "react";
 
 function GetH2() {
   const searchParams = useSearchParams(); // For query string parameters
-  const [myH2, setH2] = useState(decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft');
+  const [myH2, setH2] = useState(
+    decodeURIComponent(searchParams.get("h2") || "") ||
+      "ITler/DJ/Producer aus Leidenschaft",
+  );
 
   useEffect(() => {
-    setH2(decodeURIComponent(searchParams.get('h2') || '') || 'ITler/DJ/Producer aus Leidenschaft');
+    setH2(
+      decodeURIComponent(searchParams.get("h2") || "") ||
+        "ITler/DJ/Producer aus Leidenschaft",
+    );
   }, [searchParams]);
 
-  return (
-    myH2 === 'comboom.sucht' ?
-      <Image
-        src="/pictures/Logo-transparet.PNG"
-        alt="Logo"
-        width={300}
-        height={180}
-      /> :
-      <h2 className="my-16 text-xl text-secondary-foreground">
-        {myH2}
-      </h2>
+  return myH2 === "comboom.sucht" ? (
+    <Image
+      src="/pictures/Logo-transparet.PNG"
+      alt="Logo"
+      width={300}
+      height={180}
+    />
+  ) : (
+    <h2 className="my-16 text-secondary-foreground text-xl">{myH2}</h2>
   );
 }
 
 function GetH1() {
   const searchParams = useSearchParams(); // For query string parameters
-  const [myH1, setH1] = useState(decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps');
+  const [myH1, setH1] = useState(
+    decodeURIComponent(searchParams.get("h1") || "") || "Fabian Aps",
+  );
 
   useEffect(() => {
-    setH1(decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps');
+    setH1(decodeURIComponent(searchParams.get("h1") || "") || "Fabian Aps");
   }, [searchParams]);
 
   return (
-    <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
+    <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-transparent duration-3000 sm:text-6xl md:text-9xl">
       {myH1}
     </h1>
   );
@@ -44,20 +50,26 @@ function GetH1() {
 
 export default function Home() {
   return (
-    <div className="overflow-hidden flex flex-col items-center justify-center w-screen h-screen">
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
-      <Suspense fallback={
-        <h1 className="z-9 text-4xl text-transparent duration-3000 bg-secondary-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
-          <Skeleton className="h-[5rem] w-[500px] rounded-full" />
-        </h1>
-      }>
+    <div className="flex h-screen w-screen flex-col items-center justify-center overflow-hidden">
+      <div className="hidden h-px w-screen animate-fade-left animate-glow bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground md:block" />
+      <Suspense
+        fallback={
+          <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-transparent duration-3000 sm:text-6xl md:text-9xl">
+            <Skeleton className="h-[5rem] w-[500px] rounded-full" />
+          </h1>
+        }
+      >
         <GetH1 />
       </Suspense>
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground" />
-      <div className="text-center animate-fade-in">
-        <Suspense fallback={<h2 className="my-16 text-xl text-secondary-foreground">
-          <Skeleton className="h-[3.5rem] w-[500px] rounded-full" />
-        </h2>}>
+      <div className="hidden h-px w-screen animate-fade-right animate-glow bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground md:block" />
+      <div className="animate-fade-in text-center">
+        <Suspense
+          fallback={
+            <h2 className="my-16 text-secondary-foreground text-xl">
+              <Skeleton className="h-[3.5rem] w-[500px] rounded-full" />
+            </h2>
+          }
+        >
           <GetH2 />
         </Suspense>
       </div>
