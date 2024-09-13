@@ -8,7 +8,13 @@
     "start": "next start",
     "lint": "biome check src",
     "format": "biome check --write src",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched"
+    ]
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -50,7 +56,9 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
+    "husky": "^9.1.6",
     "internal-ip": "^8.0.0",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.6.2"
