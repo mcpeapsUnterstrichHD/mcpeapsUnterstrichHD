@@ -1,25 +1,25 @@
-"use client";
-import { Skeleton } from "@/components/ui/skeleton";
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Suspense } from "react";
+'use client';
+import { Skeleton } from '@/components/ui/skeleton';
+import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
 
 function GetH2() {
   const searchParams = useSearchParams(); // For query string parameters
   const [myH2, setH2] = useState(
-    decodeURIComponent(searchParams.get("h2") || "") ||
-      "ITler/DJ/Producer aus Leidenschaft",
+    decodeURIComponent(searchParams.get('h2') || '') ||
+      'ITler/DJ/Producer aus Leidenschaft',
   );
 
   useEffect(() => {
     setH2(
-      decodeURIComponent(searchParams.get("h2") || "") ||
-        "ITler/DJ/Producer aus Leidenschaft",
+      decodeURIComponent(searchParams.get('h2') || '') ||
+        'ITler/DJ/Producer aus Leidenschaft',
     );
   }, [searchParams]);
 
-  return myH2 === "comboom.sucht" ? (
+  return myH2 === 'comboom.sucht' ? (
     <Image
       src="/pictures/Logo-transparet.PNG"
       alt="Logo"
@@ -27,18 +27,18 @@ function GetH2() {
       height={180}
     />
   ) : (
-    <h2 className="my-16 text-secondary-foreground text-xl">{myH2}</h2>
+    <h2 className="my-16 text-white text-xl">{myH2}</h2>
   );
 }
 
 function GetH1() {
   const searchParams = useSearchParams(); // For query string parameters
   const [myH1, setH1] = useState(
-    decodeURIComponent(searchParams.get("h1") || "") || "Fabian Aps",
+    decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps',
   );
 
   useEffect(() => {
-    setH1(decodeURIComponent(searchParams.get("h1") || "") || "Fabian Aps");
+    setH1(decodeURIComponent(searchParams.get('h1') || '') || 'Fabian Aps');
   }, [searchParams]);
 
   return (
@@ -65,7 +65,7 @@ export default function Home() {
       <div className="animate-fade-in text-center">
         <Suspense
           fallback={
-            <h2 className="my-16 text-secondary-foreground text-xl">
+            <h2 className="my-16 text-white text-xl">
               <Skeleton className="h-[3.5rem] w-[500px] rounded-full" />
             </h2>
           }
