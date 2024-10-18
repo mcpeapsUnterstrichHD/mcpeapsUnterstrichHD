@@ -42,7 +42,7 @@ function GetH1() {
   }, [searchParams]);
 
   return (
-    <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-transparent duration-3000 sm:text-6xl md:text-9xl">
+    <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-white duration-3000 sm:text-6xl md:text-9xl">
       {myH1}
     </h1>
   );
@@ -54,7 +54,7 @@ export default function Home() {
       <div className="hidden h-px w-screen animate-fade-left animate-glow bg-gradient-to-r from-primary-foreground via-secondary-foreground to-primary-foreground md:block" />
       <Suspense
         fallback={
-          <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-transparent duration-3000 sm:text-6xl md:text-9xl">
+          <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-white duration-3000 sm:text-6xl md:text-9xl">
             <Skeleton className="h-[5rem] w-[500px] rounded-full" />
           </h1>
         }
