@@ -5,5 +5,8 @@
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"quik.biome": "explicit"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
 	}
 }
