@@ -1,4 +1,5 @@
 "use client";
+import { AppSidebar } from "@/components/app-sidebar";
 import Footer from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";
 import Link from "next/link";
@@ -9,6 +10,7 @@ export default function Home() {
       <nav className="top sticky top-0 z-10">
         <NavBar />
       </nav>
+
       <main className="flex min-h-screen flex-col items-center justify-between p-4">
         <div className="mt-5 pb-12">
           <div className="mb-2 w-full font-bold text-3xl">Impressum</div>
@@ -69,8 +71,10 @@ export default function Home() {
             </div>
           </Link>
         </div>
-        <Footer />
+
       </main>
+      <aside className="float-left clear-left isolate absolute z-10"><AppSidebar /></aside>
+      <Footer />
     </div>
   );
 }

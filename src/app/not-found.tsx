@@ -1,4 +1,5 @@
 "use client";
+import { AppSidebar } from "@/components/app-sidebar";
 import Footer from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";
 
@@ -140,6 +141,7 @@ const NotFound = () => {
         <NavBar />
       </nav>
 
+
       <main className="flex min-h-screen flex-col items-center p-4">
         <div>
           <div className="nf nf-md-emoticon_sad_outline text-[10em]"></div>
@@ -151,7 +153,9 @@ const NotFound = () => {
                     @import "https://www.nerdfonts.com/assets/css/webfont.css";
                 `}</style>
       </main>
+      <aside className="float-left clear-left isolate absolute z-10"><AppSidebar /></aside>
       <div className="absolute inset-x-0 bottom-0">
+
         <Footer />
       </div>
     </div>

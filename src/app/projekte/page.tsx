@@ -1,3 +1,4 @@
+import { AppSidebar } from "@/components/app-sidebar";
 import Footer from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";
 import ProjektCard from "@/components/projekt-card";
@@ -151,8 +152,10 @@ export default function Home() {
             Das ist die App meiner Freundes Gruppe.
           </ProjektCard>
         </div>
-        <Footer />
+
       </main>
+      <aside className="float-left clear-left isolate absolute z-10"><AppSidebar /></aside>
+      <Footer />
     </div>
   );
 }

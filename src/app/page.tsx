@@ -1,4 +1,5 @@
 "use client";
+import { AppSidebar } from "@/components/app-sidebar";
 import Footer from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";
 
@@ -19,7 +20,9 @@ export default function Home() {
             ITler/DJ/Producer aus Leidenschaft
           </h2>
         </div>
+        <aside className="float-left clear-left isolate absolute z-10"><AppSidebar /></aside>
         <div className="absolute inset-x-0 bottom-0">
+
           <Footer />
         </div>
       </div>
