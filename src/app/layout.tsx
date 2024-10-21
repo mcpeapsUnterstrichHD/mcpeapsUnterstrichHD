@@ -8,7 +8,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { FlagValues } from "@vercel/flags/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SidebarProvider } from "@/components/ui/sidebar"
-import { WebVitals } from "@/components/web-vitals";
 
 
 export const metadata: Metadata = {
@@ -73,7 +72,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const values = { exampleFlag: true };
+  const values = { example_flag: true };
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
@@ -102,7 +101,6 @@ export default function RootLayout({
         />
       </head>
       <body className={cn("")}>
-        <WebVitals />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

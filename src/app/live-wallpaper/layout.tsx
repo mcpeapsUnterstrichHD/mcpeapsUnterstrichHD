@@ -3,7 +3,6 @@ import "../globals.css";
 
 import Particles from "@/components/particles";
 import { ThemeProvider } from "@/components/theme-provider";
-import { WebVitals } from "@/components/web-vitals";
 
 export const metadata: Metadata = {
   title: "Live Wallpaper",
@@ -91,7 +90,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <WebVitals />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
