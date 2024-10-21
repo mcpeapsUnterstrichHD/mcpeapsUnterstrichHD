@@ -9,6 +9,7 @@ import { FlagValues } from "@vercel/flags/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { WebVitals } from "@/components/web-vitals";
+import { CaskaydiaCoveNerdFontPropo, CaskaydiaCoveNerdFontMono, CaskaydiaCoveNerdFont } from './fonts'
 
 
 export const metadata: Metadata = {
@@ -101,7 +102,7 @@ export default function RootLayout({
           content="telephone=yes, date=no, email=yes, address=yes"
         />
       </head>
-      <body className={cn("")}>
+      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable}`)}>
         <WebVitals />
         <ThemeProvider
           attribute="class"

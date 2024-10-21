@@ -69,7 +69,7 @@ export const CaskaydiaCoveNerdFontPropo = localFont({
   ],
 });
 
-const CaskaydiaCoveNerdFontMono = localFont({
+export const CaskaydiaCoveNerdFontMono = localFont({
   preload: true,
   variable: '--font-CaskaydiaCoveNerdFontMono',
   src: [
@@ -136,7 +136,7 @@ const CaskaydiaCoveNerdFontMono = localFont({
   ],
 });
 
-const CaskaydiaCoveNerdFont = localFont({
+export const CaskaydiaCoveNerdFont = localFont({
   preload: true,
   variable: '--font-CaskaydiaCoveNerdFont',
   src: [

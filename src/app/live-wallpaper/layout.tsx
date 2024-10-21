@@ -4,6 +4,8 @@ import "../globals.css";
 import Particles from "@/components/particles";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WebVitals } from "@/components/web-vitals";
+import { CaskaydiaCoveNerdFontPropo, CaskaydiaCoveNerdFontMono, CaskaydiaCoveNerdFont } from '../fonts'
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Live Wallpaper",
@@ -90,7 +92,7 @@ export default function RootLayout({
           content="telephone=yes, date=no, email=yes, address=yes"
         />
       </head>
-      <body>
+      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable}`)}>
         <WebVitals />
         <ThemeProvider
           attribute="class"
