@@ -1,21 +1,14 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from 'next/server';
+import { example_flag } from './flags';
 
-export function middleware(request: NextRequest) {
-  const response = NextResponse.next();
-  response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-  );
-  response.headers.set(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With, Content-Type",
-  );
+// Note that we're running this middleware for / only, but
+// you could extend it to further pages you're experimenting on
 
-  // Handle preflight request
-  if (request.method === "OPTIONS") {
-    return new NextResponse(null, { status: 200 });
-  }
+export async function middleware(request: NextRequest) {
+  // precompute returns a string encoding each flag's returned value
+  const example_flag_local = example_flag();
 
-  return response;
+  console.log(example_flag_local);
+
+  return NextResponse.rewrite(request.url);
 }

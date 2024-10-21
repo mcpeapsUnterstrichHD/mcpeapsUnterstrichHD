@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { FlagValues } from "@vercel/flags/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import localFont from "next/font/local";
 import { SidebarProvider } from "@/components/ui/sidebar"
-import { preload } from "react-dom";
+import { WebVitals } from "@/components/web-vitals";
+import { CaskaydiaCoveNerdFontPropo, CaskaydiaCoveNerdFontMono, CaskaydiaCoveNerdFont } from './fonts'
+
 
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
@@ -73,7 +74,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const values = { exampleFlag: true };
+  const values = { example_flag: true };
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
@@ -101,7 +102,8 @@ export default function RootLayout({
           content="telephone=yes, date=no, email=yes, address=yes"
         />
       </head>
-      <body className={cn("")}>
+      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable}`)}>
+        <WebVitals />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

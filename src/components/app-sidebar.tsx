@@ -13,6 +13,7 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubItem,
+  SidebarRail,
 } from "@/components/ui/sidebar"
 import Link from "next/link";
 import UserAvatar, { ImageProps } from "./userAvatar";
@@ -177,6 +178,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarFooter>
+      <SidebarRail />
     </Sidebar >
   )
 }

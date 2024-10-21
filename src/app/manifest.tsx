@@ -1,20 +1,7 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
-type Screenshot = {
-  src: string;
-  type?: string;
-  sizes?: string;
-};
 
-interface CustomScreenshot extends Screenshot {
-  form_factor?: string; // Optional form factor property
-  label?: string; // Optional label property
-}
-interface MyManifest extends MetadataRoute.Manifest {
-  screenshots: CustomScreenshot[];
-}
-
-export default function manifest(): MyManifest {
+export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Fabian Aps",
     short_name: "Fabian Aps",
