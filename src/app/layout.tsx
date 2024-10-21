@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { FlagValues } from "@vercel/flags/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import localFont from "next/font/local";
 import { SidebarProvider } from "@/components/ui/sidebar"
-import { preload } from "react-dom";
+import { WebVitals } from "@/components/web-vitals";
+
 
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
@@ -102,6 +102,7 @@ export default function RootLayout({
         />
       </head>
       <body className={cn("")}>
+        <WebVitals />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
