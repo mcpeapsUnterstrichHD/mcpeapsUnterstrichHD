@@ -1,5 +1,4 @@
-import type { Config } from 'tailwindcss';
-
+/** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ['class'],
   content: [
@@ -90,13 +89,14 @@ const config = {
             height: '0',
           },
         },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        animation: {
+          'accordion-down': 'accordion-down 0.2s ease-out',
+          'accordion-up': 'accordion-up 0.2s ease-out',
+        },
       },
     },
+    plugins: [require('tailwindcss-animate')],
   },
-  plugins: [require('tailwindcss-animate')],
-} satisfies Config;
+};
 
 export default config;
