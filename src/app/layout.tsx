@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { FlagValues } from "@vercel/flags/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SidebarProvider } from "@/components/ui/sidebar"
+import { WebVitals } from "@/components/web-vitals";
 
 
 export const metadata: Metadata = {
@@ -101,6 +102,7 @@ export default function RootLayout({
         />
       </head>
       <body className={cn("")}>
+        <WebVitals />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
