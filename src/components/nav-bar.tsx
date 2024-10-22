@@ -17,22 +17,24 @@ import { SidebarToggle } from "./sidebar-toggle";
 
 export function NavBar() {
   return (
-    <NavigationMenu className="no-print py-2">
-      <NavigationMenuList className="fixed right-2">
-        <NavigationMenuItem className={
-          `${navigationMenuTriggerStyle()}rounded-full bg-transparent backdrop-blur-sm`
-        }
-        >
-          <SidebarToggle />
-        </NavigationMenuItem>
-        <NavigationMenuItem
-          className={
+    <nav className="top sticky top-0 z-10">
+      <NavigationMenu className="no-print py-2">
+        <NavigationMenuList className="fixed right-2">
+          <NavigationMenuItem className={
             `${navigationMenuTriggerStyle()}rounded-full bg-transparent backdrop-blur-sm`
           }
-        >
-          <ThemeToggle />
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+          >
+            <SidebarToggle />
+          </NavigationMenuItem>
+          <NavigationMenuItem
+            className={
+              `${navigationMenuTriggerStyle()}rounded-full bg-transparent backdrop-blur-sm`
+            }
+          >
+            <ThemeToggle />
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </nav>
   );
 }

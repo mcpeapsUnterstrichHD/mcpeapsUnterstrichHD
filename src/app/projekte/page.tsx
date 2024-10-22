@@ -6,9 +6,7 @@ import ProjektCard from "@/components/projekt-card";
 export default function Home() {
   return (
     <div>
-      <nav className="top sticky top-0 z-10">
-        <NavBar />
-      </nav>
+      <NavBar />
       <main className="p-4">
         <h1 className="gap-8 p-8 text-center text-6xl">Projekte</h1>
 
@@ -154,7 +152,7 @@ export default function Home() {
         </div>
 
       </main>
-      <aside className="float-left clear-left isolate absolute z-10"><AppSidebar /></aside>
+      <AppSidebar />
       <Footer />
     </div>
   );

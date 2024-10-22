@@ -15,9 +15,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div>
-      <nav className="top sticky top-0 z-10">
-        <NavBar />
-      </nav>
+      <NavBar />
       <main className="flex min-h-screen flex-col flex-nowrap items-center justify-between p-4">
         <h1 className="gap-8 font-bold text-4xl">Fabian Aps</h1>
 
@@ -62,7 +60,7 @@ export default function Home() {
           Geburtsdatum: 06.06.2003
         </div>
 
-        <h2 className="gap-8 font-bold text-3xl">Ausbildung</h2>
+        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Ausbildung</h2>
         <Timeline
           position="right"
           className="show-timeline-big flex flex-col justify-center"
@@ -137,7 +135,7 @@ export default function Home() {
           </TimeLineElementSmall>
         </Timeline>
 
-        <h2 className="gap-8 font-bold text-3xl">Erfahrung</h2>
+        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Erfahrung</h2>
 
         <Timeline
           position="right"
@@ -282,7 +280,7 @@ export default function Home() {
           </TimeLineElementSmall>
         </Timeline>
 
-        <h2 className="gap-8 font-bold text-3xl">Fähigkeiten</h2>
+        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Fähigkeiten</h2>
 
         <div className="my-Skill-grid-4 justify-center gap-8">
           <SkillCard
@@ -441,8 +439,8 @@ export default function Home() {
 
 
       </main>
-      <aside className="float-left clear-left isolate absolute z-10"><AppSidebar /></aside>
+      <AppSidebar />
       <Footer />
-    </div>
+    </div >
   );
 }
