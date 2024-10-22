@@ -15,7 +15,11 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import Link from "next/link";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 import UserAvatar, { ImageProps } from "./userAvatar";
 import Image from "next/image";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
@@ -43,6 +47,13 @@ const items = [
 
 
 export function AppSidebar() {
+  const today = new Date();
+  const birthday = new Date("2003-06-06");
+  var age = today.getFullYear() - birthday.getFullYear();
+  const m = today.getMonth() - birthday.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+    age--;
+  }
   const name = "Fabian Aps";
   const githubUserName = "mcpeapsUnterstrichHD";
   const image: ImageProps = {
@@ -50,7 +61,6 @@ export function AppSidebar() {
     alt: "mcpeaps_HD Logo",
   };
   const imageFallback = "MAHD";
-  const today = new Date();
   return (
     <aside className="float-left clear-left isolate sticky z-10 top">
       <Sidebar variant="floating" collapsible="offcanvas">
@@ -59,19 +69,49 @@ export function AppSidebar() {
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <a href="/" className="p-6">
-                      <UserAvatar
-                        name={name}
-                        githubUserName={githubUserName}
-                        image={image}
-                        imageFallback={imageFallback}
-                      />
-                      <span>
-                        {name}
-                      </span>
-                    </a>
-                  </SidebarMenuButton>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <a href="/" className="p-6">
+                          <UserAvatar
+                            name={name}
+                            githubUserName={githubUserName}
+                            image={image}
+                            imageFallback={imageFallback}
+                          />
+                          <span>
+                            {name}
+                          </span>
+                        </a>
+                      </SidebarMenuButton>
+                    </HoverCardTrigger>
+                    <HoverCardContent className=" w-80">
+                      <section className="grid grid-flow-row grid-rows-2">
+                        <p className="grid grid-cols-2 grid-flow-col items-center justify-center p-2">
+                          <UserAvatar
+                            name={name}
+                            githubUserName={githubUserName}
+                            image={image}
+                            imageFallback={imageFallback}
+                          />
+                          <span className="text-lg">
+                            {name}
+                          </span>
+                        </p>
+                        <p className="text-lg p-2">
+                          ITler/DJ/Producer aus Leidenschaft
+                        </p>
+                        <p className="p-2">
+                          Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es
+                          Software zu entwikeln aber durch mein Praktikum bei der KfW
+                          Bankengruppe hat mir gezeigt, dass mir Anwendungsbetreung auch nicht
+                          schwer liegt, denoch mach ich die Entwicklung gerne als Hobby. Musik
+                          ist dabei auch eine Leidenschaft von mir, egal ab hören oder
+                          Produzieren.{" "}
+                        </p>
+                      </section>
+                    </HoverCardContent>
+                  </HoverCard>
                 </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>

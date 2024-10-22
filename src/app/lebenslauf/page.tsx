@@ -11,8 +11,10 @@ import {
 import Timeline from "@mui/lab/Timeline";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 export default function Home() {
+  const { theme } = useTheme();
   return (
     <div>
       <NavBar />
@@ -350,7 +352,7 @@ export default function Home() {
           <SkillCard
             SkillTitle="Apple iOS"
             SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
-            SkillImage="/pictures/ios.png"
+            SkillImage={theme === 'dark' ? '/pictures/ios-dark.png' : '/pictures/ios.png'}
             SkillImageAlt="iOS Logo"
             SkillImageFallback="iOS"
             Skilllevel={80}
@@ -358,7 +360,7 @@ export default function Home() {
           <SkillCard
             SkillTitle="Apple iPadOS"
             SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
-            SkillImage="/pictures/ios.png"
+            SkillImage={theme === 'dark' ? '/pictures/ios-dark.png' : '/pictures/ios.png'}
             SkillImageAlt="iOS Logo"
             SkillImageFallback="iOS"
             Skilllevel={80}
@@ -366,7 +368,7 @@ export default function Home() {
           <SkillCard
             SkillTitle="Apple vissionOS"
             SkillBadges={["Betriebsystem", "Apple", "1 Jahre"]}
-            SkillImage="/pictures/ios.png"
+            SkillImage={theme === 'dark' ? '/pictures/ios-dark.png' : '/pictures/ios.png'}
             SkillImageAlt="iOS Logo"
             SkillImageFallback="iOS"
             Skilllevel={80}
@@ -382,7 +384,7 @@ export default function Home() {
           <SkillCard
             SkillTitle="Windows"
             SkillBadges={["Betriebsystem", "Microsoft", "3 Jahre"]}
-            SkillImage="/pictures/windows.png"
+            SkillImage={theme === 'dark' ? '/pictures/windows-dark.png' : '/pictures/windows.png'}
             SkillImageAlt="Windows Logo"
             SkillImageFallback="WIN"
             Skilllevel={60}
@@ -430,7 +432,7 @@ export default function Home() {
           <SkillCard
             SkillTitle="Ansible"
             SkillBadges={["Automation", "2 Monate"]}
-            SkillImage="/pictures/ansible.png"
+            SkillImage={theme === 'dark' ? '/pictures/ansible-dark.png' : '/pictures/ansible.png'}
             SkillImageAlt="Ansible Logo"
             SkillImageFallback="A"
             Skilllevel={60}
