@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import type React from "react";
 
 interface ProjektCardProps {
   ProjektImage: string;
@@ -36,39 +36,31 @@ const ProjektCard: React.FC<ProjektCardProps> = ({
         <CardHeader>
           <CardTitle>{ProjektTitle}</CardTitle>
           <CardDescription>
-            <div className="flex flex-wrap gap-2">
+            <section className="flex flex-wrap gap-2">
               {ProjektBadges.map((badge, index) => (
                 <Badge key={index} variant="default">
                   {badge}
                 </Badge>
               ))}
-            </div>
+            </section>
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col justify-between gap-4">
-            <div>{children}</div>
-          </div>
+          <section className="flex flex-col justify-between gap-4">
+            <p>{children}</p>
+          </section>
         </CardContent>
         <CardFooter className="flex flex-grow flex-col items-center justify-center gap-4 p-4">
-          <div
-            className={
-              ProjektImageBgColor +
-              "flex h-[480px] w-[480] items-center justify-center rounded-sm"
-            }
+          <section className={`${ProjektImageBgColor}flex items-center justify-center rounded-sm`}
           >
             <Image
               src={ProjektImage}
               alt={ProjektImageAlt}
-              className={ProjektImageBgColor + " rounded-sm object-contain"}
-              width={470}
-              height={470}
-              layout="responsive"
-              objectFit="fill"
-              objectPosition="center"
-              priority={true}
+              className={`${ProjektImageBgColor} rounded-sm object-contain`}
+              width={480}
+              height={480}
             />
-          </div>
+          </section>
         </CardFooter>
       </Card>
     </Link>

@@ -14,10 +14,7 @@ export default function Home() {
 
   return (
     <div>
-      <nav className="top sticky top-0 z-10">
-        <NavBar />
-      </nav>
-
+      <NavBar />
       <main className="p-4">
         <h1 className="py-1 text-center text-xl">Hallo 👋</h1>
         <h1 className="text-center font-bold text-5xl">Ich bin Fabian Aps</h1>
@@ -104,7 +101,7 @@ export default function Home() {
           </ProjektCard>
         </div>
       </main>
-      <aside className="float-left clear-left isolate absolute z-10"><AppSidebar /></aside>
+      <AppSidebar />
       <Footer />
     </div>
   );

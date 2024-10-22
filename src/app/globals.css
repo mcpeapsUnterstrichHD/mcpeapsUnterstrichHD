@@ -92,65 +92,74 @@
   }
 }
 
-.my-Project-grid-4 {
-  @apply grid;
-  @apply grid-cols-4;
-  @apply gap-4;
-  @apply justify-stretch;
-  @apply items-stretch;
+.my-Project-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
-@media (max-width: 1280px) {
+/* Anpassungen für mobile Geräte */
+@media (max-width: 1024px) {
+  .my-Project-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-Project-grid-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.my-Project-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* Anpassungen für Tablets */
+@media (max-width: 1024px) {
   .my-Project-grid-4 {
-    @apply grid;
-    @apply grid-cols-1;
-    @apply gap-4;
-    @apply justify-stretch;
-    @apply items-stretch;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Anpassungen für Smartphones */
+@media (max-width: 768px) {
+  .my-Project-grid-4 {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
 .my-Skill-grid-4 {
-  @apply grid;
-  @apply grid-cols-4;
-  @apply gap-4;
-  @apply justify-center;
-  @apply items-center;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .my-Skill-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-Skill-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
   .my-Skill-grid-4 {
-    @apply grid;
-    @apply grid-cols-1;
-    @apply gap-4;
-    @apply justify-center;
-    @apply items-center;
-  }
-}
-
-.my-Project-grid-3 {
-  @apply grid;
-  @apply grid-cols-3;
-  @apply gap-4;
-  @apply justify-stretch;
-  @apply items-stretch;
-}
-
-@media (max-width: 1280px) {
-  .my-Project-grid-3 {
-    @apply grid;
-    @apply grid-cols-1;
-    @apply gap-4;
-    @apply justify-stretch;
-    @apply items-stretch;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 .projectCard {
   @apply backdrop-blur-sm;
   @apply bg-transparent;
   @apply grid;
-  @apply grid-cols-subgrid;
-  grid-column: span 3;
+  @apply grid-rows-subgrid;
+  grid-row: span 3;
 }
 
 .timelineelement {

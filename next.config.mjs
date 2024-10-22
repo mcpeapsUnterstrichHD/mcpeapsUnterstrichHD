@@ -17,8 +17,8 @@ const nextConfig = {
     taint: true,
     typedRoutes: false,
     ppr: true,
-    reactCompiler: true,
-    turbo: {
+    //reactCompiler: true,
+    /*turbo: {
       moduleIdStrategy: 'deterministic',
       resolveExtensions: [
         '.md',
@@ -29,7 +29,7 @@ const nextConfig = {
         '.mjs',
         '.json',
       ],
-    },
+    },*/
   },
   images: {
     unoptimized: true,
