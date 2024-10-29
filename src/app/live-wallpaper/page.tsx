@@ -9,13 +9,13 @@ function GetH2() {
   const searchParams = useSearchParams(); // For query string parameters
   const [myH2, setH2] = useState(
     decodeURIComponent(searchParams.get('h2') || '') ||
-      'ITler/DJ/Producer aus Leidenschaft',
+    'ITler/DJ/Producer aus Leidenschaft',
   );
 
   useEffect(() => {
     setH2(
       decodeURIComponent(searchParams.get('h2') || '') ||
-        'ITler/DJ/Producer aus Leidenschaft',
+      'ITler/DJ/Producer aus Leidenschaft',
     );
   }, [searchParams]);
 
@@ -42,7 +42,7 @@ function GetH1() {
   }, [searchParams]);
 
   return (
-    <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-white duration-3000 sm:text-6xl md:text-9xl">
+    <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline dark:text-white light:text-black duration-3000 sm:text-6xl md:text-9xl">
       {myH1}
     </h1>
   );
@@ -65,7 +65,7 @@ export default function Home() {
       <div className="animate-fade-in text-center">
         <Suspense
           fallback={
-            <h2 className="my-16 text-white text-xl">
+            <h2 className="my-16 dark:text-white light:text-black text-xl">
               <Skeleton className="h-[3.5rem] w-[500px] rounded-full" />
             </h2>
           }
