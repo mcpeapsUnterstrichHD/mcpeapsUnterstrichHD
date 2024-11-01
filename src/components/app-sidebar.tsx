@@ -123,7 +123,7 @@ export function AppSidebar() {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
-                    <a href="https://linktr.ee/mcpeaps_hd" target="_blank">
+                    <a href="https://link.me/mcpeaps_hd" target="_blank">
                       <span >
                         Linkhub
                       </span>
@@ -165,7 +165,7 @@ export function AppSidebar() {
                 <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
                   <SidebarMenuButton asChild>
                     <a
-                      href="https://linktr.ee/mcpeaps_hd"
+                      href="https://link.me/mcpeaps_hd"
                       target="_blank"
                     >
                       <span >Linksammlung</span>
