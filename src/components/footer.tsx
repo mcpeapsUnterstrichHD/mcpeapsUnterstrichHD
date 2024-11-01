@@ -16,7 +16,7 @@ export default function Footer() {
       </div>
       <div className="flex flex-row items-center justify-center pb-4 text-center text-sm">
         <a
-          href="https://linktr.ee/mcpeaps_hd"
+          href="https://link.me/mcpeaps_hd"
           target="_blank"
           className="font-bold"
         >
