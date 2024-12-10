@@ -16,7 +16,7 @@ const nextConfig = {
   experimental: {
     taint: true,
     typedRoutes: false,
-    ppr: true,
+    ppr: false,
     reactCompiler: true,
     turbo: {
       moduleIdStrategy: 'deterministic',

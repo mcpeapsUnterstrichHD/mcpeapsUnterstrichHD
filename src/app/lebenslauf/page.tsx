@@ -15,6 +15,10 @@ import { useTheme } from "next-themes";
 
 export default function Home() {
   const { theme } = useTheme();
+  const date = new Date();
+  const formattedDate = (date.getDate().toString().padStart(2, '0')) + "." +
+    (date.getMonth() + 1) + "." +
+    date.getFullYear();
   return (
     <div>
       <NavBar />
@@ -68,6 +72,20 @@ export default function Home() {
           className="show-timeline-big flex flex-col justify-center"
         >
           <TimeLineElementBig
+            TimeLineTitle="Ausbuildungsplatzsuchend"
+            TimeLineBadges={[
+            ]}
+            TimeLineImage=""
+            TimeLineImageAlt="Suchend"
+            TimeLineImageFallback="/"
+            startdate="07.2024"
+            enddate="-"
+          >
+            <a>
+              Ausbuildungsplatzsuchend
+            </a>
+          </TimeLineElementBig>
+          <TimeLineElementBig
             TimeLineTitle="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)"
             TimeLineBadges={[
               "Berlin",
@@ -79,8 +97,8 @@ export default function Home() {
             TimeLineImage="https://www.oszimt.de/favicon.ico"
             TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
             TimeLineImageFallback="OSZimt"
-            startdate="2021"
-            enddate="2024"
+            startdate="08.2021"
+            enddate="07.2024"
           >
             <a>
               Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur
@@ -92,8 +110,8 @@ export default function Home() {
             TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
             TimeLineImageAlt="Carl-von-Linné-Schule Logo"
             TimeLineImageFallback="CvL"
-            startdate="2010"
-            enddate="2021"
+            startdate="08.2010"
+            enddate="07.2021"
           >
             <a>Algemeine Schule Grundschule + Sekundarstufe I</a>
           </TimeLineElementBig>
@@ -108,6 +126,20 @@ export default function Home() {
           className="show-timeline-small flex flex-col justify-center"
         >
           <TimeLineElementSmall
+            TimeLineTitle="Ausbuildungsplatzsuchend"
+            TimeLineBadges={[
+            ]}
+            TimeLineImage=""
+            TimeLineImageAlt="Suchend"
+            TimeLineImageFallback="/"
+            startdate="07/2024"
+            enddate="-"
+          >
+            <a>
+              Ausbuildungsplatzsuchend
+            </a>
+          </TimeLineElementSmall>
+          <TimeLineElementSmall
             TimeLineTitle="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)"
             TimeLineBadges={[
               "Berlin",
@@ -119,8 +151,8 @@ export default function Home() {
             TimeLineImage="https://www.oszimt.de/favicon.ico"
             TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
             TimeLineImageFallback="OSZimt"
-            startdate="2021"
-            enddate="2024"
+            startdate="08.2021"
+            enddate="07.2024"
           >
             <a>Ausbildung zum IT-Assistenten</a>
           </TimeLineElementSmall>
@@ -130,8 +162,8 @@ export default function Home() {
             TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
             TimeLineImageAlt="Carl-von-Linné-Schule Logo"
             TimeLineImageFallback="CvL"
-            startdate="2010"
-            enddate="2021"
+            startdate="08.2010"
+            enddate="07.2021"
           >
             <a>Algemeine Schule Grundschule + Sekundarstufe I</a>
           </TimeLineElementSmall>
