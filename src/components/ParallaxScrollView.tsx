@@ -17,6 +17,7 @@ type Props = PropsWithChildren<{
   headerImage: ReactElement;
   headerBackgroundColor: string;
   fullHeight?: number;
+  heightMultiplier?: number;
 }>;
 
 export default function ParallaxScrollView({
@@ -24,6 +25,7 @@ export default function ParallaxScrollView({
   headerImage,
   headerBackgroundColor,
   fullHeight,
+  heightMultiplier = 0.75,
 }: Props) {
   if (fullHeight) HEADER_HEIGHT=fullHeight
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
@@ -36,7 +38,7 @@ export default function ParallaxScrollView({
           translateY: interpolate(
             scrollOffset.value,
             [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75]
+            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * heightMultiplier]
           ),
         },
         {
@@ -73,6 +75,9 @@ const styles = StyleSheet.create({
   },
   header: {
     height: HEADER_HEIGHT,
+    flex: 1,
+    padding: 32,
+    gap: 16,
     overflow: 'hidden',
   },
   content: {

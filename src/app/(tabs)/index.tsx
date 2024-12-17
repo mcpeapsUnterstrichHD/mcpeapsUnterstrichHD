@@ -16,7 +16,9 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }
-    fullHeight={360.0}>
+      fullHeight={390.0}
+      heightMultiplier={1.0}
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText  type="title">Fabian Aps</ThemedText>
       </ThemedView>
@@ -38,9 +40,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: 360,
-    width: 360,
-    padding:2,
+    height: 390.0,
+    width: 390.0,
+    padding:32.0,
     resizeMode: 'contain',
     alignSelf: 'center',
     justifyContent: 'center',

@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c544932e-5e92-43f6-bfc0-ebc37bf95c01"
+      }
+    },
+    "owner": "mcpeaps_hd"
   }
 }
