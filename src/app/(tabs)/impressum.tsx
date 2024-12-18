@@ -57,8 +57,8 @@ export default function More() {
       </Collapsible>
       <Collapsible title="Custom fonts">
         <ThemedText >
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'monospace' }}>
+          Open <ThemedText style={{ fontFamily: 'mono' }} type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
+          <ThemedText /*style={{ fontFamily: 'mono' }}*/>
             custom fonts such as this one.
           </ThemedText>
         </ThemedText>
@@ -106,5 +106,5 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
-  },
+  }
 });

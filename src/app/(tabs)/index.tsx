@@ -1,10 +1,10 @@
 import { Image, StyleSheet, Platform } from 'react-native';
 
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { Colors } from '@/constants/Colors';
+import ParallaxScrollView from '../../components/HomeParallaxScrollView';
+import { ThemedText } from '../../components/ThemedText';
+import { ThemedView } from '../../components/ThemedView';
+import { Colors } from '../../constants/Colors';
 
 export default function HomeScreen() {
   return (
@@ -12,12 +12,10 @@ export default function HomeScreen() {
       headerBackgroundColor={Colors.black}
       headerImage={
         <Image
-          source={require('@/assets/images/icon.png')}
+          source={require('../../assets/images/icon.png')}
           style={styles.reactLogo}
         />
       }
-      fullHeight={390.0}
-      heightMultiplier={1.0}
     >
       <ThemedView style={styles.titleContainer}>
         <ThemedText  type="title">Fabian Aps</ThemedText>
@@ -34,10 +32,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    fontFamily: 'Sans',
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+    fontFamily: 'Sans',
   },
   reactLogo: {
     height: 390.0,

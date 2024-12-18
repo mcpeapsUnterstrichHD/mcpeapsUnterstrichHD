@@ -1,8 +1,6 @@
 import { StyleSheet, Image, Platform } from 'react-native';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import ParallaxScrollView from '@/components/HomeParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -22,9 +20,9 @@ export default function AboutMe() {
       headerBackgroundColor={Colors.blue}
       headerImage={
         <IconSymbol
-          size={310}
+          size={390}
           color={Colors.primary}
-          name="chevron.left.forwardslash.chevron.right"
+          name="person"
           style={styles.headerImage}
         />
       }>
@@ -32,12 +30,12 @@ export default function AboutMe() {
         <ThemedText  type="title">About Me</ThemedText>
       </ThemedView>
       <ThemedView style={styles.subtitleContainer}>
-      <ThemedText >Hallo </ThemedText>
+        <ThemedText type='subtitle' >Hallo </ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-      <ThemedText >Ich bin Fabian Aps</ThemedText>
-      <ThemedText >ITler/DJ/Producer</ThemedText>
+      <ThemedText type='subtitle' >Ich bin Fabian Aps</ThemedText>
+        <ThemedText type='subtitle' >ITler/DJ/Producer</ThemedText>
       <ThemedText>Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es
         Software zu entwikeln aber durch mein Praktikum bei der KfW
         Bankengruppe hat mir gezeigt, dass mir Anwendungsbetreung auch nicht
@@ -60,14 +58,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    fontFamily: 'Sans',
   },
   subtitleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    fontFamily: 'Sans',
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+    fontFamily: 'Sans',
   }
 });

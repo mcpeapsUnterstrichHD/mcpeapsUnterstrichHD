@@ -52,6 +52,9 @@ export const Colors = {
   styles: {
     text: Nord_Colors.foreground,
     background: Nord_Colors.background,
+    foreground: Nord_Colors.foreground,
+    selected_background: Nord_Colors.selected_background,
+    selected_foreground: Nord_Colors.selected_foreground,
     tint: Nord_Colors.green,
     icon: Nord_Colors.red,
     tabIconDefault: Nord_Colors.foreground,
@@ -67,7 +70,7 @@ export const Colors = {
     searchBarCloseIcon: Nord_Colors.foreground,
     searchBarInput: Nord_Colors.foreground,
     link: Nord_Colors.link,
-
+    outline: Nord_Colors.gray,
   },
     primary: Nord_Colors.green,
     secondary: Nord_Colors.red,

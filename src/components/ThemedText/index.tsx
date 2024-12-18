@@ -1,6 +1,5 @@
 import { Text, type TextProps, StyleSheet, Falsy, RecursiveArray, RegisteredStyle } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { TextStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 
 export type ThemedTextProps = TextProps & {
   type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
@@ -15,8 +14,8 @@ export function ThemedText({
 
   return (
     <Text
-      style={style, [styles[type], { color }]}
-      {...rest}
+      style={[style, styles[type], { color }]}
+      {...rest} adjustsFontSizeToFit = {true}
     />
   );
 }
@@ -25,29 +24,29 @@ const styles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
-    fontFamily: 'sans',
+    fontFamily: 'Sans',
   },
   defaultSemiBold: {
     fontSize: 16,
     lineHeight: 24,
     fontWeight: '600',
-    fontFamily: 'sans',
+    fontFamily: 'Sans',
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
     lineHeight: 32,
-    fontFamily: 'sans',
+    fontFamily: 'Sans',
   },
   subtitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    fontFamily: 'sans',
+    fontFamily: 'Sans',
   },
   link: {
     lineHeight: 30,
     fontSize: 16,
     color: Colors.link,
-    fontFamily: 'sans',
+    fontFamily: 'Sans',
   },
 });
