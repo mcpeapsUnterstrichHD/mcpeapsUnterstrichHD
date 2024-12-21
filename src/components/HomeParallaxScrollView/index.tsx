@@ -40,15 +40,14 @@ export default function ParallaxScrollView({
       ],
     };
   });
-  const { bottom } = useSafeAreaInsets()
 
   return (
     <ThemedView style={styles.container}>
       <Animated.ScrollView
         ref={scrollRef}
         scrollEventThrottle={16}
-        scrollIndicatorInsets={{ bottom }}
-        contentContainerStyle={{ paddingBottom: bottom }}>
+        scrollIndicatorInsets={{ bottom: 20 }}
+        contentContainerStyle={{ paddingBottom: 20 }}>
         <Animated.View
           style={[
             styles.header,

@@ -9,13 +9,15 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.comboom.sucht.mcpeapsunterstrichhd"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#2E3440"
-      }
+      },
+      "package": "com.comboom.sucht.mcpeapsunterstrichhd"
     },
     "web": {
       "bundler": "metro",

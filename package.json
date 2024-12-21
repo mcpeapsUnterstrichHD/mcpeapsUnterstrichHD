@@ -1,13 +1,14 @@
 {
   "name": "mcpeapsunterstrichhd",
+  "scheme": "mahd",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --https --clear  --go",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "android": "expo start --android --https --clear  --go",
+    "ios": "expo start --ios --https --clear  --go",
+    "web": "expo start --web --https --clear  --go",
     "test": "jest --watchAll",
     "lint": "expo lint"
   },
@@ -22,6 +23,7 @@
     "expo": "~52.0.19",
     "expo-blur": "~14.0.1",
     "expo-constants": "~17.0.3",
+    "expo-dev-client": "~5.0.6",
     "expo-font": "~13.0.1",
     "expo-haptics": "~14.0.0",
     "expo-linking": "~7.0.3",

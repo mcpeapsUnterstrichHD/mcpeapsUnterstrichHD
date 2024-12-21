@@ -1,6 +1,6 @@
 import { StyleSheet, Image, Platform } from 'react-native';
 
-import ParallaxScrollView from '@/components/HomeParallaxScrollView';
+import ParallaxScrollView from '@/components/HomeParallaxScrollView/index.ios';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';

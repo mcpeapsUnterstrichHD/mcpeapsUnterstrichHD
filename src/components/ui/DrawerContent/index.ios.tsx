@@ -17,8 +17,8 @@ export default function MyDrawerContent(props: any) {
     return (
         <ThemedView style={{
             flex: 1,
-            paddingBottom:20,
-            paddingTop: 20,
+            paddingBottom: bottom,
+            paddingTop: top,
         }}>
             <ThemedTouchableOpacity onPress={() => router.replace('/')}>
                 <ThemedView>
