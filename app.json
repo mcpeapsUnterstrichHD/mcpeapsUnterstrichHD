@@ -6,23 +6,46 @@
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "scheme": "mahd",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.comboom.sucht.mcpeapsunterstrichhd"
+      "bundleIdentifier": "com.comboom.sucht.mcpeapsunterstrichhd",
+      "splash": {
+        "image": "./src/assets/images/splash-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#2E3440"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#2E3440"
       },
-      "package": "com.comboom.sucht.mcpeapsunterstrichhd"
+      "package": "com.comboom.sucht.mcpeapsunterstrichhd",
+      "splash": {
+        "image": "./src/assets/images/splash-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#2E3440"
+      }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./src/assets/images/favicon.png"
+      "favicon": "./src/assets/images/favicon.png",
+      "themeColor": "#2E3440",
+      "backgroundColor": "#2E3440",
+      "name": "Fabian Aps | Portfolio",
+      "shortName": "Fabian Aps",
+      "splash": {
+        "image": "./src/assets/images/splash-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#2E3440"
+      },
+      "statusBar": {
+        "style": "dark",
+        "backgroundColor": "#2E3440"
+      }
     },
     "plugins": [
       "expo-router",
@@ -30,7 +53,6 @@
         "expo-splash-screen",
         {
           "image": "./src/assets/images/splash-icon.png",
-          "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#2E3440"
         }
