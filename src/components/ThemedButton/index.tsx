@@ -1,5 +1,5 @@
 
-import { Colors } from '@/constants/Colors';
+import { Colors } from '@src/constants/Colors';
 import { Button, ButtonProps } from 'react-native';
 
 export type ThemedButtonProps = ButtonProps & {

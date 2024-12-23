@@ -1,5 +1,5 @@
-import { Text, type TextProps, StyleSheet, Falsy, RecursiveArray, RegisteredStyle } from 'react-native';
-import { Colors } from '@/constants/Colors';
+import { Text, type TextProps, StyleSheet} from 'react-native';
+import { Colors } from '@src/constants/Colors';
 
 export type ThemedTextProps = TextProps & {
   type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';

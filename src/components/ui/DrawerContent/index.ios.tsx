@@ -1,13 +1,13 @@
-import { Colors } from "@/constants/Colors";
-import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
+import { Colors } from "@src/constants/Colors";
+import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@src/components/ThemedText";
+import { ThemedView } from "@src/components/ThemedView";
 import { useRouter } from "expo-router";
-import { Image, StyleSheet, Platform, Linking } from 'react-native';
-import { ThemedTouchableOpacity } from "@/components/ThemedTouchableOpacity";
-import { ExternalLink } from "@/components/ExternalLink";
+import { Image, StyleSheet} from 'react-native';
+import { ThemedTouchableOpacity } from "@src/components/ThemedTouchableOpacity";
+import { ExternalLink } from "@src/components/ExternalLink";
 
 export default function MyDrawerContent(props: any) {
     const today = new Date();
@@ -22,7 +22,7 @@ export default function MyDrawerContent(props: any) {
         }}>
             <ThemedTouchableOpacity onPress={() => router.replace('/')}>
                 <ThemedView>
-                    <Image source={require('@/assets/images/icon.png')}style={styles.reactLogo}/>
+                    <Image source={require('@public/images/icon.png')}style={styles.reactLogo}/>
                     <ThemedText type={'title'} style={{alignSelf: 'center',}}>Fabian Aps</ThemedText>
                     <ThemedText type='subtitle' style={{alignSelf: 'center',}}>ITler/DJ/Producer</ThemedText>
                 </ThemedView>

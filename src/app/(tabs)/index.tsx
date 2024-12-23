@@ -1,10 +1,10 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 
-import ParallaxScrollView from '../../components/HomeParallaxScrollView/index.ios';
-import { ThemedText } from '../../components/ThemedText';
-import { ThemedView } from '../../components/ThemedView';
-import { Colors } from '../../constants/Colors';
+import ParallaxScrollView from '@src/components/HomeParallaxScrollView/index.ios';
+import { ThemedText } from '@src/components/ThemedText';
+import { ThemedView } from '@src/components/ThemedView';
+import { Colors } from '@src/constants/Colors';
 
 export default function HomeScreen() {
   return (
@@ -12,7 +12,7 @@ export default function HomeScreen() {
       headerBackgroundColor={Colors.black}
       headerImage={
         <Image
-          source={require('../../assets/images/icon.png')}
+          source={require('@public/images/icon.png')}
           style={styles.reactLogo}
         />
       }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   reactLogo: {
     height: 390.0,
     width: 390.0,
-    padding:32.0,
+    padding: 32.0,
     resizeMode: 'contain',
     alignSelf: 'center',
     justifyContent: 'center',

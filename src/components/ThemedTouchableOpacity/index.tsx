@@ -1,5 +1,4 @@
 
-import { Colors } from '@/constants/Colors';
 import {TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 export type ThemedTouchableOpacityProps = TouchableOpacityProps & {

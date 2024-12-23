@@ -1,12 +1,12 @@
 import { StyleSheet, Image, Platform } from 'react-native';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { Colors } from '@/constants/Colors';
+import { Collapsible } from '@src/components/Collapsible';
+import { ExternalLink } from '@src/components/ExternalLink';
+import ParallaxScrollView from '@src/components/ParallaxScrollView';
+import { ThemedText } from '@src/components/ThemedText';
+import { ThemedView } from '@src/components/ThemedView';
+import { IconSymbol } from '@src/components/ui/IconSymbol';
+import { Colors } from '@src/constants/Colors';
 
 export default function More() {
   return (
@@ -21,7 +21,7 @@ export default function More() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText  type="title">More</ThemedText>
+        <ThemedText type="title">More</ThemedText>
       </ThemedView>
       <ThemedText >This app includes example code to help you get started.</ThemedText>
       <Collapsible title="File-based routing">
@@ -35,7 +35,7 @@ export default function More() {
           sets up the tab navigator.
         </ThemedText>
         <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText  type="link">Learn more</ThemedText>
+          <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
       <Collapsible title="Android, iOS, and web support">
@@ -50,9 +50,9 @@ export default function More() {
           <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
           different screen densities
         </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
+        <Image source={require('@public/images/react-logo.png')} style={{ alignSelf: 'center' }} />
         <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText   type="link">Learn more</ThemedText>
+          <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
       <Collapsible title="Custom fonts">
@@ -63,7 +63,7 @@ export default function More() {
           </ThemedText>
         </ThemedText>
         <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText   type="link">Learn more</ThemedText>
+          <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
       <Collapsible title="Light and dark mode components">
@@ -73,7 +73,7 @@ export default function More() {
           what the user's current color scheme is, and so you can adjust UI colors accordingly.
         </ThemedText>
         <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText   type="link">Learn more</ThemedText>
+          <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
       <Collapsible title="Animations">

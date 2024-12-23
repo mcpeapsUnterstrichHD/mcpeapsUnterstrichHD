@@ -5,48 +5,52 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import 'expo-dev-client';
+import { Colors } from '@src/constants/Colors';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+SplashScreen.setOptions({
+  fade: true,
+});
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    Sans: require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-ExtraLight.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-ExtraLightItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-Light.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-LightItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-Regular.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiBold.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiBoldItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiLight.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiLightItalic.ttf'),
-    Mono: require('@/assets/fonts/CaskaydiaCoveNerdFontMono-Bold.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-BoldItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-ExtraLight.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-ExtraLightItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-Italic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-Light.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-LightItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-Regular.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiBold.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiBoldItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiLight.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiLightItalic.ttf'),
-    Serif: require('@/assets/fonts/CaskaydiaCoveNerdFont-Bold.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-BoldItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-ExtraLight.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-ExtraLightItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-Italic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-Light.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-LightItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-Regular.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-SemiBold.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-SemiBoldItalic.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-SemiLight.ttf') ||
-      require('@/assets/fonts/CaskaydiaCoveNerdFont-SemiLightItalic.ttf'),
+    Sans: require('@public/fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-ExtraLight.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-ExtraLightItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-Light.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-LightItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-Regular.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-SemiBold.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-SemiBoldItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-SemiLight.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontPropo-SemiLightItalic.ttf'),
+    Mono: require('@public/fonts/CaskaydiaCoveNerdFontMono-Bold.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-BoldItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-ExtraLight.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-ExtraLightItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-Italic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-Light.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-LightItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-Regular.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-SemiBold.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-SemiBoldItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-SemiLight.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFontMono-SemiLightItalic.ttf'),
+    Serif: require('@public/fonts/CaskaydiaCoveNerdFont-Bold.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-BoldItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-ExtraLight.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-ExtraLightItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-Italic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-Light.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-LightItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-Regular.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-SemiBold.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-SemiBoldItalic.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-SemiLight.ttf') ||
+      require('@public/fonts/CaskaydiaCoveNerdFont-SemiLightItalic.ttf'),
   });
 
   useEffect(() => {
@@ -61,11 +65,16 @@ export default function RootLayout() {
 
   return (
     <>
-        <Stack>
+      <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
-        </Stack>
-      <StatusBar style="auto" />
+      </Stack>
+      <StatusBar
+        style="light"
+        animated={true}
+        backgroundColor={Colors.styles.background}
+        translucent={true}
+      />
     </>
   );
 }
