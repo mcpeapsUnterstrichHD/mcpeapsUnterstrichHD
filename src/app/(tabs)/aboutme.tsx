@@ -1,11 +1,11 @@
 import { StyleSheet, Image, Platform } from 'react-native';
 
-import ParallaxScrollView from '@src/components/HomeParallaxScrollView/index.ios';
-import { ThemedText } from '@src/components/ThemedText';
-import { ThemedView } from '@src/components/ThemedView';
-import { IconSymbol } from '@src/components/ui/IconSymbol';
-import { Colors } from '@src/constants/Colors';
-import { HelloWave } from '@src/components/HelloWave';
+import ParallaxScrollView from '@/components/HomeParallaxScrollView/index.ios';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Colors } from '@/constants/Colors';
+import { HelloWave } from '@/components/HelloWave';
 
 export default function AboutMe() {
   const today = new Date();

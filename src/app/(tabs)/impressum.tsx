@@ -1,12 +1,12 @@
 import { StyleSheet, Image, Platform } from 'react-native';
 
-import { Collapsible } from '@src/components/Collapsible';
-import { ExternalLink } from '@src/components/ExternalLink';
-import ParallaxScrollView from '@src/components/ParallaxScrollView';
-import { ThemedText } from '@src/components/ThemedText';
-import { ThemedView } from '@src/components/ThemedView';
-import { IconSymbol } from '@src/components/ui/IconSymbol';
-import { Colors } from '@src/constants/Colors';
+import { Collapsible } from '@/components/Collapsible';
+import { ExternalLink } from '@/components/ExternalLink';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Colors } from '@/constants/Colors';
 
 export default function More() {
   return (

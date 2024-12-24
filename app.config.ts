@@ -1,6 +1,7 @@
 import { ExpoConfig, ConfigContext } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
   name: 'Fabian Aps',
   slug: 'mahd',
   version: '1.0.0',
@@ -15,8 +16,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     splash: {
       image: './public/images/splash-icon.png',
       backgroundColor: '#2E3440'
-    }
-  },
+    },
+    },
   android: {
     adaptiveIcon: {
       foregroundImage: './public/images/adaptive-icon.png',
@@ -30,7 +31,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   web: {
     bundler: 'metro',
-    output: 'server',
+    output: 'static',
     favicon: './public/images/favicon.png',
     themeColor: '#2E3440',
     backgroundColor: '#2E3440',
@@ -76,5 +77,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   owner: 'mcpeaps_hd',
   githubUrl: 'https://github.com/mcpeapsUnterstrichHD/mcpeapsUnterstrichHD',
-  ...config,
+  platforms: ['android', 'ios', 'web'],
+  description: 'Fabian Aps | Portfolio',
+  primaryColor: '#2E3440',
 });

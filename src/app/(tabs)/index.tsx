@@ -1,10 +1,10 @@
 import { Image, StyleSheet } from 'react-native';
 
 
-import ParallaxScrollView from '@src/components/HomeParallaxScrollView/index.ios';
-import { ThemedText } from '@src/components/ThemedText';
-import { ThemedView } from '@src/components/ThemedView';
-import { Colors } from '@src/constants/Colors';
+import ParallaxScrollView from '@/components/HomeParallaxScrollView/index.ios';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { Colors } from '@/constants/Colors';
 
 export default function HomeScreen() {
   return (

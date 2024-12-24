@@ -1,12 +1,12 @@
-import { Colors } from "@src/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import React from "react";
-import { ThemedText } from "@src/components/ThemedText";
-import { ThemedView } from "@src/components/ThemedView";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { useRouter } from "expo-router";
 import { Image, StyleSheet } from 'react-native';
-import { ThemedTouchableOpacity } from "@src/components/ThemedTouchableOpacity";
-import { ExternalLink } from "@src/components/ExternalLink";
+import { ThemedTouchableOpacity } from "@/components/ThemedTouchableOpacity";
+import { ExternalLink } from "@/components/ExternalLink";
 
 export default function MyDrawerContent(props: any) {
     const today = new Date();

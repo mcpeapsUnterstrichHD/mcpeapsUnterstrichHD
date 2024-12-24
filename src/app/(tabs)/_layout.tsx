@@ -2,9 +2,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import React from 'react';
 import { Platform } from 'react-native';
-import { IconSymbol } from '@src/components/ui/IconSymbol';
-import { Colors } from '@src/constants/Colors';
-import  MyDrawerContent from '@src/components/ui/DrawerContent';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Colors } from '@/constants/Colors';
+import  MyDrawerContent from '@/components/ui/DrawerContent';
 
 export default function TabLayout() {
 
