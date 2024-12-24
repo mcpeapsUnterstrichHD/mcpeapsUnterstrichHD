@@ -5,7 +5,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   name: 'Fabian Aps',
   slug: 'mahd',
   version: '1.0.0',
-  orientation: 'default',
+  orientation: 'portrait',
   icon: './public/images/icon.png',
   scheme: 'mahd',
   userInterfaceStyle: 'dark',
@@ -66,7 +66,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ],
   experiments: {
     typedRoutes: true,
-    reactCanary: true
   },
   extra: {
     router: {

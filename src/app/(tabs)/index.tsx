@@ -12,7 +12,7 @@ export default function HomeScreen() {
       headerBackgroundColor={Colors.black}
       headerImage={
         <Image
-          source={require('~/images/icon.png')}
+          source={require('@public/images/icon.png')}
           style={styles.reactLogo}
         />
       }
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     height: 390.0,
     width: 390.0,
     padding: 32.0,
-    resizeMode: 'contain',
     alignSelf: 'center',
     justifyContent: 'center',
     position: 'relative',
