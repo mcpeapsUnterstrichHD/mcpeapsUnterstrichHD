@@ -20,7 +20,7 @@ export default function MyDrawerContent(props: any) {
         }}>
             <ThemedTouchableOpacity onPress={() => router.replace('/')}>
                 <ThemedView>
-                    <Image source={require('@public/images/icon.png')}style={styles.reactLogo}/>
+                    <Image source={require('~/images/icon.png')}style={styles.reactLogo}/>
                     <ThemedText type={'title'} style={{alignSelf: 'center',}}>Fabian Aps</ThemedText>
                     <ThemedText type='subtitle' style={{alignSelf: 'center',}}>ITler/DJ/Producer</ThemedText>
                 </ThemedView>

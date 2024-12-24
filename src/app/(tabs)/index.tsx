@@ -12,7 +12,7 @@ export default function HomeScreen() {
       headerBackgroundColor={Colors.black}
       headerImage={
         <Image
-          source={require('@public/images/icon.png')}
+          source={require('~/images/icon.png')}
           style={styles.reactLogo}
         />
       }
