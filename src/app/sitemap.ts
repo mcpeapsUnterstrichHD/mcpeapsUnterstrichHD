@@ -3,25 +3,25 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://mahd.comboompunksucht.app/',
+      url: 'https://mcpeapsunterstrichhd.dev/',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
     },
     {
-      url: 'https://mahd.comboompunksucht.app/aboutme',
+      url: 'https://mcpeapsunterstrichhd.dev/aboutme',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
-      url: 'https://mahd.comboompunksucht.app/projekte',
+      url: 'https://mcpeapsunterstrichhd.dev/projekte',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
-      url: 'https://mahd.comboompunksucht.app/lebenslauf',
+      url: 'https://mcpeapsunterstrichhd.dev/lebenslauf',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.8,
@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: 'https://mahd.comboompunksucht.app/impressum',
+      url: 'https://mcpeapsunterstrichhd.dev/impressum',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.5,

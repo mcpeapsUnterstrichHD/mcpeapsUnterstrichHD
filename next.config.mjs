@@ -35,7 +35,7 @@ const nextConfig = {
     unoptimized: true,
     domains: [
       'cdn.idx.dev',
-      'mahd.comboompunksucht.app',
+      'mcpeapsunterstrichhd.dev',
       'mahd-dev.comboompunksucht.app',
     ],
   },

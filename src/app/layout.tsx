@@ -4,13 +4,11 @@ import "./globals.css";
 import Particles from "@/components/particles";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { Analytics } from "@vercel/analytics/react";
-import { FlagValues } from "@vercel/flags/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { WebVitals } from "@/components/web-vitals";
 import { CaskaydiaCoveNerdFontPropo, CaskaydiaCoveNerdFontMono, CaskaydiaCoveNerdFont } from './fonts'
 
+export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Fabian Aps Portfolio/Impressum",
@@ -25,7 +23,7 @@ export const metadata: Metadata = {
     creatorId: "723191637950775296",
     images: [
       {
-        url: "https://mahd.comboompunksucht.app/pictures/logo.PNG",
+        url: "https://mcpeapsunterstrichhd.dev/pictures/logo.PNG",
         alt: "Logo of mcpeaps_HD", // Alt attribute for Twitter image
         width: 3000,
         height: 3000,
@@ -36,10 +34,10 @@ export const metadata: Metadata = {
     type: "website",
     title: "Fabian Aps Portfolio/Impressum",
     description: "my own portfolio/impressum website",
-    url: "https://mahd.comboompunksucht.app",
+    url: "https://mcpeapsunterstrichhd.dev",
     images: [
       {
-        url: "https://mahd.comboompunksucht.app/pictures/logo.PNG",
+        url: "https://mcpeapsunterstrichhd.dev/pictures/logo.PNG",
         alt: "Logo of mcpeaps_HD", // Alt attribute for Twitter image
         width: 3000,
         height: 3000,
@@ -80,7 +78,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#010101" />
-        <meta name="start_url" content="https://mahd.comboompunksucht.app/" />
+        <meta name="start_url" content="https://mcpeapsunterstrichhd.dev/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -117,14 +115,11 @@ export default function RootLayout({
               <div className="z-1">
 
                 {children}
-                <FlagValues values={values} />
               </div>
             </SidebarProvider>
 
           </div>
         </ThemeProvider>
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );
