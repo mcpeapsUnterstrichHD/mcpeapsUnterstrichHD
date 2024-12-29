@@ -58,17 +58,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    fontFamily: 'Sans',
   },
   subtitleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    fontFamily: 'Sans',
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-    fontFamily: 'Sans',
   }
 });

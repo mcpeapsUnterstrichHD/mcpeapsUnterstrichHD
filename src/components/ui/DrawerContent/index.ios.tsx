@@ -48,7 +48,7 @@ export default function MyDrawerContent(props: any) {
                 }}
             >
                 <ThemedTouchableOpacity onPress={() => router.replace('/')}>
-                    <ThemedText type={'defaultSemiBold'} style={{
+                    <ThemedText type={'Sans-SemiBold'} style={{
                         color: Colors.gray,
                     }}>
                         &copy; {today.getFullYear()} Fabian Aps
@@ -60,15 +60,15 @@ export default function MyDrawerContent(props: any) {
                     gap:2,
                 }}>
                     <ExternalLink href='https://link.me/mcpeaps_hd'>
-                        <ThemedText type={'default'} style={{color: Colors.styles.text,}}>Linkhub</ThemedText>
+                        <ThemedText type={'Sans-Regular'} style={{color: Colors.styles.text,}}>Linkhub</ThemedText>
                     </ExternalLink>
-                    <ThemedText type={'default'} style={{ color: Colors.styles.text, }}>|</ThemedText>
+                    <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>|</ThemedText>
                     <ThemedTouchableOpacity onPress={() => router.replace('/')}>
-                        <ThemedText type={'default'} style={{ color: Colors.styles.text, }}>Fabian Aps</ThemedText>
+                        <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>Fabian Aps</ThemedText>
                     </ThemedTouchableOpacity>
-                    <ThemedText type={'default'} style={{ color: Colors.styles.text, }}>|</ThemedText>
+                    <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>|</ThemedText>
                     <ThemedTouchableOpacity onPress={() => router.replace('/impressum')}>
-                        <ThemedText type={'default'} style={{ color: Colors.styles.text, }}>Impressum</ThemedText>
+                        <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>Impressum</ThemedText>
                     </ThemedTouchableOpacity>
                 </ThemedView>
             </ThemedView>
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
         height: 200.0,
         width: 200.0,
         padding: 32.0,
-        resizeMode: 'contain',
         alignSelf: 'center',
         justifyContent: 'center',
         position: 'relative',
