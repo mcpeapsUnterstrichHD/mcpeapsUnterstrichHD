@@ -21,7 +21,10 @@ export default function TabLayout() {
             headerStyle: {
               backgroundColor: Colors.styles.background,
               borderColor: Colors.gray,
-            },
+          },
+          headerTitleStyle: {
+            fontFamily: 'Sans-Bold',
+          },
           drawerInactiveBackgroundColor: Colors.styles.background,
           drawerActiveBackgroundColor: Colors.styles.selected_background,
           drawerInactiveTintColor: Colors.styles.foreground,
@@ -81,7 +84,7 @@ export default function TabLayout() {
             options={{
               title: 'Impressum',
               headerTitle: 'Impressum',
-              drawerIcon: () => <IconSymbol size={28} name="house.circle" color={Colors.styles.icon} />,
+              drawerIcon: () => <IconSymbol size={28} name="checkmark.circle.trianglebadge.exclamationmark" color={Colors.styles.icon} />,
             }}
           />
       </Drawer>

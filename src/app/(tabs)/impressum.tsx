@@ -21,7 +21,13 @@ export default function More() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">More</ThemedText>
+        <ThemedText type="custom" style={{
+          fontWeight: 'light',
+          fontFamily: 'Sans-LightItalic',
+          fontStyle: 'italic',
+          fontSize: 69,
+          lineHeight: 69,
+        }}>More</ThemedText>
       </ThemedView>
       <ThemedText >This app includes example code to help you get started.</ThemedText>
       <Collapsible title="File-based routing">

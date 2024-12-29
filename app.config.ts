@@ -17,7 +17,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       image: './public/images/splash-icon.png',
       backgroundColor: '#2E3440'
     },
-    },
+    usesBroadcastPushNotifications: true,
+  },
   android: {
     adaptiveIcon: {
       foregroundImage: './public/images/adaptive-icon.png',
@@ -28,6 +29,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       image: './public/images/splash-icon.png',
       backgroundColor: '#2E3440'
     }
+  },
+  androidNavigationBar: {
+    visible: 'sticky-immersive',
+    backgroundColor: '#2E3440',
+    barStyle: 'light-content',
+
+  },
+  androidStatusBar: {
+    barStyle: 'light-content',
+    backgroundColor: '#2E3440',
+    hidden: false,
+    translucent: false,
   },
   web: {
     bundler: 'metro',
@@ -44,7 +57,24 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     statusBar: {
       style: 'dark',
       backgroundColor: '#2E3440'
-    }
+    },
+    webkit: {
+      enableInlineMediaPlayback: true,
+      forceSoftwareRendering: false,
+      mediaPlaybackRequiresUserAction: false,
+      presentationStyle: 'fullscreen',
+      scrollBounce: true,
+      scrollEnabled: true,
+      showsPageControl: true,
+      tabBarVisible: true,
+    },
+  },
+  notification: {
+    icon: './public/images/icon.png',
+    color: '#2E3440',
+    iosDisplayInForeground: true,
+    androidMode: 'collapse',
+    androidCollapsedTitle: '#{unread_notifications} new Notifications from mcpeaps_HD',
   },
   plugins: [
     'expo-router',

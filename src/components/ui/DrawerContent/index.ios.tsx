@@ -60,15 +60,15 @@ export default function MyDrawerContent(props: any) {
                     gap:2,
                 }}>
                     <ExternalLink href='https://link.me/mcpeaps_hd'>
-                        <ThemedText type={'Sans-Regular'} style={{color: Colors.styles.text,}}>Linkhub</ThemedText>
+                        <ThemedText type={'link'} style={{color: Colors.styles.text,}}>Linkhub</ThemedText>
                     </ExternalLink>
                     <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>|</ThemedText>
                     <ThemedTouchableOpacity onPress={() => router.replace('/')}>
-                        <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>Fabian Aps</ThemedText>
+                        <ThemedText type={'link'} style={{ color: Colors.styles.text, }}>Fabian Aps</ThemedText>
                     </ThemedTouchableOpacity>
                     <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>|</ThemedText>
                     <ThemedTouchableOpacity onPress={() => router.replace('/impressum')}>
-                        <ThemedText type={'Sans-Regular'} style={{ color: Colors.styles.text, }}>Impressum</ThemedText>
+                        <ThemedText type={'link'} style={{ color: Colors.styles.text, }}>Impressum</ThemedText>
                     </ThemedTouchableOpacity>
                 </ThemedView>
             </ThemedView>

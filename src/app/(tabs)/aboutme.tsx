@@ -36,7 +36,7 @@ export default function AboutMe() {
       <ThemedView style={styles.stepContainer}>
       <ThemedText type='subtitle' >Ich bin Fabian Aps</ThemedText>
         <ThemedText type='subtitle' >ITler/DJ/Producer</ThemedText>
-      <ThemedText>Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es
+        <ThemedText style={styles.stepContainer_text}>Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es
         Software zu entwikeln aber durch mein Praktikum bei der KfW
         Bankengruppe hat mir gezeigt, dass mir Anwendungsbetreung auch nicht
         schwer liegt, denoch mach ich die Entwicklung gerne als Hobby. Musik
@@ -67,5 +67,9 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-  }
+  },
+  stepContainer_text: {
+  fontSize: 19,
+  lineHeight: 19,
+},
 });
