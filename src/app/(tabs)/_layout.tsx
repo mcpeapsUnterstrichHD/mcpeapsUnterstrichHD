@@ -27,7 +27,7 @@ export default function TabLayout() {
           drawerInactiveTintColor: Colors.styles.foreground,
             drawerActiveTintColor: Colors.styles.selected_foreground,
           drawerLabelStyle: {
-            fontFamily: 'Sans',
+            fontFamily: 'Sans-Regular',
           },
           drawerAllowFontScaling: true,
           drawerStyle: Platform.select({

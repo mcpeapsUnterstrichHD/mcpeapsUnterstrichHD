@@ -31,7 +31,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   web: {
     bundler: 'metro',
-    output: 'server',
+    output: 'static',
     favicon: './public/images/favicon.png',
     themeColor: '#2E3440',
     backgroundColor: '#2E3440',
