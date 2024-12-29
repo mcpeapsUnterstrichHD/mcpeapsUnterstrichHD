@@ -2,7 +2,7 @@ import { Text, type TextProps, StyleSheet} from 'react-native';
 import { Colors } from '@/constants/Colors';
 
 export type ThemedTextProps = TextProps & {
-  type?: 'Sans-Bold' | 'Sans-BoldItalic' | 'Sans-ExtraLight' | 'Sans-ExtraLightItalic' | 'Sans-Italic' | 'Sans-Light' | 'Sans-LightItalic' | 'Sans-Regular' | 'Sans-SemiBold' | 'Sans-SemiBoldItalic' | 'Sans-SemiLight' | 'Sans-SemiLightItalic' | 'Mono-Bold' | 'Mono-BoldItalic' | 'Mono-ExtraLight' | 'Mono-ExtraLightItalic' | 'Mono-Italic' | 'Mono-Light' | 'Mono-LightItalic' | 'Mono-Regular' | 'Mono-SemiBold' | 'Mono-SemiBoldItalic' | 'Mono-SemiLight' | 'Mono-SemiLightItalic' | 'Serif-Bold' | 'Serif-BoldItalic' | 'Serif-ExtraLight' | 'Serif-ExtraLightItalic' | 'Serif-Italic' | 'Serif-Light' | 'Serif-LightItalic' | 'Serif-Regular' | 'Serif-SemiBold' | 'Serif-SemiBoldItalic' | 'Serif-SemiLight' | 'Serif-SemiLightItalic' | 'custom' | 'title' | 'subtitle' | 'link';
+  type?: 'Sans-Bold' | 'Sans-BoldItalic' | 'Sans-ExtraLight' | 'Sans-ExtraLightItalic' | 'Sans-Italic' | 'Sans-Light' | 'Sans-LightItalic' | 'Sans-Regular' | 'Sans-SemiBold' | 'Sans-SemiBoldItalic' | 'Sans-SemiLight' | 'Sans-SemiLightItalic' | 'Mono-Bold' | 'Mono-BoldItalic' | 'Mono-ExtraLight' | 'Mono-ExtraLightItalic' | 'Mono-Italic' | 'Mono-Light' | 'Mono-LightItalic' | 'Mono-Regular' | 'Mono-SemiBold' | 'Mono-SemiBoldItalic' | 'Mono-SemiLight' | 'Mono-SemiLightItalic' | 'Serif-Bold' | 'Serif-BoldItalic' | 'Serif-ExtraLight' | 'Serif-ExtraLightItalic' | 'Serif-Italic' | 'Serif-Light' | 'Serif-LightItalic' | 'Serif-Regular' | 'Serif-SemiBold' | 'Serif-SemiBoldItalic' | 'Serif-SemiLight' | 'Serif-SemiLightItalic' | 'custom' | 'title' | 'subtitle' | 'code' | 'link';
 };
 
 export function ThemedText({
@@ -271,10 +271,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Sans-Bold',
   },
+  code: {
+    fontSize: 16,
+    lineHeight: 18,
+    fontWeight: 'normal',
+    fontFamily: 'Mono-Regular',
+  },
   link: {
     lineHeight: 16,
     fontSize: 16,
-    color: Colors.link,
+    color: Colors.styles.link,
     fontFamily: 'Sans-Regular',
   },
 });

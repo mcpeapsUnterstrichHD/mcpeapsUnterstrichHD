@@ -1,4 +1,5 @@
 import { StyleSheet, Image, Platform } from 'react-native';
+import { ThemedButton } from '@/components/ThemedButton';
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -7,6 +8,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/constants/Colors';
+import ThemedCodeSnipet from '@/components/code-sniped';
 
 export default function More() {
   return (
@@ -31,13 +33,13 @@ export default function More() {
       </ThemedView>
       <ThemedText >This app includes example code to help you get started.</ThemedText>
       <Collapsible title="File-based routing">
-        <ThemedText >
+        <ThemedText  style={{lineHeight:24}}>
           This app has two screens:{' '}
-          <ThemedText type="Sans-SemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="Sans-SemiBold">app/(tabs)/explore.tsx</ThemedText>
+          <ThemedCodeSnipet>app/(tabs)/index.tsx</ThemedCodeSnipet> and{' '}
+          <ThemedCodeSnipet>app/(tabs)/explore.tsx</ThemedCodeSnipet>
         </ThemedText>
         <ThemedText >
-          The layout file in <ThemedText type="Sans-SemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
+          The layout file in <ThemedCodeSnipet>app/(tabs)/_layout.tsx</ThemedCodeSnipet>{' '}
           sets up the tab navigator.
         </ThemedText>
         <ExternalLink href="https://docs.expo.dev/router/introduction">
@@ -63,7 +65,7 @@ export default function More() {
       </Collapsible>
       <Collapsible title="Custom fonts">
         <ThemedText >
-          Open <ThemedText type='Mono-Regular'>app/_layout.tsx</ThemedText> to see how to load{' '}
+          Open <ThemedCodeSnipet>app/_layout.tsx</ThemedCodeSnipet> to see how to load{' '}
           <ThemedText type='Serif-Regular'>
             custom fonts such as this one.
           </ThemedText>
@@ -75,7 +77,7 @@ export default function More() {
       <Collapsible title="Light and dark mode components">
         <ThemedText >
           This template has light and dark mode support. The{' '}
-          <ThemedText type="Sans-SemiBold">useColorScheme()</ThemedText> hook lets you inspect
+          <ThemedCodeSnipet>useColorScheme()</ThemedCodeSnipet> hook lets you inspect
           what the user's current color scheme is, and so you can adjust UI colors accordingly.
         </ThemedText>
         <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
@@ -85,8 +87,8 @@ export default function More() {
       <Collapsible title="Animations">
         <ThemedText >
           This template includes an example of an animated component. The{' '}
-          <ThemedText type="Sans-SemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="Sans-SemiBold">react-native-reanimated</ThemedText>{' '}
+          <ThemedCodeSnipet>components/HelloWave.tsx</ThemedCodeSnipet> component uses
+          the powerful <ThemedCodeSnipet>react-native-reanimated</ThemedCodeSnipet>{' '}
           library to create a waving hand animation.
         </ThemedText>
         {Platform.select({
