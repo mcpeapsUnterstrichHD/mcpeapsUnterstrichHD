@@ -9,8 +9,12 @@ import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/constants/Colors';
 import ThemedCodeSnipet from '@/components/code-sniped';
+import ThemedCodeBox from '@/components/code-box';
+import { ThemedTouchableOpacity } from '@/components/ThemedTouchableOpacity';
+import { useRouter } from 'expo-router';
 
 export default function More() {
+  const router = useRouter()
   return (
     <ParallaxScrollView
       headerBackgroundColor={Colors.blue}
@@ -31,6 +35,9 @@ export default function More() {
           lineHeight: 69,
         }}>More</ThemedText>
       </ThemedView>
+      <ThemedCodeBox lang='java' >
+        {"public class Test {\n   public static void main(String argv[]) {\n      System.out.println(\"Hello world!\");\n   }\n}"}
+      </ThemedCodeBox>
       <ThemedText >This app includes example code to help you get started.</ThemedText>
       <Collapsible title="File-based routing">
         <ThemedText  style={{lineHeight:24}}>
@@ -100,6 +107,16 @@ export default function More() {
           ),
         })}
       </Collapsible>
+      <ThemedTouchableOpacity onPress={() => router.replace('/test-not-found')}>
+        <ThemedText
+          type={'Sans-SemiBold'}
+          style={{
+            color: Colors.gray,
+          }}
+        >
+          Test Not Found Page
+        </ThemedText>
+      </ThemedTouchableOpacity>
     </ParallaxScrollView>
   );
 }

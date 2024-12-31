@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 export type ThemedCodeSnipetProps = ThemedTextProps & {
 }
 
-export default function ThemedCodeSnipet({children}) {
+export default function ThemedCodeSnipet({children}: ThemedCodeSnipetProps) {
     return (
         <ThemedText type='code' style={styles.sniped} >
             {children}

@@ -1,11 +1,14 @@
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import 'expo-dev-client';
 import { Colors } from '@/constants/Colors';
+import { ThemedButton } from '@/components/ThemedButton';
+import { ThemedTouchableOpacity } from '@/components/ThemedTouchableOpacity';
+import { ThemedText } from '@/components/ThemedText';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -63,11 +66,41 @@ export default function App() {
     return null;
   }
 
+  const router = useRouter()
+
   return (
     <>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="(pages)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" options={
+          {
+            headerTintColor: Colors.styles.foreground,
+            headerBackButtonDisplayMode: 'minimal',
+            headerStyle: {
+              backgroundColor: Colors.styles.background,
+
+            },
+            headerTitleStyle: {
+              fontFamily: 'Sans-Bold',
+            },
+            title: '404 Not Found',
+            headerBackButtonMenuEnabled: true,
+            headerLeft: () => (
+              <ThemedTouchableOpacity onPress={() => router.replace('/')}>
+                <ThemedText
+                  type={'Sans-SemiBold'}
+                  style={{
+                    color: Colors.gray,
+                    paddingHorizontal: 16,
+                    marginHorizontal: 16,
+                  }}
+                >
+                  Home
+                </ThemedText>
+              </ThemedTouchableOpacity>
+            )
+          }
+        }  />
       </Stack>
       <StatusBar
         style="auto"
