@@ -48,7 +48,7 @@ export default function TabLayout() {
             },
           }),
           drawerHideStatusBarOnOpen: false,
-          drawerIcon: () => (<IconSymbol name='󰍜' size={29} color={Colors.styles.icon} />)
+          drawerIcon: ({ size, color}) => (<IconSymbol name='󰍜' size={size} color={color} />)
         }}
       >
         <Drawer.Screen
@@ -56,7 +56,7 @@ export default function TabLayout() {
           options={{
             title: 'Home',
             headerTitle: 'Home',
-            drawerIcon: () => (<IconSymbol size={29} name="󱁍" color={Colors.styles.icon} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="󱁍" color={color} />),
           }}
         />
         <Drawer.Screen
@@ -64,7 +64,7 @@ export default function TabLayout() {
           options={{
             title: 'About Me',
             headerTitle: 'About Me',
-            drawerIcon: () => (<IconSymbol size={29} name="" color={Colors.styles.icon} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="" color={color} />),
           }}
         />
         <Drawer.Screen
@@ -72,7 +72,7 @@ export default function TabLayout() {
           options={{
             title: 'Projekte',
             headerTitle: 'Projekte',
-            drawerIcon: () => (<IconSymbol size={29} name="" color={Colors.styles.icon} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="" color={color} />),
           }}
         />
         <Drawer.Screen
@@ -80,7 +80,7 @@ export default function TabLayout() {
           options={{
             title: 'Lebenslauf',
             headerTitle: 'Lebenslauf',
-            drawerIcon: () => (<IconSymbol size={29} name="󱪙" color={Colors.styles.icon} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="󱪙" color={color} />),
           }}
         />
         <Drawer.Screen
@@ -88,7 +88,7 @@ export default function TabLayout() {
           options={{
             title: 'Impressum',
             headerTitle: 'Impressum',
-            drawerIcon: () => (<IconSymbol size={29} name="󱪗" color={Colors.styles.icon} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="󱪗" color={color} />),
           }}
         />
       </Drawer>
