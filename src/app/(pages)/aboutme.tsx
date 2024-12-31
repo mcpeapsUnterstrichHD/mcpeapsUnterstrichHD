@@ -22,7 +22,7 @@ export default function AboutMe() {
         <IconSymbol
           size={390}
           color={Colors.primary}
-          name="person"
+          name=""
           style={styles.headerImage}
         />
       }>
@@ -49,10 +49,8 @@ export default function AboutMe() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: Colors.primary,
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+    flex: 1,
+    alignSelf: 'center',
   },
   titleContainer: {
     flexDirection: 'row',

@@ -52,7 +52,7 @@ export default function TabLayout() {
           options={{
             title: 'Home',
             headerTitle: 'Home',
-            drawerIcon: () => <IconSymbol size={28} name="house.circle" color={Colors.styles.icon} />,
+            drawerIcon: () => <IconSymbol size={28} name="󱁍" color={Colors.styles.icon} />,
           }}
         />
         <Drawer.Screen
@@ -60,7 +60,7 @@ export default function TabLayout() {
           options={{
             title: 'About Me',
             headerTitle: 'About Me',
-            drawerIcon: () => <IconSymbol size={28} name="person.circle" color={Colors.styles.icon} />,
+            drawerIcon: () => <IconSymbol size={28} name="" color={Colors.styles.icon} />,
           }}
         />
         <Drawer.Screen
@@ -68,7 +68,7 @@ export default function TabLayout() {
           options={{
             title: 'Projekte',
             headerTitle: 'Projekte',
-            drawerIcon: () => <IconSymbol size={28} name="person.circle" color={Colors.styles.icon} />,
+            drawerIcon: () => <IconSymbol size={28} name="" color={Colors.styles.icon} />,
           }}
         />
         <Drawer.Screen
@@ -76,7 +76,7 @@ export default function TabLayout() {
           options={{
             title: 'Lebenslauf',
             headerTitle: 'Lebenslauf',
-            drawerIcon: () => <IconSymbol size={28} name="person.circle" color={Colors.styles.icon} />,
+            drawerIcon: () => <IconSymbol size={28} name="󱪙" color={Colors.styles.icon} />,
           }}
         />
         <Drawer.Screen
@@ -84,7 +84,7 @@ export default function TabLayout() {
           options={{
             title: 'Impressum',
             headerTitle: 'Impressum',
-            drawerIcon: () => <IconSymbol size={28} name="checkmark.circle.trianglebadge.exclamationmark" color={Colors.styles.icon} />,
+            drawerIcon: () => <IconSymbol size={28} name="󱪗" color={Colors.styles.icon} />,
           }}
         />
       </Drawer>

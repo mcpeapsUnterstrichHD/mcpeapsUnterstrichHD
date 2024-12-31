@@ -4,17 +4,15 @@ import { Colors } from '@/constants/Colors';
 export type ThemedTextProps = TextProps & {
   type?: 'Sans-Bold' | 'Sans-BoldItalic' | 'Sans-ExtraLight' | 'Sans-ExtraLightItalic' | 'Sans-Italic' | 'Sans-Light' | 'Sans-LightItalic' | 'Sans-Regular' | 'Sans-SemiBold' | 'Sans-SemiBoldItalic' | 'Sans-SemiLight' | 'Sans-SemiLightItalic' | 'Mono-Bold' | 'Mono-BoldItalic' | 'Mono-ExtraLight' | 'Mono-ExtraLightItalic' | 'Mono-Italic' | 'Mono-Light' | 'Mono-LightItalic' | 'Mono-Regular' | 'Mono-SemiBold' | 'Mono-SemiBoldItalic' | 'Mono-SemiLight' | 'Mono-SemiLightItalic' | 'Serif-Bold' | 'Serif-BoldItalic' | 'Serif-ExtraLight' | 'Serif-ExtraLightItalic' | 'Serif-Italic' | 'Serif-Light' | 'Serif-LightItalic' | 'Serif-Regular' | 'Serif-SemiBold' | 'Serif-SemiBoldItalic' | 'Serif-SemiLight' | 'Serif-SemiLightItalic' | 'custom' | 'title' | 'subtitle' | 'code' | 'link';
 };
-
 export function ThemedText({
   style,
   type = 'Sans-Regular',
   ...rest
 }: ThemedTextProps) {
-  const color = Colors.styles.text;
 
   return (
     <Text
-      style={[styles[type],style, { color }]}
+      style={[styles[type],style, ]}
       {...rest} adjustsFontSizeToFit = {true}
     />
   );
@@ -25,12 +23,14 @@ const styles = StyleSheet.create({
   'Sans-Bold' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'bold',
     fontFamily: 'Sans-Bold',
   },
   'Sans-BoldItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'bold',
     fontStyle: 'italic',
     fontFamily: 'Sans-BoldItalic',
@@ -38,12 +38,14 @@ const styles = StyleSheet.create({
   'Sans-ExtraLight' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '200',
     fontFamily: 'Sans-ExtraLight',
   },
   'Sans-ExtraLightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '200',
     fontStyle: 'italic',
     fontFamily: 'Sans-ExtraLightItalic',
@@ -51,6 +53,7 @@ const styles = StyleSheet.create({
   'Sans-Italic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'normal',
     fontStyle: 'italic',
     fontFamily: 'Sans-Italic',
@@ -58,12 +61,14 @@ const styles = StyleSheet.create({
   'Sans-Light' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'light',
     fontFamily: 'Sans-Light',
   },
   'Sans-LightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'light',
     fontStyle: 'italic',
     fontFamily: 'Sans-LightItalic',
@@ -71,18 +76,21 @@ const styles = StyleSheet.create({
   'Sans-Regular' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'normal',
     fontFamily: 'Sans-Regular',
   },
   'Sans-SemiBold' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'semibold',
     fontFamily: 'Sans-SemiBold',
   },
   'Sans-SemiBoldItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'semibold',
     fontStyle: 'italic',
     fontFamily: 'Sans-SemiBoldItalic',
@@ -90,12 +98,14 @@ const styles = StyleSheet.create({
   'Sans-SemiLight' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '300',
     fontFamily: 'Sans-SemiLight',
   },
   'Sans-SemiLightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '300',
     fontStyle: 'italic',
     fontFamily: 'Sans-SemiLightItalic',
@@ -103,12 +113,14 @@ const styles = StyleSheet.create({
   'Mono-Bold' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'bold',
     fontFamily: 'Mono-Bold',
   },
   'Mono-BoldItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'bold',
     fontStyle: 'italic',
     fontFamily: 'Mono-BoldItalic',
@@ -116,12 +128,14 @@ const styles = StyleSheet.create({
   'Mono-ExtraLight' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '200',
     fontFamily: 'Mono-ExtraLight',
   },
   'Mono-ExtraLightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '200',
     fontStyle: 'italic',
     fontFamily: 'Mono-ExtraLightItalic',
@@ -129,6 +143,7 @@ const styles = StyleSheet.create({
   'Mono-Italic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'normal',
     fontStyle: 'italic',
     fontFamily: 'Mono-Italic',
@@ -136,12 +151,14 @@ const styles = StyleSheet.create({
   'Mono-Light' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'light',
     fontFamily: 'Mono-Light',
   },
   'Mono-LightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'light',
     fontStyle: 'italic',
     fontFamily: 'Mono-LightItalic',
@@ -149,18 +166,21 @@ const styles = StyleSheet.create({
   'Mono-Regular' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'normal',
     fontFamily: 'Mono-Regular',
   },
   'Mono-SemiBold' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'semibold',
     fontFamily: 'Mono-SemiBold',
   },
   'Mono-SemiBoldItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'semibold',
     fontStyle: 'italic',
     fontFamily: 'Mono-SemiBoldIalic',
@@ -168,12 +188,14 @@ const styles = StyleSheet.create({
   'Mono-SemiLight' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '300',
     fontFamily: 'Mono-SemiLight',
   },
   'Mono-SemiLightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '300',
     fontStyle: 'italic',
     fontFamily: 'Mpno-SemiLightItalic',
@@ -181,12 +203,14 @@ const styles = StyleSheet.create({
   'Serif-Bold' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'bold',
     fontFamily: 'Serif-Bold',
   },
   'Serif-BoldItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'bold',
     fontStyle: 'italic',
     fontFamily: 'Serif-BoldItalic',
@@ -194,12 +218,14 @@ const styles = StyleSheet.create({
   'Serif-ExtraLight' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '200',
     fontFamily: 'Serif-ExtraLight',
   },
   'Serif-ExtraLightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '200',
     fontStyle: 'italic',
     fontFamily: 'Serif-ExtraLightItalic',
@@ -207,6 +233,7 @@ const styles = StyleSheet.create({
   'Serif-Italic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'normal',
     fontStyle: 'italic',
     fontFamily: 'Serif-Italic',
@@ -214,12 +241,14 @@ const styles = StyleSheet.create({
   'Serif-Light' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'light',
     fontFamily: 'Serif-Light',
   },
   'Serif-LightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'light',
     fontStyle: 'italic',
     fontFamily: 'Serif-LightItalic',
@@ -227,18 +256,21 @@ const styles = StyleSheet.create({
   'Serif-Regular' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'normal',
     fontFamily: 'Serif-Regular',
   },
   'Serif-SemiBold' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'semibold',
     fontFamily: 'Serif-SemiBold',
   },
   'Serif-SemiBoldItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: 'semibold',
     fontStyle: 'italic',
     fontFamily: 'Serif-SemiBoldItalic',
@@ -246,12 +278,14 @@ const styles = StyleSheet.create({
   'Serif-SemiLight' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '300',
     fontFamily: 'Serif-SemiLight',
   },
   'Serif-SemiLightItalic' : {
     fontSize: 16,
     lineHeight: 16,
+    color: Colors.styles.text,
     fontWeight: '300',
     fontStyle: 'italic',
     fontFamily: 'Serif-SemiLightItalic',
@@ -263,12 +297,14 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     lineHeight: 32,
+    color: Colors.styles.text,
     fontFamily: 'Sans-Bold',
   },
   subtitle: {
     fontSize: 20,
     lineHeight: 20,
     fontWeight: 'bold',
+    color: Colors.styles.text,
     fontFamily: 'Sans-Bold',
   },
   code: {

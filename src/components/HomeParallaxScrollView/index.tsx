@@ -46,8 +46,8 @@ export default function ParallaxScrollView({
       <Animated.ScrollView
         ref={scrollRef}
         scrollEventThrottle={16}
-        scrollIndicatorInsets={{ bottom: 20 }}
-        contentContainerStyle={{ paddingBottom: 20 }}>
+        scrollIndicatorInsets={{ bottom: 40 }}
+        contentContainerStyle={{ paddingBottom: 40 }}>
         <Animated.View
           style={[
             styles.header,

@@ -145,11 +145,12 @@ export default function NotFoundScreen() {
     <ParallaxScrollView
       headerBackgroundColor={Colors.styles.background}
       headerImage={
-        <ThemedText
-          style={styles.headerImage}
-        >
-          󰇸
-        </ThemedText>
+        <IconSymbol
+                  size={390}
+                  color={Colors.styles.text}
+                  name="󰇸"
+                  style={styles.headerImage}
+                />
       }
     >
       <ThemedView style={styles.titleContainer}>
@@ -171,11 +172,6 @@ const styles = StyleSheet.create({
   headerImage: {
     flex: 1,
     alignSelf: 'center',
-    color: Colors.styles.text,
-    fontSize: 390,
-    lineHeight:390,
-    fontWeight: 'normal',
-    fontFamily:'Sans-Regular',
   },
   titleContainer: {
     flexDirection: 'row',

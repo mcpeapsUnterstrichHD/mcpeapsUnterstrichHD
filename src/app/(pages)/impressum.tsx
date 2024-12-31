@@ -20,9 +20,9 @@ export default function More() {
       headerBackgroundColor={Colors.blue}
       headerImage={
         <IconSymbol
-          size={310}
+          size={225}
           color={Colors.primary}
-          name="chevron.left.forwardslash.chevron.right"
+          name="󱪗"
           style={styles.headerImage}
         />
       }>
@@ -123,10 +123,8 @@ export default function More() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: Colors.primary,
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+    flex: 1,
+    alignSelf: 'center',
   },
   titleContainer: {
     flexDirection: 'row',

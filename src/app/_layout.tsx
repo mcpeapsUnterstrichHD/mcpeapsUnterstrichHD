@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import 'expo-dev-client';
 import { Colors } from '@/constants/Colors';
-import { ThemedButton } from '@/components/ThemedButton';
 import { ThemedTouchableOpacity } from '@/components/ThemedTouchableOpacity';
 import { ThemedText } from '@/components/ThemedText';
 
@@ -17,6 +16,8 @@ SplashScreen.setOptions({
 });
 
 export default function App() {
+  const router = useRouter()
+
   const [loaded] = useFonts({
     'Sans-Bold': require('@public/fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf'),
     'Sans-BoldItalic': require('@public/fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf'),
@@ -66,7 +67,6 @@ export default function App() {
     return null;
   }
 
-  const router = useRouter()
 
   return (
     <>

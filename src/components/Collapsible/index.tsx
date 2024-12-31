@@ -16,12 +16,11 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
         onPress={() => setIsOpen((value) => !value)}
         activeOpacity={0.8}>
         <IconSymbol
-          name="chevron.right"
-          size={18}
-          weight="medium"
-          color={Colors.styles.icon}
-          style={{ transform: [{ rotate: isOpen ? '90deg' : '0deg' }] }}
-        />
+            name={isOpen ? "󱞩" : "󰁔"}
+            size={18}
+            color={Colors.styles.icon}
+            style={{ fontWeight: 'medium' }}
+          />
 
         <ThemedText type="Sans-SemiBold">{title}</ThemedText>
       </TouchableOpacity>
