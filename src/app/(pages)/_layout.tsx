@@ -48,7 +48,10 @@ export default function TabLayout() {
             },
           }),
           drawerHideStatusBarOnOpen: false,
-          drawerIcon: ({ size, color}) => (<IconSymbol name='󰍜' size={size} color={color} />)
+          drawerIcon: ({ size, color}) => (<IconSymbol name='󰍜' size={32} color={color} style={{
+              fontSize: size,
+              lineHeight: size,
+            }} />)
         }}
       >
         <Drawer.Screen
@@ -56,7 +59,10 @@ export default function TabLayout() {
           options={{
             title: 'Home',
             headerTitle: 'Home',
-            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="󱁍" color={color} />),
+            drawerIcon: ({ size, color }) => (<IconSymbol size={32} name="󱁍" color={color} style={{
+              fontSize: size,
+              lineHeight: size,
+            }} />),
           }}
         />
         <Drawer.Screen
@@ -64,7 +70,10 @@ export default function TabLayout() {
           options={{
             title: 'About Me',
             headerTitle: 'About Me',
-            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="" color={color} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={32} name="" color={color} style={{
+              fontSize: size,
+              lineHeight: size,
+            }} />),
           }}
         />
         <Drawer.Screen
@@ -72,7 +81,10 @@ export default function TabLayout() {
           options={{
             title: 'Projekte',
             headerTitle: 'Projekte',
-            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="" color={color} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={32} name="" color={color} style={{
+              fontSize: size,
+              lineHeight: size,
+            }} />),
           }}
         />
         <Drawer.Screen
@@ -80,7 +92,10 @@ export default function TabLayout() {
           options={{
             title: 'Lebenslauf',
             headerTitle: 'Lebenslauf',
-            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="󱪙" color={color} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={32} name="󱪙" color={color} style={{
+              fontSize: size,
+              lineHeight: size,
+            }} />),
           }}
         />
         <Drawer.Screen
@@ -88,7 +103,10 @@ export default function TabLayout() {
           options={{
             title: 'Impressum',
             headerTitle: 'Impressum',
-            drawerIcon: ({ size, color}) => (<IconSymbol size={size} name="󱪗" color={color} />),
+            drawerIcon: ({ size, color}) => (<IconSymbol size={32} name="󱪗" color={color} style={{
+              fontSize: size,
+              lineHeight: size,
+            }} />),
           }}
         />
       </Drawer>
