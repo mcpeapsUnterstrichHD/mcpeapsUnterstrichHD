@@ -33,6 +33,7 @@ export default function More() {
           fontStyle: 'italic',
           fontSize: 69,
           lineHeight: 69,
+          color: Colors.styles.text,
         }}>More</ThemedText>
       </ThemedView>
       <ThemedCodeBox lang='java' >
