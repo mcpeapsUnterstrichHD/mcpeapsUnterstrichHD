@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { ThemedText } from '../ThemedText';
+import { Colors } from '@/constants/Colors';
 
 export function HelloWave() {
   const rotationAnimation = useSharedValue(0);
@@ -26,13 +27,16 @@ export function HelloWave() {
 
   return (
     <Animated.View style={animatedStyle}>
-      <ThemedText type='Mono-Regular' style={styles.text}>󱠡</ThemedText>
+      <ThemedText type='custom' style={styles.text}>󱠡</ThemedText>
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
+    fontFamily: 'Mono-Regular',
+    fontWeight: 'normal',
+    color: Colors.styles.text,
     fontSize: 28,
     lineHeight: 32,
     marginTop: -6,
