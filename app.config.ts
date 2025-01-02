@@ -12,7 +12,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   newArchEnabled: true,
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.comboom.sucht.mcpeapsunterstrichhd',
+    bundleIdentifier: 'com.mcpeapsunterstrichhd.mahd',
     splash: {
       image: './public/images/splash-icon.png',
       backgroundColor: '#2E3440'
@@ -24,7 +24,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './public/images/adaptive-icon.png',
       backgroundColor: '#2E3440'
     },
-    package: 'com.comboom.sucht.mcpeapsunterstrichhd',
+    package: 'com.mcpeapsunterstrichhd.mahd',
     splash: {
       image: './public/images/splash-icon.png',
       backgroundColor: '#2E3440'
