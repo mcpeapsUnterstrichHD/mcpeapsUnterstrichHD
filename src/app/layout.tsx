@@ -77,9 +77,9 @@ export default function RootLayout({
     <html lang="de" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#010101" />
+        <meta name="theme-color" content="#2E3440" />
         <meta name="start_url" content="https://mcpeapsunterstrichhd.dev/" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#010101" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#2E3440" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta
@@ -87,7 +87,7 @@ export default function RootLayout({
           content="Fabian Aps Portfolio/Impressum"
         />
         <meta name="application-name" content="Fabian Aps" />
-        <meta name="msapplication-TileColor" content="#010101" />
+        <meta name="msapplication-TileColor" content="#2E3440" />
         <meta charSet="UTF-8" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="sitemap" href="/sitemap" />
