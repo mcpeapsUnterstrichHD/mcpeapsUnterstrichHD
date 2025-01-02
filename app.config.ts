@@ -102,7 +102,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       origin: false
     },
     eas: {
-      projectId: 'c544932e-5e92-43f6-bfc0-ebc37bf95c01'
+      projectId: '430ce8fe-2616-416e-8335-8a97f80974fc'
     }
   },
   owner: 'mcpeaps_hd',
