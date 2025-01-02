@@ -89,7 +89,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#2E3440" />
         <meta charSet="UTF-8" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="sitemap" href="/sitemap" />
+        <link rel="sitemap" href="/sitemap.xml" />
         <link rel="robots" href="/robots.txt" />
         <meta
           name="keywords"
