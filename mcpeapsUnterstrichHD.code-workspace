@@ -13,6 +13,8 @@
 				"foreground": "#000000",
 				"background": "#759c83"
 			}
-		]
+		],
+		"expoFontLoader.appJsonPath": "app.config.ts",
+		"expoFontLoader.appTsxPath": "index.ts"
 	}
 }
