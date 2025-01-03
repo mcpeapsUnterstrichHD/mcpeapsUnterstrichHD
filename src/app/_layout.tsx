@@ -8,7 +8,6 @@ import 'expo-dev-client';
 import { Colors } from '@/constants/Colors';
 import { ThemedTouchableOpacity } from '@/components/ThemedTouchableOpacity';
 import { ThemedText } from '@/components/ThemedText';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -16,9 +15,9 @@ SplashScreen.setOptions({
   fade: true,
 });
 
+
 export default function App() {
   const router = useRouter()
-
   const [loaded] = useFonts({
     'Sans-Bold': require('@public/fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf'),
     'Sans-BoldItalic': require('@public/fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf'),
@@ -68,7 +67,6 @@ export default function App() {
     return null;
   }
 
-
   return (
     <>
       <Stack>
@@ -79,21 +77,36 @@ export default function App() {
             headerBackButtonDisplayMode: 'minimal',
             headerStyle: {
               backgroundColor: Colors.styles.background,
-
+            },
+            headerLargeTitle: true,
+            headerLargeTitleStyle: {
+              fontFamily: 'Sans-Bold',
             },
             headerTitleStyle: {
               fontFamily: 'Sans-Bold',
             },
             title: '404 Not Found',
-            headerBackButtonMenuEnabled: true,
-            headerLeft: () => (
-              <ThemedTouchableOpacity onPress={() => router.replace('/')}>
-                <IconSymbol size={64} name="󱁍" color={Colors.styles.icon} style={{
-                  paddingHorizontal: 10,
-                  marginHorizontal: 10,
-                }} />
-              </ThemedTouchableOpacity>
-            )
+            headerBackTitle: 'Back',
+            headerBackVisible: true,
+            headerBackTitleStyle: {
+              fontFamily: 'Sans-Bold',
+            },
+            headerRight: () => (
+              <ThemedTouchableOpacity onPress={ () => router.push('/') }>
+            <ThemedText
+                  type={'link'}
+                  style={
+                    {
+                      paddingHorizontal: 5,
+                      marginHorizontal: 5,
+                    }
+                  }
+              >
+                Home
+              </ThemedText>
+            </ThemedTouchableOpacity>
+            ),
+
           }
         }  />
       </Stack>

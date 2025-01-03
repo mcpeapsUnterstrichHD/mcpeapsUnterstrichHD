@@ -108,7 +108,7 @@ export default function More() {
           ),
         })}
       </Collapsible>
-      <ThemedTouchableOpacity onPress={() => router.replace('/test-not-found')}>
+      <ThemedTouchableOpacity onPress={() => router.push('/test-not-found')}>
         <ThemedText
           type={'Sans-SemiBold'}
           style={{

@@ -1,12 +1,9 @@
-import { Link, Stack, useRouter } from 'expo-router';
 import { StyleSheet } from 'react-native';
-
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Colors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import ParallaxScrollView from '@/components/HomeParallaxScrollView';
-import { ThemedTouchableOpacity } from '@/components/ThemedTouchableOpacity';
 
 
 const sadTexts = [
@@ -140,7 +137,6 @@ const getRandomSadText = () => {
 
 export default function NotFoundScreen() {
   const randomSadText = getRandomSadText();
-  const router = useRouter()
   return (
     <ParallaxScrollView
       headerBackgroundColor={Colors.styles.background}
@@ -152,6 +148,7 @@ export default function NotFoundScreen() {
                   style={styles.headerImage}
                 />
       }
+      contentInsetAdjustmentBehavior='automatic'
     >
       <ThemedView style={styles.titleContainer}>
         <ThemedText  type="title">404</ThemedText>
@@ -160,7 +157,7 @@ export default function NotFoundScreen() {
         <ThemedText type='subtitle' >Not Found</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText style={styles.stepContainer_text}>
+        <ThemedText type='Mono-Regular' style={styles.stepContainer_text}>
           {randomSadText}
         </ThemedText>
       </ThemedView>
@@ -193,5 +190,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 8,
+  },
+  stepContainer_text: {
+    textAlign: 'center',
+
   },
 });
