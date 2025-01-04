@@ -25,22 +25,20 @@ export default function Impressum() {
 
   );
 
-  const Email = () => (
-    <ExternalLink href={`mailto:${emailaddress}`}>
-      <ThemedText>{emailaddress}</ThemedText>
-    </ExternalLink>
-  );
-
-  const Phone = () => (
-    <ExternalLink href={`tel:${phonenumber}`}>
-      <ThemedText>{phonenumber}</ThemedText>
-    </ExternalLink>
-  );
-
   const Contact = () => (
-    <ThemedView style={{flexDirection: 'column' }}>
-      <Phone />
-      <Email />
+    <ThemedView style={{ flexDirection: 'column' }}>
+      <ThemedView style={{ flexDirection: 'row' }}>
+        <ThemedText>Telefon: </ThemedText>
+        <ExternalLink href={`tel:${phonenumber}`}>
+          <ThemedText>{phonenumber}</ThemedText>
+        </ExternalLink>
+      </ThemedView>
+      <ThemedView style={{ flexDirection: 'row' }}>
+        <ThemedText>E-Mail: </ThemedText>
+        <ExternalLink href={`mailto:${emailaddress}`}>
+          <ThemedText>{emailaddress}</ThemedText>
+        </ExternalLink>
+      </ThemedView>
     </ThemedView>
   );
 

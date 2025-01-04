@@ -22,6 +22,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       light: './public/images/icon-ios-light/1024×1024.png',
       dark: './public/images/icon-ios-dark/1024×1024.png',
       tinted: './public/images/icon-ios-tinted/1024×1024.png'
+    },
+    infoPlist: {
+      LSApplicationQueriesSchemes: ['mahd', 'tel', 'mailto', 'sms', 'maps', 'https', 'http', 'expo'],
     }
   },
   android: {
