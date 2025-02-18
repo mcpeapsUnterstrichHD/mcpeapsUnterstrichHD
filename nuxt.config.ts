@@ -161,7 +161,7 @@ export default defineNuxtConfig({
 		],
 	},
 	webVitals: {
-		provider: "ga",
+		provider: "log",
 	},
 	pwa: {
 		manifest: {
