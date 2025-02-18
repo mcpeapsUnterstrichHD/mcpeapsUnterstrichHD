@@ -83,10 +83,10 @@ export default defineNuxtConfig({
 		"@nuxtjs/sitemap",
 		"@nuxtjs/web-vitals",
 		"@vite-pwa/nuxt",
-		"@nuxt/image",
+		//"@nuxt/image",
 		"@nuxtjs/device",
 		"@weareheavy/nuxt-cookie-consent",
-		"nuxt-svgo",
+		//"nuxt-svgo",
 		"nuxt-viewport",
 		"nuxt-og-image",
 		"nuxt-site-config",
@@ -227,14 +227,14 @@ export default defineNuxtConfig({
 		},
 		registerType: "autoUpdate",
 	},
-	image: {
+	/*image: {
 		domains: [URL, "cdn.idx.dev"],
 		alias: {
 			"/": URL,
 		},
-	},
+	},*/
 	device: {},
 	cookieConsent: {},
-	svgo: {},
+	//svgo: {},
 	viewport: {},
 });
