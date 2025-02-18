@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import './assets/css/tailwind.css'
-import NuxtPwaManifest from "@vite-pwa/nuxt"
 import { SidebarProvider } from "@/components/ui/sidebar";
 </script>
 

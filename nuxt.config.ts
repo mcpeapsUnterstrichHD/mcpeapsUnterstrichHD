@@ -227,10 +227,10 @@ export default defineNuxtConfig({
 			navigateFallback: "/",
 			cacheId: "mcpeaps_HD",
 			clientsClaim: true,
-			directoryIndex: "*",
+			directoryIndex: "/",
 			cleanupOutdatedCaches: true,
 			runtimeCaching: [
-				{ urlPattern: "*", handler: "NetworkFirst", },
+				{ urlPattern: "/*", handler: "NetworkFirst", },
 			],
 		},
 		registerType: "autoUpdate",
