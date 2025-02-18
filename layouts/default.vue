@@ -11,10 +11,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import {default as AppFooter} from '~/components/AppFooter.vue';
-import {default as  AppNavbar} from '~/components/AppNavbar.vue';
-import {default as  AppSidebar} from '~/components/AppSidebar.vue';
+<script setup lang="ts">
 </script>
 
 <style>
