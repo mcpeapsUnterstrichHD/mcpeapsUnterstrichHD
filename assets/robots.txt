@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /projets
+Allow: /aboutme
+Disallow: /impressum
+Disallow: /lebenslauf
+
+# Sitemap
+Sitemap: https://mcpeapsunterstrichhd.de/sitemap.xml
