@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 	nitro: {
 		prerender: {
 			// enabled by default with nuxt generate, not required
-			crawlLinks: false,
+			crawlLinks: true,
 			// add any routes to prerender
 			routes: [
 				"/",
@@ -83,14 +83,15 @@ export default defineNuxtConfig({
 		"@nuxtjs/sitemap",
 		"@nuxtjs/web-vitals",
 		"@vite-pwa/nuxt",
-		//"@nuxt/image",
+		"@nuxt/image",
 		"@nuxtjs/device",
 		"@weareheavy/nuxt-cookie-consent",
-		//"nuxt-svgo",
+		"nuxt-svgo",
 		"nuxt-viewport",
 		"nuxt-og-image",
 		"nuxt-site-config",
 		"@nuxthub/core",
+		"nuxt-booster",
 	],
 	hub: {
 		browser: true,
@@ -218,23 +219,32 @@ export default defineNuxtConfig({
 				},
 			],
 		},
-		workbox: {
-			navigateFallback: "/",
-		},
 		devOptions: {
-			enabled: true,
+			enabled: false,
 			type: "module",
+		},
+		workbox: {
+			navigateFallback: null,
+			cacheId: "mcpeaps_HD",
+			clientsClaim: true,
+			directoryIndex: "*",
+			cleanupOutdatedCaches: true,
+			runtimeCaching: [
+				{ urlPattern: "/*", handler: "NetworkFirst", },
+			],
 		},
 		registerType: "autoUpdate",
 	},
-	/*image: {
-		domains: [URL, "cdn.idx.dev"],
+	image: {
+		domains: [URL, "cdn.idx.dev", "img.youtube.com", "i.vimeocdn.com"],
 		alias: {
 			"/": URL,
+			youtube: "https://img.youtube.com",
+			vimeo: "https://i.vimeocdn.com",
 		},
-	},*/
+	},
 	device: {},
 	cookieConsent: {},
-	//svgo: {},
+	svgo: {},
 	viewport: {},
 });

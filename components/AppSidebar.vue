@@ -13,7 +13,6 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
   SidebarRail,
-  SiidebarProvider,
 } from '@/components/ui/sidebar'
 import {
   HoverCard,
@@ -66,7 +65,6 @@ const items = [
 
 <template>
   <aside class="z-50 sticky top-2 h-[calc(100vh-1rem)] shrink-0 float-left clear-left left-2 isolate">
-    <SiidebarProvider>
     <Sidebar variant="floating" collapsible="offcanvas" class="rounded-sm bg-background/80 backdrop-blur-sm">
       <SidebarHeader>
         <SidebarGroup>
@@ -216,6 +214,5 @@ const items = [
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  </SiidebarProvider>
   </aside>
 </template>

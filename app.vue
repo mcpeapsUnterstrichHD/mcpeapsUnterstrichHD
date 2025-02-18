@@ -2,14 +2,18 @@
   <NuxtPwaManifest />
   <NuxtRouteAnnouncer />
   <NuxtLoadingIndicator />
-  <NuxtLayout >
-    <NuxtPage />
-  </NuxtLayout>
+  <SidebarProvider>
+    <NuxtLayout >
+      <NuxtPage />
+    </NuxtLayout>
+  </SidebarProvider>
+
 </template>
 
 <script lang="ts">
 import './assets/css/tailwind.css'
 import NuxtPwaManifest from "@vite-pwa/nuxt"
+import { SidebarProvider } from "@/components/ui/sidebar";
 </script>
 
 <style>
