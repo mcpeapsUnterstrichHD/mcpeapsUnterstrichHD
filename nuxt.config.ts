@@ -32,14 +32,11 @@ export default defineNuxtConfig({
 			// add any routes to prerender
 			routes: [
 				"/",
-				"/sitemap.xml",
 				"/lebenslauf",
 				"/lebenslauf-pdf",
 				"/impressum",
 				"/aboutme",
 				"/projects",
-				"/robots.txt",
-				"/manifest.webmanifest",
 			],
 		},
 		preset: "cloudflare-pages", // Oder 'cloudflare-pages', falls du Pages nutzt
