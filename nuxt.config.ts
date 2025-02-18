@@ -82,8 +82,6 @@ export default defineNuxtConfig({
 		"@nuxtjs/seo",
 		"@nuxtjs/sitemap",
 		"@nuxtjs/web-vitals",
-		"@nuxtjs/html-validator",
-		"nuxt-booster",
 		"@vite-pwa/nuxt",
 		"@nuxt/image",
 		"@nuxtjs/device",
@@ -165,8 +163,6 @@ export default defineNuxtConfig({
 	webVitals: {
 		provider: "auto",
 	},
-	htmlValidator: {},
-	booster: {},
 	pwa: {
 		manifest: {
 			name: SHORT_TITLE,
