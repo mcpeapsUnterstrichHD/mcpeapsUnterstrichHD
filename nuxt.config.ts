@@ -18,13 +18,13 @@ const THEME_COLOR = "#2E3440";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  experimental:{
-    defaults: {
-      nuxtLink: {
-        prefetch: true,
-      }
-    }
-  },
+	experimental: {
+		defaults: {
+			nuxtLink: {
+				prefetch: true,
+			},
+		},
+	},
 	nitro: {
 		prerender: {
 			// enabled by default with nuxt generate, not required
@@ -64,9 +64,9 @@ export default defineNuxtConfig({
 				{ name: "viewport", content: "width=device-width, initial-scale=1" },
 			],
 		},
-    config: {
-      appid: "mcpeapsUnterstrichHD",
-    },
+		config: {
+			appid: "mcpeapsUnterstrichHD",
+		},
 		pageTransition: { name: "page", mode: "out-in" },
 	},
 	compatibilityDate: "2024-11-01",
@@ -148,7 +148,7 @@ export default defineNuxtConfig({
 			priority: 0.5,
 			changefreq: "daily",
 		},
-    title: LONG_TITLE,
+		title: LONG_TITLE,
 		xslColumns: [
 			{ label: "URL", width: "50%" },
 			{ label: "Last Modified", select: "sitemap:lastmod", width: "25%" },
@@ -161,7 +161,7 @@ export default defineNuxtConfig({
 		],
 	},
 	webVitals: {
-		provider: "auto",
+		provider: "ga",
 	},
 	pwa: {
 		manifest: {
