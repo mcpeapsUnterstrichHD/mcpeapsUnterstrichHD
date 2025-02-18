@@ -224,13 +224,13 @@ export default defineNuxtConfig({
 			type: "module",
 		},
 		workbox: {
-			navigateFallback: null,
+			navigateFallback: "/",
 			cacheId: "mcpeaps_HD",
 			clientsClaim: true,
 			directoryIndex: "*",
 			cleanupOutdatedCaches: true,
 			runtimeCaching: [
-				{ urlPattern: "/*", handler: "NetworkFirst", },
+				{ urlPattern: "*", handler: "NetworkFirst", },
 			],
 		},
 		registerType: "autoUpdate",
