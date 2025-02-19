@@ -33,7 +33,6 @@ export default defineNuxtConfig({
 			routes: [
 				"/",
 				"/lebenslauf",
-				"/lebenslauf-pdf",
 				"/impressum",
 				"/aboutme",
 				"/projects",
