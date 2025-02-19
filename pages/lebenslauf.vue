@@ -172,7 +172,11 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 
-const print = async () => { await window.print() }
+const print = async () => {
+  if (process.client) {
+		await window.print();
+	}
+}
 </script>
 
 <style>

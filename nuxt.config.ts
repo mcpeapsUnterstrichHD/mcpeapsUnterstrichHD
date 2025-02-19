@@ -30,13 +30,7 @@ export default defineNuxtConfig({
 			// enabled by default with nuxt generate, not required
 			crawlLinks: true,
 			// add any routes to prerender
-			routes: [
-				"/",
-				"/lebenslauf",
-				"/impressum",
-				"/aboutme",
-				"/projects",
-			],
+			routes: ["/", "/lebenslauf", "/impressum", "/aboutme", "/projects"],
 		},
 		preset: "cloudflare-pages", // Oder 'cloudflare-pages', falls du Pages nutzt
 	},
@@ -105,6 +99,22 @@ export default defineNuxtConfig({
 	ogImage: {
 		defaults: {
 			renderer: "chromium",
+		},
+	},
+	font: {
+		families: {
+			sans: {
+				name: "CaskaydiaCove Nerd Font Propo",
+				fallback: "sans-serif",
+			},
+			serif: {
+				name: "CaskaydiaCove Nerd Font",
+				fallback: "serif",
+			},
+			mono: {
+				name: "CaskaydiaCove Nerd Font Mono",
+				fallback: "monospace",
+			},
 		},
 	},
 	shadcn: {
