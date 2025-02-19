@@ -90,9 +90,6 @@ export default defineNuxtConfig({
 		"@nuxthub/core",
 		"nuxt-booster",
 	],
-	hub: {
-		browser: true,
-	},
 	site: {
 		url: `https://${URL}`,
 		name: LONG_TITLE,
@@ -226,9 +223,7 @@ export default defineNuxtConfig({
 			clientsClaim: true,
 			directoryIndex: "/",
 			cleanupOutdatedCaches: true,
-			runtimeCaching: [
-				{ urlPattern: "/*", handler: "NetworkFirst", },
-			],
+			runtimeCaching: [{ urlPattern: "/*", handler: "NetworkFirst" }],
 		},
 		registerType: "autoUpdate",
 	},

@@ -64,7 +64,7 @@ const items = [
 </script>
 
 <template>
-  <aside class="z-50 sticky top-2 h-[calc(100vh-1rem)] shrink-0 float-left clear-left left-2 isolate">
+  <aside class="z-50 sticky top-2 h-[calc(100vh-1rem)] shrink-0 float-left clear-left left-2 isolate print:hidden">
     <Sidebar variant="floating" collapsible="offcanvas" class="rounded-sm bg-background/80 backdrop-blur-sm">
       <SidebarHeader>
         <SidebarGroup>

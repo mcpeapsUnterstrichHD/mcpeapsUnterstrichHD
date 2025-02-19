@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed top-2 right-2 z-50">
+  <nav class="fixed top-2 right-2 z-50 print:hidden">
     <div class="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg">
       <NavigationMenu class="gap-4 p-2">
         <NavigationMenuList class="no-print flex items-center gap-2">

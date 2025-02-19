@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw]">
+  <div class="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw] print:hidden">
     <div class="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg">
       <div class="flex flex-col items-center justify-center p-2 gap-1">
         <div class="flex items-center justify-center">
