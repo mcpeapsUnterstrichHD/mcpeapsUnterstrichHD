@@ -6,7 +6,7 @@
 
     <div className="my-Project-grid-3">
       <ProjectCard
-        projectImage="/pictures/my_Portfolio.jpeg"
+        projectImage="/pictures/projects/my_Portfolio.jpeg"
         projectImageAlt="Portfolio Bild"
         projectImageBgColor=""
         projectTitle="Portfolio"
@@ -16,7 +16,7 @@
         Das project zu diesem Portfolio.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/OSZimt-Logo-l.png"
+        projectImage="/pictures/projects/OSZimt-Logo-l.png"
         projectImageAlt="Grosßes Logo vom OSZ IMT"
         projectImageBgColor="bg-white"
         projectTitle="Schul Repository"
@@ -26,7 +26,7 @@
         Das ist Das Repository mit meinen aufgaben aus meine Ausbildung.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/searxng.png"
+        projectImage="/pictures/projects/searxng.png"
         projectImageAlt="SearxNG Logo"
         projectImageBgColor=""
         projectTitle="Meine eigene Suchmaschine"
@@ -41,7 +41,7 @@
 
     <div className="my-Project-grid-4">
       <ProjectCard
-        projectImage="/pictures/my_Portfolio.jpeg"
+        projectImage="/pictures/projects/my_Portfolio.jpeg"
         projectImageAlt="Portfolio Bild"
         projectImageBgColor=""
         projectTitle="Portfolio"
@@ -51,7 +51,7 @@
         Das project zu diesem Portfolio.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/OSZimt-Logo-l.png"
+        projectImage="/pictures/projects/OSZimt-Logo-l.png"
         projectImageAlt="Grosßes Logo vom OSZ IMT"
         projectImageBgColor="bg-white"
         projectTitle="Schul Repository"
@@ -61,7 +61,7 @@
         Das ist Das Repository mit meinen aufgaben aus meine Ausbildung.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/OSZimt-Logo-l.png"
+        projectImage="/pictures/projects/OSZimt-Logo-l.png"
         projectImageAlt="Grosßes Logo vom OSZ IMT"
         projectImageBgColor="bg-white"
         projectTitle="Klassen Website"
@@ -72,7 +72,7 @@
         gewesen bin.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/Klassen_App_Icon_iOS_macOS_iPadOS.png"
+        projectImage="/pictures/projects/Klassen_App_Icon_iOS_macOS_iPadOS.png"
         projectImageAlt="App Icon der Klassen App"
         projectImageBgColor=""
         projectTitle="Klassen App"
@@ -91,7 +91,7 @@
         bin.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/ssqlr.png"
+        projectImage="/pictures/projects/ssqlr.png"
         projectImageAlt="Simple SQL Runner"
         projectImageBgColor="bg-black"
         projectTitle="Simple SQL Runner"
@@ -102,7 +102,7 @@
         Statements
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/searxng.png"
+        projectImage="/pictures/projects/searxng.png"
         projectImageBgColor=""
         projectImageAlt="SearxNG Logo"
         projectTitle="Meine eigene Suchmaschine"
@@ -122,7 +122,7 @@
         Das Repository für meine Dotfiles.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/Logo-transparet.png"
+        projectImage="/pictures/projects/cbps_logo-transparet.png"
         projectImageAlt="comboom.sucht Logo"
         projectImageBgColor="bg-black"
         projectTitle="comboom.sucht Website"
@@ -132,7 +132,7 @@
         Das ist die Webseite meiner Freundes Gruppe.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/Logo-transparet.png"
+        projectImage="/pictures/projects/cbps_logo-transparet.png"
         projectImageAlt="comboom.sucht Logo"
         projectImageBgColor="bg-black"
         projectTitle="comboom.sucht App"

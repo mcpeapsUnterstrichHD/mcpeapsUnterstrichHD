@@ -477,7 +477,7 @@
 .my-Project-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  @apply gap-2;
   justify-content: center; /* Zentriert das Grid horizontal */
   align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
   margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
@@ -499,7 +499,7 @@
 .my-Project-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  @apply gap-2;
   justify-content: center; /* Zentriert das Grid horizontal */
   align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
   margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
