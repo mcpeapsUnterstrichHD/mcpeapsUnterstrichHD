@@ -2,6 +2,7 @@
   <NuxtPwaManifest />
   <NuxtRouteAnnouncer />
   <NuxtLoadingIndicator />
+  <Toaster class="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden"/>
   <SidebarProvider>
     <NuxtLayout >
       <NuxtPage />
@@ -13,6 +14,7 @@
 <script setup lang="ts">
 import './assets/css/tailwind.css'
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { Toaster } from "@/components/ui/sonner";
 </script>
 
 <style>

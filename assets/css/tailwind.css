@@ -473,3 +473,48 @@
 		margin: 20mm;
 	}
 }
+
+.my-Project-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-content: center; /* Zentriert das Grid horizontal */
+  align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
+  margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
+}
+
+/* Anpassungen für mobile Geräte */
+@media (max-width: 1024px) {
+  .my-Project-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-Project-grid-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.my-Project-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-content: center; /* Zentriert das Grid horizontal */
+  align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
+  margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
+}
+
+/* Anpassungen für Tablets */
+@media (max-width: 1024px) {
+  .my-Project-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Anpassungen für Smartphones */
+@media (max-width: 768px) {
+  .my-Project-grid-4 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -158,19 +158,48 @@
     />
   </div>
   </div>
-    <ClientOnly>
-      <Button @click="print" class="fixed bottom-2 right-2 z-50 print:hidden" type="button">
+      <Button
+        @click="print"
+        class="fixed bottom-2 right-2 z-50 print:hidden" type="button"
+      >
         <div class="flex flex-row gap-2 justify-center items-center">
         <div class="nf nf-oct-download" />
         <p>PDF</p>
       </div>
       </Button>
-    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
+import { toast } from "vue-sonner";
+import { onMounted, onUnmounted } from "vue";
+
+const toastValues = {
+	title: "Best Settings for printing",
+	description: "Scale: 66%, Margins: default, Background graphics: on",
+	interval: 60000,
+};
+
+onMounted(() => {
+  // Show toast immediately on mount
+		toast(toastValues.title, {
+			description: toastValues.description,
+		});
+
+  // Set up interval to show toast every 60 seconds
+		const intervalId = setInterval(() => {
+			toast(toastValues.title, {
+				description: toastValues.description,
+			});
+		}, toastValues.interval);
+
+  // Clean up interval when component unmounts
+  onUnmounted(() => {
+    clearInterval(intervalId);
+  });
+});
+
 
 const print = async () => {
   if (process.client) {

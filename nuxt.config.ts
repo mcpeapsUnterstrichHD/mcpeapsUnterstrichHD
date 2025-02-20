@@ -237,9 +237,9 @@ export default defineNuxtConfig({
 		registerType: "autoUpdate",
 	},
 	image: {
-		domains: [URL, "cdn.idx.dev", "img.youtube.com", "i.vimeocdn.com"],
+		domains: [URL,"localhost:3000", "cdn.idx.dev", "img.youtube.com", "i.vimeocdn.com"],
 		alias: {
-			"/": URL,
+			"/": process.env.NODE_ENV === "production" ? URL: "http://localhost:3000",
 			youtube: "https://img.youtube.com",
 			vimeo: "https://i.vimeocdn.com",
 		},

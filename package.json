@@ -1,13 +1,20 @@
 {
-  "name": "nuxt-app",
+  "name": "mcpeapsUnterstrichHD",
   "private": true,
   "type": "module",
+  "version": "1.0.0",
+  "description": "my own portfolio/impressum website",
+  "author": "mcpeaps_HD",
+  "license": "MIT",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "biome check src",
+    "format": "biome check --write src",
+    "prepare": "husky"
   },
   "dependencies": {
     "@cloudflare/puppeteer": "^0.0.14",
@@ -51,8 +58,10 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@iconify-json/radix-icons": "^1.2.2",
     "@iconify/vue": "^4.3.0",
+    "husky": "^9.1.7",
     "typescript": "^5.7.3"
   }
 }

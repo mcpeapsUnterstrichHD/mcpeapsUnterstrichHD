@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"ColorfulMonorepo.workspaces.collection": [
+			{
+				"path": "/Users/mahd/DEV/mcpeapsUnterstrichHD-old",
+				"packageName": "mcpeapsunterstrichhd",
+				"label": "🌱  mcpeapsunterstrichhd",
+				"foreground": "#000000",
+				"background": "#759c83"
+			}
+		],
+		"nuxt.isNuxtApp": false
+	}
+}
