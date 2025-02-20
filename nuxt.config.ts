@@ -4,7 +4,7 @@ const SHORT_TITLE = "Fabian Aps";
 const DESCRIPTION = "my own portfolio/impressum website";
 const AUTHOR = "mcpeaps_HD";
 const KEYWORDS = [
-	"portfolio", "website", "impressum", "github", "linkedin", "aps", "fabian",
+    "portfolio", "website", "impressum", "github", "linkedin", "aps", "fabian",
 ];
 const PICTURES_PATH = "/pictures";
 const LOGO_PATH = `${PICTURES_PATH}/Logo.png`;
@@ -35,6 +35,14 @@ export default defineNuxtConfig({
     preset: 'cloudflare-pages', // Oder 'cloudflare-pages', falls du Pages nutzt
     compatibilityDate: '2025-02-18',
     minify: true,
+    routeRules: {
+      '@/public/fonts/**': {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'font/ttf',
+        },
+      },
+    },
   },
   app: {
     head: {
@@ -46,7 +54,19 @@ export default defineNuxtConfig({
         viewport: 'width=device-width, initial-scale=1.0',
         author: AUTHOR,
         robots: 'index, follow',
+        ogImage: LOGO_PATH,
+        twitterTitle: LONG_TITLE,
+        twitterDescription: DESCRIPTION,
+        twitterImage: LOGO_PATH,
+        twitterCard:'summary_large_image',
       },
+      link: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: LOGO_PATH,
+    }
+  ],
       meta: [
         { name: 'description', content: DESCRIPTION },
         { name: 'keywords', content: KEYWORDS.join(', ') },
@@ -64,6 +84,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: {
     enabled: process.env.NODE_ENV !== 'production',
+    timeline: {
+      enabled: true,
+    },
   },
   modules: [
     'shadcn-nuxt',
@@ -103,22 +126,7 @@ export default defineNuxtConfig({
       renderer: 'chromium',
     },
   },
-  font: {
-    families: {
-      sans: {
-        name: 'CaskaydiaCove Nerd Font Propo',
-        fallback: 'sans-serif',
-      },
-      serif: {
-        name: 'CaskaydiaCove Nerd Font',
-        fallback: 'serif',
-      },
-      mono: {
-        name: 'CaskaydiaCove Nerd Font Mono',
-        fallback: 'monospace',
-      },
-    },
-  },
+  css: ['@/assets/css/tailwind.css'], // Falls du eine CSS-Datei hast
   shadcn: {
     /**
      * Prefix for all the imported component

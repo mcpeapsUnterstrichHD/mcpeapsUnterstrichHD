@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import './assets/css/tailwind.css';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/sonner';
 import { toast } from 'vue-sonner';
@@ -170,11 +169,49 @@ onMounted(() => {
 onUnmounted(() => {
   if (intervalId) clearInterval(intervalId);
 });
+
+//css
+import '@/assets/css/tailwind.css';
+//fonts
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-Bold.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-BoldItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-ExtraLight.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-ExtraLightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-Italic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-Light.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-LightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-Regular.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiBold.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiBoldItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiLight.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontPropo-SemiLightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-Bold.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-BoldItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-ExtraLight.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-ExtraLightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-Italic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-Light.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-LightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-Regular.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-SemiBold.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-SemiBoldItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-SemiLight.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFont-SemiLightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-Bold.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-BoldItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-ExtraLight.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-ExtraLightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-Italic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-Light.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-LightItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-Regular.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiBold.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiBoldItalic.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiLight.ttf';
+import '@/assets/fonts/CaskaydiaCoveNerdFontMono-SemiLightItalic.ttf';
 </script>
 
 <style>
-@import './assets/css/tailwind.css';
-
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
