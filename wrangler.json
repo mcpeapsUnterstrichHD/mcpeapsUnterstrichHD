@@ -4,12 +4,12 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "mcpeapsunterstrichhd-next-2",
+  "name": "mcpeapsunterstrichhd",
   "compatibility_date": "2025-02-04",
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "pages_build_output_dir": ".vercel/output/static",
+  "pages_build_output_dir": ".dist",
   "observability": {
     "enabled": true
   }
@@ -30,7 +30,10 @@
    * Environment Variables
    * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
    */
-  // "vars": { "MY_VARIABLE": "production_value" },
+  "vars": {
+    "BUN_VERSION": "1.2.2",
+    "NODE_VERSION": "22.7.0",
+ },
   /**
    * Note: Use secrets to store sensitive data.
    * https://developers.cloudflare.com/workers/configuration/secrets/
@@ -40,7 +43,7 @@
    * Static Assets
    * https://developers.cloudflare.com/workers/static-assets/binding/
    */
-  // "assets": { "directory": "./public/", "binding": "ASSETS" },
+  "assets": { "directory": "./public/", "binding": "public" },
 
   /**
    * Service Bindings (communicate between multiple Workers)
