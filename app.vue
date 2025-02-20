@@ -61,16 +61,91 @@ const recommendations: {
     action: {
       label: 'Folge mir',
       onClick: async () => {
-        await navigateTo('https://link.me/mcpeaps_hd', { external : true, open: { target: '_blank'}});
+        await navigateTo('https://link.me/mcpeaps_hd', {
+          external : true,
+          open: { target: '_blank'}
+        });
       },
     },
   },
-  { title: 'Mein GitHub-Profil', description: '@mcpeapsUnterstrichHD | Hier leben meine Projekte.' },
-  { title: 'Mein X/Twitter', description: '@mcpeaps_HD | Hier kann man mich mal erwischen' },
-  { title: 'Mein Instagram', description: '@mcpeaps_hd | Hier bin ich am meisten aktiv' },
-  { title: 'Mein TikTok', description: '@mcpeaps_hd | Hier bin ich am meisten aktiv' },
-  { title: 'Mein Threads', description: '@mcpeaps_hd | Hier kann man mich erwischen' },
-  { title: 'Mein Bluesky', description: '@mcpeapsunterstrichhd.dev | Hier kann man mich erwischen' },
+  {
+    title: 'Mein GitHub-Profil',
+    description: '@mcpeapsUnterstrichHD | Hier leben meine Projekte.',
+    action: {
+      label: 'Folge mir',
+      onClick: async () => {
+        await navigateTo('https://github.com/mcpeapsUnterstrichHD', {
+          external : true,
+          open: { target: '_blank'}
+        });
+      }
+    }
+  },
+  {
+    title: 'Mein X/Twitter',
+    description: '@mcpeaps_HD | Hier kann man mich mal erwischen',
+    action: {
+      label: 'Folge mir',
+      onClick: async () => {
+        await navigateTo('https://x.com/mcpeaps_HD', {
+          external: true,
+          open: { target: '_blank' },
+        });
+      }
+    }
+  },
+  {
+    title: 'Mein Instagram',
+    description: '@mcpeaps_hd | Hier bin ich am meisten aktiv',
+    action: {
+      label: 'Folge mir',
+      onClick: async () => {
+        await navigateTo('https://instagram.com/mcpeaps_hd', {
+          external: true,
+          open: { target: '_blank' },
+        });
+      }
+    }
+  },
+  {
+    title: 'Mein TikTok',
+    description: '@mcpeaps_hd | Hier bin ich am meisten aktiv',
+    action: {
+      label: 'Folge mir',
+      onClick: async () => {
+        await navigateTo('https://tiktok.com/@mcpeaps_hd', {
+          external: true,
+          open: { target: '_blank' },
+        });
+      }
+    }
+  },
+  {
+    title: 'Mein Threads',
+    description: '@mcpeaps_hd | Hier kann man mich erwischen',
+    action: {
+      label: 'Folge mir',
+      onClick: async () => {
+        await navigateTo('https://threads.com/@mcpeaps_hd', {
+          external: true,
+          open: { target: '_blank' },
+        });
+      }
+    }
+  },
+  {
+    title: 'Mein Bluesky',
+    description: '@mcpeapsunterstrichhd.dev | Hier kann man mich erwischen',
+    action:{
+      label: 'Folge mir',
+      onClick: async () => {
+        await navigateTo('https://bsky.mcpeapsunterstrichhd.dev', {
+          external: true,
+          open: { target: '_blank' },
+        });
+      }
+    }
+  },
 ];
 
 let currentIndex = 0;
@@ -89,7 +164,7 @@ onMounted(() => {
     currentIndex = (currentIndex + 1) % recommendations.length;
     const { title, description, action } = recommendations[currentIndex];
     toast(title, { description, action });
-  }, 10 * 60 * 1000 ); // 10 minutes in milliseconds
+  }, 10 * 60 * 1000 ); // 10 minute(s) in milliseconds
 });
 
 onUnmounted(() => {

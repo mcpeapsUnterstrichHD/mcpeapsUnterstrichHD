@@ -182,8 +182,10 @@ const toastValues: {
 } = {
   title: 'Best Settings for printing',
   description: 'Scale: 66%, Margins: default, Background graphics: on',
-  interval: 60000,
+  interval: 1 * 60 * 1000, // 1 minute(s) in milliseconds
 };
+
+let intervalId: ReturnType<typeof setInterval> | null = null;
 
 onMounted(() => {
   // Show toast immediately on mount
@@ -192,16 +194,16 @@ onMounted(() => {
 		});
 
   // Set up interval to show toast every 60 seconds
-		const intervalId = setInterval(() => {
+		intervalId = setInterval(() => {
 			toast(toastValues.title, {
 				description: toastValues.description,
 			});
 		}, toastValues.interval);
+});
 
-  // Clean up interval when component unmounts
-  onUnmounted(() => {
-    clearInterval(intervalId);
-  });
+// Clean up interval when component unmounts
+onUnmounted(() => {
+  if (intervalId) clearInterval(intervalId);
 });
 
 
