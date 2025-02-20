@@ -4,6 +4,8 @@
 name = "mcpeapsunterstrichhd"
 compatibility_date = "2025-02-18"
 compatibility_flags = ["nodejs_compat"]
+# Optional: Pages Build Output Directory
+# pages_build_output_dir = "dist"
 
 # Optional: Enable observability (logs, analytics, etc.)
 [observability]
@@ -31,6 +33,3 @@ NODE_VERSION = "20.11.0"
 # [[services]]
 # binding = "MY_SERVICE"
 # service = "my-service"
-
-# Optional: Pages Build Output Directory
-pages_build_output_dir = "dist"
