@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2 p-2">
+  <div class="gap-2 p-2">
     <h1 className="gap-8 p-8 text-center text-6xl">Projekte</h1>
 
     <h2 className="gap-8 p-8 text-center text-5xl">Gepinte Projekte</h2>
