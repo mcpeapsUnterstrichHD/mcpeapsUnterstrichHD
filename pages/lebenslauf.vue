@@ -42,7 +42,7 @@
           Geburtsdatum: 06.06.2003
         </div>
     </div>
-    <h2 class="gap-8 font-bold text-3xl text-center pt-8 pb-8">Ausbildung</h2>
+    <h2 class="gap-2 font-bold text-3xl text-center pt-2 pb-2">Ausbildung</h2>
     <div class="time-line">
       <TimelineCard
       title="Ausbuildungsplatzsuchend"
@@ -78,7 +78,7 @@
         Algemeine Schule Grundschule + Sekundarstufe I
       </TimelineCard>
     </div>
-    <h2 class="gap-8 font-bold text-3xl text-center pt-8 pb-8">Erfahrungen</h2>
+    <h2 class="gap-2 font-bold text-3xl text-center pt-2 pb-2">Erfahrungen</h2>
     <div class="time-line">
       <TimelineCard
       title="KfW Bankengruppe"
@@ -126,7 +126,7 @@
         Regale einräumen
       </TimelineCard>
     </div>
-    <h2 class="gap-8 font-bold text-3xl text-center pt-8 pb-8">Fähigkeiten</h2>
+    <h2 class="gap-2 font-bold text-3xl text-center pt-2 pb-2">Fähigkeiten</h2>
 
   <div class="my-Skill-grid-4">
     <SkillCard
@@ -305,8 +305,8 @@ const toastValues: {
   description: string;
   interval: number;
 } = {
-  title: 'Best Settings for printing',
-  description: 'Scale: 59%, Margins: default, Background graphics: on',
+  title: 'Beste Druckeinstellugen',
+  description: 'Skalierung: 61 %, Ränder: Standart, Hintergrundgrafiken: ein',
   interval: 1 * 60 * 1000, // 1 minute(s) in milliseconds
 };
 
