@@ -245,7 +245,7 @@ export default defineNuxtConfig({
       'i.vimeocdn.com',
     ],
     alias: {
-      '/': `${process.env.NODE_ENV === 'production' ? 'https://':'https://'}${process.env.NODE_ENV === "production" ? URL:'localhost:3000'}`,
+      '/': `${process.env.NODE_ENV === 'production' ? 'https://':'http://'}${process.env.NODE_ENV === "production" ? URL:'localhost:3000'}`,
       youtube: 'https://img.youtube.com',
       vimeo: 'https://i.vimeocdn.com',
     },
