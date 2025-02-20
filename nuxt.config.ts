@@ -33,6 +33,8 @@ export default defineNuxtConfig({
       routes: ['/', '/lebenslauf', '/impressum', '/aboutme', '/projects'],
     },
     preset: 'cloudflare-pages', // Oder 'cloudflare-pages', falls du Pages nutzt
+    compatibilityDate: '2025-02-18',
+    minify: true,
   },
   app: {
     head: {
@@ -245,7 +247,7 @@ export default defineNuxtConfig({
       'i.vimeocdn.com',
     ],
     alias: {
-      '/': `${process.env.NODE_ENV === 'production' ? 'https://':'http://'}${process.env.NODE_ENV === "production" ? URL:'localhost:3000'}`,
+      '/': `${process.env.NODE_ENV === 'production' ? 'https://' : 'http://'}${process.env.NODE_ENV === 'production' ? URL : 'localhost:3000'}`,
       youtube: 'https://img.youtube.com',
       vimeo: 'https://i.vimeocdn.com',
     },
