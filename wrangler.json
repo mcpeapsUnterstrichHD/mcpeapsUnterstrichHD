@@ -32,7 +32,7 @@
    */
   "vars": {
     "BUN_VERSION": "1.2.2",
-    "NODE_VERSION": "22.7.0",
+    "NODE_VERSION": "22.7.0"
  },
   /**
    * Note: Use secrets to store sensitive data.
