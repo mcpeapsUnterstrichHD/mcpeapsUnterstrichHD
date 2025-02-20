@@ -175,10 +175,14 @@ import { Button } from '@/components/ui/button'
 import { toast } from "vue-sonner";
 import { onMounted, onUnmounted } from "vue";
 
-const toastValues = {
-	title: "Best Settings for printing",
-	description: "Scale: 66%, Margins: default, Background graphics: on",
-	interval: 60000,
+const toastValues: {
+  title: string;
+  description: string;
+  interval: number;
+} = {
+  title: 'Best Settings for printing',
+  description: 'Scale: 66%, Margins: default, Background graphics: on',
+  interval: 60000,
 };
 
 onMounted(() => {
