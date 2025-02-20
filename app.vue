@@ -1,7 +1,7 @@
 <template>
   <NuxtPwaManifest />
   <NuxtRouteAnnouncer />
-  <NuxtLoadingIndicator />
+  <NuxtLoadingIndicator color='#a3be8c' errorColor='#BF616A' />
   <Toaster class="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden" />
   <SidebarProvider>
     <NuxtLayout>
