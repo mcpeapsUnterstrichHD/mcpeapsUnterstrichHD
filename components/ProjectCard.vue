@@ -23,9 +23,9 @@
               preload
               :src="projectImage"
               :alt="projectImageAlt"
-              :class="`${projectImageBgColor} rounded-sm object-contain w-[480px] h-[480px]`"
-              :width="480"
-              :height="480"
+              :class="`${projectImageBgColor} rounded-sm object-contain w-[250px] h-[250px]`"
+              :width="250"
+              :height="250"
               :lazy-load="true"
               fit="inside"
             />
