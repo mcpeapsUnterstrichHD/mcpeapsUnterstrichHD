@@ -64,7 +64,7 @@ const items = [
 </script>
 
 <template>
-  <aside class="z-50 sticky top-2 h-[calc(100vh-1rem)] shrink-0 float-left clear-left left-2 isolate">
+  <aside class="z-50 sticky top-2 h-[calc(100vh-1rem)] shrink-0 float-left clear-left left-2 isolate print:hidden">
     <Sidebar variant="floating" collapsible="offcanvas" class="rounded-sm bg-background/80 backdrop-blur-sm">
       <SidebarHeader>
         <SidebarGroup>
@@ -191,18 +191,23 @@ const items = [
                   >
                     <picture>
                       <source
+                        preload
                         media="(prefers-color-scheme: dark)"
                         srcset="https://cdn.idx.dev/btn/open_light_32.svg"
                       />
                       <source
+                        preload
                         media="(prefers-color-scheme: light)"
                         srcset="https://cdn.idx.dev/btn/open_dark_32.svg"
                       />
-                      <img
-                        height="32"
-                        width="32"
+                      <NuxtImg
+                        preload
+                        :height="32"
+                        :width="32"
                         alt="Open in IDX"
                         src="https://cdn.idx.dev/btn/open_purple_32.svg"
+                        :lazy-load="true"
+                        fit="inside"
                       />
                     </picture>
                   </a>

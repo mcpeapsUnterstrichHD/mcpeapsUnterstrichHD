@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw]">
+  <div class="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw] print:hidden">
     <div class="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg">
       <div class="flex flex-col items-center justify-center p-2 gap-1">
         <div class="flex items-center justify-center">
@@ -32,18 +32,23 @@
           >
             <picture>
               <source
+                preload
                 media="(prefers-color-scheme: dark)"
                 srcset="https://cdn.idx.dev/btn/open_light_32.svg"
               />
               <source
+                preload
                 media="(prefers-color-scheme: light)"
                 srcset="https://cdn.idx.dev/btn/open_dark_32.svg"
               />
-              <img
-                height="32"
-                width="32"
+              <NuxtImg
+                preload
+                :height="32"
+                :width="32"
                 alt="Open in IDX"
                 src="https://cdn.idx.dev/btn/open_purple_32.svg"
+                :lazy-load="true"
+                fit="inside"
               />
             </picture>
           </a>

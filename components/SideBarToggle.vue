@@ -9,9 +9,7 @@
 
 <script lang="ts" setup>
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import "../assets/css/tailwind.css"
 </script>
 
 <style>
-@import "../assets/css/tailwind.css";
 </style>

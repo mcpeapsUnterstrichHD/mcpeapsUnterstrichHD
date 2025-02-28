@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface ImageProps {
   src: string;
@@ -21,11 +21,7 @@ interface Props {
   imageFallback?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  href: undefined,
-  image: undefined,
-  imageFallback: undefined,
-});
+const props = defineProps<Props>();
 
 function getInitials(str: string): string {
   const words = str.split(" ").filter((word) => word.length > 0);

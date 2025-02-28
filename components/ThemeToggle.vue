@@ -15,10 +15,10 @@ const menuItems = computed(() => {
     items.push({ value: 'dark', label: 'Dark' })
     items.push({ value: 'system', label: 'System' })
   } else if (colorMode.preference === 'system') {
-    if (document.documentElement.classList.contains('dark')) {
-      items.push({ value: 'light', label: 'Light' })
+    if (colorMode.value === 'dark') {
+      items.push({ value: 'light', label: 'Light' });
     } else {
-      items.push({ value: 'dark', label: 'Dark' })
+      items.push({ value: 'dark', label: 'Dark' });
     }
   }
 

@@ -42,10 +42,13 @@ const colorMode = useColorMode()
 
 // Map of images to their dark versions
 const imageMap: Record<string, string> = {
-  '/pictures/ios.png': '/pictures/ios-dark.png',
-  '/pictures/windows.png': '/pictures/windows-dark.png',
-  '/pictures/ansible.png': '/pictures/ansible-dark.png',
-}
+  '/pictures/lebenslauf/skills/ios.png':
+    '/pictures/lebenslauf/skills/ios-dark.png',
+  '/pictures/lebenslauf/skills/windows.png':
+    '/pictures/lebenslauf/skills/windows-dark.png',
+  '/pictures/lebenslauf/skills/ansible.png':
+    '/pictures/lebenslauf/skills/ansible-dark.png',
+};
 
 const currentImageSrc = computed(() => {
   return colorMode.value === 'dark' ? imageMap[props.skillImage] || props.skillImage : props.skillImage

@@ -15,6 +15,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['CaskaydiaCove Nerd Propo', 'sans-serif'],
+        serif: ['CaskaydiaCove Nerd', 'serif'],
+        mono: ['CaskaydiaCove Nerd Mono', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
