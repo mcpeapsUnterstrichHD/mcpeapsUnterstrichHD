@@ -79,7 +79,7 @@
         Hier ist eine ansamlung an self hosted Services, wie meine Suchmaschine, die ich nutze.
       </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/logo.png"
+        projectImage="/pictures/Logo.png"
         projectImageAlt="mcpeaps_HD Logo"
         projectImageBgColor=""
         projectTitle="Meine eigenen Dotfiles"
