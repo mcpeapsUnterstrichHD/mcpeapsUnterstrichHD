@@ -1,6 +1,6 @@
 <template>
   <div class="gap-2 p-2">
-    <div class="gap-2 p-2">
+    <div class="gap-2 p-2 mx-auto">
       <h1 className="gap-8 font-bold text-4xl text-center">Fabian Aps</h1>
     <div class="flex flex-col items-center justify-center gap-2 p-2">
         <div className="mb-10 text-justify">
