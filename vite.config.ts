@@ -7,6 +7,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { wrapVinxiConfigWithSentry } from '@sentry/tanstackstart-react'
 
 const config = defineConfig({
+  server: {
+    port: 3000,
+  },
   plugins: [
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
@@ -15,6 +18,7 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart({
       customViteReactPlugin: true,
+      target: "cloudflare-module",
     }),
     viteReact(),
   ],
