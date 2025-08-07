@@ -540,65 +540,59 @@ code {
   }
 }
 
-.my-Project-grid-3 {
+.my-Project-grid-pinned {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   @apply gap-2;
-  justify-content: center; /* Zentriert das Grid horizontal */
-  align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
-  margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
 }
 
 /* Anpassungen für mobile Geräte */
 @media (max-width: 1024px) {
-  .my-Project-grid-3 {
+  .my-Project-grid-pinned {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .my-Project-grid-3 {
+  .my-Project-grid-pinned {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-.my-Project-grid-4 {
+.my-Project-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   @apply gap-2;
-  justify-content: center; /* Zentriert das Grid horizontal */
-  align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
-  margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
 }
 
 /* Anpassungen für Tablets */
 @media (max-width: 1024px) {
-  .my-Project-grid-4 {
+  .my-Project-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Anpassungen für Smartphones */
 @media (max-width: 768px) {
-  .my-Project-grid-4 {
+  .my-Project-grid {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-.my-Skill-grid-4 {
+.my-Skill-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 2rem;
+  @apply gap-2;
 }
 
 @media (max-width: 1024px) {
-  .my-Skill-grid-4 {
+  .my-Skill-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .my-Skill-grid-4 {
+  .my-Skill-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -623,12 +617,6 @@ code {
 @media (max-width: 444px) {
   .timelineelement {
     @apply p-1;
-  }
-}
-
-@media print {
-  .no-print {
-    display: none !important;
   }
 }
 .show-timeline-big {

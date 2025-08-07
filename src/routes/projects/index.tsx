@@ -15,7 +15,7 @@ function RouteComponent() {
 
     <h2 className="gap-8 p-8 text-center text-4xl">Alle Projekte</h2>
 
-    <div className="my-Project-grid-4">
+    <div className="my-Project-grid">
       <ProjectCard
         projectImage="/pictures/projects/my_Portfolio.jpeg"
         projectImageAlt="Portfolio Bild"

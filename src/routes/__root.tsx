@@ -1,8 +1,15 @@
-import {HeadContent, Scripts, createRootRoute, Outlet, useNavigate} from '@tanstack/react-router'
+import {
+  HeadContent,
+  Scripts,
+  Outlet,
+  useNavigate,
+  createRootRoute
+} from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-
+import { z } from 'zod'
+import { zodValidator } from '@tanstack/zod-adapter'
 import {NavBar} from '../components/Header'
-
+import {LanguagesNUM} from "@/lib/lang.ts";
 import appCss from '../styles.css?url'
 import Footer from "@/components/Footer.tsx";
 import Particles from "@/components/Particles.tsx";
@@ -12,6 +19,10 @@ import { Toaster } from '@/components/ui/sonner';
 import { toast } from "sonner"
 import { useEffect, useRef } from 'react';
 import NotFound from "@/components/__not_foud.tsx";
+
+export const RootSiteSearchParams = z.object({
+  language: z.enum(LanguagesNUM).optional(),
+});
 
 export const Route = createRootRoute({
   head: () => ({
@@ -63,11 +74,12 @@ export const Route = createRootRoute({
 
   shellComponent: RootDocument,
   notFoundComponent: NotFound,
+  validateSearch: zodValidator(RootSiteSearchParams),
 })
 
 
 function RootDocument() {
-
+  const { language } = Route.useSearch();
   const navigateTo = useNavigate();
   const recommendations: {
     title: string;
@@ -85,7 +97,7 @@ function RootDocument() {
         onClick: async () => {
           navigateTo({
             to: '/projects',
-            reloadDocument: true
+            reloadDocument: true,
           });
         },
       },
@@ -98,7 +110,7 @@ function RootDocument() {
         onClick: async () => {
           await navigateTo({
             to: '/aboutme',
-            reloadDocument: true
+            reloadDocument: true,
           });
         },
       },
@@ -111,7 +123,10 @@ function RootDocument() {
         onClick: async () => {
           await navigateTo({
             to: '/lebenslauf',
-            reloadDocument: true
+            reloadDocument: true,
+            search: z.object({
+              language: language,
+            })
           });
         },
       },
@@ -124,7 +139,6 @@ function RootDocument() {
         onClick: async () => {
           await navigateTo({
             href: 'https://link.me/mcpeaps_hd',
-            reloadDocument: true
           });
         },
       },
@@ -225,7 +239,7 @@ function RootDocument() {
   }, []);
 
   return (
-    <html lang="de-DE">
+    <html lang={language ?? "de-DE"}>
     <head>
       <HeadContent />
     </head>

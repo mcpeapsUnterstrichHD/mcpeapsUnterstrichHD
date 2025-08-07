@@ -3,7 +3,7 @@ export default function PinedProjects() {
   return <div>
     <h2 className="gap-8 p-8 text-center text-5xl">Gepinte Projekte</h2>
 
-    <div className="my-Project-grid-3">
+    <div className="my-Project-grid-pinned gap-8 m-8">
       <ProjectCard
         projectImage="/pictures/projects/my_Portfolio.jpeg"
         projectImageAlt="Portfolio Bild"
