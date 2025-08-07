@@ -38,6 +38,14 @@ const items = [
     url: "/lebenslauf",
   },
   {
+    title: "Kontakt",
+    url: "/contact",
+  },
+  {
+    title: "Datenschutz",
+    url: "/datenschutz",
+  },
+  {
     title: "Impressum",
     url: "/impressum",
   },
