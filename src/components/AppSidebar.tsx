@@ -42,10 +42,6 @@ const items = [
     url: "/contact",
   },
   {
-    title: "Datenschutz",
-    url: "/datenschutz",
-  },
-  {
     title: "Impressum",
     url: "/impressum",
   },
