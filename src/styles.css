@@ -366,7 +366,6 @@ code {
 
   /*-- Colors --*/
 
-
   --background: var(--nord0);
   --foreground: var(--nord6);
   --muted: var(--nord3);
@@ -409,6 +408,75 @@ code {
   --chart-5: var(--nord15);
   --sidebar: var(--nord0);
   --popover: var(--nord1);
+}
+
+@media print {
+  :root, .dark{
+
+    /*-- Colorpalete --*/
+    --nord0: #2E3440;
+    --nord1: #3B4252;
+    --nord2: #434C5E;
+    --nord3: #4C566A;
+    --nord4: #D8DEE9;
+    --nord5: #E5E9F0;
+    --nord6: #ECEFF4;
+    --nord7: #8FBCBB;
+    --nord8: #88C0D0;
+    --nord9: #81A1C1;
+    --nord10: #5E81AC;
+    --nord11: #BF616A;
+    --nord12: #D08770;
+    --nord13: #EBCB8B;
+    --nord14: #A3BE8C;
+    --nord15: #B48EAD;
+
+    /*-- Colors --*/
+
+    --background: "#ffffff00";
+    --foreground: var(--nord0);
+    --muted: var(--nord6);
+    --muted-foreground: var(--nord3);
+    --popover-foreground: var(--nord0);
+    --card: var(--nord0);
+    --card-foreground: var(--nord0);
+    --border: var(--nord11);
+    --input: var(--nord0);
+
+    --primary: var(--nord14);
+    --primary-foreground: var(--nord0);
+
+    --secondary: var(--nord11);
+    --secondary-foreground: var(--nord0);
+
+    --accent: var(--nord11);
+    --accent-foreground: var(--nord0);
+    --destructive: var(--nord5);
+    --destructive-foreground: var(--nord1);
+    --ring: var(--nord14);
+
+    /* Sidebar Adjustments */
+    --sidebar-background: var(--nord5);
+    --sidebar-foreground: var(--nord0);
+    --sidebar-primary: var(--nord14);
+    --sidebar-primary-foreground: var(--nord1);
+    --sidebar-accent: var(--nord11);
+    --sidebar-accent-foreground: var(--nord1);
+    --sidebar-border: var(--nord11);
+    --sidebar-ring: var(--nord14);
+
+    --radius: 1.5rem;
+
+    /* Charts */
+    --chart-1: var(--nord11);
+    --chart-2: var(--nord12);
+    --chart-3: var(--nord13);
+    --chart-4: var(--nord14);
+    --chart-5: var(--nord15);
+    --sidebar: var(--nord6);
+    --popover: var(--nord5);
+  }
+
 }
 
 @theme inline {
@@ -459,5 +527,114 @@ code {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.nametag {
+  @apply visible;
+}
+
+@media (max-width: 600px) {
+  .nametag {
+    @apply hidden;
+  }
+}
+
+.my-Project-grid-pinned {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @apply gap-2;
+}
+
+/* Anpassungen für mobile Geräte */
+@media (max-width: 1024px) {
+  .my-Project-grid-pinned {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-Project-grid-pinned {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.my-Project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  @apply gap-2;
+}
+
+/* Anpassungen für Tablets */
+@media (max-width: 1024px) {
+  .my-Project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Anpassungen für Smartphones */
+@media (max-width: 768px) {
+  .my-Project-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.my-Skill-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  @apply gap-2;
+}
+
+@media (max-width: 1024px) {
+  .my-Skill-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-Skill-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .my-Skill-grid-4 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.projectCard {
+  @apply backdrop-blur-sm;
+  @apply bg-transparent;
+  @apply grid;
+  @apply grid-rows-subgrid;
+  grid-row: span 3;
+}
+
+.timelineelement {
+  @apply p-4;
+}
+
+@media (max-width: 444px) {
+  .timelineelement {
+    @apply p-1;
+  }
+}
+.show-timeline-big {
+  display: block !important;
+}
+
+@media (max-width: 600px) {
+  .show-timeline-big {
+    display: none !important;
+  }
+}
+
+.show-timeline-small {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .show-timeline-small {
+    display: block !important;
   }
 }

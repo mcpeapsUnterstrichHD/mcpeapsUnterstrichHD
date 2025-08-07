@@ -1,0 +1,549 @@
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import SkillCard from "@/components/skill-card";
+import {
+  TimeLineElementBig,
+  TimeLineElementSmall,
+} from "@/components/timeline-element";
+import Timeline from "@mui/lab/Timeline";
+import { timelineItemClasses } from "@mui/lab/TimelineItem";
+import {Button} from "@/components/ui/button.tsx";
+import { useEffect, useRef } from 'react';
+import {toast} from "sonner";
+import {z} from "zod";
+import { zodValidator } from '@tanstack/zod-adapter'
+
+const SiteSearchParams = z.object({
+  printing: z.boolean().optional(),
+})
+
+export const Route = createFileRoute("/lebenslauf/")({
+  validateSearch: zodValidator(SiteSearchParams),
+  component: RouteComponent,
+})
+
+function RouteComponent() {
+  const toastValues: {
+    title: string;
+    description: string;
+  } = {
+    title: 'Beste Druckeinstellugen',
+    description: 'Skalierung: 50 %, Ränder: Standart, Hintergrundgrafiken: ein',
+  };
+
+  const intervalId = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // Erste Empfehlung direkt anzeigen
+    const { title, description } = toastValues;
+    toast(title, { description });
+
+    // Intervall für weitere Empfehlungen
+    intervalId.current = setInterval(() => {
+      const { title, description } = toastValues;
+      toast(title, { description });
+    }, 1 * 60 * 1000); // 1 Minute
+
+    // Clean-up beim Unmount
+    return () => {
+      if (intervalId.current) clearInterval(intervalId.current);
+    };
+  }, []);
+
+  const { printing, language } = Route.useSearch();
+  const navigateTo = useNavigate({ from: Route.fullPath });
+
+  const print = async () => {
+    // /lebenslauf?printing=true
+
+      await navigateTo({
+      to: Route.fullPath,
+      search: {
+        printing: true,
+        language: language
+      },
+      replace: true,
+    });
+    // Warten, bis die Seite aktualisiert wurde
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await window.print();
+    // Nach dem Drucken zurück zur ursprünglichen Ansicht
+      await navigateTo({
+      to: Route.fullPath,
+      search: {
+        printing: false,
+        language: language,
+      },
+      replace: true,
+    });
+  }
+  return <div className="">
+    <center>
+      <h1 className="gap-8 font-bold text-4xl">Fabian Aps</h1>
+        Ich bin ein IT-Assistent.
+        <br />
+            <center>
+            <a
+              href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <p>
+                E-Mail: aps.fabian@mcpeapsunterstrichhd.dev
+              </p>
+            </a>
+            </center>
+            <center>
+            <a href="tel:+4917645172171"
+               target="_blank"
+               rel="noreferrer">
+              <p>
+                Telefonnummer: +4917645172171
+              </p>
+            </a>
+            </center>
+        <br />
+        <center>
+        <a
+          href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="py-1 text-lg">
+            Aps, Fabian
+            <br />
+            Ludwig-Renn-Straße 33
+            <br />
+            12679 Berlin, Deutschland
+          </div>
+        </a>
+          </center>
+        <br />
+        <center>
+        Geburtsdatum: 06.06.2003
+        </center>
+    </center>
+
+        <center><h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Ausbildung</h2></center>
+
+        <Timeline
+          position="right"
+          className="show-timeline-big flex flex-col justify-center"
+        >
+          <TimeLineElementBig
+            TimeLineTitle="Ausbuildungsplatzsuchend"
+            TimeLineBadges={[
+            ]}
+            TimeLineImage=""
+            TimeLineImageAlt="Suchend"
+            TimeLineImageFallback="/"
+            startdate="07.2024"
+            enddate="10.2025"
+          >
+            <p>
+              Ausbuildungsplatzsuchend
+            </p>
+          </TimeLineElementBig>
+          <TimeLineElementBig
+            TimeLineTitle="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)"
+            TimeLineBadges={[
+              "Berlin",
+              "Ausbildung",
+              "Fachabitur",
+              "IT",
+              "3 Jahre",
+            ]}
+            TimeLineImage="https://www.oszimt.de/favicon.ico"
+            TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
+            TimeLineImageFallback="OSZimt"
+            startdate="08.2021"
+            enddate="07.2024"
+          >
+            <p>
+              Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur
+            </p>
+          </TimeLineElementBig>
+          <TimeLineElementBig
+            TimeLineTitle="Carl-von-Linné-Schule"
+            TimeLineBadges={["Berlin", "MSA(OG)"]}
+            TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
+            TimeLineImageAlt="Carl-von-Linné-Schule Logo"
+            TimeLineImageFallback="CvL"
+            startdate="08.2010"
+            enddate="07.2021"
+          >
+            <p>Algemeine Schule Grundschule + Sekundarstufe I</p>
+          </TimeLineElementBig>
+        </Timeline>
+        <Timeline
+          sx={{
+            [`& .${timelineItemClasses.root}:before`]: {
+              flex: 0,
+              padding: 0,
+            },
+          }}
+          className="show-timeline-small flex flex-col justify-center"
+        >
+          <TimeLineElementSmall
+            TimeLineTitle="Ausbuildungsplatzsuchend"
+            TimeLineBadges={[
+            ]}
+            TimeLineImage=""
+            TimeLineImageAlt="Suchend"
+            TimeLineImageFallback="/"
+            startdate="07/2024"
+            enddate="-"
+          >
+            <p>
+              Ausbuildungsplatzsuchend
+            </p>
+          </TimeLineElementSmall>
+          <TimeLineElementSmall
+            TimeLineTitle="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)"
+            TimeLineBadges={[
+              "Berlin",
+              "Ausbildung",
+              "Fachabitur",
+              "IT",
+              "3 Jahre",
+            ]}
+            TimeLineImage="https://www.oszimt.de/favicon.ico"
+            TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
+            TimeLineImageFallback="OSZimt"
+            startdate="08.2021"
+            enddate="07.2024"
+          >
+            <p>Ausbildung zum IT-Assistenten</p>
+          </TimeLineElementSmall>
+          <TimeLineElementSmall
+            TimeLineTitle="Carl-von-Linné-Schule"
+            TimeLineBadges={["Berlin", "MSA(OG)"]}
+            TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
+            TimeLineImageAlt="Carl-von-Linné-Schule Logo"
+            TimeLineImageFallback="CvL"
+            startdate="08.2010"
+            enddate="07.2021"
+          >
+            <p>Algemeine Schule Grundschule + Sekundarstufe I</p>
+          </TimeLineElementSmall>
+        </Timeline>
+
+    <center><h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Erfahrung</h2></center>
+
+        <Timeline
+          position="right"
+          className="show-timeline-big flex flex-col justify-center"
+        >
+          <TimeLineElementBig
+            TimeLineTitle="KfW Bankengruppe"
+            TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
+            TimeLineImage="/pictures/kfw_logo.PNG"
+            TimeLineImageAlt="KfW Logo"
+            TimeLineImageFallback="KfW"
+            startdate="27.11.2023"
+            enddate="02.02.2024"
+          >
+            <p>
+              Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ
+              IMT
+            </p>
+            <br />
+            <p>
+              Automatisierungen mit Ansible + Dokumentation für Ansible in
+              Confluence der KfW
+            </p>
+          </TimeLineElementBig>
+          <TimeLineElementBig
+            TimeLineTitle="Akademie der Künste (ADK)"
+            TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
+            TimeLineImage="https://www.adk.de/favicon.ico"
+            TimeLineImageAlt="ADK Logo"
+            TimeLineImageFallback="ADK"
+            startdate="02.2020"
+            enddate="02.2020"
+          >
+            <p>Syntezizerentwiklung</p>
+          </TimeLineElementBig>
+          <TimeLineElementBig
+            TimeLineTitle="Tosa Security & Service GmbH & Co KG"
+            TimeLineBadges={[
+              "Trebin",
+              "Security",
+              "Service",
+              "Schülerpraktikum",
+              "3 Tage",
+            ]}
+            TimeLineImage="https://tosa-security.de/tosa-favicon.png"
+            TimeLineImageAlt="Tosa Security & Service GmbH & Co KG Logo"
+            TimeLineImageFallback="TSS"
+            startdate="01.2019"
+            enddate="01.2019"
+          >
+            <p>Bürotätigkeiten</p>
+          </TimeLineElementBig>
+          <TimeLineElementBig
+            TimeLineTitle="Pfennigpfeiffer"
+            TimeLineBadges={[
+              "Berlin",
+              "Einzelhandel",
+              "Schülerpraktikum",
+              "1 Tag",
+            ]}
+            TimeLineImage="https://www.pfennigpfeiffer.de/media/f0/ee/50/1678457663/favicon-32x32.png"
+            TimeLineImageAlt="Pfennigpfeiffer Logo"
+            TimeLineImageFallback="P"
+            startdate="06.2018"
+            enddate="06.2018"
+          >
+            <p>Regale einräumen</p>
+          </TimeLineElementBig>
+        </Timeline>
+
+        <Timeline
+          sx={{
+            [`& .${timelineItemClasses.root}:before`]: {
+              flex: 0,
+              padding: 0,
+            },
+          }}
+          className="show-timeline-small flex flex-col justify-center"
+        >
+          <TimeLineElementSmall
+            TimeLineTitle="KfW Bankengruppe"
+            TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
+            TimeLineImage="/pictures/kfw_logo.PNG"
+            TimeLineImageAlt="KfW Logo"
+            TimeLineImageFallback="KfW"
+            startdate="27.11.2023"
+            enddate="02.02.2024"
+          >
+            <p>
+              Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ
+              IMT
+            </p>
+            <br />
+            <p>
+              Automatisierungen mit Ansible + Dokumentation für Ansible in
+              Confluence der KfW
+            </p>
+          </TimeLineElementSmall>
+          <TimeLineElementSmall
+            TimeLineTitle="Akademie der Künste (ADK)"
+            TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
+            TimeLineImage="https://www.adk.de/favicon.ico"
+            TimeLineImageAlt="ADK Logo"
+            TimeLineImageFallback="ADK"
+            startdate="02.2020"
+            enddate="02.2020"
+          >
+            <p>Syntezizerentwiklung</p>
+          </TimeLineElementSmall>
+          <TimeLineElementSmall
+            TimeLineTitle="Tosa Security & Service GmbH & Co KG"
+            TimeLineBadges={[
+              "Trebin",
+              "Security",
+              "Service",
+              "Schülerpraktikum",
+              "3 Tage",
+            ]}
+            TimeLineImage="https://tosa-security.de/tosa-favicon.png"
+            TimeLineImageAlt="Tosa Security & Service GmbH & Co KG Logo"
+            TimeLineImageFallback="TSS"
+            startdate="01.2019"
+            enddate="01.2019"
+          >
+            <p>Bürotätigkeiten</p>
+          </TimeLineElementSmall>
+          <TimeLineElementSmall
+            TimeLineTitle="Pfennigpfeiffer"
+            TimeLineBadges={[
+              "Berlin",
+              "Einzelhandel",
+              "Schülerpraktikum",
+              "1 Tag",
+            ]}
+            TimeLineImage="https://www.pfennigpfeiffer.de/media/f0/ee/50/1678457663/favicon-32x32.png"
+            TimeLineImageAlt="Pfennigpfeiffer Logo"
+            TimeLineImageFallback="P"
+            startdate="06.2018"
+            enddate="06.2018"
+          >
+            <p>Regale einräumen</p>
+          </TimeLineElementSmall>
+        </Timeline>
+
+    <center><h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Fähigkeiten</h2></center>
+
+        <div className="my-Skill-grid w-[calc(100vw-64px)] gap-8 m-8">
+          <SkillCard
+            SkillTitle="Java"
+            SkillBadges={["Development", "3 Jahre"]}
+            SkillImage="/pictures/java.png"
+            SkillImageAlt="Java Logo"
+            SkillImageFallback="JDK"
+            Skilllevel={80}
+          />
+          <SkillCard
+            SkillTitle="Swift (SwiftUI)"
+            SkillBadges={["Development", "Frontend", "Apple", "2 Jahre"]}
+            SkillImage="/pictures/swift.png"
+            SkillImageAlt="Swift Logo"
+            SkillImageFallback="SUI"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Cisco IOS"
+            SkillBadges={["Konfiguration", "1 Jahre"]}
+            SkillImage="/pictures/cisco.png"
+            SkillImageAlt="Cisco Logo"
+            SkillImageFallback="IOS"
+            Skilllevel={50}
+          />
+          <SkillCard
+            SkillTitle="Microsoft 365"
+            SkillBadges={["Office", "365", "Microsoft", "5 Jahre"]}
+            SkillImage="/pictures/ms365.png"
+            SkillImageAlt="Microsoft 365 Logo"
+            SkillImageFallback="MS365"
+            Skilllevel={70}
+          />
+          <SkillCard
+            SkillTitle="Visual Studio Code"
+            SkillBadges={["Development", "Microsoft", "4 Jahre"]}
+            SkillImage="/pictures/vscode.png"
+            SkillImageAlt="Visual Studio Code Logo"
+            SkillImageFallback="VScode"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Apple Logic Pro"
+            SkillBadges={["Musik", "2 Jahre"]}
+            SkillImage="/pictures/logicpro.png"
+            SkillImageAlt="Apple Logic Pro Logo"
+            SkillImageFallback="ALP"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Apple Xcode 14+                "
+            SkillBadges={["Development", "Apple", "2 Jahre"]}
+            SkillImage="/pictures/xcode.png"
+            SkillImageAlt="Apple Xcode Logo"
+            SkillImageFallback="XCODE"
+            Skilllevel={70}
+          />
+          <SkillCard
+            SkillTitle="Apple macOS"
+            SkillBadges={["Betriebsystem", "Apple", "2 Jahre"]}
+            SkillImage="/pictures/macos.png"
+            SkillImageAlt="macOS Logo"
+            SkillImageFallback="macOS"
+            Skilllevel={90}
+          />
+          <SkillCard
+            SkillTitle="Apple iOS"
+            SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
+            SkillImage={printing ? '/pictures/ios.png' : '/pictures/ios-dark.png'}
+            SkillImageAlt="iOS Logo"
+            SkillImageFallback="iOS"
+            Skilllevel={80}
+          />
+          <SkillCard
+            SkillTitle="Apple iPadOS"
+            SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
+            SkillImage={printing ? '/pictures/ios.png' : '/pictures/ios-dark.png'}
+            SkillImageAlt="iOS Logo"
+            SkillImageFallback="iOS"
+            Skilllevel={80}
+          />
+          <SkillCard
+            SkillTitle="Apple vissionOS"
+            SkillBadges={["Betriebsystem", "Apple", "1 Jahre"]}
+            SkillImage={printing ? '/pictures/ios.png' : '/pictures/ios-dark.png'}
+            SkillImageAlt="iOS Logo"
+            SkillImageFallback="iOS"
+            Skilllevel={80}
+          />
+          <SkillCard
+            SkillTitle="Linux"
+            SkillBadges={["Betriebsystem", "5 Jahre"]}
+            SkillImage="/pictures/linux.png"
+            SkillImageAlt="Linux Logo"
+            SkillImageFallback="L"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Windows"
+            SkillBadges={["Betriebsystem", "Microsoft", "3 Jahre"]}
+            SkillImage={printing ? '/pictures/windows.png' : '/pictures/windows-dark.png'}
+            SkillImageAlt="Windows Logo"
+            SkillImageFallback="WIN"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Microsoft Teams"
+            SkillBadges={["Office", "Microsoft", "4 Jahre"]}
+            SkillImage="/pictures/teams.png"
+            SkillImageAlt="Microsoft Teams Logo"
+            SkillImageFallback="Teams"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Eclipse"
+            SkillBadges={["Development", "2 Jahre"]}
+            SkillImage="/pictures/eclipse.png"
+            SkillImageAlt="Eclipse Logo"
+            SkillImageFallback="JDK"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="MySQL"
+            SkillBadges={["Development", "1 Jahre"]}
+            SkillImage="/pictures/mysql.png"
+            SkillImageAlt="MySQL Logo"
+            SkillImageFallback="SQL"
+            Skilllevel={80}
+          />
+          <SkillCard
+            SkillTitle="MySQL Comunity Server"
+            SkillBadges={["Development", "1 Jahre"]}
+            SkillImage="/pictures/mysql.png"
+            SkillImageAlt="MySQL Logo"
+            SkillImageFallback="SQL"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="MySQLWorckbench"
+            SkillBadges={["Development", "1 Jahre"]}
+            SkillImage="/pictures/mysql.png"
+            SkillImageAlt="MySQL Logo"
+            SkillImageFallback="SQL"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Ansible"
+            SkillBadges={["Automation", "2 Monate"]}
+            SkillImage={printing ? '/pictures/ansible.png' : '/pictures/ansible-dark.png'}
+            SkillImageAlt="Ansible Logo"
+            SkillImageFallback="A"
+            Skilllevel={60}
+          />
+          <SkillCard
+            SkillTitle="Rust"
+            SkillBadges={["Automation", "2 Monate"]}
+            SkillImage={printing ? '/pictures/ansible.png' : '/pictures/ansible-dark.png'}
+            SkillImageAlt="Ansible Logo"
+            SkillImageFallback="A"
+            Skilllevel={30}
+          />
+        </div>
+  <Button
+    onClick={print}
+    className="fixed bottom-2 right-2 z-50 print:hidden" type="button"
+  >
+    <div className="flex flex-row gap-2 justify-center items-center">
+    <div className="nf nf-oct-download" />
+    <p>PDF</p>
+</div>
+</Button>
+      </div>
+}

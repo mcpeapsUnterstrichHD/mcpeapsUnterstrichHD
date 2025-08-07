@@ -263,7 +263,7 @@ export default function Particles({
   return (
     <div
       className={
-        "-z-10 no-print fixed top-0 left-0 grid h-[100dvh] h-[100vh] w-[100dvw] w-[100vw] animate-fade-in items-center object-fill" +
+        "-z-10 print:hidden fixed top-0 left-0 grid h-[100dvh] h-[100vh] w-[100dvw] w-[100vw] animate-fade-in items-center object-fill" +
         className
       }
       ref={canvasContainerRef}
