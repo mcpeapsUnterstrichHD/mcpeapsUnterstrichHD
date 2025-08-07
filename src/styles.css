@@ -377,13 +377,13 @@ code {
   --input: var(--nord6);
 
   --primary: var(--nord14);
-  --primary-foreground: var(--nord5);
+  --primary-foreground: var(--nord1);
 
   --secondary: var(--nord11);
-  --secondary-foreground: var(--nord5);
+  --secondary-foreground: var(--nord1);
 
   --accent: var(--nord11);
-  --accent-foreground: var(--nord5);
+  --accent-foreground: var(--nord1);
   --destructive: var(--nord1);
   --destructive-foreground: var(--nord5);
   --ring: var(--nord14);
@@ -392,9 +392,9 @@ code {
   --sidebar-background: var(--nord1);
   --sidebar-foreground: var(--nord6);
   --sidebar-primary: var(--nord14);
-  --sidebar-primary-foreground: var(--nord5);
+  --sidebar-primary-foreground: var(--nord1);
   --sidebar-accent: var(--nord11);
-  --sidebar-accent-foreground: var(--nord5);
+  --sidebar-accent-foreground: var(--nord1);
   --sidebar-border: var(--nord11);
   --sidebar-ring: var(--nord14);
 
@@ -408,6 +408,75 @@ code {
   --chart-5: var(--nord15);
   --sidebar: var(--nord0);
   --popover: var(--nord1);
+}
+
+@media print {
+  :root, .dark{
+
+    /*-- Colorpalete --*/
+    --nord0: #2E3440;
+    --nord1: #3B4252;
+    --nord2: #434C5E;
+    --nord3: #4C566A;
+    --nord4: #D8DEE9;
+    --nord5: #E5E9F0;
+    --nord6: #ECEFF4;
+    --nord7: #8FBCBB;
+    --nord8: #88C0D0;
+    --nord9: #81A1C1;
+    --nord10: #5E81AC;
+    --nord11: #BF616A;
+    --nord12: #D08770;
+    --nord13: #EBCB8B;
+    --nord14: #A3BE8C;
+    --nord15: #B48EAD;
+
+    /*-- Colors --*/
+
+    --background: "#ffffff00";
+    --foreground: var(--nord0);
+    --muted: var(--nord6);
+    --muted-foreground: var(--nord3);
+    --popover-foreground: var(--nord0);
+    --card: var(--nord0);
+    --card-foreground: var(--nord0);
+    --border: var(--nord11);
+    --input: var(--nord0);
+
+    --primary: var(--nord14);
+    --primary-foreground: var(--nord0);
+
+    --secondary: var(--nord11);
+    --secondary-foreground: var(--nord0);
+
+    --accent: var(--nord11);
+    --accent-foreground: var(--nord0);
+    --destructive: var(--nord5);
+    --destructive-foreground: var(--nord1);
+    --ring: var(--nord14);
+
+    /* Sidebar Adjustments */
+    --sidebar-background: var(--nord5);
+    --sidebar-foreground: var(--nord0);
+    --sidebar-primary: var(--nord14);
+    --sidebar-primary-foreground: var(--nord1);
+    --sidebar-accent: var(--nord11);
+    --sidebar-accent-foreground: var(--nord1);
+    --sidebar-border: var(--nord11);
+    --sidebar-ring: var(--nord14);
+
+    --radius: 1.5rem;
+
+    /* Charts */
+    --chart-1: var(--nord11);
+    --chart-2: var(--nord12);
+    --chart-3: var(--nord13);
+    --chart-4: var(--nord14);
+    --chart-5: var(--nord15);
+    --sidebar: var(--nord6);
+    --popover: var(--nord5);
+  }
+
 }
 
 @theme inline {
@@ -461,3 +530,123 @@ code {
   }
 }
 
+.nametag {
+  @apply visible;
+}
+
+@media (max-width: 600px) {
+  .nametag {
+    @apply hidden;
+  }
+}
+
+.my-Project-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @apply gap-2;
+  justify-content: center; /* Zentriert das Grid horizontal */
+  align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
+  margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
+}
+
+/* Anpassungen für mobile Geräte */
+@media (max-width: 1024px) {
+  .my-Project-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-Project-grid-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.my-Project-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  @apply gap-2;
+  justify-content: center; /* Zentriert das Grid horizontal */
+  align-items: center; /* Zentriert das Grid vertikal (falls nötig) */
+  margin: 0.5rem auto; /* Sorgt dafür, dass das Grid in der Mitte bleibt */
+}
+
+/* Anpassungen für Tablets */
+@media (max-width: 1024px) {
+  .my-Project-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Anpassungen für Smartphones */
+@media (max-width: 768px) {
+  .my-Project-grid-4 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.my-Skill-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .my-Skill-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-Skill-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .my-Skill-grid-4 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.projectCard {
+  @apply backdrop-blur-sm;
+  @apply bg-transparent;
+  @apply grid;
+  @apply grid-rows-subgrid;
+  grid-row: span 3;
+}
+
+.timelineelement {
+  @apply p-4;
+}
+
+@media (max-width: 444px) {
+  .timelineelement {
+    @apply p-1;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+.show-timeline-big {
+  display: block !important;
+}
+
+@media (max-width: 600px) {
+  .show-timeline-big {
+    display: none !important;
+  }
+}
+
+.show-timeline-small {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .show-timeline-small {
+    display: block !important;
+  }
+}

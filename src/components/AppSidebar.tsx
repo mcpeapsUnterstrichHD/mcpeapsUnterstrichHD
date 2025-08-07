@@ -31,7 +31,7 @@ const items = [
   },
   {
     title: "Projekte",
-    url: "/projekte",
+    url: "/projects",
   },
   {
     title: "Lebenslauf",

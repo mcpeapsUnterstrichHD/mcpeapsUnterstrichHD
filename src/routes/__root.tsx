@@ -239,7 +239,9 @@ function RootDocument() {
         <Outlet />
         <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden" />
         <Footer />
-        <TanStackRouterDevtools />
+        <div className="print:hidden">
+          <TanStackRouterDevtools />
+        </div>
         <Scripts />
       </div>
     </div>
