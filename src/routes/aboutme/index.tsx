@@ -20,15 +20,17 @@ function RouteComponent() {
     <h1 className="py-3 text-center font-bold text-3xl">
       ITler/DJ/Producher
     </h1>
-
-    <p className="w-3/4 text-center">
+    <center>
+      <p className="w-3/4 text-center">
       Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es
       Software zu entwikeln aber durch mein Praktikum bei der KfW
       Bankengruppe hat mir gezeigt, dass mir Anwendungsbetreung auch nicht
       schwer liegt, denoch mach ich die Entwicklung gerne als Hobby. Musik
       ist dabei auch eine Leidenschaft von mir, egal ab hören oder
       Produzieren.
-    </p>
+      </p>
+    </center>
+
 
     <h2 className="py-2 text-center font-bold text-2xl">Meine Playlist:</h2>
     <div className="flex w-full flex-auto flex-row flex-wrap items-center justify-center">

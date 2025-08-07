@@ -13,7 +13,7 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import {Link} from "@tanstack/react-router";
+import {Link, useSearch} from "@tanstack/react-router";
 import logo from "@/assets/pictures/logo.svg"
 import {
   HoverCard,
@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/hover-card"
 import UserAvatar, { type ImageProps } from "@/components/userAvatar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import {LanguagesNUM} from "@/lib/lang.ts";
 
 // submenu items.
 const items = [
@@ -50,6 +51,8 @@ const items = [
 
 
 export function AppSidebar() {
+  const search = useSearch({ strict: false });
+  const currentLang = search.language ?? LanguagesNUM.de;
   const today = new Date();
   const birthday = new Date("2003-06-06");
   let age = today.getFullYear() - birthday.getFullYear();
@@ -75,7 +78,13 @@ export function AppSidebar() {
                   <HoverCard>
                     <HoverCardTrigger asChild>
                       <SidebarMenuButton asChild>
-                        <Link to="/" className="p-6">
+                        <Link
+                          to="/"
+                          className="p-6"
+                          search={{
+                            language: currentLang,
+                          }}
+                        >
                           <UserAvatar
                             name={name}
                             githubUserName={githubUserName}
@@ -147,7 +156,9 @@ export function AppSidebar() {
                         {items.map((item) => (
                           <SidebarMenuSubItem key={item.title}>
                             <SidebarMenuButton asChild>
-                              <Link to={item.url}>
+                              <Link to={item.url} search={{
+                                language: currentLang,
+                              }}>
                                 <span>{item.title}</span>
                               </Link>
                             </SidebarMenuButton>
@@ -180,6 +191,9 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link
                       to="/"
+                      search={{
+                        language: currentLang,
+                      }}
                     >
                       <span >Fabian Aps</span>
                     </Link>
@@ -189,6 +203,9 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link
                       to="/impressum"
+                      search={{
+                        language: currentLang,
+                      }}
                     >
                       <span >Impressum</span>
                     </Link>
