@@ -366,7 +366,6 @@ code {
 
   /*-- Colors --*/
 
-
   --background: var(--nord0);
   --foreground: var(--nord6);
   --muted: var(--nord3);
@@ -378,13 +377,13 @@ code {
   --input: var(--nord6);
 
   --primary: var(--nord14);
-  --primary-foreground: var(--nord1);
+  --primary-foreground: var(--nord5);
 
   --secondary: var(--nord11);
-  --secondary-foreground: var(--nord1);
+  --secondary-foreground: var(--nord5);
 
   --accent: var(--nord11);
-  --accent-foreground: var(--nord1);
+  --accent-foreground: var(--nord5);
   --destructive: var(--nord1);
   --destructive-foreground: var(--nord5);
   --ring: var(--nord14);
@@ -393,9 +392,9 @@ code {
   --sidebar-background: var(--nord1);
   --sidebar-foreground: var(--nord6);
   --sidebar-primary: var(--nord14);
-  --sidebar-primary-foreground: var(--nord1);
+  --sidebar-primary-foreground: var(--nord5);
   --sidebar-accent: var(--nord11);
-  --sidebar-accent-foreground: var(--nord1);
+  --sidebar-accent-foreground: var(--nord5);
   --sidebar-border: var(--nord11);
   --sidebar-ring: var(--nord14);
 
@@ -461,3 +460,4 @@ code {
     @apply bg-background text-foreground;
   }
 }
+
