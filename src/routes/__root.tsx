@@ -176,10 +176,9 @@ function RootDocument() {
         onClick: async () => {
           navigateTo({
             to: '/projects',
-            search: z.object({
+            search: {
               lang: lang,
-            }),
-            reloadDocument: true,
+            },
           });
         },
       },
@@ -192,10 +191,9 @@ function RootDocument() {
         onClick: async () => {
           await navigateTo({
             to: '/aboutme',
-            search: z.object({
+            search: {
               lang: lang,
-            }),
-            reloadDocument: true,
+            },
           });
         },
       },
@@ -208,10 +206,9 @@ function RootDocument() {
         onClick: async () => {
           await navigateTo({
             to: '/lebenslauf',
-            search: z.object({
+            search: {
               lang: lang,
-            }),
-            reloadDocument: true,
+            },
           });
         },
       },
@@ -336,9 +333,9 @@ function RootDocument() {
         <NavBar />
         <AppSidebar />
         <Outlet />
-        <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden" />
+        <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
         <Footer />
-        <div className="print:hidden">
+        <div className="print:hidden no-print">
           <TanStackRouterDevtools />
         </div>
         <Scripts />

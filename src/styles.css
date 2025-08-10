@@ -530,6 +530,16 @@ code {
   }
 }
 
+@media print, --webkit-print {
+  #footer,
+  #nav,
+  #aside,
+  .no-print {
+    @apply hidden;
+  }
+
+}
+
 .nametag {
   @apply visible;
 }

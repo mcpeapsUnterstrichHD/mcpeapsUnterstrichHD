@@ -5,7 +5,7 @@ export  default function Footer() {
   const search = useSearch({ strict: false });
   const currentLang = search.lang ?? LanguagesNUM.de;
   return <div>
-    <footer className="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw] print:hidden">
+    <footer className="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw] print:hidden no-print">
       <div className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg">
         <div className="flex flex-col items-center justify-center p-2 gap-1">
           <div className="flex items-center justify-center">

@@ -50,7 +50,7 @@ function RouteComponent() {
 
   const [printing, setPrinting] = useState(false);
 
-  const toastValues: {
+  const toastValues_printig_settings: {
     title: string;
     description: string;
   } = {
@@ -58,18 +58,42 @@ function RouteComponent() {
     description: 'Skalierung: 50 %, Ränder: Standart, Hintergrundgrafiken: ein',
   };
 
+  const toastValues_printing_notice: {
+    title: string;
+    description: string;
+  } = {
+    title: 'Empfehlung für den Druck',
+    description: 'Nutzen Sie den PDF-Button unten rechts, um den Lebenslauf optimal zu drucken.'
+  };
+
   const intervalId = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Erste Empfehlung direkt anzeigen
-    const { title, description } = toastValues;
+    const { title, description } = toastValues_printig_settings;
     toast(title, { description });
 
     // Intervall für weitere Empfehlungen
     intervalId.current = setInterval(() => {
-      const { title, description } = toastValues;
+      const { title, description } = toastValues_printig_settings;
       toast(title, { description });
     }, 1 * 60 * 1000); // 1 Minute
+
+    // Clean-up beim Unmount
+    return () => {
+      if (intervalId.current) clearInterval(intervalId.current);
+    };
+  }, []);
+  useEffect(() => {
+    // Erste Empfehlung direkt anzeigen
+    const { title, description } = toastValues_printing_notice;
+    toast(title, { description });
+
+    // Intervall für weitere Empfehlungen
+    intervalId.current = setInterval(() => {
+      const { title, description } = toastValues_printing_notice;
+      toast(title, { description });
+    }, 2 * 60 * 1000); // 2 Minute
 
     // Clean-up beim Unmount
     return () => {
@@ -87,27 +111,6 @@ function RouteComponent() {
     // Nach dem Drucken zurück zur ursprünglichen Ansicht
       setPrinting(false);
   }
-
-  // detect if the user is printing
-  useEffect(() => {
-    const beforePrint = () => setPrinting(true)
-    const afterPrint = () => setPrinting(false)
-
-    window.addEventListener('beforeprint', beforePrint)
-    window.addEventListener('afterprint', afterPrint)
-
-    const mediaQueryList = window.matchMedia('print')
-    const mediaListener = (e: MediaQueryListEvent) => {
-      setPrinting(e.matches)
-    }
-    mediaQueryList.addEventListener('change', mediaListener)
-
-    return () => {
-      window.removeEventListener('beforeprint', beforePrint)
-      window.removeEventListener('afterprint', afterPrint)
-      mediaQueryList.removeEventListener('change', mediaListener)
-    }
-  }, [])
 
   return <div className="">
     <center>
