@@ -19,14 +19,13 @@ import {Button} from "@/components/ui/button.tsx";
 export function NavBar() {
   const router = useRouter();
   const search = useSearch({ strict: false });
-  const currentLang = search.language ?? LanguagesNUM.de;
-  const setLanguage = (language: LanguagesNUM) => {
+  const currentLang = search.lang ?? LanguagesNUM.de;
+  const setLanguage = (lang: LanguagesNUM) => {
     router.navigate({
-      search: (prev) => ({
-        ...prev,
-        language,
-      }),
-      replace: true, // ersetzt die History statt neue hinzuzufügen
+      search: {
+        lang: lang,
+  },
+      reloadDocument: true,
     });
   };
 

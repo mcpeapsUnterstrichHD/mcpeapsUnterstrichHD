@@ -21,7 +21,7 @@ import { useEffect, useRef } from 'react';
 import NotFound from "@/components/__not_foud.tsx";
 
 export const RootSiteSearchParams = z.object({
-  language: z.enum(LanguagesNUM).optional(),
+  lang: z.enum(LanguagesNUM).optional(),
 });
 
 export const Route = createRootRoute({
@@ -79,7 +79,7 @@ export const Route = createRootRoute({
 
 
 function RootDocument() {
-  const { language } = Route.useSearch();
+  const { lang } = Route.useSearch();
   const navigateTo = useNavigate();
   const recommendations: {
     title: string;
@@ -97,6 +97,9 @@ function RootDocument() {
         onClick: async () => {
           navigateTo({
             to: '/projects',
+            search: z.object({
+              lang: lang,
+            }),
             reloadDocument: true,
           });
         },
@@ -110,6 +113,9 @@ function RootDocument() {
         onClick: async () => {
           await navigateTo({
             to: '/aboutme',
+            search: z.object({
+              lang: lang,
+            }),
             reloadDocument: true,
           });
         },
@@ -123,10 +129,10 @@ function RootDocument() {
         onClick: async () => {
           await navigateTo({
             to: '/lebenslauf',
-            reloadDocument: true,
             search: z.object({
-              language: language,
-            })
+              lang: lang,
+            }),
+            reloadDocument: true,
           });
         },
       },
@@ -239,7 +245,7 @@ function RootDocument() {
   }, []);
 
   return (
-    <html lang={language ?? "de-DE"}>
+    <html lang={lang ?? "de-DE"}>
     <head>
       <HeadContent />
     </head>
