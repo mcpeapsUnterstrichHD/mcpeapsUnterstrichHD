@@ -3,6 +3,7 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
+import { cloudflare } from "@cloudflare/vite-plugin";
 
 import { wrapVinxiConfigWithSentry } from '@sentry/tanstackstart-react'
 
@@ -21,6 +22,9 @@ const config = defineConfig({
       target: "cloudflare-module",
     }),
     viteReact(),
+    cloudflare(
+      { viteEnvironment: { name: "ssr" }, persistState: true, },
+    ),
   ],
 })
 
