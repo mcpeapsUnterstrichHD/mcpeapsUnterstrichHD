@@ -41,6 +41,34 @@
       "sizes": "512x512"
     }
   ],
+  "apple_mobile_web_app_capable": "yes",
+  "apple_mobile_web_app_status_bar_style": "black-translucent",
+  "apple_touch_icon": "/logo512.png",
+  "splash_pages": "/logo512",
+  "splash_pages_ios": [
+    {
+      "src": "/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages_android": [
+    {
+      "src": "/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+],
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#2E3440",
