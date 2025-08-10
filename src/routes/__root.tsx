@@ -42,7 +42,7 @@ export const Route = createRootRoute({
       },
       {
         name: 'description',
-        content: 'A Streamelements streaming overlay by comboom.sucht',
+        content: 'Fabian Aps personal portfolio and homepage showcasing projects, skills, and contact information.',
       },
       {
         name: 'theme-color',
@@ -57,8 +57,87 @@ export const Route = createRootRoute({
         name: 'apple-mobile-web-app-status-bar-style',
         content: '#2E3440',
       },
-
-    ],
+      {
+        name: 'apple-mobile-web-app-title',
+      content: 'Fabian Aps',
+      },
+      {
+        name: 'application-name',
+        content: 'Fabian Aps',
+      },
+      {
+        name: 'msapplication-TileColor',
+        content: '#2E3440',
+      },
+      {
+        name: 'msapplication-TileImage',
+        content: '/logo512.png',
+      },
+      {
+        name: 'robots',
+        content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        name: 'twitter:title',
+        content: 'Fabian Aps | Homepage/Portfolio/Impressum',
+      },
+      {
+        name: 'twitter:description',
+        content: 'A Streamelements streaming overlay by comboom.sucht',
+      },
+      {
+        name: 'twitter:image',
+        content: '/logo512.png',
+      },
+      {
+        name: 'twitter:site',
+        content: '@mcpeaps_HD',
+      },
+      {
+        name: 'twitter:creator',
+        content: '@mcpeaps_HD',
+      },
+      {
+        name: 'og:title',
+        content: 'Fabian Aps | Homepage/Portfolio/Impressum',
+      },
+      {
+        name: 'og:type',
+        content: 'website',
+      },
+      {
+        name: 'og:url',
+        content: 'https://mcpeapsunterstrichhd.dev/',
+      },
+      {
+        name: 'og:image',
+        content: '/logo512.png',
+      },
+      {
+        name: 'og:image:type',
+        content: 'image/png',
+      },
+      {
+        name: 'og:image:width',
+        content: '512',
+      },
+      {
+        name: 'og:image:height',
+        content: '512',
+      },
+      {
+        name: 'og:description',
+        content: 'Fabian Aps personal portfolio and homepage showcasing projects, skills, and contact information.'
+      },
+      {
+        name: 'apple-touch-icon',
+        content: '/logo512.png',
+      },
+],
     links: [
       {
         rel: 'stylesheet',
