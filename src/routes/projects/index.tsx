@@ -142,7 +142,7 @@ function RouteComponent() {
   <ProjectCard
     projectImage={cbpsLogo}
     projectImageAlt="comboom.sucht Logo"
-    projectImageBgColor="bg-black"
+    projectImageBgColor=""
     projectTitle="comboom.sucht Website"
     projectBadges={['FOSS', 'WEB', 'MARKDOWN', 'WIKI']}
   projectLink="https://github.com/comboomPunkTsucht/comboom.sucht-BLOG"
@@ -152,7 +152,7 @@ function RouteComponent() {
   <ProjectCard
     projectImage={cbpsLogo}
     projectImageAlt="comboom.sucht Logo"
-    projectImageBgColor="bg-black"
+    projectImageBgColor=""
     projectTitle="comboom.sucht App"
     projectBadges={['FOSS', 'APP', 'iOS', 'SWIFT', 'SWIFTUI', 'HUB']}
   projectLink="https://github.com/comboomPunkTsucht/comboomPunkTsucht-IOS-macOS-App"
