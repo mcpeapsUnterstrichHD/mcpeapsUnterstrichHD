@@ -1,7 +1,18 @@
 import { createFileRoute } from '@tanstack/react-router'
 import ProjectCard from '@/components/projekt-card'
 import PinedProjects from '@/components/pinedProjects'
-import logo from '@/assets/pictures/logo.svg'
+
+
+
+// pictures
+import logo from '@/assets/pictures/logo.png'
+import portfolioPicture from '@/assets/pictures/projects/my_Portfolio.jpeg'
+import searxngPicture from '@/assets/pictures/projects/searxng.png'
+import oszimtLogo from '@/assets/pictures/projects/OSZimt-Logo-l.png'
+import klassenLogo from '@/assets/pictures/projects/Klassen_App_Icon_iOS_macOS_iPadOS.png'
+import simpleSQLRunnerPicture from '@/assets/pictures/projects/ssqlr.png'
+import cbpsLogo from '@/assets/pictures/projects/cbps_logo.png'
+
 
 export const Route = createFileRoute('/projects/')({
   component: RouteComponent,
@@ -17,7 +28,7 @@ function RouteComponent() {
 
     <div className="my-Project-grid">
       <ProjectCard
-        projectImage="/pictures/projects/my_Portfolio.jpeg"
+        projectImage={portfolioPicture}
         projectImageAlt="Portfolio Bild"
         projectImageBgColor=""
         projectTitle="Portfolio"
@@ -27,7 +38,7 @@ function RouteComponent() {
       Das project zu diesem Portfolio.
     </ProjectCard>
     <ProjectCard
-      projectImage="/pictures/projects/OSZimt-Logo-l.png"
+      projectImage={oszimtLogo}
       projectImageAlt="Grosßes Logo vom OSZ IMT"
       projectImageBgColor="bg-white"
       projectTitle="Schul Repository"
@@ -37,7 +48,7 @@ function RouteComponent() {
     Das ist Das Repository mit meinen aufgaben aus meine Ausbildung.
   </ProjectCard>
   <ProjectCard
-    projectImage="/pictures/projects/OSZimt-Logo-l.png"
+    projectImage={oszimtLogo}
     projectImageAlt="Grosßes Logo vom OSZ IMT"
     projectImageBgColor="bg-white"
     projectTitle="Klassen Website"
@@ -48,7 +59,7 @@ function RouteComponent() {
   gewesen bin.
 </ProjectCard>
   <ProjectCard
-    projectImage="/pictures/projects/Klassen_App_Icon_iOS_macOS_iPadOS.png"
+    projectImage={klassenLogo}
     projectImageAlt="App Icon der Klassen App"
     projectImageBgColor=""
     projectTitle="Klassen App"
@@ -67,7 +78,7 @@ function RouteComponent() {
   bin.
 </ProjectCard>
   <ProjectCard
-    projectImage="/pictures/projects/ssqlr.png"
+    projectImage={simpleSQLRunnerPicture}
     projectImageAlt="Simple SQL Runner"
     projectImageBgColor="bg-black"
     projectTitle="Simple SQL Runner"
@@ -78,7 +89,7 @@ function RouteComponent() {
   Statements
   </ProjectCard>
       <ProjectCard
-        projectImage="/pictures/projects/ssqlr.png"
+        projectImage={simpleSQLRunnerPicture}
         projectImageAlt="Simple SQL Runner"
         projectImageBgColor="bg-black"
         projectTitle="simplesql"
@@ -89,7 +100,7 @@ function RouteComponent() {
         Statements
       </ProjectCard>
   <ProjectCard
-    projectImage="/pictures/projects/searxng.png"
+    projectImage={searxngPicture}
     projectImageAlt="SearxNG Logo"
     projectImageBgColor=""
     projectTitle="Meine eigene Localen Services"
@@ -129,9 +140,9 @@ function RouteComponent() {
       Das Repository für meine Dotfiles für macOS.
     </ProjectCard>
   <ProjectCard
-    projectImage="/pictures/projects/cbps_logo-transparet.png"
+    projectImage={cbpsLogo}
     projectImageAlt="comboom.sucht Logo"
-    projectImageBgColor="bg-black"
+    projectImageBgColor=""
     projectTitle="comboom.sucht Website"
     projectBadges={['FOSS', 'WEB', 'MARKDOWN', 'WIKI']}
   projectLink="https://github.com/comboomPunkTsucht/comboom.sucht-BLOG"
@@ -139,9 +150,9 @@ function RouteComponent() {
     Das ist die Webseite meiner Freundes Gruppe.
 </ProjectCard>
   <ProjectCard
-    projectImage="/pictures/projects/cbps_logo-transparet.png"
+    projectImage={cbpsLogo}
     projectImageAlt="comboom.sucht Logo"
-    projectImageBgColor="bg-black"
+    projectImageBgColor=""
     projectTitle="comboom.sucht App"
     projectBadges={['FOSS', 'APP', 'iOS', 'SWIFT', 'SWIFTUI', 'HUB']}
   projectLink="https://github.com/comboomPunkTsucht/comboomPunkTsucht-IOS-macOS-App"

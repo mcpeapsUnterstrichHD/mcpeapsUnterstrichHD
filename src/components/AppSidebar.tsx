@@ -14,7 +14,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import {Link, useSearch} from "@tanstack/react-router";
-import logo from "@/assets/pictures/logo.svg"
+import logo from "@/assets/pictures/logo.png"
 import {
   HoverCard,
   HoverCardContent,
@@ -52,7 +52,7 @@ const items = [
 
 export function AppSidebar() {
   const search = useSearch({ strict: false });
-  const currentLang = search.language ?? LanguagesNUM.de;
+  const currentLang = search.lang ?? LanguagesNUM.de;
   const today = new Date();
   const birthday = new Date("2003-06-06");
   let age = today.getFullYear() - birthday.getFullYear();
@@ -82,7 +82,7 @@ export function AppSidebar() {
                           to="/"
                           className="p-6"
                           search={{
-                            language: currentLang,
+                            lang: currentLang,
                           }}
                         >
                           <UserAvatar
@@ -157,7 +157,7 @@ export function AppSidebar() {
                           <SidebarMenuSubItem key={item.title}>
                             <SidebarMenuButton asChild>
                               <Link to={item.url} search={{
-                                language: currentLang,
+                                lang: currentLang,
                               }}>
                                 <span>{item.title}</span>
                               </Link>
@@ -192,7 +192,7 @@ export function AppSidebar() {
                     <Link
                       to="/"
                       search={{
-                        language: currentLang,
+                        lang: currentLang,
                       }}
                     >
                       <span >Fabian Aps</span>
@@ -204,7 +204,7 @@ export function AppSidebar() {
                     <Link
                       to="/impressum"
                       search={{
-                        language: currentLang,
+                        lang: currentLang,
                       }}
                     >
                       <span >Impressum</span>

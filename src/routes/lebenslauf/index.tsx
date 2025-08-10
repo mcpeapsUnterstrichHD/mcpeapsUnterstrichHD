@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import SkillCard from "@/components/skill-card";
 import {
   TimeLineElementBig,
@@ -7,21 +7,49 @@ import {
 import Timeline from "@mui/lab/Timeline";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
 import {Button} from "@/components/ui/button.tsx";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {toast} from "sonner";
-import {z} from "zod";
-import { zodValidator } from '@tanstack/zod-adapter'
 
-const SiteSearchParams = z.object({
-  printing: z.boolean().optional(),
-})
+
+// logos
+// schools
+import oszimtLogo from "@/assets/pictures/lebenslauf/schools/oszimt_logo.png"
+import cvlLogo from "@/assets/pictures/lebenslauf/schools/cvl_logo.png"
+// firms
+import kfwLogo from "@/assets/pictures/lebenslauf/firms/kfw_logo.png"
+import adkLogo from "@/assets/pictures/lebenslauf/firms/adkberlin_logo.jpg"
+import toSaLogo from "@/assets/pictures/lebenslauf/firms/ToSa_logo.jpg"
+import pfennigfeifferLogo from "@/assets/pictures/lebenslauf/firms/Pfennigpfeiffer_logo.jpg"
+// skills
+import javaLogo from "@/assets/pictures/lebenslauf/skills/java.png"
+import swiftLogo from "@/assets/pictures/lebenslauf/skills/swift.png"
+import ciscoLogo from "@/assets/pictures/lebenslauf/skills/cisco.png"
+import ms365Logo from "@/assets/pictures/lebenslauf/skills/ms365.png"
+import vscodeLogo from "@/assets/pictures/lebenslauf/skills/vscode.png"
+import logicProLogo from "@/assets/pictures/lebenslauf/skills/logicpro.png"
+import xcodeLogo from "@/assets/pictures/lebenslauf/skills/xcode.png"
+import macosLogo from "@/assets/pictures/lebenslauf/skills/macos.png"
+import iosLogo from "@/assets/pictures/lebenslauf/skills/ios.png"
+import iosLogoDark from "@/assets/pictures/lebenslauf/skills/ios-dark.png"
+import linuxLogo from "@/assets/pictures/lebenslauf/skills/linux.png"
+import windowsLogo from "@/assets/pictures/lebenslauf/skills/windows.png"
+import windowsLogoDark from "@/assets/pictures/lebenslauf/skills/windows-dark.png"
+import teamsLogo from "@/assets/pictures/lebenslauf/skills/teams.png"
+import eclipseLogo from "@/assets/pictures/lebenslauf/skills/eclipse.png"
+import mysqlLogo from "@/assets/pictures/lebenslauf/skills/mysql.png"
+import ansibleLogo from "@/assets/pictures/lebenslauf/skills/ansible.png"
+import ansibleLogoDark from "@/assets/pictures/lebenslauf/skills/ansible-dark.png"
+//import rustLogo from "@/assets/pictures/lebenslauf/skills/rust.png
+
 
 export const Route = createFileRoute("/lebenslauf/")({
-  validateSearch: zodValidator(SiteSearchParams),
   component: RouteComponent,
 })
 
 function RouteComponent() {
+
+  const [printing, setPrinting] = useState(false);
+
   const toastValues: {
     title: string;
     description: string;
@@ -49,33 +77,38 @@ function RouteComponent() {
     };
   }, []);
 
-  const { printing, language } = Route.useSearch();
-  const navigateTo = useNavigate({ from: Route.fullPath });
-
   const print = async () => {
     // /lebenslauf?printing=true
 
-      await navigateTo({
-      to: Route.fullPath,
-      search: {
-        printing: true,
-        language: language
-      },
-      replace: true,
-    });
+      setPrinting(true);
     // Warten, bis die Seite aktualisiert wurde
       await new Promise(resolve => setTimeout(resolve, 1000));
       await window.print();
     // Nach dem Drucken zurück zur ursprünglichen Ansicht
-      await navigateTo({
-      to: Route.fullPath,
-      search: {
-        printing: false,
-        language: language,
-      },
-      replace: true,
-    });
+      setPrinting(false);
   }
+
+  // detect if the user is printing
+  useEffect(() => {
+    const beforePrint = () => setPrinting(true)
+    const afterPrint = () => setPrinting(false)
+
+    window.addEventListener('beforeprint', beforePrint)
+    window.addEventListener('afterprint', afterPrint)
+
+    const mediaQueryList = window.matchMedia('print')
+    const mediaListener = (e: MediaQueryListEvent) => {
+      setPrinting(e.matches)
+    }
+    mediaQueryList.addEventListener('change', mediaListener)
+
+    return () => {
+      window.removeEventListener('beforeprint', beforePrint)
+      window.removeEventListener('afterprint', afterPrint)
+      mediaQueryList.removeEventListener('change', mediaListener)
+    }
+  }, [])
+
   return <div className="">
     <center>
       <h1 className="gap-8 font-bold text-4xl">Fabian Aps</h1>
@@ -152,7 +185,7 @@ function RouteComponent() {
               "IT",
               "3 Jahre",
             ]}
-            TimeLineImage="https://www.oszimt.de/favicon.ico"
+            TimeLineImage={oszimtLogo}
             TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
             TimeLineImageFallback="OSZimt"
             startdate="08.2021"
@@ -165,7 +198,7 @@ function RouteComponent() {
           <TimeLineElementBig
             TimeLineTitle="Carl-von-Linné-Schule"
             TimeLineBadges={["Berlin", "MSA(OG)"]}
-            TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
+            TimeLineImage={cvlLogo}
             TimeLineImageAlt="Carl-von-Linné-Schule Logo"
             TimeLineImageFallback="CvL"
             startdate="08.2010"
@@ -206,7 +239,7 @@ function RouteComponent() {
               "IT",
               "3 Jahre",
             ]}
-            TimeLineImage="https://www.oszimt.de/favicon.ico"
+            TimeLineImage={oszimtLogo}
             TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
             TimeLineImageFallback="OSZimt"
             startdate="08.2021"
@@ -217,7 +250,7 @@ function RouteComponent() {
           <TimeLineElementSmall
             TimeLineTitle="Carl-von-Linné-Schule"
             TimeLineBadges={["Berlin", "MSA(OG)"]}
-            TimeLineImage="https://linne.schule/images/Logos/linne_logo.PNG"
+            TimeLineImage={cvlLogo}
             TimeLineImageAlt="Carl-von-Linné-Schule Logo"
             TimeLineImageFallback="CvL"
             startdate="08.2010"
@@ -236,7 +269,7 @@ function RouteComponent() {
           <TimeLineElementBig
             TimeLineTitle="KfW Bankengruppe"
             TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
-            TimeLineImage="/pictures/kfw_logo.PNG"
+            TimeLineImage={kfwLogo}
             TimeLineImageAlt="KfW Logo"
             TimeLineImageFallback="KfW"
             startdate="27.11.2023"
@@ -255,7 +288,7 @@ function RouteComponent() {
           <TimeLineElementBig
             TimeLineTitle="Akademie der Künste (ADK)"
             TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
-            TimeLineImage="https://www.adk.de/favicon.ico"
+            TimeLineImage={adkLogo}
             TimeLineImageAlt="ADK Logo"
             TimeLineImageFallback="ADK"
             startdate="02.2020"
@@ -272,7 +305,7 @@ function RouteComponent() {
               "Schülerpraktikum",
               "3 Tage",
             ]}
-            TimeLineImage="https://tosa-security.de/tosa-favicon.png"
+            TimeLineImage={toSaLogo}
             TimeLineImageAlt="Tosa Security & Service GmbH & Co KG Logo"
             TimeLineImageFallback="TSS"
             startdate="01.2019"
@@ -288,7 +321,7 @@ function RouteComponent() {
               "Schülerpraktikum",
               "1 Tag",
             ]}
-            TimeLineImage="https://www.pfennigpfeiffer.de/media/f0/ee/50/1678457663/favicon-32x32.png"
+            TimeLineImage={pfennigfeifferLogo}
             TimeLineImageAlt="Pfennigpfeiffer Logo"
             TimeLineImageFallback="P"
             startdate="06.2018"
@@ -310,7 +343,7 @@ function RouteComponent() {
           <TimeLineElementSmall
             TimeLineTitle="KfW Bankengruppe"
             TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
-            TimeLineImage="/pictures/kfw_logo.PNG"
+            TimeLineImage={kfwLogo}
             TimeLineImageAlt="KfW Logo"
             TimeLineImageFallback="KfW"
             startdate="27.11.2023"
@@ -329,7 +362,7 @@ function RouteComponent() {
           <TimeLineElementSmall
             TimeLineTitle="Akademie der Künste (ADK)"
             TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
-            TimeLineImage="https://www.adk.de/favicon.ico"
+            TimeLineImage={adkLogo}
             TimeLineImageAlt="ADK Logo"
             TimeLineImageFallback="ADK"
             startdate="02.2020"
@@ -346,7 +379,7 @@ function RouteComponent() {
               "Schülerpraktikum",
               "3 Tage",
             ]}
-            TimeLineImage="https://tosa-security.de/tosa-favicon.png"
+            TimeLineImage={toSaLogo}
             TimeLineImageAlt="Tosa Security & Service GmbH & Co KG Logo"
             TimeLineImageFallback="TSS"
             startdate="01.2019"
@@ -362,7 +395,7 @@ function RouteComponent() {
               "Schülerpraktikum",
               "1 Tag",
             ]}
-            TimeLineImage="https://www.pfennigpfeiffer.de/media/f0/ee/50/1678457663/favicon-32x32.png"
+            TimeLineImage={pfennigfeifferLogo}
             TimeLineImageAlt="Pfennigpfeiffer Logo"
             TimeLineImageFallback="P"
             startdate="06.2018"
@@ -378,7 +411,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Java"
             SkillBadges={["Development", "3 Jahre"]}
-            SkillImage="/pictures/java.png"
+            SkillImage={javaLogo}
             SkillImageAlt="Java Logo"
             SkillImageFallback="JDK"
             Skilllevel={80}
@@ -386,7 +419,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Swift (SwiftUI)"
             SkillBadges={["Development", "Frontend", "Apple", "2 Jahre"]}
-            SkillImage="/pictures/swift.png"
+            SkillImage={swiftLogo}
             SkillImageAlt="Swift Logo"
             SkillImageFallback="SUI"
             Skilllevel={60}
@@ -394,7 +427,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Cisco IOS"
             SkillBadges={["Konfiguration", "1 Jahre"]}
-            SkillImage="/pictures/cisco.png"
+            SkillImage={ciscoLogo}
             SkillImageAlt="Cisco Logo"
             SkillImageFallback="IOS"
             Skilllevel={50}
@@ -402,7 +435,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Microsoft 365"
             SkillBadges={["Office", "365", "Microsoft", "5 Jahre"]}
-            SkillImage="/pictures/ms365.png"
+            SkillImage={ms365Logo}
             SkillImageAlt="Microsoft 365 Logo"
             SkillImageFallback="MS365"
             Skilllevel={70}
@@ -410,7 +443,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Visual Studio Code"
             SkillBadges={["Development", "Microsoft", "4 Jahre"]}
-            SkillImage="/pictures/vscode.png"
+            SkillImage={vscodeLogo}
             SkillImageAlt="Visual Studio Code Logo"
             SkillImageFallback="VScode"
             Skilllevel={60}
@@ -418,7 +451,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Apple Logic Pro"
             SkillBadges={["Musik", "2 Jahre"]}
-            SkillImage="/pictures/logicpro.png"
+            SkillImage={logicProLogo}
             SkillImageAlt="Apple Logic Pro Logo"
             SkillImageFallback="ALP"
             Skilllevel={60}
@@ -426,7 +459,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Apple Xcode 14+                "
             SkillBadges={["Development", "Apple", "2 Jahre"]}
-            SkillImage="/pictures/xcode.png"
+            SkillImage={xcodeLogo}
             SkillImageAlt="Apple Xcode Logo"
             SkillImageFallback="XCODE"
             Skilllevel={70}
@@ -434,7 +467,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Apple macOS"
             SkillBadges={["Betriebsystem", "Apple", "2 Jahre"]}
-            SkillImage="/pictures/macos.png"
+            SkillImage={macosLogo}
             SkillImageAlt="macOS Logo"
             SkillImageFallback="macOS"
             Skilllevel={90}
@@ -442,7 +475,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Apple iOS"
             SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
-            SkillImage={printing ? '/pictures/ios.png' : '/pictures/ios-dark.png'}
+            SkillImage={printing ? iosLogo : iosLogoDark}
             SkillImageAlt="iOS Logo"
             SkillImageFallback="iOS"
             Skilllevel={80}
@@ -450,7 +483,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Apple iPadOS"
             SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
-            SkillImage={printing ? '/pictures/ios.png' : '/pictures/ios-dark.png'}
+            SkillImage={printing ? iosLogo : iosLogoDark}
             SkillImageAlt="iOS Logo"
             SkillImageFallback="iOS"
             Skilllevel={80}
@@ -458,7 +491,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Apple vissionOS"
             SkillBadges={["Betriebsystem", "Apple", "1 Jahre"]}
-            SkillImage={printing ? '/pictures/ios.png' : '/pictures/ios-dark.png'}
+            SkillImage={printing ? iosLogo : iosLogoDark}
             SkillImageAlt="iOS Logo"
             SkillImageFallback="iOS"
             Skilllevel={80}
@@ -466,7 +499,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Linux"
             SkillBadges={["Betriebsystem", "5 Jahre"]}
-            SkillImage="/pictures/linux.png"
+            SkillImage={linuxLogo}
             SkillImageAlt="Linux Logo"
             SkillImageFallback="L"
             Skilllevel={60}
@@ -474,7 +507,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Windows"
             SkillBadges={["Betriebsystem", "Microsoft", "3 Jahre"]}
-            SkillImage={printing ? '/pictures/windows.png' : '/pictures/windows-dark.png'}
+            SkillImage={printing ? windowsLogo : windowsLogoDark}
             SkillImageAlt="Windows Logo"
             SkillImageFallback="WIN"
             Skilllevel={60}
@@ -482,7 +515,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Microsoft Teams"
             SkillBadges={["Office", "Microsoft", "4 Jahre"]}
-            SkillImage="/pictures/teams.png"
+            SkillImage={teamsLogo}
             SkillImageAlt="Microsoft Teams Logo"
             SkillImageFallback="Teams"
             Skilllevel={60}
@@ -490,7 +523,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Eclipse"
             SkillBadges={["Development", "2 Jahre"]}
-            SkillImage="/pictures/eclipse.png"
+            SkillImage={eclipseLogo}
             SkillImageAlt="Eclipse Logo"
             SkillImageFallback="JDK"
             Skilllevel={60}
@@ -498,7 +531,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="MySQL"
             SkillBadges={["Development", "1 Jahre"]}
-            SkillImage="/pictures/mysql.png"
+            SkillImage={mysqlLogo}
             SkillImageAlt="MySQL Logo"
             SkillImageFallback="SQL"
             Skilllevel={80}
@@ -506,7 +539,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="MySQL Comunity Server"
             SkillBadges={["Development", "1 Jahre"]}
-            SkillImage="/pictures/mysql.png"
+            SkillImage={mysqlLogo}
             SkillImageAlt="MySQL Logo"
             SkillImageFallback="SQL"
             Skilllevel={60}
@@ -514,7 +547,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="MySQLWorckbench"
             SkillBadges={["Development", "1 Jahre"]}
-            SkillImage="/pictures/mysql.png"
+            SkillImage={mysqlLogo}
             SkillImageAlt="MySQL Logo"
             SkillImageFallback="SQL"
             Skilllevel={60}
@@ -522,7 +555,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Ansible"
             SkillBadges={["Automation", "2 Monate"]}
-            SkillImage={printing ? '/pictures/ansible.png' : '/pictures/ansible-dark.png'}
+            SkillImage={printing ? ansibleLogo : ansibleLogoDark}
             SkillImageAlt="Ansible Logo"
             SkillImageFallback="A"
             Skilllevel={60}
@@ -530,7 +563,7 @@ function RouteComponent() {
           <SkillCard
             SkillTitle="Rust"
             SkillBadges={["Automation", "2 Monate"]}
-            SkillImage={printing ? '/pictures/ansible.png' : '/pictures/ansible-dark.png'}
+            SkillImage={printing ? ansibleLogo : ansibleLogoDark}
             SkillImageAlt="Ansible Logo"
             SkillImageFallback="A"
             Skilllevel={30}
