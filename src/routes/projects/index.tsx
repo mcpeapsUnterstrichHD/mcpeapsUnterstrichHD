@@ -11,7 +11,7 @@ import searxngPicture from '@/assets/pictures/projects/searxng.png'
 import oszimtLogo from '@/assets/pictures/projects/OSZimt-Logo-l.png'
 import klassenLogo from '@/assets/pictures/projects/Klassen_App_Icon_iOS_macOS_iPadOS.png'
 import simpleSQLRunnerPicture from '@/assets/pictures/projects/ssqlr.png'
-import cbpsLogo from '@/assets/pictures/projects/cbps_logo-transparet.png'
+import cbpsLogo from '@/assets/pictures/projects/cbps_logo.png'
 
 
 export const Route = createFileRoute('/projects/')({
