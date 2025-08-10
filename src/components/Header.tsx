@@ -30,9 +30,9 @@ export function NavBar() {
   };
 
   return (
-    <nav className="top sticky top-0 z-10">
-      <NavigationMenu className="no-print py-2">
-        <NavigationMenuList className="fixed right-2">
+    <nav className="sticky right-2 top-2 z-10">
+      <NavigationMenu className="no-print">
+        <NavigationMenuList className="fixed right-2 top-2">
           <NavigationMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
