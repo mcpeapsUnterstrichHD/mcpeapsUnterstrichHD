@@ -50,25 +50,17 @@ function RouteComponent() {
   const { t } = useTranslation();
   const [printing, setPrinting] = useState(false);
 
-  const toastValues_printig_settings: {
-    title: string;
-    description: string;
-  } = {
-    title: t("cv.recommendation.printingSettings.title"),
-    description: t("cv.recommendation.printingSettings.description"),
-  };
-
-  const toastValues_printing_notice: {
-    title: string;
-    description: string;
-  } = {
-    title: t("cv.recommendation.printingNotice.title"),
-    description: t("cv.recommendation.printingNotice.description"),
-  };
-
   const intervalId = useRef<NodeJS.Timeout | null>(null);
+  const intervalId2 = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    const toastValues_printig_settings: {
+      title: string;
+      description: string;
+    } = {
+      title: t("cv.recommendation.printingSettings.title"),
+      description: t("cv.recommendation.printingSettings.description"),
+    };
     // Erste Empfehlung direkt anzeigen
     const { title, description } = toastValues_printig_settings;
     toast(title, { description });
@@ -88,6 +80,13 @@ function RouteComponent() {
     };
   }, []);
   useEffect(() => {
+    const toastValues_printing_notice: {
+      title: string;
+      description: string;
+    } = {
+      title: t("cv.recommendation.printingNotice.title"),
+      description: t("cv.recommendation.printingNotice.description"),
+    };
     // Erste Empfehlung direkt anzeigen
     const { title, description } = toastValues_printing_notice;
     toast(title, { description });
@@ -103,7 +102,7 @@ function RouteComponent() {
 
     // Clean-up beim Unmount
     return () => {
-      if (intervalId.current) clearInterval(intervalId.current);
+      if (intervalId2.current) clearInterval(intervalId2.current);
     };
   }, []);
 
@@ -121,8 +120,8 @@ function RouteComponent() {
   return (
     <div className="">
       <center>
-        <h1 className="gap-8 font-bold text-4xl">Fabian Aps</h1>
-        Ich bin ein IT-Assistent.
+        <h1 className="gap-8 font-bold text-4xl">{t("aboutme.name")}</h1>
+        {t("cv.about.title")}
         <br />
         <center>
           <a
@@ -130,12 +129,12 @@ function RouteComponent() {
             target="_blank"
             rel="noreferrer"
           >
-            <p>E-Mail: aps.fabian@mcpeapsunterstrichhd.dev</p>
+            <p>{t("cv.about.email")}: aps.fabian@mcpeapsunterstrichhd.dev</p>
           </a>
         </center>
         <center>
           <a href="tel:+4917645172171" target="_blank" rel="noreferrer">
-            <p>Telefonnummer: +4917645172171</p>
+            <p>{t("cv.about.telnum")}: +4917645172171</p>
           </a>
         </center>
         <br />
@@ -146,20 +145,20 @@ function RouteComponent() {
             rel="noreferrer"
           >
             <div className="py-1 text-lg">
-              Aps, Fabian
+              {t("aboutme.name")}
               <br />
               Ludwig-Renn-Straße 33
               <br />
-              12679 Berlin, Deutschland
+              12679 {t("cv.about.address.berlin")}, {t("cv.about.address.germany")}
             </div>
           </a>
         </center>
         <br />
-        <center>Geburtsdatum: 06.06.2003</center>
+        <center>{t("cv.about.birthday")}: 06.06.2003</center>
       </center>
 
       <center>
-        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Ausbildung</h2>
+        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">{t("cv.education.title")}</h2>
       </center>
 
       <Timeline
@@ -167,45 +166,39 @@ function RouteComponent() {
         className="show-timeline-big flex flex-col justify-center"
       >
         <TimeLineElementBig
-          TimeLineTitle="Ausbuildungsplatzsuchend"
+          TimeLineTitle={t("cv.education.items.lookingForApprenticeship.name")}
           TimeLineBadges={[]}
           TimeLineImage=""
-          TimeLineImageAlt="Suchend"
+          TimeLineImageAlt={t("cv.education.items.lookingForApprenticeship.imgAlt")}
           TimeLineImageFallback="/"
           startdate="07.2024"
           enddate="10.2025"
         >
-          <p>Ausbuildungsplatzsuchend</p>
+          <p>{t("cv.education.items.lookingForApprenticeship.name")}</p>
         </TimeLineElementBig>
         <TimeLineElementBig
-          TimeLineTitle="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)"
-          TimeLineBadges={[
-            "Berlin",
-            "Ausbildung",
-            "Fachabitur",
-            "IT",
-            "3 Jahre",
-          ]}
+          TimeLineTitle={t("cv.education.items.oszimt.name")}
+          TimeLineBadges={[t("cv.about.address.berlin"),t("cv.education.badges.ausbildung"),t("cv.education.badges.fachabitur"),t("cv.education.badges.it"), t("cv.education.badges.years", {years: 3})]}
           TimeLineImage={oszimtLogo}
-          TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
+          TimeLineImageAlt={t("cv.education.items.oszimt.imgAlt")}
           TimeLineImageFallback="OSZimt"
           startdate="08.2021"
           enddate="07.2024"
         >
           <p>
-            Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur
+            {t("cv.education.items.oszimt.description")}
           </p>
         </TimeLineElementBig>
         <TimeLineElementBig
-          TimeLineTitle="Carl-von-Linné-Schule"
-          TimeLineBadges={["Berlin", "MSA(OG)"]}
+          TimeLineTitle={t("cv.education.items.cvl.name")}
+          TimeLineBadges={[t("cv.about.address.berlin"),t("cv.education.badges.msaMitOG")]}
           TimeLineImage={cvlLogo}
-          TimeLineImageAlt="Carl-von-Linné-Schule Logo"
+          TimeLineImageAlt={t("cv.education.items.cvl.imgAlt")}
           TimeLineImageFallback="CvL"
           startdate="08.2010"
           enddate="07.2021"
         >
-          <p>Algemeine Schule Grundschule + Sekundarstufe I</p>
+          <p>{t("cv.education.items.cvl.description")}</p>
         </TimeLineElementBig>
       </Timeline>
       <Timeline
@@ -218,43 +211,39 @@ function RouteComponent() {
         className="show-timeline-small flex flex-col justify-center"
       >
         <TimeLineElementSmall
-          TimeLineTitle="Ausbuildungsplatzsuchend"
+          TimeLineTitle={t("cv.education.items.lookingForApprenticeship.name")}
           TimeLineBadges={[]}
           TimeLineImage=""
-          TimeLineImageAlt="Suchend"
+          TimeLineImageAlt={t("cv.education.items.lookingForApprenticeship.imgAlt")}
           TimeLineImageFallback="/"
-          startdate="07/2024"
-          enddate="-"
+          startdate="07.2024"
+          enddate="10.2025"
         >
-          <p>Ausbuildungsplatzsuchend</p>
+          <p>{t("cv.education.items.lookingForApprenticeship.name")}</p>
         </TimeLineElementSmall>
         <TimeLineElementSmall
-          TimeLineTitle="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT)"
-          TimeLineBadges={[
-            "Berlin",
-            "Ausbildung",
-            "Fachabitur",
-            "IT",
-            "3 Jahre",
-          ]}
+          TimeLineTitle={t("cv.education.items.oszimt.name")}
+          TimeLineBadges={[t("cv.education.about.address.berlin"),t("cv.education.badges.ausbildung"),t("cv.education.badges.fachabitur"),t("cv.education.badges.it"), t("cv.education.badges.years", {years: 3})]}
           TimeLineImage={oszimtLogo}
-          TimeLineImageAlt="Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo"
+          TimeLineImageAlt={t("cv.education.items.oszimt.imgAlt")}
           TimeLineImageFallback="OSZimt"
           startdate="08.2021"
           enddate="07.2024"
         >
-          <p>Ausbildung zum IT-Assistenten</p>
+          <p>
+            {t("cv.education.items.oszimt.description")}
+          </p>
         </TimeLineElementSmall>
         <TimeLineElementSmall
-          TimeLineTitle="Carl-von-Linné-Schule"
-          TimeLineBadges={["Berlin", "MSA(OG)"]}
+          TimeLineTitle={t("cv.education.items.cvl.name")}
+          TimeLineBadges={[t("cv.education.about.address.berlin"),t("cv.education.badges.msaMitOG")]}
           TimeLineImage={cvlLogo}
-          TimeLineImageAlt="Carl-von-Linné-Schule Logo"
+          TimeLineImageAlt={t("cv.education.items.cvl.imgAlt")}
           TimeLineImageFallback="CvL"
           startdate="08.2010"
           enddate="07.2021"
         >
-          <p>Algemeine Schule Grundschule + Sekundarstufe I</p>
+          <p>{t("cv.education.items.cvl.description")}</p>
         </TimeLineElementSmall>
       </Timeline>
 

@@ -1,6 +1,8 @@
 import { LanguagesNUM } from "@/lib/lang.ts";
 import { Link, useSearch } from "@tanstack/react-router";
+import {useTranslation} from "react-i18next";
 export default function Footer() {
+  const {t} = useTranslation();
   const currentYear = new Date().getFullYear();
   const search = useSearch({ strict: false });
   const currentLang = search.lang ?? LanguagesNUM.de;
@@ -17,7 +19,7 @@ export default function Footer() {
                   lang: currentLang,
                 }}
               >
-                &copy; {currentYear} Fabian Aps
+                &copy; {currentYear} {t("aboutme.name")}
               </Link>
             </div>
 
@@ -28,7 +30,7 @@ export default function Footer() {
                 className="font-medium hover:underline transition-colors"
                 rel="noreferrer"
               >
-                Linksammlung
+                {t("sites.linkhub")}
               </a>
               <span className="text-muted-foreground">•</span>
               <Link
@@ -38,7 +40,7 @@ export default function Footer() {
                   lang: currentLang,
                 }}
               >
-                Fabian Aps
+                {t("aboutme.name")}
               </Link>
               <span className="text-muted-foreground">•</span>
               <Link
@@ -48,7 +50,7 @@ export default function Footer() {
                   lang: currentLang,
                 }}
               >
-                Impressum
+                {t("sites.impressum")}
               </Link>
               <span className="text-muted-foreground">•</span>
               <a

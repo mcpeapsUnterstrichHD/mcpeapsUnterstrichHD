@@ -25,7 +25,7 @@ export function Langswitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="print:hidden">
         <Button
-          className="rounded-full bg-transparent backdrop-blur-sm font-bold print:hidden"
+          className="rounded-full bg-transparent backdrop-blur-sm text-center font-bold print:hidden"
           variant="outline"
         >
           {getLanguageName(currentLang)}
@@ -41,6 +41,7 @@ export function Langswitcher() {
             <DropdownMenuItem
               key={lang}
               onClick={() => setLanguage(lang as LanguagesNUM)}
+              className="cursor-pointer text-center hover:bg-secondary-foreground/20 focus:bg-secondary-foreground/20"
             >
               {getLanguageName(lang as LanguagesNUM)}
             </DropdownMenuItem>

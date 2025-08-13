@@ -76,7 +76,7 @@ export function AppSidebar() {
   const imageFallback = "MAHD";
   return (
     <aside className="float-left clear-left isolate sticky z-10 top-2 left-2 no-print">
-      <Sidebar variant="sidebar" collapsible="offcanvas">
+      <Sidebar variant="floating" collapsible="offcanvas">
         <SidebarHeader>
           <SidebarGroup>
             <SidebarGroupContent>

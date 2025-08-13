@@ -170,150 +170,149 @@ function RootDocument() {
   }, [currentLang]);
 
   const navigateTo = useNavigate();
-  const recommendations: {
-    title: string;
-    description?: string;
-    action?: {
-      label: string;
-      onClick: () => Promise<void> | void;
-    };
-  }[] = [
-    {
-      title: t("recommendation.projects.title"),
-      description: t("recommendation.projects.description"),
-      action: {
-        label: t("recommendation.projects.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            to: "/projects",
-            search: {
-              lang: currentLang,
-            },
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.aboutme.title"),
-      description: t("recommendation.aboutme.description"),
-      action: {
-        label: t("recommendation.aboutme.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            to: "/aboutme",
-            search: {
-              lang: currentLang,
-            },
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.cv.title"),
-      description: t("recommendation.cv.description"),
-      action: {
-        label: t("recommendation.cv.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            to: "/cv",
-            search: {
-              lang: currentLang,
-            },
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.linkhub.json.title"),
-      description: t("recommendation.linkhub.json.description"),
-      action: {
-        label: t("recommendation.linkhub.json.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            href: "https://link.me/mcpeaps_hd",
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.github.title"),
-      description: t("recommendation.github.description"),
-      action: {
-        label: t("recommendation.github.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            href: "https://github.com/mcpeapsUnterstrichHD",
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.twitter.title"),
-      description: t("recommendation.twitter.description"),
-      action: {
-        label: t("recommendation.twitter.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            href: "https://x.com/mcpeaps_HD",
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.instagram.title"),
-      description: t("recommendation.instagram.description"),
-      action: {
-        label: t("recommendation.instagram.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            href: "https://instagram.com/mcpeaps_hd",
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.tiktok.title"),
-      description: t("recommendation.tiktok.description"),
-      action: {
-        label: t("recommendation.tiktok.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            href: "https://tiktok.com/@mcpeaps_hd",
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.threads.title"),
-      description: t("recommendation.threads.description"),
-      action: {
-        label: t("recommendation.threads.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            href: "https://threads.com/@mcpeaps_hd",
-          });
-        },
-      },
-    },
-    {
-      title: t("recommendation.bluesky.title"),
-      description: t("recommendation.bluesky.description"),
-      action: {
-        label: t("recommendation.bluesky.action.label"),
-        onClick: async () => {
-          await navigateTo({
-            href: "https://bsky.mcpeapsunterstrichhd.dev",
-          });
-        },
-      },
-    },
-  ];
-
   const currentIndex = useRef(0);
   const intervalId = useRef<NodeJS.Timeout | null>(null);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
+    const recommendations: {
+      title: string;
+      description?: string;
+      action?: {
+        label: string;
+        onClick: () => Promise<void> | void;
+      };
+    }[] = [
+      {
+        title: t("recommendation.projects.title"),
+        description: t("recommendation.projects.description"),
+        action: {
+          label: t("recommendation.projects.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              to: "/projects",
+              search: {
+                lang: currentLang,
+              },
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.aboutme.title"),
+        description: t("recommendation.aboutme.description"),
+        action: {
+          label: t("recommendation.aboutme.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              to: "/aboutme",
+              search: {
+                lang: currentLang,
+              },
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.cv.title"),
+        description: t("recommendation.cv.description"),
+        action: {
+          label: t("recommendation.cv.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              to: "/cv",
+              search: {
+                lang: currentLang,
+              },
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.linkhub.json.title"),
+        description: t("recommendation.linkhub.json.description"),
+        action: {
+          label: t("recommendation.linkhub.json.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              href: "https://link.me/mcpeaps_hd",
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.github.title"),
+        description: t("recommendation.github.description"),
+        action: {
+          label: t("recommendation.github.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              href: "https://github.com/mcpeapsUnterstrichHD",
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.twitter.title"),
+        description: t("recommendation.twitter.description"),
+        action: {
+          label: t("recommendation.twitter.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              href: "https://x.com/mcpeaps_HD",
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.instagram.title"),
+        description: t("recommendation.instagram.description"),
+        action: {
+          label: t("recommendation.instagram.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              href: "https://instagram.com/mcpeaps_hd",
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.tiktok.title"),
+        description: t("recommendation.tiktok.description"),
+        action: {
+          label: t("recommendation.tiktok.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              href: "https://tiktok.com/@mcpeaps_hd",
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.threads.title"),
+        description: t("recommendation.threads.description"),
+        action: {
+          label: t("recommendation.threads.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              href: "https://threads.com/@mcpeaps_hd",
+            });
+          },
+        },
+      },
+      {
+        title: t("recommendation.bluesky.title"),
+        description: t("recommendation.bluesky.description"),
+        action: {
+          label: t("recommendation.bluesky.action.label"),
+          onClick: async () => {
+            await navigateTo({
+              href: "https://bsky.mcpeapsunterstrichhd.dev",
+            });
+          },
+        },
+      },
+    ];
     // Erste Empfehlung direkt anzeigen
     const { title, description, action } =
       recommendations[currentIndex.current];

@@ -111,6 +111,51 @@
         "title": "Empfehlung für den Druck",
         "description": "Nutzen Sie den PDF-Button unten rechts, um den Lebenslauf optimal zu drucken."
       }
+    },
+    "about": {
+      "title": "Ich bin ein IT-Assistent.",
+      "email": "E-Mail",
+      "telnum": "Telefonnummer",
+      "address": {
+        "germany": "Deutschland",
+        "berlin": "Berlin"
+      },
+      "birthday": "Geburtsdatum"
+    },
+    "education": {
+      "title": "Ausbildung",
+      "badges": {
+        "ausbildung": "Ausbildung",
+        "fachabitur": "Fachabitur",
+        "it": "IT",
+        "years": "{{years}} Jahre",
+        "msaMitOG": "MSA(OG)"
+      },
+      "items": {
+        "lookingForApprenticeship": {
+          "name": "Ausbuildungsplatzsuchend",
+          "imgAlt": "Suchend"
+        },
+        "oszimt": {
+          "name": "OSZ Informations- & Medientechnik (OSZ IMT)",
+          "imgAlt": "Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo",
+          "description": "Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur",
+          "badges": ["Berlin", "Ausbildung","Fachabitur","IT","3 Jahre"]
+          },
+        "cvl": {
+          "name": "Carl-von-Linné-Schule",
+            "imgAlt": "Carl-von-Linné-Schule Logo",
+          "description": "Algemeine Schule Grundschule + Sekundarstufe I",
+          "badges": ["Berlin","MSA(OG)"]
+          }
+        }
+      },
+    "experience": {
+      "title": "Berufserfahrung"
+    },
+    "skills": {
+      "title": "Fähigkeiten"
+
     }
   }
 }
