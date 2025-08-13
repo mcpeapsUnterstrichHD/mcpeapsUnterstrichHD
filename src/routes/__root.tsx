@@ -179,10 +179,10 @@ function RootDocument() {
     };
   }[] = [
     {
-      title: t("tell.projects.title"),
-      description: t("tell.projects.description"),
+      title: t("recommendation.projects.title"),
+      description: t("recommendation.projects.description"),
       action: {
-        label: t("tell.projects.action.label"),
+        label: t("recommendation.projects.action.label"),
         onClick: async () => {
           await navigateTo({
             to: "/projects",
@@ -194,10 +194,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.aboutme.title"),
-      description: t("tell.aboutme.description"),
+      title: t("recommendation.aboutme.title"),
+      description: t("recommendation.aboutme.description"),
       action: {
-        label: t("tell.aboutme.action.label"),
+        label: t("recommendation.aboutme.action.label"),
         onClick: async () => {
           await navigateTo({
             to: "/aboutme",
@@ -209,10 +209,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.cv.title"),
-      description: t("tell.cv.description"),
+      title: t("recommendation.cv.title"),
+      description: t("recommendation.cv.description"),
       action: {
-        label: t("tell.cv.action.label"),
+        label: t("recommendation.cv.action.label"),
         onClick: async () => {
           await navigateTo({
             to: "/cv",
@@ -224,10 +224,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.likhub.title"),
-      description: t("tell.likhub.description"),
+      title: t("recommendation.linkhub.json.title"),
+      description: t("recommendation.linkhub.json.description"),
       action: {
-        label: t("tell.likhub.action.label"),
+        label: t("recommendation.linkhub.json.action.label"),
         onClick: async () => {
           await navigateTo({
             href: "https://link.me/mcpeaps_hd",
@@ -236,10 +236,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.github.title"),
-      description: t("tell.github.description"),
+      title: t("recommendation.github.title"),
+      description: t("recommendation.github.description"),
       action: {
-        label: t("tell.github.action.label"),
+        label: t("recommendation.github.action.label"),
         onClick: async () => {
           await navigateTo({
             href: "https://github.com/mcpeapsUnterstrichHD",
@@ -248,10 +248,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.twitter.title"),
-      description: t("tell.twitter.description"),
+      title: t("recommendation.twitter.title"),
+      description: t("recommendation.twitter.description"),
       action: {
-        label: t("tell.twitter.action.label"),
+        label: t("recommendation.twitter.action.label"),
         onClick: async () => {
           await navigateTo({
             href: "https://x.com/mcpeaps_HD",
@@ -260,10 +260,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.instagram.title"),
-      description: t("tell.instagram.description"),
+      title: t("recommendation.instagram.title"),
+      description: t("recommendation.instagram.description"),
       action: {
-        label: t("tell.instagram.action.label"),
+        label: t("recommendation.instagram.action.label"),
         onClick: async () => {
           await navigateTo({
             href: "https://instagram.com/mcpeaps_hd",
@@ -272,10 +272,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.tiktok.title"),
-      description: t("tell.tiktok.description"),
+      title: t("recommendation.tiktok.title"),
+      description: t("recommendation.tiktok.description"),
       action: {
-        label: t("tell.tiktok.action.label"),
+        label: t("recommendation.tiktok.action.label"),
         onClick: async () => {
           await navigateTo({
             href: "https://tiktok.com/@mcpeaps_hd",
@@ -284,10 +284,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.threads.title"),
-      description: t("tell.threads.description"),
+      title: t("recommendation.threads.title"),
+      description: t("recommendation.threads.description"),
       action: {
-        label: t("tell.threads.action.label"),
+        label: t("recommendation.threads.action.label"),
         onClick: async () => {
           await navigateTo({
             href: "https://threads.com/@mcpeaps_hd",
@@ -296,10 +296,10 @@ function RootDocument() {
       },
     },
     {
-      title: t("tell.bluesky.title"),
-      description: t("tell.bluesky.description"),
+      title: t("recommendation.bluesky.title"),
+      description: t("recommendation.bluesky.description"),
       action: {
-        label: t("tell.bluesky.action.label"),
+        label: t("recommendation.bluesky.action.label"),
         onClick: async () => {
           await navigateTo({
             href: "https://bsky.mcpeapsunterstrichhd.dev",

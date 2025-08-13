@@ -29,7 +29,7 @@
     "linkhub": "Linkliste",
     "notFound": "404 - Seite nicht gefunden"
   },
-  "tell": {
+  "recommendation": {
     "projects": {
       "title": "Meine Projekte",
       "description": "Alle meine Projekte auf einer Übersichtlichkeit.",
@@ -102,7 +102,7 @@
     }
   },
   "cv": {
-    "cvRecommendations": {
+    "recommendation": {
       "printingSettings": {
         "title": "Beste Druckeinstellugen",
         "description": "Skalierung: 50 %, Ränder: Standart, Hintergrundgrafiken: ein"

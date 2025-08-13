@@ -1,33 +1,27 @@
 import type { LanguagesNUM } from "@/lib/lang.ts";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-
-const loadLocale = async (lng: LanguagesNUM) => {
-  console.log(lng);
-  try {
-    const translations = await import(`../assets/lang/${lng}.json`);
-    return translations.default;
-  } catch (e) {
-    console.warn(
-      `Übersetzungen für ${lng} nicht gefunden, fallback auf 'de-DE'.`,
-    );
-    // @ts-ignore
-    const fallback = await import("../assets/lang/de-DE.json");
-    return fallback.default;
-  }
-};
+import deDE from "@/assets/lang/de-DE.json";
+import enUS from "@/assets/lang/en-US.json"; // falls du eine englische Version hast
 
 i18n.use(initReactI18next).init({
   lng: "de-DE", // Standard-Sprache
   fallbackLng: "de-DE", // Fallback-Sprache
-  resources: {}, // leer, wir laden dynamisch
+  resources: {
+    "de-DE": { translation: deDE },
+    "en-US": { translation: enUS },
+  },
   interpolation: { escapeValue: false },
+  react: {
+    useSuspense: false, // Deaktivieren von Suspense, um SSR zu unterstützen
+    bindI18n: "languageChanged loaded",
+    bindI18nStore: "added removed",
+  },
+
 });
 
 // Funktion, um Sprache dynamisch zu wechseln
 export const setLanguage = async (lng: LanguagesNUM) => {
-  const translations = await loadLocale(lng);
-  i18n.addResourceBundle(lng, "translation", translations, true, true);
   i18n.changeLanguage(lng);
 };
 

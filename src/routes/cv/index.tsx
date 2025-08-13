@@ -54,16 +54,16 @@ function RouteComponent() {
     title: string;
     description: string;
   } = {
-    title: t("cv.cvRecommendations.printingSettings.title"),
-    description: t("cv.cvRecommendations.printingSettings.description"),
+    title: t("cv.recommendation.printingSettings.title"),
+    description: t("cv.recommendation.printingSettings.description"),
   };
 
   const toastValues_printing_notice: {
     title: string;
     description: string;
   } = {
-    title: t("cv.cvRecommendations.printingNotice.title"),
-    description: t("cv.cvRecommendations.printingNotice.description"),
+    title: t("cv.recommendation.printingNotice.title"),
+    description: t("cv.recommendation.printingNotice.description"),
   };
 
   const intervalId = useRef<NodeJS.Timeout | null>(null);
