@@ -20,12 +20,12 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-                                                   projectImage,
-                                                   projectImageAlt,
-                                                   projectImageBgColor,
-                                                   projectTitle,
-                                                   projectBadges,
-                                                   projectLink,
+  projectImage,
+  projectImageAlt,
+  projectImageBgColor,
+  projectTitle,
+  projectBadges,
+  projectLink,
   children,
 }) => {
   return (
@@ -49,7 +49,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </section>
         </CardContent>
         <CardFooter className="flex flex-grow flex-col items-center justify-center gap-4 p-4">
-          <section className={`${projectImageBgColor}flex items-center justify-center rounded-sm`}
+          <section
+            className={`${projectImageBgColor}flex items-center justify-center rounded-sm`}
           >
             <img
               src={projectImage}

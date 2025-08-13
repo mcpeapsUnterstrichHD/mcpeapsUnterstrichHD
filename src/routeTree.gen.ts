@@ -11,8 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
-import { Route as LebenslaufIndexRouteImport } from './routes/lebenslauf/index'
 import { Route as ImpressumIndexRouteImport } from './routes/impressum/index'
+import { Route as CvIndexRouteImport } from './routes/cv/index'
 import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as AboutmeIndexRouteImport } from './routes/aboutme/index'
 
@@ -26,14 +26,14 @@ const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   path: '/projects/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LebenslaufIndexRoute = LebenslaufIndexRouteImport.update({
-  id: '/lebenslauf/',
-  path: '/lebenslauf/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ImpressumIndexRoute = ImpressumIndexRouteImport.update({
   id: '/impressum/',
   path: '/impressum/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CvIndexRoute = CvIndexRouteImport.update({
+  id: '/cv/',
+  path: '/cv/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactIndexRoute = ContactIndexRouteImport.update({
@@ -51,16 +51,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aboutme': typeof AboutmeIndexRoute
   '/contact': typeof ContactIndexRoute
+  '/cv': typeof CvIndexRoute
   '/impressum': typeof ImpressumIndexRoute
-  '/lebenslauf': typeof LebenslaufIndexRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aboutme': typeof AboutmeIndexRoute
   '/contact': typeof ContactIndexRoute
+  '/cv': typeof CvIndexRoute
   '/impressum': typeof ImpressumIndexRoute
-  '/lebenslauf': typeof LebenslaufIndexRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
@@ -68,28 +68,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/aboutme/': typeof AboutmeIndexRoute
   '/contact/': typeof ContactIndexRoute
+  '/cv/': typeof CvIndexRoute
   '/impressum/': typeof ImpressumIndexRoute
-  '/lebenslauf/': typeof LebenslaufIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/aboutme'
-    | '/contact'
-    | '/impressum'
-    | '/lebenslauf'
-    | '/projects'
+  fullPaths: '/' | '/aboutme' | '/contact' | '/cv' | '/impressum' | '/projects'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aboutme' | '/contact' | '/impressum' | '/lebenslauf' | '/projects'
+  to: '/' | '/aboutme' | '/contact' | '/cv' | '/impressum' | '/projects'
   id:
     | '__root__'
     | '/'
     | '/aboutme/'
     | '/contact/'
+    | '/cv/'
     | '/impressum/'
-    | '/lebenslauf/'
     | '/projects/'
   fileRoutesById: FileRoutesById
 }
@@ -97,8 +91,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutmeIndexRoute: typeof AboutmeIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
+  CvIndexRoute: typeof CvIndexRoute
   ImpressumIndexRoute: typeof ImpressumIndexRoute
-  LebenslaufIndexRoute: typeof LebenslaufIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -118,18 +112,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lebenslauf/': {
-      id: '/lebenslauf/'
-      path: '/lebenslauf'
-      fullPath: '/lebenslauf'
-      preLoaderRoute: typeof LebenslaufIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/impressum/': {
       id: '/impressum/'
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cv/': {
+      id: '/cv/'
+      path: '/cv'
+      fullPath: '/cv'
+      preLoaderRoute: typeof CvIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact/': {
@@ -153,8 +147,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutmeIndexRoute: AboutmeIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
+  CvIndexRoute: CvIndexRoute,
   ImpressumIndexRoute: ImpressumIndexRoute,
-  LebenslaufIndexRoute: LebenslaufIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -1,3 +1,14 @@
+import logo from "@/assets/pictures/logo.png";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 import {
   Sidebar,
   SidebarContent,
@@ -12,47 +23,17 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import {Link, useSearch} from "@tanstack/react-router";
-import logo from "@/assets/pictures/logo.png"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+} from "@/components/ui/sidebar";
 import UserAvatar, { type ImageProps } from "@/components/userAvatar";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import {LanguagesNUM} from "@/lib/lang.ts";
-
-// submenu items.
-const items = [
-  {
-    title: "Über mich",
-    url: "/aboutme",
-  },
-  {
-    title: "Projekte",
-    url: "/projects",
-  },
-  {
-    title: "Lebenslauf",
-    url: "/lebenslauf",
-  },
-  {
-    title: "Kontakt",
-    url: "/contact",
-  },
-  {
-    title: "Impressum",
-    url: "/impressum",
-  },
-]
-
-
+import { LanguagesNUM } from "@/lib/lang.ts";
+import { Link, useSearch } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 export function AppSidebar() {
+  const { t } = useTranslation();
   const search = useSearch({ strict: false });
   const currentLang = search.lang ?? LanguagesNUM.de;
+
   const today = new Date();
   const birthday = new Date("2003-06-06");
   let age = today.getFullYear() - birthday.getFullYear();
@@ -60,11 +41,37 @@ export function AppSidebar() {
   if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
     age--;
   }
-  const name = "Fabian Aps";
+  // submenu items.
+  const items: {
+    title: string;
+    url: string;
+  }[] = [
+    {
+      title: t("sites.aboutme"),
+      url: "/aboutme",
+    },
+    {
+      title: t("sites.projects"),
+      url: "/projects",
+    },
+    {
+      title: t("sites.cv"),
+      url: "/cv",
+    },
+    {
+      title: t("sites.contact"),
+      url: "/contact",
+    },
+    {
+      title: t("sites.impressum"),
+      url: "/impressum",
+    },
+  ];
+  const name = t("aboutme.name");
   const githubUserName = "mcpeapsUnterstrichHD";
   const image: ImageProps = {
     src: logo,
-    alt: "mcpeaps_HD Logo",
+    alt: t("logo.alt"),
   };
   const imageFallback = "MAHD";
   return (
@@ -91,9 +98,7 @@ export function AppSidebar() {
                             image={image}
                             imageFallback={imageFallback}
                           />
-                          <span>
-                            {name}
-                          </span>
+                          <span>{name}</span>
                         </Link>
                       </SidebarMenuButton>
                     </HoverCardTrigger>
@@ -106,20 +111,11 @@ export function AppSidebar() {
                             image={image}
                             imageFallback={imageFallback}
                           />
-                          <span className="text-lg">
-                            {name}
-                          </span>
+                          <span className="text-lg">{name}</span>
                         </p>
-                        <p className="text-lg p-2">
-                          ITler/DJ/Producer aus Leidenschaft
-                        </p>
+                        <p className="text-lg p-2">{t("aboutme.title")}</p>
                         <p className="p-2">
-                          Ich bin ein {age} jähriger ITler/DJ/Producher und ich liebe es
-                          Software zu entwikeln aber durch mein Praktikum bei der KfW
-                          Bankengruppe hat mir gezeigt, dass mir Anwendungsbetreung auch nicht
-                          schwer liegt, denoch mach ich die Entwicklung gerne als Hobby. Musik
-                          ist dabei auch eine Leidenschaft von mir, egal ab hören oder
-                          Produzieren.{" "}
+                          {t("aboutme.description", { age })}
                         </p>
                       </section>
                     </HoverCardContent>
@@ -135,10 +131,12 @@ export function AppSidebar() {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
-                    <a href="https://link.me/mcpeaps_hd" target="_blank" rel="noreferrer">
-                      <span >
-                        Linkhub
-                      </span>
+                    <a
+                      href="https://link.me/mcpeaps_hd"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>{t("sites.linkhub")}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -146,9 +144,7 @@ export function AppSidebar() {
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton>
-                        <span >
-                          Über mich
-                        </span>
+                        <span>{t("sites.aboutme")}</span>
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
@@ -156,15 +152,19 @@ export function AppSidebar() {
                         {items.map((item) => (
                           <SidebarMenuSubItem key={item.title}>
                             <SidebarMenuButton asChild>
-                              <Link to={item.url} search={{
-                                lang: currentLang,
-                              }}>
+                              <Link
+                                to={item.url}
+                                search={{
+                                  lang: currentLang,
+                                }}
+                              >
                                 <span>{item.title}</span>
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuSubItem>
                         ))}
-                      </SidebarMenuSub></CollapsibleContent>
+                      </SidebarMenuSub>
+                    </CollapsibleContent>
                   </SidebarMenuItem>
                 </Collapsible>
               </SidebarMenu>
@@ -173,7 +173,9 @@ export function AppSidebar() {
         </SidebarContent>
         <SidebarFooter>
           <SidebarGroup>
-            <SidebarGroupLabel>&copy; {today.getFullYear()} Fabian Aps</SidebarGroupLabel>
+            <SidebarGroupLabel>
+              &copy; {today.getFullYear()} Fabian Aps
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
@@ -183,7 +185,7 @@ export function AppSidebar() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <span >Linksammlung</span>
+                      <span>{t("sites.linkhub")}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -195,7 +197,7 @@ export function AppSidebar() {
                         lang: currentLang,
                       }}
                     >
-                      <span >Fabian Aps</span>
+                      <span>{t("aboutme.name")}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -207,7 +209,7 @@ export function AppSidebar() {
                         lang: currentLang,
                       }}
                     >
-                      <span >Impressum</span>
+                      <span>{t("sites.impressum")}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -242,7 +244,7 @@ export function AppSidebar() {
           </SidebarGroup>
         </SidebarFooter>
         <SidebarRail />
-      </Sidebar >
+      </Sidebar>
     </aside>
-  )
+  );
 }

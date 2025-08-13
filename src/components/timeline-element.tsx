@@ -1,5 +1,3 @@
-"use client";
-
 import TimeLineCard from "@/components/timeline-card";
 import { Badge } from "@/components/ui/badge";
 import TimelineConnector from "@mui/lab/TimelineConnector";
@@ -8,7 +6,7 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import React from "react";
+import type React from "react";
 
 interface TimeLineElementProps {
   TimeLineImage: string;

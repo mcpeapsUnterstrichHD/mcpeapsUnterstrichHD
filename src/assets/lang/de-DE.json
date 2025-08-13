@@ -1,0 +1,116 @@
+{
+  "aboutme": {
+    "name": "Fabian Aps",
+    "title": "ITler/DJ/Producer aus Leidenschaft",
+    "description": "Ich bin ein {{age}} jähriger ITler/DJ/Producher und ich\nliebe es Software zu entwikeln aber durch mein\nPraktikum bei der KfW Bankengruppe hat mir gezeigt,\ndass mir Anwendungsbetreung auch nicht schwer liegt,\ndenoch mach ich die Entwicklung gerne als Hobby. Musik\nist dabei auch eine Leidenschaft von mir, egal ab\nhören oder Produzieren."
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "view": "Ansehen",
+    "submit": "Absenden",
+    "close": "Schließen"
+  },
+  "logo": {
+    "alt": "mcpeaps_HD Logo"
+  },
+  "sites": {
+    "root": "Startseite",
+    "impressum": "Impressum",
+    "aboutme": "Über mich",
+    "projects": "Projekte",
+    "contact": "Kontaktier mich",
+    "cv": "Lebenslauf",
+    "linkhub": "Linkliste",
+    "notFound": "404 - Seite nicht gefunden"
+  },
+  "tell": {
+    "projects": {
+      "title": "Meine Projekte",
+      "description": "Alle meine Projekte auf einer Übersichtlichkeit.",
+      "action": {
+        "label": "Projekte ansehen"
+      }
+    },
+    "aboutme": {
+      "title": "Über mich",
+      "description": "Ein kleiner Einblick in meine Person.",
+      "action": {
+        "label": "Erfahre mehr"
+      }
+    },
+    "cv": {
+      "title": "Lebenslauf",
+      "description": "Meine Ausbildungen und Berufserfahrung.",
+      "action": {
+        "label": "Mein Lebenslauf"
+      }
+    },
+    "linkhub": {
+      "title": " Social Media",
+      "description": "Hier bin ich zu finden.",
+      "action": {
+        "label": "Follge mir"
+      }
+    },
+    "github": {
+      "title": "Mein GitHub-Profil",
+      "description": "@mcpeapsUnterstrichHD | Hier leben meine Projekte.",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "twitter": {
+      "title": "Mein X/Twitter",
+      "description": "@mcpeaps_HD | Hier kann man mich mal erwischen",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "instagram": {
+      "title": "Mein Instagram",
+      "description": "@mcpeaps_hd | Hier bin ich am meisten aktiv",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "tikTok": {
+      "title": "Mein TikTok",
+      "description": "@mcpeaps_hd | Hier bin ich am meisten aktiv",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "threads": {
+      "title": "Mein Threads",
+      "description": "@mcpeaps_hd | Hier kann man mich erwischen",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "bluesky": {
+      "title": "Mein Bluesky",
+      "description": "@mcpeapsunterstrichhd.dev | Hier kann man mich erwischen",
+      "action": {
+        "label": "Folge mir"
+      }
+    }
+  },
+  "cv": {
+    "cvRecommendations": {
+      "printingSettings": {
+        "title": "Beste Druckeinstellugen",
+        "description": "Skalierung: 50 %, Ränder: Standart, Hintergrundgrafiken: ein"
+      },
+      "printingNotice": {
+        "title": "Empfehlung für den Druck",
+        "description": "Nutzen Sie den PDF-Button unten rechts, um den Lebenslauf optimal zu drucken."
+      }
+    }
+  }
+}

@@ -127,14 +127,16 @@ export default function Particles({
     const translateX = 0;
     const translateY = 0;
     const size = Math.floor(Math.random() * 2) + 3;
-    const alpha = parseFloat((Math.random() * 0.8 + 0.1).toFixed(1));
-    const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+    const alpha = Number.parseFloat((Math.random() * 0.8 + 0.1).toFixed(1));
+    const targetAlpha = Number.parseFloat(
+      (Math.random() * 0.6 + 0.1).toFixed(1),
+    );
     const dx = (Math.random() - 0.5) * 0.2;
     const dy = (Math.random() - 0.5) * 0.2;
     const magnetism = 0.1 + Math.random() * 4;
     const color = getRandomColor(
       `rgba(191,97,106,${alpha})`, // Nord red (nord11)
-      `rgba(163,190,140,${alpha})` // Nord green (nord14)
+      `rgba(163,190,140,${alpha})`, // Nord green (nord14)
     );
 
     return {
@@ -211,7 +213,7 @@ export default function Particles({
         canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = parseFloat(
+      const remapClosestEdge = Number.parseFloat(
         remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
       );
       if (remapClosestEdge > 1) {
