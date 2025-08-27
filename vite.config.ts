@@ -41,6 +41,11 @@ const config = defineConfig({
     //}),
     VitePWA()
   ],
+  server: {
+    port: 3000,
+    host: true,
+    allowedHosts: ["localhost", "dev.localhost", "dev-local.comboompunktsucht.app", "dev-local.mcpeapsunterstrichhd.dev", "dev.mcpeapsunterstrichhd.dev", "www.dev.mcpeapsunterstrichhd.dev", "mcpeapsunterstrichhd.dev", "www.mcpeapsunterstrichhd.dev"]
+  }
 })
 
 export default wrapVinxiConfigWithSentry(config, {
