@@ -102,15 +102,68 @@
     }
   },
   "cv": {
-    "cvRecommendations": {
+    "recommendation": {
       "printingSettings": {
         "title": "Best Printing Settings",
-        "description": "Scale: 50%, Margins: Standard, Background Graphics: On"
+        "description": "Scale: 50%, Margins: Default, Background Graphics: On"
       },
       "printingNotice": {
         "title": "Printing Recommendation",
         "description": "Use the PDF button in the bottom right to print the resume optimally."
       }
+    },
+    "about": {
+      "title": "I am an IT Assistant.",
+      "email": "Email",
+      "telnum": "Phone Number",
+      "address": {
+        "germany": "Germany",
+        "berlin": "Berlin"
+      },
+      "birthday": "Date of Birth"
+    },
+    "education": {
+      "title": "Education",
+      "badges": {
+        "ausbildung": "Apprenticeship",
+        "fachabitur": "Advanced Technical College Certificate",
+        "it": "IT",
+        "years": "{{years}} Years",
+        "msaMitOG": "MSA(OG)"
+      },
+      "items": {
+        "lookingForApprenticeship": {
+          "name": "Looking for Apprenticeship",
+          "imgAlt": "Searching"
+        },
+        "oszimt": {
+          "name": "OSZ Information & Media Technology (OSZ IMT)",
+          "imgAlt": "Upper Secondary Center for Information & Media Technology (OSZ IMT) Logo",
+          "description": "Dual qualification training as IT Assistant with Advanced Technical College Certificate",
+          "badges": [
+            "Berlin",
+            "Apprenticeship",
+            "Advanced Technical College Certificate",
+            "IT",
+            "3 Years"
+          ]
+        },
+        "cvl": {
+          "name": "Carl-von-Linné-School",
+          "imgAlt": "Carl-von-Linné-School Logo",
+          "description": "General School Primary + Secondary Level I",
+          "badges": [
+            "Berlin",
+            "MSA(OG)"
+          ]
+        }
+      }
+    },
+    "experience": {
+      "title": "Work Experience"
+    },
+    "skills": {
+      "title": "Skills"
     }
   },
   "linkhub": {
