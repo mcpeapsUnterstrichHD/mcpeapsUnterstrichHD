@@ -1,3 +1,5 @@
+import {useTranslation} from "react-i18next";
+
 const sadTexts = [
   "Oops! The page you're looking for doesn't exist.",
   "Sorry, we couldn't find the page you're looking for.",
@@ -128,13 +130,14 @@ const getRandomSadText = () => {
 };
 
 const NotFound = () => {
+  const { t } = useTranslation();
   const randomSadText = getRandomSadText();
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center text-center px-4">
       <div>
         <h1 className="text-[10rem] leading-none">󰇸</h1>
-        <h2 className="text-2xl font-semibold">404 Page Not Found</h2>
+        <h2 className="text-2xl font-semibold">{t("sites.notFound")}</h2>
         <p className="mt-4 text-muted-foreground max-w-xl">{randomSadText}</p>
       </div>
     </div>

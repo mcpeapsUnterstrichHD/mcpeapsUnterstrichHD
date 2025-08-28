@@ -1,5 +1,3 @@
-'use client';
-
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -9,10 +7,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { useTheme } from "next-themes";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useTheme } from "next-themes";
 
 interface SkillCardProps {
   SkillImage: string; // Full path (e.g., "/pictures/ios.png")
@@ -36,16 +34,20 @@ const SkillCard: React.FC<SkillCardProps> = ({
 
   // Map of images to their dark versions
   const imageMap: { [key: string]: string } = {
-    '/pictures/ios.png': '/pictures/ios-dark.png',
-    '/pictures/windows.png': '/pictures/windows-dark.png',
-    '/pictures/ansible.png': '/pictures/ansible-dark.png',
+    "/pictures/ios.png": "/pictures/ios-dark.png",
+    "/pictures/windows.png": "/pictures/windows-dark.png",
+    "/pictures/ansible.png": "/pictures/ansible-dark.png",
     // Add more images here as needed
   };
 
   // Effect to update the image source based on the theme
   useEffect(() => {
     const darkImage = imageMap[SkillImage]; // Get dark version if exists
-    const updatedImgSrc = (theme === 'dark' || (theme === 'system' && systemTheme === 'dark')) && darkImage ? darkImage : SkillImage; // Select appropriate image
+    const updatedImgSrc =
+      (theme === "dark" || (theme === "system" && systemTheme === "dark")) &&
+      darkImage
+        ? darkImage
+        : SkillImage; // Select appropriate image
 
     setImgSrc(updatedImgSrc); // Update the state with the new image source
   }, [SkillImage, theme, systemTheme]); // Re-run effect when SkillImage or theme changes

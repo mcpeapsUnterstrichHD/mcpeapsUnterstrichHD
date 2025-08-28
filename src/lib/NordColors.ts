@@ -15,19 +15,21 @@ const nord13 = "#EBCB8B";
 const nord14 = "#A3BE8C";
 const nord15 = "#B48EAD";
 
-export nord0;
-export nord1;
-export nord2;
-export nord3;
-export nord4;
-export nord5;
-export nord6;
-export nord7;
-export nord8;
-export nord9;
-export nord10;
-export nord11;
-export nord12;
-export nord13;
-export nord14;
-export nord15;
+export {
+  nord0,
+  nord1,
+  nord2,
+  nord3,
+  nord4,
+  nord5,
+  nord6,
+  nord7,
+  nord8,
+  nord9,
+  nord10,
+  nord11,
+  nord12,
+  nord13,
+  nord14,
+  nord15,
+};

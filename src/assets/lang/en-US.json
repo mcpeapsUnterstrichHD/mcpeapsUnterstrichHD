@@ -1,0 +1,188 @@
+{
+  "aboutme": {
+    "name": "Fabian Aps",
+    "title": "IT Professional/DJ/Producer with Passion",
+    "description": "I am a {{age}} year old IT Professional/DJ/Producer and I\nlove developing software, but my internship at KfW\nBanking Group showed me that application support also\ncomes naturally to me. Nevertheless, I still enjoy\ndevelopment as a hobby. Music is also a passion of mine,\nwhether it's listening or producing."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "submit": "Submit",
+    "close": "Close"
+  },
+  "logo": {
+    "alt": "mcpeaps_HD Logo"
+  },
+  "sites": {
+    "root": "Home",
+    "impressum": "Imprint",
+    "aboutme": "About Me",
+    "projects": "Projects",
+    "contact": "Contact Me",
+    "cv": "Resume",
+    "linkhub": "Link List",
+    "notFound": "404 - Page Not Found"
+  },
+  "tell": {
+    "projects": {
+      "title": "My Projects",
+      "description": "All my projects in one overview.",
+      "action": {
+        "label": "View Projects"
+      }
+    },
+    "aboutme": {
+      "title": "About Me",
+      "description": "A little insight into who I am.",
+      "action": {
+        "label": "Learn More"
+      }
+    },
+    "cv": {
+      "title": "Resume",
+      "description": "My education and work experience.",
+      "action": {
+        "label": "My Resume"
+      }
+    },
+    "linkhub": {
+      "title": "Social Media",
+      "description": "Where to find me.",
+      "action": {
+        "label": "Follow Me"
+      }
+    },
+    "github": {
+      "title": "My GitHub Profile",
+      "description": "@mcpeapsUnderscore_HD | Where my projects live.",
+      "action": {
+        "label": "Follow Me"
+      }
+    },
+    "twitter": {
+      "title": "My X/Twitter",
+      "description": "@mcpeaps_HD | Where you might catch me",
+      "action": {
+        "label": "Follow Me"
+      }
+    },
+    "instagram": {
+      "title": "My Instagram",
+      "description": "@mcpeaps_hd | Where I'm most active",
+      "action": {
+        "label": "Follow Me"
+      }
+    },
+    "tikTok": {
+      "title": "My TikTok",
+      "description": "@mcpeaps_hd | Where I'm most active",
+      "action": {
+        "label": "Follow Me"
+      }
+    },
+    "threads": {
+      "title": "My Threads",
+      "description": "@mcpeaps_hd | Where you can catch me",
+      "action": {
+        "label": "Follow Me"
+      }
+    },
+    "bluesky": {
+      "title": "My Bluesky",
+      "description": "@mcpeapsunderscorehd.dev | Where you can catch me",
+      "action": {
+        "label": "Follow Me"
+      }
+    }
+  },
+  "cv": {
+    "cvRecommendations": {
+      "printingSettings": {
+        "title": "Best Printing Settings",
+        "description": "Scale: 50%, Margins: Standard, Background Graphics: On"
+      },
+      "printingNotice": {
+        "title": "Printing Recommendation",
+        "description": "Use the PDF button in the bottom right to print the resume optimally."
+      }
+    }
+  },
+  "linkhub": {
+    "description": "Here you can find an overview of my social media profiles and other important links.",
+    "sections": {
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Here you can find my social media profiles.",
+        "instagram": {
+          "title": "Instagram",
+          "headding": "Instagram Profile",
+          "description": "Here you might get some glimpses of my daily life"
+        },
+        "tiktok": {
+          "title": "TikTok",
+          "headding": "TikTok Profile",
+          "description": "Here you might get some glimpses of my daily life"
+        },
+        "threads": {
+          "title": "Threads",
+          "headding": "Threads Profile",
+          "description": "Here you might see some short texts"
+        },
+        "bsky": {
+          "title": "Bluesky",
+          "headding": "Bluesky Profile",
+          "description": "Here you might see some short texts"
+        },
+        "twitter": {
+          "title": "X/Twitter",
+          "headding": "X/Twitter Profile",
+          "description": "Here you might see some short texts"
+        },
+        "discord": {
+          "title": "Discord",
+          "headding": "Discord Server",
+          "description": "Here we can meet each other"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "headding": "YouTube Channel",
+          "description": "Here you can find my videos."
+        }
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Here you can find my websites.",
+        "myWebsite": {
+          "title": "My Website",
+          "headding": "My Website",
+          "description": "Here you can find my website."
+        },
+        "cbps": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Website",
+          "description": "Here you can find the website of my friend group comboom.sucht."
+        },
+        "blogCBPS": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Blog",
+          "description": "Here you can find the blog of my friend group comboom.sucht."
+        }
+      },
+      "other": {
+        "title": "Other",
+        "description": "Here you can find other important links.",
+        "github": {
+          "title": "GitHub",
+          "headding": "GitHub Profile",
+          "description": "Here you can find my projects and source code."
+        }
+      }
+    }
+  }
+}

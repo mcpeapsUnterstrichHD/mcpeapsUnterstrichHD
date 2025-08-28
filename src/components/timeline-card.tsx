@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -8,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import React from "react";
+import type React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 interface TimeLineCardProps {
