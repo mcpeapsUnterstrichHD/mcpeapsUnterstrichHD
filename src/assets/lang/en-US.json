@@ -234,6 +234,16 @@
           "title": "GitHub",
           "headding": "GitHub Profile",
           "description": "Here you can find my projects and source code."
+        },
+        "playlist": {
+          "title": "Music Playlist",
+          "headding": "Music Playlist",
+          "description": "Here you can find my music playlist."
+        },
+        "song": {
+          "title": "My Song",
+          "headding": "My Latest Song",
+          "description": "Listen to my latest song."
         }
       }
     }

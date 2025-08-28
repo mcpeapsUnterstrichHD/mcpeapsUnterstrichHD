@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -14,6 +15,10 @@ interface LinkCardProps {
   icon: string;
   headding: string;
   description: string;
+}
+
+interface LinkCardWithFooterProps extends LinkCardProps {
+  children: React.ReactNode;
 }
 
 const LinkCard: React.FC<LinkCardProps> = ({
@@ -44,4 +49,37 @@ const LinkCard: React.FC<LinkCardProps> = ({
   )
 }
 
+const LinkCardWithFooter: React.FC<LinkCardWithFooterProps> = ({
+  title,
+  url,
+  icon,
+  headding,
+  description,
+  children,
+}) => {
+  return (
+    <a href={url} target="_blank" rel="noreferrer" className="flex flex-col gap-2">
+      <Card className="bg-transparent backdrop-blur-sm">
+        <CardHeader>
+          <div className="flex flex-row items-center justify-between gap-1">
+            <Avatar>
+              <AvatarImage src={icon} alt={`${title} Logo`} />
+              <AvatarFallback>{title}</AvatarFallback>
+            </Avatar>
+            <CardTitle>{title}</CardTitle>
+          </div>
+          <CardDescription>{headding}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>{description}</p>
+        </CardContent>
+      <CardFooter>
+        {children}
+        </CardFooter>
+      </Card>
+    </a>
+  )
+}
+
 export default LinkCard;
+export { LinkCardWithFooter };
