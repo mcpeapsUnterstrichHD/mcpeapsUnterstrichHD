@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import LinkCard from "@/components/LinkCard.tsx";
+import LinkCard, {LinkCardWithFooter} from "@/components/LinkCard.tsx";
 import {useTranslation} from "react-i18next";
 
 //icons
@@ -13,6 +13,7 @@ import youtubeLogo from "@/assets/pictures/linkhub/youtube.svg"
 import logo from "@/assets/pictures/logo.png";
 import cbpsLogo from "@/assets/pictures/cbps_logo.png";
 import githubLogo from  "@/assets/pictures/linkhub/github-dark.svg"
+import appleMusicLogo from "@/assets/pictures/linkhub/apple-musik.svg"
 
 export const Route = createFileRoute('/linkhub/')({
   component: RouteComponent,
@@ -20,12 +21,12 @@ export const Route = createFileRoute('/linkhub/')({
 
 function RouteComponent() {
   const {t} = useTranslation();
-  return <div className="flex flex-col items-center justify-center self-center gap-4 py-8 md:py-10 m-8 md:m-10">
+  return <div className="flex flex-col w-full items-center justify-center self-center gap-4 py-8 md:py-10 m-8 md:m-10">
     <h1 className="text-center text-5xl">{t("aboutme.name")}</h1>
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col w-full items-center justify-center gap-4 py-8 md:py-10">
       {t("linkhub.description")}
     </section>
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col w-full items-center justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("linkhub.sections.socialMedia.title")}</h2>
       <div className="flex flex-col items-center justify-center gap-4">
         <LinkCard
@@ -74,9 +75,9 @@ function RouteComponent() {
           />
       </div>
     </section>
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col items-center w-full justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("linkhub.sections.websites.title")}</h2>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center w-full justify-center gap-4">
         <LinkCard
           title={t("linkhub.sections.websites.myWebsite.title")}
           description={t("linkhub.sections.websites.myWebsite.description")}
@@ -100,16 +101,56 @@ function RouteComponent() {
         />
       </div>
     </section>
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col items-center w-full justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("linkhub.sections.other.title")}</h2>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center w-full justify-center gap-4">
         <LinkCard
           title={t("linkhub.sections.other.github.title")}
           description={t("linkhub.sections.other.github.description")}
           headding={t("linkhub.sections.other.github.headding")}
-          url="https://mcpeapsunterstrichhd.dev"
+          url="https://github.com/mcpeapsUnterstrichHD"
           icon={githubLogo}
         />
+        <LinkCardWithFooter
+          title={t("linkhub.sections.other.playlist.title")}
+          description={t("linkhub.sections.other.playlist.description")}
+          headding={t("linkhub.sections.other.playlist.headding")}
+          url="https://music.apple.com/de/playlist/favorite/pl.u-aZb0kXDFP7zBoV2"
+          icon={appleMusicLogo}
+        >
+          <iframe
+            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            width="95%"
+            height="450"
+            style={{
+              maxWidth: "100%",
+              overflow: "hidden",
+              borderRadius: "10px",
+            }}
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/de/playlist/favorite/pl.u-aZb0kXDFP7zBoV2"
+            frameBorder="0"
+            title={t("linkhub.sections.other.playlist.description")}
+          />
+        </LinkCardWithFooter>
+        <LinkCardWithFooter
+          title={t("linkhub.sections.other.song.title")}
+          description={t("linkhub.sections.other.song.description")}
+          headding={t("linkhub.sections.other.song.headding")}
+          url="https://song.link/festival_dream&theme=dark"
+          icon={appleMusicLogo}
+        >
+          <iframe
+            width="95%"
+            height="52"
+            src="https://odesli.co/embed/?url=https%3A%2F%2Fsong.link%2Ffestival_dream&theme=dark"
+            frameBorder="0"
+            allowFullScreen
+            sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"
+            allow="clipboard-read; clipboard-write"
+            title={t("linkhub.sections.other.song.description")}
+          />
+        </LinkCardWithFooter>
       </div>
     </section>
   </div>
