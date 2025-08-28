@@ -21,14 +21,14 @@ export const Route = createFileRoute('/linkhub/')({
 
 function RouteComponent() {
   const {t} = useTranslation();
-  return <div className="flex flex-col w-full items-center justify-center self-center gap-4 py-8 md:py-10 m-8 md:m-10">
+  return <div className="grid grid-cols-1 w-[calc(100vw-64px)] items-center justify-center self-center gap-4 py-8 md:py-10 m-8 md:m-10">
     <h1 className="text-center text-5xl">{t("aboutme.name")}</h1>
-    <section className="flex flex-col w-full items-center justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 w-[calc(100vw-64px)] text-center items-center justify-center gap-4 py-8 md:py-10">
       {t("linkhub.description")}
     </section>
-    <section className="flex flex-col w-full items-center justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 w-[calc(100vw-64px)] items-center justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("linkhub.sections.socialMedia.title")}</h2>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="grid grid-cols-1 items-center justify-center gap-4">
         <LinkCard
           title={t("linkhub.sections.socialMedia.instagram.title")}
           description={t("linkhub.sections.socialMedia.instagram.description")}
@@ -75,9 +75,9 @@ function RouteComponent() {
           />
       </div>
     </section>
-    <section className="flex flex-col items-center w-full justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("linkhub.sections.websites.title")}</h2>
-      <div className="flex flex-col items-center w-full justify-center gap-4">
+      <div className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4">
         <LinkCard
           title={t("linkhub.sections.websites.myWebsite.title")}
           description={t("linkhub.sections.websites.myWebsite.description")}
@@ -101,9 +101,9 @@ function RouteComponent() {
         />
       </div>
     </section>
-    <section className="flex flex-col items-center w-full justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("linkhub.sections.other.title")}</h2>
-      <div className="flex flex-col items-center w-full justify-center gap-4">
+      <div className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4">
         <LinkCard
           title={t("linkhub.sections.other.github.title")}
           description={t("linkhub.sections.other.github.description")}
@@ -120,7 +120,7 @@ function RouteComponent() {
         >
           <iframe
             allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-            width="95%"
+            width="100%"
             height="450"
             style={{
               maxWidth: "100%",
@@ -141,7 +141,7 @@ function RouteComponent() {
           icon={appleMusicLogo}
         >
           <iframe
-            width="95%"
+            width="100%"
             height="52"
             src="https://odesli.co/embed/?url=https%3A%2F%2Fsong.link%2Ffestival_dream&theme=dark"
             frameBorder="0"
