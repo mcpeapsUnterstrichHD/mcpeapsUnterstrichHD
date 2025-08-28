@@ -11,36 +11,36 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
+
+// firms
+import kfwLogo from "@/assets/pictures/lebenslauf/firms/kfw_logo.svg";
 import pfennigfeifferLogo from "@/assets/pictures/lebenslauf/firms/Pfennigpfeiffer_logo.jpg";
 import toSaLogo from "@/assets/pictures/lebenslauf/firms/ToSa_logo.jpg";
 import adkLogo from "@/assets/pictures/lebenslauf/firms/adkberlin_logo.jpg";
-// firms
-import kfwLogo from "@/assets/pictures/lebenslauf/firms/kfw_logo.png";
-import cvlLogo from "@/assets/pictures/lebenslauf/schools/cvl_logo.png";
 // logos
 // schools
+import cvlLogo from "@/assets/pictures/lebenslauf/schools/cvl_logo.png";
 import oszimtLogo from "@/assets/pictures/lebenslauf/schools/oszimt_logo.png";
-import ansibleLogoDark from "@/assets/pictures/lebenslauf/skills/ansible-dark.png";
-import ansibleLogo from "@/assets/pictures/lebenslauf/skills/ansible.png";
-import ciscoLogo from "@/assets/pictures/lebenslauf/skills/cisco.png";
-import eclipseLogo from "@/assets/pictures/lebenslauf/skills/eclipse.png";
-import iosLogoDark from "@/assets/pictures/lebenslauf/skills/ios-dark.png";
-import iosLogo from "@/assets/pictures/lebenslauf/skills/ios.png";
 // skills
-import javaLogo from "@/assets/pictures/lebenslauf/skills/java.png";
-import linuxLogo from "@/assets/pictures/lebenslauf/skills/linux.png";
-import logicProLogo from "@/assets/pictures/lebenslauf/skills/logicpro.png";
-import macosLogo from "@/assets/pictures/lebenslauf/skills/macos.png";
-import ms365Logo from "@/assets/pictures/lebenslauf/skills/ms365.png";
-import mysqlLogo from "@/assets/pictures/lebenslauf/skills/mysql.png";
-import swiftLogo from "@/assets/pictures/lebenslauf/skills/swift.png";
-import teamsLogo from "@/assets/pictures/lebenslauf/skills/teams.png";
-import vscodeLogo from "@/assets/pictures/lebenslauf/skills/vscode.png";
-import windowsLogoDark from "@/assets/pictures/lebenslauf/skills/windows-dark.png";
-import windowsLogo from "@/assets/pictures/lebenslauf/skills/windows.png";
-import xcodeLogo from "@/assets/pictures/lebenslauf/skills/xcode.png";
-
-//import rustLogo from "@/assets/pictures/cv/skills/rust.png
+import ansibleLogoDark from "@/assets/pictures/lebenslauf/skills/ansible-dark.svg";
+import ansibleLogo from "@/assets/pictures/lebenslauf/skills/ansible.svg";
+import ciscoLogo from "@/assets/pictures/lebenslauf/skills/cisco.svg";
+import eclipseLogo from "@/assets/pictures/lebenslauf/skills/eclipse.svg";
+import javaLogo from "@/assets/pictures/lebenslauf/skills/java.svg";
+import linuxLogo from "@/assets/pictures/lebenslauf/skills/linux.svg";
+import macosLogo from "@/assets/pictures/lebenslauf/skills/macos.svg";
+import macosLogoDark from "@/assets/pictures/lebenslauf/skills/macos-dark.svg";
+import iosLogo from "@/assets/pictures/lebenslauf/skills/ios.svg";
+import iosLogoDark from "@/assets/pictures/lebenslauf/skills/ios-dark.svg";
+import ms365Logo from "@/assets/pictures/lebenslauf/skills/ms365.svg";
+import mysqlLogo from "@/assets/pictures/lebenslauf/skills/mysql.svg";
+import swiftLogo from "@/assets/pictures/lebenslauf/skills/swift.svg";
+import teamsLogo from "@/assets/pictures/lebenslauf/skills/teams.svg";
+import vscodeLogo from "@/assets/pictures/lebenslauf/skills/vscode.svg";
+import windowsLogo from "@/assets/pictures/lebenslauf/skills/windows.svg";
+import xcodeLogo from "@/assets/pictures/lebenslauf/skills/xcode.svg";
+import rustLogo from "@/assets/pictures/lebenslauf/skills/rust-light.svg";
+import rustLogoDark from "@/assets/pictures/lebenslauf/skills/rust-dark.svg"
 
 export const Route = createFileRoute("/cv/")({
   component: RouteComponent,
@@ -440,14 +440,6 @@ function RouteComponent() {
           Skilllevel={60}
         />
         <SkillCard
-          SkillTitle="Apple Logic Pro"
-          SkillBadges={["Musik", "2 Jahre"]}
-          SkillImage={logicProLogo}
-          SkillImageAlt="Apple Logic Pro Logo"
-          SkillImageFallback="ALP"
-          Skilllevel={60}
-        />
-        <SkillCard
           SkillTitle="Apple Xcode 14+                "
           SkillBadges={["Development", "Apple", "2 Jahre"]}
           SkillImage={xcodeLogo}
@@ -458,7 +450,7 @@ function RouteComponent() {
         <SkillCard
           SkillTitle="Apple macOS"
           SkillBadges={["Betriebsystem", "Apple", "2 Jahre"]}
-          SkillImage={macosLogo}
+          SkillImage={printing ? macosLogo : macosLogoDark}
           SkillImageAlt="macOS Logo"
           SkillImageFallback="macOS"
           Skilllevel={90}
@@ -498,7 +490,7 @@ function RouteComponent() {
         <SkillCard
           SkillTitle="Windows"
           SkillBadges={["Betriebsystem", "Microsoft", "3 Jahre"]}
-          SkillImage={printing ? windowsLogo : windowsLogoDark}
+          SkillImage={windowsLogo}
           SkillImageAlt="Windows Logo"
           SkillImageFallback="WIN"
           Skilllevel={60}
@@ -554,7 +546,7 @@ function RouteComponent() {
         <SkillCard
           SkillTitle="Rust"
           SkillBadges={["Automation", "2 Monate"]}
-          SkillImage={printing ? ansibleLogo : ansibleLogoDark}
+          SkillImage={printing ? rustLogo : rustLogoDark}
           SkillImageAlt="Ansible Logo"
           SkillImageFallback="A"
           Skilllevel={30}
