@@ -112,5 +112,77 @@
         "description": "Use the PDF button in the bottom right to print the resume optimally."
       }
     }
+  },
+  "linkhub": {
+    "description": "Here you can find an overview of my social media profiles and other important links.",
+    "sections": {
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Here you can find my social media profiles.",
+        "instagram": {
+          "title": "Instagram",
+          "headding": "Instagram Profile",
+          "description": "Here you might get some glimpses of my daily life"
+        },
+        "tiktok": {
+          "title": "TikTok",
+          "headding": "TikTok Profile",
+          "description": "Here you might get some glimpses of my daily life"
+        },
+        "threads": {
+          "title": "Threads",
+          "headding": "Threads Profile",
+          "description": "Here you might see some short texts"
+        },
+        "bsky": {
+          "title": "Bluesky",
+          "headding": "Bluesky Profile",
+          "description": "Here you might see some short texts"
+        },
+        "twitter": {
+          "title": "X/Twitter",
+          "headding": "X/Twitter Profile",
+          "description": "Here you might see some short texts"
+        },
+        "discord": {
+          "title": "Discord",
+          "headding": "Discord Server",
+          "description": "Here we can meet each other"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "headding": "YouTube Channel",
+          "description": "Here you can find my videos."
+        }
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Here you can find my websites.",
+        "myWebsite": {
+          "title": "My Website",
+          "headding": "My Website",
+          "description": "Here you can find my website."
+        },
+        "cbps": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Website",
+          "description": "Here you can find the website of my friend group comboom.sucht."
+        },
+        "blogCBPS": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Blog",
+          "description": "Here you can find the blog of my friend group comboom.sucht."
+        }
+      },
+      "other": {
+        "title": "Other",
+        "description": "Here you can find other important links.",
+        "github": {
+          "title": "GitHub",
+          "headding": "GitHub Profile",
+          "description": "Here you can find my projects and source code."
+        }
+      }
+    }
   }
 }

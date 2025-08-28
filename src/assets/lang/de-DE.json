@@ -26,7 +26,7 @@
     "projects": "Projekte",
     "contact": "Kontaktier mich",
     "cv": "Lebenslauf",
-    "linkhub": "Linkliste",
+    "linkhub": "Link liste",
     "notFound": "404 - Seite nicht gefunden"
   },
   "recommendation": {
@@ -156,6 +156,78 @@
     "skills": {
       "title": "Fähigkeiten"
 
+    }
+  },
+  "linkhub": {
+    "description": "Hier findest du eine Übersicht meiner Social-Media-Profile und anderer wichtiger Links.",
+    "sections": {
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Hier findest du meine Social Media Profilen.",
+        "instagram": {
+          "title": "Instagram",
+          "headding": "Instagram Profil",
+          "description": "Hier kanst du vieleicht etwas von meinen altag mitbekommen"
+        },
+        "tiktok": {
+          "title": "TikTok",
+          "headding": "TikTok Profil",
+          "description": "Hier kannst du vieleicht etwas von meinen altag mitbekommen"
+        },
+        "threads": {
+          "title": "Threads",
+          "headding": "Threads Profil",
+          "description": "Hier kanst du vieleicht kleine Texte sehen"
+        },
+        "bsky": {
+          "title": "Bluesky",
+          "headding": "Bluesky Profil",
+          "description": "Hier kanst du vieleicht kleine Texte sehen"
+        },
+        "twitter": {
+          "title": "X/Twitter",
+          "headding": "X/Twitter Profil",
+          "description": "Hier kanst du vieleicht kleine Texte sehen"
+        },
+        "discord": {
+          "title": "Discord",
+          "headding": "Discord Server",
+          "description": "Hier können wir uns gegenseitig treffen"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "headding": "YouTube Kanal",
+          "description": "Hier findest du meine Videos."
+        }
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Hier findest du meine Websites.",
+        "myWebsite": {
+          "title": "Meine Website",
+          "headding": "Meine Website",
+          "description": "Hier findest du meine Website."
+        },
+        "cbps": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Wbseite",
+          "description": "Hier findest du die Website meiner Freundesgruppe comboom.sucht."
+        },
+        "blogCBPS": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Blog",
+          "description": "Hier findest du den Blog meiner Freundesgruppe comboom.sucht."
+        }
+      },
+      "other": {
+        "title": "Andere",
+        "description": "Hier findest du andere wichtige Links.",
+        "github": {
+          "title": "GitHub",
+          "headding": "GitHub Profil",
+          "description": "Hier findest du meine Projekte und Quellcodes."
+        }
+      }
     }
   }
 }

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
+import { Route as LinkhubIndexRouteImport } from './routes/linkhub/index'
 import { Route as ImpressumIndexRouteImport } from './routes/impressum/index'
 import { Route as CvIndexRouteImport } from './routes/cv/index'
 import { Route as ContactIndexRouteImport } from './routes/contact/index'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LinkhubIndexRoute = LinkhubIndexRouteImport.update({
+  id: '/linkhub/',
+  path: '/linkhub/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpressumIndexRoute = ImpressumIndexRouteImport.update({
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactIndexRoute
   '/cv': typeof CvIndexRoute
   '/impressum': typeof ImpressumIndexRoute
+  '/linkhub': typeof LinkhubIndexRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactIndexRoute
   '/cv': typeof CvIndexRoute
   '/impressum': typeof ImpressumIndexRoute
+  '/linkhub': typeof LinkhubIndexRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
@@ -70,13 +78,28 @@ export interface FileRoutesById {
   '/contact/': typeof ContactIndexRoute
   '/cv/': typeof CvIndexRoute
   '/impressum/': typeof ImpressumIndexRoute
+  '/linkhub/': typeof LinkhubIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aboutme' | '/contact' | '/cv' | '/impressum' | '/projects'
+  fullPaths:
+    | '/'
+    | '/aboutme'
+    | '/contact'
+    | '/cv'
+    | '/impressum'
+    | '/linkhub'
+    | '/projects'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aboutme' | '/contact' | '/cv' | '/impressum' | '/projects'
+  to:
+    | '/'
+    | '/aboutme'
+    | '/contact'
+    | '/cv'
+    | '/impressum'
+    | '/linkhub'
+    | '/projects'
   id:
     | '__root__'
     | '/'
@@ -84,6 +107,7 @@ export interface FileRouteTypes {
     | '/contact/'
     | '/cv/'
     | '/impressum/'
+    | '/linkhub/'
     | '/projects/'
   fileRoutesById: FileRoutesById
 }
@@ -93,6 +117,7 @@ export interface RootRouteChildren {
   ContactIndexRoute: typeof ContactIndexRoute
   CvIndexRoute: typeof CvIndexRoute
   ImpressumIndexRoute: typeof ImpressumIndexRoute
+  LinkhubIndexRoute: typeof LinkhubIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -110,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/linkhub/': {
+      id: '/linkhub/'
+      path: '/linkhub'
+      fullPath: '/linkhub'
+      preLoaderRoute: typeof LinkhubIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impressum/': {
@@ -149,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactIndexRoute: ContactIndexRoute,
   CvIndexRoute: CvIndexRoute,
   ImpressumIndexRoute: ImpressumIndexRoute,
+  LinkhubIndexRoute: LinkhubIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport

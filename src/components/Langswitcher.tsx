@@ -6,18 +6,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LanguagesNUM, getLanguageName } from "@/lib/lang.ts";
-import { useRouter, useSearch } from "@tanstack/react-router";
+import { useRouter, useSearch,  } from "@tanstack/react-router";
 
 export function Langswitcher() {
   const router = useRouter();
   const search = useSearch({ strict: false });
   const currentLang = search.lang ?? LanguagesNUM.de;
   const setLanguage = (lang: LanguagesNUM) => {
+    search.lang = lang as LanguagesNUM;
     router.navigate({
-      search: (prev) => ({
-        ...prev,
-        lang,
-      }),
+      search: {...search},
       replace: true, // ersetzt die History statt neue hinzuzufügen
     });
   };

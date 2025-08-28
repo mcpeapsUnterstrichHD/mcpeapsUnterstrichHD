@@ -6,7 +6,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import logo from "@/assets/pictures/logo.png";
 import klassenLogo from "@/assets/pictures/projects/Klassen_App_Icon_iOS_macOS_iPadOS.png";
 import oszimtLogo from "@/assets/pictures/projects/OSZimt-Logo-l.png";
-import cbpsLogo from "@/assets/pictures/projects/cbps_logo.png";
+import cbpsLogo from "@/assets/pictures/cbps_logo.png";
 import portfolioPicture from "@/assets/pictures/projects/my_Portfolio.jpeg";
 import searxngPicture from "@/assets/pictures/projects/searxng.png";
 import simpleSQLRunnerPicture from "@/assets/pictures/projects/ssqlr.png";

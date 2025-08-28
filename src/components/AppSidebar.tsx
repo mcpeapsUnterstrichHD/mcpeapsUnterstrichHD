@@ -131,13 +131,14 @@ export function AppSidebar() {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
-                    <a
-                      href="https://link.me/mcpeaps_hd"
-                      target="_blank"
-                      rel="noreferrer"
+                    <Link
+                      to="/linkhub"
+                      search={{
+                        lang: currentLang
+                    }}
                     >
                       <span>{t("sites.linkhub")}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <Collapsible defaultOpen className="group/collapsible">

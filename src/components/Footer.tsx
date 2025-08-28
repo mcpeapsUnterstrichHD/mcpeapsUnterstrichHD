@@ -24,14 +24,14 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-row flex-wrap items-center justify-center gap-2 text-sm">
-              <a
-                href="https://link.me/mcpeaps_hd"
-                target="_blank"
-                className="font-medium hover:underline transition-colors"
-                rel="noreferrer"
+              <Link
+                to="/linkhub"
+                search={{
+                    lang: currentLang,
+                  }}
               >
                 {t("sites.linkhub")}
-              </a>
+              </Link>
               <span className="text-muted-foreground">•</span>
               <Link
                 to="/"

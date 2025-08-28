@@ -229,13 +229,16 @@ function RootDocument() {
         },
       },
       {
-        title: t("recommendation.linkhub.json.title"),
-        description: t("recommendation.linkhub.json.description"),
+        title: t("recommendation.linkhub.title"),
+        description: t("recommendation.linkhub.description"),
         action: {
-          label: t("recommendation.linkhub.json.action.label"),
+          label: t("recommendation.linkhub.action.label"),
           onClick: async () => {
             await navigateTo({
-              href: "https://link.me/mcpeaps_hd",
+              to:"/linkhub",
+              search: {
+                lang: currentLang
+              }
             });
           },
         },
