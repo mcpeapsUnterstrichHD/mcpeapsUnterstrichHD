@@ -45,6 +45,7 @@ import rustLogo from "@/assets/pictures/lebenslauf/skills/rust-light.svg";
 import rustLogoDark from "@/assets/pictures/lebenslauf/skills/rust-dark.svg"
 import cLogo from "@/assets/pictures/lebenslauf/skills/c.svg";
 import cppLogo from "@/assets/pictures/lebenslauf/skills/cpp.svg";
+import emacsLogo from "@/assets/pictures/lebenslauf/skills/emacs.svg";
 
 export const Route = createFileRoute("/cv/")({
   component: RouteComponent,
@@ -234,6 +235,7 @@ function RouteComponent() {
     { SkillTitle: "Rust", SkillBadges: ["Development", "2 Monate"], SkillImage: printing ?  rustLogo: rustLogoDark, SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
     { SkillTitle: "C", SkillBadges: ["C98", "C11", "Development", "1 Jahr"], SkillImage: cLogo, SkillImageAlt: "C Logo", SkillImageFallback: "C", Skilllevel: 30 },
     { SkillTitle: "C++", SkillBadges: ["C++23", "Development", "1 Monat"], SkillImage: cppLogo, SkillImageAlt: "C++ Logo", SkillImageFallback: "C++", Skilllevel: 30 },
+    { SkillTitle: "Emacs", SkillBadges: ["Development", "Text Editor", "Multifunctional", "GNU", "1 Monat"], SkillImage: emacsLogo, SkillImageAlt: "GNU Emacs Logo", SkillImageFallback: "Emacs", Skilllevel: 30 },
   ].sort((skillA: SkillCardProps, skillB: SkillCardProps) =>
     skillA.SkillTitle.localeCompare(skillB.SkillTitle)
   );
