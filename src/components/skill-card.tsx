@@ -12,7 +12,7 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-interface SkillCardProps {
+export interface SkillCardProps {
   SkillImage: string; // Full path (e.g., "/pictures/ios.png")
   SkillImageAlt: string; // Alt text for the image
   SkillImageFallback: string; // Fallback text for the avatar
@@ -65,7 +65,8 @@ const SkillCard: React.FC<SkillCardProps> = ({
         <CardDescription>
           <div className="flex flex-wrap gap-2">
             {SkillBadges.map((badge, index) => (
-              <Badge key={index} variant="default">
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+<Badge key={index} variant="default">
                 {badge}
               </Badge>
             ))}

@@ -105,7 +105,7 @@
     "recommendation": {
       "printingSettings": {
         "title": "Beste Druckeinstellugen",
-        "description": "Skalierung: 50 %, Ränder: Standart, Hintergrundgrafiken: ein"
+        "description": "Skalierung: 71 %, Ränder: Standart, Hintergrundgrafiken: ein"
       },
       "printingNotice": {
         "title": "Empfehlung für den Druck",
@@ -127,17 +127,31 @@
       "badges": {
         "ausbildung": "Ausbildung",
         "fachabitur": "Fachabitur",
+        "batchlor_of_science":  "Batchlor of Science",
+        "studies": "Studium",
         "it": "IT",
+        "semester":  "{{semester}} Semester",
         "years": "{{years}} Jahre",
         "msaMitOG": "MSA(OG)"
       },
       "items": {
+        "tuberlin": {
+          "name": "Technische Universität Berlin",
+          "imgAlt": "Technische Universität Berlin Lang Logo",
+          "description": "Bachelor of Science in Informatik (incomplete)",
+          "badges": [
+            "Berlin",
+            "Bachelor of Science",
+            "IT",
+            "3 Years"
+          ]
+        },
         "lookingForApprenticeship": {
           "name": "Ausbuildungsplatzsuchend",
           "imgAlt": "Suchend"
         },
         "oszimt": {
-          "name": "OSZ Informations- & Medientechnik (OSZ IMT)",
+          "name": "OSZ Informations- & Medizientechnik (OSZ IMT)",
           "imgAlt": "Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo",
           "description": "Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur",
           "badges": ["Berlin", "Ausbildung","Fachabitur","IT","3 Jahre"]

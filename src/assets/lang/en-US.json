@@ -105,7 +105,7 @@
     "recommendation": {
       "printingSettings": {
         "title": "Best Printing Settings",
-        "description": "Scale: 50%, Margins: Default, Background Graphics: On"
+        "description": "Scale: 71%, Margins: Default, Background Graphics: On"
       },
       "printingNotice": {
         "title": "Printing Recommendation",
@@ -127,18 +127,32 @@
       "badges": {
         "ausbildung": "Apprenticeship",
         "fachabitur": "Advanced Technical College Certificate",
+        "batchlor_of_science":  "Batchlor's Degree of Science",
+        "studies": "Studies",
         "it": "IT",
         "years": "{{years}} Years",
+        "semester":  "{{semester}} Semester",
         "msaMitOG": "MSA(OG)"
       },
       "items": {
+        "tuberlin": {
+          "name": "Technical University of Berlin",
+          "imgAlt": "Technical University of Berlin long Logo",
+          "description": "Bachelor's Degree of Science in Informatics (incomplete)",
+          "badges": [
+            "Berlin",
+            "Bachelor's Degree of Science",
+            "IT",
+            "3 Years"
+          ]
+        },
         "lookingForApprenticeship": {
           "name": "Looking for Apprenticeship",
           "imgAlt": "Searching"
         },
         "oszimt": {
-          "name": "OSZ Information & Media Technology (OSZ IMT)",
-          "imgAlt": "Upper Secondary Center for Information & Media Technology (OSZ IMT) Logo",
+          "name": "Center for Information & Medical Technology (OSZ IMT)",
+          "imgAlt": "Center for Information & Medical Technology (OSZ IMT) Logo",
           "description": "Dual qualification training as IT Assistant with Advanced Technical College Certificate",
           "badges": [
             "Berlin",
