@@ -116,7 +116,24 @@ function RouteComponent() {
       enddate: "07.2021",
       children: t("cv.education.items.cvl.description"),
     },
-  ];
+  ].sort((a, b) => {
+    const parse = (s?: string) => {
+      if (!s) return new Date(0);
+      const parts = s.split(".").map((p) => Number.parseInt(p, 10));
+      if (parts.length === 3) {
+        const [day, month, year] = parts;
+        return new Date(year, month - 1, day);
+      }
+      if (parts.length === 2) {
+        const [month, year] = parts;
+        return new Date(year, month - 1, 1);
+      }
+      return new Date(0);
+    };
+    const da = parse(a.enddate ?? a.startdate);
+    const db = parse(b.enddate ?? b.startdate);
+    return db.getTime() - da.getTime();
+  });
 
   const experience: (TimeLineElementProps & { key:string}) [] = [
     {
@@ -175,7 +192,24 @@ function RouteComponent() {
       enddate: "06.2018",
       children: <p>Regale einräumen</p>,
     },
-  ];
+  ].sort((a, b) => {
+      const parse = (s?: string) => {
+        if (!s) return new Date(0);
+        const parts = s.split(".").map((p) => Number.parseInt(p, 10));
+        if (parts.length === 3) {
+          const [day, month, year] = parts;
+          return new Date(year, month - 1, day);
+        }
+        if (parts.length === 2) {
+          const [month, year] = parts;
+          return new Date(year, month - 1, 1);
+        }
+        return new Date(0);
+      };
+      const da = parse(a.enddate ?? a.startdate);
+      const db = parse(b.enddate ?? b.startdate);
+      return db.getTime() - da.getTime();
+    });
 
 
   const skills: SkillCardProps[] = [
@@ -200,7 +234,9 @@ function RouteComponent() {
     { SkillTitle: "Rust", SkillBadges: ["Development", "2 Monate"], SkillImage: printing ?  rustLogo: rustLogoDark, SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
     { SkillTitle: "C", SkillBadges: ["C98", "C11", "Development", "1 Jahr"], SkillImage: cLogo, SkillImageAlt: "C Logo", SkillImageFallback: "C", Skilllevel: 30 },
     { SkillTitle: "C++", SkillBadges: ["C++23", "Development", "1 Monat"], SkillImage: cppLogo, SkillImageAlt: "C++ Logo", SkillImageFallback: "C++", Skilllevel: 30 },
-  ];
+  ].sort((skillA: SkillCardProps, skillB: SkillCardProps) =>
+    skillA.SkillTitle.localeCompare(skillB.SkillTitle)
+  );
 
   useEffect(() => {
     const toastValues_printig_settings: {

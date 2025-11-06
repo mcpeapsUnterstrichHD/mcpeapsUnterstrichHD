@@ -6,7 +6,7 @@ import searxngPicture from "@/assets/pictures/projects/searxng.png";
 import simpleSQLRunnerPicture from "@/assets/pictures/projects/ssqlr.png";
 
 
-const PINNED_PROJECTS: ProjectCardProps[] = [
+export const PINNED_PROJECTS: ProjectCardProps[] = [
   {
     projectImage: portfolioPicture,
     projectImageAlt: "Portfolio Bild",
@@ -34,7 +34,9 @@ const PINNED_PROJECTS: ProjectCardProps[] = [
     projectLink: "https://github.com/mcpeapsUnterstrichHD/local-services",
     children: "Hier ist eine ansamlung an self hosted Services, wie meine Suchmaschine, die ich nutze.",
   },
-];
+].sort((projectA: ProjectCardProps, projectB: ProjectCardProps) =>
+  projectA.projectTitle.localeCompare(projectB.projectTitle)
+);
 
 export default function PinedProjects() {
   return (
