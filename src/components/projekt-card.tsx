@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import type React from "react";
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   projectImage: string;
   projectImageAlt: string;
   projectImageBgColor: string;

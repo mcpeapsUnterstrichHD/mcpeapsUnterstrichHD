@@ -74,6 +74,7 @@ const TimeLineElementSmall: React.FC<TimeLineElementProps> = ({
       <TimelineContent>
         <TimeLineCard
           TimeLineTitle={TimeLineTitle}
+          // biome-ignore lint/style/useTemplate: <explanation>
           TimeLineBadges={[startdate + " - " + enddate].concat(TimeLineBadges)}
           TimeLineImage={TimeLineImage}
           TimeLineImageAlt={TimeLineImageAlt}
@@ -86,4 +87,4 @@ const TimeLineElementSmall: React.FC<TimeLineElementProps> = ({
   );
 };
 
-export { TimeLineElementBig, TimeLineElementSmall };
+export { TimeLineElementBig, TimeLineElementSmall, type TimeLineElementProps };

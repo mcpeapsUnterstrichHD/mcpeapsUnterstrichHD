@@ -1,7 +1,8 @@
-import SkillCard from "@/components/skill-card";
+import SkillCard, { type SkillCardProps } from "@/components/skill-card";
 import {
   TimeLineElementBig,
   TimeLineElementSmall,
+  type TimeLineElementProps
 } from "@/components/timeline-element";
 import { Button } from "@/components/ui/button.tsx";
 import Timeline from "@mui/lab/Timeline";
@@ -21,6 +22,7 @@ import adkLogo from "@/assets/pictures/lebenslauf/firms/adkberlin_logo.jpg";
 // schools
 import cvlLogo from "@/assets/pictures/lebenslauf/schools/cvl_logo.png";
 import oszimtLogo from "@/assets/pictures/lebenslauf/schools/oszimt_logo.png";
+import tuberlinLogo from "@/assets/pictures/lebenslauf/schools/LogoDerTUBerlin2020.svg";
 // skills
 import ansibleLogoDark from "@/assets/pictures/lebenslauf/skills/ansible-dark.svg";
 import ansibleLogo from "@/assets/pictures/lebenslauf/skills/ansible.svg";
@@ -41,10 +43,14 @@ import windowsLogo from "@/assets/pictures/lebenslauf/skills/windows.svg";
 import xcodeLogo from "@/assets/pictures/lebenslauf/skills/xcode.svg";
 import rustLogo from "@/assets/pictures/lebenslauf/skills/rust-light.svg";
 import rustLogoDark from "@/assets/pictures/lebenslauf/skills/rust-dark.svg"
+import cLogo from "@/assets/pictures/lebenslauf/skills/c.svg";
+import cppLogo from "@/assets/pictures/lebenslauf/skills/cpp.svg";
 
 export const Route = createFileRoute("/cv/")({
   component: RouteComponent,
 });
+
+
 
 function RouteComponent() {
   const { t } = useTranslation();
@@ -52,6 +58,149 @@ function RouteComponent() {
 
   const intervalId = useRef<NodeJS.Timeout | null>(null);
   const intervalId2 = useRef<NodeJS.Timeout | null>(null);
+
+  const education: (TimeLineElementProps & { key:string}) [] = [
+    {
+      key: "tuberlin",
+      TimeLineTitle: t("cv.education.items.tuberlin.name"),
+      TimeLineBadges: [
+        t("cv.about.address.berlin"),
+        t("cv.education.badges.studies"),
+        t("cv.education.badges.batchlor_of_science"),
+        t("cv.education.badges.it"),
+        t("cv.education.badges.semester", { semester: 6 }),
+      ],
+      TimeLineImage: tuberlinLogo,
+      TimeLineImageAlt: t("cv.education.items.tuberlin.imgAlt"),
+      TimeLineImageFallback: "TUBerlin",
+      startdate: "10.2025",
+      enddate: "09.2028",
+      children: t("cv.education.items.tuberlin.description"),
+    },
+    {
+      key: "looking",
+      TimeLineTitle: t("cv.education.items.lookingForApprenticeship.name"),
+      TimeLineBadges: [],
+      TimeLineImage: "",
+      TimeLineImageAlt: t("cv.education.items.lookingForApprenticeship.imgAlt"),
+      TimeLineImageFallback: "/",
+      startdate: "10.2025",
+      enddate: "09.2028",
+      children: t("cv.education.items.lookingForApprenticeship.name"),
+    },
+    {
+      key: "oszimt",
+      TimeLineTitle: t("cv.education.items.oszimt.name"),
+      TimeLineBadges: [
+        t("cv.about.address.berlin"),
+        t("cv.education.badges.ausbildung"),
+        t("cv.education.badges.fachabitur"),
+        t("cv.education.badges.it"),
+        t("cv.education.badges.years", { years: 3 }),
+      ],
+      TimeLineImage: oszimtLogo,
+      TimeLineImageAlt: t("cv.education.items.oszimt.imgAlt"),
+      TimeLineImageFallback: "OSZimt",
+      startdate: "08.2021",
+      enddate: "07.2024",
+      children: t("cv.education.items.oszimt.description"),
+    },
+    {
+      key: "cvl",
+      TimeLineTitle: t("cv.education.items.cvl.name"),
+      TimeLineBadges: [t("cv.about.address.berlin"), t("cv.education.badges.msaMitOG")],
+      TimeLineImage: cvlLogo,
+      TimeLineImageAlt: t("cv.education.items.cvl.imgAlt"),
+      TimeLineImageFallback: "CvL",
+      startdate: "08.2010",
+      enddate: "07.2021",
+      children: t("cv.education.items.cvl.description"),
+    },
+  ];
+
+  const experience: (TimeLineElementProps & { key:string}) [] = [
+    {
+      key: "kfw",
+      TimeLineTitle: "KfW Bankengruppe",
+      TimeLineBadges: ["Berlin", "IT", "Betriebspraktikum", "9 Wochen"],
+      TimeLineImage: kfwLogo,
+      TimeLineImageAlt: "KfW Logo",
+      TimeLineImageFallback: "KfW",
+      startdate: "27.11.2023",
+      enddate: "02.02.2024",
+      children: (
+        <>
+          <p>
+            Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ
+            IMT
+          </p>
+          <br />
+          <p>
+            Automatisierungen mit Ansible + Dokumentation für Ansible in
+            Confluence der KfW
+          </p>
+        </>
+      ),
+    },
+    {
+      key: "adk",
+      TimeLineTitle: "Akademie der Künste (ADK)",
+      TimeLineBadges: ["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"],
+      TimeLineImage: adkLogo,
+      TimeLineImageAlt: "ADK Logo",
+      TimeLineImageFallback: "ADK",
+      startdate: "02.2020",
+      enddate: "02.2020",
+      children: <p>Syntezizerentwiklung</p>,
+    },
+    {
+      key: "tosa",
+      TimeLineTitle: "Tosa Security & Service GmbH & Co KG",
+      TimeLineBadges: ["Trebin", "Security", "Service", "Schülerpraktikum", "3 Tage"],
+      TimeLineImage: toSaLogo,
+      TimeLineImageAlt: "Tosa Security & Service GmbH & Co KG Logo",
+      TimeLineImageFallback: "TSS",
+      startdate: "01.2019",
+      enddate: "01.2019",
+      children: <p>Bürotätigkeiten</p>,
+    },
+    {
+      key: "pfennig",
+      TimeLineTitle: "Pfennigpfeiffer",
+      TimeLineBadges: ["Berlin", "Einzelhandel", "Schülerpraktikum", "1 Tag"],
+      TimeLineImage: pfennigfeifferLogo,
+      TimeLineImageAlt: "Pfennigpfeiffer Logo",
+      TimeLineImageFallback: "P",
+      startdate: "06.2018",
+      enddate: "06.2018",
+      children: <p>Regale einräumen</p>,
+    },
+  ];
+
+
+  const skills: SkillCardProps[] = [
+    { SkillTitle: "Java", SkillBadges: ["Development", "3 Jahre"], SkillImage: javaLogo, SkillImageAlt: "Java Logo", SkillImageFallback: "JDK", Skilllevel: 80 },
+    { SkillTitle: "Swift (SwiftUI)", SkillBadges: ["Development", "Frontend", "Apple", "2 Jahre"], SkillImage: swiftLogo, SkillImageAlt: "Swift Logo", SkillImageFallback: "SUI", Skilllevel: 60 },
+    { SkillTitle: "Cisco IOS", SkillBadges: ["Konfiguration", "1 Jahre"], SkillImage: ciscoLogo, SkillImageAlt: "Cisco Logo", SkillImageFallback: "IOS", Skilllevel: 50 },
+    { SkillTitle: "Microsoft 365", SkillBadges: ["Office", "365", "Microsoft", "5 Jahre"], SkillImage: ms365Logo, SkillImageAlt: "Microsoft 365 Logo", SkillImageFallback: "MS365", Skilllevel: 70 },
+    { SkillTitle: "Visual Studio Code", SkillBadges: ["Development", "Microsoft", "4 Jahre"], SkillImage: vscodeLogo, SkillImageAlt: "Visual Studio Code Logo", SkillImageFallback: "VScode", Skilllevel: 60 },
+    { SkillTitle: "Apple Xcode 14+", SkillBadges: ["Development", "Apple", "2 Jahre"], SkillImage: xcodeLogo, SkillImageAlt: "Apple Xcode Logo", SkillImageFallback: "XCODE", Skilllevel: 70 },
+    { SkillTitle: "Apple macOS", SkillBadges: ["Betriebsystem", "Apple", "2 Jahre"], SkillImage: printing ? macosLogo : macosLogoDark, SkillImageAlt: "macOS Logo", SkillImageFallback: "macOS", Skilllevel: 90 },
+    { SkillTitle: "Apple iOS", SkillBadges: ["Betriebsystem", "Apple", "3 Jahre"], SkillImage: printing ? iosLogo : iosLogoDark, SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
+    { SkillTitle: "Apple iPadOS", SkillBadges: ["Betriebsystem", "Apple", "3 Jahre"], SkillImage: printing ? iosLogo : iosLogoDark, SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
+    { SkillTitle: "Apple vissionOS", SkillBadges: ["Betriebsystem", "Apple", "1 Jahre"], SkillImage: printing ? iosLogo : iosLogoDark, SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
+    { SkillTitle: "Linux", SkillBadges: ["Betriebsystem", "5 Jahre"], SkillImage: linuxLogo, SkillImageAlt: "Linux Logo", SkillImageFallback: "L", Skilllevel: 60 },
+    { SkillTitle: "Windows", SkillBadges: ["Betriebsystem", "Microsoft", "3 Jahre"], SkillImage: windowsLogo, SkillImageAlt: "Windows Logo", SkillImageFallback: "WIN", Skilllevel: 60 },
+    { SkillTitle: "Microsoft Teams", SkillBadges: ["Office", "Microsoft", "4 Jahre"], SkillImage: teamsLogo, SkillImageAlt: "Microsoft Teams Logo", SkillImageFallback: "Teams", Skilllevel: 60 },
+    { SkillTitle: "Eclipse", SkillBadges: ["Development", "2 Jahre"], SkillImage: eclipseLogo, SkillImageAlt: "Eclipse Logo", SkillImageFallback: "JDK", Skilllevel: 60 },
+    { SkillTitle: "MySQL", SkillBadges: ["Development", "1 Jahre"], SkillImage: mysqlLogo, SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 80 },
+    { SkillTitle: "MySQL Comunity Server", SkillBadges: ["Development", "1 Jahre"], SkillImage: mysqlLogo, SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
+    { SkillTitle: "MySQLWorckbench", SkillBadges: ["Development", "1 Jahre"], SkillImage: mysqlLogo, SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
+    { SkillTitle: "Ansible", SkillBadges: ["Automation", "2 Monate"], SkillImage: printing ?  ansibleLogo : ansibleLogoDark, SkillImageAlt: "Ansible Logo", SkillImageFallback: "A", Skilllevel: 60 },
+    { SkillTitle: "Rust", SkillBadges: ["Development", "2 Monate"], SkillImage: printing ?  rustLogo: rustLogoDark, SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
+    { SkillTitle: "C", SkillBadges: ["C98", "C11", "Development", "1 Jahr"], SkillImage: cLogo, SkillImageAlt: "C Logo", SkillImageFallback: "C", Skilllevel: 30 },
+    { SkillTitle: "C++", SkillBadges: ["C++23", "Development", "1 Monat"], SkillImage: cppLogo, SkillImageAlt: "C++ Logo", SkillImageFallback: "C++", Skilllevel: 30 },
+  ];
 
   useEffect(() => {
     const toastValues_printig_settings: {
@@ -71,14 +220,14 @@ function RouteComponent() {
         const { title, description } = toastValues_printig_settings;
         toast(title, { description });
       },
-      1 * 60 * 1000,
-    ); // 1 Minute
+      60_000, // 1 minute
+    );
 
     // Clean-up beim Unmount
     return () => {
       if (intervalId.current) clearInterval(intervalId.current);
     };
-  }, []);
+  }, [t]);
   useEffect(() => {
     const toastValues_printing_notice: {
       title: string;
@@ -92,19 +241,20 @@ function RouteComponent() {
     toast(title, { description });
 
     // Intervall für weitere Empfehlungen
-    intervalId.current = setInterval(
+    // use a separate ref for this second interval
+    intervalId2.current = setInterval(
       () => {
         const { title, description } = toastValues_printing_notice;
         toast(title, { description });
       },
-      2 * 60 * 1000,
-    ); // 2 Minute
+      120_000, // 2 minutes
+    );
 
     // Clean-up beim Unmount
     return () => {
       if (intervalId2.current) clearInterval(intervalId2.current);
     };
-  }, []);
+  }, [t]);
 
   const print = async () => {
     // /cv?printing=true
@@ -120,7 +270,6 @@ function RouteComponent() {
   return (
     <div className="">
       <center>
-        <h1 className="gap-8 font-bold text-4xl">{t("aboutme.name")}</h1>
         {t("cv.about.title")}
         <br />
         <center>
@@ -161,46 +310,25 @@ function RouteComponent() {
         <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">{t("cv.education.title")}</h2>
       </center>
 
-      <Timeline
-        position="right"
-        className="show-timeline-big flex flex-col justify-center"
-      >
-        <TimeLineElementBig
-          TimeLineTitle={t("cv.education.items.lookingForApprenticeship.name")}
-          TimeLineBadges={[]}
-          TimeLineImage=""
-          TimeLineImageAlt={t("cv.education.items.lookingForApprenticeship.imgAlt")}
-          TimeLineImageFallback="/"
-          startdate="07.2024"
-          enddate="10.2025"
-        >
-          <p>{t("cv.education.items.lookingForApprenticeship.name")}</p>
-        </TimeLineElementBig>
-        <TimeLineElementBig
-          TimeLineTitle={t("cv.education.items.oszimt.name")}
-          TimeLineBadges={[t("cv.about.address.berlin"),t("cv.education.badges.ausbildung"),t("cv.education.badges.fachabitur"),t("cv.education.badges.it"), t("cv.education.badges.years", {years: 3})]}
-          TimeLineImage={oszimtLogo}
-          TimeLineImageAlt={t("cv.education.items.oszimt.imgAlt")}
-          TimeLineImageFallback="OSZimt"
-          startdate="08.2021"
-          enddate="07.2024"
-        >
-          <p>
-            {t("cv.education.items.oszimt.description")}
-          </p>
-        </TimeLineElementBig>
-        <TimeLineElementBig
-          TimeLineTitle={t("cv.education.items.cvl.name")}
-          TimeLineBadges={[t("cv.about.address.berlin"),t("cv.education.badges.msaMitOG")]}
-          TimeLineImage={cvlLogo}
-          TimeLineImageAlt={t("cv.education.items.cvl.imgAlt")}
-          TimeLineImageFallback="CvL"
-          startdate="08.2010"
-          enddate="07.2021"
-        >
-          <p>{t("cv.education.items.cvl.description")}</p>
-        </TimeLineElementBig>
+
+
+      <Timeline position="right" className="show-timeline-big flex flex-col justify-center">
+        {education.map((e) => (
+          <TimeLineElementBig
+            key={e.key}
+            TimeLineTitle={e.TimeLineTitle}
+            TimeLineBadges={e.TimeLineBadges}
+            TimeLineImage={e.TimeLineImage}
+            TimeLineImageAlt={e.TimeLineImageAlt}
+            TimeLineImageFallback={e.TimeLineImageFallback}
+            startdate={e.startdate}
+            enddate={e.enddate}
+          >
+            <p>{e.children}</p>
+          </TimeLineElementBig>
+        ))}
       </Timeline>
+
       <Timeline
         sx={{
           [`& .${timelineItemClasses.root}:before`]: {
@@ -210,114 +338,45 @@ function RouteComponent() {
         }}
         className="show-timeline-small flex flex-col justify-center"
       >
-        <TimeLineElementSmall
-          TimeLineTitle={t("cv.education.items.lookingForApprenticeship.name")}
-          TimeLineBadges={[]}
-          TimeLineImage=""
-          TimeLineImageAlt={t("cv.education.items.lookingForApprenticeship.imgAlt")}
-          TimeLineImageFallback="/"
-          startdate="07.2024"
-          enddate="10.2025"
-        >
-          <p>{t("cv.education.items.lookingForApprenticeship.name")}</p>
-        </TimeLineElementSmall>
-        <TimeLineElementSmall
-          TimeLineTitle={t("cv.education.items.oszimt.name")}
-          TimeLineBadges={[t("cv.education.about.address.berlin"),t("cv.education.badges.ausbildung"),t("cv.education.badges.fachabitur"),t("cv.education.badges.it"), t("cv.education.badges.years", {years: 3})]}
-          TimeLineImage={oszimtLogo}
-          TimeLineImageAlt={t("cv.education.items.oszimt.imgAlt")}
-          TimeLineImageFallback="OSZimt"
-          startdate="08.2021"
-          enddate="07.2024"
-        >
-          <p>
-            {t("cv.education.items.oszimt.description")}
-          </p>
-        </TimeLineElementSmall>
-        <TimeLineElementSmall
-          TimeLineTitle={t("cv.education.items.cvl.name")}
-          TimeLineBadges={[t("cv.education.about.address.berlin"),t("cv.education.badges.msaMitOG")]}
-          TimeLineImage={cvlLogo}
-          TimeLineImageAlt={t("cv.education.items.cvl.imgAlt")}
-          TimeLineImageFallback="CvL"
-          startdate="08.2010"
-          enddate="07.2021"
-        >
-          <p>{t("cv.education.items.cvl.description")}</p>
-        </TimeLineElementSmall>
+        {education.map((e) => (
+          <TimeLineElementSmall
+            key={e.key}
+            TimeLineTitle={e.TimeLineTitle}
+            TimeLineBadges={e.TimeLineBadges}
+            TimeLineImage={e.TimeLineImage}
+            TimeLineImageAlt={e.TimeLineImageAlt}
+            TimeLineImageFallback={e.TimeLineImageFallback}
+            startdate={e.startdate}
+            enddate={e.enddate}
+          >
+            <p>{e.children}</p>
+          </TimeLineElementSmall>
+        ))}
       </Timeline>
 
       <center>
         <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Erfahrung</h2>
       </center>
 
-      <Timeline
-        position="right"
-        className="show-timeline-big flex flex-col justify-center"
-      >
-        <TimeLineElementBig
-          TimeLineTitle="KfW Bankengruppe"
-          TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
-          TimeLineImage={kfwLogo}
-          TimeLineImageAlt="KfW Logo"
-          TimeLineImageFallback="KfW"
-          startdate="27.11.2023"
-          enddate="02.02.2024"
-        >
-          <p>
-            Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ
-            IMT
-          </p>
-          <br />
-          <p>
-            Automatisierungen mit Ansible + Dokumentation für Ansible in
-            Confluence der KfW
-          </p>
-        </TimeLineElementBig>
-        <TimeLineElementBig
-          TimeLineTitle="Akademie der Künste (ADK)"
-          TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
-          TimeLineImage={adkLogo}
-          TimeLineImageAlt="ADK Logo"
-          TimeLineImageFallback="ADK"
-          startdate="02.2020"
-          enddate="02.2020"
-        >
-          <p>Syntezizerentwiklung</p>
-        </TimeLineElementBig>
-        <TimeLineElementBig
-          TimeLineTitle="Tosa Security & Service GmbH & Co KG"
-          TimeLineBadges={[
-            "Trebin",
-            "Security",
-            "Service",
-            "Schülerpraktikum",
-            "3 Tage",
-          ]}
-          TimeLineImage={toSaLogo}
-          TimeLineImageAlt="Tosa Security & Service GmbH & Co KG Logo"
-          TimeLineImageFallback="TSS"
-          startdate="01.2019"
-          enddate="01.2019"
-        >
-          <p>Bürotätigkeiten</p>
-        </TimeLineElementBig>
-        <TimeLineElementBig
-          TimeLineTitle="Pfennigpfeiffer"
-          TimeLineBadges={[
-            "Berlin",
-            "Einzelhandel",
-            "Schülerpraktikum",
-            "1 Tag",
-          ]}
-          TimeLineImage={pfennigfeifferLogo}
-          TimeLineImageAlt="Pfennigpfeiffer Logo"
-          TimeLineImageFallback="P"
-          startdate="06.2018"
-          enddate="06.2018"
-        >
-          <p>Regale einräumen</p>
-        </TimeLineElementBig>
+      {/* Experience: data-driven rendering */}
+      {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
+
+
+      <Timeline position="right" className="show-timeline-big flex flex-col justify-center">
+        {experience.map((ex) => (
+          <TimeLineElementBig
+            key={ex.key}
+            TimeLineTitle={ex.TimeLineTitle}
+            TimeLineBadges={ex.TimeLineBadges}
+            TimeLineImage={ex.TimeLineImage}
+            TimeLineImageAlt={ex.TimeLineImageAlt}
+            TimeLineImageFallback={ex.TimeLineImageFallback}
+            startdate={ex.startdate}
+            enddate={ex.enddate}
+          >
+            <p>{ex.children}</p>
+          </TimeLineElementBig>
+        ))}
       </Timeline>
 
       <Timeline
@@ -329,69 +388,20 @@ function RouteComponent() {
         }}
         className="show-timeline-small flex flex-col justify-center"
       >
-        <TimeLineElementSmall
-          TimeLineTitle="KfW Bankengruppe"
-          TimeLineBadges={["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]}
-          TimeLineImage={kfwLogo}
-          TimeLineImageAlt="KfW Logo"
-          TimeLineImageFallback="KfW"
-          startdate="27.11.2023"
-          enddate="02.02.2024"
-        >
-          <p>
-            Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ
-            IMT
-          </p>
-          <br />
-          <p>
-            Automatisierungen mit Ansible + Dokumentation für Ansible in
-            Confluence der KfW
-          </p>
-        </TimeLineElementSmall>
-        <TimeLineElementSmall
-          TimeLineTitle="Akademie der Künste (ADK)"
-          TimeLineBadges={["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]}
-          TimeLineImage={adkLogo}
-          TimeLineImageAlt="ADK Logo"
-          TimeLineImageFallback="ADK"
-          startdate="02.2020"
-          enddate="02.2020"
-        >
-          <p>Syntezizerentwiklung</p>
-        </TimeLineElementSmall>
-        <TimeLineElementSmall
-          TimeLineTitle="Tosa Security & Service GmbH & Co KG"
-          TimeLineBadges={[
-            "Trebin",
-            "Security",
-            "Service",
-            "Schülerpraktikum",
-            "3 Tage",
-          ]}
-          TimeLineImage={toSaLogo}
-          TimeLineImageAlt="Tosa Security & Service GmbH & Co KG Logo"
-          TimeLineImageFallback="TSS"
-          startdate="01.2019"
-          enddate="01.2019"
-        >
-          <p>Bürotätigkeiten</p>
-        </TimeLineElementSmall>
-        <TimeLineElementSmall
-          TimeLineTitle="Pfennigpfeiffer"
-          TimeLineBadges={[
-            "Berlin",
-            "Einzelhandel",
-            "Schülerpraktikum",
-            "1 Tag",
-          ]}
-          TimeLineImage={pfennigfeifferLogo}
-          TimeLineImageAlt="Pfennigpfeiffer Logo"
-          TimeLineImageFallback="P"
-          startdate="06.2018"
-          enddate="06.2018"
-        >
-          <p>Regale einräumen</p>
-        </TimeLineElementSmall>
+        {experience.map((ex) => (
+          <TimeLineElementSmall
+            key={ex.key}
+            TimeLineTitle={ex.TimeLineTitle}
+            TimeLineBadges={ex.TimeLineBadges}
+            TimeLineImage={ex.TimeLineImage}
+            TimeLineImageAlt={ex.TimeLineImageAlt}
+            TimeLineImageFallback={ex.TimeLineImageFallback}
+            startdate={ex.startdate}
+            enddate={ex.enddate}
+          >
+            <p>{ex.children}</p>
+          </TimeLineElementSmall>
+        ))}
       </Timeline>
 
       <center>
@@ -399,158 +409,17 @@ function RouteComponent() {
       </center>
 
       <div className="my-Skill-grid w-[calc(100vw-64px)] gap-8 m-8">
-        <SkillCard
-          SkillTitle="Java"
-          SkillBadges={["Development", "3 Jahre"]}
-          SkillImage={javaLogo}
-          SkillImageAlt="Java Logo"
-          SkillImageFallback="JDK"
-          Skilllevel={80}
-        />
-        <SkillCard
-          SkillTitle="Swift (SwiftUI)"
-          SkillBadges={["Development", "Frontend", "Apple", "2 Jahre"]}
-          SkillImage={swiftLogo}
-          SkillImageAlt="Swift Logo"
-          SkillImageFallback="SUI"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="Cisco IOS"
-          SkillBadges={["Konfiguration", "1 Jahre"]}
-          SkillImage={ciscoLogo}
-          SkillImageAlt="Cisco Logo"
-          SkillImageFallback="IOS"
-          Skilllevel={50}
-        />
-        <SkillCard
-          SkillTitle="Microsoft 365"
-          SkillBadges={["Office", "365", "Microsoft", "5 Jahre"]}
-          SkillImage={ms365Logo}
-          SkillImageAlt="Microsoft 365 Logo"
-          SkillImageFallback="MS365"
-          Skilllevel={70}
-        />
-        <SkillCard
-          SkillTitle="Visual Studio Code"
-          SkillBadges={["Development", "Microsoft", "4 Jahre"]}
-          SkillImage={vscodeLogo}
-          SkillImageAlt="Visual Studio Code Logo"
-          SkillImageFallback="VScode"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="Apple Xcode 14+                "
-          SkillBadges={["Development", "Apple", "2 Jahre"]}
-          SkillImage={xcodeLogo}
-          SkillImageAlt="Apple Xcode Logo"
-          SkillImageFallback="XCODE"
-          Skilllevel={70}
-        />
-        <SkillCard
-          SkillTitle="Apple macOS"
-          SkillBadges={["Betriebsystem", "Apple", "2 Jahre"]}
-          SkillImage={printing ? macosLogo : macosLogoDark}
-          SkillImageAlt="macOS Logo"
-          SkillImageFallback="macOS"
-          Skilllevel={90}
-        />
-        <SkillCard
-          SkillTitle="Apple iOS"
-          SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
-          SkillImage={printing ? iosLogo : iosLogoDark}
-          SkillImageAlt="iOS Logo"
-          SkillImageFallback="iOS"
-          Skilllevel={80}
-        />
-        <SkillCard
-          SkillTitle="Apple iPadOS"
-          SkillBadges={["Betriebsystem", "Apple", "3 Jahre"]}
-          SkillImage={printing ? iosLogo : iosLogoDark}
-          SkillImageAlt="iOS Logo"
-          SkillImageFallback="iOS"
-          Skilllevel={80}
-        />
-        <SkillCard
-          SkillTitle="Apple vissionOS"
-          SkillBadges={["Betriebsystem", "Apple", "1 Jahre"]}
-          SkillImage={printing ? iosLogo : iosLogoDark}
-          SkillImageAlt="iOS Logo"
-          SkillImageFallback="iOS"
-          Skilllevel={80}
-        />
-        <SkillCard
-          SkillTitle="Linux"
-          SkillBadges={["Betriebsystem", "5 Jahre"]}
-          SkillImage={linuxLogo}
-          SkillImageAlt="Linux Logo"
-          SkillImageFallback="L"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="Windows"
-          SkillBadges={["Betriebsystem", "Microsoft", "3 Jahre"]}
-          SkillImage={windowsLogo}
-          SkillImageAlt="Windows Logo"
-          SkillImageFallback="WIN"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="Microsoft Teams"
-          SkillBadges={["Office", "Microsoft", "4 Jahre"]}
-          SkillImage={teamsLogo}
-          SkillImageAlt="Microsoft Teams Logo"
-          SkillImageFallback="Teams"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="Eclipse"
-          SkillBadges={["Development", "2 Jahre"]}
-          SkillImage={eclipseLogo}
-          SkillImageAlt="Eclipse Logo"
-          SkillImageFallback="JDK"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="MySQL"
-          SkillBadges={["Development", "1 Jahre"]}
-          SkillImage={mysqlLogo}
-          SkillImageAlt="MySQL Logo"
-          SkillImageFallback="SQL"
-          Skilllevel={80}
-        />
-        <SkillCard
-          SkillTitle="MySQL Comunity Server"
-          SkillBadges={["Development", "1 Jahre"]}
-          SkillImage={mysqlLogo}
-          SkillImageAlt="MySQL Logo"
-          SkillImageFallback="SQL"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="MySQLWorckbench"
-          SkillBadges={["Development", "1 Jahre"]}
-          SkillImage={mysqlLogo}
-          SkillImageAlt="MySQL Logo"
-          SkillImageFallback="SQL"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="Ansible"
-          SkillBadges={["Automation", "2 Monate"]}
-          SkillImage={printing ? ansibleLogo : ansibleLogoDark}
-          SkillImageAlt="Ansible Logo"
-          SkillImageFallback="A"
-          Skilllevel={60}
-        />
-        <SkillCard
-          SkillTitle="Rust"
-          SkillBadges={["Automation", "2 Monate"]}
-          SkillImage={printing ? rustLogo : rustLogoDark}
-          SkillImageAlt="Ansible Logo"
-          SkillImageFallback="A"
-          Skilllevel={30}
-        />
+        {skills.map((s) => (
+             <SkillCard
+               key={s.SkillTitle}
+               SkillTitle={s.SkillTitle}
+               SkillBadges={s.SkillBadges}
+               SkillImage={s.SkillImage}
+               SkillImageAlt={s.SkillImageAlt}
+               SkillImageFallback={s.SkillImageFallback}
+               Skilllevel={s.Skilllevel}
+             />
+           ))}
       </div>
       <Button
         onClick={print}

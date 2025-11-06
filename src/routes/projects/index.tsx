@@ -1,5 +1,5 @@
 import PinedProjects from "@/components/pinedProjects";
-import ProjectCard from "@/components/projekt-card";
+import ProjectCard, { type ProjectCardProps} from "@/components/projekt-card";
 import { createFileRoute } from "@tanstack/react-router";
 
 // pictures
@@ -10,23 +10,13 @@ import cbpsLogo from "@/assets/pictures/cbps_logo.png";
 import portfolioPicture from "@/assets/pictures/projects/my_Portfolio.jpeg";
 import searxngPicture from "@/assets/pictures/projects/searxng.png";
 import simpleSQLRunnerPicture from "@/assets/pictures/projects/ssqlr.png";
-import tuberlinLogo from "@/assets/pictures/projects/LogoDerTUBerlin2020.png";
+import tuberlinLogo from "@/assets/pictures/projects/LogoDerTUBerlin2020.svg";
 
 export const Route = createFileRoute("/projects/")({
   component: RouteComponent,
 });
 
-interface ProjectData {
-  projectImage: string;
-  projectImageAlt: string;
-  projectImageBgColor: string;
-  projectTitle: string;
-  projectBadges: string[];
-  projectLink: string;
-  projectDescription: string;
-}
-
-const ALL_PROJECTS: ProjectData[] = [
+const ALL_PROJECTS: ProjectCardProps[] = [
   {
     projectImage: portfolioPicture,
     projectImageAlt: "Portfolio Bild",
@@ -34,7 +24,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Portfolio",
     projectBadges: ["FOSS", "WEB", "NEW"],
     projectLink: "https://github.com/mcpeapsUnterstrichHD/mcpeapsUnterstrichHD",
-    projectDescription: "Das project zu diesem Portfolio.",
+    children: "Das project zu diesem Portfolio.",
   },
   {
     projectImage: oszimtLogo,
@@ -43,7 +33,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Schul Repository",
     projectBadges: ["FOSS", "SCHOOL"],
     projectLink: "https://github.com/comboomPunkTsucht/OSZIMT-repo-ITA12_aps",
-    projectDescription: "Das ist Das Repository mit meinen aufgaben aus meine Ausbildung.",
+    children: "Das ist Das Repository mit meinen aufgaben aus meine Ausbildung.",
   },
   {
     projectImage: oszimtLogo,
@@ -52,7 +42,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Klassen Website",
     projectBadges: ["FOSS", "SCHOOL", "WEB", "MARKDOWN", "WIKI"],
     projectLink: "https://github.com/comboomPunkTsucht/OSZ_ITA12_Doc",
-    projectDescription: "Das ist die Webseite der Klassen ITA 12 in der ich ich am OSZ IMT gewesen bin.",
+    children: "Das ist die Webseite der Klassen ITA 12 in der ich ich am OSZ IMT gewesen bin.",
   },
   {
     projectImage: klassenLogo,
@@ -61,7 +51,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Klassen App",
     projectBadges: ["FOSS", "SCHOOL", "APP", "iOS", "SWIFT", "SWIFTUI", "HUB"],
     projectLink: "https://github.com/comboomPunkTsucht/ITA-12_App",
-    projectDescription: "Das ist die App der Klassen ITA 12 in der ich ich am OSZ IMT gewesen bin.",
+    children: "Das ist die App der Klassen ITA 12 in der ich ich am OSZ IMT gewesen bin.",
   },
   {
     projectImage: simpleSQLRunnerPicture,
@@ -70,7 +60,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Simple SQL Runner",
     projectBadges: ["FOSS", "SCHOOL", "JAVA", "SQL"],
     projectLink: "https://github.com/comboomPunkTsucht/Simple-SQL-Runner",
-    projectDescription: "Das ist ein GUI-Programm zum ausführen und ausgeben von SQL Statements",
+    children: "Das ist ein GUI-Programm zum ausführen und ausgeben von SQL Statements",
   },
   {
     projectImage: simpleSQLRunnerPicture,
@@ -79,7 +69,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "simplesql",
     projectBadges: ["FOSS", "RUST", "SQL"],
     projectLink: "https://github.com/comboomPunkTsucht/simplesql",
-    projectDescription: "Das ist ein TUI/GUI-Programm zum ausführen und ausgeben von SQL Statements",
+    children: "Das ist ein TUI/GUI-Programm zum ausführen und ausgeben von SQL Statements",
   },
   {
     projectImage: searxngPicture,
@@ -88,7 +78,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Meine eigene Localen Services",
     projectBadges: ["FOSS", "WEB", "NEW", "SEARCH ENGINE", "DOCKER"],
     projectLink: "https://github.com/mcpeapsUnterstrichHD/local-services",
-    projectDescription: "Hier ist eine ansamlung an self hosted Services, wie meine Suchmaschine, die ich nutze.",
+    children: "Hier ist eine ansamlung an self hosted Services, wie meine Suchmaschine, die ich nutze.",
   },
   {
     projectImage: logo,
@@ -97,7 +87,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Meine eigenen Dotfiles für macOS",
     projectBadges: ["FOSS", "WEB", "NEW", "Konfiguration", "DOTFILES", "MACOS"],
     projectLink: "https://github.com/mcpeapsUnterstrichHD/dotfiles-macos",
-    projectDescription: "Das Repository für meine Dotfiles für macOS.",
+    children: "Das Repository für meine Dotfiles für macOS.",
   },
   {
     projectImage: logo,
@@ -106,7 +96,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Meine eigenen NixOS Konfiguration",
     projectBadges: ["FOSS", "WEB", "NEW", "Konfiguration", "DOTFILES", "Linux", "NIXOS"],
     projectLink: "https://github.com/mcpeapsUnterstrichHD/nix-config",
-    projectDescription: "Das Repository für meine Konfiguration von NixOS.",
+    children: "Das Repository für meine Konfiguration von NixOS.",
   },
   {
     projectImage: logo,
@@ -115,7 +105,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Meine eigenen Dotfiles für Linux",
     projectBadges: ["FOSS", "WEB", "NEW", "Konfiguration", "DOTFILES", "Linux"],
     projectLink: "https://github.com/mcpeapsUnterstrichHD/dotfiles-linux",
-    projectDescription: "Das Repository für meine Dotfiles für macOS.",
+    children: "Das Repository für meine Dotfiles für macOS.",
   },
   {
     projectImage: cbpsLogo,
@@ -124,7 +114,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "comboom.sucht Website",
     projectBadges: ["FOSS", "WEB", "MARKDOWN", "WIKI"],
     projectLink: "https://github.com/comboomPunkTsucht/comboom.sucht-BLOG",
-    projectDescription: "Das ist die Webseite meiner Freundes Gruppe.",
+    children: "Das ist die Webseite meiner Freundes Gruppe.",
   },
   {
     projectImage: cbpsLogo,
@@ -133,7 +123,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "comboom.sucht App",
     projectBadges: ["FOSS", "APP", "iOS", "SWIFT", "SWIFTUI", "HUB"],
     projectLink: "https://github.com/comboomPunkTsucht/comboomPunkTsucht-IOS-macOS-App",
-    projectDescription: "Das ist die App meiner Freundes Gruppe.",
+    children: "Das ist die App meiner Freundes Gruppe.",
   },
   {
     projectImage: tuberlinLogo,
@@ -142,7 +132,7 @@ const ALL_PROJECTS: ProjectData[] = [
     projectTitle: "Uni Repository",
     projectBadges: ["FOSS", "UNIVERSITY"],
     projectLink: "https://github.com/comboomPunkTsucht/TU-Berlin-repo-aps",
-    projectDescription: "Das ist Das Repository zu meinen Studium an der TU Berlin.",
+    children: "Das ist Das Repository zu meinen Studium an der TU Berlin.",
   },
 ];
 
@@ -166,7 +156,7 @@ function RouteComponent() {
             projectBadges={project.projectBadges}
             projectLink={project.projectLink}
           >
-            {project.projectDescription}
+            {project.children}
           </ProjectCard>
         ))}
       </div>
