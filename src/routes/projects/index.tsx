@@ -1,4 +1,4 @@
-import PinedProjects from "@/components/pinedProjects";
+import PinedProjects, { PINNED_PROJECTS} from "@/components/pinedProjects";
 import ProjectCard, { type ProjectCardProps} from "@/components/projekt-card";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -7,8 +7,6 @@ import logo from "@/assets/pictures/logo.png";
 import klassenLogo from "@/assets/pictures/projects/Klassen_App_Icon_iOS_macOS_iPadOS.png";
 import oszimtLogo from "@/assets/pictures/projects/OSZimt-Logo-l.png";
 import cbpsLogo from "@/assets/pictures/cbps_logo.png";
-import portfolioPicture from "@/assets/pictures/projects/my_Portfolio.jpeg";
-import searxngPicture from "@/assets/pictures/projects/searxng.png";
 import simpleSQLRunnerPicture from "@/assets/pictures/projects/ssqlr.png";
 import tuberlinLogo from "@/assets/pictures/projects/LogoDerTUBerlin2020.svg";
 
@@ -17,15 +15,6 @@ export const Route = createFileRoute("/projects/")({
 });
 
 const ALL_PROJECTS: ProjectCardProps[] = [
-  {
-    projectImage: portfolioPicture,
-    projectImageAlt: "Portfolio Bild",
-    projectImageBgColor: "",
-    projectTitle: "Portfolio",
-    projectBadges: ["FOSS", "WEB", "NEW"],
-    projectLink: "https://github.com/mcpeapsUnterstrichHD/mcpeapsUnterstrichHD",
-    children: "Das project zu diesem Portfolio.",
-  },
   {
     projectImage: oszimtLogo,
     projectImageAlt: "Grosßes Logo vom OSZ IMT",
@@ -61,24 +50,6 @@ const ALL_PROJECTS: ProjectCardProps[] = [
     projectBadges: ["FOSS", "SCHOOL", "JAVA", "SQL"],
     projectLink: "https://github.com/comboomPunkTsucht/Simple-SQL-Runner",
     children: "Das ist ein GUI-Programm zum ausführen und ausgeben von SQL Statements",
-  },
-  {
-    projectImage: simpleSQLRunnerPicture,
-    projectImageAlt: "Simple SQL Runner",
-    projectImageBgColor: "bg-black",
-    projectTitle: "simplesql",
-    projectBadges: ["FOSS", "RUST", "SQL"],
-    projectLink: "https://github.com/comboomPunkTsucht/simplesql",
-    children: "Das ist ein TUI/GUI-Programm zum ausführen und ausgeben von SQL Statements",
-  },
-  {
-    projectImage: searxngPicture,
-    projectImageAlt: "SearxNG Logo",
-    projectImageBgColor: "",
-    projectTitle: "Meine eigene Localen Services",
-    projectBadges: ["FOSS", "WEB", "NEW", "SEARCH ENGINE", "DOCKER"],
-    projectLink: "https://github.com/mcpeapsUnterstrichHD/local-services",
-    children: "Hier ist eine ansamlung an self hosted Services, wie meine Suchmaschine, die ich nutze.",
   },
   {
     projectImage: logo,
@@ -134,7 +105,13 @@ const ALL_PROJECTS: ProjectCardProps[] = [
     projectLink: "https://github.com/comboomPunkTsucht/TU-Berlin-repo-aps",
     children: "Das ist Das Repository zu meinen Studium an der TU Berlin.",
   },
-];
+].sort((projectA: ProjectCardProps, projectB: ProjectCardProps) =>
+  projectA.projectTitle.localeCompare(projectB.projectTitle)
+);
+
+const COMPLETED_PROJECTS: ProjectCardProps[] = PINNED_PROJECTS.concat(ALL_PROJECTS).sort((projectA: ProjectCardProps, projectB: ProjectCardProps) =>
+  projectA.projectTitle.localeCompare(projectB.projectTitle)
+);
 
 function RouteComponent() {
   return (
@@ -146,7 +123,7 @@ function RouteComponent() {
       <h2 className="gap-8 p-8 text-center text-4xl">Alle Projekte</h2>
 
       <div className="my-Project-grid">
-        {ALL_PROJECTS.map((project) => (
+        {COMPLETED_PROJECTS.map((project) => (
           <ProjectCard
             key={project.projectLink}
             projectImage={project.projectImage}
