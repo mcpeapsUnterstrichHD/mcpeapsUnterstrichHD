@@ -9,6 +9,7 @@ import oszimtLogo from "@/assets/pictures/projects/OSZimt-Logo-l.png";
 import cbpsLogo from "@/assets/pictures/cbps_logo.png";
 import simpleSQLRunnerPicture from "@/assets/pictures/projects/ssqlr.png";
 import tuberlinLogo from "@/assets/pictures/projects/LogoDerTUBerlin2020.svg";
+import liveWallpaperPicture from "@/assets/pictures/live-wallpaper.png";
 
 export const Route = createFileRoute("/projects/")({
   component: RouteComponent,
@@ -104,6 +105,15 @@ const ALL_PROJECTS: ProjectCardProps[] = [
     projectBadges: ["FOSS", "UNIVERSITY"],
     projectLink: "https://github.com/comboomPunkTsucht/TU-Berlin-repo-aps",
     children: "Das ist Das Repository zu meinen Studium an der TU Berlin.",
+  },
+  {
+    projectImage: liveWallpaperPicture,
+    projectImageAlt: "Standert Hintergrund",
+    projectImageBgColor: "",
+    projectTitle: "Native/Wasm Live Wallpaper",
+    projectBadges: ["NATIVE", "WASM", "C++", "RAYLIB"],
+    projectLink: "https://github.com/comboomPunkTsucht/comboom_punkt_sucht_native_wallpaper",
+    children: "Ein plattformübergreifendes Live-Wallpaper mit interaktiven Partikeln im Nord-Design. Die native C++23-Implementierung bietet hohe Performance, Custom-Shader und läuft dank WebAssembly auch direkt im Browser.",
   },
 ].sort((projectA: ProjectCardProps, projectB: ProjectCardProps) =>
   projectA.projectTitle.localeCompare(projectB.projectTitle)
