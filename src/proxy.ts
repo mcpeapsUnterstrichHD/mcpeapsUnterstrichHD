@@ -9,3 +9,6 @@ export const config = {
   // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };
+
+// This is critical for Cloudflare deployment
+//export const runtime = 'edge';
