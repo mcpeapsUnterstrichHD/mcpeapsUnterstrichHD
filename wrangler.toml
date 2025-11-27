@@ -1,10 +1,14 @@
 name = "mcpeapsunterstrichhd"
 main = ".open-next/worker.js"
 compatibility_date = "2025-11-21"
-compatibility_flags = ["nodejs_compat", "no_nodejs_compat_v2"]
+compatibility_flags = [
+  "nodejs_compat",
+  "no_nodejs_compat_v2",
+  "global_fetch_strictly_public",
+]
 
 [build]
-command = "bunx --bun bun run deploy"
+command = "opennextjs-cloudflare build"
 
 [observability.logs]
 enabled = true
