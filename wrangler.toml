@@ -13,4 +13,4 @@ command = "next build"
 enabled = true
 
 [assets]
-directory = ".next"
+directory = "out"
