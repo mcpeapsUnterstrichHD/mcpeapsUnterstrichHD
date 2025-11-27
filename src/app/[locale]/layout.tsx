@@ -2,7 +2,7 @@ import "../globals.css";
 import {hasLocale} from 'next-intl';
 import {routing} from '@/i18n/routing';
 import ClientLayout from '@/components/ClientLayout';
-import NotFound from "@/components/__not_found";
+import { notFound } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Await the params to get the locale
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
-    return ;
+    return notFound;
   }
 
 
