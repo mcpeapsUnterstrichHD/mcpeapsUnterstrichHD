@@ -7,3 +7,5 @@ command = "bunx --bun bun run build"
 
 [observability.logs]
 enabled = true
+[assets]
+directory = "./dist"
