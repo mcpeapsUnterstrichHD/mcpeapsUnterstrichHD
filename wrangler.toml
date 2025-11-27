@@ -1,5 +1,4 @@
 name = "mcpeapsunterstrichhd"
-main = ".open-next/worker.js"
 compatibility_date = "2025-11-21"
 compatibility_flags = [
   "nodejs_compat",
@@ -8,11 +7,10 @@ compatibility_flags = [
 ]
 
 [build]
-command = "opennextjs-cloudflare build"
+command = "next build"
 
 [observability.logs]
 enabled = true
 
 [assets]
-directory = ".open-next/assets"
-binding = "ASSETS"
+directory = ".next"
