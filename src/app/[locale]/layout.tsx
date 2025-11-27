@@ -21,7 +21,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = (await import(`@/assets/lang/${locale}.json`)).default;
 
   return (
-    <html lang={locale.split('-')[0]}>
+    <html lang={locale}>
       <head>
       </head>
       <body>

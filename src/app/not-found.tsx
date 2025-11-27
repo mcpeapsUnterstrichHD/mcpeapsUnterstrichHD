@@ -5,7 +5,7 @@ import ClientLayout from '@/components/ClientLayout';
 import { LanguagesNUM } from '@/lib/lang';
 
 export default async function NotFound() {
-  // Get the default locale for the 404 page
+  // Get the current locale from path for the 404 page
   const locale = LanguagesNUM.en_US;
 
   // Load messages for the locale
