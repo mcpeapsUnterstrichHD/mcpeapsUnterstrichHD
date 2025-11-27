@@ -11,4 +11,4 @@ export const config = {
 };
 
 // This is critical for Cloudflare deployment
-export const runtime = 'edge';
+//export const runtime = 'edge';
