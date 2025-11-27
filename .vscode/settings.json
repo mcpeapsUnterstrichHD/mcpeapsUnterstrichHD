@@ -1,0 +1,7 @@
+{
+  "loccy.sourceLocale": "de-DE",
+  "i18n-ally.localesPaths": [
+    "src/i18n",
+    "src/assets/lang"
+  ]
+}
