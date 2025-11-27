@@ -1,10 +1,14 @@
 name = "mcpeapsunterstrichhd"
-#main = ".next/worker.js"
-compatibility_date = "2025-08-07"
+main = ".open-next/worker.js"
+compatibility_date = "2025-11-21"
 compatibility_flags = ["nodejs_compat", "no_nodejs_compat_v2"]
 
 [build]
-command = "bunx --bun bun run build"
+command = "bunx --bun bun run deploy"
 
 [observability.logs]
 enabled = true
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
