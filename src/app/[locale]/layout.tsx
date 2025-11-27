@@ -13,7 +13,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Await the params to get the locale
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
-    return notFound;
+    notFound();
   }
 
 

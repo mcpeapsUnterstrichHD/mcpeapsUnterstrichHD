@@ -1,5 +1,6 @@
 'use client';
-import Error from 'next/error';
+
+import { useTranslations } from "next-intl";
 
 const sadTexts = [
   "Oops! The page you're looking for doesn't exist.",
@@ -132,12 +133,12 @@ const getRandomSadText = () => {
 
 const NotFound = () => {
   const randomSadText = getRandomSadText();
-
+  const t = useTranslations()
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center text-center px-4">
       <div>
         <h1 className="text-[10rem] leading-none">󰇸</h1>
-        <Error className="text-2xl font-semibold" statusCode={404}></Error>
+        <h2 className="text-2xl font-semibold">{t('Sites.notFound')}</h2>
         <p className="mt-4 text-muted-foreground max-w-xl">{randomSadText}</p>
       </div>
     </div>
