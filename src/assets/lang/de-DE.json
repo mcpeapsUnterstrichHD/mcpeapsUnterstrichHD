@@ -1,0 +1,266 @@
+{
+  "Aboutme": {
+    "hello": "Hallo",
+    "iam": "Ich bin",
+    "name": "Fabian Aps",
+    "title": "ITler/DJ/Producer aus Leidenschaft",
+    "description": "Ich bin ein {age} jähriger ITler/DJ/Producher und ich\nliebe es Software zu entwikeln aber durch mein\nPraktikum bei der KfW Bankengruppe hat mir gezeigt,\ndass mir Anwendungsbetreung auch nicht schwer liegt,\ndenoch mach ich die Entwicklung gerne als Hobby. Musik\nist dabei auch eine Leidenschaft von mir, egal ab\nhören oder Produzieren.",
+    "myPlaylist": "Meine Playlist",
+    "myCurrentSong": "Mein aktuellster Song"
+  },
+  "Common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "view": "Ansehen",
+    "submit": "Absenden",
+    "close": "Schließen"
+  },
+  "Logo": {
+    "alt": "mcpeaps_HD Logo"
+  },
+  "Sites": {
+    "root": "Startseite",
+    "impressum": "Impressum",
+    "aboutme": "Über mich",
+    "projects": "Projekte",
+    "contact": "Kontaktier mich",
+    "cv": "Lebenslauf",
+    "linkhub": "Linkübersicht",
+    "notFound": "404 - Seite nicht gefunden"
+  },
+  "Projects": {
+  "pinned": "Gepinte Projekte",
+  "title": "Projekte",
+  "all": "Alle Projekte"
+  },
+  "Recommendation": {
+    "projects": {
+      "title": "Meine Projekte",
+      "description": "Alle meine Projekte auf einer Übersichtlichkeit.",
+      "action": {
+        "label": "Projekte ansehen"
+      }
+    },
+    "aboutme": {
+      "title": "Über mich",
+      "description": "Ein kleiner Einblick in meine Person.",
+      "action": {
+        "label": "Erfahre mehr"
+      }
+    },
+    "cv": {
+      "title": "Lebenslauf",
+      "description": "Meine Ausbildungen und Berufserfahrung.",
+      "action": {
+        "label": "Mein Lebenslauf"
+      }
+    },
+    "linkhub": {
+      "title": " Social Media",
+      "description": "Hier bin ich zu finden.",
+      "action": {
+        "label": "Follge mir"
+      }
+    },
+    "github": {
+      "title": "Mein GitHub-Profil",
+      "description": "@mcpeapsUnterstrichHD | Hier leben meine Projekte.",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "twitter": {
+      "title": "Mein X/Twitter",
+      "description": "@mcpeaps_HD | Hier kann man mich mal erwischen",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "instagram": {
+      "title": "Mein Instagram",
+      "description": "@mcpeaps_hd | Hier bin ich am meisten aktiv",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "tiktok": {
+      "title": "Mein TikTok",
+      "description": "@mcpeaps_hd | Hier bin ich am meisten aktiv",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "threads": {
+      "title": "Mein Threads",
+      "description": "@mcpeaps_hd | Hier kann man mich erwischen",
+      "action": {
+        "label": "Folge mir"
+      }
+    },
+    "bluesky": {
+      "title": "Mein Bluesky",
+      "description": "@mcpeapsunterstrichhd.dev | Hier kann man mich erwischen",
+      "action": {
+        "label": "Folge mir"
+      }
+    }
+  },
+  "Cv": {
+    "recommendation": {
+      "printingSettings": {
+        "title": "Beste Druckeinstellugen",
+        "description": "Skalierung: 71 %, Ränder: Standart, Hintergrundgrafiken: ein"
+      },
+      "printingNotice": {
+        "title": "Empfehlung für den Druck",
+        "description": "Nutzen Sie den PDF-Button unten rechts, um den Lebenslauf optimal zu drucken."
+      }
+    },
+    "about": {
+      "title": "Ich bin ein IT-Assistent.",
+      "email": "E-Mail",
+      "telnum": "Telefonnummer",
+      "address": {
+        "germany": "Deutschland",
+        "berlin": "Berlin"
+      },
+      "birthday": "Geburtsdatum"
+    },
+    "education": {
+      "title": "Ausbildung",
+      "badges": {
+        "ausbildung": "Ausbildung",
+        "fachabitur": "Fachabitur",
+        "batchlor_of_science":  "Batchlor of Science",
+        "studies": "Studium",
+        "it": "IT",
+        "semester":  "{semester} Semester",
+        "years": "{years} Jahre",
+        "msaMitOG": "MSA(OG)"
+      },
+      "items": {
+        "tuberlin": {
+          "name": "Technische Universität Berlin",
+          "imgAlt": "Technische Universität Berlin Lang Logo",
+          "description": "Bachelor of Science in Informatik (incomplete)",
+          "badges": [
+            "Berlin",
+            "Bachelor of Science",
+            "IT",
+            "3 Years"
+          ]
+        },
+        "lookingForApprenticeship": {
+          "name": "Ausbuildungsplatzsuchend",
+          "imgAlt": "Suchend"
+        },
+        "oszimt": {
+          "name": "OSZ Informations- & Medizientechnik (OSZ IMT)",
+          "imgAlt": "Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo",
+          "description": "Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur",
+          "badges": ["Berlin", "Ausbildung","Fachabitur","IT","3 Jahre"]
+          },
+        "cvl": {
+          "name": "Carl-von-Linné-Schule",
+            "imgAlt": "Carl-von-Linné-Schule Logo",
+          "description": "Algemeine Schule Grundschule + Sekundarstufe I",
+          "badges": ["Berlin","MSA(OG)"]
+          }
+        }
+      },
+    "experience": {
+      "title": "Berufserfahrung"
+    },
+    "skills": {
+      "title": "Fähigkeiten"
+
+    }
+  },
+  "Linkhub": {
+    "description": "Hier findest du eine Übersicht meiner Social-Media-Profile und anderer wichtiger Links.",
+    "sections": {
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Hier findest du meine Social Media Profilen.",
+        "instagram": {
+          "title": "Instagram",
+          "headding": "Instagram Profil",
+          "description": "Hier kanst du vieleicht etwas von meinen altag mitbekommen"
+        },
+        "tiktok": {
+          "title": "TikTok",
+          "headding": "TikTok Profil",
+          "description": "Hier kannst du vieleicht etwas von meinen altag mitbekommen"
+        },
+        "threads": {
+          "title": "Threads",
+          "headding": "Threads Profil",
+          "description": "Hier kanst du vieleicht kleine Texte sehen"
+        },
+        "bsky": {
+          "title": "Bluesky",
+          "headding": "Bluesky Profil",
+          "description": "Hier kanst du vieleicht kleine Texte sehen"
+        },
+        "twitter": {
+          "title": "X/Twitter",
+          "headding": "X/Twitter Profil",
+          "description": "Hier kanst du vieleicht kleine Texte sehen"
+        },
+        "discord": {
+          "title": "Discord",
+          "headding": "Discord Server",
+          "description": "Hier können wir uns gegenseitig treffen"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "headding": "YouTube Kanal",
+          "description": "Hier findest du meine Videos."
+        }
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Hier findest du meine Websites.",
+        "myWebsite": {
+          "title": "Meine Website",
+          "headding": "Meine Website",
+          "description": "Hier findest du meine Website."
+        },
+        "cbps": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Wbseite",
+          "description": "Hier findest du die Website meiner Freundesgruppe comboom.sucht."
+        },
+        "blogCBPS": {
+          "title": "comboom.sucht",
+          "headding": "comboom.sucht Blog",
+          "description": "Hier findest du den Blog meiner Freundesgruppe comboom.sucht."
+        }
+      },
+      "other": {
+        "title": "Andere",
+        "description": "Hier findest du andere wichtige Links.",
+        "github": {
+          "title": "GitHub",
+          "headding": "GitHub Profil",
+          "description": "Hier findest du meine Projekte und Quellcodes."
+        },
+        "playlist": {
+          "title": "Music Playlist",
+          "headding": "Music Playlist",
+          "description": "Hier findest du meine Music Playlist."
+        },
+        "song": {
+          "title": "Mein Song",
+          "headding": "Mein aktuellster Song",
+          "description": "Hör auf meinen aktuellsten Song."
+        }
+      }
+    }
+  }
+}
