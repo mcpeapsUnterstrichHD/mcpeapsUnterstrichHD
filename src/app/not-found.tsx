@@ -14,7 +14,7 @@ export default async function NotFound() {
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider timeZone="Europe/Berlin" now={new Date()}>
+        <NextIntlClientProvider timeZone="Europe/Berlin">
           <ClientLayout locale={locale} messages={messages}>
             <NotFoundContent />
           </ClientLayout>
