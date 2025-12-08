@@ -8,6 +8,9 @@ import { Toaster, toast } from "sonner";
 import Footer from "@/components/Footer";
 import { useEffect, useRef } from "react";
 import { useRouter } from "@/i18n/navigation";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '@/app/theme';
 
 type Props = {
   children: React.ReactNode;
@@ -17,11 +20,15 @@ type Props = {
 
 export default function ClientLayout({ children, locale, messages }: Props) {
   return (
-    <NextIntlClientProvider locale={locale} messages={messages} timeZone="Europe/Berlin" now={new Date()}>
-      <ClientLayoutContent locale={locale}>
-        {children}
-      </ClientLayoutContent>
-    </NextIntlClientProvider>
+    <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+      <ThemeProvider theme={theme}>
+        <NextIntlClientProvider locale={locale} messages={messages} timeZone="Europe/Berlin" now={new Date()}>
+          <ClientLayoutContent locale={locale}>
+            {children}
+          </ClientLayoutContent>
+        </NextIntlClientProvider>
+      </ThemeProvider>
+    </AppRouterCacheProvider>
   );
 }
 

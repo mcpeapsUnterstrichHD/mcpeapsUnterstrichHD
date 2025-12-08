@@ -1,5 +1,6 @@
 
 import LinkCard, {LinkCardWithFooter} from "@/components/LinkCard";
+import MasonryGrid, { Variants } from "@/components/MasonryGrid";
 import {useTranslations} from "next-intl";
 
 export default function RouteComponent() {
@@ -11,7 +12,8 @@ export default function RouteComponent() {
     </section>
     <section className="grid grid-cols-1 w-[calc(100vw-64px)] items-center justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("Linkhub.sections.socialMedia.title")}</h2>
-      <div className="grid grid-cols-1 items-center justify-center gap-4">
+      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+        <MasonryGrid variant={Variants.links}>
         <LinkCard
           title={t("Linkhub.sections.socialMedia.instagram.title")}
           description={t("Linkhub.sections.socialMedia.instagram.description")}
@@ -56,11 +58,13 @@ export default function RouteComponent() {
           url="https://youtube.com/@mcpeaps_HD"
           icon="/pictures/linkhub/youtube.svg"
           />
+              </MasonryGrid>
       </div>
     </section>
     <section className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("Linkhub.sections.websites.title")}</h2>
-      <div className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4">
+      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+        <MasonryGrid variant={Variants.links}>
         <LinkCard
           title={t("Linkhub.sections.websites.myWebsite.title")}
           description={t("Linkhub.sections.websites.myWebsite.description")}
@@ -82,11 +86,13 @@ export default function RouteComponent() {
           url="https://blog.comboompunktsucht.app"
           icon="/pictures/cbps_logo.png"
         />
+        </MasonryGrid>
       </div>
     </section>
     <section className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4 py-8 md:py-10">
       <h2 className="text-center text-3xl">{t("Linkhub.sections.other.title")}</h2>
-      <div className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4">
+      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+        <MasonryGrid variant={Variants.links}>
         <LinkCard
           title={t("Linkhub.sections.other.github.title")}
           description={t("Linkhub.sections.other.github.description")}
@@ -134,6 +140,7 @@ export default function RouteComponent() {
             title={t("Linkhub.sections.other.song.description")}
           />
         </LinkCardWithFooter>
+        </MasonryGrid>
       </div>
     </section>
   </div>

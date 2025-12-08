@@ -1,4 +1,5 @@
 import ProjectCard, {type ProjectCardProps} from "@/components/projekt-card";
+import MasonryGrid, {Variants} from "@/components/MasonryGrid";
 import { useTranslations } from "next-intl";
 
 export const PINNED_PROJECTS: ProjectCardProps[] = [
@@ -36,23 +37,26 @@ export const PINNED_PROJECTS: ProjectCardProps[] = [
 export default function PinedProjects() {
   const t = useTranslations()
   return (
-    <div>
+    <div className="w-full">
       <h2 className="gap-8 p-8 text-center text-5xl">{t('Projects.pinned')}:</h2>
-
-      <div className="my-Project-grid-pinned gap-8 m-8">
-        {PINNED_PROJECTS.map((project) => (
-          <ProjectCard
-            key={project.projektLink}
-            projektImage={project.projektImage}
-            projektImageAlt={project.projektImageAlt}
-            projektImageBgColor={project.projektImageBgColor}
-            projektTitle={project.projektTitle}
-            projektBadges={project.projektBadges}
-            projektLink={project.projektLink}
-          >
-            {project.children}
-          </ProjectCard>
-          ))}
+      <div className="flex justify-center w-full px-8">
+        <div className="w-full max-w-[calc(100vw-64px)]">
+          <MasonryGrid variant={Variants.pinned_projects}>
+            {PINNED_PROJECTS.map((project) => (
+              <ProjectCard
+                key={project.projektLink}
+                projektImage={project.projektImage}
+                projektImageAlt={project.projektImageAlt}
+                projektImageBgColor={project.projektImageBgColor}
+                projektTitle={project.projektTitle}
+                projektBadges={project.projektBadges}
+                projektLink={project.projektLink}
+              >
+                {project.children}
+              </ProjectCard>
+            ))}
+          </MasonryGrid>
+        </div>
       </div>
     </div>
   );
