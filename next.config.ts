@@ -4,7 +4,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  trailingSlash: false,
+  trailingSlash: true,
   cacheComponents: false,
   cacheMaxMemorySize: 10240,
   generateBuildId: async () => {
