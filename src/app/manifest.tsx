@@ -14,7 +14,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display_override: ["standalone", "window-controls-overlay"],
     background_color: "#2E3440",
     theme_color: "#2E3440",
-    lang: defaultLocale,
+    lang: "/",
     id: "dev.mcpeapsUnterstrichHD.mcpeapsUnterstrichHD",
     prefer_related_applications: false,
     icons: [
