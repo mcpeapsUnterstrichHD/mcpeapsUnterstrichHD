@@ -5,6 +5,7 @@ import {
   TimeLineElementSmall,
   type TimeLineElementProps
 } from "@/components/timeline-element";
+import  MasonryGrid, {Variants} from "@/components/MasonryGrid"
 import { Button } from "@/components/ui/button";
 import Timeline from "@mui/lab/Timeline";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
@@ -407,19 +408,20 @@ export default function RouteComponent() {
       <center>
         <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Fähigkeiten</h2>
       </center>
-
-      <div className="my-Skill-grid w-[calc(100vw-64px)] gap-8 m-8">
-        {skills.map((s) => (
-             <SkillCard
-               key={s.SkillTitle}
-               SkillTitle={s.SkillTitle}
-               SkillBadges={s.SkillBadges}
-               SkillImage={s.SkillImage}
-               SkillImageAlt={s.SkillImageAlt}
-               SkillImageFallback={s.SkillImageFallback}
-               Skilllevel={s.Skilllevel}
-             />
-           ))}
+      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+        <MasonryGrid variant={Variants.skills}>
+          {skills.map((s) => (
+                <SkillCard
+                  key={s.SkillTitle}
+                  SkillTitle={s.SkillTitle}
+                  SkillBadges={s.SkillBadges}
+                  SkillImage={s.SkillImage}
+                  SkillImageAlt={s.SkillImageAlt}
+                  SkillImageFallback={s.SkillImageFallback}
+                  Skilllevel={s.Skilllevel}
+                />
+              ))}
+        </MasonryGrid>
       </div>
       <Button
         onClick={print}

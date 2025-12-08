@@ -1,5 +1,6 @@
 import PinedProjects, { PINNED_PROJECTS} from "@/components/pinedProjects";
 import ProjectCard, { type ProjectCardProps} from "@/components/projekt-card";
+import MasonryGrid, {Variants} from "@/components/MasonryGrid";
 import { useTranslations } from "next-intl";
 
 const ALL_PROJECTS: ProjectCardProps[] = [
@@ -119,21 +120,22 @@ export default function RouteComponent() {
       <PinedProjects />
 
       <h2 className="gap-8 p-8 text-center text-4xl">{t('Projects.all')}:</h2>
-
-      <div className="my-Project-grid">
-        {COMPLETED_PROJECTS.map((project: ProjectCardProps) => (
-          <ProjectCard
-            key={project.projektLink}
-            projektImage={project.projektImage}
-            projektImageAlt={project.projektImageAlt}
-            projektImageBgColor={project.projektImageBgColor}
-            projektTitle={project.projektTitle}
-            projektBadges={project.projektBadges}
-            projektLink={project.projektLink}
-          >
-            {project.children}
-          </ProjectCard>
-        ))}
+      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+        <MasonryGrid variant={Variants.projects} className="m-8">
+          {COMPLETED_PROJECTS.map((project: ProjectCardProps) => (
+            <ProjectCard
+              key={project.projektLink}
+              projektImage={project.projektImage}
+              projektImageAlt={project.projektImageAlt}
+              projektImageBgColor={project.projektImageBgColor}
+              projektTitle={project.projektTitle}
+              projektBadges={project.projektBadges}
+              projektLink={project.projektLink}
+            >
+              {project.children}
+            </ProjectCard>
+          ))}
+        </MasonryGrid>
       </div>
     </div>
   );

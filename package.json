@@ -18,6 +18,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@mui/lab": "^7.0.1-beta.20",
     "@mui/material": "^7.3.6",
+    "@mui/material-nextjs": "^7.3.6",
     "@opennextjs/cloudflare": "^1.14.4",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",

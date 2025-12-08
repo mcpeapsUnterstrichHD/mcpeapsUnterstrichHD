@@ -1,4 +1,5 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
+@layer theme, base, mui, components, utilities;
 @import "tailwindcss";
 
 @import "tw-animate-css";
@@ -526,75 +527,17 @@ code {
     @apply hidden;
   }
 }
-
-.my-Project-grid-pinned {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  @apply gap-2;
-}
-
-/* Anpassungen für mobile Geräte */
-@media (max-width: 1024px) {
-  .my-Project-grid-pinned {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .my-Project-grid-pinned {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-.my-Project-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  @apply gap-2;
-}
-
-/* Anpassungen für Tablets */
-@media (max-width: 1024px) {
-  .my-Project-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Anpassungen für Smartphones */
-@media (max-width: 768px) {
-  .my-Project-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-.my-Skill-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  @apply gap-2;
-}
-
-@media (max-width: 1024px) {
-  .my-Skill-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .my-Skill-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .my-Skill-grid-4 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
 .projectCard {
   @apply backdrop-blur-sm;
   @apply bg-transparent;
   @apply grid;
-  @apply grid-rows-subgrid;
   grid-row: span 3;
+}
+
+/* Force MUI Masonry to take full width */
+.MuiMasonry-root {
+  width: 100% !important;
+  margin: 0 auto !important;
 }
 
 .timelineelement {
