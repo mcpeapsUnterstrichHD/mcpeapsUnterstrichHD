@@ -17,7 +17,7 @@ type Props = {
 
 export default function ClientLayout({ children, locale, messages }: Props) {
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages} timeZone="Europe/Berlin" now={new Date()}>
       <ClientLayoutContent locale={locale}>
         {children}
       </ClientLayoutContent>
