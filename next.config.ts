@@ -5,6 +5,23 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   trailingSlash: false,
+  cacheComponents: false,
+  cacheMaxMemorySize: 10240,
+  generateBuildId: async () => {
+    // This could be anything, using the latest git hash
+    return process.env.GIT_HASH ?? `build-${Date.now()}`
+  },
+  logging: process.env.NODE_ENV === "development" ? {
+    fetches: {
+      fullUrl: true,
+      hmrRefreshes: true,
+    },
+    incomingRequests: true,
+  } : false,
+  experimental: {
+    viewTransition: true,
+  },
+
 };
 
 const withNextIntl = createNextIntlPlugin({
@@ -23,4 +40,4 @@ const withNextIntl = createNextIntlPlugin({
     // ...
   }
 });
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig) as NextConfig;

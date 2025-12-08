@@ -11,6 +11,8 @@ export default getRequestConfig(async ({requestLocale}) => {
 
   return {
     locale,
-    messages: (await import(`../assets/lang/${locale}.json`)).default
+    messages: (await import(`../assets/lang/${locale}.json`)).default,
+    timeZone: "Europe/Berlin",
+    now: new Date(),
   };
 });

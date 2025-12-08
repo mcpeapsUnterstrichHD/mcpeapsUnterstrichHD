@@ -3,6 +3,8 @@ import './globals.css'
 import NotFoundContent from "@/components/__not_found";
 import ClientLayout from '@/components/ClientLayout';
 import { LanguagesNUM } from '@/lib/lang';
+import { cn } from "@/lib/utils";
+import { CaskaydiaCoveNerdFontPropo, CaskaydiaCoveNerdFontMono, CaskaydiaCoveNerdFont } from './fonts'
 
 export default async function NotFound() {
   // Get the current locale from path for the 404 page
@@ -13,8 +15,8 @@ export default async function NotFound() {
 
   return (
     <html lang={locale}>
-      <body>
-        <NextIntlClientProvider>
+      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable}`)}>
+        <NextIntlClientProvider now={new Date()} timeZone='Europe/Berlin'>
           <ClientLayout locale={locale} messages={messages}>
             <NotFoundContent />
           </ClientLayout>

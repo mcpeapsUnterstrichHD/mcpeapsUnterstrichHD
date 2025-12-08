@@ -3,6 +3,8 @@ import {hasLocale} from 'next-intl';
 import {routing} from '@/i18n/routing';
 import ClientLayout from '@/components/ClientLayout';
 import { notFound } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { CaskaydiaCoveNerdFontPropo, CaskaydiaCoveNerdFontMono, CaskaydiaCoveNerdFont } from '../fonts'
 
 type Props = {
   children: React.ReactNode;
@@ -24,7 +26,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale}>
       <head>
       </head>
-      <body>
+      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable}`)}>
         <ClientLayout locale={locale} messages={messages}>
           {children}
         </ClientLayout>
