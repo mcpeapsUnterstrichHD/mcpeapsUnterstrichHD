@@ -1,7 +1,5 @@
 'use client';
 
-export const Runtime = "client"
-
 import { useTranslations } from "next-intl";
 
 const sadTexts = [
