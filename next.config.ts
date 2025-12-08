@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   trailingSlash: false,
-  cacheComponents: true,
+  cacheComponents: false,
   cacheMaxMemorySize: 10240,
   generateBuildId: async () => {
     // This could be anything, using the latest git hash
