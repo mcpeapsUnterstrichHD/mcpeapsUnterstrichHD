@@ -21,6 +21,14 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
+  compiler: {
+    styledComponents: {
+      minify: true,
+      ssr: false,
+      cssProp: true,
+      pure: true
+    },
+  },
 
 };
 
