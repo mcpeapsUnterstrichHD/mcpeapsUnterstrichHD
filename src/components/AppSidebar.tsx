@@ -29,7 +29,7 @@ import UserAvatar, { type ImageProps } from "@/components/userAvatar";
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
 
-export function AppSidebar() {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslations();
 
   const today = new Date();
@@ -76,8 +76,7 @@ export function AppSidebar() {
   const imageFallback = "MAHD";
 
   return (
-    <aside className="float-left clear-left sticky z-10 top no-print">
-      <Sidebar variant="floating" collapsible="offcanvas">
+      <Sidebar collapsible="offcanvas" className="no-print" {... props}>
         <SidebarHeader>
           <SidebarGroup>
             <SidebarGroupContent>
@@ -219,6 +218,5 @@ export function AppSidebar() {
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
-    </aside>
   );
 }

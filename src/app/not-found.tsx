@@ -15,7 +15,14 @@ export default async function NotFound() {
 
   return (
     <html lang={locale}>
-      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable}`)}>
+      <head>
+      <script
+          async
+          crossOrigin="anonymous"
+          src="https://tweakcn.com/live-preview.min.js"
+        />
+      </head>
+      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable} isolate`)}>
         <NextIntlClientProvider now={new Date()} timeZone='Europe/Berlin'>
           <ClientLayout locale={locale} messages={messages}>
             <NotFoundContent />

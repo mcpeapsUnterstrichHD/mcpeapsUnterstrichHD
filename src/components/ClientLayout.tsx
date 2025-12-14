@@ -1,6 +1,6 @@
 "use client"
 import { NextIntlClientProvider, useTranslations } from 'next-intl';
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import Particles from "@/components/Particles";
 import { NavBar } from "@/components/Header";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -191,18 +191,17 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
 
   return (
     <SidebarProvider>
-      <div className="">
-        <Particles quantity={400} refresh={true} />
-        <div className="z-1">
-          <NavBar />
-          <AppSidebar />
-          {children}
-          <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
-          <Footer />
-          <div className="print:hidden no-print">
+      <AppSidebar variant='floating' />
+
+          <Particles quantity={400} refresh={true} />
+          <div className="relative z-10 flex flex-col min-h-svh flex-1 w-full">
+              <NavBar />
+              <main className="flex-1 w-full max-w-full">
+                {children}
+              </main>
+              <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
+              <Footer />
           </div>
-        </div>
-      </div>
     </SidebarProvider>
   );
 }

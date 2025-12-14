@@ -1,7 +1,7 @@
 "use client";
 
 import { useMousePosition } from "@/lib/mouse";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface ParticlesProps {
   className?: string;
@@ -26,13 +26,6 @@ export default function Particles({
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
-
-  const [pageWidth, setPageWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0,
-  );
-  const [pageHeight, setPageHeight] = useState(
-    typeof window !== "undefined" ? window.innerHeight : 0,
-  );
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -61,14 +54,15 @@ export default function Particles({
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
       circles.current.length = 0;
-      setPageWidth(window.screen.availWidth);
-      setPageHeight(window.screen.availHeight);
-      canvasSize.current.w = pageWidth;
-      canvasSize.current.h = pageHeight;
-      canvasRef.current.width = pageWidth * dpr;
-      canvasRef.current.height = pageHeight * dpr;
-      canvasRef.current.style.width = `${pageWidth}px`;
-      canvasRef.current.style.height = `${pageHeight}px`;
+      const containerRect = canvasContainerRef.current.getBoundingClientRect();
+      const width = containerRect.width || window.innerWidth;
+      const height = containerRect.height || window.innerHeight;
+      canvasSize.current.w = width;
+      canvasSize.current.h = height;
+      canvasRef.current.width = width * dpr;
+      canvasRef.current.height = height * dpr;
+      canvasRef.current.style.width = `${width}px`;
+      canvasRef.current.style.height = `${height}px`;
       context.current.scale(dpr, dpr);
 
       // Recreate and redraw particles
@@ -262,7 +256,7 @@ export default function Particles({
   return (
     <div
       className={
-        "-z-10 no-print fixed top-0 left-0 grid h-dvh w-dvw animate-fade-in items-center object-fill" +
+        "fixed inset-0 z-0 no-print animate-fade-in pointer-events-none " +
         className
       }
       ref={canvasContainerRef}

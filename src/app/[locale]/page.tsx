@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 export default function App() {
   const t = useTranslations();
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center min-h-[80vh] w-full">
       <div className="relative w-full max-w-xl px-4">
         <div className="hidden h-px w-full animate-fade-left animate-glow bg-linear-to-r from-primary-foreground via-secondary-foreground to-primary-foreground md:block" />
         <h1 className="z-9 animate-title cursor-default whitespace-nowrap bg-secondary-foreground bg-clip-text font-display text-4xl text-edge-outline text-center text-foreground duration-3000 sm:text-6xl md:text-9xl">

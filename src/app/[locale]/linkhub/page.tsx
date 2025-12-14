@@ -5,14 +5,14 @@ import {useTranslations} from "next-intl";
 
 export default function RouteComponent() {
   const t = useTranslations();
-  return <div className="grid grid-cols-1 w-[calc(100vw-64px)] items-center justify-center self-center gap-4 py-8 md:py-10 m-8 md:m-10">
+  return <div className="grid grid-cols-1 w-full items-center justify-center self-center gap-4 py-4 px-4 md:px-8">
     <h1 className="text-center text-5xl">{t("Aboutme.name")}</h1>
-    <section className="grid grid-cols-1 w-[calc(100vw-64px)] text-center items-center justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 w-full text-center items-center justify-center gap-2 py-2">
       {t("Linkhub.description")}
     </section>
-    <section className="grid grid-cols-1 w-[calc(100vw-64px)] items-center justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 w-full items-center justify-center gap-2 py-2">
       <h2 className="text-center text-3xl">{t("Linkhub.sections.socialMedia.title")}</h2>
-      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+      <div className="w-full">
         <MasonryGrid variant={Variants.links}>
         <LinkCard
           title={t("Linkhub.sections.socialMedia.instagram.title")}
@@ -61,9 +61,9 @@ export default function RouteComponent() {
               </MasonryGrid>
       </div>
     </section>
-    <section className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 items-center w-full justify-center gap-2 py-2">
       <h2 className="text-center text-3xl">{t("Linkhub.sections.websites.title")}</h2>
-      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+      <div className="w-full">
         <MasonryGrid variant={Variants.links}>
         <LinkCard
           title={t("Linkhub.sections.websites.myWebsite.title")}
@@ -89,9 +89,9 @@ export default function RouteComponent() {
         </MasonryGrid>
       </div>
     </section>
-    <section className="grid grid-cols-1 items-center w-[calc(100vw-64px)] justify-center gap-4 py-8 md:py-10">
+    <section className="grid grid-cols-1 items-center w-full justify-center gap-2 py-2">
       <h2 className="text-center text-3xl">{t("Linkhub.sections.other.title")}</h2>
-      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+      <div className="w-full">
         <MasonryGrid variant={Variants.links}>
         <LinkCard
           title={t("Linkhub.sections.other.github.title")}
