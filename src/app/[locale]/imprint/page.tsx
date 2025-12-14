@@ -1,63 +1,111 @@
 "use client";
+import DecryptedText from "@/components/DecryptedText";
+import GradientText from "@/components/GradientText";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail, Phone, MapPin, Scale, User } from "lucide-react";
 
-export default function RouteComponent() {
+export default function ImprintPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between m-4">
-      <div className="mt-5 pb-12">
-        <div className="mb-2 w-full font-bold text-3xl">Impressum</div>
-
-        <div className="py-2 font-bold text-2xl">Angaben gemäß § 5 TMG:</div>
-        <a
-          href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
-          target="_blank"
-          rel="noreferrer"
+    <div className="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
+      {/* Hero Section */}
+      <section className="text-center">
+        <GradientText
+          className="text-4xl md:text-5xl lg:text-6xl font-bold"
+          colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
+          animationSpeed={4}
         >
-          <div className="py-1 text-lg">
-            Aps, Fabian
-            <br />
-            Ludwig-Renn-Straße 33
-            <br />
-            12679 Berlin, Deutschland
-          </div>
-        </a>
+          <DecryptedText
+            text="Impressum"
+            animate
+            animateOn="view"
+            speed={80}
+            maxIterations={40}
+          />
+        </GradientText>
+      </section>
 
-        <div className="py-2 font-bold text-2xl">Kontakt:</div>
-        <div className="py-1 text-lg">
-          <div className="flex flex-col items-start">
-            <div className="flex flex-row items-center">
-              <a
-                href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p>E-Mail: aps.fabian@mcpeapsunterstrichhd.dev</p>
-              </a>
-            </div>
-            <div className="flex flex-row items-center">
-              <a href="tel:+4917645172171" target="_blank" rel="noreferrer">
-                <p>Telefonnummer: +4917645172171</p>
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* Legal Info Cards */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* § 5 TMG Section */}
+        <Card className="bg-card/50 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl">
+              <Scale className="w-5 h-5 text-primary" />
+              Angaben gemäß § 5 TMG
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <a
+              href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-start gap-2 hover:text-primary transition-colors"
+            >
+              <MapPin className="w-4 h-4 mt-1 shrink-0" />
+              <div>
+                Aps, Fabian<br />
+                Ludwig-Renn-Straße 33<br />
+                12679 Berlin, Deutschland
+              </div>
+            </a>
+          </CardContent>
+        </Card>
 
-        <div className="py-2 font-bold text-2xl">
-          Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
-        </div>
-        <a
-          href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <div className="py-1 text-lg">
-            Aps, Fabian
-            <br />
-            Ludwig-Renn-Straße 33
-            <br />
-            12679 Berlin, Deutschland
-          </div>
-        </a>
+        {/* Contact Section */}
+        <Card className="bg-card/50 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl">
+              <User className="w-5 h-5 text-primary" />
+              Kontakt
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3">
+            <a
+              href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              aps.fabian@mcpeapsunterstrichhd.dev
+            </a>
+            <a
+              href="tel:+4917645172171"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              +49 176 45172171
+            </a>
+          </CardContent>
+        </Card>
       </div>
+
+      {/* Responsible Person Section */}
+      <Card className="bg-card/50 backdrop-blur-sm">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-xl">
+            <Scale className="w-5 h-5 text-primary" />
+            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <a
+            href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-start gap-2 hover:text-primary transition-colors"
+          >
+            <MapPin className="w-4 h-4 mt-1 shrink-0" />
+            <div>
+              Aps, Fabian<br />
+              Ludwig-Renn-Straße 33<br />
+              12679 Berlin, Deutschland
+            </div>
+          </a>
+        </CardContent>
+      </Card>
     </div>
   );
 }

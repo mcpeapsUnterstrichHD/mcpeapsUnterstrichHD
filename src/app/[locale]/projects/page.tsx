@@ -1,7 +1,11 @@
-import PinedProjects, { PINNED_PROJECTS} from "@/components/pinedProjects";
-import ProjectCard, { type ProjectCardProps} from "@/components/projekt-card";
-import MasonryGrid, {Variants} from "@/components/MasonryGrid";
+"use client";
+import PinedProjects, { PINNED_PROJECTS } from "@/components/pinedProjects";
+import ProjectCard, { type ProjectCardProps } from "@/components/projekt-card";
+import MasonryGrid, { Variants } from "@/components/MasonryGrid";
+import DecryptedText from "@/components/DecryptedText";
+import GradientText from "@/components/GradientText";
 import { useTranslations } from "next-intl";
+import { FolderOpen, Grid3X3 } from "lucide-react";
 
 const ALL_PROJECTS: ProjectCardProps[] = [
   {
@@ -107,21 +111,55 @@ const ALL_PROJECTS: ProjectCardProps[] = [
   projectA.projektTitle.localeCompare(projectB.projektTitle)
 );
 
-const COMPLETED_PROJECTS: ProjectCardProps[] = PINNED_PROJECTS.concat(ALL_PROJECTS).sort((projectA: ProjectCardProps, projectB: ProjectCardProps) =>
-  projectA.projektTitle.localeCompare(projectB.projektTitle)
+const COMPLETED_PROJECTS: ProjectCardProps[] = PINNED_PROJECTS.concat(ALL_PROJECTS).sort(
+  (projectA: ProjectCardProps, projectB: ProjectCardProps) =>
+    projectA.projektTitle.localeCompare(projectB.projektTitle)
 );
 
-export default function RouteComponent() {
-  const t = useTranslations()
+export default function ProjectsPage() {
+  const t = useTranslations();
+
   return (
-    <div className="gap-2 p-2">
-      <h1 className="gap-8 p-8 text-center text-6xl">{t('Projects.title')}</h1>
+    <div className="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
+      {/* Hero Section */}
+      <section className="text-center space-y-2">
+        <GradientText
+          className="text-4xl md:text-5xl lg:text-6xl font-bold"
+          colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
+          animationSpeed={4}
+        >
+          <DecryptedText
+            text={t("Projects.title")}
+            animate
+            animateOn="view"
+            speed={80}
+            maxIterations={40}
+          />
+        </GradientText>
+        <p className="text-muted-foreground flex items-center justify-center gap-2">
+          <FolderOpen className="w-5 h-5" />
+          {COMPLETED_PROJECTS.length} projects
+        </p>
+      </section>
 
-      <PinedProjects />
+      {/* Pinned Projects */}
+      <section>
+        <PinedProjects />
+      </section>
 
-      <h2 className="gap-8 p-8 text-center text-4xl">{t('Projects.all')}:</h2>
-      <div className="w-full gap-8 px-8">
-        <MasonryGrid variant={Variants.projects} className="">
+      {/* All Projects */}
+      <section className="space-y-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
+          <Grid3X3 className="w-6 h-6 text-primary" />
+          <DecryptedText
+            text={t("Projects.all")}
+            animate
+            animateOn="view"
+            speed={60}
+            maxIterations={30}
+          />
+        </h2>
+        <MasonryGrid variant={Variants.projects}>
           {COMPLETED_PROJECTS.map((project: ProjectCardProps) => (
             <ProjectCard
               key={project.projektLink}
@@ -136,7 +174,7 @@ export default function RouteComponent() {
             </ProjectCard>
           ))}
         </MasonryGrid>
-      </div>
+      </section>
     </div>
   );
 }

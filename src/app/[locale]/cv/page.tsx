@@ -5,25 +5,33 @@ import {
   TimeLineElementSmall,
   type TimeLineElementProps
 } from "@/components/timeline-element";
-import  MasonryGrid, {Variants} from "@/components/MasonryGrid"
+import MasonryGrid, { Variants } from "@/components/MasonryGrid";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Timeline from "@mui/lab/Timeline";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
+import {
+  GraduationCap,
+  Briefcase,
+  Wrench,
+  Download,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar
+} from "lucide-react";
 
-
-
-
-export default function RouteComponent() {
+export default function CVPage() {
   const t = useTranslations();
   const [printing, setPrinting] = useState(false);
-
   const intervalId = useRef<NodeJS.Timeout | null>(null);
   const intervalId2 = useRef<NodeJS.Timeout | null>(null);
 
-  const education: (TimeLineElementProps & { key:string}) [] = [
+  // Education data
+  const education: (TimeLineElementProps & { key: string })[] = [
     {
       key: "tuberlin",
       TimeLineTitle: t("Cv.education.items.tuberlin.name"),
@@ -99,7 +107,8 @@ export default function RouteComponent() {
     return db.getTime() - da.getTime();
   });
 
-  const experience: (TimeLineElementProps & { key:string}) [] = [
+  // Experience data
+  const experience: (TimeLineElementProps & { key: string })[] = [
     {
       key: "kfw",
       TimeLineTitle: "KfW Bankengruppe",
@@ -111,15 +120,9 @@ export default function RouteComponent() {
       enddate: "02.02.2024",
       children: (
         <>
-          <p>
-            Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ
-            IMT
-          </p>
+          <p>Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ IMT</p>
           <br />
-          <p>
-            Automatisierungen mit Ansible + Dokumentation für Ansible in
-            Confluence der KfW
-          </p>
+          <p>Automatisierungen mit Ansible + Dokumentation für Ansible in Confluence der KfW</p>
         </>
       ),
     },
@@ -157,25 +160,25 @@ export default function RouteComponent() {
       children: <p>Regale einräumen</p>,
     },
   ].sort((a, b) => {
-      const parse = (s?: string) => {
-        if (!s) return new Date(0);
-        const parts = s.split(".").map((p) => Number.parseInt(p, 10));
-        if (parts.length === 3) {
-          const [day, month, year] = parts;
-          return new Date(year, month - 1, day);
-        }
-        if (parts.length === 2) {
-          const [month, year] = parts;
-          return new Date(year, month - 1, 1);
-        }
-        return new Date(0);
-      };
-      const da = parse(a.enddate ?? a.startdate);
-      const db = parse(b.enddate ?? b.startdate);
-      return db.getTime() - da.getTime();
-    });
+    const parse = (s?: string) => {
+      if (!s) return new Date(0);
+      const parts = s.split(".").map((p) => Number.parseInt(p, 10));
+      if (parts.length === 3) {
+        const [day, month, year] = parts;
+        return new Date(year, month - 1, day);
+      }
+      if (parts.length === 2) {
+        const [month, year] = parts;
+        return new Date(year, month - 1, 1);
+      }
+      return new Date(0);
+    };
+    const da = parse(a.enddate ?? a.startdate);
+    const db = parse(b.enddate ?? b.startdate);
+    return db.getTime() - da.getTime();
+  });
 
-
+  // Skills data
   const skills: SkillCardProps[] = [
     { SkillTitle: "Java", SkillBadges: ["Development", "3 Jahre"], SkillImage: "/pictures/lebenslauf/skills/java.svg", SkillImageAlt: "Java Logo", SkillImageFallback: "JDK", Skilllevel: 80 },
     { SkillTitle: "Swift (SwiftUI)", SkillBadges: ["Development", "Frontend", "Apple", "2 Jahre"], SkillImage: "/pictures/lebenslauf/skills/swift.svg", SkillImageAlt: "Swift Logo", SkillImageFallback: "SUI", Skilllevel: 60 },
@@ -194,8 +197,8 @@ export default function RouteComponent() {
     { SkillTitle: "MySQL", SkillBadges: ["Development", "1 Jahre"], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 80 },
     { SkillTitle: "MySQL Comunity Server", SkillBadges: ["Development", "1 Jahre"], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
     { SkillTitle: "MySQLWorckbench", SkillBadges: ["Development", "1 Jahre"], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
-    { SkillTitle: "Ansible", SkillBadges: ["Automation", "2 Monate"], SkillImage: printing ?  "/pictures/lebenslauf/skills/ansible.svg" : "/pictures/lebenslauf/skills/ansible-dark.svg", SkillImageAlt: "Ansible Logo", SkillImageFallback: "A", Skilllevel: 60 },
-    { SkillTitle: "Rust", SkillBadges: ["Development", "2 Monate"], SkillImage: printing ?  "/pictures/lebenslauf/skills/rust.svg": "/pictures/lebenslauf/skills/rust-dark.svg", SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
+    { SkillTitle: "Ansible", SkillBadges: ["Automation", "2 Monate"], SkillImage: printing ? "/pictures/lebenslauf/skills/ansible.svg" : "/pictures/lebenslauf/skills/ansible-dark.svg", SkillImageAlt: "Ansible Logo", SkillImageFallback: "A", Skilllevel: 60 },
+    { SkillTitle: "Rust", SkillBadges: ["Development", "2 Monate"], SkillImage: printing ? "/pictures/lebenslauf/skills/rust.svg" : "/pictures/lebenslauf/skills/rust-dark.svg", SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
     { SkillTitle: "C", SkillBadges: ["C98", "C11", "Development", "1 Jahr"], SkillImage: "/pictures/lebenslauf/skills/c.svg", SkillImageAlt: "C Logo", SkillImageFallback: "C", Skilllevel: 30 },
     { SkillTitle: "C++", SkillBadges: ["C++23", "Development", "1 Monat"], SkillImage: "/pictures/lebenslauf/skills/cpp.svg", SkillImageAlt: "C++ Logo", SkillImageFallback: "C++", Skilllevel: 30 },
     { SkillTitle: "Emacs", SkillBadges: ["Development", "Text Editor", "Multifunctional", "GNU", "1 Monat"], SkillImage: "/pictures/lebenslauf/skills/emacs.svg", SkillImageAlt: "GNU Emacs Logo", SkillImageFallback: "Emacs", Skilllevel: 30 },
@@ -203,235 +206,227 @@ export default function RouteComponent() {
     skillA.SkillTitle.localeCompare(skillB.SkillTitle)
   );
 
+  // Toast notifications for printing tips
   useEffect(() => {
-    const toastValues_printig_settings: {
-      title: string;
-      description: string;
-    } = {
+    const toastValues = {
       title: t("Cv.recommendation.printingSettings.title"),
       description: t("Cv.recommendation.printingSettings.description"),
     };
-    // Erste Empfehlung direkt anzeigen
-    const { title, description } = toastValues_printig_settings;
-    toast(title, { description });
+    toast(toastValues.title, { description: toastValues.description });
 
-    // Intervall für weitere Empfehlungen
-    intervalId.current = setInterval(
-      () => {
-        const { title, description } = toastValues_printig_settings;
-        toast(title, { description });
-      },
-      60_000, // 1 minute
-    );
+    intervalId.current = setInterval(() => {
+      toast(toastValues.title, { description: toastValues.description });
+    }, 60_000);
 
-    // Clean-up beim Unmount
     return () => {
       if (intervalId.current) clearInterval(intervalId.current);
     };
   }, [t]);
+
   useEffect(() => {
-    const toastValues_printing_notice: {
-      title: string;
-      description: string;
-    } = {
+    const toastValues = {
       title: t("Cv.recommendation.printingNotice.title"),
       description: t("Cv.recommendation.printingNotice.description"),
     };
-    // Erste Empfehlung direkt anzeigen
-    const { title, description } = toastValues_printing_notice;
-    toast(title, { description });
+    toast(toastValues.title, { description: toastValues.description });
 
-    // Intervall für weitere Empfehlungen
-    // use a separate ref for this second interval
-    intervalId2.current = setInterval(
-      () => {
-        const { title, description } = toastValues_printing_notice;
-        toast(title, { description });
-      },
-      120_000, // 2 minutes
-    );
+    intervalId2.current = setInterval(() => {
+      toast(toastValues.title, { description: toastValues.description });
+    }, 120_000);
 
-    // Clean-up beim Unmount
     return () => {
       if (intervalId2.current) clearInterval(intervalId2.current);
     };
   }, [t]);
 
-  const print = async () => {
-    // /cv?printing=true
-
+  const handlePrint = async () => {
     setPrinting(true);
-    // Warten, bis die Seite aktualisiert wurde
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await window.print();
-    // Nach dem Drucken zurück zur ursprünglichen Ansicht
     setPrinting(false);
   };
 
   return (
-    <div className="">
-      <center>
-        {t("Cv.about.title")}
-        <br />
-        <center>
-          <a
-            href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <p>{t("Cv.about.email")}: aps.fabian@mcpeapsunterstrichhd.dev</p>
-          </a>
-        </center>
-        <center>
-          <a href="tel:+4917645172171" target="_blank" rel="noreferrer">
-            <p>{t("Cv.about.telnum")}: +4917645172171</p>
-          </a>
-        </center>
-        <br />
-        <center>
-          <a
-            href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="py-1 text-lg">
-              {t("Aboutme.name")}
-              <br />
-              Ludwig-Renn-Straße 33
-              <br />
-              12679 {t("Cv.about.address.berlin")}, {t("Cv.about.address.germany")}
+    <div className="flex flex-col gap-6 px-4 py-6 max-w-9xl mx-auto">
+      {/* Header / Personal Info */}
+      <Card className="bg-card/50 backdrop-blur-sm print:bg-white print:shadow-none">
+        <CardHeader className="text-center pb-2">
+          <h1 className="text-3xl md:text-4xl font-bold">{t("Aboutme.name")}</h1>
+          <p className="text-lg text-muted-foreground">{t("Cv.about.title")}</p>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 print:grid-cols-1 gap-4 text-sm">
+            {/* Contact Info */}
+            <div className="flex flex-col gap-2">
+              <a
+                href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
+                className="flex items-center gap-2 hover:text-primary transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                aps.fabian@mcpeapsunterstrichhd.dev
+              </a>
+              <a
+                href="tel:+4917645172171"
+                className="flex items-center gap-2 hover:text-primary transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                +49 176 45172171
+              </a>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Calendar className="w-4 h-4" />
+                {t("Cv.about.birthday")}: 06.06.2003
+              </div>
             </div>
-          </a>
-        </center>
-        <br />
-        <center>{t("Cv.about.birthday")}: 06.06.2003</center>
-      </center>
+            {/* Address */}
+            <a
+              href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-start gap-2 hover:text-primary transition-colors"
+            >
+              <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+              <div>
+                Ludwig-Renn-Straße 33<br />
+                12679 {t("Cv.about.address.berlin")}, {t("Cv.about.address.germany")}
+              </div>
+            </a>
+          </div>
+        </CardContent>
+      </Card>
 
-      <center>
-        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">{t("Cv.education.title")}</h2>
-      </center>
+      {/* Education Section */}
+      <section>
+        <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2 mb-4">
+          <GraduationCap className="w-6 h-6 text-primary print:text-black" />
+          {t("Cv.education.title")}
+        </h2>
 
+        {/* Large Timeline */}
+        <Timeline position="right" className="show-timeline-big">
+          {education.map((e) => (
+            <TimeLineElementBig
+              key={e.key}
+              TimeLineTitle={e.TimeLineTitle}
+              TimeLineBadges={e.TimeLineBadges}
+              TimeLineImage={e.TimeLineImage}
+              TimeLineImageAlt={e.TimeLineImageAlt}
+              TimeLineImageFallback={e.TimeLineImageFallback}
+              startdate={e.startdate}
+              enddate={e.enddate}
+            >
+              <p>{e.children}</p>
+            </TimeLineElementBig>
+          ))}
+        </Timeline>
 
+        {/* Small Timeline */}
+        <Timeline
+          sx={{
+            [`& .${timelineItemClasses.root}:before`]: {
+              flex: 0,
+              padding: 0,
+            },
+          }}
+          className="show-timeline-small"
+        >
+          {education.map((e) => (
+            <TimeLineElementSmall
+              key={e.key}
+              TimeLineTitle={e.TimeLineTitle}
+              TimeLineBadges={e.TimeLineBadges}
+              TimeLineImage={e.TimeLineImage}
+              TimeLineImageAlt={e.TimeLineImageAlt}
+              TimeLineImageFallback={e.TimeLineImageFallback}
+              startdate={e.startdate}
+              enddate={e.enddate}
+            >
+              <p>{e.children}</p>
+            </TimeLineElementSmall>
+          ))}
+        </Timeline>
+      </section>
 
-      <Timeline position="right" className="show-timeline-big flex flex-col justify-center">
-        {education.map((e) => (
-          <TimeLineElementBig
-            key={e.key}
-            TimeLineTitle={e.TimeLineTitle}
-            TimeLineBadges={e.TimeLineBadges}
-            TimeLineImage={e.TimeLineImage}
-            TimeLineImageAlt={e.TimeLineImageAlt}
-            TimeLineImageFallback={e.TimeLineImageFallback}
-            startdate={e.startdate}
-            enddate={e.enddate}
-          >
-            <p>{e.children}</p>
-          </TimeLineElementBig>
-        ))}
-      </Timeline>
+      {/* Experience Section */}
+      <section>
+        <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2 mb-4">
+          <Briefcase className="w-6 h-6 text-primary print:text-black" />
+          {t("Cv.experience.title")}
+        </h2>
 
-      <Timeline
-        sx={{
-          [`& .${timelineItemClasses.root}:before`]: {
-            flex: 0,
-            padding: 0,
-          },
-        }}
-        className="show-timeline-small flex flex-col justify-center"
-      >
-        {education.map((e) => (
-          <TimeLineElementSmall
-            key={e.key}
-            TimeLineTitle={e.TimeLineTitle}
-            TimeLineBadges={e.TimeLineBadges}
-            TimeLineImage={e.TimeLineImage}
-            TimeLineImageAlt={e.TimeLineImageAlt}
-            TimeLineImageFallback={e.TimeLineImageFallback}
-            startdate={e.startdate}
-            enddate={e.enddate}
-          >
-            <p>{e.children}</p>
-          </TimeLineElementSmall>
-        ))}
-      </Timeline>
+        {/* Large Timeline */}
+        <Timeline position="right" className="show-timeline-big">
+          {experience.map((ex) => (
+            <TimeLineElementBig
+              key={ex.key}
+              TimeLineTitle={ex.TimeLineTitle}
+              TimeLineBadges={ex.TimeLineBadges}
+              TimeLineImage={ex.TimeLineImage}
+              TimeLineImageAlt={ex.TimeLineImageAlt}
+              TimeLineImageFallback={ex.TimeLineImageFallback}
+              startdate={ex.startdate}
+              enddate={ex.enddate}
+            >
+              <div>{ex.children}</div>
+            </TimeLineElementBig>
+          ))}
+        </Timeline>
 
-      <center>
-        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Erfahrung</h2>
-      </center>
+        {/* Small Timeline */}
+        <Timeline
+          sx={{
+            [`& .${timelineItemClasses.root}:before`]: {
+              flex: 0,
+              padding: 0,
+            },
+          }}
+          className="show-timeline-small"
+        >
+          {experience.map((ex) => (
+            <TimeLineElementSmall
+              key={ex.key}
+              TimeLineTitle={ex.TimeLineTitle}
+              TimeLineBadges={ex.TimeLineBadges}
+              TimeLineImage={ex.TimeLineImage}
+              TimeLineImageAlt={ex.TimeLineImageAlt}
+              TimeLineImageFallback={ex.TimeLineImageFallback}
+              startdate={ex.startdate}
+              enddate={ex.enddate}
+            >
+              <div>{ex.children}</div>
+            </TimeLineElementSmall>
+          ))}
+        </Timeline>
+      </section>
 
-      {/* Experience: data-driven rendering */}
-      {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
-
-
-      <Timeline position="right" className="show-timeline-big flex flex-col justify-center">
-        {experience.map((ex) => (
-          <TimeLineElementBig
-            key={ex.key}
-            TimeLineTitle={ex.TimeLineTitle}
-            TimeLineBadges={ex.TimeLineBadges}
-            TimeLineImage={ex.TimeLineImage}
-            TimeLineImageAlt={ex.TimeLineImageAlt}
-            TimeLineImageFallback={ex.TimeLineImageFallback}
-            startdate={ex.startdate}
-            enddate={ex.enddate}
-          >
-            <p>{ex.children}</p>
-          </TimeLineElementBig>
-        ))}
-      </Timeline>
-
-      <Timeline
-        sx={{
-          [`& .${timelineItemClasses.root}:before`]: {
-            flex: 0,
-            padding: 0,
-          },
-        }}
-        className="show-timeline-small flex flex-col justify-center"
-      >
-        {experience.map((ex) => (
-          <TimeLineElementSmall
-            key={ex.key}
-            TimeLineTitle={ex.TimeLineTitle}
-            TimeLineBadges={ex.TimeLineBadges}
-            TimeLineImage={ex.TimeLineImage}
-            TimeLineImageAlt={ex.TimeLineImageAlt}
-            TimeLineImageFallback={ex.TimeLineImageFallback}
-            startdate={ex.startdate}
-            enddate={ex.enddate}
-          >
-            <p>{ex.children}</p>
-          </TimeLineElementSmall>
-        ))}
-      </Timeline>
-
-      <center>
-        <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Fähigkeiten</h2>
-      </center>
-      <div className="w-full px-8">
+      {/* Skills Section */}
+      <section>
+        <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2 mb-4">
+          <Wrench className="w-6 h-6 text-primary print:text-black" />
+          {t("Cv.skills.title")}
+        </h2>
         <MasonryGrid variant={Variants.skills}>
           {skills.map((s) => (
-                <SkillCard
-                  key={s.SkillTitle}
-                  SkillTitle={s.SkillTitle}
-                  SkillBadges={s.SkillBadges}
-                  SkillImage={s.SkillImage}
-                  SkillImageAlt={s.SkillImageAlt}
-                  SkillImageFallback={s.SkillImageFallback}
-                  Skilllevel={s.Skilllevel}
-                />
-              ))}
+            <SkillCard
+              key={s.SkillTitle}
+              SkillTitle={s.SkillTitle}
+              SkillBadges={s.SkillBadges}
+              SkillImage={s.SkillImage}
+              SkillImageAlt={s.SkillImageAlt}
+              SkillImageFallback={s.SkillImageFallback}
+              Skilllevel={s.Skilllevel}
+            />
+          ))}
         </MasonryGrid>
-      </div>
+      </section>
+
+      {/* Print Button */}
       <Button
-        onClick={print}
-        className="fixed bottom-2 right-2 z-50 print:hidden"
-        type="button"
+        onClick={handlePrint}
+        className="fixed bottom-4 right-4 z-50 print:hidden gap-2 shadow-lg"
+        size="lg"
       >
-        <div className="flex flex-row gap-2 justify-center items-center">
-          <div className="nf nf-oct-download" />
-          <p>PDF</p>
-        </div>
+        <Download className="w-4 h-4" />
+        PDF
       </Button>
     </div>
   );
