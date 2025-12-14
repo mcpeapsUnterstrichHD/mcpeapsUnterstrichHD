@@ -28,6 +28,7 @@ import {
 import UserAvatar, { type ImageProps } from "@/components/userAvatar";
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
+import DecryptedText from "./DecryptedText";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslations();
@@ -92,7 +93,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             image={image}
                             imageFallback={imageFallback}
                           />
-                          <span>{name}</span>
+                          <DecryptedText
+                          text={name}
+                          speed={100}
+                          maxIterations={50}
+                          animateOn="both"
+                          animate
+                        />
                         </Link>
                       </SidebarMenuButton>
                     </HoverCardTrigger>
@@ -105,7 +112,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             image={image}
                             imageFallback={imageFallback}
                           />
-                          <span className="text-lg">{name}</span>
+                          <span className="text-lg p-2">{name}</span>
                         </p>
                         <p className="text-lg p-2">{t("Aboutme.title")}</p>
                         <p className="p-2">

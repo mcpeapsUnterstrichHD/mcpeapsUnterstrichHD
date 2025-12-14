@@ -54,9 +54,9 @@ const SkillCard: React.FC<SkillCardProps> = ({
   }, [SkillImage, theme, systemTheme]); // Re-run effect when SkillImage or theme changes
 
   return (
-    <Card className="bg-transparent backdrop-blur-sm">
-      <CardHeader>
-        <div className="flex flex-row items-center justify-between gap-1">
+    <Card className="bg-transparent backdrop-blur-sm p-2">
+      <CardHeader className="pb-2">
+        <div className="flex flex-row items-center justify-between gap-2">
           <Avatar>
             <AvatarImage src={imgSrc} alt={SkillImageAlt} />
             <AvatarFallback>{SkillImageFallback}</AvatarFallback>
@@ -64,7 +64,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
           <CardTitle>{SkillTitle}</CardTitle>
         </div>
         <CardDescription>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 mt-2">
             {SkillBadges.map((badge, index) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 <Badge key={index} variant="default">
@@ -74,7 +74,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
           </div>
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-2">
         <Progress value={Skilllevel} />
       </CardContent>
     </Card>
