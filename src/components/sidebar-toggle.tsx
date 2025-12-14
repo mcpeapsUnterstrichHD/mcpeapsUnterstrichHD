@@ -4,7 +4,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 export function SidebarToggle() {
   return (
     <Button
-      className="rounded-full bg-transparent backdrop-blur-sm"
+      className="rounded-full fg bg-transparent backdrop-blur-sm"
       variant="outline"
       size="icon"
     >

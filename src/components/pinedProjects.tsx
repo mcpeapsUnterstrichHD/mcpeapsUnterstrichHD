@@ -37,27 +37,23 @@ export const PINNED_PROJECTS: ProjectCardProps[] = [
 export default function PinedProjects() {
   const t = useTranslations()
   return (
-    <div className="w-full">
-      <h2 className="gap-8 p-8 text-center text-5xl">{t('Projects.pinned')}:</h2>
-      <div className="flex justify-center w-full px-8">
-        <div className="w-full max-w-[calc(100vw-64px)]">
-          <MasonryGrid variant={Variants.pinned_projects}>
-            {PINNED_PROJECTS.map((project) => (
-              <ProjectCard
-                key={project.projektLink}
-                projektImage={project.projektImage}
-                projektImageAlt={project.projektImageAlt}
-                projektImageBgColor={project.projektImageBgColor}
-                projektTitle={project.projektTitle}
-                projektBadges={project.projektBadges}
-                projektLink={project.projektLink}
-              >
-                {project.children}
-              </ProjectCard>
-            ))}
-          </MasonryGrid>
-        </div>
-      </div>
+    <div className="w-full px-4">
+      <h2 className="py-4 text-center text-5xl">{t('Projects.pinned')}:</h2>
+      <MasonryGrid variant={Variants.pinned_projects}>
+        {PINNED_PROJECTS.map((project) => (
+          <ProjectCard
+            key={project.projektLink}
+            projektImage={project.projektImage}
+            projektImageAlt={project.projektImageAlt}
+            projektImageBgColor={project.projektImageBgColor}
+            projektTitle={project.projektTitle}
+            projektBadges={project.projektBadges}
+            projektLink={project.projektLink}
+          >
+            {project.children}
+          </ProjectCard>
+        ))}
+      </MasonryGrid>
     </div>
   );
 }

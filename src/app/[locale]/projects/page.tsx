@@ -120,8 +120,8 @@ export default function RouteComponent() {
       <PinedProjects />
 
       <h2 className="gap-8 p-8 text-center text-4xl">{t('Projects.all')}:</h2>
-      <div className="w-[calc(100vw-64px)] gap-8 m-8">
-        <MasonryGrid variant={Variants.projects} className="m-8">
+      <div className="w-full gap-8 px-8">
+        <MasonryGrid variant={Variants.projects} className="">
           {COMPLETED_PROJECTS.map((project: ProjectCardProps) => (
             <ProjectCard
               key={project.projektLink}

@@ -408,7 +408,7 @@ export default function RouteComponent() {
       <center>
         <h2 className="gap-8 font-bold text-3xl pt-8 pb-8">Fähigkeiten</h2>
       </center>
-      <div className="w-[calc(100vw-64px)] gap-8 m-8">
+      <div className="w-full px-8">
         <MasonryGrid variant={Variants.skills}>
           {skills.map((s) => (
                 <SkillCard

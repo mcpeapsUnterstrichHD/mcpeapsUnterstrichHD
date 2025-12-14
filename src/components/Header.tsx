@@ -10,21 +10,21 @@ import { SidebarToggle } from "@/components/sidebar-toggle";
 
 export function NavBar() {
   return (
-    <nav className="top sticky top-0 z-10">
-      <NavigationMenu className="print:hidden py-2">
-        <NavigationMenuList className="fixed right-2 print:hidden">
+    <header className="fixed right-2 top-0 z-20 w-full">
+      <NavigationMenu className="print:hidden py-2 w-full max-w-none justify-end">
+        <NavigationMenuList className="flex gap-2 pr-4 print:hidden">
           <NavigationMenuItem
-            className={`${navigationMenuTriggerStyle()}rounded-full bg-transparent backdrop-blur-sm print:hidden`}
+            className={`rounded-full bg-background/50 backdrop-blur-sm print:hidden`}
           >
             <Langswitcher />
           </NavigationMenuItem>
           <NavigationMenuItem
-            className={`${navigationMenuTriggerStyle()}rounded-full bg-transparent backdrop-blur-sm print:hidden`}
+            className={`rounded-full bg-background/50 backdrop-blur-sm print:hidden`}
           >
             <SidebarToggle />
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </nav>
+    </header>
   );
 }
