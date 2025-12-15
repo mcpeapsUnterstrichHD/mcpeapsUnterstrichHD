@@ -30,7 +30,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
 }) => {
   return (
     <a href={url} target="_blank" rel="noreferrer" className="flex flex-col gap-2">
-      <Card className="bg-transparent backdrop-blur-sm">
+      <Card className="bg-card/50 backdrop-blur-sm">
         <CardHeader>
           <div className="flex flex-row items-center justify-between gap-1">
             <Avatar>
@@ -59,7 +59,7 @@ const LinkCardWithFooter: React.FC<LinkCardWithFooterProps> = ({
 }) => {
   return (
     <a href={url} target="_blank" rel="noreferrer" className="flex flex-col gap-2">
-      <Card className="bg-transparent backdrop-blur-sm">
+      <Card className="bg-card/50 backdrop-blur-sm">
         <CardHeader>
           <div className="flex flex-row items-center justify-between gap-1">
             <Avatar>

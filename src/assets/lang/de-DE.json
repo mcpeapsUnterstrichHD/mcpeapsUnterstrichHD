@@ -34,9 +34,82 @@
     "notFound": "404 - Seite nicht gefunden"
   },
   "Projects": {
-  "pinned": "Gepinte Projekte",
-  "title": "Projekte",
-  "all": "Alle Projekte"
+    "pinned": "Gepinnte Projekte",
+    "title": "Projekte",
+    "all": "Alle Projekte",
+    "projectCount": "{count} Projekte",
+    "items": {
+      "portfolio": {
+        "title": "Portfolio",
+        "description": "Das Projekt zu diesem Portfolio.",
+        "imgAlt": "Portfolio Bild"
+      },
+      "simplesql": {
+        "title": "simplesql",
+        "description": "Das ist ein TUI/GUI-Programm zum Ausführen und Ausgeben von SQL Statements",
+        "imgAlt": "Simple SQL Runner"
+      },
+      "localServices": {
+        "title": "Meine eigenen lokalen Services",
+        "description": "Hier ist eine Ansammlung an self-hosted Services, wie meine Suchmaschine, die ich nutze.",
+        "imgAlt": "SearxNG Logo"
+      },
+      "schulRepo": {
+        "title": "Schul-Repository",
+        "description": "Das ist das Repository mit meinen Aufgaben aus meiner Ausbildung.",
+        "imgAlt": "Großes Logo vom OSZ IMT"
+      },
+      "klassenWebsite": {
+        "title": "Klassen-Website",
+        "description": "Das ist die Webseite der Klasse ITA 12, in der ich am OSZ IMT gewesen bin.",
+        "imgAlt": "Großes Logo vom OSZ IMT"
+      },
+      "klassenApp": {
+        "title": "Klassen App",
+        "description": "Das ist die App der Klasse ITA 12, in der ich am OSZ IMT gewesen bin.",
+        "imgAlt": "App Icon der Klassen App"
+      },
+      "simpleSqlRunner": {
+        "title": "Simple SQL Runner",
+        "description": "Das ist ein GUI-Programm zum Ausführen und Ausgeben von SQL Statements",
+        "imgAlt": "Simple SQL Runner"
+      },
+      "dotfilesMacos": {
+        "title": "Meine eigenen Dotfiles für macOS",
+        "description": "Das Repository für meine Dotfiles für macOS.",
+        "imgAlt": "mcpeaps_HD Logo"
+      },
+      "nixConfig": {
+        "title": "Meine eigene NixOS Konfiguration",
+        "description": "Das Repository für meine Konfiguration von NixOS.",
+        "imgAlt": "mcpeaps_HD Logo"
+      },
+      "dotfilesLinux": {
+        "title": "Meine eigenen Dotfiles für Linux",
+        "description": "Das Repository für meine Dotfiles für Linux.",
+        "imgAlt": "mcpeaps_HD Logo"
+      },
+      "cbpsWebsite": {
+        "title": "comboom.sucht Website",
+        "description": "Das ist die Webseite meiner Freundesgruppe.",
+        "imgAlt": "comboom.sucht Logo"
+      },
+      "cbpsApp": {
+        "title": "comboom.sucht App",
+        "description": "Das ist die App meiner Freundesgruppe.",
+        "imgAlt": "comboom.sucht Logo"
+      },
+      "uniRepo": {
+        "title": "Uni-Repository",
+        "description": "Das ist das Repository zu meinem Studium an der TU Berlin.",
+        "imgAlt": "Langes Logo der Technischen Universität Berlin"
+      },
+      "liveWallpaper": {
+        "title": "Native/Wasm Live Wallpaper",
+        "description": "Ein plattformübergreifendes Live-Wallpaper mit interaktiven Partikeln im Nord-Design. Die native C++23-Implementierung bietet hohe Performance, Custom-Shader und läuft dank WebAssembly auch direkt im Browser.",
+        "imgAlt": "Standard Hintergrund"
+      }
+    }
   },
   "Recommendation": {
     "projects": {
@@ -114,7 +187,7 @@
     "recommendation": {
       "printingSettings": {
         "title": "Beste Druckeinstellugen",
-        "description": "Skalierung 70 %, Ränder: Standart, Hintergrundgrafiken: ein"
+        "description": "Skalierung 62 %, Ränder: Standart, Hintergrundgrafiken: ein"
       },
       "printingNotice": {
         "title": "Empfehlung für den Druck",
@@ -174,11 +247,51 @@
         }
       },
     "experience": {
-      "title": "Berufserfahrung"
+      "title": "Berufserfahrung",
+      "items": {
+        "kfw": {
+          "name": "KfW Bankengruppe",
+          "imgAlt": "KfW Logo",
+          "description": "Betriebspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ IMT. Automatisierungen mit Ansible + Dokumentation für Ansible in Confluence der KfW.",
+          "badges": ["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]
+        },
+        "adk": {
+          "name": "Akademie der Künste (ADK)",
+          "imgAlt": "ADK Logo",
+          "description": "Synthesizerentwicklung",
+          "badges": ["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]
+        },
+        "tosa": {
+          "name": "Tosa Security & Service GmbH & Co KG",
+          "imgAlt": "Tosa Security & Service GmbH & Co KG Logo",
+          "description": "Bürotätigkeiten",
+          "badges": ["Trebbin", "Security", "Service", "Schülerpraktikum", "3 Tage"]
+        },
+        "pfennig": {
+          "name": "Pfennigpfeiffer",
+          "imgAlt": "Pfennigpfeiffer Logo",
+          "description": "Regale einräumen",
+          "badges": ["Berlin", "Einzelhandel", "Schülerpraktikum", "1 Tag"]
+        }
+      }
     },
     "skills": {
-      "title": "Fähigkeiten"
-
+      "title": "Fähigkeiten",
+      "badges": {
+        "development": "Entwicklung",
+        "configuration": "Konfiguration",
+        "operatingSystem": "Betriebssystem",
+        "frontend": "Frontend",
+        "automation": "Automatisierung",
+        "office": "Office",
+        "textEditor": "Text Editor",
+        "multifunctional": "Multifunktional",
+        "retail": "Einzelhandel",
+        "years": "{count} Jahre",
+        "months": "{count} Monate",
+        "year": "{count} Jahr",
+        "month": "{count} Monat"
+      }
     }
   },
   "Linkhub": {
@@ -262,5 +375,23 @@
         }
       }
     }
+  },
+  "Imprint": {
+    "title": "Impressum",
+    "tmg": {
+      "title": "Angaben gemäß § 5 TMG",
+      "germany": "Deutschland"
+    },
+    "contact": {
+      "title": "Kontakt"
+    },
+    "rstv": {
+      "title": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV"
+    }
+  },
+  "Contact": {
+    "description": "Lass uns in Kontakt treten! Buche ein Meeting oder sende mir eine Nachricht.",
+    "bookMeeting": "Meeting buchen",
+    "calDescription": "Plane ein Gespräch oder Meeting über Cal.com"
   }
 }

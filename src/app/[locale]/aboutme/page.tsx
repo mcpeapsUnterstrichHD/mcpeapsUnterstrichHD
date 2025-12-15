@@ -24,7 +24,7 @@ export default function AboutMePage() {
       <section className="text-center space-y-3">
         <p className="text-muted-foreground text-lg">
           <DecryptedText
-            text={`${t('Aboutme.hello')} 👋`}
+            text={`${t('Aboutme.hello')} 󱠢`}
             animate
             animateOn="view"
             speed={60}
@@ -104,9 +104,9 @@ export default function AboutMePage() {
             allow="clipboard-read; clipboard-write"
             title={t("Aboutme.myCurrentSong")}
           />
-            <p className="text-sm text-muted-foreground text-center">
+            {/*<p className="text-sm text-muted-foreground text-center">
               🎵 Check out my latest track!
-            </p>
+            </p>*/}
           </CardContent>
         </Card>
       </section>

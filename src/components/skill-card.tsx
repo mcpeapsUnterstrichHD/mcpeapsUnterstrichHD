@@ -54,7 +54,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
   }, [SkillImage, theme, systemTheme]); // Re-run effect when SkillImage or theme changes
 
   return (
-    <Card className="bg-transparent backdrop-blur-sm p-2">
+    <Card className="bg-card/50 backdrop-blur-sm p-2">
       <CardHeader className="pb-2">
         <div className="flex flex-row items-center justify-between gap-2">
           <Avatar>
@@ -66,7 +66,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
         <CardDescription>
           <div className="flex flex-wrap gap-1.5 mt-2">
             {SkillBadges.map((badge, index) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              // biome-ignore lint/suspicious/noArrayIndexKey: badge text may repeat
 <Badge key={index} variant="default">
                 {badge}
               </Badge>

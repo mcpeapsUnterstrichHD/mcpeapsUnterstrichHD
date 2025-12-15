@@ -34,9 +34,82 @@
     "notFound": "404 - Page Not Found"
   },
   "Projects": {
-  "pinned": "Pinned Projects",
-  "title": "Projects",
-  "all": "All Projects"
+    "pinned": "Pinned Projects",
+    "title": "Projects",
+    "all": "All Projects",
+    "projectCount": "{count} Projects",
+    "items": {
+      "portfolio": {
+        "title": "Portfolio",
+        "description": "The project for this portfolio.",
+        "imgAlt": "Portfolio Image"
+      },
+      "simplesql": {
+        "title": "simplesql",
+        "description": "This is a TUI/GUI program for executing and displaying SQL statements",
+        "imgAlt": "Simple SQL Runner"
+      },
+      "localServices": {
+        "title": "My Own Local Services",
+        "description": "Here is a collection of self-hosted services, like my search engine, that I use.",
+        "imgAlt": "SearxNG Logo"
+      },
+      "schulRepo": {
+        "title": "School Repository",
+        "description": "This is the repository with my assignments from my apprenticeship.",
+        "imgAlt": "Large Logo of OSZ IMT"
+      },
+      "klassenWebsite": {
+        "title": "Class Website",
+        "description": "This is the website of class ITA 12, which I attended at OSZ IMT.",
+        "imgAlt": "Large Logo of OSZ IMT"
+      },
+      "klassenApp": {
+        "title": "Class App",
+        "description": "This is the app of class ITA 12, which I attended at OSZ IMT.",
+        "imgAlt": "App Icon of Class App"
+      },
+      "simpleSqlRunner": {
+        "title": "Simple SQL Runner",
+        "description": "This is a GUI program for executing and displaying SQL statements",
+        "imgAlt": "Simple SQL Runner"
+      },
+      "dotfilesMacos": {
+        "title": "My Own macOS Dotfiles",
+        "description": "The repository for my macOS dotfiles.",
+        "imgAlt": "mcpeaps_HD Logo"
+      },
+      "nixConfig": {
+        "title": "My Own NixOS Configuration",
+        "description": "The repository for my NixOS configuration.",
+        "imgAlt": "mcpeaps_HD Logo"
+      },
+      "dotfilesLinux": {
+        "title": "My Own Linux Dotfiles",
+        "description": "The repository for my Linux dotfiles.",
+        "imgAlt": "mcpeaps_HD Logo"
+      },
+      "cbpsWebsite": {
+        "title": "comboom.sucht Website",
+        "description": "This is the website of my friend group.",
+        "imgAlt": "comboom.sucht Logo"
+      },
+      "cbpsApp": {
+        "title": "comboom.sucht App",
+        "description": "This is the app of my friend group.",
+        "imgAlt": "comboom.sucht Logo"
+      },
+      "uniRepo": {
+        "title": "University Repository",
+        "description": "This is the repository for my studies at TU Berlin.",
+        "imgAlt": "Long Logo of Technical University of Berlin"
+      },
+      "liveWallpaper": {
+        "title": "Native/Wasm Live Wallpaper",
+        "description": "A cross-platform live wallpaper with interactive particles in Nord design. The native C++23 implementation offers high performance, custom shaders, and runs directly in the browser thanks to WebAssembly.",
+        "imgAlt": "Default Background"
+      }
+    }
   },
   "Recommendation": {
     "projects": {
@@ -114,7 +187,7 @@
     "recommendation": {
       "printingSettings": {
         "title": "Best Printing Settings",
-        "description": "Scale: 70 %, Margins: Default, Background Graphics: On"
+        "description": "Scale: 62 %, Margins: Default, Background Graphics: On"
       },
       "printingNotice": {
         "title": "Printing Recommendation",
@@ -183,10 +256,51 @@
       }
     },
     "experience": {
-      "title": "Work Experience"
+      "title": "Work Experience",
+      "items": {
+        "kfw": {
+          "name": "KfW Banking Group",
+          "imgAlt": "KfW Logo",
+          "description": "Internship as IT Assistant as part of training at OSZ IMT. Automation with Ansible + documentation for Ansible in KfW's Confluence.",
+          "badges": ["Berlin", "IT", "Internship", "9 Weeks"]
+        },
+        "adk": {
+          "name": "Academy of Arts (ADK)",
+          "imgAlt": "ADK Logo",
+          "description": "Synthesizer development",
+          "badges": ["Berlin", "Music", "Student Internship", "3 Weeks"]
+        },
+        "tosa": {
+          "name": "Tosa Security & Service GmbH & Co KG",
+          "imgAlt": "Tosa Security & Service GmbH & Co KG Logo",
+          "description": "Office activities",
+          "badges": ["Trebbin", "Security", "Service", "Student Internship", "3 Days"]
+        },
+        "pfennig": {
+          "name": "Pfennigpfeiffer",
+          "imgAlt": "Pfennigpfeiffer Logo",
+          "description": "Stocking shelves",
+          "badges": ["Berlin", "Retail", "Student Internship", "1 Day"]
+        }
+      }
     },
     "skills": {
-      "title": "Skills"
+      "title": "Skills",
+      "badges": {
+        "development": "Development",
+        "configuration": "Configuration",
+        "operatingSystem": "Operating System",
+        "frontend": "Frontend",
+        "automation": "Automation",
+        "office": "Office",
+        "textEditor": "Text Editor",
+        "multifunctional": "Multifunctional",
+        "retail": "Retail",
+        "years": "{count} Years",
+        "months": "{count} Months",
+        "year": "{count} Year",
+        "month": "{count} Month"
+      }
     }
   },
   "Linkhub": {
@@ -270,5 +384,23 @@
         }
       }
     }
+  },
+  "Imprint": {
+    "title": "Legal Notice",
+    "tmg": {
+      "title": "Information according to § 5 TMG (German Telemedia Act)",
+      "germany": "Germany"
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "rstv": {
+      "title": "Responsible for content according to § 55 Abs. 2 RStV (German Interstate Broadcasting Treaty)"
+    }
+  },
+  "Contact": {
+    "description": "Let's connect! Book a meeting or send me a message.",
+    "bookMeeting": "Book a Meeting",
+    "calDescription": "Schedule a call or meeting via Cal.com"
   }
 }

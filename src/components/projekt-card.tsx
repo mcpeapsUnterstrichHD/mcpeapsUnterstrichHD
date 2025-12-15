@@ -34,7 +34,7 @@ const ProjektCard: React.FC<ProjectCardProps> = ({
   const isExternalLink = projektLink?.startsWith('http://') || projektLink?.startsWith('https://');
 
   const cardContent = (
-    <Card className="projectCard">
+    <Card className="bg-card/50 backdrop-blur-sm">
       <CardHeader>
         <CardTitle>{projektTitle}</CardTitle>
         <CardDescription>

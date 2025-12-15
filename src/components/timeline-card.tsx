@@ -27,7 +27,7 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
   children,
 }) => {
   return (
-    <Card className="bg-transparent backdrop-blur-sm">
+    <Card className="bg-card/50 backdrop-blur-sm">
       <CardHeader>
         <div className="flex flex-row items-center justify-between gap-1">
           <Avatar>
@@ -39,6 +39,7 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
         <CardDescription>
           <div className="flex flex-wrap gap-2">
             {TimeLineBadges.map((badge, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: badge text may repeat
               <Badge key={index} variant="default">
                 {badge}
               </Badge>
