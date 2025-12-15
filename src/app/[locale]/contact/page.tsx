@@ -29,7 +29,7 @@ export default function ContactPage() {
         <p className="text-muted-foreground text-lg max-w-xl mx-auto flex items-center justify-center gap-2">
           <MessageSquare className="w-5 h-5" />
           <DecryptedText
-            text="Let's connect! Book a meeting or send me a message."
+            text={t("Contact.description")}
             animate
             animateOn="view"
             speed={40}
@@ -43,18 +43,18 @@ export default function ContactPage() {
         <CardHeader className="text-center pb-4">
           <CardTitle className="flex items-center justify-center gap-2 text-2xl">
             <Calendar className="w-6 h-6 text-primary" />
-            Book a Meeting
+            {t("Contact.bookMeeting")}
           </CardTitle>
           <CardDescription className="flex items-center justify-center gap-2">
             <Mail className="w-4 h-4" />
-            Schedule a call or meeting via Cal.com
+            {t("Contact.calDescription")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <iframe
             src="https://cal.com/mcpeapsunterstrichhd"
             title="cal.com"
-            className="w-full h-[50rem] rounded-lg border border-border"
+            className="w-full h-200 rounded-lg border border-border"
           />
         </CardContent>
       </Card>

@@ -24,6 +24,9 @@ import {
   Calendar
 } from "lucide-react";
 
+
+
+
 export default function CVPage() {
   const t = useTranslations();
   const [printing, setPrinting] = useState(false);
@@ -111,53 +114,47 @@ export default function CVPage() {
   const experience: (TimeLineElementProps & { key: string })[] = [
     {
       key: "kfw",
-      TimeLineTitle: "KfW Bankengruppe",
-      TimeLineBadges: ["Berlin", "IT", "Betriebspraktikum", "9 Wochen"],
+      TimeLineTitle: t("Cv.experience.items.kfw.name"),
+      TimeLineBadges: t.raw("Cv.experience.items.kfw.badges") as string[],
       TimeLineImage: '/pictures/lebenslauf/firms/kfw_logo.svg',
-      TimeLineImageAlt: "KfW Logo",
+      TimeLineImageAlt: t("Cv.experience.items.kfw.imgAlt"),
       TimeLineImageFallback: "KfW",
       startdate: "27.11.2023",
       enddate: "02.02.2024",
-      children: (
-        <>
-          <p>Betribspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ IMT</p>
-          <br />
-          <p>Automatisierungen mit Ansible + Dokumentation für Ansible in Confluence der KfW</p>
-        </>
-      ),
+      children: t("Cv.experience.items.kfw.description"),
     },
     {
       key: "adk",
-      TimeLineTitle: "Akademie der Künste (ADK)",
-      TimeLineBadges: ["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"],
+      TimeLineTitle: t("Cv.experience.items.adk.name"),
+      TimeLineBadges: t.raw("Cv.experience.items.adk.badges") as string[],
       TimeLineImage: "/pictures/lebenslauf/firms/adkberlin_logo.jpg",
-      TimeLineImageAlt: "ADK Logo",
+      TimeLineImageAlt: t("Cv.experience.items.adk.imgAlt"),
       TimeLineImageFallback: "ADK",
       startdate: "02.2020",
       enddate: "02.2020",
-      children: <p>Syntezizerentwiklung</p>,
+      children: t("Cv.experience.items.adk.description"),
     },
     {
       key: "tosa",
-      TimeLineTitle: "Tosa Security & Service GmbH & Co KG",
-      TimeLineBadges: ["Trebin", "Security", "Service", "Schülerpraktikum", "3 Tage"],
+      TimeLineTitle: t("Cv.experience.items.tosa.name"),
+      TimeLineBadges: t.raw("Cv.experience.items.tosa.badges") as string[],
       TimeLineImage: "/pictures/lebenslauf/firms/ToSa_logo.jpg",
-      TimeLineImageAlt: "Tosa Security & Service GmbH & Co KG Logo",
+      TimeLineImageAlt: t("Cv.experience.items.tosa.imgAlt"),
       TimeLineImageFallback: "TSS",
       startdate: "01.2019",
       enddate: "01.2019",
-      children: <p>Bürotätigkeiten</p>,
+      children: t("Cv.experience.items.tosa.description"),
     },
     {
       key: "pfennig",
-      TimeLineTitle: "Pfennigpfeiffer",
-      TimeLineBadges: ["Berlin", "Einzelhandel", "Schülerpraktikum", "1 Tag"],
+      TimeLineTitle: t("Cv.experience.items.pfennig.name"),
+      TimeLineBadges: t.raw("Cv.experience.items.pfennig.badges") as string[],
       TimeLineImage: "/pictures/lebenslauf/firms/Pfennigpfeiffer_logo.jpg",
-      TimeLineImageAlt: "Pfennigpfeiffer Logo",
+      TimeLineImageAlt: t("Cv.experience.items.pfennig.imgAlt"),
       TimeLineImageFallback: "P",
       startdate: "06.2018",
       enddate: "06.2018",
-      children: <p>Regale einräumen</p>,
+      children: t("Cv.experience.items.pfennig.description"),
     },
   ].sort((a, b) => {
     const parse = (s?: string) => {
@@ -180,28 +177,28 @@ export default function CVPage() {
 
   // Skills data
   const skills: SkillCardProps[] = [
-    { SkillTitle: "Java", SkillBadges: ["Development", "3 Jahre"], SkillImage: "/pictures/lebenslauf/skills/java.svg", SkillImageAlt: "Java Logo", SkillImageFallback: "JDK", Skilllevel: 80 },
-    { SkillTitle: "Swift (SwiftUI)", SkillBadges: ["Development", "Frontend", "Apple", "2 Jahre"], SkillImage: "/pictures/lebenslauf/skills/swift.svg", SkillImageAlt: "Swift Logo", SkillImageFallback: "SUI", Skilllevel: 60 },
-    { SkillTitle: "Cisco IOS", SkillBadges: ["Konfiguration", "1 Jahre"], SkillImage: "/pictures/lebenslauf/skills/cisco.svg", SkillImageAlt: "Cisco Logo", SkillImageFallback: "IOS", Skilllevel: 50 },
-    { SkillTitle: "Microsoft 365", SkillBadges: ["Office", "365", "Microsoft", "5 Jahre"], SkillImage: "/pictures/lebenslauf/skills/ms365.svg", SkillImageAlt: "Microsoft 365 Logo", SkillImageFallback: "MS365", Skilllevel: 70 },
-    { SkillTitle: "Visual Studio Code", SkillBadges: ["Development", "Microsoft", "4 Jahre"], SkillImage: "/pictures/lebenslauf/skills/vscode.svg", SkillImageAlt: "Visual Studio Code Logo", SkillImageFallback: "VScode", Skilllevel: 60 },
-    { SkillTitle: "Apple Xcode 14+", SkillBadges: ["Development", "Apple", "2 Jahre"], SkillImage: "/pictures/lebenslauf/skills/xcode.svg", SkillImageAlt: "Apple Xcode Logo", SkillImageFallback: "XCODE", Skilllevel: 70 },
-    { SkillTitle: "Apple macOS", SkillBadges: ["Betriebsystem", "Apple", "2 Jahre"], SkillImage: printing ? "/pictures/lebenslauf/skills/macos.svg" : "/pictures/lebenslauf/skills/macos-dark.svg", SkillImageAlt: "macOS Logo", SkillImageFallback: "macOS", Skilllevel: 90 },
-    { SkillTitle: "Apple iOS", SkillBadges: ["Betriebsystem", "Apple", "3 Jahre"], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
-    { SkillTitle: "Apple iPadOS", SkillBadges: ["Betriebsystem", "Apple", "3 Jahre"], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
-    { SkillTitle: "Apple vissionOS", SkillBadges: ["Betriebsystem", "Apple", "1 Jahre"], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
-    { SkillTitle: "Linux", SkillBadges: ["Betriebsystem", "5 Jahre"], SkillImage: "/pictures/lebenslauf/skills/linux.svg", SkillImageAlt: "Linux Logo", SkillImageFallback: "L", Skilllevel: 60 },
-    { SkillTitle: "Windows", SkillBadges: ["Betriebsystem", "Microsoft", "3 Jahre"], SkillImage: "/pictures/lebenslauf/skills/windows.svg", SkillImageAlt: "Windows Logo", SkillImageFallback: "WIN", Skilllevel: 60 },
-    { SkillTitle: "Microsoft Teams", SkillBadges: ["Office", "Microsoft", "4 Jahre"], SkillImage: "/pictures/lebenslauf/skills/teams.svg", SkillImageAlt: "Microsoft Teams Logo", SkillImageFallback: "Teams", Skilllevel: 60 },
-    { SkillTitle: "Eclipse", SkillBadges: ["Development", "2 Jahre"], SkillImage: "/pictures/lebenslauf/skills/eclipse.svg", SkillImageAlt: "Eclipse Logo", SkillImageFallback: "JDK", Skilllevel: 60 },
-    { SkillTitle: "MySQL", SkillBadges: ["Development", "1 Jahre"], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 80 },
-    { SkillTitle: "MySQL Comunity Server", SkillBadges: ["Development", "1 Jahre"], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
-    { SkillTitle: "MySQLWorckbench", SkillBadges: ["Development", "1 Jahre"], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
-    { SkillTitle: "Ansible", SkillBadges: ["Automation", "2 Monate"], SkillImage: printing ? "/pictures/lebenslauf/skills/ansible.svg" : "/pictures/lebenslauf/skills/ansible-dark.svg", SkillImageAlt: "Ansible Logo", SkillImageFallback: "A", Skilllevel: 60 },
-    { SkillTitle: "Rust", SkillBadges: ["Development", "2 Monate"], SkillImage: printing ? "/pictures/lebenslauf/skills/rust.svg" : "/pictures/lebenslauf/skills/rust-dark.svg", SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
-    { SkillTitle: "C", SkillBadges: ["C98", "C11", "Development", "1 Jahr"], SkillImage: "/pictures/lebenslauf/skills/c.svg", SkillImageAlt: "C Logo", SkillImageFallback: "C", Skilllevel: 30 },
-    { SkillTitle: "C++", SkillBadges: ["C++23", "Development", "1 Monat"], SkillImage: "/pictures/lebenslauf/skills/cpp.svg", SkillImageAlt: "C++ Logo", SkillImageFallback: "C++", Skilllevel: 30 },
-    { SkillTitle: "Emacs", SkillBadges: ["Development", "Text Editor", "Multifunctional", "GNU", "1 Monat"], SkillImage: "/pictures/lebenslauf/skills/emacs.svg", SkillImageAlt: "GNU Emacs Logo", SkillImageFallback: "Emacs", Skilllevel: 30 },
+    { SkillTitle: "Java", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.years", { count: 3 })], SkillImage: "/pictures/lebenslauf/skills/java.svg", SkillImageAlt: "Java Logo", SkillImageFallback: "JDK", Skilllevel: 80 },
+    { SkillTitle: "Swift (SwiftUI)", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.frontend"), "Apple", t("Cv.skills.badges.years", { count: 2 })], SkillImage: "/pictures/lebenslauf/skills/swift.svg", SkillImageAlt: "Swift Logo", SkillImageFallback: "SUI", Skilllevel: 60 },
+    { SkillTitle: "Cisco IOS", SkillBadges: [t("Cv.skills.badges.configuration"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/cisco.svg", SkillImageAlt: "Cisco Logo", SkillImageFallback: "IOS", Skilllevel: 50 },
+    { SkillTitle: "Microsoft 365", SkillBadges: [t("Cv.skills.badges.office"), "365", "Microsoft", t("Cv.skills.badges.years", { count: 5 })], SkillImage: "/pictures/lebenslauf/skills/ms365.svg", SkillImageAlt: "Microsoft 365 Logo", SkillImageFallback: "MS365", Skilllevel: 70 },
+    { SkillTitle: "Visual Studio Code", SkillBadges: [t("Cv.skills.badges.development"), "Microsoft", t("Cv.skills.badges.years", { count: 4 })], SkillImage: "/pictures/lebenslauf/skills/vscode.svg", SkillImageAlt: "Visual Studio Code Logo", SkillImageFallback: "VScode", Skilllevel: 60 },
+    { SkillTitle: "Apple Xcode 14+", SkillBadges: [t("Cv.skills.badges.development"), "Apple", t("Cv.skills.badges.years", { count: 2 })], SkillImage: "/pictures/lebenslauf/skills/xcode.svg", SkillImageAlt: "Apple Xcode Logo", SkillImageFallback: "XCODE", Skilllevel: 70 },
+    { SkillTitle: "Apple macOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.years", { count: 2 })], SkillImage: printing ? "/pictures/lebenslauf/skills/macos.svg" : "/pictures/lebenslauf/skills/macos-dark.svg", SkillImageAlt: "macOS Logo", SkillImageFallback: "macOS", Skilllevel: 90 },
+    { SkillTitle: "Apple iOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.years", { count: 3 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
+    { SkillTitle: "Apple iPadOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.years", { count: 3 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
+    { SkillTitle: "Apple visionOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.year", { count: 1 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
+    { SkillTitle: "Linux", SkillBadges: [t("Cv.skills.badges.operatingSystem"), t("Cv.skills.badges.years", { count: 5 })], SkillImage: "/pictures/lebenslauf/skills/linux.svg", SkillImageAlt: "Linux Logo", SkillImageFallback: "L", Skilllevel: 60 },
+    { SkillTitle: "Windows", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Microsoft", t("Cv.skills.badges.years", { count: 3 })], SkillImage: "/pictures/lebenslauf/skills/windows.svg", SkillImageAlt: "Windows Logo", SkillImageFallback: "WIN", Skilllevel: 60 },
+    { SkillTitle: "Microsoft Teams", SkillBadges: [t("Cv.skills.badges.office"), "Microsoft", t("Cv.skills.badges.years", { count: 4 })], SkillImage: "/pictures/lebenslauf/skills/teams.svg", SkillImageAlt: "Microsoft Teams Logo", SkillImageFallback: "Teams", Skilllevel: 60 },
+    { SkillTitle: "Eclipse", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.years", { count: 2 })], SkillImage: "/pictures/lebenslauf/skills/eclipse.svg", SkillImageAlt: "Eclipse Logo", SkillImageFallback: "JDK", Skilllevel: 60 },
+    { SkillTitle: "MySQL", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 80 },
+    { SkillTitle: "MySQL Community Server", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
+    { SkillTitle: "MySQL Workbench", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
+    { SkillTitle: "Ansible", SkillBadges: [t("Cv.skills.badges.automation"), t("Cv.skills.badges.months", { count: 2 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ansible.svg" : "/pictures/lebenslauf/skills/ansible-dark.svg", SkillImageAlt: "Ansible Logo", SkillImageFallback: "A", Skilllevel: 60 },
+    { SkillTitle: "Rust", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.months", { count: 2 })], SkillImage: printing ? "/pictures/lebenslauf/skills/rust.svg" : "/pictures/lebenslauf/skills/rust-dark.svg", SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
+    { SkillTitle: "C", SkillBadges: ["C98", "C11", t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/c.svg", SkillImageAlt: "C Logo", SkillImageFallback: "C", Skilllevel: 30 },
+    { SkillTitle: "C++", SkillBadges: ["C++23", t("Cv.skills.badges.development"), t("Cv.skills.badges.month", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/cpp.svg", SkillImageAlt: "C++ Logo", SkillImageFallback: "C++", Skilllevel: 30 },
+    { SkillTitle: "Emacs", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.textEditor"), t("Cv.skills.badges.multifunctional"), "GNU", t("Cv.skills.badges.month", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/emacs.svg", SkillImageAlt: "GNU Emacs Logo", SkillImageFallback: "Emacs", Skilllevel: 30 },
   ].sort((skillA: SkillCardProps, skillB: SkillCardProps) =>
     skillA.SkillTitle.localeCompare(skillB.SkillTitle)
   );

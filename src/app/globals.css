@@ -605,7 +605,7 @@ html {
     width: 100% !important;
     margin: 0 !important;
     padding: 0.5rem !important;
-    zoom: 0.7;
+    zoom: 0.95;
   }
 
   /* Prevent page breaks inside cards - only for non-timeline cards */

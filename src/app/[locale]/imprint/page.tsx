@@ -3,8 +3,11 @@ import DecryptedText from "@/components/DecryptedText";
 import GradientText from "@/components/GradientText";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Scale, User } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function ImprintPage() {
+  const t = useTranslations();
+
   return (
     <div className="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
       {/* Hero Section */}
@@ -15,7 +18,7 @@ export default function ImprintPage() {
           animationSpeed={4}
         >
           <DecryptedText
-            text="Impressum"
+            text={t("Imprint.title")}
             animate
             animateOn="view"
             speed={80}
@@ -31,7 +34,7 @@ export default function ImprintPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <Scale className="w-5 h-5 text-primary" />
-              Angaben gemäß § 5 TMG
+              {t("Imprint.tmg.title")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -45,7 +48,7 @@ export default function ImprintPage() {
               <div>
                 Aps, Fabian<br />
                 Ludwig-Renn-Straße 33<br />
-                12679 Berlin, Deutschland
+                12679 Berlin, {t("Imprint.tmg.germany")}
               </div>
             </a>
           </CardContent>
@@ -56,7 +59,7 @@ export default function ImprintPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <User className="w-5 h-5 text-primary" />
-              Kontakt
+              {t("Imprint.contact.title")}
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
@@ -87,7 +90,7 @@ export default function ImprintPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl">
             <Scale className="w-5 h-5 text-primary" />
-            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+            {t("Imprint.rstv.title")}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -101,7 +104,7 @@ export default function ImprintPage() {
             <div>
               Aps, Fabian<br />
               Ludwig-Renn-Straße 33<br />
-              12679 Berlin, Deutschland
+              12679 Berlin, {t("Imprint.tmg.germany")}
             </div>
           </a>
         </CardContent>

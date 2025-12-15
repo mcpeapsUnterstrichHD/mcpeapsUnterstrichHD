@@ -15,7 +15,7 @@ export default function App() {
         {/* Animated Greeting */}
         <div className="text-muted-foreground text-lg md:text-xl lg:text-2xl animate-fade-in">
           <DecryptedText
-            text={`${t("Aboutme.hello")} 👋 ${t("Aboutme.iam")}`}
+            text={`${t("Aboutme.hello")} 󱠢 ${t("Aboutme.iam")}`}
             animate
             animateOn="view"
             speed={80}
