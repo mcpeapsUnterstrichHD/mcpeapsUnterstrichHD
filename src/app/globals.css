@@ -757,3 +757,100 @@ html {
     display: block !important;
   }
 }
+/* ==========================================
+   View Transition API Styles (React 19+)
+   ========================================== */
+
+/* Default page transition - blur fade */
+::view-transition-old(.root) {
+  animation: page-fade-out 0.4s ease-out forwards;
+}
+
+::view-transition-new(.root) {
+  animation: page-fade-in 0.4s ease-in forwards;
+}
+
+@keyframes page-fade-out {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    filter: blur(1rem);
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(1rem);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Alternative: Rotate transition */
+/* To use: add view-transition-name: rotate; to an element */
+::view-transition-old(.rotate) {
+  animation: rotate-out 0.4s ease-out forwards;
+}
+
+::view-transition-new(.rotate) {
+  animation: rotate-in 0.4s ease-in forwards;
+}
+
+@keyframes rotate-out {
+  from {
+    opacity: 1;
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  to {
+    opacity: 0;
+    transform: rotate3d(1, 1, 1, 15deg);
+  }
+}
+
+@keyframes rotate-in {
+  from {
+    opacity: 0;
+    transform: rotate3d(1, 1, 1, -15deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+}
+
+/* Slide transition - left to right */
+::view-transition-old(.slide) {
+  animation: slide-out 0.4s ease-out forwards;
+}
+
+::view-transition-new(.slide) {
+  animation: slide-in 0.4s ease-in forwards;
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -1,18 +1,20 @@
 "use client"
 import { NextIntlClientProvider, useTranslations } from 'next-intl';
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import Particles from "@/components/Particles";
 import { NavBar } from "@/components/Header";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Toaster, toast } from "sonner";
 import Footer from "@/components/Footer";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, ViewTransition } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '@/app/theme';
 import ClickSpark from './ClickSpark';
 import { nord6 } from '@/lib/NordColors';
+
+
 
 type Props = {
   children: React.ReactNode;
@@ -206,9 +208,11 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
           <Particles quantity={400} refresh={true} />
           <div className="relative z-10 flex flex-col min-h-svh flex-1 w-full">
               <NavBar />
+              <ViewTransition enter="slide" exit="root" update="root">
               <main className="flex-1 w-full max-w-full">
                 {children}
               </main>
+              </ViewTransition>
               <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
               <Footer />
           </div>
