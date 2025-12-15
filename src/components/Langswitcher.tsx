@@ -10,6 +10,7 @@ import {
 import { languages, type Language } from "@/lib/lang";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { ViewTransition } from "react";
 
 export function Langswitcher() {
   const router = useRouter();
@@ -24,6 +25,7 @@ export function Langswitcher() {
   };
 
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="print:hidden">
         <Button
@@ -50,5 +52,6 @@ export function Langswitcher() {
           ))}
       </DropdownMenuContent>
     </DropdownMenu>
+    </ViewTransition>
   );
 }

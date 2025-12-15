@@ -11,6 +11,22 @@ const nextConfig: NextConfig = {
     // This could be anything, using the latest git hash
     return process.env.GIT_HASH ?? `build-${Date.now()}`
   },
+  images: {
+    qualities: [25, 50, 75, 100],
+    formats: ['image/avif', 'image/webp'],
+    unoptimized: false,
+    minimumCacheTTL: 3600, // 1h
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+    {
+    protocol: "https",
+    hostname: "cdn.idx.dev",
+    pathname: "/**"
+    }
+    ],
+  },
   logging: process.env.NODE_ENV === "development" ? {
     fetches: {
       fullUrl: true,

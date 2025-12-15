@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import type React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { ViewTransition } from "react";
 
 interface TimeLineCardProps {
   TimeLineImage: string;
@@ -27,6 +28,7 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
   children,
 }) => {
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
     <Card className="bg-card/50 backdrop-blur-sm">
       <CardHeader>
         <div className="flex flex-row items-center justify-between gap-1">
@@ -38,9 +40,8 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
         </div>
         <CardDescription>
           <div className="flex flex-wrap gap-2">
-            {TimeLineBadges.map((badge, index) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: badge text may repeat
-              <Badge key={index} variant="default">
+            {TimeLineBadges.map((badge) => (
+              <Badge key={badge} variant="default">
                 {badge}
               </Badge>
             ))}
@@ -49,6 +50,7 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
       </CardHeader>
       <CardContent>{children}</CardContent>
     </Card>
+    </ViewTransition>
   );
 };
 

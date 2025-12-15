@@ -29,6 +29,8 @@ import UserAvatar, { type ImageProps } from "@/components/userAvatar";
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
 import DecryptedText from "./DecryptedText";
+import Image from "next/image";
+import { ViewTransition } from "react";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslations();
@@ -77,6 +79,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const imageFallback = "MAHD";
 
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
       <Sidebar collapsible="offcanvas" className="no-print" {... props}>
         <SidebarHeader>
           <SidebarGroup>
@@ -209,7 +212,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           media="(prefers-color-scheme: light)"
                           srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
                         />
-                        <img
+                        <Image
+                          preload={true}
                           height={32}
                           width={32}
                           alt="Open in IDX"
@@ -225,5 +229,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
+    </ViewTransition>
   );
 }
