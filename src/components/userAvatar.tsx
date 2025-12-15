@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ViewTransition } from "react";
 
 export interface ImageProps {
   src: string;
@@ -42,10 +43,12 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
   }
 
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
     <Avatar>
-      <AvatarImage src={image?.src} alt={image?.alt} />
+      <AvatarImage  src={image?.src} alt={image?.alt} />
       <AvatarFallback>{imageFallback}</AvatarFallback>
     </Avatar>
+    </ViewTransition>
   );
 };
 

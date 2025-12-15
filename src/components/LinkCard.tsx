@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import type React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ViewTransition } from "react";
 
 interface LinkCardProps {
   title: string;
@@ -29,6 +30,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
   description,
 }) => {
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
     <a href={url} target="_blank" rel="noreferrer" className="flex flex-col gap-2">
       <Card className="bg-card/50 backdrop-blur-sm">
         <CardHeader>
@@ -46,6 +48,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
         </CardContent>
       </Card>
     </a>
+    </ViewTransition>
   )
 }
 
@@ -58,6 +61,7 @@ const LinkCardWithFooter: React.FC<LinkCardWithFooterProps> = ({
   children,
 }) => {
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
     <a href={url} target="_blank" rel="noreferrer" className="flex flex-col gap-2">
       <Card className="bg-card/50 backdrop-blur-sm">
         <CardHeader>
@@ -78,6 +82,7 @@ const LinkCardWithFooter: React.FC<LinkCardWithFooterProps> = ({
         </CardFooter>
       </Card>
     </a>
+    </ViewTransition>
   )
 }
 

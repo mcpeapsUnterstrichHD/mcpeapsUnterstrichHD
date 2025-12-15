@@ -1,11 +1,14 @@
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
+import Image from 'next/image';
+import { ViewTransition } from 'react';
 
 export default function Footer() {
   const t = useTranslations();
   const currentYear = new Date().getFullYear();
 
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
     <div>
       <footer className="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw] print:hidden no-print">
         <div className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg">
@@ -53,7 +56,8 @@ export default function Footer() {
                     media="(prefers-color-scheme: light)"
                     srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
                   />
-                  <img
+                  <Image
+                    preload={true}
                     height={32}
                     width={32}
                     alt="Open in IDX"
@@ -66,5 +70,6 @@ export default function Footer() {
         </div>
       </footer>
     </div>
+    </ViewTransition>
   );
 }

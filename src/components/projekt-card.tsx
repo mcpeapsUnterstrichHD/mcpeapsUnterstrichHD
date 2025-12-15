@@ -10,6 +10,7 @@ import {
 import Image, { type StaticImageData } from "next/image";
 import {Link} from "@/i18n/navigation";
 import type React from "react";
+import { ViewTransition } from "react";
 
 export interface ProjectCardProps {
   projektImage: string | StaticImageData;
@@ -34,6 +35,7 @@ const ProjektCard: React.FC<ProjectCardProps> = ({
   const isExternalLink = projektLink?.startsWith('http://') || projektLink?.startsWith('https://');
 
   const cardContent = (
+    <ViewTransition enter="slide" exit="root" update="root">
     <Card className="bg-card/50 backdrop-blur-sm">
       <CardHeader>
         <CardTitle>{projektTitle}</CardTitle>
@@ -55,16 +57,20 @@ const ProjektCard: React.FC<ProjectCardProps> = ({
       <CardFooter className="flex grow flex-col items-center justify-center gap-4 p-4">
         <section className={`${projektImageBgColor}flex items-center justify-center rounded-sm`}
         >
+          <ViewTransition enter="slide" exit="root" update="root">
           <Image
+            preload={true}
             src={projektImage}
             alt={projektImageAlt}
             className={`${projektImageBgColor} rounded-sm object-contain`}
             width={480}
             height={480}
           />
+          </ViewTransition>
         </section>
       </CardFooter>
     </Card>
+    </ViewTransition>
   );
 
   // For external links, use a regular anchor tag

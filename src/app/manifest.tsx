@@ -19,17 +19,17 @@ export default function manifest(): MetadataRoute.Manifest {
     prefer_related_applications: false,
     icons: [
       {
-        src: "/favicon.ico",
+        src: "/pictures/favicon.ico",
         sizes: "any",
         type: "image/x-icon",
       },
       {
-        src: "/logo192.png",
+        src: "/pictures/logo192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "/logo512.png",
+        src: "/pictures/logo512.png",
         sizes: "512x512",
         type: "image/png",
         purpose: "any",
