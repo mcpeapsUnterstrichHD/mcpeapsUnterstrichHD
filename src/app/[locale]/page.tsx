@@ -4,7 +4,7 @@ import GradientText from "@/components/GradientText";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { ChevronDown, User, FolderOpen, FileText, Mail } from "lucide-react";
+import { User, FolderOpen, FileText, Mail } from "lucide-react";
 
 export default function App() {
   const t = useTranslations();
@@ -79,11 +79,6 @@ export default function App() {
           </Button>
         </div>
       </div>
-
-      {/**  Scroll Indicator
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-        <ChevronDown className="w-8 h-8" />
-      </div> */}
     </div>
   );
 }
