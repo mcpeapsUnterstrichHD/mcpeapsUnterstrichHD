@@ -48,7 +48,7 @@ export function Langswitcher() {
             <DropdownMenuItem
               key={lang.code}
               onClick={() => setLanguage(lang)}
-              className="cursor-pointer text-foreground text-center hover:bg-secondary-foreground/20 focus:bg-secondary-foreground/20"
+              className="cursor-pointer text-foreground text-center"
             >
               {lang.name} {"("}{lang.country}{")"}
             </DropdownMenuItem>
