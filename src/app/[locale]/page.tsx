@@ -4,7 +4,7 @@ import GradientText from "@/components/GradientText";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { ChevronDown, User, FolderOpen, FileText, Mail } from "lucide-react";
+import { User, FolderOpen, FileText, Mail } from "lucide-react";
 
 export default function App() {
   const t = useTranslations();
@@ -61,37 +61,24 @@ export default function App() {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-3 mt-8 justify-center">
-          <Button asChild variant="default" size="lg" className="group gap-2">
-            <Link href="/aboutme">
-              <User className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              {t("Recommendation.aboutme.action.label")}
-            </Link>
+          <Button render={<Link href="/aboutme" />} variant="default" size="lg" className="group gap-2">
+            <User className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            {t("Recommendation.aboutme.action.label")}
           </Button>
-          <Button asChild variant="secondary" size="lg" className="group gap-2">
-            <Link href="/projects">
-              <FolderOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              {t("Recommendation.projects.action.label")}
-            </Link>
+          <Button render={<Link href="/projects" />} variant="secondary" size="lg" className="group gap-2">
+            <FolderOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            {t("Recommendation.projects.action.label")}
           </Button>
-          <Button asChild variant="outline" size="lg" className="group gap-2">
-            <Link href="/cv">
-              <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              {t("Recommendation.cv.action.label")}
-            </Link>
+          <Button render={<Link href="/cv" />} variant="outline" size="lg" className="group gap-2">
+            <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            {t("Recommendation.cv.action.label")}
           </Button>
-          <Button asChild variant="ghost" size="lg" className="group gap-2">
-            <Link href="/contact">
-              <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              {t("Sites.contact")}
-            </Link>
+          <Button render={<Link href="/contact" />} variant="ghost" size="lg" className="group gap-2">
+            <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            {t("Sites.contact")}
           </Button>
         </div>
       </div>
-
-      {/**  Scroll Indicator
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-        <ChevronDown className="w-8 h-8" />
-      </div> */}
     </div>
   );
 }
