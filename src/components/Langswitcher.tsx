@@ -27,13 +27,16 @@ export function Langswitcher() {
   return (
     <ViewTransition enter="slide" exit="root" update="root">
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className="print:hidden">
-        <Button
-          className="rounded-full text-foreground bg-transparent backdrop-blur-sm text-center font-bold print:hidden"
-          variant="outline"
-        >
-          {currentLanguage?.name || "Language"}
-        </Button>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            className="rounded-full text-foreground bg-transparent backdrop-blur-sm text-center font-bold print:hidden min-w-44"
+            variant="outline"
+          />
+        }
+        className="print:hidden"
+      >
+        {currentLanguage?.name || "Language"} {"("}{currentLanguage?.country || "country"}{")"}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className="bg-transparent text-foreground  backdrop-blur-sm print:hidden"
@@ -47,7 +50,7 @@ export function Langswitcher() {
               onClick={() => setLanguage(lang)}
               className="cursor-pointer text-foreground text-center hover:bg-secondary-foreground/20 focus:bg-secondary-foreground/20"
             >
-              {lang.name}
+              {lang.name} {"("}{lang.country}{")"}
             </DropdownMenuItem>
           ))}
       </DropdownMenuContent>

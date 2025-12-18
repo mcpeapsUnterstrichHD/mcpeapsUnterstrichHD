@@ -80,30 +80,28 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <ViewTransition enter="slide" exit="root" update="root">
-      <Sidebar collapsible="offcanvas" className="no-print" {... props}>
+      <Sidebar collapsible="offExamples" className="no-print" {... props}>
         <SidebarHeader>
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
                   <HoverCard>
-                    <HoverCardTrigger asChild>
-                      <SidebarMenuButton asChild>
-                        <Link href="/" className="p-6">
-                          <UserAvatar
-                            name={name}
-                            githubUserName={githubUserName}
-                            image={image}
-                            imageFallback={imageFallback}
-                          />
-                          <DecryptedText
+                    <HoverCardTrigger>
+                      <SidebarMenuButton render={<Link href="/" className="p-6" />}>
+                        <UserAvatar
+                          name={name}
+                          githubUserName={githubUserName}
+                          image={image}
+                          imageFallback={imageFallback}
+                        />
+                        <DecryptedText
                           text={name}
                           speed={100}
                           maxIterations={50}
                           animateOn="both"
                           animate
                         />
-                        </Link>
                       </SidebarMenuButton>
                     </HoverCardTrigger>
                     <HoverCardContent className=" w-80">
@@ -134,27 +132,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <Link href="/linkhub">
-                      <span>{t("Sites.linkhub")}</span>
-                    </Link>
+                  <SidebarMenuButton render={<Link href="/linkhub" />}>
+                    <span>{t("Sites.linkhub")}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <Collapsible defaultOpen className="group/collapsible">
                   <SidebarMenuItem>
-                    <CollapsibleTrigger asChild>
-                      <SidebarMenuButton>
-                        <span>{t("Sites.aboutme")}</span>
-                      </SidebarMenuButton>
+                    <CollapsibleTrigger render={<SidebarMenuButton />}>
+                      <span>{t("Sites.aboutme")}</span>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
                       <SidebarMenuSub>
                         {items.map((item) => (
                           <SidebarMenuSubItem key={item.title}>
-                            <SidebarMenuButton asChild>
-                              <Link href={item.url}>
-                                <span>{item.title}</span>
-                              </Link>
+                            <SidebarMenuButton render={<Link href={item.url} />}>
+                              <span>{item.title}</span>
                             </SidebarMenuButton>
                           </SidebarMenuSubItem>
                         ))}
@@ -174,53 +166,46 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
-                  <SidebarMenuButton asChild>
-                  <Link
-                    href="/linkhub"
-                    >
-                      <span>{t("Sites.linkhub")}</span>
-                    </Link>
+                  <SidebarMenuButton render={<Link href="/linkhub" />}>
+                    <span>{t("Sites.linkhub")}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
-                  <SidebarMenuButton asChild>
-                    <Link href="/">
-                      <span>{t("Aboutme.name")}</span>
-                    </Link>
+                  <SidebarMenuButton render={<Link href="/" />}>
+                    <span>{t("Aboutme.name")}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
-                  <SidebarMenuButton asChild>
-                    <Link href="/imprint">
-                      <span>{t("Sites.impressum")}</span>
-                    </Link>
+                  <SidebarMenuButton render={<Link href="/imprint" />}>
+                    <span>{t("Sites.impressum")}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
-                  <SidebarMenuButton asChild>
-                    <a
-                      href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2FmcpeapsUnterstrichHD%2FmcpeapsUnterstrichHD"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <picture>
-                        <source
-                          media="(prefers-color-scheme: dark)"
-                          srcSet="https://cdn.idx.dev/btn/open_light_32.svg"
-                        />
-                        <source
-                          media="(prefers-color-scheme: light)"
-                          srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
-                        />
-                        <Image
-                          preload={true}
-                          height={32}
-                          width={32}
-                          alt="Open in IDX"
-                          src="https://cdn.idx.dev/btn/open_purple_32.svg"
-                        />
-                      </picture>
-                    </a>
+                  <SidebarMenuButton
+                    render={
+                      <Link
+                        href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2FmcpeapsUnterstrichHD%2FmcpeapsUnterstrichHD"
+                        target="_blank"
+                        rel="noreferrer"
+                      />
+                    }
+                  >
+                    <picture>
+                      <source
+                        media="(prefers-color-scheme: dark)"
+                        srcSet="https://cdn.idx.dev/btn/open_light_32.svg"
+                      />
+                      <source
+                        media="(prefers-color-scheme: light)"
+                        srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
+                      />
+                      <Image
+                        height={32}
+                        width={32}
+                        alt="Open in IDX"
+                        src="https://cdn.idx.dev/btn/open_purple_32.svg"
+                      />
+                    </picture>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>

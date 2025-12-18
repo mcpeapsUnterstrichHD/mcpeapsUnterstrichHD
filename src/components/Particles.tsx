@@ -1,7 +1,7 @@
 "use client";
 
 import { useMousePosition } from "@/lib/mouse";
-import { useEffect, useRef } from "react";
+import { ViewTransition, useEffect, useRef } from "react";
 
 interface ParticlesProps {
   className?: string;
@@ -254,6 +254,7 @@ export default function Particles({
   };
 
   return (
+    <ViewTransition enter="slide" exit="root" update="root">
     <div
       className={
         "fixed inset-0 z-0 no-print animate-fade-in pointer-events-none " +
@@ -264,5 +265,6 @@ export default function Particles({
     >
       <canvas ref={canvasRef} />
     </div>
+    </ViewTransition>
   );
 }

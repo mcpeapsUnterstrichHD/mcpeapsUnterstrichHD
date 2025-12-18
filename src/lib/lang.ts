@@ -18,20 +18,24 @@ export const RoutingArray: string[] = [
 export type Language = {
   code: LanguagesNUM;
   name: string;
+  country: string;
 };
 
 export const languages: Language[] = [
   {
     code: LanguagesNUM.de_DE,
-    name: "Deutsch (Deutschland)"
+    name: "Deutsch",
+    country: "Deutschland"
   },
   {
     code: LanguagesNUM.en_US,
-    name: "English (US)"
+    name: "English",
+    country: "USA"
   },
   /*{
     code: LanguagesNUM.en_GB,
-    name: "English (UK)"
+    name: "English",
+    country: "UK"
   },*/
 ];
 
