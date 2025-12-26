@@ -2,10 +2,10 @@
 import PinedProjects, { getPinnedProjects } from "@/components/pinedProjects";
 import ProjectCard, { type ProjectCardProps } from "@/components/projekt-card";
 import MasonryGrid, { Variants } from "@/components/MasonryGrid";
-import DecryptedText from "@/components/DecryptedText";
-import GradientText from "@/components/GradientText";
 import { useTranslations } from "next-intl";
 import { FolderOpen, Grid3X3 } from "lucide-react";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 
 export default function ProjectsPage() {
   const t = useTranslations();
@@ -125,19 +125,19 @@ export default function ProjectsPage() {
     <div className="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
       {/* Hero Section */}
       <section className="text-center space-y-2">
-        <GradientText
+        <AuroraText
           className="text-4xl md:text-5xl lg:text-6xl font-bold"
           colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
-          animationSpeed={4}
+          speed={3}
         >
-          <DecryptedText
-            text={t("Projects.title")}
-            animate
-            animateOn="view"
-            speed={80}
-            maxIterations={40}
-          />
-        </GradientText>
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Projects.title")}</TypingAnimation>
+        </AuroraText>
         <p className="text-muted-foreground flex items-center justify-center gap-2">
           <FolderOpen className="w-5 h-5" />
           {t("Projects.projectCount", { count: totalProjectCount })}
@@ -153,13 +153,13 @@ export default function ProjectsPage() {
       <section className="space-y-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <Grid3X3 className="w-6 h-6 text-primary" />
-          <DecryptedText
-            text={t("Projects.all")}
-            animate
-            animateOn="view"
-            speed={60}
-            maxIterations={30}
-          />
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{`${t("Projects.all")}:`}</TypingAnimation>
         </h2>
         <MasonryGrid variant={Variants.projects}>
           {completedProjects.map((project: ProjectCardProps) => (

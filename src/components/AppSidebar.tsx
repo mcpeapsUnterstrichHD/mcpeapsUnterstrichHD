@@ -28,9 +28,9 @@ import {
 import UserAvatar, { type ImageProps } from "@/components/userAvatar";
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
-import DecryptedText from "./DecryptedText";
 import Image from "next/image";
 import { ViewTransition } from "react";
+import { TypingAnimation } from "./ui/typing-animation";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslations();
@@ -95,13 +95,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           image={image}
                           imageFallback={imageFallback}
                         />
-                        <DecryptedText
-                          text={name}
-                          speed={100}
-                          maxIterations={50}
-                          animateOn="both"
-                          animate
-                        />
+                        <TypingAnimation
+                          showCursor
+                          blinkCursor
+                          loop
+                          startOnView
+                          cursorStyle="underscore"
+                        >{name}</TypingAnimation>
                       </SidebarMenuButton>
                     </HoverCardTrigger>
                     <HoverCardContent className=" w-80">
