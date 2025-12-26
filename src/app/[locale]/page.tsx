@@ -16,6 +16,9 @@ export default function App() {
         {/* Animated Greeting */}
         <div className="text-muted-foreground text-lg md:text-xl lg:text-2xl animate-fade-in">
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -41,6 +44,9 @@ export default function App() {
           speed={3}
         >
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -52,6 +58,9 @@ export default function App() {
         {/* Animated Title/Tagline */}
         <div className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mt-2">
         <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop

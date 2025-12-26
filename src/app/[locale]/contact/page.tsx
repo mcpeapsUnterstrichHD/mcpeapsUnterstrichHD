@@ -93,6 +93,9 @@ export default function ContactPage() {
           speed={3}
         >
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -104,6 +107,9 @@ export default function ContactPage() {
         <p className="text-muted-foreground text-lg max-w-xl mx-auto flex items-center justify-center gap-2">
           <MessageSquare className="w-5 h-5" />
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop

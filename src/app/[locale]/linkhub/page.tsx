@@ -19,6 +19,9 @@ export default function LinkhubPage() {
           speed={3}
         >
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -36,6 +39,9 @@ export default function LinkhubPage() {
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <Share2 className="w-6 h-6 text-primary" />
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -101,6 +107,9 @@ export default function LinkhubPage() {
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <Globe className="w-6 h-6 text-primary" />
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -138,6 +147,9 @@ export default function LinkhubPage() {
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <MoreHorizontal className="w-6 h-6 text-primary" />
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
