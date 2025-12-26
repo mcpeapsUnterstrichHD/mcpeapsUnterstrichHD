@@ -24,6 +24,9 @@ export default function AboutMePage() {
       <section className="text-center space-y-3">
         <p className="text-muted-foreground text-lg">
         <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -38,6 +41,9 @@ export default function AboutMePage() {
           speed={3}
         >
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -48,6 +54,9 @@ export default function AboutMePage() {
 
         <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">
         <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop

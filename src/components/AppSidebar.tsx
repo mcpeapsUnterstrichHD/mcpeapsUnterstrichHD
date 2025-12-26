@@ -96,6 +96,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           imageFallback={imageFallback}
                         />
                         <TypingAnimation
+                          typeSpeed={145}
+                          pauseDelay={1450}
+                          deleteSpeed={75}
                           showCursor
                           blinkCursor
                           loop
@@ -113,9 +116,31 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             image={image}
                             imageFallback={imageFallback}
                           />
-                          <span className="text-lg p-2">{name}</span>
+                          <TypingAnimation
+                            typeSpeed={145}
+                            pauseDelay={1450}
+                            deleteSpeed={75}
+                            showCursor
+                            blinkCursor
+                            loop
+                            startOnView
+                            cursorStyle="underscore"
+                            as="span"
+                            className="text-lg p-2"
+                          >{name}</TypingAnimation>
                         </p>
-                        <p className="text-lg p-2">{t("Aboutme.title")}</p>
+                        <TypingAnimation
+                            typeSpeed={145}
+                            pauseDelay={1450}
+                            deleteSpeed={75}
+                            showCursor
+                            blinkCursor
+                            loop
+                            startOnView
+                            cursorStyle="underscore"
+                            as="p"
+                            className="text-lg p-2"
+                          >{t("Aboutme.title")}</TypingAnimation>
                         <p className="p-2">
                           {t("Aboutme.description", { age: age })}
                         </p>

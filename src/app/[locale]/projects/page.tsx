@@ -43,7 +43,7 @@ export default function ProjectsPage() {
       projektImageAlt: t("Projects.items.simpleSqlRunner.imgAlt"),
       projektImageBgColor: "bg-black",
       projektTitle: t("Projects.items.simpleSqlRunner.title"),
-      projektBadges: ["FOSS", "SCHOOL", "JAVA", "SQL"],
+      projektBadges: ["F            OSS", "SCHOOL", "JAVA", "SQL"],
       projektLink: "https://github.com/comboomPunkTsucht/Simple-SQL-Runner",
       children: t("Projects.items.simpleSqlRunner.description"),
     },
@@ -131,6 +131,9 @@ export default function ProjectsPage() {
           speed={3}
         >
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop
@@ -154,6 +157,9 @@ export default function ProjectsPage() {
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <Grid3X3 className="w-6 h-6 text-primary" />
           <TypingAnimation
+            typeSpeed={145}
+            pauseDelay={1450}
+            deleteSpeed={75}
             showCursor
             blinkCursor
             loop

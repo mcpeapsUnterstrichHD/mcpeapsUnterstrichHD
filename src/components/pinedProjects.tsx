@@ -47,12 +47,15 @@ export default function PinedProjects() {
   return (
     <div className="w-full px-4">
       <TypingAnimation
-            showCursor
-            blinkCursor
-            loop
-            startOnView
-            cursorStyle="underscore"
-          >{`${t('Projects.pinned')}:`}</TypingAnimation>
+        typeSpeed={145}
+        pauseDelay={1450}
+        deleteSpeed={75}
+        showCursor
+        blinkCursor
+        loop
+        startOnView
+        cursorStyle="underscore"
+      >{`${t('Projects.pinned')}:`}</TypingAnimation>
       <MasonryGrid variant={Variants.pinned_projects}>
         {pinnedProjects.map((project) => (
           <ProjectCard
