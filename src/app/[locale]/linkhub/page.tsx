@@ -1,10 +1,10 @@
 "use client";
 import LinkCard, { LinkCardWithFooter } from "@/components/LinkCard";
 import MasonryGrid, { Variants } from "@/components/MasonryGrid";
-import DecryptedText from "@/components/DecryptedText";
-import GradientText from "@/components/GradientText";
 import { useTranslations } from "next-intl";
 import { Share2, Globe, MoreHorizontal } from "lucide-react";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 
 export default function LinkhubPage() {
   const t = useTranslations();
@@ -13,19 +13,19 @@ export default function LinkhubPage() {
     <div className="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
       {/* Hero Section */}
       <section className="text-center space-y-3">
-        <GradientText
+        <AuroraText
           className="text-4xl md:text-5xl lg:text-6xl font-bold"
           colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
-          animationSpeed={4}
+          speed={3}
         >
-          <DecryptedText
-            text={t("Aboutme.name")}
-            animate
-            animateOn="view"
-            speed={80}
-            maxIterations={40}
-          />
-        </GradientText>
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Aboutme.name")}</TypingAnimation>
+        </AuroraText>
         <p className="text-muted-foreground text-lg">
           {t("Linkhub.description")}
         </p>
@@ -35,13 +35,13 @@ export default function LinkhubPage() {
       <section className="space-y-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <Share2 className="w-6 h-6 text-primary" />
-          <DecryptedText
-            text={t("Linkhub.sections.socialMedia.title")}
-            animate
-            animateOn="view"
-            speed={60}
-            maxIterations={30}
-          />
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Linkhub.sections.socialMedia.title")}</TypingAnimation>
         </h2>
         <MasonryGrid variant={Variants.links}>
           <LinkCard
@@ -100,13 +100,13 @@ export default function LinkhubPage() {
       <section className="space-y-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <Globe className="w-6 h-6 text-primary" />
-          <DecryptedText
-            text={t("Linkhub.sections.websites.title")}
-            animate
-            animateOn="view"
-            speed={60}
-            maxIterations={30}
-          />
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Linkhub.sections.websites.title")}</TypingAnimation>
         </h2>
         <MasonryGrid variant={Variants.links}>
           <LinkCard
@@ -137,13 +137,13 @@ export default function LinkhubPage() {
       <section className="space-y-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
           <MoreHorizontal className="w-6 h-6 text-primary" />
-          <DecryptedText
-            text={t("Linkhub.sections.other.title")}
-            animate
-            animateOn="view"
-            speed={60}
-            maxIterations={30}
-          />
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Linkhub.sections.other.title")}</TypingAnimation>
         </h2>
         <MasonryGrid variant={Variants.links}>
           <LinkCard

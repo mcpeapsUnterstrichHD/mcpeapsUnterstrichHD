@@ -1,10 +1,11 @@
 "use client"
-import DecryptedText from "@/components/DecryptedText";
-import GradientText from "@/components/GradientText";
+
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { User, FolderOpen, FileText, Mail } from "lucide-react";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { TypingAnimation } from "@/components/ui/typing-animation"
 
 export default function App() {
   const t = useTranslations();
@@ -14,17 +15,19 @@ export default function App() {
       <div className="flex flex-col items-center gap-4 text-center">
         {/* Animated Greeting */}
         <div className="text-muted-foreground text-lg md:text-xl lg:text-2xl animate-fade-in">
-          <DecryptedText
-            text={`${t("Aboutme.hello")} 󱠢 ${t("Aboutme.iam")}`}
-            animate
-            animateOn="view"
-            speed={80}
-            maxIterations={30}
-          />
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >
+            {`${t("Aboutme.hello")} 󱠢 ${t("Aboutme.iam")}`}
+          </TypingAnimation>
         </div>
 
         {/* Animated Name with Gradient */}
-        <GradientText
+        <AuroraText
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold rounded-sm"
           colors={[
             '#C16069',
@@ -35,28 +38,26 @@ export default function App() {
             '#A2BF8A',
             '#C16069'
           ]}
-          animationSpeed={3}
+          speed={3}
         >
-          <DecryptedText
-            text={t("Aboutme.name")}
-            animate
-            animateOn="both"
-            speed={100}
-            maxIterations={50}
-          />
-        </GradientText>
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Aboutme.name")}</TypingAnimation>
+        </AuroraText>
 
         {/* Animated Title/Tagline */}
         <div className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mt-2">
-          <DecryptedText
-            text={t("Aboutme.title")}
-            animate
-            animateOn="view"
-            speed={80}
-            maxIterations={40}
-            sequential
-            revealDirection="center"
-          />
+        <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Aboutme.title")}</TypingAnimation>
         </div>
 
         {/* CTA Buttons */}

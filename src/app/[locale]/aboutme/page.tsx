@@ -1,10 +1,10 @@
 "use client"
 import PinedProjects from "@/components/pinedProjects";
-import DecryptedText from "@/components/DecryptedText";
-import GradientText from "@/components/GradientText";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import { Music, Disc3 } from "lucide-react";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 
 export default function AboutMePage() {
   const t = useTranslations();
@@ -23,37 +23,37 @@ export default function AboutMePage() {
       {/* Hero Section */}
       <section className="text-center space-y-3">
         <p className="text-muted-foreground text-lg">
-          <DecryptedText
-            text={`${t('Aboutme.hello')} 󱠢`}
-            animate
-            animateOn="view"
-            speed={60}
-            maxIterations={20}
-          />
+        <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{`${t('Aboutme.hello')} 󱠢`}</TypingAnimation>
         </p>
 
-        <GradientText
+        <AuroraText
           className="text-4xl md:text-5xl lg:text-6xl font-bold"
           colors={['#C16069', '#A2BF8A', '#C16069', '#A2BF8A']}
-          animationSpeed={4}
+          speed={3}
         >
-          <DecryptedText
-            text={`${t('Aboutme.iam')} ${t('Aboutme.name')}`}
-            animate
-            animateOn="view"
-            speed={80}
-            maxIterations={40}
-          />
-        </GradientText>
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{`${t('Aboutme.iam')} ${t('Aboutme.name')}`}</TypingAnimation>
+        </AuroraText>
 
         <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">
-          <DecryptedText
-            text={t('Aboutme.title')}
-            animate
-            animateOn="view"
-            speed={60}
-            maxIterations={30}
-          />
+        <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t('Aboutme.title')}</TypingAnimation>
         </h2>
       </section>
 

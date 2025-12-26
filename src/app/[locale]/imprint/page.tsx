@@ -1,7 +1,7 @@
 "use client";
-import DecryptedText from "@/components/DecryptedText";
-import GradientText from "@/components/GradientText";
+import { AuroraText } from "@/components/ui/aurora-text";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 import { Mail, Phone, MapPin, Scale, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -12,19 +12,19 @@ export default function ImprintPage() {
     <div className="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
       {/* Hero Section */}
       <section className="text-center">
-        <GradientText
+        <AuroraText
           className="text-4xl md:text-5xl lg:text-6xl font-bold"
           colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
-          animationSpeed={4}
+          speed={3}
         >
-          <DecryptedText
-            text={t("Imprint.title")}
-            animate
-            animateOn="view"
-            speed={80}
-            maxIterations={40}
-          />
-        </GradientText>
+          <TypingAnimation
+            showCursor
+            blinkCursor
+            loop
+            startOnView
+            cursorStyle="underscore"
+          >{t("Imprint.title")}</TypingAnimation>
+        </AuroraText>
       </section>
 
       {/* Legal Info Cards */}
