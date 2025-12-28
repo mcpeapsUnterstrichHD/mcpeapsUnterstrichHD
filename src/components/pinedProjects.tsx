@@ -9,7 +9,7 @@ import { TypingAnimation } from "./ui/typing-animation";
 export function getPinnedProjects(t: ReturnType<typeof useTranslations>): ProjectCardProps[] {
   return [
     {
-      projektImage: "/pictures/projects/my_Portfolio.jpeg",
+      projektImage: "/pictures/projects/my_Portfolio.png",
       projektImageAlt: t("Projects.items.portfolio.imgAlt"),
       projektImageBgColor: "",
       projektTitle: t("Projects.items.portfolio.title"),
@@ -20,7 +20,7 @@ export function getPinnedProjects(t: ReturnType<typeof useTranslations>): Projec
     {
       projektImage: "/pictures/projects/ssqlr.png",
       projektImageAlt: t("Projects.items.simplesql.imgAlt"),
-      projektImageBgColor: "bg-black",
+      projektImageBgColor: "",
       projektTitle: t("Projects.items.simplesql.title"),
       projektBadges: ["FOSS", "RUST", "SQL"],
       projektLink: "https://github.com/comboomPunkTsucht/simplesql",

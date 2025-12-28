@@ -41,9 +41,9 @@ export default function ProjectsPage() {
     {
       projektImage: "/pictures/projects/ssqlr.png",
       projektImageAlt: t("Projects.items.simpleSqlRunner.imgAlt"),
-      projektImageBgColor: "bg-black",
+      projektImageBgColor: "",
       projektTitle: t("Projects.items.simpleSqlRunner.title"),
-      projektBadges: ["F            OSS", "SCHOOL", "JAVA", "SQL"],
+      projektBadges: ["FOSS", "SCHOOL", "JAVA", "SQL"],
       projektLink: "https://github.com/comboomPunkTsucht/Simple-SQL-Runner",
       children: t("Projects.items.simpleSqlRunner.description"),
     },
