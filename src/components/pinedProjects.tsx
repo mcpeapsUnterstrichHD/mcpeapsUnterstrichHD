@@ -3,6 +3,7 @@ import ProjectCard, {type ProjectCardProps} from "@/components/projekt-card";
 import MasonryGrid, {Variants} from "@/components/MasonryGrid";
 import { useTranslations } from "next-intl";
 import { TypingAnimation } from "./ui/typing-animation";
+import { Pin } from "lucide-react";
 
 // Export function to get pinned projects - can be used in other components
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46,16 +47,19 @@ export default function PinedProjects() {
 
   return (
     <div className="w-full px-4">
-      <TypingAnimation
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      >{`${t('Projects.pinned')}:`}</TypingAnimation>
+      <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
+        <Pin className="w-6 h-6 text-primary" />
+        <TypingAnimation
+          typeSpeed={145}
+          pauseDelay={1450}
+          deleteSpeed={75}
+          showCursor
+          blinkCursor
+          loop
+          startOnView
+          cursorStyle="underscore"
+        >{`${t('Projects.pinned')}:`}</TypingAnimation>
+      </h2>
       <MasonryGrid variant={Variants.pinned_projects}>
         {pinnedProjects.map((project) => (
           <ProjectCard

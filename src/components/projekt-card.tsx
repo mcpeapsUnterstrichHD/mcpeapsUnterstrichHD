@@ -7,14 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image, { type StaticImageData } from "next/image";
 import {Link} from "@/i18n/navigation";
 import type React from "react";
 import { ViewTransition } from "react";
 import { Lens } from "@/components/ui/lens";
 
 export interface ProjectCardProps {
-  projektImage: string | StaticImageData;
+  projektImage: string;
   projektImageAlt: string;
   projektImageBgColor: string;
   projektTitle: string;
@@ -65,13 +64,12 @@ const ProjektCard: React.FC<ProjectCardProps> = ({
               isStatic={false}
               ariaLabel="Zoom Area"
             >
-              <Image
-                preload={true}
+              <img
                 src={projektImage}
                 alt={projektImageAlt}
-                className={`${projektImageBgColor ? projektImageBgColor : "bg-background"} p-8 rounded-sm object-contain`}
-                width={480}
-                height={480}
+                className={`${projektImageBgColor ? projektImageBgColor : "bg-background"} p-4 rounded-sm object-contain`}
+                //width={480}
+                //height={480}
               />
           </Lens>
           </ViewTransition>
