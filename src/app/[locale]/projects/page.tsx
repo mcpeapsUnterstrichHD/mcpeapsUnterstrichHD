@@ -41,9 +41,9 @@ export default function ProjectsPage() {
     {
       projektImage: "/pictures/projects/ssqlr.png",
       projektImageAlt: t("Projects.items.simpleSqlRunner.imgAlt"),
-      projektImageBgColor: "bg-black",
+      projektImageBgColor: "",
       projektTitle: t("Projects.items.simpleSqlRunner.title"),
-      projektBadges: ["F            OSS", "SCHOOL", "JAVA", "SQL"],
+      projektBadges: ["FOSS", "SCHOOL", "JAVA", "SQL"],
       projektLink: "https://github.com/comboomPunkTsucht/Simple-SQL-Runner",
       children: t("Projects.items.simpleSqlRunner.description"),
     },
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
       children: t("Projects.items.cbpsApp.description"),
     },
     {
-      projektImage: "/pictures/projects/LogoDerTUBerlin2020.svg",
+      projektImage: "/pictures/projects/LogoDerTUBerlin2020.png",
       projektImageAlt: t("Projects.items.uniRepo.imgAlt"),
       projektImageBgColor: "bg-white",
       projektTitle: t("Projects.items.uniRepo.title"),

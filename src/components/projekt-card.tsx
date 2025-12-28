@@ -7,13 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image, { type StaticImageData } from "next/image";
 import {Link} from "@/i18n/navigation";
 import type React from "react";
 import { ViewTransition } from "react";
+import { Lens } from "@/components/ui/lens";
 
 export interface ProjectCardProps {
-  projektImage: string | StaticImageData;
+  projektImage: string;
   projektImageAlt: string;
   projektImageBgColor: string;
   projektTitle: string;
@@ -55,17 +55,23 @@ const ProjektCard: React.FC<ProjectCardProps> = ({
         </section>
       </CardContent>
       <CardFooter className="flex grow flex-col items-center justify-center gap-4 p-4">
-        <section className={`${projektImageBgColor}flex items-center justify-center rounded-sm`}
+        <section className={`flex items-center justify-center rounded-sm`}
         >
           <ViewTransition enter="slide" exit="root" update="root">
-          <Image
-            preload={true}
-            src={projektImage}
-            alt={projektImageAlt}
-            className={`${projektImageBgColor} rounded-sm object-contain`}
-            width={480}
-            height={480}
-          />
+            <Lens
+              zoomFactor={2}
+              lensSize={150}
+              isStatic={false}
+              ariaLabel="Zoom Area"
+            >
+              <img
+                src={projektImage}
+                alt={projektImageAlt}
+                className={`${projektImageBgColor ? projektImageBgColor : "bg-background"} p-4 rounded-sm object-contain`}
+                //width={480}
+                //height={480}
+              />
+          </Lens>
           </ViewTransition>
         </section>
       </CardFooter>
