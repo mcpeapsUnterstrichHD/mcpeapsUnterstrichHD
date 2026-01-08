@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Timeline from "@mui/lab/Timeline";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import {
@@ -21,10 +21,17 @@ import {
   Mail,
   Phone,
   MapPin,
-  Calendar
+  Calendar,
+  FileText
 } from "lucide-react";
 import { contactDetails } from "@/lib/contact";
 import Link from "next/link";
+import {
+  educationItems,
+  experienceItems,
+  skillItems,
+  sortByEndDate
+} from "@/lib/cv-data";
 
 
 
@@ -35,175 +42,75 @@ export default function CVPage() {
   const intervalId = useRef<NodeJS.Timeout | null>(null);
   const intervalId2 = useRef<NodeJS.Timeout | null>(null);
 
-  // Education data
-  const education: (TimeLineElementProps & { key: string })[] = [
-    {
-      key: "tuberlin",
-      TimeLineTitle: t("Cv.education.items.tuberlin.name"),
-      TimeLineBadges: [
-        t("Cv.about.address.berlin"),
-        t("Cv.education.badges.studies"),
-        t("Cv.education.badges.batchlor_of_science"),
-        t("Cv.education.badges.it"),
-        t("Cv.education.badges.semester", { semester: 6 }),
-      ],
-      TimeLineImage: '/pictures/lebenslauf/schools/LogoDerTUBerlin2020.svg',
-      TimeLineImageAlt: t("Cv.education.items.tuberlin.imgAlt"),
-      TimeLineImageFallback: "TUBerlin",
-      startdate: "10.2025",
-      enddate: "09.2028",
-      children: t("Cv.education.items.tuberlin.description"),
-    },
-    {
-      key: "looking",
-      TimeLineTitle: t("Cv.education.items.lookingForApprenticeship.name"),
-      TimeLineBadges: [],
-      TimeLineImage: "",
-      TimeLineImageAlt: t("Cv.education.items.lookingForApprenticeship.imgAlt"),
-      TimeLineImageFallback: "/",
-      startdate: "10.2025",
-      enddate: "09.2028",
-      children: t("Cv.education.items.lookingForApprenticeship.name"),
-    },
-    {
-      key: "oszimt",
-      TimeLineTitle: t("Cv.education.items.oszimt.name"),
-      TimeLineBadges: [
-        t("Cv.about.address.berlin"),
-        t("Cv.education.badges.ausbildung"),
-        t("Cv.education.badges.fachabitur"),
-        t("Cv.education.badges.it"),
-        t("Cv.education.badges.years", { years: 3 }),
-      ],
-      TimeLineImage: '/pictures/lebenslauf/schools/oszimt_logo.png',
-      TimeLineImageAlt: t("Cv.education.items.oszimt.imgAlt"),
-      TimeLineImageFallback: "OSZimt",
-      startdate: "08.2021",
-      enddate: "07.2024",
-      children: t("Cv.education.items.oszimt.description"),
-    },
-    {
-      key: "Cvl",
-      TimeLineTitle: t("Cv.education.items.cvl.name"),
-      TimeLineBadges: [t("Cv.about.address.berlin"), t("Cv.education.badges.msaMitOG")],
-      TimeLineImage: "/pictures/lebenslauf/schools/cvl_logo.png",
-      TimeLineImageAlt: t("Cv.education.items.cvl.imgAlt"),
-      TimeLineImageFallback: "CvL",
-      startdate: "08.2010",
-      enddate: "07.2021",
-      children: t("Cv.education.items.cvl.description"),
-    },
-  ].sort((a, b) => {
-    const parse = (s?: string) => {
-      if (!s) return new Date(0);
-      const parts = s.split(".").map((p) => Number.parseInt(p, 10));
-      if (parts.length === 3) {
-        const [day, month, year] = parts;
-        return new Date(year, month - 1, day);
-      }
-      if (parts.length === 2) {
-        const [month, year] = parts;
-        return new Date(year, month - 1, 1);
-      }
-      return new Date(0);
-    };
-    const da = parse(a.enddate ?? a.startdate);
-    const db = parse(b.enddate ?? b.startdate);
-    return db.getTime() - da.getTime();
-  });
+  // Transform education data with translations
+  const education = useMemo(() => {
+    const items: (TimeLineElementProps & { key: string })[] = educationItems.map((edu) => ({
+      key: edu.key,
+      TimeLineTitle: t(edu.nameKey),
+      TimeLineBadges: edu.badgeKeys.map((bk) => {
+        // Handle dynamic badges with parameters
+        if (bk.includes("semester")) return t(bk, { semester: 6 });
+        if (bk.includes("years")) return t(bk, { years: 3 });
+        return t(bk);
+      }),
+      TimeLineImage: edu.image,
+      TimeLineImageAlt: t(edu.imgAltKey),
+      TimeLineImageFallback: edu.imageFallback,
+      startdate: edu.startdate,
+      enddate: edu.enddate,
+      children: t(edu.descriptionKey),
+    }));
+    return sortByEndDate(items);
+  }, [t]);
 
-  // Experience data
-  const experience: (TimeLineElementProps & { key: string })[] = [
-    {
-      key: "kfw",
-      TimeLineTitle: t("Cv.experience.items.kfw.name"),
-      TimeLineBadges: t.raw("Cv.experience.items.kfw.badges") as string[],
-      TimeLineImage: '/pictures/lebenslauf/firms/kfw_logo.svg',
-      TimeLineImageAlt: t("Cv.experience.items.kfw.imgAlt"),
-      TimeLineImageFallback: "KfW",
-      startdate: "27.11.2023",
-      enddate: "02.02.2024",
-      children: t("Cv.experience.items.kfw.description"),
-    },
-    {
-      key: "adk",
-      TimeLineTitle: t("Cv.experience.items.adk.name"),
-      TimeLineBadges: t.raw("Cv.experience.items.adk.badges") as string[],
-      TimeLineImage: "/pictures/lebenslauf/firms/adkberlin_logo.jpg",
-      TimeLineImageAlt: t("Cv.experience.items.adk.imgAlt"),
-      TimeLineImageFallback: "ADK",
-      startdate: "02.2020",
-      enddate: "02.2020",
-      children: t("Cv.experience.items.adk.description"),
-    },
-    {
-      key: "tosa",
-      TimeLineTitle: t("Cv.experience.items.tosa.name"),
-      TimeLineBadges: t.raw("Cv.experience.items.tosa.badges") as string[],
-      TimeLineImage: "/pictures/lebenslauf/firms/ToSa_logo.jpg",
-      TimeLineImageAlt: t("Cv.experience.items.tosa.imgAlt"),
-      TimeLineImageFallback: "TSS",
-      startdate: "01.2019",
-      enddate: "01.2019",
-      children: t("Cv.experience.items.tosa.description"),
-    },
-    {
-      key: "pfennig",
-      TimeLineTitle: t("Cv.experience.items.pfennig.name"),
-      TimeLineBadges: t.raw("Cv.experience.items.pfennig.badges") as string[],
-      TimeLineImage: "/pictures/lebenslauf/firms/Pfennigpfeiffer_logo.jpg",
-      TimeLineImageAlt: t("Cv.experience.items.pfennig.imgAlt"),
-      TimeLineImageFallback: "P",
-      startdate: "06.2018",
-      enddate: "06.2018",
-      children: t("Cv.experience.items.pfennig.description"),
-    },
-  ].sort((a, b) => {
-    const parse = (s?: string) => {
-      if (!s) return new Date(0);
-      const parts = s.split(".").map((p) => Number.parseInt(p, 10));
-      if (parts.length === 3) {
-        const [day, month, year] = parts;
-        return new Date(year, month - 1, day);
-      }
-      if (parts.length === 2) {
-        const [month, year] = parts;
-        return new Date(year, month - 1, 1);
-      }
-      return new Date(0);
-    };
-    const da = parse(a.enddate ?? a.startdate);
-    const db = parse(b.enddate ?? b.startdate);
-    return db.getTime() - da.getTime();
-  });
+  // Transform experience data with translations
+  const experience = useMemo(() => {
+    const items: (TimeLineElementProps & { key: string })[] = experienceItems.map((exp) => ({
+      key: exp.key,
+      TimeLineTitle: t(exp.nameKey),
+      TimeLineBadges: t.raw(exp.badgesKey) as string[],
+      TimeLineImage: exp.image,
+      TimeLineImageAlt: t(exp.imgAltKey),
+      TimeLineImageFallback: exp.imageFallback,
+      startdate: exp.startdate,
+      enddate: exp.enddate,
+      children: t(exp.descriptionKey),
+    }));
+    return sortByEndDate(items);
+  }, [t]);
 
-  // Skills data
-  const skills: SkillCardProps[] = [
-    { SkillTitle: "Java", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.years", { count: 3 })], SkillImage: "/pictures/lebenslauf/skills/java.svg", SkillImageAlt: "Java Logo", SkillImageFallback: "JDK", Skilllevel: 80 },
-    { SkillTitle: "Swift (SwiftUI)", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.frontend"), "Apple", t("Cv.skills.badges.years", { count: 2 })], SkillImage: "/pictures/lebenslauf/skills/swift.svg", SkillImageAlt: "Swift Logo", SkillImageFallback: "SUI", Skilllevel: 60 },
-    { SkillTitle: "Cisco IOS", SkillBadges: [t("Cv.skills.badges.configuration"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/cisco.svg", SkillImageAlt: "Cisco Logo", SkillImageFallback: "IOS", Skilllevel: 50 },
-    { SkillTitle: "Microsoft 365", SkillBadges: [t("Cv.skills.badges.office"), "365", "Microsoft", t("Cv.skills.badges.years", { count: 5 })], SkillImage: "/pictures/lebenslauf/skills/ms365.svg", SkillImageAlt: "Microsoft 365 Logo", SkillImageFallback: "MS365", Skilllevel: 70 },
-    { SkillTitle: "Visual Studio Code", SkillBadges: [t("Cv.skills.badges.development"), "Microsoft", t("Cv.skills.badges.years", { count: 4 })], SkillImage: "/pictures/lebenslauf/skills/vscode.svg", SkillImageAlt: "Visual Studio Code Logo", SkillImageFallback: "VScode", Skilllevel: 60 },
-    { SkillTitle: "Apple Xcode 14+", SkillBadges: [t("Cv.skills.badges.development"), "Apple", t("Cv.skills.badges.years", { count: 2 })], SkillImage: "/pictures/lebenslauf/skills/xcode.svg", SkillImageAlt: "Apple Xcode Logo", SkillImageFallback: "XCODE", Skilllevel: 70 },
-    { SkillTitle: "Apple macOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.years", { count: 2 })], SkillImage: printing ? "/pictures/lebenslauf/skills/macos.svg" : "/pictures/lebenslauf/skills/macos-dark.svg", SkillImageAlt: "macOS Logo", SkillImageFallback: "macOS", Skilllevel: 90 },
-    { SkillTitle: "Apple iOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.years", { count: 3 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
-    { SkillTitle: "Apple iPadOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.years", { count: 3 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
-    { SkillTitle: "Apple visionOS", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Apple", t("Cv.skills.badges.year", { count: 1 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ios.svg" : "/pictures/lebenslauf/skills/ios-dark.svg", SkillImageAlt: "iOS Logo", SkillImageFallback: "iOS", Skilllevel: 80 },
-    { SkillTitle: "Linux", SkillBadges: [t("Cv.skills.badges.operatingSystem"), t("Cv.skills.badges.years", { count: 5 })], SkillImage: "/pictures/lebenslauf/skills/linux.svg", SkillImageAlt: "Linux Logo", SkillImageFallback: "L", Skilllevel: 60 },
-    { SkillTitle: "Windows", SkillBadges: [t("Cv.skills.badges.operatingSystem"), "Microsoft", t("Cv.skills.badges.years", { count: 3 })], SkillImage: "/pictures/lebenslauf/skills/windows.svg", SkillImageAlt: "Windows Logo", SkillImageFallback: "WIN", Skilllevel: 60 },
-    { SkillTitle: "Microsoft Teams", SkillBadges: [t("Cv.skills.badges.office"), "Microsoft", t("Cv.skills.badges.years", { count: 4 })], SkillImage: "/pictures/lebenslauf/skills/teams.svg", SkillImageAlt: "Microsoft Teams Logo", SkillImageFallback: "Teams", Skilllevel: 60 },
-    { SkillTitle: "Eclipse", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.years", { count: 2 })], SkillImage: "/pictures/lebenslauf/skills/eclipse.svg", SkillImageAlt: "Eclipse Logo", SkillImageFallback: "JDK", Skilllevel: 60 },
-    { SkillTitle: "MySQL", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 80 },
-    { SkillTitle: "MySQL Community Server", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
-    { SkillTitle: "MySQL Workbench", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/mysql.svg", SkillImageAlt: "MySQL Logo", SkillImageFallback: "SQL", Skilllevel: 60 },
-    { SkillTitle: "Ansible", SkillBadges: [t("Cv.skills.badges.automation"), t("Cv.skills.badges.months", { count: 2 })], SkillImage: printing ? "/pictures/lebenslauf/skills/ansible.svg" : "/pictures/lebenslauf/skills/ansible-dark.svg", SkillImageAlt: "Ansible Logo", SkillImageFallback: "A", Skilllevel: 60 },
-    { SkillTitle: "Rust", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.months", { count: 2 })], SkillImage: printing ? "/pictures/lebenslauf/skills/rust.svg" : "/pictures/lebenslauf/skills/rust-dark.svg", SkillImageAlt: "Rust Logo", SkillImageFallback: "R", Skilllevel: 30 },
-    { SkillTitle: "C", SkillBadges: ["C98", "C11", t("Cv.skills.badges.development"), t("Cv.skills.badges.year", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/c.svg", SkillImageAlt: "C Logo", SkillImageFallback: "C", Skilllevel: 30 },
-    { SkillTitle: "C++", SkillBadges: ["C++23", t("Cv.skills.badges.development"), t("Cv.skills.badges.month", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/cpp.svg", SkillImageAlt: "C++ Logo", SkillImageFallback: "C++", Skilllevel: 30 },
-    { SkillTitle: "Emacs", SkillBadges: [t("Cv.skills.badges.development"), t("Cv.skills.badges.textEditor"), t("Cv.skills.badges.multifunctional"), "GNU", t("Cv.skills.badges.month", { count: 1 })], SkillImage: "/pictures/lebenslauf/skills/emacs.svg", SkillImageAlt: "GNU Emacs Logo", SkillImageFallback: "Emacs", Skilllevel: 30 },
-  ].sort((skillA: SkillCardProps, skillB: SkillCardProps) =>
-    skillA.SkillTitle.localeCompare(skillB.SkillTitle)
-  );
+  // Transform skills data with translations
+  const skills = useMemo(() => {
+    const items: SkillCardProps[] = skillItems.map((skill) => {
+      // Build badges from translation keys and static badges
+      const badges: string[] = [
+        ...skill.badgeKeys.map((bk) => t(bk)),
+        ...(skill.staticBadges || []),
+      ];
+
+      // Add experience duration badge if available
+      if (skill.experience) {
+        const expBadge = t(`Cv.skills.badges.${skill.experience.type}`, { count: skill.experience.count });
+        badges.push(expBadge);
+      }
+
+      // Determine image based on printing state
+      let image = skill.image;
+      if (skill.darkImage && !printing) {
+        image = skill.darkImage;
+      }
+
+      return {
+        SkillTitle: skill.title,
+        SkillBadges: badges,
+        SkillImage: image,
+        SkillImageAlt: skill.imageAlt,
+        SkillImageFallback: skill.imageFallback,
+        Skilllevel: skill.level,
+      };
+    });
+    return items.sort((a, b) => a.SkillTitle.localeCompare(b.SkillTitle));
+  }, [t, printing]);
 
   // Toast notifications for printing tips
   useEffect(() => {
@@ -278,15 +185,15 @@ export default function CVPage() {
             </div>
             {/* Address */}
             <a
-              href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland"
+              href={contactDetails.address.link}
               target="_blank"
               rel="noreferrer"
               className="flex items-start gap-2 hover:text-primary transition-colors"
             >
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
               <div>
-                Ludwig-Renn-Straße 33<br />
-                12679 {t("Cv.about.address.berlin")}, {t("Cv.about.address.germany")}
+                {contactDetails.address.street}<br />
+                {contactDetails.address.zip} {t(contactDetails.address.city)}, {t(contactDetails.address.country)}
               </div>
             </a>
           </div>
@@ -418,15 +325,27 @@ export default function CVPage() {
         </MasonryGrid>
       </section>
 
-      {/* Print Button */}
-      <Button
-        onClick={handlePrint}
-        className="fixed bottom-4 right-4 z-50 print:hidden gap-2 shadow-lg"
-        size="lg"
-      >
-        <Download className="w-4 h-4" />
-        PDF
-      </Button>
+      {/* Action Buttons */}
+      <div className="fixed bottom-4 right-4 z-50 print:hidden flex gap-2">
+        <Link href="/cv/ats">
+          <Button
+            variant="outline"
+            className="gap-2 shadow-lg"
+            size="lg"
+          >
+            <FileText className="w-4 h-4" />
+            ATS
+          </Button>
+        </Link>
+        <Button
+          onClick={handlePrint}
+          className="gap-2 shadow-lg"
+          size="lg"
+        >
+          <Download className="w-4 h-4" />
+          PDF
+        </Button>
+      </div>
     </div>
   );
 }

@@ -70,20 +70,20 @@ export default function Footer() {
         <div className="border border-border/50 bg-card/50 backdrop-blur-sm rounded-sm">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
             {/* Main Footer Content */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
               {/* Brand Section */}
-              <div className="col-span-2 md:col-span-1">
+              <div className="sm:col-span-2 md:col-span-1">
                 <Link
                   href="/"
                   className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
                 >
                   {t("Aboutme.name")}
                 </Link>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed hyphens-auto">
                   {t("Aboutme.title")}
                 </p>
                 {/* Social Icons */}
-                <div className="mt-4 flex items-center gap-3">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   {socialLinks.map((social) => (
                     <Link
                       key={social.label}

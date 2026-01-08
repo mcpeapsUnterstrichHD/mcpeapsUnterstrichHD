@@ -186,18 +186,18 @@
   "Cv": {
     "recommendation": {
       "printingSettings": {
-        "title": "Best Printing Settings",
-        "description": "Scale: 62 %, Margins: Default, Background Graphics: On"
+        "title": "Optimal Print Settings",
+        "description": "Scale: 62%, Margins: Default, Background Graphics: On"
       },
       "printingNotice": {
-        "title": "Printing Recommendation",
-        "description": "Use the PDF button in the bottom right to print the resume optimally."
+        "title": "Print Recommendation",
+        "description": "Use the PDF button in the bottom right corner for optimal printing."
       }
     },
     "about": {
-      "title": "I am an IT Assistant.",
+      "title": "Certified IT Assistant | Software Developer",
       "email": "Email",
-      "telnum": "Phone Number",
+      "telnum": "Phone",
       "address": {
         "germany": "Germany",
         "berlin": "Berlin"
@@ -207,99 +207,99 @@
     "education": {
       "title": "Education",
       "badges": {
-        "ausbildung": "Apprenticeship",
-        "fachabitur": "Advanced Technical College Certificate",
-        "batchlor_of_science":  "Batchlor's Degree of Science",
-        "studies": "Studies",
-        "it": "IT",
+        "ausbildung": "Vocational Training",
+        "fachabitur": "Technical Diploma",
+        "batchlor_of_science": "Bachelor of Science",
+        "studies": "University Studies",
+        "it": "Computer Science",
         "years": "{years} Years",
-        "semester":  "{semester} Semester",
-        "msaMitOG": "MSA(OG)"
+        "semester": "{semester} Semesters",
+        "msaMitOG": "Secondary School Certificate (College Prep)"
       },
       "items": {
         "tuberlin": {
           "name": "Technical University of Berlin",
-          "imgAlt": "Technical University of Berlin long Logo",
-          "description": "Bachelor's Degree of Science in Informatics (incomplete)",
+          "imgAlt": "Technical University of Berlin Logo",
+          "description": "Bachelor of Science in Computer Science – Focus areas: Algorithms, Data Structures, Software Engineering",
           "badges": [
             "Berlin",
-            "Bachelor's Degree of Science",
-            "IT",
-            "3 Years"
+            "Bachelor of Science",
+            "Computer Science",
+            "6 Semesters"
           ]
         },
         "lookingForApprenticeship": {
-          "name": "Looking for Apprenticeship",
-          "imgAlt": "Searching"
+          "name": "Seeking Apprenticeship",
+          "imgAlt": "Actively Seeking Position"
         },
         "oszimt": {
-          "name": "Center for Information & Medical Technology (OSZ IMT)",
-          "imgAlt": "Center for Information & Medical Technology (OSZ IMT) Logo",
-          "description": "Dual qualification training as IT Assistant with Advanced Technical College Certificate",
+          "name": "Berlin Technical College for IT and Medical Technology",
+          "imgAlt": "OSZ IMT Berlin Logo",
+          "description": "Dual qualification: Certified IT Assistant with Technical Diploma. Core competencies: Software Development (Java), Network Administration (Cisco), Database Management (MySQL)",
           "badges": [
             "Berlin",
-            "Apprenticeship",
-            "Advanced Technical College Certificate",
-            "IT",
+            "Vocational Training",
+            "Technical Diploma",
+            "Computer Science",
             "3 Years"
           ]
         },
         "cvl": {
-          "name": "Carl-von-Linné-School",
+          "name": "Carl-von-Linné-School Berlin",
           "imgAlt": "Carl-von-Linné-School Logo",
-          "description": "General School Primary + Secondary Level I",
+          "description": "Secondary School Certificate with qualification for advanced secondary education",
           "badges": [
             "Berlin",
-            "MSA(OG)"
+            "Secondary School Certificate (College Prep)"
           ]
         }
       }
     },
     "experience": {
-      "title": "Work Experience",
+      "title": "Professional Experience",
       "items": {
         "kfw": {
-          "name": "KfW Banking Group",
-          "imgAlt": "KfW Logo",
-          "description": "Internship as IT Assistant as part of training at OSZ IMT. Automation with Ansible + documentation for Ansible in KfW's Confluence.",
-          "badges": ["Berlin", "IT", "Internship", "9 Weeks"]
+          "name": "KfW Banking Group – IT Department",
+          "imgAlt": "KfW Banking Group Logo",
+          "description": "• Developed and implemented automation scripts using Ansible to streamline IT operations\n• Created technical documentation in Confluence for knowledge management\n• Collaborated with IT team to improve infrastructure processes",
+          "badges": ["Berlin", "IT Internship", "Ansible", "Automation", "Confluence", "9 Weeks"]
         },
         "adk": {
-          "name": "Academy of Arts (ADK)",
-          "imgAlt": "ADK Logo",
-          "description": "Synthesizer development",
-          "badges": ["Berlin", "Music", "Student Internship", "3 Weeks"]
+          "name": "Academy of Arts Berlin",
+          "imgAlt": "Academy of Arts Logo",
+          "description": "• Assisted in digital synthesizer software development\n• Gained experience at the intersection of technology and creative arts",
+          "badges": ["Berlin", "Software Development", "Music Technology", "Student Internship", "3 Weeks"]
         },
         "tosa": {
           "name": "Tosa Security & Service GmbH & Co KG",
-          "imgAlt": "Tosa Security & Service GmbH & Co KG Logo",
-          "description": "Office activities",
-          "badges": ["Trebbin", "Security", "Service", "Student Internship", "3 Days"]
+          "imgAlt": "Tosa Security & Service Logo",
+          "description": "• Handled administrative tasks and office organization\n• Developed understanding of business operations",
+          "badges": ["Trebbin", "Office Administration", "Student Internship", "3 Days"]
         },
         "pfennig": {
-          "name": "Pfennigpfeiffer",
+          "name": "Pfennigpfeiffer Retail GmbH",
           "imgAlt": "Pfennigpfeiffer Logo",
-          "description": "Stocking shelves",
+          "description": "• First work experience in retail: Product merchandising and customer service",
           "badges": ["Berlin", "Retail", "Student Internship", "1 Day"]
         }
       }
     },
     "skills": {
-      "title": "Skills",
+      "title": "Technical Skills",
       "badges": {
-        "development": "Development",
-        "configuration": "Configuration",
+        "development": "Software Development",
+        "configuration": "System Configuration",
         "operatingSystem": "Operating System",
-        "frontend": "Frontend",
-        "automation": "Automation",
-        "office": "Office",
+        "frontend": "Frontend Development",
+        "automation": "IT Automation",
+        "office": "Office Applications",
         "textEditor": "Text Editor",
         "multifunctional": "Multifunctional",
         "retail": "Retail",
-        "years": "{count} Years",
-        "months": "{count} Months",
-        "year": "{count} Year",
-        "month": "{count} Month"
+        "years": "{count} Years Experience",
+        "months": "{count} Months Experience",
+        "year": "{count} Year Experience",
+        "month": "{count} Month Experience"
       }
     }
   },

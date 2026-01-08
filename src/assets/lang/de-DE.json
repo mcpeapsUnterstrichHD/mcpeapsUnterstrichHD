@@ -186,8 +186,8 @@
   "Cv": {
     "recommendation": {
       "printingSettings": {
-        "title": "Beste Druckeinstellugen",
-        "description": "Skalierung 62 %, Ränder: Standart, Hintergrundgrafiken: ein"
+        "title": "Beste Druckeinstellungen",
+        "description": "Skalierung 62 %, Ränder: Standard, Hintergrundgrafiken: ein"
       },
       "printingNotice": {
         "title": "Empfehlung für den Druck",
@@ -195,9 +195,9 @@
       }
     },
     "about": {
-      "title": "Ich bin ein IT-Assistent.",
+      "title": "Staatlich geprüfter IT-Assistent | Softwareentwickler",
       "email": "E-Mail",
-      "telnum": "Telefonnummer",
+      "telnum": "Telefon",
       "address": {
         "germany": "Deutschland",
         "berlin": "Berlin"
@@ -205,92 +205,92 @@
       "birthday": "Geburtsdatum"
     },
     "education": {
-      "title": "Ausbildung",
+      "title": "Bildungsweg",
       "badges": {
-        "ausbildung": "Ausbildung",
-        "fachabitur": "Fachabitur",
-        "batchlor_of_science":  "Batchlor of Science",
+        "ausbildung": "Berufsausbildung",
+        "fachabitur": "Fachhochschulreife",
+        "batchlor_of_science": "Bachelor of Science",
         "studies": "Studium",
-        "it": "IT",
-        "semester":  "{semester} Semester",
+        "it": "Informatik",
+        "semester": "{semester} Semester",
         "years": "{years} Jahre",
-        "msaMitOG": "MSA(OG)"
+        "msaMitOG": "MSA mit Berechtigung zum Übergang in die gymnasiale Oberstufe"
       },
       "items": {
         "tuberlin": {
           "name": "Technische Universität Berlin",
-          "imgAlt": "Technische Universität Berlin Lang Logo",
-          "description": "Bachelor of Science in Informatik (incomplete)",
+          "imgAlt": "Logo der Technischen Universität Berlin",
+          "description": "Informatik-Studium (B.Sc.) – Schwerpunkte: Algorithmen, Datenstrukturen, Softwareentwicklung",
           "badges": [
             "Berlin",
             "Bachelor of Science",
-            "IT",
-            "3 Years"
+            "Informatik",
+            "6 Semester"
           ]
         },
         "lookingForApprenticeship": {
-          "name": "Ausbuildungsplatzsuchend",
-          "imgAlt": "Suchend"
+          "name": "Ausbildungsplatzsuchend",
+          "imgAlt": "Aktiv auf Stellensuche"
         },
         "oszimt": {
-          "name": "OSZ Informations- & Medizientechnik (OSZ IMT)",
-          "imgAlt": "Oberstufenzentrum Informations- & Medizientechnik (OSZ IMT) Logo",
-          "description": "Ausbildung mit Dopelqualifikatin zum IT-Assistenten mit Fachabitur",
-          "badges": ["Berlin", "Ausbildung","Fachabitur","IT","3 Jahre"]
-          },
+          "name": "OSZ Informations- und Medizintechnik Berlin",
+          "imgAlt": "Logo des OSZ IMT Berlin",
+          "description": "Doppelqualifizierende Berufsausbildung: Staatlich geprüfter IT-Assistent mit Fachhochschulreife. Schwerpunkte: Softwareentwicklung (Java), Netzwerktechnik (Cisco), Datenbanken (MySQL)",
+          "badges": ["Berlin", "Berufsausbildung", "Fachhochschulreife", "Informatik", "3 Jahre"]
+        },
         "cvl": {
-          "name": "Carl-von-Linné-Schule",
-            "imgAlt": "Carl-von-Linné-Schule Logo",
-          "description": "Algemeine Schule Grundschule + Sekundarstufe I",
-          "badges": ["Berlin","MSA(OG)"]
-          }
+          "name": "Carl-von-Linné-Schule Berlin",
+          "imgAlt": "Logo der Carl-von-Linné-Schule",
+          "description": "Mittlerer Schulabschluss (MSA) mit Berechtigung zum Übergang in die gymnasiale Oberstufe",
+          "badges": ["Berlin", "MSA mit Berechtigung zur gymnasialen Oberstufe"]
         }
-      },
+      }
+    },
     "experience": {
       "title": "Berufserfahrung",
       "items": {
         "kfw": {
-          "name": "KfW Bankengruppe",
-          "imgAlt": "KfW Logo",
-          "description": "Betriebspraktikum als IT-Assistent im Rahmen der Ausbildung am OSZ IMT. Automatisierungen mit Ansible + Dokumentation für Ansible in Confluence der KfW.",
-          "badges": ["Berlin", "IT", "Betriebspraktikum", "9 Wochen"]
+          "name": "KfW Bankengruppe – IT-Abteilung",
+          "imgAlt": "Logo der KfW Bankengruppe",
+          "description": "• Entwickelte und implementierte Automatisierungsskripte mit Ansible zur Optimierung von IT-Prozessen\n• Erstellte technische Dokumentation in Confluence für nachhaltige Wissenssicherung\n• Arbeitete im Team zur Verbesserung der IT-Infrastruktur",
+          "badges": ["Berlin", "IT-Praktikum", "Ansible", "Automatisierung", "Confluence", "9 Wochen"]
         },
         "adk": {
-          "name": "Akademie der Künste (ADK)",
-          "imgAlt": "ADK Logo",
-          "description": "Synthesizerentwicklung",
-          "badges": ["Berlin", "Musik", "Schülerpraktikum", "3 Wochen"]
+          "name": "Akademie der Künste Berlin",
+          "imgAlt": "Logo der Akademie der Künste",
+          "description": "• Unterstützte bei der Entwicklung digitaler Synthesizer-Software\n• Sammelte Erfahrung an der Schnittstelle von Technologie und Kreativität",
+          "badges": ["Berlin", "Softwareentwicklung", "Musik", "Schülerpraktikum", "3 Wochen"]
         },
         "tosa": {
           "name": "Tosa Security & Service GmbH & Co KG",
-          "imgAlt": "Tosa Security & Service GmbH & Co KG Logo",
-          "description": "Bürotätigkeiten",
-          "badges": ["Trebbin", "Security", "Service", "Schülerpraktikum", "3 Tage"]
+          "imgAlt": "Logo der Tosa Security & Service GmbH",
+          "description": "• Übernahm administrative Aufgaben und Büroorganisation\n• Erlernte Grundlagen der Unternehmensabläufe",
+          "badges": ["Trebbin", "Büroorganisation", "Schülerpraktikum", "3 Tage"]
         },
         "pfennig": {
-          "name": "Pfennigpfeiffer",
-          "imgAlt": "Pfennigpfeiffer Logo",
-          "description": "Regale einräumen",
+          "name": "Pfennigpfeiffer Handels GmbH",
+          "imgAlt": "Logo von Pfennigpfeiffer",
+          "description": "• Erste Berufserfahrung im Einzelhandel: Warenpräsentation und Kundenservice",
           "badges": ["Berlin", "Einzelhandel", "Schülerpraktikum", "1 Tag"]
         }
       }
     },
     "skills": {
-      "title": "Fähigkeiten",
+      "title": "Technische Kenntnisse",
       "badges": {
-        "development": "Entwicklung",
-        "configuration": "Konfiguration",
+        "development": "Softwareentwicklung",
+        "configuration": "Systemkonfiguration",
         "operatingSystem": "Betriebssystem",
-        "frontend": "Frontend",
-        "automation": "Automatisierung",
-        "office": "Office",
-        "textEditor": "Text Editor",
+        "frontend": "Frontend-Entwicklung",
+        "automation": "IT-Automatisierung",
+        "office": "Office-Anwendungen",
+        "textEditor": "Text-Editor",
         "multifunctional": "Multifunktional",
         "retail": "Einzelhandel",
-        "years": "{count} Jahre",
-        "months": "{count} Monate",
-        "year": "{count} Jahr",
-        "month": "{count} Monat"
+        "years": "{count} Jahre Erfahrung",
+        "months": "{count} Monate Erfahrung",
+        "year": "{count} Jahr Erfahrung",
+        "month": "{count} Monat Erfahrung"
       }
     }
   },

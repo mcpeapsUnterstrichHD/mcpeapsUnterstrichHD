@@ -564,10 +564,15 @@
       "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
   code {
     font-family: "CaskaydiaCoveNerdFontMono", source-code-pro, Menlo, Monaco,
       Consolas, "Courier New", monospace;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: keep-all;
   }
 }
 
@@ -799,6 +804,19 @@ html {
   .show-timeline-small {
     display: block !important;
   }
+}
+
+/* Timeline Layout Optimization - mehr Platz für Content */
+.show-timeline-big .MuiTimelineOppositeContent-root {
+  flex: 0 0 auto !important;
+  max-width: 150px !important;
+  min-width: 120px !important;
+  padding-right: 16px !important;
+}
+
+.show-timeline-big .MuiTimelineContent-root {
+  flex: 1 1 auto !important;
+  padding-left: 16px !important;
 }
 /* ==========================================
    View Transition API Styles (React 19+)
