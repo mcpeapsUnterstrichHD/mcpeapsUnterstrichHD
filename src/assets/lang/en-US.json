@@ -402,5 +402,11 @@
     "description": "Let's connect! Book a meeting or send me a message.",
     "bookMeeting": "Book a Meeting",
     "calDescription": "Schedule a call or meeting via Cal.com"
+  },
+  "Footer": {
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "legal": "Legal",
+    "rights": "All rights reserved."
   }
 }

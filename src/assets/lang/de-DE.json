@@ -393,5 +393,11 @@
     "description": "Lass uns in Kontakt treten! Buche ein Meeting oder sende mir eine Nachricht.",
     "bookMeeting": "Meeting buchen",
     "calDescription": "Plane ein Gespräch oder Meeting über Cal.com"
+  },
+  "Footer": {
+    "navigation": "Navigation",
+    "connect": "Verbinden",
+    "legal": "Rechtliches",
+    "rights": "Alle Rechte vorbehalten."
   }
 }

@@ -2,8 +2,10 @@
 import { AuroraText } from "@/components/ui/aurora-text";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TypingAnimation } from "@/components/ui/typing-animation";
+import { contactDetails } from "@/lib/contact";
 import { Mail, Phone, MapPin, Scale, User } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function ImprintPage() {
   const t = useTranslations();
@@ -66,24 +68,24 @@ export default function ImprintPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
-            <a
-              href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
+            <Link
+              href={contactDetails.email.link}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 hover:text-primary transition-colors"
             >
               <Mail className="w-4 h-4" />
-              aps.fabian@mcpeapsunterstrichhd.dev
-            </a>
-            <a
-              href="tel:+4917645172171"
+              {contactDetails.email.display}
+            </Link>
+            <Link
+              href={contactDetails.telephone.link}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 hover:text-primary transition-colors"
             >
               <Phone className="w-4 h-4" />
-              +49 176 45172171
-            </a>
+              {contactDetails.telephone.display}
+            </Link>
           </CardContent>
         </Card>
       </div>
