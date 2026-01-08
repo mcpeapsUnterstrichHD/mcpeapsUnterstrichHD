@@ -67,7 +67,7 @@ const ProjektCard: React.FC<ProjectCardProps> = ({
               <img
                 src={projektImage}
                 alt={projektImageAlt}
-                className={`${projektImageBgColor ? projektImageBgColor : "bg-background"} p-4 rounded-sm object-contain`}
+                className={`${projektImageBgColor ? projektImageBgColor : "bg-background"} w-full p-4 rounded-sm object-contain`}
                 //width={480}
                 //height={480}
               />

@@ -2,8 +2,10 @@
 import { AuroraText } from "@/components/ui/aurora-text";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TypingAnimation } from "@/components/ui/typing-animation";
-import { Mail, Phone, MapPin, Scale, User } from "lucide-react";
+import { contactDetails } from "@/lib/contact";
+import { Mail, Phone, MapPin, Scale, User, Cookie } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function ImprintPage() {
   const t = useTranslations();
@@ -66,24 +68,24 @@ export default function ImprintPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
-            <a
-              href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
+            <Link
+              href={contactDetails.email.link}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 hover:text-primary transition-colors"
             >
               <Mail className="w-4 h-4" />
-              aps.fabian@mcpeapsunterstrichhd.dev
-            </a>
-            <a
-              href="tel:+4917645172171"
+              {contactDetails.email.display}
+            </Link>
+            <Link
+              href={contactDetails.telephone.link}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 hover:text-primary transition-colors"
             >
               <Phone className="w-4 h-4" />
-              +49 176 45172171
-            </a>
+              {contactDetails.telephone.display}
+            </Link>
           </CardContent>
         </Card>
       </div>
@@ -110,6 +112,42 @@ export default function ImprintPage() {
               12679 Berlin, {t("Imprint.tmg.germany")}
             </div>
           </a>
+        </CardContent>
+      </Card>
+
+      {/* Cookie Disclaimer Section */}
+      <Card className="bg-card/50 backdrop-blur-sm">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-xl">
+            <Cookie className="w-5 h-5 text-primary" />
+            {t("Imprint.cookies.title")}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          <p className="text-muted-foreground">
+            {t("Imprint.cookies.description")}
+          </p>
+
+          {/* Technical Cookies */}
+          <div className="p-4 bg-muted/30 rounded-lg">
+            <h4 className="font-medium mb-2">{t("Imprint.cookies.technical.title")}</h4>
+            <p className="text-sm text-muted-foreground">
+              {t("Imprint.cookies.technical.description")}
+            </p>
+          </div>
+
+          {/* Third-Party Cookies */}
+          <div className="p-4 bg-muted/30 rounded-lg">
+            <h4 className="font-medium mb-2">{t("Imprint.cookies.thirdParty.title")}</h4>
+            <p className="text-sm text-muted-foreground">
+              {t("Imprint.cookies.thirdParty.description")}
+            </p>
+            <ul className="mt-2 text-sm text-muted-foreground list-disc list-inside space-y-1">
+              <li>Cal.com ({t("Imprint.cookies.thirdParty.calcom")})</li>
+              <li>Apple Music ({t("Imprint.cookies.thirdParty.appleMusic")})</li>
+              <li>song.link ({t("Imprint.cookies.thirdParty.songlink")})</li>
+            </ul>
+          </div>
         </CardContent>
       </Card>
     </div>

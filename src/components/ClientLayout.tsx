@@ -6,6 +6,7 @@ import { NavBar } from "@/components/Header";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Toaster, toast } from "sonner";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 import { useEffect, useRef, ViewTransition } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
@@ -215,6 +216,7 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
               </ViewTransition>
               <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
               <Footer />
+              <CookieConsent />
           </div>
     </SidebarProvider>
   );

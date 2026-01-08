@@ -23,6 +23,8 @@ import {
   MapPin,
   Calendar
 } from "lucide-react";
+import { contactDetails } from "@/lib/contact";
+import Link from "next/link";
 
 
 
@@ -255,20 +257,20 @@ export default function CVPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 print:grid-cols-1 gap-4 text-sm">
             {/* Contact Info */}
             <div className="flex flex-col gap-2">
-              <a
-                href="mailto:aps.fabian@mcpeapsunterstrichhd.dev"
+              <Link
+                href={contactDetails.email.link}
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                aps.fabian@mcpeapsunterstrichhd.dev
-              </a>
-              <a
-                href="tel:+4917645172171"
+                {contactDetails.email.display}
+              </Link>
+              <Link
+                href={contactDetails.telephone.link}
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                +49 176 45172171
-              </a>
+                {contactDetails.telephone.display}
+              </Link>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Calendar className="w-4 h-4" />
                 {t("Cv.about.birthday")}: 06.06.2003

@@ -396,11 +396,46 @@
     },
     "rstv": {
       "title": "Responsible for content according to § 55 Abs. 2 RStV (German Interstate Broadcasting Treaty)"
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "This website uses cookies to enhance your experience. Below you will find information about the cookies used on this site.",
+      "technical": {
+        "title": "Technical Cookies",
+        "description": "We only use technically necessary cookies that are essential for the website to function properly. These include cookies for storing your language preference and cookie consent status. These cookies cannot be disabled."
+      },
+      "thirdParty": {
+        "title": "Third-Party Content",
+        "description": "Some pages contain embedded content from third-party services. These services may set their own cookies, which are outside of my control:",
+        "calcom": "Appointment scheduling",
+        "appleMusic": "Playlist player embeds",
+        "songlink": "Song player embeds"
+      }
     }
   },
   "Contact": {
     "description": "Let's connect! Book a meeting or send me a message.",
     "bookMeeting": "Book a Meeting",
     "calDescription": "Schedule a call or meeting via Cal.com"
+  },
+  "Footer": {
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "legal": "Legal",
+    "rights": "All rights reserved."
+  },
+  "CookieConsent": {
+    "title": "Cookie Notice",
+    "description": "This website uses cookies to ensure you get the best experience. We only use technically necessary cookies that are essential for the website to function properly.",
+    "technicalCookies": {
+      "title": "Technical Cookies",
+      "description": "These cookies are required for basic site functionality, such as remembering your preferences and language settings. They cannot be disabled."
+    },
+    "thirdPartyCookies": {
+      "title": "Third-Party Content",
+      "description": "Some pages contain embedded content (iframes) from third-party services like Cal.com or Apple Music. These services may set their own cookies, which are outside of my control. By using this site, you acknowledge this."
+    },
+    "accept": "I Understand",
+    "moreInfo": "More Information"
   }
 }

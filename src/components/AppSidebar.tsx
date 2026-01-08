@@ -50,7 +50,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   }[] = [
     {
       title: t("Sites.aboutme"),
-      url: "/aboutme",
+      url: "/aboutme"
     },
     {
       title: t("Sites.projects"),
@@ -80,7 +80,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <ViewTransition enter="slide" exit="root" update="root">
-      <Sidebar collapsible="offExamples" className="no-print" {... props}>
+      <Sidebar collapsible="offExamples" className="no-print backdrop-blur-sm rounded-sm" {... props}>
         <SidebarHeader>
           <SidebarGroup>
             <SidebarGroupContent>
@@ -190,22 +190,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
+                <SidebarMenuItem>
                   <SidebarMenuButton render={<Link href="/linkhub" />}>
                     <span>{t("Sites.linkhub")}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-                <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
+                <SidebarMenuItem >
                   <SidebarMenuButton render={<Link href="/" />}>
                     <span>{t("Aboutme.name")}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-                <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
+                <SidebarMenuItem>
                   <SidebarMenuButton render={<Link href="/imprint" />}>
                     <span>{t("Sites.impressum")}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-                <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
+                {process.env.NODE_ENV === "development" &&
+                <SidebarMenuItem>
                   <SidebarMenuButton
                     render={
                       <Link
@@ -232,7 +233,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       />
                     </picture>
                   </SidebarMenuButton>
-                </SidebarMenuItem>
+                </SidebarMenuItem>}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
