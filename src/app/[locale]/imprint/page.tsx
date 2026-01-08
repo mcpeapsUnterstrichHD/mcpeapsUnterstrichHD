@@ -44,7 +44,7 @@ export default function ImprintPage() {
           </CardHeader>
           <CardContent>
             <a
-              href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
+              href={contactDetails.address.link}
               target="_blank"
               rel="noreferrer"
               className="flex items-start gap-2 hover:text-primary transition-colors"
@@ -52,8 +52,8 @@ export default function ImprintPage() {
               <MapPin className="w-4 h-4 mt-1 shrink-0" />
               <div>
                 Aps, Fabian<br />
-                Ludwig-Renn-Straße 33<br />
-                12679 Berlin, {t("Imprint.tmg.germany")}
+                {contactDetails.address.street}<br />
+                {contactDetails.address.zip} {t(contactDetails.address.city)}, {t(contactDetails.address.country)}
               </div>
             </a>
           </CardContent>
@@ -100,7 +100,7 @@ export default function ImprintPage() {
         </CardHeader>
         <CardContent>
           <a
-            href="https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland&ll=52.551673,13.558337"
+            href={contactDetails.address.link}
             target="_blank"
             rel="noreferrer"
             className="flex items-start gap-2 hover:text-primary transition-colors"
@@ -108,8 +108,8 @@ export default function ImprintPage() {
             <MapPin className="w-4 h-4 mt-1 shrink-0" />
             <div>
               Aps, Fabian<br />
-              Ludwig-Renn-Straße 33<br />
-              12679 Berlin, {t("Imprint.tmg.germany")}
+              {contactDetails.address.street}<br />
+              {contactDetails.address.zip} {t(contactDetails.address.city)}, {t(contactDetails.address.country)}
             </div>
           </a>
         </CardContent>
