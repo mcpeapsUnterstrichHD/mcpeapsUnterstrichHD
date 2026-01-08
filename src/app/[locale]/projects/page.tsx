@@ -93,7 +93,7 @@ export default function ProjectsPage() {
       children: t("Projects.items.cbpsApp.description"),
     },
     {
-      projektImage: "/pictures/projects/LogoDerTUBerlin2020.png",
+      projektImage: "/pictures/projects/LogoDerTUBerlin2020.svg",
       projektImageAlt: t("Projects.items.uniRepo.imgAlt"),
       projektImageBgColor: "bg-white",
       projektTitle: t("Projects.items.uniRepo.title"),

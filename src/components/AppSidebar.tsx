@@ -206,32 +206,33 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem className="rounded-full bg-transparent backdrop-blur-sm">
-                  <SidebarMenuButton
-                    render={
-                      <Link
-                        href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2FmcpeapsUnterstrichHD%2FmcpeapsUnterstrichHD"
-                        target="_blank"
-                        rel="noreferrer"
-                      />
-                    }
-                  >
-                    <picture>
-                      <source
-                        media="(prefers-color-scheme: dark)"
-                        srcSet="https://cdn.idx.dev/btn/open_light_32.svg"
-                      />
-                      <source
-                        media="(prefers-color-scheme: light)"
-                        srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
-                      />
-                      <Image
-                        height={32}
-                        width={32}
-                        alt="Open in IDX"
-                        src="https://cdn.idx.dev/btn/open_purple_32.svg"
-                      />
-                    </picture>
-                  </SidebarMenuButton>
+                {process.env.NODE_ENV === "development" &&
+                        <SidebarMenuButton
+                          render={
+                            <Link
+                              href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2FmcpeapsUnterstrichHD%2FmcpeapsUnterstrichHD"
+                              target="_blank"
+                              rel="noreferrer"
+                            />
+                          }
+                        >
+                          <picture>
+                            <source
+                              media="(prefers-color-scheme: dark)"
+                              srcSet="https://cdn.idx.dev/btn/open_light_32.svg"
+                            />
+                            <source
+                              media="(prefers-color-scheme: light)"
+                              srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
+                            />
+                            <Image
+                              height={32}
+                              width={32}
+                              alt="Open in IDX"
+                              src="https://cdn.idx.dev/btn/open_purple_32.svg"
+                            />
+                          </picture>
+                        </SidebarMenuButton>}
                 </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
