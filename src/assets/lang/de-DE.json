@@ -387,6 +387,21 @@
     },
     "rstv": {
       "title": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV"
+    },
+    "cookies": {
+      "title": "Cookie-Richtlinie",
+      "description": "Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern. Nachfolgend finden Sie Informationen zu den auf dieser Website verwendeten Cookies.",
+      "technical": {
+        "title": "Technische Cookies",
+        "description": "Wir verwenden nur technisch notwendige Cookies, die für die Funktion der Website unerlässlich sind. Dazu gehören Cookies zum Speichern Ihrer Sprachpräferenz und des Cookie-Zustimmungsstatus. Diese Cookies können nicht deaktiviert werden."
+      },
+      "thirdParty": {
+        "title": "Inhalte von Drittanbietern",
+        "description": "Einige Seiten enthalten eingebettete Inhalte von Drittanbietern. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen:",
+        "calcom": "Terminplanung",
+        "appleMusic": "Playlist-Player-Einbettungen",
+        "songlink": "Song-Player-Einbettungen"
+      }
     }
   },
   "Contact": {
@@ -399,5 +414,19 @@
     "connect": "Verbinden",
     "legal": "Rechtliches",
     "rights": "Alle Rechte vorbehalten."
+  },
+  "CookieConsent": {
+    "title": "Cookie-Hinweis",
+    "description": "Diese Website verwendet Cookies, um Ihnen das beste Erlebnis zu bieten. Wir verwenden nur technisch notwendige Cookies, die für die Funktion der Website unerlässlich sind.",
+    "technicalCookies": {
+      "title": "Technische Cookies",
+      "description": "Diese Cookies sind für grundlegende Website-Funktionen erforderlich, wie das Speichern Ihrer Einstellungen und Sprachpräferenzen. Sie können nicht deaktiviert werden."
+    },
+    "thirdPartyCookies": {
+      "title": "Inhalte von Drittanbietern",
+      "description": "Einige Seiten enthalten eingebettete Inhalte (iFrames) von Drittanbietern wie Cal.com oder Apple Music. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen. Mit der Nutzung dieser Website nehmen Sie dies zur Kenntnis."
+    },
+    "accept": "Verstanden",
+    "moreInfo": "Mehr Informationen"
   }
 }
