@@ -6,23 +6,19 @@ import {
   type TimeLineElementProps
 } from "@/components/timeline-element";
 import MasonryGrid, { Variants } from "@/components/MasonryGrid";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Timeline from "@mui/lab/Timeline";
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { toast } from "sonner";
 import {
   GraduationCap,
   Briefcase,
   Wrench,
-  Download,
   Mail,
   Phone,
   MapPin,
-  Calendar,
-  FileText
+  Calendar
 } from "lucide-react";
 import { contactDetails } from "@/lib/contact";
 import Link from "next/link";
@@ -30,6 +26,7 @@ import {
   educationItems,
   experienceItems,
   skillItems,
+  skillCategories,
   sortByEndDate
 } from "@/lib/cv-data";
 
@@ -38,9 +35,6 @@ import {
 
 export default function CVPage() {
   const t = useTranslations();
-  const [printing, setPrinting] = useState(false);
-  const intervalId = useRef<NodeJS.Timeout | null>(null);
-  const intervalId2 = useRef<NodeJS.Timeout | null>(null);
 
   // Transform education data with translations
   const education = useMemo(() => {
@@ -94,65 +88,29 @@ export default function CVPage() {
         badges.push(expBadge);
       }
 
-      // Determine image based on printing state
-      let image = skill.image;
-      if (skill.darkImage && !printing) {
-        image = skill.darkImage;
-      }
+      // For screen: use darkImage if available, otherwise use normal image
+      // For print: always use the light/normal image
+      const screenImage = skill.darkImage || skill.image;
+      // Only set print image if there's a dark variant (meaning we need to switch)
+      const printImage = skill.darkImage ? skill.image : undefined;
 
       return {
         SkillTitle: skill.title,
         SkillBadges: badges,
-        SkillImage: image,
+        SkillImage: screenImage,
+        SkillImagePrint: printImage,
         SkillImageAlt: skill.imageAlt,
         SkillImageFallback: skill.imageFallback,
         Skilllevel: skill.level,
+        category: skill.category,
       };
     });
     return items.sort((a, b) => a.SkillTitle.localeCompare(b.SkillTitle));
-  }, [t, printing]);
-
-  // Toast notifications for printing tips
-  useEffect(() => {
-    const toastValues = {
-      title: t("Cv.recommendation.printingSettings.title"),
-      description: t("Cv.recommendation.printingSettings.description"),
-    };
-    toast(toastValues.title, { description: toastValues.description });
-
-    intervalId.current = setInterval(() => {
-      toast(toastValues.title, { description: toastValues.description });
-    }, 60_000);
-
-    return () => {
-      if (intervalId.current) clearInterval(intervalId.current);
-    };
   }, [t]);
 
-  useEffect(() => {
-    const toastValues = {
-      title: t("Cv.recommendation.printingNotice.title"),
-      description: t("Cv.recommendation.printingNotice.description"),
-    };
-    toast(toastValues.title, { description: toastValues.description });
-
-    intervalId2.current = setInterval(() => {
-      toast(toastValues.title, { description: toastValues.description });
-    }, 120_000);
-
-    return () => {
-      if (intervalId2.current) clearInterval(intervalId2.current);
-    };
-  }, [t]);
-
-  const handlePrint = async () => {
-    setPrinting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    await window.print();
-    setPrinting(false);
-  };
 
   return (
+
     <div className="flex flex-col gap-6 px-4 py-6 max-w-9xl mx-auto">
       {/* Header / Personal Info */}
       <Card className="bg-card/50 backdrop-blur-sm print:bg-white print:shadow-none">
@@ -310,42 +268,35 @@ export default function CVPage() {
           <Wrench className="w-6 h-6 text-primary print:text-black" />
           {t("Cv.skills.title")}
         </h2>
-        <MasonryGrid variant={Variants.skills}>
-          {skills.map((s) => (
-            <SkillCard
-              key={s.SkillTitle}
-              SkillTitle={s.SkillTitle}
-              SkillBadges={s.SkillBadges}
-              SkillImage={s.SkillImage}
-              SkillImageAlt={s.SkillImageAlt}
-              SkillImageFallback={s.SkillImageFallback}
-              Skilllevel={s.Skilllevel}
-            />
-          ))}
-        </MasonryGrid>
+
+        <div className="flex flex-col gap-8">
+          {skillCategories.map((cat) => {
+            const catSkills = skills.filter((s) => s.category === cat.key);
+            if (catSkills.length === 0) return null;
+
+            return (
+              <div key={cat.key} className="break-inside-avoid">
+                <h3 className="text-xl font-semibold mb-4 ml-1 opacity-80">{t(cat.titleKey)}</h3>
+                <MasonryGrid variant={Variants.skills}>
+                  {catSkills.map((s) => (
+                    <SkillCard
+                      key={s.SkillTitle}
+                      SkillTitle={s.SkillTitle}
+                      SkillBadges={s.SkillBadges}
+                      SkillImage={s.SkillImage}
+                      SkillImagePrint={s.SkillImagePrint}
+                      SkillImageAlt={s.SkillImageAlt}
+                      SkillImageFallback={s.SkillImageFallback}
+                      Skilllevel={s.Skilllevel}
+                    />
+                  ))}
+                </MasonryGrid>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
-      {/* Action Buttons */}
-      <div className="fixed bottom-4 right-4 z-50 print:hidden flex gap-2">
-        <Link href="/cv/ats">
-          <Button
-            variant="outline"
-            className="gap-2 shadow-lg"
-            size="lg"
-          >
-            <FileText className="w-4 h-4" />
-            ATS
-          </Button>
-        </Link>
-        <Button
-          onClick={handlePrint}
-          className="gap-2 shadow-lg"
-          size="lg"
-        >
-          <Download className="w-4 h-4" />
-          PDF
-        </Button>
-      </div>
     </div>
   );
 }

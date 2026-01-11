@@ -8,63 +8,50 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { useTheme } from "next-themes";
 import type React from "react";
-import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { usePrintSafe } from "@/contexts/PrintContext";
 
 export interface SkillCardProps {
-  SkillImage: string; // Full path (e.g., "/pictures/ios.png")
+  SkillImage: string; // Full path (e.g., "/pictures/ios.png") - used on screen
+  SkillImagePrint?: string; // Optional separate image for printing (light version)
   SkillImageAlt: string; // Alt text for the image
   SkillImageFallback: string; // Fallback text for the avatar
   SkillTitle: string; // Title of the skill
   SkillBadges: string[]; // Array of badges for the skill
   Skilllevel: number; // Skill level as a percentage
+  category?: string; // Optional category key for grouping
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({
   SkillImage,
+  SkillImagePrint,
   SkillImageAlt,
   SkillImageFallback,
   SkillTitle,
   SkillBadges,
   Skilllevel,
 }) => {
-  const { theme, systemTheme } = useTheme();
-  const [imgSrc, setImgSrc] = useState(SkillImage); // State for the current image source
+  // Get printing state from context (safe version that doesn't throw)
+  const isPrinting = usePrintSafe();
 
-  // Map of images to their dark versions
-  const imageMap: { [key: string]: string } = {
-    "/pictures/ios.png": "/pictures/ios-dark.png",
-    "/pictures/windows.png": "/pictures/windows-dark.png",
-    "/pictures/ansible.png": "/pictures/ansible-dark.png",
-    // Add more images here as needed
-  };
+  // Determine which image to show based on printing state
+  const hasPrintImage = !!SkillImagePrint && SkillImagePrint !== SkillImage;
+  const currentImage = hasPrintImage && isPrinting ? SkillImagePrint : SkillImage;
 
-  // Effect to update the image source based on the theme
-  useEffect(() => {
-    const darkImage = imageMap[SkillImage]; // Get dark version if exists
-    const updatedImgSrc =
-      (theme === "dark" || (theme === "system" && systemTheme === "dark")) &&
-      darkImage
-        ? darkImage
-        : SkillImage; // Select appropriate image
-
-    setImgSrc(updatedImgSrc); // Update the state with the new image source
-  }, [SkillImage, theme, systemTheme]); // Re-run effect when SkillImage or theme changes
 
   return (
-    <Card className="bg-card/50 backdrop-blur-sm p-2">
-      <CardHeader className="pb-2">
-        <div className="flex flex-row items-center justify-between gap-2">
+    <Card className="bg-card/50 backdrop-blur-sm p-4">
+      <CardHeader className="pb-1">
+        <div className="flex flex-row items-center gap-3">
           <Avatar>
-            <AvatarImage src={imgSrc} alt={SkillImageAlt} />
+            <AvatarImage src={currentImage} alt={SkillImageAlt} />
             <AvatarFallback>{SkillImageFallback}</AvatarFallback>
           </Avatar>
           <CardTitle>{SkillTitle}</CardTitle>
         </div>
         <CardDescription>
-          <div className="flex flex-wrap gap-1.5 mt-2">
+          <div className="flex flex-wrap gap-2 mt-3">
             {SkillBadges.map((badge, index) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: badge text may repeat
 <Badge key={index} variant="default">
@@ -74,11 +61,12 @@ const SkillCard: React.FC<SkillCardProps> = ({
           </div>
         </CardDescription>
       </CardHeader>
-      <CardContent className="pt-2">
+      <CardContent className="pt-1 pb-2">
         <Progress value={Skilllevel} />
       </CardContent>
     </Card>
   );
 };
+
 
 export default SkillCard;

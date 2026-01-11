@@ -28,7 +28,6 @@ import {
 import UserAvatar, { type ImageProps } from "@/components/userAvatar";
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
-import Image from "next/image";
 import { ViewTransition } from "react";
 import { TypingAnimation } from "./ui/typing-animation";
 
@@ -87,7 +86,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <HoverCard>
-                    <HoverCardTrigger>
+                    <HoverCardTrigger render={<span />}>
                       <SidebarMenuButton render={<Link href="/" className="p-6" />}>
                         <UserAvatar
                           name={name}
@@ -107,7 +106,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         >{name}</TypingAnimation>
                       </SidebarMenuButton>
                     </HoverCardTrigger>
-                    <HoverCardContent className=" w-80">
+
+                    <HoverCardContent className="bg-card/50 backdrop-blur-sm w-80">
                       <section className="grid grid-flow-row grid-rows-2">
                         <p className="grid grid-cols-2 grid-flow-col items-center justify-center p-2">
                           <UserAvatar
@@ -225,13 +225,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         media="(prefers-color-scheme: light)"
                         srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
                       />
-                      <Image
+                      <img
                         height={32}
                         width={32}
                         alt="Open in IDX"
                         src="https://cdn.idx.dev/btn/open_purple_32.svg"
                       />
                     </picture>
+
                   </SidebarMenuButton>
                 </SidebarMenuItem>}
               </SidebarMenu>

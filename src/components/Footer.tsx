@@ -1,6 +1,5 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { ViewTransition } from "react";
 import { Mail } from "lucide-react";
 import {
@@ -191,13 +190,15 @@ export default function Footer() {
                         media="(prefers-color-scheme: light)"
                         srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
                       />
-                      <Image
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         height={20}
                         width={66}
                         alt="Open in IDX"
                         src="https://cdn.idx.dev/btn/open_purple_32.svg"
                       />
                     </picture>
+
                   </Link>
                 )}
               </div>

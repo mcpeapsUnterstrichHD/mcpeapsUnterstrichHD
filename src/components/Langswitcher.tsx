@@ -30,7 +30,7 @@ export function Langswitcher() {
       <DropdownMenuTrigger
         render={
           <Button
-            className="rounded-full text-foreground bg-transparent backdrop-blur-sm text-center font-bold print:hidden min-w-44"
+            className="rounded-sm text-foreground bg-card/50 backdrop-blur-sm text-center font-bold print:hidden min-w-44"
             variant="outline"
           />
         }
@@ -39,7 +39,7 @@ export function Langswitcher() {
         {currentLanguage?.name || "Language"} {"("}{currentLanguage?.country || "country"}{")"}
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="bg-transparent text-foreground  backdrop-blur-sm print:hidden"
+        className="bg-card/50 backdrop-blur-sm text-foreground print:hidden"
         align="end"
       >
         {languages
