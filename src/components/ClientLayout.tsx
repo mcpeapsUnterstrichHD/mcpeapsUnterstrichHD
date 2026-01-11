@@ -14,6 +14,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '@/app/theme';
 import ClickSpark from './ClickSpark';
 import { nord6 } from '@/lib/NordColors';
+import { PrintProvider } from '@/contexts/PrintContext';
 
 
 
@@ -28,22 +29,25 @@ export default function ClientLayout({ children, locale, messages }: Props) {
     <AppRouterCacheProvider options={{ enableCssLayer: true }}>
       <ThemeProvider theme={theme}>
         <NextIntlClientProvider locale={locale} messages={messages} timeZone="Europe/Berlin" now={new Date()}>
-          <ClickSpark
-            sparkColor={nord6}
-            sparkSize={10}
-            sparkRadius={15}
-            sparkCount={8}
-            duration={400}
-          >
-            <ClientLayoutContent locale={locale}>
-              {children}
-            </ClientLayoutContent>
-          </ClickSpark>
+          <PrintProvider>
+            <ClickSpark
+              sparkColor={nord6}
+              sparkSize={10}
+              sparkRadius={15}
+              sparkCount={8}
+              duration={400}
+            >
+              <ClientLayoutContent locale={locale}>
+                {children}
+              </ClientLayoutContent>
+            </ClickSpark>
+          </PrintProvider>
         </NextIntlClientProvider>
       </ThemeProvider>
     </AppRouterCacheProvider>
   );
 }
+
 
 function ClientLayoutContent({ children, locale }: { children: React.ReactNode; locale: string }) {
   const router = useRouter();

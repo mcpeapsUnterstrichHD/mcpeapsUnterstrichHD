@@ -1,36 +1,18 @@
 "use client"
-import { useTranslations, useLocale } from "next-intl";
-import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { contactDetails } from "@/lib/contact";
 import {
   educationItems,
   experienceItems,
+  skillItems,
   skillCategories,
   sortByEndDate
 } from "@/lib/cv-data";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Download, FileText } from "lucide-react";
+
 
 export default function CVATSPage() {
   const t = useTranslations();
-  const locale = useLocale();
-  const [printing, setPrinting] = useState(false);
 
-  const handlePrint = async () => {
-    setPrinting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    await window.print();
-    setPrinting(false);
-  };
-
-  // Auto-print on load
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      window.print();
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Sort education and experience by date
   const sortedEducation = sortByEndDate(
@@ -212,36 +194,31 @@ export default function CVATSPage() {
 
       {/* Skills - grouped by category for ATS */}
       <h2>{t("Cv.skills.title")}</h2>
-      {skillCategories.map((cat) => (
-        <div key={cat.titleDE} className="skills-category">
-          <span className="skills-title">
-            {locale === "de-DE" ? cat.titleDE : cat.titleEN}:{" "}
-          </span>
-          <span className="skills-list">{cat.skills}</span>
-        </div>
-      ))}
+      {skillCategories.map((cat) => {
+        const catSkills = skillItems
+          .filter((s) => s.category === cat.key)
+          .map((s) => {
+            let duration = "";
+            if (s.experience) {
+              const durationText = t(`Cv.skills.badges.${s.experience.type}`, { count: s.experience.count });
+              duration = ` (${durationText})`;
+            }
+            return `${s.title}${duration}`;
+          })
+          .join(", ");
 
-{/* Action Buttons */}
-      <div className="fixed bottom-4 right-4 z-50 print:hidden flex gap-2">
-        <Link href="/cv">
-          <Button
-            variant="outline"
-            className="gap-2 shadow-lg"
-            size="lg"
-          >
-            <FileText className="w-4 h-4" />
-            Normal
-          </Button>
-        </Link>
-        <Button
-          onClick={handlePrint}
-          className="gap-2 shadow-lg"
-          size="lg"
-        >
-          <Download className="w-4 h-4" />
-          PDF
-        </Button>
-      </div>
+        if (!catSkills) return null;
+
+        return (
+          <div key={cat.key} className="skills-category">
+            <span className="skills-title">
+              {t(cat.titleKey)}:{" "}
+            </span>
+            <span className="skills-list">{catSkills}</span>
+          </div>
+        );
+      })}
+
     </div>
   );
 }

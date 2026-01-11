@@ -3,8 +3,8 @@
     "hello": "Hallo",
     "iam": "Ich bin",
     "name": "Fabian Aps",
-    "title": "ITler/DJ/Producer aus Leidenschaft",
-    "description": "Ich bin ein {age} jähriger ITler/DJ/Producher und ich\nliebe es Software zu entwikeln aber durch mein\nPraktikum bei der KfW Bankengruppe hat mir gezeigt,\ndass mir Anwendungsbetreung auch nicht schwer liegt,\ndenoch mach ich die Entwicklung gerne als Hobby. Musik\nist dabei auch eine Leidenschaft von mir, egal ab\nhören oder Produzieren.",
+    "title": "ITler, DJ & Producer aus Berlin",
+    "description": "{age} Jahre, Berliner, und irgendwo zwischen Code und Beats zu Hause. Tagsüber studiere ich Informatik an der TU Berlin, nachts produziere ich Tracks oder bastle an meinen Projekten. Mein Praktikum bei der KfW hat mir gezeigt, dass ich auch im IT-Betrieb gut klarkomme – aber mein Herz schlägt für die Entwicklung. Ob Software bauen oder Musik machen: Hauptsache kreativ.",
     "myPlaylist": "Meine Playlist",
     "myCurrentSong": "Mein aktuellster Song"
   },
@@ -40,146 +40,146 @@
     "projectCount": "{count} Projekte",
     "items": {
       "portfolio": {
-        "title": "Portfolio",
-        "description": "Das Projekt zu diesem Portfolio.",
-        "imgAlt": "Portfolio Bild"
+        "title": "Dieses Portfolio",
+        "description": "Die Seite, auf der du gerade bist. Next.js, TypeScript, und viel zu viele Nächte mit CSS.",
+        "imgAlt": "Portfolio Screenshot"
       },
       "simplesql": {
         "title": "simplesql",
-        "description": "Das ist ein TUI/GUI-Programm zum Ausführen und Ausgeben von SQL Statements",
-        "imgAlt": "Simple SQL Runner"
+        "description": "Wenn du SQL-Statements ausführen willst, ohne erst eine halbe Stunde IDE aufzusetzen. TUI für schnelle Queries.",
+        "imgAlt": "simplesql Terminal Interface"
       },
       "localServices": {
-        "title": "Meine eigenen lokalen Services",
-        "description": "Hier ist eine Ansammlung an self-hosted Services, wie meine Suchmaschine, die ich nutze.",
+        "title": "Mein Self-Hosted Stack",
+        "description": "SearxNG, Nextcloud und was man sonst so braucht, wenn man Google nicht alles erzählen will.",
         "imgAlt": "SearxNG Logo"
       },
       "schulRepo": {
         "title": "Schul-Repository",
-        "description": "Das ist das Repository mit meinen Aufgaben aus meiner Ausbildung.",
-        "imgAlt": "Großes Logo vom OSZ IMT"
+        "description": "Drei Jahre OSZ IMT in Code – von den ersten Java-Gehversuchen bis zu echten Projekten.",
+        "imgAlt": "OSZ IMT Logo"
       },
       "klassenWebsite": {
-        "title": "Klassen-Website",
-        "description": "Das ist die Webseite der Klasse ITA 12, in der ich am OSZ IMT gewesen bin.",
-        "imgAlt": "Großes Logo vom OSZ IMT"
+        "title": "ITA 12 Website",
+        "description": "Die offizielle Klassenwebsite. Gebaut mit der Crew, gehostet mit Stolz.",
+        "imgAlt": "OSZ IMT Logo"
       },
       "klassenApp": {
-        "title": "Klassen App",
-        "description": "Das ist die App der Klasse ITA 12, in der ich am OSZ IMT gewesen bin.",
-        "imgAlt": "App Icon der Klassen App"
+        "title": "ITA 12 App",
+        "description": "Vertretungsplan, Notenrechner, Klassenchat – alles was wir im Schulalltag gebraucht haben.",
+        "imgAlt": "Klassen App Icon"
       },
       "simpleSqlRunner": {
         "title": "Simple SQL Runner",
-        "description": "Das ist ein GUI-Programm zum Ausführen und Ausgeben von SQL Statements",
-        "imgAlt": "Simple SQL Runner"
+        "description": "Die GUI-Version von simplesql. Für alle, die lieber klicken als tippen.",
+        "imgAlt": "Simple SQL Runner Screenshot"
       },
       "dotfilesMacos": {
-        "title": "Meine eigenen Dotfiles für macOS",
-        "description": "Das Repository für meine Dotfiles für macOS.",
-        "imgAlt": "mcpeaps_HD Logo"
+        "title": "macOS Dotfiles",
+        "description": "Mein komplettes Mac-Setup in einem Repo. Zsh, Neovim, Homebrew – alles dabei.",
+        "imgAlt": "Terminal mit Dotfiles"
       },
       "nixConfig": {
-        "title": "Meine eigene NixOS Konfiguration",
-        "description": "Das Repository für meine Konfiguration von NixOS.",
-        "imgAlt": "mcpeaps_HD Logo"
+        "title": "NixOS Config",
+        "description": "Reproduzierbares System-Setup. Einmal konfigurieren, überall deployen.",
+        "imgAlt": "NixOS Logo"
       },
       "dotfilesLinux": {
-        "title": "Meine eigenen Dotfiles für Linux",
-        "description": "Das Repository für meine Dotfiles für Linux.",
-        "imgAlt": "mcpeaps_HD Logo"
+        "title": "Linux Dotfiles",
+        "description": "Gleiche Philosophie, anderes OS. Hyprland, Waybar und der ganze Wayland-Stack.",
+        "imgAlt": "Linux Desktop Screenshot"
       },
       "cbpsWebsite": {
         "title": "comboom.sucht Website",
-        "description": "Das ist die Webseite meiner Freundesgruppe.",
+        "description": "Die digitale Heimat meiner Freundesgruppe. Chaotisch, bunt und absolut wir.",
         "imgAlt": "comboom.sucht Logo"
       },
       "cbpsApp": {
         "title": "comboom.sucht App",
-        "description": "Das ist die App meiner Freundesgruppe.",
-        "imgAlt": "comboom.sucht Logo"
+        "description": "Private Events planen, Memes teilen, Insider-Jokes sammeln – die Crew-App.",
+        "imgAlt": "comboom.sucht App Icon"
       },
       "uniRepo": {
-        "title": "Uni-Repository",
-        "description": "Das ist das Repository zu meinem Studium an der TU Berlin.",
-        "imgAlt": "Langes Logo der Technischen Universität Berlin"
+        "title": "TU Berlin Repository",
+        "description": "Algorithmen, Datenstrukturen, und der Beweis dass ich doch noch Mathe kann.",
+        "imgAlt": "TU Berlin Logo"
       },
       "liveWallpaper": {
-        "title": "Native/Wasm Live Wallpaper",
-        "description": "Ein plattformübergreifendes Live-Wallpaper mit interaktiven Partikeln im Nord-Design. Die native C++23-Implementierung bietet hohe Performance, Custom-Shader und läuft dank WebAssembly auch direkt im Browser.",
-        "imgAlt": "Standard Hintergrund"
+        "title": "Interaktives Live Wallpaper",
+        "description": "Partikel im Nord-Theme, C++23 unter der Haube, läuft native und im Browser. Mein Spielplatz für Shader-Experimente.",
+        "imgAlt": "Live Wallpaper Preview"
       }
     }
   },
   "Recommendation": {
     "projects": {
-      "title": "Meine Projekte",
-      "description": "Alle meine Projekte auf einer Übersichtlichkeit.",
+      "title": "Von der Idee zum Code",
+      "description": "Schau dir an, was passiert wenn ich nachts nicht schlafen kann.",
       "action": {
-        "label": "Projekte ansehen"
+        "label": "Projekte entdecken"
       }
     },
     "aboutme": {
-      "title": "Über mich",
-      "description": "Ein kleiner Einblick in meine Person.",
+      "title": "Der Mensch hinter dem Code",
+      "description": "IT-Nerd bei Tag, DJ bei Nacht – lern mich kennen.",
       "action": {
-        "label": "Erfahre mehr"
+        "label": "Mehr erfahren"
       }
     },
     "cv": {
-      "title": "Lebenslauf",
-      "description": "Meine Ausbildungen und Berufserfahrung.",
+      "title": "Vom OSZ zur TU Berlin",
+      "description": "Mein Weg durch die IT-Welt – mit allen Stationen.",
       "action": {
-        "label": "Mein Lebenslauf"
+        "label": "Lebenslauf ansehen"
       }
     },
     "linkhub": {
-      "title": " Social Media",
-      "description": "Hier bin ich zu finden.",
+      "title": "Überall zu finden",
+      "description": "Von Instagram bis GitHub – hier bin ich unterwegs.",
       "action": {
-        "label": "Follge mir"
+        "label": "Alle Profile"
       }
     },
     "github": {
-      "title": "Mein GitHub-Profil",
-      "description": "@mcpeapsUnterstrichHD | Hier leben meine Projekte.",
+      "title": "Wo der Code lebt",
+      "description": "@mcpeapsUnterstrichHD – Open Source aus Leidenschaft.",
       "action": {
-        "label": "Folge mir"
+        "label": "Auf GitHub"
       }
     },
     "twitter": {
-      "title": "Mein X/Twitter",
-      "description": "@mcpeaps_HD | Hier kann man mich mal erwischen",
+      "title": "Meine ungefilterten Gedanken",
+      "description": "@mcpeaps_HD – Tech-Talks und Random Thoughts.",
       "action": {
-        "label": "Folge mir"
+        "label": "Auf X"
       }
     },
     "instagram": {
-      "title": "Mein Instagram",
-      "description": "@mcpeaps_hd | Hier bin ich am meisten aktiv",
+      "title": "Zwischen Code und Beats",
+      "description": "@mcpeaps_hd – Mein Alltag in Bildern.",
       "action": {
-        "label": "Folge mir"
+        "label": "Auf Instagram"
       }
     },
     "tiktok": {
-      "title": "Mein TikTok",
-      "description": "@mcpeaps_hd | Hier bin ich am meisten aktiv",
+      "title": "Wenn's mal schnell gehen muss",
+      "description": "@mcpeaps_hd – Content in 60 Sekunden.",
       "action": {
-        "label": "Folge mir"
+        "label": "Auf TikTok"
       }
     },
     "threads": {
-      "title": "Mein Threads",
-      "description": "@mcpeaps_hd | Hier kann man mich erwischen",
+      "title": "Mehr als 280 Zeichen",
+      "description": "@mcpeaps_hd – Wenn ein Tweet nicht reicht.",
       "action": {
-        "label": "Folge mir"
+        "label": "Auf Threads"
       }
     },
     "bluesky": {
-      "title": "Mein Bluesky",
-      "description": "@mcpeapsunterstrichhd.dev | Hier kann man mich erwischen",
+      "title": "Das neue Social Media",
+      "description": "@mcpeapsunterstrichhd.dev – Dezentral und frei.",
       "action": {
-        "label": "Folge mir"
+        "label": "Auf Bluesky"
       }
     }
   },
@@ -287,91 +287,116 @@
         "textEditor": "Text-Editor",
         "multifunctional": "Multifunktional",
         "retail": "Einzelhandel",
-        "years": "{count} Jahre Erfahrung",
-        "months": "{count} Monate Erfahrung",
-        "year": "{count} Jahr Erfahrung",
-        "month": "{count} Monat Erfahrung"
+        "years": "{count} Jahre",
+        "months": "{count} Monate",
+        "year": "{count} Jahr",
+        "month": "{count} Monat"
+      },
+      "categories": {
+        "programming": {
+          "title": "Programmiersprachen"
+        },
+        "databases": {
+          "title": "Datenbanken"
+        },
+        "automation": {
+          "title": "Automatisierung & DevOps"
+        },
+        "operatingSystems": {
+          "title": "Betriebssysteme"
+        },
+        "networking": {
+          "title": "Netzwerk"
+        },
+        "devEnvironments": {
+          "title": "Entwicklungsumgebungen"
+        },
+        "office": {
+          "title": "Office & Kollaboration"
+        }
       }
+
     }
+
   },
   "Linkhub": {
-    "description": "Hier findest du eine Übersicht meiner Social-Media-Profile und anderer wichtiger Links.",
+    "description": "Ob Code, Beats oder Random Content – hier findest du mich überall.",
     "sections": {
       "socialMedia": {
         "title": "Social Media",
-        "description": "Hier findest du meine Social Media Profilen.",
+        "description": "Die Plattformen, auf denen ich aktiv bin.",
         "instagram": {
           "title": "Instagram",
-          "headding": "Instagram Profil",
-          "description": "Hier kanst du vieleicht etwas von meinen altag mitbekommen"
+          "headding": "@mcpeaps_hd",
+          "description": "Storys aus dem Alltag, Events und der ganze Rest."
         },
         "tiktok": {
           "title": "TikTok",
-          "headding": "TikTok Profil",
-          "description": "Hier kannst du vieleicht etwas von meinen altag mitbekommen"
+          "headding": "@mcpeaps_hd",
+          "description": "Wenn ich mal was Kreatives in unter einer Minute zeigen will."
         },
         "threads": {
           "title": "Threads",
-          "headding": "Threads Profil",
-          "description": "Hier kanst du vieleicht kleine Texte sehen"
+          "headding": "@mcpeaps_hd",
+          "description": "Meine Gedanken, wenn Instagram nicht reicht."
         },
         "bsky": {
           "title": "Bluesky",
-          "headding": "Bluesky Profil",
-          "description": "Hier kanst du vieleicht kleine Texte sehen"
+          "headding": "@mcpeapsunterstrichhd.dev",
+          "description": "Für alle, die Twitter-Alternative suchen."
         },
         "twitter": {
           "title": "X/Twitter",
-          "headding": "X/Twitter Profil",
-          "description": "Hier kanst du vieleicht kleine Texte sehen"
+          "headding": "@mcpeaps_HD",
+          "description": "Tech-Diskussionen und der gelegentliche Rant."
         },
         "discord": {
           "title": "Discord",
-          "headding": "Discord Server",
-          "description": "Hier können wir uns gegenseitig treffen"
+          "headding": "Community Server",
+          "description": "Hier kann man mich direkt erreichen – oder einfach chillen."
         },
         "youtube": {
           "title": "YouTube",
-          "headding": "YouTube Kanal",
-          "description": "Hier findest du meine Videos."
+          "headding": "mcpeaps_HD",
+          "description": "Tutorials, Musik-Releases und was mir sonst einfällt."
         }
       },
       "websites": {
         "title": "Websites",
-        "description": "Hier findest du meine Websites.",
+        "description": "Projekte, die im Web leben.",
         "myWebsite": {
-          "title": "Meine Website",
-          "headding": "Meine Website",
-          "description": "Hier findest du meine Website."
+          "title": "Diese Website",
+          "headding": "mcpeapsunterstrichhd.dev",
+          "description": "Du bist schon hier – aber schau dich ruhig weiter um."
         },
         "cbps": {
           "title": "comboom.sucht",
-          "headding": "comboom.sucht Wbseite",
-          "description": "Hier findest du die Website meiner Freundesgruppe comboom.sucht."
+          "headding": "Die Crew-Seite",
+          "description": "Die Website meiner Freundesgruppe – chaotisch, aber mit Liebe gemacht."
         },
         "blogCBPS": {
-          "title": "comboom.sucht",
-          "headding": "comboom.sucht Blog",
-          "description": "Hier findest du den Blog meiner Freundesgruppe comboom.sucht."
+          "title": "comboom.sucht Blog",
+          "headding": "News & Stories",
+          "description": "Updates aus dem Leben der Crew."
         }
       },
       "other": {
-        "title": "Andere",
-        "description": "Hier findest du andere wichtige Links.",
+        "title": "Mehr von mir",
+        "description": "Was nicht in die anderen Kategorien passt.",
         "github": {
           "title": "GitHub",
-          "headding": "GitHub Profil",
-          "description": "Hier findest du meine Projekte und Quellcodes."
+          "headding": "@mcpeapsUnterstrichHD",
+          "description": "Hier lebt mein Code – Open Source und persönliche Projekte."
         },
         "playlist": {
-          "title": "Music Playlist",
-          "headding": "Music Playlist",
-          "description": "Hier findest du meine Music Playlist."
+          "title": "Meine Playlist",
+          "headding": "Was ich so höre",
+          "description": "Von Techno bis Indie – mein aktueller Soundtrack."
         },
         "song": {
           "title": "Mein Song",
-          "headding": "Mein aktuellster Song",
-          "description": "Hör auf meinen aktuellsten Song."
+          "headding": "Festival Dream",
+          "description": "Mein neuester Track – hör mal rein!"
         }
       }
     }
@@ -405,7 +430,7 @@
     }
   },
   "Contact": {
-    "description": "Lass uns in Kontakt treten! Buche ein Meeting oder sende mir eine Nachricht.",
+    "description": "Lass uns in Kontakt treten! Buche ein Meeting.",
     "bookMeeting": "Meeting buchen",
     "calDescription": "Plane ein Gespräch oder Meeting über Cal.com"
   },

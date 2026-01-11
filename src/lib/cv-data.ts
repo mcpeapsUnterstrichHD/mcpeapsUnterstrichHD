@@ -23,8 +23,18 @@ export interface ExperienceItem {
   enddate: string;
 }
 
+export type SkillCategoryKey =
+  | "programming"
+  | "databases"
+  | "automation"
+  | "operatingSystems"
+  | "networking"
+  | "devEnvironments"
+  | "office";
+
 export interface SkillItem {
   title: string;
+  category: SkillCategoryKey;
   badgeKeys: string[];
   staticBadges?: string[];
   image: string;
@@ -37,10 +47,10 @@ export interface SkillItem {
 }
 
 export interface SkillCategory {
-  titleDE: string;
-  titleEN: string;
-  skills: string;
+  key: SkillCategoryKey;  // Unique key for the category
+  titleKey: string;  // Translation key for title
 }
+
 
 // Education items
 export const educationItems: EducationItem[] = [
@@ -149,69 +159,66 @@ export const experienceItems: ExperienceItem[] = [
 ];
 
 // Skill items (with badge keys for translation)
+// Skill items (with badge keys for translation)
 export const skillItems: SkillItem[] = [
-  { title: "Java", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/java.svg", imageAlt: "Java Logo", imageFallback: "JDK", level: 80, experience: { type: "years", count: 3 } },
-  { title: "Swift (SwiftUI)", badgeKeys: ["Cv.skills.badges.development", "Cv.skills.badges.frontend"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/swift.svg", imageAlt: "Swift Logo", imageFallback: "SUI", level: 60, experience: { type: "years", count: 2 } },
-  { title: "Cisco IOS", badgeKeys: ["Cv.skills.badges.configuration"], staticBadges: [], image: "/pictures/lebenslauf/skills/cisco.svg", imageAlt: "Cisco Logo", imageFallback: "IOS", level: 50, experience: { type: "year", count: 1 } },
-  { title: "Microsoft 365", badgeKeys: ["Cv.skills.badges.office"], staticBadges: ["365", "Microsoft"], image: "/pictures/lebenslauf/skills/ms365.svg", imageAlt: "Microsoft 365 Logo", imageFallback: "MS365", level: 70, experience: { type: "years", count: 5 } },
-  { title: "Visual Studio Code", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["Microsoft"], image: "/pictures/lebenslauf/skills/vscode.svg", imageAlt: "Visual Studio Code Logo", imageFallback: "VScode", level: 60, experience: { type: "years", count: 4 } },
-  { title: "Apple Xcode 14+", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/xcode.svg", imageAlt: "Apple Xcode Logo", imageFallback: "XCODE", level: 70, experience: { type: "years", count: 2 } },
-  { title: "Apple macOS", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/macos.svg", darkImage: "/pictures/lebenslauf/skills/macos-dark.svg", imageAlt: "macOS Logo", imageFallback: "macOS", level: 90, experience: { type: "years", count: 2 } },
-  { title: "Apple iOS", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/ios.svg", darkImage: "/pictures/lebenslauf/skills/ios-dark.svg", imageAlt: "iOS Logo", imageFallback: "iOS", level: 80, experience: { type: "years", count: 3 } },
-  { title: "Apple iPadOS", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/ios.svg", darkImage: "/pictures/lebenslauf/skills/ios-dark.svg", imageAlt: "iOS Logo", imageFallback: "iOS", level: 80, experience: { type: "years", count: 3 } },
-  { title: "Apple visionOS", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/ios.svg", darkImage: "/pictures/lebenslauf/skills/ios-dark.svg", imageAlt: "iOS Logo", imageFallback: "iOS", level: 80, experience: { type: "year", count: 1 } },
-  { title: "Linux", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: [], image: "/pictures/lebenslauf/skills/linux.svg", imageAlt: "Linux Logo", imageFallback: "L", level: 60, experience: { type: "years", count: 5 } },
-  { title: "Windows", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Microsoft"], image: "/pictures/lebenslauf/skills/windows.svg", imageAlt: "Windows Logo", imageFallback: "WIN", level: 60, experience: { type: "years", count: 3 } },
-  { title: "Microsoft Teams", badgeKeys: ["Cv.skills.badges.office"], staticBadges: ["Microsoft"], image: "/pictures/lebenslauf/skills/teams.svg", imageAlt: "Microsoft Teams Logo", imageFallback: "Teams", level: 60, experience: { type: "years", count: 4 } },
-  { title: "Eclipse", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/eclipse.svg", imageAlt: "Eclipse Logo", imageFallback: "JDK", level: 60, experience: { type: "years", count: 2 } },
-  { title: "MySQL", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/mysql.svg", imageAlt: "MySQL Logo", imageFallback: "SQL", level: 80, experience: { type: "year", count: 1 } },
-  { title: "MySQL Community Server", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/mysql.svg", imageAlt: "MySQL Logo", imageFallback: "SQL", level: 60, experience: { type: "year", count: 1 } },
-  { title: "MySQL Workbench", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/mysql.svg", imageAlt: "MySQL Logo", imageFallback: "SQL", level: 60, experience: { type: "year", count: 1 } },
-  { title: "Ansible", badgeKeys: ["Cv.skills.badges.automation"], staticBadges: [], image: "/pictures/lebenslauf/skills/ansible.svg", darkImage: "/pictures/lebenslauf/skills/ansible-dark.svg", imageAlt: "Ansible Logo", imageFallback: "A", level: 60, experience: { type: "months", count: 2 } },
-  { title: "Rust", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/rust.svg", darkImage: "/pictures/lebenslauf/skills/rust-dark.svg", imageAlt: "Rust Logo", imageFallback: "R", level: 30, experience: { type: "months", count: 2 } },
-  { title: "C", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["C98", "C11"], image: "/pictures/lebenslauf/skills/c.svg", imageAlt: "C Logo", imageFallback: "C", level: 30, experience: { type: "year", count: 1 } },
-  { title: "C++", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["C++23"], image: "/pictures/lebenslauf/skills/cpp.svg", imageAlt: "C++ Logo", imageFallback: "C++", level: 30, experience: { type: "month", count: 1 } },
-  { title: "Emacs", badgeKeys: ["Cv.skills.badges.development", "Cv.skills.badges.textEditor", "Cv.skills.badges.multifunctional"], staticBadges: ["GNU"], image: "/pictures/lebenslauf/skills/emacs.svg", imageAlt: "GNU Emacs Logo", imageFallback: "Emacs", level: 30, experience: { type: "month", count: 1 } },
+  { title: "Java", category: "programming", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/java.svg", imageAlt: "Java Logo", imageFallback: "JDK", level: 80, experience: { type: "years", count: 3 } },
+  { title: "Swift (SwiftUI)", category: "programming", badgeKeys: ["Cv.skills.badges.development", "Cv.skills.badges.frontend"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/swift.svg", imageAlt: "Swift Logo", imageFallback: "SUI", level: 60, experience: { type: "years", count: 2 } },
+  { title: "Cisco IOS", category: "networking", badgeKeys: ["Cv.skills.badges.configuration"], staticBadges: [], image: "/pictures/lebenslauf/skills/cisco.svg", imageAlt: "Cisco Logo", imageFallback: "IOS", level: 50, experience: { type: "year", count: 1 } },
+  { title: "Microsoft 365", category: "office", badgeKeys: ["Cv.skills.badges.office"], staticBadges: ["365", "Microsoft"], image: "/pictures/lebenslauf/skills/ms365.svg", imageAlt: "Microsoft 365 Logo", imageFallback: "MS365", level: 70, experience: { type: "years", count: 5 } },
+  { title: "Visual Studio Code", category: "devEnvironments", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["Microsoft"], image: "/pictures/lebenslauf/skills/vscode.svg", imageAlt: "Visual Studio Code Logo", imageFallback: "VScode", level: 60, experience: { type: "years", count: 4 } },
+  { title: "Apple Xcode 14+", category: "devEnvironments", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/xcode.svg", imageAlt: "Apple Xcode Logo", imageFallback: "XCODE", level: 70, experience: { type: "years", count: 2 } },
+  { title: "Apple macOS", category: "operatingSystems", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/macos.svg", darkImage: "/pictures/lebenslauf/skills/macos-dark.svg", imageAlt: "macOS Logo", imageFallback: "macOS", level: 90, experience: { type: "years", count: 2 } },
+  { title: "Apple iOS", category: "operatingSystems", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/ios.svg", darkImage: "/pictures/lebenslauf/skills/ios-dark.svg", imageAlt: "iOS Logo", imageFallback: "iOS", level: 80, experience: { type: "years", count: 3 } },
+  { title: "Apple iPadOS", category: "operatingSystems", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/ios.svg", darkImage: "/pictures/lebenslauf/skills/ios-dark.svg", imageAlt: "iOS Logo", imageFallback: "iOS", level: 80, experience: { type: "years", count: 3 } },
+  { title: "Apple visionOS", category: "operatingSystems", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/ios.svg", darkImage: "/pictures/lebenslauf/skills/ios-dark.svg", imageAlt: "iOS Logo", imageFallback: "iOS", level: 80, experience: { type: "year", count: 1 } },
+  { title: "Linux", category: "operatingSystems", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: [], image: "/pictures/lebenslauf/skills/linux.svg", imageAlt: "Linux Logo", imageFallback: "L", level: 60, experience: { type: "years", count: 5 } },
+  { title: "Windows", category: "operatingSystems", badgeKeys: ["Cv.skills.badges.operatingSystem"], staticBadges: ["Microsoft"], image: "/pictures/lebenslauf/skills/windows.svg", imageAlt: "Windows Logo", imageFallback: "WIN", level: 60, experience: { type: "years", count: 3 } },
+  { title: "Microsoft Teams", category: "office", badgeKeys: ["Cv.skills.badges.office"], staticBadges: ["Microsoft"], image: "/pictures/lebenslauf/skills/teams.svg", imageAlt: "Microsoft Teams Logo", imageFallback: "Teams", level: 60, experience: { type: "years", count: 4 } },
+  { title: "Eclipse", category: "devEnvironments", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/eclipse.svg", imageAlt: "Eclipse Logo", imageFallback: "JDK", level: 60, experience: { type: "years", count: 2 } },
+  { title: "MySQL", category: "databases", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/mysql.svg", imageAlt: "MySQL Logo", imageFallback: "SQL", level: 80, experience: { type: "year", count: 1 } },
+  { title: "MySQL Community Server", category: "databases", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/mysql.svg", imageAlt: "MySQL Logo", imageFallback: "SQL", level: 60, experience: { type: "year", count: 1 } },
+  { title: "MySQL Workbench", category: "databases", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/mysql.svg", imageAlt: "MySQL Logo", imageFallback: "SQL", level: 60, experience: { type: "year", count: 1 } },
+  { title: "Ansible", category: "automation", badgeKeys: ["Cv.skills.badges.automation"], staticBadges: [], image: "/pictures/lebenslauf/skills/ansible.svg", darkImage: "/pictures/lebenslauf/skills/ansible-dark.svg", imageAlt: "Ansible Logo", imageFallback: "A", level: 60, experience: { type: "months", count: 2 } },
+  { title: "Rust", category: "programming", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/rust.svg", darkImage: "/pictures/lebenslauf/skills/rust-dark.svg", imageAlt: "Rust Logo", imageFallback: "R", level: 30, experience: { type: "months", count: 2 } },
+  { title: "C", category: "programming", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["C98", "C11"], image: "/pictures/lebenslauf/skills/c.svg", imageAlt: "C Logo", imageFallback: "C", level: 30, experience: { type: "year", count: 1 } },
+  { title: "C++", category: "programming", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["C++23"], image: "/pictures/lebenslauf/skills/cpp.svg", imageAlt: "C++ Logo", imageFallback: "C++", level: 30, experience: { type: "month", count: 1 } },
+  { title: "Emacs", category: "devEnvironments", badgeKeys: ["Cv.skills.badges.development", "Cv.skills.badges.textEditor", "Cv.skills.badges.multifunctional"], staticBadges: ["GNU"], image: "/pictures/lebenslauf/skills/emacs.svg", imageAlt: "GNU Emacs Logo", imageFallback: "Emacs", level: 30, experience: { type: "month", count: 1 } },
 ];
+
 
 // ATS-friendly skill categories
 export const skillCategories: SkillCategory[] = [
   {
-    titleDE: "Programmiersprachen",
-    titleEN: "Programming Languages",
-    skills: "Java (3 Jahre), Swift/SwiftUI (2 Jahre), C (1 Jahr), C++ (Grundkenntnisse), Rust (Grundkenntnisse)",
+    key: "programming",
+    titleKey: "Cv.skills.categories.programming.title",
   },
   {
-    titleDE: "Datenbanken",
-    titleEN: "Databases",
-    skills: "MySQL (1 Jahr), MySQL Workbench, SQL",
+    key: "databases",
+    titleKey: "Cv.skills.categories.databases.title",
   },
   {
-    titleDE: "Automatisierung & DevOps",
-    titleEN: "Automation & DevOps",
-    skills: "Ansible (2 Monate), Git, CI/CD",
+    key: "automation",
+    titleKey: "Cv.skills.categories.automation.title",
   },
   {
-    titleDE: "Betriebssysteme",
-    titleEN: "Operating Systems",
-    skills: "macOS (2 Jahre), Linux (5 Jahre), Windows (3 Jahre), iOS/iPadOS (3 Jahre)",
+    key: "operatingSystems",
+    titleKey: "Cv.skills.categories.operatingSystems.title",
   },
   {
-    titleDE: "Netzwerk",
-    titleEN: "Networking",
-    skills: "Cisco IOS (1 Jahr), Netzwerkkonfiguration",
+    key: "networking",
+    titleKey: "Cv.skills.categories.networking.title",
   },
   {
-    titleDE: "Entwicklungsumgebungen",
-    titleEN: "Development Environments",
-    skills: "Visual Studio Code (4 Jahre), Xcode (2 Jahre), Eclipse (2 Jahre), Emacs",
+    key: "devEnvironments",
+    titleKey: "Cv.skills.categories.devEnvironments.title",
   },
   {
-    titleDE: "Office & Kollaboration",
-    titleEN: "Office & Collaboration",
-    skills: "Microsoft 365 (5 Jahre), Microsoft Teams (4 Jahre), Confluence",
+    key: "office",
+    titleKey: "Cv.skills.categories.office.title",
   },
 ];
+
+
 
 // Helper to parse date strings
 export function parseDate(s?: string): Date {
