@@ -20,6 +20,7 @@ export interface SkillCardProps {
   SkillTitle: string; // Title of the skill
   SkillBadges: string[]; // Array of badges for the skill
   Skilllevel: number; // Skill level as a percentage
+  category?: string; // Optional category key for grouping
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({
