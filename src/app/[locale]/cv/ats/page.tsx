@@ -198,12 +198,30 @@ export default function CVATSPage() {
         const catSkills = skillItems
           .filter((s) => s.category === cat.key)
           .map((s) => {
-            let duration = "";
+            const detailsParts: string[] = [];
+
+            // Add experience duration
             if (s.experience) {
               const durationText = t(`Cv.skills.badges.${s.experience.type}`, { count: s.experience.count });
-              duration = ` (${durationText})`;
+              detailsParts.push(durationText);
             }
-            return `${s.title}${duration}`;
+
+            // Add badges (translated)
+            if (s.badgeKeys && s.badgeKeys.length > 0) {
+              const translatedBadges = s.badgeKeys
+                .filter(key => key !== 'Cv.skills.badges.language') // Filter out "Language" badge
+                .map(key => t(key));
+              detailsParts.push(...translatedBadges);
+            }
+
+            // Add static badges
+            if (s.staticBadges && s.staticBadges.length > 0) {
+              detailsParts.push(...s.staticBadges);
+            }
+
+            const details = detailsParts.length > 0 ? ` (${detailsParts.join(", ")})` : "";
+
+            return `${s.title}${details}`;
           })
           .join(", ");
 
