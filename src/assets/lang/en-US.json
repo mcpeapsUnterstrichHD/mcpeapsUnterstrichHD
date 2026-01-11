@@ -296,12 +296,17 @@
         "textEditor": "Text Editor",
         "multifunctional": "Multifunctional",
         "retail": "Retail",
+        "language": "Language",
+        "native": "Native Speaker",
         "years": "{count} Years",
         "months": "{count} Months",
         "year": "{count} Year",
         "month": "{count} Month"
       },
       "categories": {
+        "languages": {
+          "title": "Languages"
+        },
         "programming": {
           "title": "Programming Languages"
         },

@@ -287,12 +287,17 @@
         "textEditor": "Text-Editor",
         "multifunctional": "Multifunktional",
         "retail": "Einzelhandel",
+        "language": "Sprache",
+        "native": "Muttersprache",
         "years": "{count} Jahre",
         "months": "{count} Monate",
         "year": "{count} Jahr",
         "month": "{count} Monat"
       },
       "categories": {
+        "languages": {
+          "title": "Sprachen"
+        },
         "programming": {
           "title": "Programmiersprachen"
         },

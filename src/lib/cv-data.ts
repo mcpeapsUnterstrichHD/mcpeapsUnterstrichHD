@@ -30,7 +30,8 @@ export type SkillCategoryKey =
   | "operatingSystems"
   | "networking"
   | "devEnvironments"
-  | "office";
+  | "office"
+  | "languages";
 
 export interface SkillItem {
   title: string;
@@ -183,11 +184,20 @@ export const skillItems: SkillItem[] = [
   { title: "C", category: "programming", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["C98", "C11"], image: "/pictures/lebenslauf/skills/c.svg", imageAlt: "C Logo", imageFallback: "C", level: 30, experience: { type: "year", count: 1 } },
   { title: "C++", category: "programming", badgeKeys: ["Cv.skills.badges.development"], staticBadges: ["C++23"], image: "/pictures/lebenslauf/skills/cpp.svg", imageAlt: "C++ Logo", imageFallback: "C++", level: 30, experience: { type: "month", count: 1 } },
   { title: "Emacs", category: "devEnvironments", badgeKeys: ["Cv.skills.badges.development", "Cv.skills.badges.textEditor", "Cv.skills.badges.multifunctional"], staticBadges: ["GNU"], image: "/pictures/lebenslauf/skills/emacs.svg", imageAlt: "GNU Emacs Logo", imageFallback: "Emacs", level: 30, experience: { type: "month", count: 1 } },
+  // Languages - I'm reusing emacs SVG as a placeholder or we can use empty image?
+  // Let's use empty string for now or maybe a generic icon.
+  // Actually, I can just use "DE" initials and "EN" initials as falback and leave image empty.
+  { title: "Deutsch", category: "languages", badgeKeys: ["Cv.skills.badges.language", "Cv.skills.badges.native"], staticBadges: ["C2"], image: "", imageAlt: "German Flag", imageFallback: "DE", level: 100 },
+  { title: "English", category: "languages", badgeKeys: ["Cv.skills.badges.language"], staticBadges: ["B1"], image: "", imageAlt: "English Flag", imageFallback: "EN", level: 60 },
 ];
 
 
 // ATS-friendly skill categories
 export const skillCategories: SkillCategory[] = [
+  {
+    key: "languages",
+    titleKey: "Cv.skills.categories.languages.title",
+  },
   {
     key: "programming",
     titleKey: "Cv.skills.categories.programming.title",
