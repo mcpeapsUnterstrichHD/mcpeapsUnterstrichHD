@@ -3,11 +3,13 @@ import { SidebarToggle } from "@/components/sidebar-toggle";
 import { useSidebar } from "@/components/ui/sidebar";
 
 export function NavBar() {
-  const { state } = useSidebar();
+  const { state, isMobile, openMobile } = useSidebar();
   const isCollapsed = state === "collapsed";
 
-  // Only show header content when sidebar is collapsed
-  if (!isCollapsed) {
+  // Show header when: sidebar collapsed (desktop) OR mobile sidebar closed
+  const shouldShowHeader = isCollapsed || (isMobile && !openMobile);
+
+  if (!shouldShowHeader) {
     return null;
   }
 

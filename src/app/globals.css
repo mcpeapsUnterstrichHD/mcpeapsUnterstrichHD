@@ -366,6 +366,8 @@
   --shadow-xl: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
     0 8px 10px -1px hsl(220.6452 16.9399% 35.8824% / 0.1);
   --shadow-2xl: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.25);
+  --appsidebar-width: 24rem;
+  --appsidebar-width-mobile: 100%;
 }
 
 @media print {

@@ -1,24 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import {
   SidebarMenuSub,
 } from "@/components/ui/sidebar";
@@ -28,7 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { languages, type Language } from "@/lib/lang";
-import { ChevronRight, ChevronDown, Globe } from "lucide-react";
+import { ChevronRight, ChevronDown, Globe, Search, Dot } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { ViewTransition } from "react";
@@ -47,6 +33,11 @@ export function Langswitcher({ sidebar = false }: LangswitcherProps) {
   const [search, setSearch] = React.useState("");
 
   const currentLanguage = languages.find((lang) => lang.code === locale);
+
+  // Calculate longest language label for dynamic min-width
+  const longestLabelLength = React.useMemo(() => {
+    return Math.max(...languages.map((lang) => `${lang.name} (${lang.country})`.length));
+  }, []);
 
   const setLanguage = React.useCallback((lang: Language) => {
     router.replace(pathname, { locale: lang.code });
@@ -68,127 +59,108 @@ export function Langswitcher({ sidebar = false }: LangswitcherProps) {
     }
   }, [search, setLanguage]);
 
-  // Custom filter: allow searching by name, country, code
-  const filterLanguages = (value: string, search: string) => {
-    if (value.toLowerCase().includes(search.toLowerCase())) return 1;
-    return 0;
-  };
+  // Manual filtering
+  const filteredLanguages = languages.filter((lang) => {
+    if (!search) return true;
+    const searchValue = `${lang.name} (${lang.country}) ${lang.code}`.toLowerCase();
+    return searchValue.includes(search.toLowerCase());
+  });
 
-  const LanguageCommand = () => (
-    <Command filter={filterLanguages}>
-      <CommandInput
-        placeholder="Search language..."
-        value={search}
-        onValueChange={setSearch}
-      />
-      <CommandList>
-        <CommandEmpty>{t("noLanguageFound")}</CommandEmpty>
-        <CommandGroup heading="Languages">
-          {languages.map((lang) => (
-            <CommandItem
-              key={lang.code}
-              value={`${lang.name} (${lang.country}) ${lang.code}`}
-              onSelect={() => setLanguage(lang)}
-              className="cursor-pointer"
-            >
-              <span className={lang.code === locale ? "font-bold" : ""}>
-                 {lang.name} ({lang.country})
-              </span>
-            </CommandItem>
-          ))}
-        </CommandGroup>
-      </CommandList>
-    </Command>
-  );
+  // Chevron icon based on sidebar context
+  const ChevronIcon = sidebar ? ChevronRight : ChevronDown;
 
-  // Sidebar mode: use Collapsible with SidebarMenuSub
-  if (sidebar) {
-    return (
-      <Collapsible className="group/collapsible" open={open} onOpenChange={setOpen}>
-        <Command filter={filterLanguages} shouldFilter={true}>
-             {/* Main Container */}
-             <div className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden">
-               <Tooltip>
-                 <TooltipTrigger
-                    className="shrink-0 outline-none cursor-pointer"
-                    onClick={() => setOpen(true)}
-                 >
-                    <Globe />
-                 </TooltipTrigger>
-                 <TooltipContent side="right">
-                    {currentLanguage?.name} ({currentLanguage?.country})
-                 </TooltipContent>
-               </Tooltip>
+  // Container classes - sidebar uses special collapsed-icon behavior
+  const containerClasses = sidebar
+    ? "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden"
+    : "gap-2 rounded-md border border-border/50 bg-card/50 backdrop-blur-sm p-2 text-left text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground focus-visible:ring-2 flex items-center outline-hidden cursor-pointer";
 
-               <div className="flex flex-1 items-center overflow-hidden group-data-[collapsible=icon]:hidden">
-                  <CommandInput
-                      placeholder="Search language..."
-                      value={open ? search : `${currentLanguage?.name} (${currentLanguage?.country})`}
-                      onValueChange={(val) => {
-                          setSearch(val);
-                          if (!open) setOpen(true);
-                      }}
-                      className="h-auto p-0 border-0 focus-visible:ring-0 bg-transparent truncate w-full cursor-pointer placeholder:text-sidebar-foreground/70"
-                      onFocus={() => {
-                          setOpen(true);
-                          setSearch("");
-                      }}
-                  />
-               </div>
+  // Dynamic min-width for footer mode: longest label + icons (globe ~2ch, search ~2ch, chevron ~2ch, padding ~3ch)
+  const minWidth = !sidebar ? `${longestLabelLength + 9}ch` : undefined;
 
-               <CollapsibleTrigger className="ml-auto cursor-pointer p-0.5 rounded-sm hover:bg-sidebar-accent/50 outline-none focus-visible:ring-2 ring-sidebar-ring">
-                    <ChevronRight className={`transition-transform duration-200 ${open ? "rotate-90" : ""} group-data-[collapsible=icon]:hidden shrink-0`} />
-               </CollapsibleTrigger>
-             </div>
+  // Input wrapper classes
+  const inputWrapperClasses = sidebar
+    ? "flex flex-1 min-w-0 items-center gap-1.5 group-data-[collapsible=icon]:hidden"
+    : "flex flex-1 min-w-0 items-center gap-1.5";
 
-           <CollapsibleContent>
-               <SidebarMenuSub>
-                  <CommandList className="px-2 py-1.5 max-h-[300px] overflow-y-auto">
-                    <CommandEmpty>{t("noLanguageFound")}</CommandEmpty>
-                    <CommandGroup heading="Languages">
-                      {languages.map((lang) => (
-                        <CommandItem
-                          key={lang.code}
-                          value={`${lang.name} (${lang.country}) ${lang.code}`}
-                          onSelect={() => setLanguage(lang)}
-                          className="cursor-pointer"
-                        >
-                          <span className={lang.code === locale ? "font-bold" : ""}>
-                             {lang.name} ({lang.country})
-                          </span>
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  </CommandList>
-               </SidebarMenuSub>
-           </CollapsibleContent>
-        </Command>
-      </Collapsible>
-    );
-  }
+  // List container - sidebar uses SidebarMenuSub, default uses regular div
+  const ListWrapper = sidebar ? SidebarMenuSub : "div";
+  const listClasses = sidebar
+    ? "px-2 py-1.5 max-h-[300px] overflow-y-auto flex flex-col gap-2"
+    : "absolute bottom-full left-0 right-0 mb-1 px-2 py-1.5 max-h-[200px] overflow-y-auto flex flex-col gap-2 bg-card/95 backdrop-blur-sm border border-border/50 rounded-md shadow-lg z-50";
 
-  // Default mode: use Popover for better search experience than DropdownMenu
+  // Button hover classes - fixed height for consistency
+  const buttonClasses = sidebar
+    ? "cursor-pointer px-2 py-1.5 h-8 text-xs rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-left w-full"
+    : "cursor-pointer px-2 py-1.5 h-8 text-sm rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-left w-full";
+
   return (
     <ViewTransition enter="slide" exit="root" update="root">
-        <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger>
-            <Button
-              className="rounded-sm text-foreground bg-card/50 backdrop-blur-sm text-center font-bold print:hidden min-w-44 justify-between px-3"
-              variant="outline"
-              role="combobox"
-              aria-expanded={open}
+    <Collapsible className={`group/collapsible ${sidebar ? "" : "relative"}`} open={open} onOpenChange={setOpen}>
+      {/* Main trigger row */}
+      <div className={containerClasses} style={{ minWidth }}>
+        {sidebar ? (
+          <Tooltip>
+            <TooltipTrigger
+              className="shrink-0 outline-none cursor-pointer"
+              onClick={() => setOpen(true)}
             >
-             <span className="flex items-center gap-2">
-                <Globe className="h-4 w-4" />
-                {currentLanguage?.name || "Language"} {"("}{currentLanguage?.country || "country"}{")"}
-             </span>
-             <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0 bg-card/50 backdrop-blur-sm text-foreground">
-             <LanguageCommand />
-        </PopoverContent>
-        </Popover>
+              <Globe className="size-4" />
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              {currentLanguage?.name} ({currentLanguage?.country})
+            </TooltipContent>
+          </Tooltip>
+        ) : (
+          <Globe className="size-4 shrink-0 text-muted-foreground" />
+        )}
+
+        <div className={inputWrapperClasses}>
+          {open && <Search className="size-3.5 shrink-0 opacity-50" />}
+          <input
+            type="text"
+            placeholder={t("searchLanguage")}
+            value={open ? search : `${currentLanguage?.name} (${currentLanguage?.country})`}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              if (!open) setOpen(true);
+            }}
+            className="h-auto p-0 border-0 focus-visible:ring-0 focus:outline-none bg-transparent w-full cursor-pointer placeholder:text-muted-foreground/70 text-inherit"
+            onFocus={() => {
+              setOpen(true);
+              setSearch("");
+            }}
+          />
+        </div>
+
+        <CollapsibleTrigger className="ml-auto cursor-pointer p-0.5 rounded-sm hover:bg-muted/50 outline-none focus-visible:ring-2">
+          <ChevronIcon className={`size-4 transition-transform duration-200 ${sidebar ? (open ? "rotate-90" : "") : (open ? "" : "-rotate-90")} ${sidebar ? "group-data-[collapsible=icon]:hidden" : ""} shrink-0 opacity-50`} />
+        </CollapsibleTrigger>
+      </div>
+
+      <CollapsibleContent>
+        <ListWrapper className={listClasses}>
+          {filteredLanguages.length === 0 ? (
+            <span className="py-2 text-center text-xs text-muted-foreground">{t("noLanguageFound")}</span>
+          ) : (
+            filteredLanguages.map((lang) => (
+              <button
+                type="button"
+                key={lang.code}
+                onClick={() => setLanguage(lang)}
+                className={`${buttonClasses} flex items-center justify-between`}
+              >
+                <span className={lang.code === locale ? "font-bold" : ""}>
+                  {lang.name} ({lang.country})
+                </span>
+                {lang.code === locale && (
+                  <Dot className="text-primary" size={32} strokeWidth={6} />
+                )}
+              </button>
+            ))
+          )}
+        </ListWrapper>
+      </CollapsibleContent>
+    </Collapsible>
     </ViewTransition>
   );
 }

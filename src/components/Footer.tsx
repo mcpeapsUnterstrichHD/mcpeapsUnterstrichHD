@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { ViewTransition } from "react";
 import { Mail } from "lucide-react";
+import { Langswitcher } from "@/components/Langswitcher";
 import {
   SiGithub as Github,
   SiInstagram as Instagram,
@@ -172,6 +173,9 @@ export default function Footer() {
                 <p className="text-sm text-muted-foreground">
                   &copy; {currentYear} {t("Aboutme.name")}. {t("Footer.rights")}
                 </p>
+
+                {/* Language Switcher */}
+                <Langswitcher />
 
                 {/* Development Only - Open in IDX */}
                 {process.env.NODE_ENV === "development" && (

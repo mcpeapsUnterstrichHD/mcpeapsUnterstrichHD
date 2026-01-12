@@ -447,7 +447,8 @@
   },
   "Sidebar": {
     "toggleSidebar": "Seitenleiste umschalten",
-    "noLanguageFound": "Keine Sprache gefunden."
+    "noLanguageFound": "Keine Sprache gefunden.",
+    "searchLanguage": "Sprache suchen..."
   },
   "CookieConsent": {
     "title": "Cookie-Hinweis",
