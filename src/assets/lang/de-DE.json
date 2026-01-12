@@ -445,6 +445,10 @@
     "legal": "Rechtliches",
     "rights": "Alle Rechte vorbehalten."
   },
+  "Sidebar": {
+    "toggleSidebar": "Seitenleiste umschalten",
+    "noLanguageFound": "Keine Sprache gefunden."
+  },
   "CookieConsent": {
     "title": "Cookie-Hinweis",
     "description": "Diese Website verwendet Cookies, um Ihnen das beste Erlebnis zu bieten. Wir verwenden nur technisch notwendige Cookies, die für die Funktion der Website unerlässlich sind.",

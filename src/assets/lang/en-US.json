@@ -454,6 +454,10 @@
     "legal": "Legal",
     "rights": "All rights reserved."
   },
+  "Sidebar": {
+    "toggleSidebar": "Toggle Sidebar",
+    "noLanguageFound": "No language found."
+  },
   "CookieConsent": {
     "title": "Cookie Notice",
     "description": "This website uses cookies to ensure you get the best experience. We only use technically necessary cookies that are essential for the website to function properly.",

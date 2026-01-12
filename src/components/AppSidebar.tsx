@@ -1,15 +1,10 @@
 "use client";
 
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import {
   Sidebar,
   SidebarContent,
@@ -21,18 +16,39 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
   SidebarRail,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import UserAvatar, { type ImageProps } from "@/components/userAvatar";
-import {Link} from '@/i18n/navigation';
+import {Link, usePathname} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
 import { ViewTransition } from "react";
-import { TypingAnimation } from "./ui/typing-animation";
+import { TypingAnimation } from "@/components/ui/typing-animation";
+import { Langswitcher } from "@/components/Langswitcher";
+import {
+  Home,
+  User,
+  FolderKanban,
+  FileText,
+  Mail,
+  LinkIcon,
+  Scale,
+  Dot,
+  LucideProps,
+} from "lucide-react";
+import { SidebarToggle } from "@/components/sidebar-toggle";
+import type React from "react";
+
+interface SidebarLinks {
+  title: string,
+  url: string,
+  url2?: string,
+  icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>
+}
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslations();
+  const pathname = usePathname();
 
   const today = new Date();
   const birthday = new Date("2003-06-06");
@@ -42,31 +58,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     age--;
   }
 
-  // submenu items.
-  const items: {
-    title: string;
-    url: string;
-  }[] = [
-    {
-      title: t("Sites.aboutme"),
-      url: "/aboutme"
-    },
-    {
-      title: t("Sites.projects"),
-      url: "/projects",
-    },
-    {
-      title: t("Sites.cv"),
-      url: "/cv",
-    },
-    {
-      title: t("Sites.contact"),
-      url: "/contact",
-    },
-    {
-      title: t("Sites.impressum"),
-      url: "/imprint",
-    },
+  // Navigation links with icons
+  const navigationLinks: SidebarLinks[] = [
+    { title: t("Sites.root"), url: "/", icon: Home },
+    { title: t("Sites.aboutme"), url: "/aboutme/", icon: User },
+    { title: t("Sites.projects"), url: "/projects/", icon: FolderKanban },
+    { title: t("Sites.cv"), url: "/cv/", url2: "/cv/ats/", icon: FileText },
+  ];
+
+  // Connect/Contact links with icons
+  const connectLinks: SidebarLinks[] = [
+    { title: t("Sites.contact"), url: "/contact/", icon: Mail },
+    { title: t("Sites.linkhub"), url: "/linkhub/", icon: LinkIcon },
+  ];
+
+  // Legal links with icons
+  const legalLinks: SidebarLinks[] = [
+    { title: t("Sites.impressum"), url: "/imprint/", icon: Scale },
   ];
 
   const name = t("Aboutme.name");
@@ -79,131 +87,131 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <ViewTransition enter="slide" exit="root" update="root">
-      <Sidebar collapsible="offExamples" className="no-print backdrop-blur-sm rounded-sm" {... props}>
-        <SidebarHeader>
-          <SidebarGroup>
+      <Sidebar collapsible="offExamples"
+        className="no-print backdrop-blur-sm rounded-sm"
+        {... props}>
+        <SidebarHeader >
+          <SidebarGroup >
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <HoverCard>
-                    <HoverCardTrigger render={<span />}>
-                      <SidebarMenuButton render={<Link href="/" className="p-6" />}>
-                        <UserAvatar
-                          name={name}
-                          githubUserName={githubUserName}
-                          image={image}
-                          imageFallback={imageFallback}
-                        />
-                        <TypingAnimation
-                          typeSpeed={145}
-                          pauseDelay={1450}
-                          deleteSpeed={75}
-                          showCursor
-                          blinkCursor
-                          loop
-                          startOnView
-                          cursorStyle="underscore"
-                        >{name}</TypingAnimation>
-                      </SidebarMenuButton>
-                    </HoverCardTrigger>
-
-                    <HoverCardContent className="bg-card/50 backdrop-blur-sm w-80">
-                      <section className="grid grid-flow-row grid-rows-2">
-                        <p className="grid grid-cols-2 grid-flow-col items-center justify-center p-2">
-                          <UserAvatar
-                            name={name}
-                            githubUserName={githubUserName}
-                            image={image}
-                            imageFallback={imageFallback}
-                          />
-                          <TypingAnimation
-                            typeSpeed={145}
-                            pauseDelay={1450}
-                            deleteSpeed={75}
-                            showCursor
-                            blinkCursor
-                            loop
-                            startOnView
-                            cursorStyle="underscore"
-                            as="span"
-                            className="text-lg p-2"
-                          >{name}</TypingAnimation>
-                        </p>
-                        <TypingAnimation
-                            typeSpeed={145}
-                            pauseDelay={1450}
-                            deleteSpeed={75}
-                            showCursor
-                            blinkCursor
-                            loop
-                            startOnView
-                            cursorStyle="underscore"
-                            as="p"
-                            className="text-lg p-2"
-                          >{t("Aboutme.title")}</TypingAnimation>
-                        <p className="p-2">
-                          {t("Aboutme.description", { age: age })}
-                        </p>
-                      </section>
-                    </HoverCardContent>
-                  </HoverCard>
+                  <Tooltip>
+                    <TooltipTrigger render={<Link href="/" />} className="h-auto py-2 justify-start ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden">
+                      <UserAvatar
+                        name={name}
+                        githubUserName={githubUserName}
+                        image={image}
+                        imageFallback={imageFallback}
+                      />
+                      <TypingAnimation
+                        typeSpeed={145}
+                        pauseDelay={1450}
+                        deleteSpeed={75}
+                        showCursor
+                        blinkCursor
+                        loop
+                        startOnView
+                        cursorStyle="underscore"
+                        className="group-data-[collapsible=icon]:hidden"
+                      >{name}</TypingAnimation>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                      {name}
+                    </TooltipContent>
+                  </Tooltip>
                 </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarHeader>
         <SidebarContent>
+          {/* Navigation */}
           <SidebarGroup>
+            <SidebarGroupLabel>{t("Footer.navigation")}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton render={<Link href="/linkhub" />}>
-                    <span>{t("Sites.linkhub")}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <Collapsible defaultOpen className="group/collapsible">
-                  <SidebarMenuItem>
-                    <CollapsibleTrigger render={<SidebarMenuButton />}>
-                      <span>{t("Sites.aboutme")}</span>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {items.map((item) => (
-                          <SidebarMenuSubItem key={item.title}>
-                            <SidebarMenuButton render={<Link href={item.url} />}>
-                              <span>{item.title}</span>
-                            </SidebarMenuButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
+                {navigationLinks.map((item) => (
+                  <SidebarMenuItem key={item.url}>
+                    <Tooltip>
+                      <TooltipTrigger render={<Link href={item.url} />} className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0">
+                        <item.icon />
+                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                        {(pathname === item.url || pathname === item.url2) &&
+                        <Dot className="text-primary" size={72} strokeWidth={6} />
+                        }
+                      </TooltipTrigger>
+                      <TooltipContent side="right" >
+                        {item.title}
+                      </TooltipContent>
+                    </Tooltip>
                   </SidebarMenuItem>
-                </Collapsible>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+
+          {/* Connect */}
+          <SidebarGroup>
+            <SidebarGroupLabel>{t("Footer.connect")}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {connectLinks.map((item) => (
+                  <SidebarMenuItem key={item.url}>
+                    <Tooltip>
+                      <TooltipTrigger render={<Link href={item.url} />} className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0">
+                        <item.icon />
+                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                        {(pathname === item.url) &&
+                        <Dot className="text-primary" size={72} strokeWidth={6} />
+                        }
+                      </TooltipTrigger>
+                      <TooltipContent side="right" >
+                        {item.title}
+                      </TooltipContent>
+                    </Tooltip>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+
+          {/* Legal */}
+          <SidebarGroup>
+            <SidebarGroupLabel>{t("Footer.legal")}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {legalLinks.map((item) => (
+                  <SidebarMenuItem key={item.url}>
+                    <Tooltip>
+                      <TooltipTrigger render={<Link href={item.url} />} className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0">
+                        <item.icon />
+                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                        {(pathname === item.url) &&
+                        <Dot className="text-primary" size={72} strokeWidth={6} />
+                        }
+                      </TooltipTrigger>
+                      <TooltipContent side="right" >
+                        {item.title}
+                      </TooltipContent>
+                    </Tooltip>
+                  </SidebarMenuItem>
+                ))}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
           <SidebarGroup>
-            <SidebarGroupLabel>
-              &copy; {today.getFullYear()} Fabian Aps
+            <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden">
+              &copy; {today.getFullYear()} {t("Aboutme.name")}
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton render={<Link href="/linkhub" />}>
-                    <span>{t("Sites.linkhub")}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem >
-                  <SidebarMenuButton render={<Link href="/" />}>
-                    <span>{t("Aboutme.name")}</span>
-                  </SidebarMenuButton>
+                  <Langswitcher sidebar />
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton render={<Link href="/imprint" />}>
-                    <span>{t("Sites.impressum")}</span>
-                  </SidebarMenuButton>
+                  <SidebarToggle />
                 </SidebarMenuItem>
                 {process.env.NODE_ENV === "development" &&
                 <SidebarMenuItem>
