@@ -456,7 +456,8 @@
   },
   "Sidebar": {
     "toggleSidebar": "Toggle Sidebar",
-    "noLanguageFound": "No language found."
+    "noLanguageFound": "No language found.",
+    "searchLanguage": "Search language..."
   },
   "CookieConsent": {
     "title": "Cookie Notice",

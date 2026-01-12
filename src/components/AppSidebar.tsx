@@ -17,7 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-  useSidebar,
+  SidebarSeparator,
 } from "@/components/ui/sidebar";
 import UserAvatar, { type ImageProps } from "@/components/userAvatar";
 import {Link, usePathname} from '@/i18n/navigation';
@@ -37,7 +37,7 @@ import {
   LucideProps,
 } from "lucide-react";
 import { SidebarToggle } from "@/components/sidebar-toggle";
-import type React from "react";
+import * as React from "react";
 
 interface SidebarLinks {
   title: string,
@@ -87,16 +87,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <ViewTransition enter="slide" exit="root" update="root">
-      <Sidebar collapsible="offExamples"
+      <Sidebar
+        collapsible="offExamples"
         className="no-print backdrop-blur-sm rounded-sm"
-        {... props}>
-        <SidebarHeader >
-          <SidebarGroup >
+        {...props}
+      >
+        <SidebarHeader>
+          <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
                   <Tooltip>
-                    <TooltipTrigger render={<Link href="/" />} className="h-auto py-2 justify-start ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden">
+                    <TooltipTrigger
+                      render={<Link href="/" />}
+                      className="h-auto py-2 justify-start ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden"
+                    >
                       <UserAvatar
                         name={name}
                         githubUserName={githubUserName}
@@ -113,11 +118,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         startOnView
                         cursorStyle="underscore"
                         className="group-data-[collapsible=icon]:hidden"
-                      >{name}</TypingAnimation>
+                      >
+                        {name}
+                      </TypingAnimation>
                     </TooltipTrigger>
-                    <TooltipContent side="right">
-                      {name}
-                    </TooltipContent>
+                    <TooltipContent side="right">{name}</TooltipContent>
                   </Tooltip>
                 </SidebarMenuItem>
               </SidebarMenu>
@@ -133,23 +138,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {navigationLinks.map((item) => (
                   <SidebarMenuItem key={item.url}>
                     <Tooltip>
-                      <TooltipTrigger render={<Link href={item.url} />} className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0">
+                      <TooltipTrigger
+                        render={<Link href={item.url} />}
+                        className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0"
+                      >
                         <item.icon />
-                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
-                        {(pathname === item.url || pathname === item.url2) &&
-                        <Dot className="text-primary" size={72} strokeWidth={6} />
-                        }
+                        <span className="group-data-[collapsible=icon]:hidden">
+                          {item.title}
+                        </span>
+                        {(pathname === item.url || pathname === item.url2) && (
+                          <Dot
+                            className="text-primary"
+                            size={72}
+                            strokeWidth={6}
+                          />
+                        )}
                       </TooltipTrigger>
-                      <TooltipContent side="right" >
-                        {item.title}
-                      </TooltipContent>
+                      <TooltipContent side="right">{item.title}</TooltipContent>
                     </Tooltip>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-
           {/* Connect */}
           <SidebarGroup>
             <SidebarGroupLabel>{t("Footer.connect")}</SidebarGroupLabel>
@@ -158,23 +169,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {connectLinks.map((item) => (
                   <SidebarMenuItem key={item.url}>
                     <Tooltip>
-                      <TooltipTrigger render={<Link href={item.url} />} className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0">
+                      <TooltipTrigger
+                        render={<Link href={item.url} />}
+                        className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0"
+                      >
                         <item.icon />
-                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
-                        {(pathname === item.url) &&
-                        <Dot className="text-primary" size={72} strokeWidth={6} />
-                        }
+                        <span className="group-data-[collapsible=icon]:hidden">
+                          {item.title}
+                        </span>
+                        {pathname === item.url && (
+                          <Dot
+                            className="text-primary"
+                            size={72}
+                            strokeWidth={6}
+                          />
+                        )}
                       </TooltipTrigger>
-                      <TooltipContent side="right" >
-                        {item.title}
-                      </TooltipContent>
+                      <TooltipContent side="right">{item.title}</TooltipContent>
                     </Tooltip>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-
           {/* Legal */}
           <SidebarGroup>
             <SidebarGroupLabel>{t("Footer.legal")}</SidebarGroupLabel>
@@ -183,16 +200,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {legalLinks.map((item) => (
                   <SidebarMenuItem key={item.url}>
                     <Tooltip>
-                      <TooltipTrigger render={<Link href={item.url} />} className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0">
+                      <TooltipTrigger
+                        render={<Link href={item.url} />}
+                        className="ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0"
+                      >
                         <item.icon />
-                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
-                        {(pathname === item.url) &&
-                        <Dot className="text-primary" size={72} strokeWidth={6} />
-                        }
+                        <span className="group-data-[collapsible=icon]:hidden">
+                          {item.title}
+                        </span>
+                        {pathname === item.url && (
+                          <Dot
+                            className="text-primary"
+                            size={72}
+                            strokeWidth={6}
+                          />
+                        )}
                       </TooltipTrigger>
-                      <TooltipContent side="right" >
-                        {item.title}
-                      </TooltipContent>
+                      <TooltipContent side="right">{item.title}</TooltipContent>
                     </Tooltip>
                   </SidebarMenuItem>
                 ))}
@@ -213,36 +237,36 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuItem>
                   <SidebarToggle />
                 </SidebarMenuItem>
-                {process.env.NODE_ENV === "development" &&
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    render={
-                      <Link
-                        href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2FmcpeapsUnterstrichHD%2FmcpeapsUnterstrichHD"
-                        target="_blank"
-                        rel="noreferrer"
-                      />
-                    }
-                  >
-                    <picture>
-                      <source
-                        media="(prefers-color-scheme: dark)"
-                        srcSet="https://cdn.idx.dev/btn/open_light_32.svg"
-                      />
-                      <source
-                        media="(prefers-color-scheme: light)"
-                        srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
-                      />
-                      <img
-                        height={32}
-                        width={32}
-                        alt="Open in IDX"
-                        src="https://cdn.idx.dev/btn/open_purple_32.svg"
-                      />
-                    </picture>
-
-                  </SidebarMenuButton>
-                </SidebarMenuItem>}
+                {process.env.NODE_ENV === "development" && (
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      render={
+                        <Link
+                          href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2FmcpeapsUnterstrichHD%2FmcpeapsUnterstrichHD"
+                          target="_blank"
+                          rel="noreferrer"
+                        />
+                      }
+                    >
+                      <picture>
+                        <source
+                          media="(prefers-color-scheme: dark)"
+                          srcSet="https://cdn.idx.dev/btn/open_light_32.svg"
+                        />
+                        <source
+                          media="(prefers-color-scheme: light)"
+                          srcSet="https://cdn.idx.dev/btn/open_dark_32.svg"
+                        />
+                        <img
+                          height={32}
+                          width={32}
+                          alt="Open in IDX"
+                          src="https://cdn.idx.dev/btn/open_purple_32.svg"
+                        />
+                      </picture>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

@@ -207,7 +207,12 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
   }, []);
 
   return (
-    <SidebarProvider>
+    <SidebarProvider
+      style={{
+        "--sidebar-width": "var(--appsidebar-width)",
+        "--sidebar-width-mobile": "var(--appsidebar-width-mobile)",
+      } as React.CSSProperties}
+    >
       <AppSidebar variant='floating' />
 
           <Particles quantity={400} refresh={true} />
