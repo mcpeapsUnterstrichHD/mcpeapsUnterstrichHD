@@ -79,7 +79,7 @@ export default function App() {
             <FolderOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
             {t("Recommendation.projects.action.label")}
           </Button>
-          <Button render={<Link href="/cv" />} variant="outline" size="lg" className="group gap-2">
+          <Button render={<Link href="/cv" />} variant="outline" size="lg" className="bg-card/50 backdrop-blur-sm group gap-2">
             <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
             {t("Recommendation.cv.action.label")}
           </Button>
