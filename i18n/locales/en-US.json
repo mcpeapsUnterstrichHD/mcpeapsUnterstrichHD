@@ -1,0 +1,476 @@
+{
+  "Aboutme": {
+    "hello": "Hello",
+    "iam": "I am",
+    "name": "Fabian Aps",
+    "title": "Developer, DJ & Producer from Berlin",
+    "description": "{age} years old, based in Berlin, living somewhere between code and beats. By day I study Computer Science at TU Berlin, by night I produce tracks or work on my projects. My internship at KfW showed me I can handle IT operations too – but my heart beats for development. Whether building software or making music: as long as it's creative.",
+    "myPlaylist": "My Playlist",
+    "myCurrentSong": "My Latest Song"
+  },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "submit": "Submit",
+    "close": "Close"
+  },
+  "Logo": {
+    "alt": "mcpeaps_HD Logo"
+  },
+  "Sites": {
+    "root": "Home",
+    "impressum": "Imprint",
+    "aboutme": "About Me",
+    "projects": "Projects",
+    "contact": "Contact Me",
+    "cv": "Resume",
+    "linkhub": "Link List",
+    "notFound": "404 - Page Not Found"
+  },
+  "Projects": {
+    "pinned": "Pinned Projects",
+    "title": "Projects",
+    "all": "All Projects",
+    "projectCount": "{count} Projects",
+    "items": {
+      "portfolio": {
+        "title": "This Portfolio",
+        "description": "The site you're on right now. Next.js, TypeScript, and way too many late nights with CSS.",
+        "imgAlt": "Portfolio Screenshot"
+      },
+      "simplesql": {
+        "title": "simplesql",
+        "description": "When you want to run SQL statements without setting up an IDE for half an hour. TUI for quick queries.",
+        "imgAlt": "simplesql Terminal Interface"
+      },
+      "localServices": {
+        "title": "My Self-Hosted Stack",
+        "description": "SearxNG, Nextcloud, and everything else you need when you don't want to tell Google everything.",
+        "imgAlt": "SearxNG Logo"
+      },
+      "schulRepo": {
+        "title": "School Repository",
+        "description": "Three years of OSZ IMT in code – from first Java baby steps to real projects.",
+        "imgAlt": "OSZ IMT Logo"
+      },
+      "klassenWebsite": {
+        "title": "ITA 12 Website",
+        "description": "The official class website. Built with the crew, hosted with pride.",
+        "imgAlt": "OSZ IMT Logo"
+      },
+      "klassenApp": {
+        "title": "ITA 12 App",
+        "description": "Schedule changes, grade calculator, class chat – everything we needed in school.",
+        "imgAlt": "Class App Icon"
+      },
+      "simpleSqlRunner": {
+        "title": "Simple SQL Runner",
+        "description": "The GUI version of simplesql. For those who prefer clicking over typing.",
+        "imgAlt": "Simple SQL Runner Screenshot"
+      },
+      "dotfilesMacos": {
+        "title": "macOS Dotfiles",
+        "description": "My complete Mac setup in one repo. Zsh, Neovim, Homebrew – all included.",
+        "imgAlt": "Terminal with Dotfiles"
+      },
+      "nixConfig": {
+        "title": "NixOS Config",
+        "description": "Reproducible system setup. Configure once, deploy anywhere.",
+        "imgAlt": "NixOS Logo"
+      },
+      "dotfilesLinux": {
+        "title": "Linux Dotfiles",
+        "description": "Same philosophy, different OS. Hyprland, Waybar, and the whole Wayland stack.",
+        "imgAlt": "Linux Desktop Screenshot"
+      },
+      "cbpsWebsite": {
+        "title": "comboom.sucht Website",
+        "description": "The digital home of my friend group. Chaotic, colorful, and absolutely us.",
+        "imgAlt": "comboom.sucht Logo"
+      },
+      "cbpsApp": {
+        "title": "comboom.sucht App",
+        "description": "Plan private events, share memes, collect inside jokes – the crew app.",
+        "imgAlt": "comboom.sucht App Icon"
+      },
+      "uniRepo": {
+        "title": "TU Berlin Repository",
+        "description": "Algorithms, data structures, and proof that I can actually do math.",
+        "imgAlt": "TU Berlin Logo"
+      },
+      "liveWallpaper": {
+        "title": "Interactive Live Wallpaper",
+        "description": "Particles in Nord theme, C++23 under the hood, runs native and in browser. My playground for shader experiments.",
+        "imgAlt": "Live Wallpaper Preview"
+      }
+    }
+  },
+  "Recommendation": {
+    "projects": {
+      "title": "From Idea to Code",
+      "description": "See what happens when I can't sleep at night.",
+      "action": {
+        "label": "Explore Projects"
+      }
+    },
+    "aboutme": {
+      "title": "The Person Behind the Code",
+      "description": "IT nerd by day, DJ by night – get to know me.",
+      "action": {
+        "label": "Learn More"
+      }
+    },
+    "cv": {
+      "title": "From School to TU Berlin",
+      "description": "My journey through the IT world – all the stops.",
+      "action": {
+        "label": "View Resume"
+      }
+    },
+    "linkhub": {
+      "title": "Find Me Everywhere",
+      "description": "From Instagram to GitHub – here's where I hang out.",
+      "action": {
+        "label": "All Profiles"
+      }
+    },
+    "github": {
+      "title": "Where the Code Lives",
+      "description": "{'@'}mcpeapsUnterstrichHD – Open source with passion.",
+      "action": {
+        "label": "On GitHub"
+      }
+    },
+    "twitter": {
+      "title": "My Unfiltered Thoughts",
+      "description": "{'@'}mcpeaps_HD – Tech talks and random thoughts.",
+      "action": {
+        "label": "On X"
+      }
+    },
+    "instagram": {
+      "title": "Between Code and Beats",
+      "description": "{'@'}mcpeaps_hd – My daily life in pictures.",
+      "action": {
+        "label": "On Instagram"
+      }
+    },
+    "tiktok": {
+      "title": "When It Has to Be Quick",
+      "description": "{'@'}mcpeaps_hd – Content in 60 seconds.",
+      "action": {
+        "label": "On TikTok"
+      }
+    },
+    "threads": {
+      "title": "More Than 280 Characters",
+      "description": "{'@'}mcpeaps_hd – When a tweet isn't enough.",
+      "action": {
+        "label": "On Threads"
+      }
+    },
+    "bluesky": {
+      "title": "The New Social Media",
+      "description": "{'@'}mcpeapsunterstrichhd.dev – Decentralized and free.",
+      "action": {
+        "label": "On Bluesky"
+      }
+    }
+  },
+  "Cv": {
+    "recommendation": {
+      "printingSettings": {
+        "title": "Optimal Print Settings",
+        "description": "Scale: 62%, Margins: Default, Background Graphics: On"
+      },
+      "printingNotice": {
+        "title": "Print Recommendation",
+        "description": "Use the PDF button in the bottom right corner for optimal printing."
+      }
+    },
+    "about": {
+      "title": "Certified IT Assistant | Software Developer",
+      "email": "Email",
+      "telnum": "Phone",
+      "address": {
+        "germany": "Germany",
+        "berlin": "Berlin"
+      },
+      "birthday": "Date of Birth"
+    },
+    "education": {
+      "title": "Education",
+      "badges": {
+        "ausbildung": "Vocational Training",
+        "fachabitur": "Technical Diploma",
+        "batchlor_of_science": "Bachelor of Science",
+        "studies": "University Studies",
+        "it": "Computer Science",
+        "years": "{years} Years",
+        "semester": "{semester} Semesters",
+        "msaMitOG": "Secondary School Certificate (College Prep)"
+      },
+      "items": {
+        "tuberlin": {
+          "name": "Technical University of Berlin",
+          "imgAlt": "Technical University of Berlin Logo",
+          "description": "Bachelor of Science in Computer Science – Focus areas: Algorithms, Data Structures, Software Engineering",
+          "badges": [
+            "Berlin",
+            "Bachelor of Science",
+            "Computer Science",
+            "6 Semesters"
+          ]
+        },
+        "lookingForApprenticeship": {
+          "name": "Seeking Apprenticeship",
+          "imgAlt": "Actively Seeking Position"
+        },
+        "oszimt": {
+          "name": "Berlin Technical College for IT and Medical Technology",
+          "imgAlt": "OSZ IMT Berlin Logo",
+          "description": "Dual qualification: Certified IT Assistant with Technical Diploma. Core competencies: Software Development (Java), Network Administration (Cisco), Database Management (MySQL)",
+          "badges": [
+            "Berlin",
+            "Vocational Training",
+            "Technical Diploma",
+            "Computer Science",
+            "3 Years"
+          ]
+        },
+        "cvl": {
+          "name": "Carl-von-Linné-School Berlin",
+          "imgAlt": "Carl-von-Linné-School Logo",
+          "description": "Secondary School Certificate with qualification for advanced secondary education",
+          "badges": [
+            "Berlin",
+            "Secondary School Certificate (College Prep)"
+          ]
+        }
+      }
+    },
+    "experience": {
+      "title": "Professional Experience",
+      "items": {
+        "kfw": {
+          "name": "KfW Banking Group – IT Department",
+          "imgAlt": "KfW Banking Group Logo",
+          "description": "• Developed and implemented automation scripts using Ansible to streamline IT operations\n• Created technical documentation in Confluence for knowledge management\n• Collaborated with IT team to improve infrastructure processes",
+          "badges": ["Berlin", "IT Internship", "Ansible", "Automation", "Confluence", "9 Weeks"]
+        },
+        "adk": {
+          "name": "Academy of Arts Berlin",
+          "imgAlt": "Academy of Arts Logo",
+          "description": "• Assisted in digital synthesizer software development\n• Gained experience at the intersection of technology and creative arts",
+          "badges": ["Berlin", "Software Development", "Music Technology", "Student Internship", "3 Weeks"]
+        },
+        "tosa": {
+          "name": "Tosa Security & Service GmbH & Co KG",
+          "imgAlt": "Tosa Security & Service Logo",
+          "description": "• Handled administrative tasks and office organization\n• Developed understanding of business operations",
+          "badges": ["Trebbin", "Office Administration", "Student Internship", "3 Days"]
+        },
+        "pfennig": {
+          "name": "Pfennigpfeiffer Retail GmbH",
+          "imgAlt": "Pfennigpfeiffer Logo",
+          "description": "• First work experience in retail: Product merchandising and customer service",
+          "badges": ["Berlin", "Retail", "Student Internship", "1 Day"]
+        }
+      }
+    },
+    "skills": {
+      "title": "Skills & Abilities",
+      "badges": {
+        "development": "Software Development",
+        "configuration": "System Configuration",
+        "operatingSystem": "Operating System",
+        "frontend": "Frontend Development",
+        "automation": "IT Automation",
+        "office": "Office Applications",
+        "textEditor": "Text Editor",
+        "multifunctional": "Multifunctional",
+        "retail": "Retail",
+        "language": "Language",
+        "native": "Native Speaker",
+        "years": "{count} Years",
+        "months": "{count} Months",
+        "year": "{count} Year",
+        "month": "{count} Month"
+      },
+      "categories": {
+        "languages": {
+          "title": "Languages"
+        },
+        "programming": {
+          "title": "Programming Languages"
+        },
+        "databases": {
+          "title": "Databases"
+        },
+        "automation": {
+          "title": "Automation & DevOps"
+        },
+        "operatingSystems": {
+          "title": "Operating Systems"
+        },
+        "networking": {
+          "title": "Networking"
+        },
+        "devEnvironments": {
+          "title": "Development Environments"
+        },
+        "office": {
+          "title": "Office & Collaboration"
+        }
+      }
+
+    }
+
+  },
+  "Linkhub": {
+    "description": "Code, beats, or random content – find me everywhere.",
+    "sections": {
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "The platforms where I'm active.",
+        "instagram": {
+          "title": "Instagram",
+          "headding": "{'@'}mcpeaps_hd",
+          "description": "Stories from daily life, events, and everything else."
+        },
+        "tiktok": {
+          "title": "TikTok",
+          "headding": "{'@'}mcpeaps_hd",
+          "description": "When I want to show something creative in under a minute."
+        },
+        "threads": {
+          "title": "Threads",
+          "headding": "{'@'}mcpeaps_hd",
+          "description": "My thoughts when Instagram isn't enough."
+        },
+        "bsky": {
+          "title": "Bluesky",
+          "headding": "{'@'}mcpeapsunterstrichhd.dev",
+          "description": "For everyone looking for a Twitter alternative."
+        },
+        "twitter": {
+          "title": "X/Twitter",
+          "headding": "{'@'}mcpeaps_HD",
+          "description": "Tech discussions and the occasional rant."
+        },
+        "discord": {
+          "title": "Discord",
+          "headding": "Community Server",
+          "description": "Reach me directly here – or just hang out."
+        },
+        "youtube": {
+          "title": "YouTube",
+          "headding": "mcpeaps_HD",
+          "description": "Tutorials, music releases, and whatever else comes to mind."
+        }
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Projects that live on the web.",
+        "myWebsite": {
+          "title": "This Website",
+          "headding": "mcpeapsunterstrichhd.dev",
+          "description": "You're already here – but feel free to look around."
+        },
+        "cbps": {
+          "title": "comboom.sucht",
+          "headding": "The Crew Site",
+          "description": "My friend group's website – chaotic, but made with love."
+        },
+        "blogCBPS": {
+          "title": "comboom.sucht Blog",
+          "headding": "News & Stories",
+          "description": "Updates from the crew's life."
+        }
+      },
+      "other": {
+        "title": "More From Me",
+        "description": "What doesn't fit in the other categories.",
+        "github": {
+          "title": "GitHub",
+          "headding": "{'@'}mcpeapsUnterstrichHD",
+          "description": "Where my code lives – open source and personal projects."
+        },
+        "playlist": {
+          "title": "My Playlist",
+          "headding": "What I'm Listening To",
+          "description": "From techno to indie – my current soundtrack."
+        },
+        "song": {
+          "title": "My Song",
+          "headding": "Festival Dream",
+          "description": "My latest track – give it a listen!"
+        }
+      }
+    }
+  },
+  "Imprint": {
+    "title": "Legal Notice",
+    "tmg": {
+      "title": "Information according to § 5 TMG (German Telemedia Act)",
+      "germany": "Germany"
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "rstv": {
+      "title": "Responsible for content according to § 55 Abs. 2 RStV (German Interstate Broadcasting Treaty)"
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "This website uses cookies to enhance your experience. Below you will find information about the cookies used on this site.",
+      "technical": {
+        "title": "Technical Cookies",
+        "description": "We only use technically necessary cookies that are essential for the website to function properly. These include cookies for storing your language preference and cookie consent status. These cookies cannot be disabled."
+      },
+      "thirdParty": {
+        "title": "Third-Party Content",
+        "description": "Some pages contain embedded content from third-party services. These services may set their own cookies, which are outside of my control:",
+        "calcom": "Appointment scheduling",
+        "appleMusic": "Playlist player embeds",
+        "songlink": "Song player embeds"
+      }
+    }
+  },
+  "Contact": {
+    "description": "Let's connect! Book a meeting.",
+    "bookMeeting": "Book a Meeting",
+    "calDescription": "Schedule a call or meeting via Cal.com"
+  },
+  "Footer": {
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "legal": "Legal",
+    "rights": "All rights reserved."
+  },
+  "Sidebar": {
+    "toggleSidebar": "Toggle Sidebar",
+    "noLanguageFound": "No language found.",
+    "searchLanguage": "Search language..."
+  },
+  "CookieConsent": {
+    "title": "Cookie Notice",
+    "description": "This website uses cookies to ensure you get the best experience. We only use technically necessary cookies that are essential for the website to function properly.",
+    "technicalCookies": {
+      "title": "Technical Cookies",
+      "description": "These cookies are required for basic site functionality, such as remembering your preferences and language settings. They cannot be disabled."
+    },
+    "thirdPartyCookies": {
+      "title": "Third-Party Content",
+      "description": "Some pages contain embedded content (iframes) from third-party services like Cal.com or Apple Music. These services may set their own cookies, which are outside of my control. By using this site, you acknowledge this."
+    },
+    "accept": "I Understand",
+    "moreInfo": "More Information"
+  }
+}
