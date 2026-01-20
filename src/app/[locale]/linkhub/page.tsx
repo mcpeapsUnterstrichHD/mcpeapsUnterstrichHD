@@ -10,7 +10,7 @@ export default function LinkhubPage() {
   const t = useTranslations();
 
   return (
-    <div className="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
+    <div className="flex flex-col gap-8 px-4 py-6 mx-auto">
       {/* Hero Section */}
       <section className="text-center space-y-3">
         <AuroraText

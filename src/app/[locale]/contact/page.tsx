@@ -84,7 +84,7 @@ export default function ContactPage() {
   const t = useTranslations();
 
   return (
-    <div className="flex flex-col gap-8 px-4 py-8 max-w-9xl mx-auto min-h-[80vh]">
+    <div className="flex flex-col gap-8 px-4 py-8 mx-auto min-h-[80vh]">
       {/* Hero Section */}
       <section className="text-center space-y-4">
         <AuroraText
