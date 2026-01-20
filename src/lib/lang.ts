@@ -12,7 +12,6 @@ export const defaultLocale = LanguagesNUM.de_DE;
 export const RoutingArray: string[] = [
   LanguagesNUM.de_DE,
   LanguagesNUM.en_US,
-  //getRoutingLocale(LanguagesNUM.en_GB),
 ]
 
 export type Language = {
@@ -39,7 +38,17 @@ export const languages: Language[] = [
   },*/
 ];
 
+export function getLanguageDisplayName(code: LanguagesNUM): string {
+  const lang = languages.find((lang) => lang.code === code);
+  return lang ? `${lang.name} (${lang.country})` : "Unknown Language";
+}
+
 export function getLanguageName(code: LanguagesNUM): string {
   const lang = languages.find((lang) => lang.code === code);
   return lang ? lang.name : "Unknown Language";
+}
+
+export function getLanguageCountry(code: LanguagesNUM): string {
+  const lang = languages.find((lang) => lang.code === code);
+  return lang ? lang.country : "Unknown Language";
 }
