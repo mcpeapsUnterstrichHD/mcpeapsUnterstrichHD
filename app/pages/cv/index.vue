@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-6 px-4 py-6 max-w-9xl mx-auto">
+  <div class="flex flex-col gap-6 px-4 py-6 mx-auto">
     <!-- Header / Personal Info -->
     <Card class="bg-card/50 backdrop-blur-sm print:bg-white print:shadow-none">
       <CardHeader class="text-center pb-2">

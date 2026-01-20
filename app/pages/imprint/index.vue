@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8 px-4 py-6 max-w-9xl mx-auto">
+  <div class="flex flex-col gap-8 px-4 py-6 mx-auto">
     <!-- Hero Section -->
     <section class="text-center">
       <AuroraText

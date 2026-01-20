@@ -12,7 +12,7 @@
 
     <!-- Main content container - offset from fixed sidebar on desktop -->
     <div
-      class="relative z-10 flex flex-col min-h-svh flex-1 md:ml-[var(--sidebar-width)] transition-[margin-left] duration-200 ease-linear"
+      class="relative z-10 flex flex-col min-h-svh flex-1 md:ml-[var(--appsidebar-width)] transition-[margin-left] duration-200 ease-linear"
       v-auto-animate
     >
       <Header />

@@ -1,6 +1,6 @@
 <template>
   <div class="ats-cv">
-    <div class="print:block bg-white text-black p-8 min-h-screen">
+    <div class="print:block p-8 min-h-screen">
       <!-- Use print classes to style on print, and simple styles for screen preview if needed -->
       <!-- Header -->
       <h1 class="text-3xl font-bold mb-2">{{ t("Aboutme.name") }}</h1>
@@ -124,16 +124,4 @@ const getSkillsExcludingLanguage = (catKey: string) => {
 </script>
 
 <style scoped>
-/* Basic ATS styling reset for screen view, relies on printer-friendly classes or overrides */
-.ats-cv {
-  font-family: 'Times New Roman', Times, serif;
-  color: black;
-  background: white;
-  width: 100%;
-}
-@media print {
-    @page { margin: 1cm; }
-    body { background: white; color: black; }
-    .ats-cv { width: 100%; height: 100%; }
-}
 </style>
