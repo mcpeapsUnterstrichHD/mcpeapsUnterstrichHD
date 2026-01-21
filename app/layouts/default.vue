@@ -4,16 +4,16 @@
       '--sidebar-width': 'var(--appsidebar-width)',
       '--sidebar-width-mobile': 'var(--appsidebar-width-mobile)',
     }"
-    v-auto-animate
+    class="flex-row!"
   >
-    <AppSidebar variant="floating" v-auto-animate />
+    <AppSidebar variant="floating" />
 
-    <Particles :quantity="400" :refresh="true" v-auto-animate/>
+    <Particles :quantity="400" :refresh="true" />
 
     <!-- Main content container - offset from fixed sidebar on desktop -->
     <div
-      class="relative z-10 flex flex-col min-h-svh flex-1 md:ml-[var(--appsidebar-width)] transition-[margin-left] duration-200 ease-linear"
-      v-auto-animate
+      class="relative z-10 flex flex-col min-h-svh flex-1 w-full md:ml-[var(--appsidebar-width)] transition-[margin-left] duration-200 ease-linear"
+
     >
       <Header />
 
@@ -36,7 +36,7 @@
        :sparkCount="8"
        :duration="400"
        class="fixed inset-0 pointer-events-none z-50"
-       v-auto-animate
+
     />
   </SidebarProvider>
 </template>
@@ -65,10 +65,10 @@ let intervalId: ReturnType<typeof setInterval> | null = null
 onMounted(() => {
   const recommendations = [
     {
-      title: t('Recommendation.projects.title'),
+      title: t('Recommendation.projects. title'),
       description: t('Recommendation.projects.description'),
       action: {
-        label: t('Recommendation.projects.action.label'),
+        label: t('Recommendation.projects. action.label'),
         onClick: () => router.push(localePath('/projects'))
       }
     },
@@ -84,7 +84,7 @@ onMounted(() => {
       title: t('Recommendation.cv.title'),
       description: t('Recommendation.cv.description'),
       action: {
-        label: t('Recommendation.cv.action.label'),
+        label: t('Recommendation.cv. action.label'),
         onClick: () => router.push(localePath('/cv'))
       }
     },
@@ -100,7 +100,7 @@ onMounted(() => {
       title: t('Recommendation.github.title'),
       description: t('Recommendation.github.description'),
       action: {
-        label: t('Recommendation.github.action.label'),
+        label: t('Recommendation.github. action.label'),
         onClick: () => globalThis.window.open('https://github.com/mcpeapsUnterstrichHD', '_blank')
       }
     },
@@ -108,7 +108,7 @@ onMounted(() => {
       title: t('Recommendation.twitter.title'),
       description: t('Recommendation.twitter.description'),
       action: {
-        label: t('Recommendation.twitter.action.label'),
+        label: t('Recommendation.twitter. action.label'),
         onClick: () => globalThis.window.open('https://x.com/mcpeaps_HD', '_blank')
       }
     },
@@ -116,7 +116,7 @@ onMounted(() => {
       title: t('Recommendation.instagram.title'),
       description: t('Recommendation.instagram.description'),
       action: {
-        label: t('Recommendation.instagram.action.label'),
+        label: t('Recommendation.instagram. action.label'),
         onClick: () => globalThis.window.open('https://instagram.com/mcpeaps_hd', '_blank')
       }
     },
@@ -124,7 +124,7 @@ onMounted(() => {
       title: t('Recommendation.tiktok.title'),
       description: t('Recommendation.tiktok.description'),
       action: {
-        label: t('Recommendation.tiktok.action.label'),
+        label: t('Recommendation.tiktok.action. label'),
         onClick: () => globalThis.window.open('https://tiktok.com/@mcpeaps_hd', '_blank')
       }
     },
@@ -132,7 +132,7 @@ onMounted(() => {
       title: t('Recommendation.threads.title'),
       description: t('Recommendation.threads.description'),
       action: {
-        label: t('Recommendation.threads.action.label'),
+        label: t('Recommendation.threads. action.label'),
         onClick: () => globalThis.window.open('https://threads.com/@mcpeaps_hd', '_blank')
       }
     },
