@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import { defaultLocale } from '@/lib/lang'
 
-export const Route = createFileRoute("/")({ component: App });
-
-function App() {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
-      <div className="font-medium">Hello World</div>
-    </div>
-  );
-}
+export const Route = createFileRoute('/')({
+  beforeLoad: () => {
+    throw redirect({
+      to: '/$locale',
+      params: { locale: defaultLocale },
+    })
+  },
+})

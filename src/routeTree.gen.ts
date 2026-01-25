@@ -10,33 +10,150 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
+import { Route as LocaleProjectsRouteImport } from './routes/$locale/projects'
+import { Route as LocaleLinkhubRouteImport } from './routes/$locale/linkhub'
+import { Route as LocaleImprintRouteImport } from './routes/$locale/imprint'
+import { Route as LocaleContactRouteImport } from './routes/$locale/contact'
+import { Route as LocaleAboutmeRouteImport } from './routes/$locale/aboutme'
+import { Route as LocaleCvRouteRouteImport } from './routes/$locale/cv/route'
+import { Route as LocaleCvIndexRouteImport } from './routes/$locale/cv/index'
+import { Route as LocaleCvAtsRouteImport } from './routes/$locale/cv/ats'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleIndexRoute = LocaleIndexRouteImport.update({
+  id: '/$locale/',
+  path: '/$locale/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleProjectsRoute = LocaleProjectsRouteImport.update({
+  id: '/$locale/projects',
+  path: '/$locale/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleLinkhubRoute = LocaleLinkhubRouteImport.update({
+  id: '/$locale/linkhub',
+  path: '/$locale/linkhub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleImprintRoute = LocaleImprintRouteImport.update({
+  id: '/$locale/imprint',
+  path: '/$locale/imprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleContactRoute = LocaleContactRouteImport.update({
+  id: '/$locale/contact',
+  path: '/$locale/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleAboutmeRoute = LocaleAboutmeRouteImport.update({
+  id: '/$locale/aboutme',
+  path: '/$locale/aboutme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleCvRouteRoute = LocaleCvRouteRouteImport.update({
+  id: '/$locale/cv',
+  path: '/$locale/cv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleCvIndexRoute = LocaleCvIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LocaleCvRouteRoute,
+} as any)
+const LocaleCvAtsRoute = LocaleCvAtsRouteImport.update({
+  id: '/ats',
+  path: '/ats',
+  getParentRoute: () => LocaleCvRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$locale/cv': typeof LocaleCvRouteRouteWithChildren
+  '/$locale/aboutme': typeof LocaleAboutmeRoute
+  '/$locale/contact': typeof LocaleContactRoute
+  '/$locale/imprint': typeof LocaleImprintRoute
+  '/$locale/linkhub': typeof LocaleLinkhubRoute
+  '/$locale/projects': typeof LocaleProjectsRoute
+  '/$locale/': typeof LocaleIndexRoute
+  '/$locale/cv/ats': typeof LocaleCvAtsRoute
+  '/$locale/cv/': typeof LocaleCvIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$locale/aboutme': typeof LocaleAboutmeRoute
+  '/$locale/contact': typeof LocaleContactRoute
+  '/$locale/imprint': typeof LocaleImprintRoute
+  '/$locale/linkhub': typeof LocaleLinkhubRoute
+  '/$locale/projects': typeof LocaleProjectsRoute
+  '/$locale': typeof LocaleIndexRoute
+  '/$locale/cv/ats': typeof LocaleCvAtsRoute
+  '/$locale/cv': typeof LocaleCvIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$locale/cv': typeof LocaleCvRouteRouteWithChildren
+  '/$locale/aboutme': typeof LocaleAboutmeRoute
+  '/$locale/contact': typeof LocaleContactRoute
+  '/$locale/imprint': typeof LocaleImprintRoute
+  '/$locale/linkhub': typeof LocaleLinkhubRoute
+  '/$locale/projects': typeof LocaleProjectsRoute
+  '/$locale/': typeof LocaleIndexRoute
+  '/$locale/cv/ats': typeof LocaleCvAtsRoute
+  '/$locale/cv/': typeof LocaleCvIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/$locale/cv'
+    | '/$locale/aboutme'
+    | '/$locale/contact'
+    | '/$locale/imprint'
+    | '/$locale/linkhub'
+    | '/$locale/projects'
+    | '/$locale/'
+    | '/$locale/cv/ats'
+    | '/$locale/cv/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/$locale/aboutme'
+    | '/$locale/contact'
+    | '/$locale/imprint'
+    | '/$locale/linkhub'
+    | '/$locale/projects'
+    | '/$locale'
+    | '/$locale/cv/ats'
+    | '/$locale/cv'
+  id:
+    | '__root__'
+    | '/'
+    | '/$locale/cv'
+    | '/$locale/aboutme'
+    | '/$locale/contact'
+    | '/$locale/imprint'
+    | '/$locale/linkhub'
+    | '/$locale/projects'
+    | '/$locale/'
+    | '/$locale/cv/ats'
+    | '/$locale/cv/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LocaleCvRouteRoute: typeof LocaleCvRouteRouteWithChildren
+  LocaleAboutmeRoute: typeof LocaleAboutmeRoute
+  LocaleContactRoute: typeof LocaleContactRoute
+  LocaleImprintRoute: typeof LocaleImprintRoute
+  LocaleLinkhubRoute: typeof LocaleLinkhubRoute
+  LocaleProjectsRoute: typeof LocaleProjectsRoute
+  LocaleIndexRoute: typeof LocaleIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +165,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/': {
+      id: '/$locale/'
+      path: '/$locale'
+      fullPath: '/$locale/'
+      preLoaderRoute: typeof LocaleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/projects': {
+      id: '/$locale/projects'
+      path: '/$locale/projects'
+      fullPath: '/$locale/projects'
+      preLoaderRoute: typeof LocaleProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/linkhub': {
+      id: '/$locale/linkhub'
+      path: '/$locale/linkhub'
+      fullPath: '/$locale/linkhub'
+      preLoaderRoute: typeof LocaleLinkhubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/imprint': {
+      id: '/$locale/imprint'
+      path: '/$locale/imprint'
+      fullPath: '/$locale/imprint'
+      preLoaderRoute: typeof LocaleImprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/contact': {
+      id: '/$locale/contact'
+      path: '/$locale/contact'
+      fullPath: '/$locale/contact'
+      preLoaderRoute: typeof LocaleContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/aboutme': {
+      id: '/$locale/aboutme'
+      path: '/$locale/aboutme'
+      fullPath: '/$locale/aboutme'
+      preLoaderRoute: typeof LocaleAboutmeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/cv': {
+      id: '/$locale/cv'
+      path: '/$locale/cv'
+      fullPath: '/$locale/cv'
+      preLoaderRoute: typeof LocaleCvRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/cv/': {
+      id: '/$locale/cv/'
+      path: '/'
+      fullPath: '/$locale/cv/'
+      preLoaderRoute: typeof LocaleCvIndexRouteImport
+      parentRoute: typeof LocaleCvRouteRoute
+    }
+    '/$locale/cv/ats': {
+      id: '/$locale/cv/ats'
+      path: '/ats'
+      fullPath: '/$locale/cv/ats'
+      preLoaderRoute: typeof LocaleCvAtsRouteImport
+      parentRoute: typeof LocaleCvRouteRoute
+    }
   }
 }
 
+interface LocaleCvRouteRouteChildren {
+  LocaleCvAtsRoute: typeof LocaleCvAtsRoute
+  LocaleCvIndexRoute: typeof LocaleCvIndexRoute
+}
+
+const LocaleCvRouteRouteChildren: LocaleCvRouteRouteChildren = {
+  LocaleCvAtsRoute: LocaleCvAtsRoute,
+  LocaleCvIndexRoute: LocaleCvIndexRoute,
+}
+
+const LocaleCvRouteRouteWithChildren = LocaleCvRouteRoute._addFileChildren(
+  LocaleCvRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LocaleCvRouteRoute: LocaleCvRouteRouteWithChildren,
+  LocaleAboutmeRoute: LocaleAboutmeRoute,
+  LocaleContactRoute: LocaleContactRoute,
+  LocaleImprintRoute: LocaleImprintRoute,
+  LocaleLinkhubRoute: LocaleLinkhubRoute,
+  LocaleProjectsRoute: LocaleProjectsRoute,
+  LocaleIndexRoute: LocaleIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

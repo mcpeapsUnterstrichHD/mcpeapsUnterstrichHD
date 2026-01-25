@@ -1,0 +1,467 @@
+{
+  "Aboutme": {
+    "hello": "Hallo",
+    "iam": "Ich bin",
+    "name": "Fabian Aps",
+    "title": "ITler, DJ & Producer aus Berlin",
+    "description": "{{age}} Jahre, Berliner, und irgendwo zwischen Code und Beats zu Hause. Tagsüber studiere ich Informatik an der TU Berlin, nachts produziere ich Tracks oder bastle an meinen Projekten. Mein Praktikum bei der KfW hat mir gezeigt, dass ich auch im IT-Betrieb gut klarkomme – aber mein Herz schlägt für die Entwicklung. Ob Software bauen oder Musik machen: Hauptsache kreativ.",
+    "myPlaylist": "Meine Playlist",
+    "myCurrentSong": "Mein aktuellster Song"
+  },
+  "Common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "view": "Ansehen",
+    "submit": "Absenden",
+    "close": "Schließen"
+  },
+  "Logo": {
+    "alt": "mcpeaps_HD Logo"
+  },
+  "Sites": {
+    "root": "Startseite",
+    "impressum": "Impressum",
+    "aboutme": "Über mich",
+    "projects": "Projekte",
+    "contact": "Kontaktier mich",
+    "cv": "Lebenslauf",
+    "linkhub": "Linkübersicht",
+    "notFound": "404 - Seite nicht gefunden"
+  },
+  "Projects": {
+    "pinned": "Gepinnte Projekte",
+    "title": "Projekte",
+    "all": "Alle Projekte",
+    "projectCount": "{{count}} Projekte",
+    "items": {
+      "portfolio": {
+        "title": "Dieses Portfolio",
+        "description": "Die Seite, auf der du gerade bist. Next.js, TypeScript, und viel zu viele Nächte mit CSS.",
+        "imgAlt": "Portfolio Screenshot"
+      },
+      "simplesql": {
+        "title": "simplesql",
+        "description": "Wenn du SQL-Statements ausführen willst, ohne erst eine halbe Stunde IDE aufzusetzen. TUI für schnelle Queries.",
+        "imgAlt": "simplesql Terminal Interface"
+      },
+      "localServices": {
+        "title": "Mein Self-Hosted Stack",
+        "description": "SearxNG, Nextcloud und was man sonst so braucht, wenn man Google nicht alles erzählen will.",
+        "imgAlt": "SearxNG Logo"
+      },
+      "schulRepo": {
+        "title": "Schul-Repository",
+        "description": "Drei Jahre OSZ IMT in Code – von den ersten Java-Gehversuchen bis zu echten Projekten.",
+        "imgAlt": "OSZ IMT Logo"
+      },
+      "klassenWebsite": {
+        "title": "ITA 12 Website",
+        "description": "Die offizielle Klassenwebsite. Gebaut mit der Crew, gehostet mit Stolz.",
+        "imgAlt": "OSZ IMT Logo"
+      },
+      "klassenApp": {
+        "title": "ITA 12 App",
+        "description": "Vertretungsplan, Notenrechner, Klassenchat – alles was wir im Schulalltag gebraucht haben.",
+        "imgAlt": "Klassen App Icon"
+      },
+      "simpleSqlRunner": {
+        "title": "Simple SQL Runner",
+        "description": "Die GUI-Version von simplesql. Für alle, die lieber klicken als tippen.",
+        "imgAlt": "Simple SQL Runner Screenshot"
+      },
+      "dotfilesMacos": {
+        "title": "macOS Dotfiles",
+        "description": "Mein komplettes Mac-Setup in einem Repo. Zsh, Neovim, Homebrew – alles dabei.",
+        "imgAlt": "Terminal mit Dotfiles"
+      },
+      "nixConfig": {
+        "title": "NixOS Config",
+        "description": "Reproduzierbares System-Setup. Einmal konfigurieren, überall deployen.",
+        "imgAlt": "NixOS Logo"
+      },
+      "dotfilesLinux": {
+        "title": "Linux Dotfiles",
+        "description": "Gleiche Philosophie, anderes OS. Hyprland, Waybar und der ganze Wayland-Stack.",
+        "imgAlt": "Linux Desktop Screenshot"
+      },
+      "cbpsWebsite": {
+        "title": "comboom.sucht Website",
+        "description": "Die digitale Heimat meiner Freundesgruppe. Chaotisch, bunt und absolut wir.",
+        "imgAlt": "comboom.sucht Logo"
+      },
+      "cbpsApp": {
+        "title": "comboom.sucht App",
+        "description": "Private Events planen, Memes teilen, Insider-Jokes sammeln – die Crew-App.",
+        "imgAlt": "comboom.sucht App Icon"
+      },
+      "uniRepo": {
+        "title": "TU Berlin Repository",
+        "description": "Algorithmen, Datenstrukturen, und der Beweis dass ich doch noch Mathe kann.",
+        "imgAlt": "TU Berlin Logo"
+      },
+      "liveWallpaper": {
+        "title": "Interaktives Live Wallpaper",
+        "description": "Partikel im Nord-Theme, C++23 unter der Haube, läuft native und im Browser. Mein Spielplatz für Shader-Experimente.",
+        "imgAlt": "Live Wallpaper Preview"
+      }
+    }
+  },
+  "Recommendation": {
+    "projects": {
+      "title": "Von der Idee zum Code",
+      "description": "Schau dir an, was passiert wenn ich nachts nicht schlafen kann.",
+      "action": {
+        "label": "Projekte entdecken"
+      }
+    },
+    "aboutme": {
+      "title": "Der Mensch hinter dem Code",
+      "description": "IT-Nerd bei Tag, DJ bei Nacht – lern mich kennen.",
+      "action": {
+        "label": "Mehr erfahren"
+      }
+    },
+    "cv": {
+      "title": "Vom OSZ zur TU Berlin",
+      "description": "Mein Weg durch die IT-Welt – mit allen Stationen.",
+      "action": {
+        "label": "Lebenslauf ansehen"
+      }
+    },
+    "linkhub": {
+      "title": "Überall zu finden",
+      "description": "Von Instagram bis GitHub – hier bin ich unterwegs.",
+      "action": {
+        "label": "Alle Profile"
+      }
+    },
+    "github": {
+      "title": "Wo der Code lebt",
+      "description": "@mcpeapsUnterstrichHD – Open Source aus Leidenschaft.",
+      "action": {
+        "label": "Auf GitHub"
+      }
+    },
+    "twitter": {
+      "title": "Meine ungefilterten Gedanken",
+      "description": "@mcpeaps_HD – Tech-Talks und Random Thoughts.",
+      "action": {
+        "label": "Auf X"
+      }
+    },
+    "instagram": {
+      "title": "Zwischen Code und Beats",
+      "description": "@mcpeaps_hd – Mein Alltag in Bildern.",
+      "action": {
+        "label": "Auf Instagram"
+      }
+    },
+    "tiktok": {
+      "title": "Wenn's mal schnell gehen muss",
+      "description": "@mcpeaps_hd – Content in 60 Sekunden.",
+      "action": {
+        "label": "Auf TikTok"
+      }
+    },
+    "threads": {
+      "title": "Mehr als 280 Zeichen",
+      "description": "@mcpeaps_hd – Wenn ein Tweet nicht reicht.",
+      "action": {
+        "label": "Auf Threads"
+      }
+    },
+    "bluesky": {
+      "title": "Das neue Social Media",
+      "description": "@mcpeapsunterstrichhd.dev – Dezentral und frei.",
+      "action": {
+        "label": "Auf Bluesky"
+      }
+    }
+  },
+  "Cv": {
+    "recommendation": {
+      "printingSettings": {
+        "title": "Beste Druckeinstellungen",
+        "description": "Skalierung 62 %, Ränder: Standard, Hintergrundgrafiken: ein"
+      },
+      "printingNotice": {
+        "title": "Empfehlung für den Druck",
+        "description": "Nutzen Sie den PDF-Button unten rechts, um den Lebenslauf optimal zu drucken."
+      }
+    },
+    "about": {
+      "title": "Staatlich geprüfter IT-Assistent | Softwareentwickler",
+      "email": "E-Mail",
+      "telnum": "Telefon",
+      "address": {
+        "germany": "Deutschland",
+        "berlin": "Berlin"
+      },
+      "birthday": "Geburtsdatum"
+    },
+    "education": {
+      "title": "Bildungsweg",
+      "badges": {
+        "ausbildung": "Berufsausbildung",
+        "fachabitur": "Fachhochschulreife",
+        "batchlor_of_science": "Bachelor of Science",
+        "studies": "Studium",
+        "it": "Informatik",
+        "semester": "{{semester}} Semester",
+        "years": "{{years}} Jahre",
+        "msaMitOG": "MSA mit Berechtigung zum Übergang in die gymnasiale Oberstufe"
+      },
+      "items": {
+        "tuberlin": {
+          "name": "Technische Universität Berlin",
+          "imgAlt": "Logo der Technischen Universität Berlin",
+          "description": "Informatik-Studium (B.Sc.) – Schwerpunkte: Algorithmen, Datenstrukturen, Softwareentwicklung",
+          "badges": [
+            "Berlin",
+            "Bachelor of Science",
+            "Informatik",
+            "6 Semester"
+          ]
+        },
+        "lookingForApprenticeship": {
+          "name": "Ausbildungsplatzsuchend",
+          "imgAlt": "Aktiv auf Stellensuche"
+        },
+        "oszimt": {
+          "name": "OSZ Informations- und Medizintechnik Berlin",
+          "imgAlt": "Logo des OSZ IMT Berlin",
+          "description": "Doppelqualifizierende Berufsausbildung: Staatlich geprüfter IT-Assistent mit Fachhochschulreife. Schwerpunkte: Softwareentwicklung (Java), Netzwerktechnik (Cisco), Datenbanken (MySQL)",
+          "badges": ["Berlin", "Berufsausbildung", "Fachhochschulreife", "Informatik", "3 Jahre"]
+        },
+        "cvl": {
+          "name": "Carl-von-Linné-Schule Berlin",
+          "imgAlt": "Logo der Carl-von-Linné-Schule",
+          "description": "Mittlerer Schulabschluss (MSA) mit Berechtigung zum Übergang in die gymnasiale Oberstufe",
+          "badges": ["Berlin", "MSA mit Berechtigung zur gymnasialen Oberstufe"]
+        }
+      }
+    },
+    "experience": {
+      "title": "Berufserfahrung",
+      "items": {
+        "kfw": {
+          "name": "KfW Bankengruppe – IT-Abteilung",
+          "imgAlt": "Logo der KfW Bankengruppe",
+          "description": "• Entwickelte und implementierte Automatisierungsskripte mit Ansible zur Optimierung von IT-Prozessen\n• Erstellte technische Dokumentation in Confluence für nachhaltige Wissenssicherung\n• Arbeitete im Team zur Verbesserung der IT-Infrastruktur",
+          "badges": ["Berlin", "IT-Praktikum", "Ansible", "Automatisierung", "Confluence", "9 Wochen"]
+        },
+        "adk": {
+          "name": "Akademie der Künste Berlin",
+          "imgAlt": "Logo der Akademie der Künste",
+          "description": "• Unterstützte bei der Entwicklung digitaler Synthesizer-Software\n• Sammelte Erfahrung an der Schnittstelle von Technologie und Kreativität",
+          "badges": ["Berlin", "Softwareentwicklung", "Musik", "Schülerpraktikum", "3 Wochen"]
+        },
+        "tosa": {
+          "name": "Tosa Security & Service GmbH & Co KG",
+          "imgAlt": "Logo der Tosa Security & Service GmbH",
+          "description": "• Übernahm administrative Aufgaben und Büroorganisation\n• Erlernte Grundlagen der Unternehmensabläufe",
+          "badges": ["Trebbin", "Büroorganisation", "Schülerpraktikum", "3 Tage"]
+        },
+        "pfennig": {
+          "name": "Pfennigpfeiffer Handels GmbH",
+          "imgAlt": "Logo von Pfennigpfeiffer",
+          "description": "• Erste Berufserfahrung im Einzelhandel: Warenpräsentation und Kundenservice",
+          "badges": ["Berlin", "Einzelhandel", "Schülerpraktikum", "1 Tag"]
+        }
+      }
+    },
+    "skills": {
+      "title": "Kenntnisse & Fähigkeiten",
+      "badges": {
+        "development": "Softwareentwicklung",
+        "configuration": "Systemkonfiguration",
+        "operatingSystem": "Betriebssystem",
+        "frontend": "Frontend-Entwicklung",
+        "automation": "IT-Automatisierung",
+        "office": "Office-Anwendungen",
+        "textEditor": "Text-Editor",
+        "multifunctional": "Multifunktional",
+        "retail": "Einzelhandel",
+        "language": "Sprache",
+        "native": "Muttersprache",
+        "years": "{{count}} Jahre",
+        "months": "{{count}} Monate",
+        "year": "{{count}} Jahr",
+        "month": "{{count}} Monat"
+      },
+      "categories": {
+        "languages": {
+          "title": "Sprachen"
+        },
+        "programming": {
+          "title": "Programmiersprachen"
+        },
+        "databases": {
+          "title": "Datenbanken"
+        },
+        "automation": {
+          "title": "Automatisierung & DevOps"
+        },
+        "operatingSystems": {
+          "title": "Betriebssysteme"
+        },
+        "networking": {
+          "title": "Netzwerk"
+        },
+        "devEnvironments": {
+          "title": "Entwicklungsumgebungen"
+        },
+        "office": {
+          "title": "Office & Kollaboration"
+        }
+      }
+
+    }
+
+  },
+  "Linkhub": {
+    "description": "Ob Code, Beats oder Random Content – hier findest du mich überall.",
+    "sections": {
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Die Plattformen, auf denen ich aktiv bin.",
+        "instagram": {
+          "title": "Instagram",
+          "headding": "@mcpeaps_hd",
+          "description": "Storys aus dem Alltag, Events und der ganze Rest."
+        },
+        "tiktok": {
+          "title": "TikTok",
+          "headding": "@mcpeaps_hd",
+          "description": "Wenn ich mal was Kreatives in unter einer Minute zeigen will."
+        },
+        "threads": {
+          "title": "Threads",
+          "headding": "@mcpeaps_hd",
+          "description": "Meine Gedanken, wenn Instagram nicht reicht."
+        },
+        "bsky": {
+          "title": "Bluesky",
+          "headding": "@mcpeapsunterstrichhd.dev",
+          "description": "Für alle, die Twitter-Alternative suchen."
+        },
+        "twitter": {
+          "title": "X/Twitter",
+          "headding": "@mcpeaps_HD",
+          "description": "Tech-Diskussionen und der gelegentliche Rant."
+        },
+        "discord": {
+          "title": "Discord",
+          "headding": "Community Server",
+          "description": "Hier kann man mich direkt erreichen – oder einfach chillen."
+        },
+        "youtube": {
+          "title": "YouTube",
+          "headding": "mcpeaps_HD",
+          "description": "Tutorials, Musik-Releases und was mir sonst einfällt."
+        }
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Projekte, die im Web leben.",
+        "myWebsite": {
+          "title": "Diese Website",
+          "headding": "mcpeapsunterstrichhd.dev",
+          "description": "Du bist schon hier – aber schau dich ruhig weiter um."
+        },
+        "cbps": {
+          "title": "comboom.sucht",
+          "headding": "Die Crew-Seite",
+          "description": "Die Website meiner Freundesgruppe – chaotisch, aber mit Liebe gemacht."
+        },
+        "blogCBPS": {
+          "title": "comboom.sucht Blog",
+          "headding": "News & Stories",
+          "description": "Updates aus dem Leben der Crew."
+        }
+      },
+      "other": {
+        "title": "Mehr von mir",
+        "description": "Was nicht in die anderen Kategorien passt.",
+        "github": {
+          "title": "GitHub",
+          "headding": "@mcpeapsUnterstrichHD",
+          "description": "Hier lebt mein Code – Open Source und persönliche Projekte."
+        },
+        "playlist": {
+          "title": "Meine Playlist",
+          "headding": "Was ich so höre",
+          "description": "Von Techno bis Indie – mein aktueller Soundtrack."
+        },
+        "song": {
+          "title": "Mein Song",
+          "headding": "Festival Dream",
+          "description": "Mein neuester Track – hör mal rein!"
+        }
+      }
+    }
+  },
+  "Imprint": {
+    "title": "Impressum",
+    "tmg": {
+      "title": "Angaben gemäß § 5 TMG",
+      "germany": "Deutschland"
+    },
+    "contact": {
+      "title": "Kontakt"
+    },
+    "rstv": {
+      "title": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV"
+    },
+    "cookies": {
+      "title": "Cookie-Richtlinie",
+      "description": "Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern. Nachfolgend finden Sie Informationen zu den auf dieser Website verwendeten Cookies.",
+      "technical": {
+        "title": "Technische Cookies",
+        "description": "Wir verwenden nur technisch notwendige Cookies, die für die Funktion der Website unerlässlich sind. Dazu gehören Cookies zum Speichern Ihrer Sprachpräferenz und des Cookie-Zustimmungsstatus. Diese Cookies können nicht deaktiviert werden."
+      },
+      "thirdParty": {
+        "title": "Inhalte von Drittanbietern",
+        "description": "Einige Seiten enthalten eingebettete Inhalte von Drittanbietern. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen:",
+        "calcom": "Terminplanung",
+        "appleMusic": "Playlist-Player-Einbettungen",
+        "songlink": "Song-Player-Einbettungen"
+      }
+    }
+  },
+  "Contact": {
+    "description": "Lass uns in Kontakt treten! Buche ein Meeting.",
+    "bookMeeting": "Meeting buchen",
+    "calDescription": "Plane ein Gespräch oder Meeting über Cal.com"
+  },
+  "Footer": {
+    "navigation": "Navigation",
+    "connect": "Verbinden",
+    "legal": "Rechtliches",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "Sidebar": {
+    "toggleSidebar": "Seitenleiste umschalten",
+    "noLanguageFound": "Keine Sprache gefunden.",
+    "searchLanguage": "Sprache suchen..."
+  },
+  "CookieConsent": {
+    "title": "Cookie-Hinweis",
+    "description": "Diese Website verwendet Cookies, um Ihnen das beste Erlebnis zu bieten. Wir verwenden nur technisch notwendige Cookies, die für die Funktion der Website unerlässlich sind.",
+    "technicalCookies": {
+      "title": "Technische Cookies",
+      "description": "Diese Cookies sind für grundlegende Website-Funktionen erforderlich, wie das Speichern Ihrer Einstellungen und Sprachpräferenzen. Sie können nicht deaktiviert werden."
+    },
+    "thirdPartyCookies": {
+      "title": "Inhalte von Drittanbietern",
+      "description": "Einige Seiten enthalten eingebettete Inhalte (iFrames) von Drittanbietern wie Cal.com oder Apple Music. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen. Mit der Nutzung dieser Website nehmen Sie dies zur Kenntnis."
+    },
+    "accept": "Verstanden",
+    "moreInfo": "Mehr Informationen"
+  }
+}

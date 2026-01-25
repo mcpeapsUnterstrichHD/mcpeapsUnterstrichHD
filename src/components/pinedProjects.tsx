@@ -1,0 +1,80 @@
+"use client";
+import ProjectCard, {type ProjectCardProps} from "@/components/projekt-card";
+import MasonryGrid, {Variants} from "@/components/MasonryGrid";
+import { useTranslation } from "react-i18next";
+import { TFunction } from "i18next";
+import { TypingAnimation } from "./ui/typing-animation";
+import { Pin } from "lucide-react";
+
+// Export function to get pinned projects - can be used in other components
+export function getPinnedProjects(t: TFunction): ProjectCardProps[] {
+  return [
+    {
+      projektImage: "/pictures/projects/my_Portfolio.png",
+      projektImageAlt: t("Projects.items.portfolio.imgAlt"),
+      projektImageBgColor: "",
+      projektTitle: t("Projects.items.portfolio.title"),
+      projektBadges: ["FOSS", "WEB", "NEW"],
+      projektLink: "https://github.com/mcpeapsUnterstrichHD/mcpeapsUnterstrichHD",
+      children: t("Projects.items.portfolio.description"),
+    },
+    {
+      projektImage: "/pictures/projects/ssqlr.png",
+      projektImageAlt: t("Projects.items.simplesql.imgAlt"),
+      projektImageBgColor: "",
+      projektTitle: t("Projects.items.simplesql.title"),
+      projektBadges: ["FOSS", "RUST", "SQL"],
+      projektLink: "https://github.com/comboomPunkTsucht/simplesql",
+      children: t("Projects.items.simplesql.description"),
+    },
+    {
+      projektImage: "/pictures/projects/searxng.png",
+      projektImageAlt: t("Projects.items.localServices.imgAlt"),
+      projektImageBgColor: "",
+      projektTitle: t("Projects.items.localServices.title"),
+      projektBadges: ["FOSS", "WEB", "NEW", "SEARCH ENGINE", "DOCKER"],
+      projektLink: "https://github.com/mcpeapsUnterstrichHD/local-services",
+      children: t("Projects.items.localServices.description"),
+    },
+  ].sort((projectA: ProjectCardProps, projectB: ProjectCardProps) =>
+    projectA.projektTitle.localeCompare(projectB.projektTitle)
+  );
+}
+
+export default function PinedProjects() {
+  const { t } = useTranslation();
+  const pinnedProjects = getPinnedProjects(t);
+
+  return (
+    <div className="w-full px-4">
+      <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
+        <Pin className="w-6 h-6 text-primary" />
+        <TypingAnimation
+          typeSpeed={145}
+          pauseDelay={1450}
+          deleteSpeed={75}
+          showCursor
+          blinkCursor
+          loop
+          startOnView
+          cursorStyle="underscore"
+        >{`${t('Projects.pinned')}:`}</TypingAnimation>
+      </h2>
+      <MasonryGrid variant={Variants.pinned_projects}>
+        {pinnedProjects.map((project) => (
+          <ProjectCard
+            key={project.projektLink}
+            projektImage={project.projektImage}
+            projektImageAlt={project.projektImageAlt}
+            projektImageBgColor={project.projektImageBgColor}
+            projektTitle={project.projektTitle}
+            projektBadges={project.projektBadges}
+            projektLink={project.projektLink}
+          >
+            {project.children}
+          </ProjectCard>
+        ))}
+      </MasonryGrid>
+    </div>
+  );
+}
