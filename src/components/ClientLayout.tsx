@@ -13,6 +13,7 @@ import { Outlet, useNavigate, useParams } from "@tanstack/react-router";
 import "@/lib/i18n"; // Initialize i18n
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef } from "react";
+import { ClientOnly } from "@/components/ClientOnly";
 
 export default function ClientLayout() {
   const { t } = useTranslation();
@@ -138,34 +139,42 @@ export default function ClientLayout() {
 
   return (
       <PrintProvider>
-        <ClickSpark
-          sparkColor={nord6}
-          sparkSize={10}
-          sparkRadius={15}
-          sparkCount={8}
-          duration={400}
-        >
-          <SidebarProvider
-            style={{
-              "--sidebar-width": "var(--appsidebar-width)",
-              "--sidebar-width-mobile": "var(--appsidebar-width-mobile)",
-            } as React.CSSProperties}
+        <ClientOnly>
+          <ClickSpark
+            sparkColor={nord6}
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
           >
-            <AppSidebar variant="floating" />
-            <Particles quantity={400} refresh={true} />
-            <div className="relative z-10 flex flex-col min-h-svh flex-1 w-full">
-              <NavBar />
-              <main className="flex-1 w-full max-w-full">
-                <ViewTransition>
-                <Outlet />
-              </ViewTransition>
-              </main>
-              <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
-              <Footer />
-              <CookieConsent />
-            </div>
-          </SidebarProvider>
-        </ClickSpark>
+            <SidebarProvider
+              style={{
+                "--sidebar-width": "var(--appsidebar-width)",
+                "--sidebar-width-mobile": "var(--appsidebar-width-mobile)",
+              } as React.CSSProperties}
+            >
+              <AppSidebar variant="floating" />
+              <ClientOnly>
+                <Particles quantity={400} refresh={true} />
+              </ClientOnly>
+              <div className="relative z-10 flex flex-col min-h-svh flex-1 w-full">
+                <NavBar />
+                <main className="flex-1 w-full max-w-full">
+                  <ViewTransition>
+                  <Outlet />
+                </ViewTransition>
+                </main>
+                <ClientOnly>
+                  <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
+                </ClientOnly>
+                <Footer />
+                <ClientOnly>
+                  <CookieConsent />
+                </ClientOnly>
+              </div>
+            </SidebarProvider>
+          </ClickSpark>
+        </ClientOnly>
       </PrintProvider>
 
   );
