@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useRef } from "react";
 import { ClientOnly } from "@/components/ClientOnly";
 
-export default function ClientLayout() {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -161,7 +161,7 @@ export default function ClientLayout() {
                 <NavBar />
                 <main className="flex-1 w-full max-w-full">
                   <ViewTransition>
-                  <Outlet />
+                  {children}
                 </ViewTransition>
                 </main>
                 <ClientOnly>

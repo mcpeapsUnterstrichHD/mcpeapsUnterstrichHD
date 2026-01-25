@@ -1,10 +1,13 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import ClientLayout from '@/components/ClientLayout'
 import NotFound from '@/components/NotFound'
+import React, { Suspense } from 'react'
+
+const ClientLayout = React.lazy(() => import('@/components/ClientLayout'))
 
 import appCss from '../styles.css?url'
+import { useLocale } from '@/hooks/useTranslations'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -34,8 +37,10 @@ export const Route = createRootRoute({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const locale = useLocale()
+
   return (
-    <html lang="de" className="dark">
+    <html lang={locale} className="dark">
       <head>
         <HeadContent />
       </head>
@@ -61,5 +66,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <ClientLayout />
+  return (
+    <Suspense fallback={null}>
+      <ClientLayout>
+        <Outlet />
+      </ClientLayout>
+    </Suspense>
+  )
 }
