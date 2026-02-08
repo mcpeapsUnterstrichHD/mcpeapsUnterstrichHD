@@ -15,7 +15,6 @@ function Progress({
       value={value}
       data-slot="progress"
       className={cn("flex flex-wrap gap-3", className)}
-      getAriaValueText={(_, value) => value !== null ? `${Math.round(value)}%` : ""}
       {...props}
     >
       {children}
@@ -30,7 +29,7 @@ function ProgressTrack({ className, ...props }: ProgressPrimitive.Track.Props) {
   return (
     <ProgressPrimitive.Track
       className={cn(
-        "bg-muted h-2 rounded-md relative flex w-full items-center overflow-x-hidden",
+        "bg-muted h-1 rounded-md relative flex w-full items-center overflow-x-hidden",
         className
       )}
       data-slot="progress-track"
