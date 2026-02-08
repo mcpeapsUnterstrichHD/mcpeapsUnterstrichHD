@@ -1,9 +1,11 @@
 "use client";
 import ProjectCard, {type ProjectCardProps} from "@/components/projekt-card";
 import MasonryGrid, {Variants} from "@/components/MasonryGrid";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslations } from "next-intl";
 import { TypingAnimation } from "./ui/typing-animation";
 import { Pin } from "lucide-react";
+import type React from "react";
 
 // Export function to get pinned projects - can be used in other components
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,7 +43,27 @@ export function getPinnedProjects(t: ReturnType<typeof useTranslations>): Projec
   );
 }
 
-export default function PinedProjects() {
+/**
+ * Skeleton for PinedProjects - mirrors exact layout
+ * Usage: <PinedProjects.Skeleton />
+ */
+const PinedProjectsSkeleton: React.FC = () => {
+  return (
+    <div className="w-full px-4 animate-in fade-in duration-500">
+      <h2 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
+        <Pin className="w-6 h-6 text-primary" />
+        <Skeleton className="h-8 w-48" />
+      </h2>
+      <MasonryGrid variant={Variants.pinned_projects}>
+        {Array.from({ length: 3 }).map((_, i) => (
+          <ProjectCard.Skeleton key={i} />
+        ))}
+      </MasonryGrid>
+    </div>
+  );
+};
+
+const PinedProjects: React.FC & { Skeleton: typeof PinedProjectsSkeleton } = () => {
   const t = useTranslations();
   const pinnedProjects = getPinnedProjects(t);
 
@@ -77,4 +99,10 @@ export default function PinedProjects() {
       </MasonryGrid>
     </div>
   );
-}
+};
+
+// Attach Skeleton as sub-component
+PinedProjects.Skeleton = PinedProjectsSkeleton;
+
+export { PinedProjectsSkeleton };
+export default PinedProjects;

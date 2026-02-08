@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Skeleton } from "@/components/ui/skeleton";
 import type React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { usePrintSafe } from "@/contexts/PrintContext";
@@ -23,7 +24,32 @@ export interface SkillCardProps {
   category?: string; // Optional category key for grouping
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({
+/**
+ * Skeleton for SkillCard - mirrors exact layout
+ */
+const SkillCardSkeleton: React.FC = () => {
+  return (
+    <Card className="bg-card/50 backdrop-blur-sm p-4 animate-in fade-in duration-500">
+      <CardHeader className="pb-1">
+        <div className="flex flex-row items-center gap-3">
+          <Skeleton className="h-10 w-10 rounded-full" />
+          <Skeleton className="h-5 w-24" />
+        </div>
+        <CardDescription>
+          <div className="flex flex-wrap gap-2 mt-3">
+            <Skeleton className="h-5 w-12 rounded-full" />
+            <Skeleton className="h-5 w-16 rounded-full" />
+          </div>
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="pt-1 pb-2">
+        <Skeleton className="h-2 w-full rounded-full" />
+      </CardContent>
+    </Card>
+  );
+};
+
+const SkillCard: React.FC<SkillCardProps> & { Skeleton: typeof SkillCardSkeleton } = ({
   SkillImage,
   SkillImagePrint,
   SkillImageAlt,
@@ -68,5 +94,8 @@ const SkillCard: React.FC<SkillCardProps> = ({
   );
 };
 
+// Attach Skeleton as sub-component
+SkillCard.Skeleton = SkillCardSkeleton;
 
+export { SkillCardSkeleton };
 export default SkillCard;

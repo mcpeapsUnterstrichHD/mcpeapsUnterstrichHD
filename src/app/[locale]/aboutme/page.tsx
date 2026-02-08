@@ -68,7 +68,7 @@ export default function AboutMePage() {
 
       {/* Description */}
       <section className="text-center max-w-2xl mx-auto">
-        <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+        <p className="text-muted-foreground leading-relaxed whitespace-pre-line" suppressHydrationWarning>
           {t('Aboutme.description', { age })}
         </p>
       </section>

@@ -37,12 +37,19 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  render,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  // When render prop is used (polymorphic), set nativeButton to false
+  // to suppress Base UI warning about non-native button elements
+  const isPolymorphic = render !== undefined
+
   return (
     <ButtonPrimitive
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      render={render}
+      nativeButton={!isPolymorphic}
       {...props}
     />
   )

@@ -23,7 +23,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = (await import(`@/assets/lang/${locale}.json`)).default;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
       <script
           async
@@ -31,7 +31,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           src="https://tweakcn.com/live-preview.min.js"
         />
       </head>
-      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable} isolate`)}>
+      <body className={cn(`${CaskaydiaCoveNerdFontPropo.variable} ${CaskaydiaCoveNerdFontMono.variable} ${CaskaydiaCoveNerdFont.variable} isolate`)} suppressHydrationWarning>
         <ClientLayout locale={locale} messages={messages}>
           {children}
         </ClientLayout>

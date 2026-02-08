@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import {Link} from "@/i18n/navigation";
 import type React from "react";
 import { ViewTransition } from "react";
@@ -22,7 +23,47 @@ export interface ProjectCardProps {
   children: React.ReactNode;
 }
 
-const ProjektCard: React.FC<ProjectCardProps> = ({
+/**
+ * Skeleton sub-component that mirrors the exact layout of ProjektCard
+ * Usage: <ProjektCard.Skeleton /> or <ProjectCardSkeleton />
+ */
+const ProjectCardSkeleton: React.FC = () => {
+  return (
+    <Card className="bg-card/50 backdrop-blur-sm animate-in fade-in duration-500">
+      <CardHeader>
+        {/* Title skeleton */}
+        <CardTitle>
+          <Skeleton className="h-6 w-3/4" />
+        </CardTitle>
+        {/* Badges skeleton */}
+        <CardDescription>
+          <section className="flex flex-wrap gap-2">
+            <Skeleton className="h-5 w-12 rounded-full" />
+            <Skeleton className="h-5 w-16 rounded-full" />
+            <Skeleton className="h-5 w-10 rounded-full" />
+          </section>
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        {/* Description text skeleton */}
+        <section className="flex flex-col justify-between gap-4">
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-4/5" />
+          </div>
+        </section>
+      </CardContent>
+      <CardFooter className="flex grow flex-col items-center justify-center gap-4 p-4">
+        {/* Image skeleton */}
+        <section className="flex items-center justify-center rounded-sm w-full">
+          <Skeleton className="w-full h-48 rounded-sm" />
+        </section>
+      </CardFooter>
+    </Card>
+  );
+};
+
+const ProjektCard: React.FC<ProjectCardProps> & { Skeleton: typeof ProjectCardSkeleton } = ({
   projektImage,
   projektImageAlt,
   projektImageBgColor,
@@ -96,4 +137,8 @@ const ProjektCard: React.FC<ProjectCardProps> = ({
   );
 };
 
+// Attach Skeleton as a sub-component
+ProjektCard.Skeleton = ProjectCardSkeleton;
+
+export { ProjectCardSkeleton };
 export default ProjektCard;
