@@ -1,27 +1,4 @@
-import TimeLineCard from "@/components/timeline-card";
-[
-  {
-    "StartLine": 2,
-    "EndLine": 2,
-    "TargetContent": "// Trigger rebuild",
-    "ReplacementContent": "",
-    "AllowMultiple": false
-  },
-  {
-    "StartLine": 105,
-    "EndLine": 105,
-    "TargetContent": "        {/* @ts-expect-error - TimeLineCardWithSkeleton handling */}",
-    "ReplacementContent": "",
-    "AllowMultiple": true
-  },
-  {
-    "StartLine": 123,
-    "EndLine": 123,
-    "TargetContent": "        {/* @ts-expect-error - TimeLineCardWithSkeleton handling */}",
-    "ReplacementContent": "",
-    "AllowMultiple": true
-  }
-]
+import TimeLineCard, { TimeLineCardSkeleton } from "@/components/timeline-card";
 import { Badge } from "@/components/ui/badge";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
@@ -125,8 +102,7 @@ const TimeLineElementBigSkeleton = () => {
         <TimelineConnector />
       </TimelineSeparator>
       <TimelineContent>
-        {/* @ts-expect-error - TimeLineCardWithSkeleton handling */}
-        <TimeLineCard.Skeleton />
+        <TimeLineCardSkeleton />
       </TimelineContent>
     </TimelineItem>
   );
@@ -143,20 +119,11 @@ const TimeLineElementSmallSkeleton = () => {
         <TimelineConnector />
       </TimelineSeparator>
       <TimelineContent>
-        {/* @ts-expect-error - TimeLineCardWithSkeleton handling */}
-        <TimeLineCard.Skeleton />
+        <TimeLineCardSkeleton />
       </TimelineContent>
     </TimelineItem>
   );
 };
-
-// Attack Skeleton as sub-component
-// Removing sub-component assignment to fix Turbopack issue
-// const TimeLineElementBigWithSkeleton = TimeLineElementBig as typeof TimeLineElementBig & { Skeleton: typeof TimeLineElementBigSkeleton };
-// TimeLineElementBigWithSkeleton.Skeleton = TimeLineElementBigSkeleton;
-
-// const TimeLineElementSmallWithSkeleton = TimeLineElementSmall as typeof TimeLineElementSmall & { Skeleton: typeof TimeLineElementSmallSkeleton };
-// TimeLineElementSmallWithSkeleton.Skeleton = TimeLineElementSmallSkeleton;
 
 export {
   TimeLineElementBig,
