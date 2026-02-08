@@ -1,4 +1,4 @@
-import TimeLineCard from "@/components/timeline-card";
+import TimeLineCard, { TimeLineCardSkeleton } from "@/components/timeline-card";
 import { Badge } from "@/components/ui/badge";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
@@ -6,6 +6,7 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import { Skeleton } from "@/components/ui/skeleton";
 import type React from "react";
 
 interface TimeLineElementProps {
@@ -87,4 +88,47 @@ const TimeLineElementSmall: React.FC<TimeLineElementProps> = ({
   );
 };
 
-export { TimeLineElementBig, TimeLineElementSmall, type TimeLineElementProps };
+/**
+ * Skeleton for TimeLineElementBig
+ */
+const TimeLineElementBigSkeleton = () => {
+  return (
+    <TimelineItem>
+      <TimelineOppositeContent color="text-secondary">
+        <Skeleton className="h-5 w-32 ml-auto" />
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <TimelineDot />
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>
+        <TimeLineCardSkeleton />
+      </TimelineContent>
+    </TimelineItem>
+  );
+};
+
+/**
+ * Skeleton for TimeLineElementSmall
+ */
+const TimeLineElementSmallSkeleton = () => {
+  return (
+    <TimelineItem>
+      <TimelineSeparator>
+        <TimelineDot />
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent>
+        <TimeLineCardSkeleton />
+      </TimelineContent>
+    </TimelineItem>
+  );
+};
+
+export {
+  TimeLineElementBig,
+  TimeLineElementSmall,
+  TimeLineElementBigSkeleton,
+  TimeLineElementSmallSkeleton,
+  type TimeLineElementProps
+};
