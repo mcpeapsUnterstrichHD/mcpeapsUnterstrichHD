@@ -88,7 +88,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <ViewTransition enter="slide" exit="root" update="root">
       <Sidebar
-        collapsible="offExamples"
+        collapsible="offcanvas"
         className="no-print backdrop-blur-sm rounded-sm"
         {...props}
       >
