@@ -1,5 +1,5 @@
 "use client"
-import SkillCardSkeleton from "@/components/skill-card";
+import { SkillCardSkeleton } from "@/components/skill-card";
 import {
   TimeLineElementBigSkeleton,
   TimeLineElementSmallSkeleton
