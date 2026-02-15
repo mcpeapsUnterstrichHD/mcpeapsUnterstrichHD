@@ -72,7 +72,7 @@ export function Langswitcher({ sidebar = false }: LangswitcherProps) {
   // Container classes - sidebar uses special collapsed-icon behavior
   const containerClasses = sidebar
     ? "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden"
-    : "gap-2 rounded-md border border-border/50 bg-card/50 backdrop-blur-sm p-2 text-left text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground focus-visible:ring-2 flex items-center outline-hidden cursor-pointer";
+    : "gap-2 rounded-md my-glass p-2 text-left text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground focus-visible:ring-2 flex items-center outline-hidden cursor-pointer";
 
   // Dynamic min-width for footer mode: longest label + icons (globe ~2ch, search ~2ch, chevron ~2ch, padding ~3ch)
   const minWidth = !sidebar ? `${longestLabelLength + 9}ch` : undefined;
@@ -86,7 +86,7 @@ export function Langswitcher({ sidebar = false }: LangswitcherProps) {
   const ListWrapper = sidebar ? SidebarMenuSub : "div";
   const listClasses = sidebar
     ? "px-2 py-1.5 max-h-[300px] overflow-y-auto flex flex-col gap-2"
-    : "absolute bottom-full left-0 right-0 mb-1 px-2 py-1.5 max-h-[200px] overflow-y-auto flex flex-col gap-2 bg-card/95 backdrop-blur-sm border border-border/50 rounded-md shadow-lg z-50";
+    : "absolute bottom-full left-0 right-0 mb-1 px-2 py-1.5 max-h-[200px] overflow-y-auto flex flex-col gap-2 my-glass rounded-md shadow-lg z-50";
 
   // Button hover classes - fixed height for consistency
   const buttonClasses = sidebar

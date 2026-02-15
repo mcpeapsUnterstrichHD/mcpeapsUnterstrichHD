@@ -30,7 +30,7 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
 }) => {
   return (
     <ViewTransition enter="slide" exit="root" update="root">
-    <Card className="bg-card/50 backdrop-blur-sm">
+    <Card className="my-glass">
       <CardHeader>
         <div className="flex flex-row items-center justify-between gap-1">
           <Avatar>
@@ -60,7 +60,7 @@ const TimeLineCard: React.FC<TimeLineCardProps> = ({
  */
 const TimeLineCardSkeleton = () => {
   return (
-    <Card className="bg-card/50 backdrop-blur-sm animate-in fade-in duration-500">
+    <Card className="my-glass animate-in fade-in duration-500">
       <CardHeader>
         <div className="flex flex-row items-center justify-between gap-1">
           <Skeleton className="h-10 w-10 rounded-full" />

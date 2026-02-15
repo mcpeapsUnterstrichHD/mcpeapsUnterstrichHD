@@ -113,7 +113,7 @@ export default function CVPage() {
 
     <div className="flex flex-col gap-6 px-4 py-6 mx-auto">
       {/* Header / Personal Info */}
-      <Card className="bg-card/50 backdrop-blur-sm print:bg-white print:shadow-none">
+      <Card className="my-glass print:bg-white print:shadow-none">
         <CardHeader className="text-center pb-2">
           <h1 className="text-3xl md:text-4xl font-bold">{t("Aboutme.name")}</h1>
           <p className="text-lg text-muted-foreground">{t("Cv.about.title")}</p>

@@ -29,7 +29,7 @@ export interface ProjectCardProps {
  */
 const ProjectCardSkeleton: React.FC = () => {
   return (
-    <Card className="bg-card/50 backdrop-blur-sm animate-in fade-in duration-500">
+    <Card className="my-glass animate-in fade-in duration-500">
       <CardHeader>
         {/* Title skeleton */}
         <CardTitle>
@@ -77,7 +77,7 @@ const ProjektCard: React.FC<ProjectCardProps> & { Skeleton: typeof ProjectCardSk
 
   const cardContent = (
     <ViewTransition enter="slide" exit="root" update="root">
-    <Card className="bg-card/50 backdrop-blur-sm">
+    <Card className="my-glass">
       <CardHeader>
         <CardTitle>{projektTitle}</CardTitle>
         <CardDescription>

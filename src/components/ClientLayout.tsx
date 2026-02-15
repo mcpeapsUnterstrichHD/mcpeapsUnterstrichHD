@@ -223,7 +223,7 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
                 {children}
               </main>
               </ViewTransition>
-              <Toaster className="rounded-sm bg-background/80 backdrop-blur-sm shadow-lg print:hidden no-print" />
+              <Toaster className="rounded-sm my-glass shadow-lg print:hidden no-print" />
               <Footer />
               <CookieConsent />
           </div>

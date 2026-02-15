@@ -76,7 +76,7 @@ export default function AboutMePage() {
       {/* Music Section */}
       <section className="grid gap-6 md:grid-cols-2">
         {/* Playlist Card */}
-        <Card className="bg-card/50 backdrop-blur-sm">
+        <Card className="my-glass">
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center gap-2 text-xl">
               <Music className="w-5 h-5 text-primary" />
@@ -96,7 +96,7 @@ export default function AboutMePage() {
         </Card>
 
         {/* Current Song Card */}
-        <Card className="bg-card/50 backdrop-blur-sm">
+        <Card className="my-glass">
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center gap-2 text-xl">
               <Disc3 className="w-5 h-5 text-primary animate-spin-slow" />

@@ -23,7 +23,7 @@ export default function CVLoading() {
   return (
     <div className="flex flex-col gap-6 px-4 py-6 mx-auto">
       {/* Header / Personal Info - matches page structure */}
-      <Card className="bg-card/50 backdrop-blur-sm animate-in fade-in duration-500">
+      <Card className="my-glass animate-in fade-in duration-500">
         <CardHeader className="text-center pb-2">
           <Skeleton className="h-10 w-48 mx-auto" />
           <Skeleton className="h-6 w-64 mx-auto mt-2" />

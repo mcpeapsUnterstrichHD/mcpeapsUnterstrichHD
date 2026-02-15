@@ -35,7 +35,7 @@ export default function ImprintPage() {
       {/* Legal Info Cards */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* § 5 TMG Section */}
-        <Card className="bg-card/50 backdrop-blur-sm">
+        <Card className="my-glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <Scale className="w-5 h-5 text-primary" />
@@ -60,7 +60,7 @@ export default function ImprintPage() {
         </Card>
 
         {/* Contact Section */}
-        <Card className="bg-card/50 backdrop-blur-sm">
+        <Card className="my-glass">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
               <User className="w-5 h-5 text-primary" />
@@ -91,7 +91,7 @@ export default function ImprintPage() {
       </div>
 
       {/* Responsible Person Section */}
-      <Card className="bg-card/50 backdrop-blur-sm">
+      <Card className="my-glass">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl">
             <Scale className="w-5 h-5 text-primary" />
@@ -116,7 +116,7 @@ export default function ImprintPage() {
       </Card>
 
       {/* Cookie Disclaimer Section */}
-      <Card className="bg-card/50 backdrop-blur-sm">
+      <Card className="my-glass">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl">
             <Cookie className="w-5 h-5 text-primary" />

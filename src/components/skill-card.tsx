@@ -29,7 +29,7 @@ export interface SkillCardProps {
  */
 const SkillCardSkeleton: React.FC = () => {
   return (
-    <Card className="bg-card/50 backdrop-blur-sm p-4 animate-in fade-in duration-500">
+    <Card className="my-glass p-4 animate-in fade-in duration-500">
       <CardHeader className="pb-1">
         <div className="flex flex-row items-center gap-3">
           <Skeleton className="h-10 w-10 rounded-full" />
@@ -67,7 +67,7 @@ const SkillCard: React.FC<SkillCardProps> & { Skeleton: typeof SkillCardSkeleton
 
 
   return (
-    <Card className="bg-card/50 backdrop-blur-sm p-4">
+    <Card className="my-glass p-4">
       <CardHeader className="pb-1">
         <div className="flex flex-row items-center gap-3">
           <Avatar>
