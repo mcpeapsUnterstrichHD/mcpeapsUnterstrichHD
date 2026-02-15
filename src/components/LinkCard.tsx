@@ -28,7 +28,7 @@ interface LinkCardWithFooterProps extends LinkCardProps {
  */
 const LinkCardSkeleton: React.FC = () => {
   return (
-    <Card className="bg-card/50 backdrop-blur-sm animate-in fade-in duration-500">
+    <Card className="my-glass animate-in fade-in duration-500">
       <CardHeader>
         <div className="flex flex-row items-center justify-between gap-1">
           <Skeleton className="h-10 w-10 rounded-full" />
@@ -51,7 +51,7 @@ const LinkCardSkeleton: React.FC = () => {
  */
 const LinkCardWithFooterSkeleton: React.FC = () => {
   return (
-    <Card className="bg-card/50 backdrop-blur-sm animate-in fade-in duration-500">
+    <Card className="my-glass animate-in fade-in duration-500">
       <CardHeader>
         <div className="flex flex-row items-center justify-between gap-1">
           <Skeleton className="h-10 w-10 rounded-full" />
@@ -82,7 +82,7 @@ const LinkCard: React.FC<LinkCardProps> & { Skeleton: typeof LinkCardSkeleton } 
   return (
     <ViewTransition enter="slide" exit="root" update="root">
     <a href={url} target="_blank" rel="noreferrer" className="flex flex-col gap-2">
-      <Card className="bg-card/50 backdrop-blur-sm">
+      <Card className="my-glass">
         <CardHeader>
           <div className="flex flex-row items-center justify-between gap-1">
             <Avatar>
@@ -116,7 +116,7 @@ const LinkCardWithFooter: React.FC<LinkCardWithFooterProps> & { Skeleton: typeof
   return (
     <ViewTransition enter="slide" exit="root" update="root">
     <a href={url} target="_blank" rel="noreferrer" className="flex flex-col gap-2">
-      <Card className="bg-card/50 backdrop-blur-sm">
+      <Card className="my-glass">
         <CardHeader>
           <div className="flex flex-row items-center justify-between gap-1">
             <Avatar>

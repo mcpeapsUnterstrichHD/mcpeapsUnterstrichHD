@@ -28,7 +28,7 @@ const NotFound = () => {
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-700 w-full max-w-lg">
-        <Card className="backdrop-blur-xl bg-card/60 border-border/50 shadow-2xl w-full min-w-[320px]">
+        <Card className="my-glass shadow-2xl w-full min-w-[320px]">
           <CardHeader className="text-center pb-2">
             {/* 404 Number with gradient */}
             <div className="relative mb-4 select-none flex justify-center">

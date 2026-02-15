@@ -30,7 +30,7 @@ export default function CookieConsent() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 print:hidden no-print">
       <div className="mx-auto max-w-4xl">
-        <div className="border border-border/50 bg-card/95 backdrop-blur-md rounded-lg shadow-xl p-6">
+        <div className="my-glass rounded-lg shadow-xl p-6">
           <div className="flex items-start gap-4">
             {/* Cookie Icon */}
             <div className="shrink-0 p-3 bg-primary/10 rounded-full">

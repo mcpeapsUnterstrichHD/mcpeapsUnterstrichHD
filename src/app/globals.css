@@ -355,15 +355,20 @@
   --shadow-color: #4c566b;
   --shadow-2xs: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.05);
   --shadow-xs: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+  --shadow-sm:
+    0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
     0 1px 2px -1px hsl(220.6452 16.9399% 35.8824% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+  --shadow:
+    0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
     0 1px 2px -1px hsl(220.6452 16.9399% 35.8824% / 0.1);
-  --shadow-md: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+  --shadow-md:
+    0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
     0 2px 4px -1px hsl(220.6452 16.9399% 35.8824% / 0.1);
-  --shadow-lg: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+  --shadow-lg:
+    0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
     0 4px 6px -1px hsl(220.6452 16.9399% 35.8824% / 0.1);
-  --shadow-xl: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+  --shadow-xl:
+    0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
     0 8px 10px -1px hsl(220.6452 16.9399% 35.8824% / 0.1);
   --shadow-2xl: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.25);
   --appsidebar-width: 24rem;
@@ -414,15 +419,20 @@
     --shadow-color: #4c566b !important;
     --shadow-2xs: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.05) !important;
     --shadow-xs: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.05) !important;
-    --shadow-sm: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+    --shadow-sm:
+      0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
       0 1px 2px -1px hsl(220.6452 16.9399% 35.8824% / 0.1) !important;
-    --shadow: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+    --shadow:
+      0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
       0 1px 2px -1px hsl(220.6452 16.9399% 35.8824% / 0.1) !important;
-    --shadow-md: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+    --shadow-md:
+      0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
       0 2px 4px -1px hsl(220.6452 16.9399% 35.8824% / 0.1) !important;
-    --shadow-lg: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+    --shadow-lg:
+      0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
       0 4px 6px -1px hsl(220.6452 16.9399% 35.8824% / 0.1) !important;
-    --shadow-xl: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
+    --shadow-xl:
+      0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.1),
       0 8px 10px -1px hsl(220.6452 16.9399% 35.8824% / 0.1) !important;
     --shadow-2xl: 0 1px 3px 0px hsl(220.6452 16.9399% 35.8824% / 0.25) !important;
     --tracking-normal: 0em !important;
@@ -431,11 +441,12 @@
 }
 
 @theme inline {
-  --font-sans: "CaskaydiaCoveNerdFontPropo", ui-sans-serif, system-ui,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --font-mono: "CaskaydiaCoveNerdFontMono", ui-monospace, SFMono-Regular, Menlo,
-    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans:
+    "CaskaydiaCoveNerdFontPropo", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    "CaskaydiaCoveNerdFontMono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -551,9 +562,19 @@
 
 @layer base {
   * {
-    font-family: "CaskaydiaCoveNerdFontPropo", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-      "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family:
+      "CaskaydiaCoveNerdFontPropo",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
     @apply border-border outline-ring/50;
   }
   *:focus-visible {
@@ -561,34 +582,89 @@
   }
   body {
     @apply bg-background text-foreground m-0;
-    font-family: "CaskaydiaCoveNerdFontPropo", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-      "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family:
+      "CaskaydiaCoveNerdFontPropo",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     hyphens: auto;
     -webkit-hyphens: auto;
   }
   code {
-    font-family: "CaskaydiaCoveNerdFontMono", source-code-pro, Menlo, Monaco,
-      Consolas, "Courier New", monospace;
+    font-family:
+      "CaskaydiaCoveNerdFontMono", source-code-pro, Menlo, Monaco, Consolas,
+      "Courier New", monospace;
     hyphens: none;
     -webkit-hyphens: none;
     word-break: keep-all;
   }
 }
 
+/* src/app/globals.css - Ganz am Ende einfügen */
+
+@layer utilities {
+  .my-glass {
+    /*
+       Liquid Glass Effect - Base (Card Theme)
+       Default: bg-card/30 for neutral/card-like elements.
+    */
+    @apply bg-card/30;
+    @apply backdrop-blur-2xl saturate-150;
+    @apply border border-card/10;
+    @apply transition-all duration-300;
+  }
+
+  /* Hover Effect - Base */
+  .my-glass:hover {
+    @apply bg-card/50 shadow-lg border-card/20;
+  }
+
+  /*
+     SPECIAL OVERRIDE: Sidebar
+     The Sidebar component applies 'className' to a wrapper (sidebar-container).
+     The actual visual sidebar is an inner div (sidebar-inner) with 'bg-sidebar'.
+
+     We must:
+     1. Remove background/border from the wrapper (so we don't double up).
+     2. Apply the Glass Effect matching the Sidebar Theme to the INNER element.
+  */
+  .my-glass[data-slot="sidebar-container"] {
+    @apply bg-sidebar/30;
+    @apply backdrop-blur-2xl saturate-150;
+    @apply border border-sidebar-border/10;
+    @apply transition-all duration-300;
+  }
+
+  /* Hover Effect for Sidebar Inner */
+  .my-glass[data-slot="sidebar-container"]:hover {
+    @apply bg-sidebar/60 border-sidebar-border/20 shadow-lg;
+  }
+}
+
 /** Custom Scrollbar **/
 @layer base {
   ::-webkit-scrollbar {
-    width: 5px;
+    @apply w-sm;
   }
   ::-webkit-scrollbar-track {
-    background: transparent;
+    @apply bg-transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--input);
-    border-radius: 5px;
+    @apply bg-input/30;
+    @apply backdrop-blur-2xl saturate-150;
+    @apply border border-input/10;
+    @apply transition-all duration-300;
+    @apply rounded-sm;
   }
   * {
     scrollbar-width: thin;

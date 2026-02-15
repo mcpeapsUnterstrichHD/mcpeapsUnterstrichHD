@@ -257,7 +257,7 @@ export default function Particles({
     <ViewTransition enter="slide" exit="root" update="root">
     <div
       className={
-        "fixed inset-0 z-0 no-print animate-fade-in pointer-events-none " +
+        "fixed inset-0 z-[-1] no-print animate-fade-in pointer-events-none " +
         className
       }
       ref={canvasContainerRef}

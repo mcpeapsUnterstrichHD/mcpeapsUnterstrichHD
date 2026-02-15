@@ -67,7 +67,7 @@ export default function Footer() {
   return (
     <ViewTransition enter="slide" exit="root" update="root">
       <footer className="w-full z-40 print:hidden no-print mt-auto p-2">
-        <div className="border border-border/50 bg-card/50 backdrop-blur-sm rounded-sm">
+        <div className="my-glass rounded-sm">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
             {/* Main Footer Content */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">

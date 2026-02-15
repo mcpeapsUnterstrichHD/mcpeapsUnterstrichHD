@@ -70,7 +70,7 @@ export default function CVLayout({ children }: Props) {
         <Link href={isAtsPage ? "/cv" : "/cv/ats"}>
           <Button
             variant="outline"
-            className="bg-card/50 backdrop-blur-sm gap-2 shadow-lg"
+            className="my-glass gap-2 shadow-lg"
             size="lg"
           >
             <FileText className="w-4 h-4" />

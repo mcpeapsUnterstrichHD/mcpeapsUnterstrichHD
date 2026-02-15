@@ -120,7 +120,7 @@ export default function ContactPage() {
       </section>
 
       {/* Calendar Card */}
-      <Card className="bg-card/50 backdrop-blur-sm w-full">
+      <Card className="my-glass w-full">
         <CardHeader className="text-center pb-4">
           <CardTitle className="flex items-center justify-center gap-2 text-2xl">
             <Calendar className="w-6 h-6 text-primary" />
