@@ -429,17 +429,22 @@
     },
     "cookies": {
       "title": "Cookie Policy",
-      "description": "This website uses cookies to enhance your experience. Below you will find information about the cookies used on this site.",
+      "description": "This website uses cookies to ensure the best possible experience. We do not collect any analytics data about you or your device. Below you will find detailed information about the cookies used on this site.",
+      "noAnalytics": {
+        "title": "No Analytics",
+        "description": "This website does not use any tracking, analytics, or profiling tools. No data about your behavior, device, or identity is collected or shared with third parties."
+      },
       "technical": {
         "title": "Technical Cookies",
         "description": "We only use technically necessary cookies that are essential for the website to function properly. These include cookies for storing your language preference and cookie consent status. These cookies cannot be disabled."
       },
       "thirdParty": {
-        "title": "Third-Party Content",
-        "description": "Some pages contain embedded content from third-party services. These services may set their own cookies, which are outside of my control:",
-        "calcom": "Appointment scheduling",
-        "appleMusic": "Playlist player embeds",
-        "songlink": "Song player embeds"
+        "title": "Third-Party Content (Blockable)",
+        "description": "Some pages contain embedded content from third-party services. These services may set their own cookies, which are outside of my control. You can block this content at any time via your cookie settings."
+      },
+      "storage": {
+        "title": "Consent Storage",
+        "description": "Your cookie preferences are stored locally in a cookie for 7 days. After that, you will be asked again. You can change your preferences at any time by clicking the Cookie Settings button below or in the footer."
       }
     }
   },
@@ -461,16 +466,40 @@
   },
   "CookieConsent": {
     "title": "Cookie Notice",
-    "description": "This website uses cookies to ensure you get the best experience. We only use technically necessary cookies that are essential for the website to function properly.",
+    "description": "This website uses cookies to ensure you get the best experience. We do not collect any analytics data about you or your device. Only technically necessary cookies are set by default. Third-party content can be blocked at your discretion. Your cookie preferences are stored for 7 days.",
     "technicalCookies": {
       "title": "Technical Cookies",
-      "description": "These cookies are required for basic site functionality, such as remembering your preferences and language settings. They cannot be disabled."
+      "description": "These cookies are required for basic site functionality, such as remembering your preferences and language settings. They cannot be disabled. No personal or analytical data is collected."
     },
     "thirdPartyCookies": {
       "title": "Third-Party Content",
-      "description": "Some pages contain embedded content (iframes) from third-party services like Cal.com or Apple Music. These services may set their own cookies, which are outside of my control. By using this site, you acknowledge this."
+      "description": "Some pages contain embedded content from third-party services like Cal.com or Apple Music. These services may set their own cookies, which are outside of my control. You can block this content at any time via your cookie settings."
     },
-    "accept": "I Understand",
-    "moreInfo": "More Information"
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject All",
+    "managePreferences": "Manage Preferences",
+    "savePreferences": "Save Preferences",
+    "moreInfo": "More Information",
+    "cookieSettings": "Cookie Settings",
+    "language": "Language",
+    "categories": {
+      "multimedia": {
+        "title": "Multimedia",
+        "description": "Required for embedded media like Apple Music and Songlink players."
+      },
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Required for embedded social media content."
+      },
+      "contact": {
+        "title": "Contact & Booking",
+        "description": "Required for the Cal.com booking calendar."
+      }
+    },
+    "blockedContent": {
+      "title": "Content Blocked",
+      "description": "This content is blocked because you haven't accepted the required cookies. Enable the corresponding category: ({category}) in your cookie settings to view this content.",
+      "button": "Cookie Settings"
+    }
   }
 }

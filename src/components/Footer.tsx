@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { ViewTransition } from "react";
-import { Mail } from "lucide-react";
+import { Mail, Cookie } from "lucide-react";
 import { Langswitcher } from "@/components/Langswitcher";
 import {
   SiGithub as Github,
@@ -12,6 +12,7 @@ import {
   SiBluesky as Bluesky
 } from "@icons-pack/react-simple-icons"
 import { contactDetails } from "@/lib/contact"
+import { showCookieConsentBanner } from "@/components/CookieConsent"
 
 export default function Footer() {
   const t = useTranslations();
@@ -162,6 +163,16 @@ export default function Footer() {
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <button
+                      type="button"
+                      onClick={showCookieConsentBanner}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                    >
+                      <Cookie className="h-3.5 w-3.5" />
+                      {t("CookieConsent.cookieSettings")}
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>

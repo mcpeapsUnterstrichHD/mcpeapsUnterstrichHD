@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { Safari } from "@/components/ui/safari";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { TypingAnimation } from "@/components/ui/typing-animation";
+import ConsentIframe from "@/components/ConsentIframe";
 
 type Platform = "desktop" | "ios" | "android" | "unknown";
 
@@ -32,7 +33,8 @@ function CalendarEmbed() {
   }, []);
 
   const calendarIframe = (
-    <iframe
+    <ConsentIframe
+      category="contact"
       src={calUrl}
       title="cal.com calendar"
       className="size-full border-0"
@@ -71,7 +73,8 @@ function CalendarEmbed() {
 
   // Fallback for SSR or unknown platforms - show loading state or simple iframe
   return (
-    <iframe
+    <ConsentIframe
+      category="contact"
       src={calUrl}
       title={calUrl}
       className="w-full h-200 rounded-lg border border-border"
