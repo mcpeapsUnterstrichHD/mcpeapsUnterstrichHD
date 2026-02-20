@@ -420,17 +420,22 @@
     },
     "cookies": {
       "title": "Cookie-Richtlinie",
-      "description": "Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern. Nachfolgend finden Sie Informationen zu den auf dieser Website verwendeten Cookies.",
+      "description": "Diese Website verwendet Cookies, um das bestmögliche Erlebnis zu bieten. Es werden keinerlei analytische Daten über Sie oder Ihr Gerät erhoben. Nachfolgend finden Sie detaillierte Informationen zu den auf dieser Website verwendeten Cookies.",
+      "noAnalytics": {
+        "title": "Keine Analyse",
+        "description": "Diese Website verwendet keine Tracking-, Analyse- oder Profiling-Tools. Es werden keine Daten über Ihr Verhalten, Ihr Gerät oder Ihre Identität erhoben oder an Dritte weitergegeben."
+      },
       "technical": {
         "title": "Technische Cookies",
         "description": "Wir verwenden nur technisch notwendige Cookies, die für die Funktion der Website unerlässlich sind. Dazu gehören Cookies zum Speichern Ihrer Sprachpräferenz und des Cookie-Zustimmungsstatus. Diese Cookies können nicht deaktiviert werden."
       },
       "thirdParty": {
-        "title": "Inhalte von Drittanbietern",
-        "description": "Einige Seiten enthalten eingebettete Inhalte von Drittanbietern. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen:",
-        "calcom": "Terminplanung",
-        "appleMusic": "Playlist-Player-Einbettungen",
-        "songlink": "Song-Player-Einbettungen"
+        "title": "Inhalte von Drittanbietern (Blockierbar)",
+        "description": "Einige Seiten enthalten eingebettete Inhalte von Drittanbietern. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen. Sie können diese Inhalte jederzeit über Ihre Cookie-Einstellungen blockieren."
+      },
+      "storage": {
+        "title": "Speicherung der Einstellungen",
+        "description": "Ihre Cookie-Einstellungen werden lokal in einem Cookie für 7 Tage gespeichert. Danach werden Sie erneut gefragt. Sie können Ihre Einstellungen jederzeit ändern, indem Sie den Button Cookie-Einstellungen unten oder im Footer klicken."
       }
     }
   },
@@ -452,16 +457,40 @@
   },
   "CookieConsent": {
     "title": "Cookie-Hinweis",
-    "description": "Diese Website verwendet Cookies, um Ihnen das beste Erlebnis zu bieten. Wir verwenden nur technisch notwendige Cookies, die für die Funktion der Website unerlässlich sind.",
+    "description": "Diese Website verwendet Cookies, um Ihnen das beste Erlebnis zu bieten. Es werden keinerlei analytische Daten über Sie oder Ihr Gerät erhoben. Standardmäßig werden nur technisch notwendige Cookies gesetzt. Inhalte von Drittanbietern können auf Wunsch blockiert werden. Ihre Cookie-Einstellungen werden für 7 Tage gespeichert.",
     "technicalCookies": {
       "title": "Technische Cookies",
-      "description": "Diese Cookies sind für grundlegende Website-Funktionen erforderlich, wie das Speichern Ihrer Einstellungen und Sprachpräferenzen. Sie können nicht deaktiviert werden."
+      "description": "Diese Cookies sind für grundlegende Website-Funktionen erforderlich, wie das Speichern Ihrer Einstellungen und Sprachpräferenzen. Sie können nicht deaktiviert werden. Es werden keine persönlichen oder analytischen Daten erhoben."
     },
     "thirdPartyCookies": {
       "title": "Inhalte von Drittanbietern",
-      "description": "Einige Seiten enthalten eingebettete Inhalte (iFrames) von Drittanbietern wie Cal.com oder Apple Music. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen. Mit der Nutzung dieser Website nehmen Sie dies zur Kenntnis."
+      "description": "Einige Seiten enthalten eingebettete Inhalte von Drittanbietern wie Cal.com oder Apple Music. Diese Dienste können eigene Cookies setzen, die außerhalb meiner Kontrolle liegen. Sie können diese Inhalte jederzeit über Ihre Cookie-Einstellungen blockieren."
     },
-    "accept": "Verstanden",
-    "moreInfo": "Mehr Informationen"
+    "acceptAll": "Alle akzeptieren",
+    "rejectAll": "Alle ablehnen",
+    "managePreferences": "Einstellungen verwalten",
+    "savePreferences": "Einstellungen speichern",
+    "moreInfo": "Mehr Informationen",
+    "cookieSettings": "Cookie-Einstellungen",
+    "language": "Sprache",
+    "categories": {
+      "multimedia": {
+        "title": "Multimedia",
+        "description": "Erforderlich für eingebettete Medien wie Apple Music und Songlink Player."
+      },
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Erforderlich für eingebettete Social-Media-Inhalte."
+      },
+      "contact": {
+        "title": "Kontakt & Buchung",
+        "description": "Erforderlich für den Cal.com Buchungskalender."
+      }
+    },
+    "blockedContent": {
+      "title": "Inhalt blockiert",
+      "description": "Dieser Inhalt ist blockiert, da Sie die entsprechenden Cookies nicht akzeptiert haben. Aktivieren Sie die entsprechende Kategorie: ({category}) in Ihren Cookie-Einstellungen, um diesen Inhalt anzuzeigen.",
+      "button": "Cookie-Einstellungen"
+    }
   }
 }

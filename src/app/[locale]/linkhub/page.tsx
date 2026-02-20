@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Share2, Globe, MoreHorizontal } from "lucide-react";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { TypingAnimation } from "@/components/ui/typing-animation";
+import ConsentIframe from "@/components/ConsentIframe";
 
 export default function LinkhubPage() {
   const t = useTranslations();
@@ -172,7 +173,8 @@ export default function LinkhubPage() {
             url="https://music.apple.com/de/playlist/favorite/pl.u-aZb0kXDFP7zBoV2"
             icon="/pictures/linkhub/apple-musik.svg"
           >
-            <iframe
+            <ConsentIframe
+              category="multimedia"
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
               className="w-full rounded-lg"
               height="450"
@@ -188,7 +190,8 @@ export default function LinkhubPage() {
             url="https://song.link/festival_dream&theme=dark"
             icon="/pictures/linkhub/apple-musik.svg"
           >
-            <iframe
+            <ConsentIframe
+              category="multimedia"
               className="w-full rounded-lg"
               height="450"
               src="https://odesli.co/embed/?url=https%3A%2F%2Fsong.link%2Ffestival_dream&theme=dark"

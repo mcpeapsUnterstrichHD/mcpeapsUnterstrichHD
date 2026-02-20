@@ -128,6 +128,14 @@ export default function ImprintPage() {
             {t("Imprint.cookies.description")}
           </p>
 
+          {/* No Analytics */}
+          <div className="p-4 bg-muted/30 rounded-lg">
+            <h4 className="font-medium mb-2">{t("Imprint.cookies.noAnalytics.title")}</h4>
+            <p className="text-sm text-muted-foreground">
+              {t("Imprint.cookies.noAnalytics.description")}
+            </p>
+          </div>
+
           {/* Technical Cookies */}
           <div className="p-4 bg-muted/30 rounded-lg">
             <h4 className="font-medium mb-2">{t("Imprint.cookies.technical.title")}</h4>
@@ -136,18 +144,35 @@ export default function ImprintPage() {
             </p>
           </div>
 
-          {/* Third-Party Cookies */}
+          {/* Third-Party Content */}
           <div className="p-4 bg-muted/30 rounded-lg">
             <h4 className="font-medium mb-2">{t("Imprint.cookies.thirdParty.title")}</h4>
             <p className="text-sm text-muted-foreground">
               {t("Imprint.cookies.thirdParty.description")}
             </p>
-            <ul className="mt-2 text-sm text-muted-foreground list-disc list-inside space-y-1">
-              <li>Cal.com ({t("Imprint.cookies.thirdParty.calcom")})</li>
-              <li>Apple Music ({t("Imprint.cookies.thirdParty.appleMusic")})</li>
-              <li>song.link ({t("Imprint.cookies.thirdParty.songlink")})</li>
-            </ul>
           </div>
+
+          {/* Consent Storage */}
+          <div className="p-4 bg-muted/30 rounded-lg">
+            <h4 className="font-medium mb-2">{t("Imprint.cookies.storage.title")}</h4>
+            <p className="text-sm text-muted-foreground">
+              {t("Imprint.cookies.storage.description")}
+            </p>
+          </div>
+
+          {/* Cookie Settings Button */}
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("show-cookie-consent"));
+              }
+            }}
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary/90 transition-colors w-full sm:w-auto"
+          >
+            <Cookie className="h-4 w-4" />
+            {t("CookieConsent.cookieSettings")}
+          </button>
         </CardContent>
       </Card>
     </div>

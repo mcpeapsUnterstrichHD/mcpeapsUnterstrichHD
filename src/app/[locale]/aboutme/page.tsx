@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Music, Disc3 } from "lucide-react";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { TypingAnimation } from "@/components/ui/typing-animation";
+import ConsentIframe from "@/components/ConsentIframe";
 
 export default function AboutMePage() {
   const t = useTranslations();
@@ -84,7 +85,8 @@ export default function AboutMePage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <iframe
+            <ConsentIframe
+              category="multimedia"
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
               className="w-full rounded-lg"
               height="450"
@@ -104,7 +106,8 @@ export default function AboutMePage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
-          <iframe
+          <ConsentIframe
+            category="multimedia"
             className="w-full rounded-lg"
             height="450"
             src="https://odesli.co/embed/?url=https%3A%2F%2Fsong.link%2Ffestival_dream&theme=dark"

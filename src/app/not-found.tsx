@@ -3,7 +3,7 @@ import {cookies, headers} from 'next/headers';
 import './globals.css'
 import NotFoundContent from "@/components/__not_found";
 import ClientLayout from '@/components/ClientLayout';
-import { LanguagesNUM, RoutingArray, defaultLocale } from '@/lib/lang';
+import { LanguagesNUM, RoutingArray, defaultLocale, getLanguageDir } from '@/lib/lang';
 import { cn } from "@/lib/utils";
 import { CaskaydiaCoveNerdFontPropo, CaskaydiaCoveNerdFontMono, CaskaydiaCoveNerdFont } from './fonts'
 
@@ -52,9 +52,10 @@ export default async function NotFound() {
 
   // Load messages for the locale
   const messages = (await import(`@/assets/lang/${locale}.json`)).default;
+  const dir = getLanguageDir(locale);
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={dir} suppressHydrationWarning>
       <head>
       <script
           async

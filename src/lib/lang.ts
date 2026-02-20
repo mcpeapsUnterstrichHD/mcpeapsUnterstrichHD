@@ -8,6 +8,11 @@ export enum LanguagesNUM {
 }
 export const defaultLocale = LanguagesNUM.de_DE;
 
+export enum LangDir {
+  ltr = "ltr",
+  rtl = "rtl",
+}
+
 
 export const RoutingArray: string[] = [
   LanguagesNUM.de_DE,
@@ -18,23 +23,27 @@ export type Language = {
   code: LanguagesNUM;
   name: string;
   country: string;
+  dir: LangDir;
 };
 
 export const languages: Language[] = [
   {
     code: LanguagesNUM.de_DE,
     name: "Deutsch",
-    country: "Deutschland"
+    country: "Deutschland",
+    dir: LangDir.ltr,
   },
   {
     code: LanguagesNUM.en_US,
     name: "English",
-    country: "USA"
+    country: "USA",
+    dir: LangDir.ltr,
   },
   /*{
     code: LanguagesNUM.en_GB,
     name: "English",
-    country: "UK"
+    country: "UK",
+    dir: LangDir.ltr,
   },*/
 ];
 
@@ -51,4 +60,9 @@ export function getLanguageName(code: LanguagesNUM): string {
 export function getLanguageCountry(code: LanguagesNUM): string {
   const lang = languages.find((lang) => lang.code === code);
   return lang ? lang.country : "Unknown Language";
+}
+
+export function getLanguageDir(code: LanguagesNUM): LangDir {
+  const lang = languages.find((lang) => lang.code === code);
+  return lang ? lang.dir : LangDir.ltr;
 }

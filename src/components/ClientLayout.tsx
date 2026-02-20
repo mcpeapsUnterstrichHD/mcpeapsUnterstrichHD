@@ -1,6 +1,6 @@
 "use client"
 import { NextIntlClientProvider, useTranslations } from 'next-intl';
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import Particles from "@/components/Particles";
 import { NavBar } from "@/components/Header";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -15,12 +15,14 @@ import { theme } from '@/app/theme';
 import ClickSpark from './ClickSpark';
 import { nord6 } from '@/lib/NordColors';
 import { PrintProvider } from '@/contexts/PrintContext';
+import { DirectionProvider } from './ui/direction';
+import { LanguagesNUM, getLanguageDir } from '@/lib/lang';
 
 
 
 type Props = {
   children: React.ReactNode;
-  locale: string;
+  locale: LanguagesNUM;
   messages: any;
 };
 
@@ -49,7 +51,7 @@ export default function ClientLayout({ children, locale, messages }: Props) {
 }
 
 
-function ClientLayoutContent({ children, locale }: { children: React.ReactNode; locale: string }) {
+function ClientLayoutContent({ children, locale }: { children: React.ReactNode; locale: LanguagesNUM }) {
   const router = useRouter();
   const t = useTranslations();
   const currentIndex = useRef(0);
@@ -206,7 +208,10 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
     };
   }, []);
 
+  const dir = getLanguageDir(locale);
+
   return (
+    <DirectionProvider direction={dir}>
     <SidebarProvider
       style={{
         "--sidebar-width": "var(--appsidebar-width)",
@@ -215,7 +220,7 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
     >
       <AppSidebar variant='floating' />
 
-          <Particles quantity={400} refresh={true} />
+      <Particles quantity={400} refresh={true} />
           <div className="relative z-10 flex flex-col min-h-svh flex-1 w-full">
               <NavBar />
               <ViewTransition enter="slide" exit="root" update="root">
@@ -228,5 +233,6 @@ function ClientLayoutContent({ children, locale }: { children: React.ReactNode; 
               <CookieConsent />
           </div>
     </SidebarProvider>
+    </DirectionProvider>
   );
 }
