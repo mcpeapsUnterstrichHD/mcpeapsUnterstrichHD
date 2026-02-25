@@ -3,12 +3,17 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		interface Locals {
-			locale: import("intlayer").Locale;
+		interface Locals { locale: import("intlayer").Locale }
+
+		interface Platform {
+			env: Env;
+			ctx: ExecutionContext;
+			caches: CacheStorage;
+			cf?: IncomingRequestCfProperties
 		}
+
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
 	}
 }
 
