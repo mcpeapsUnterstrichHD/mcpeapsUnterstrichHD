@@ -9,13 +9,12 @@
   import RecommendationToasts from "$lib/components/RecommendationToasts.svelte";
   import CookieConsent from "$lib/components/cookie/CookieConsent.svelte";
   import { Toaster } from "svelte-sonner";
-  import { setupIntlayer } from "svelte-intlayer";
   import type { Snippet } from "svelte";
   import { page } from "$app/state";
   import { fly, fade } from "svelte/transition";
   import { cubicOut, cubicIn } from "svelte/easing";
 
-  let { children, data }: { children: Snippet } = $props();
+  let { children }: { children: Snippet } = $props();
 </script>
 
 <svelte:head>
