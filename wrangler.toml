@@ -1,0 +1,13 @@
+name = "mcpeapsunterstrichhd"
+compatibility_date = "2026-02-27"
+compatibility_flags = ["nodejs_compat"]
+main = ".svelte-kit/cloudflare/_worker.js"
+workers_dev = true
+preview_urls = true
+
+[assets]
+binding = "ASSETS"
+directory = ".svelte-kit/cloudflare"
+
+[observability]
+enabled = true
