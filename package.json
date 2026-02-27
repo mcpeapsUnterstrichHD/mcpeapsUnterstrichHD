@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@icons-pack/svelte-simple-icons": "^7.0.1",
+    "@microsoft/clarity": "^1.0.2",
     "intlayer": "^8.1.7",
     "svelte-intlayer": "^8.1.7",
     "vanilla-cookieconsent": "^3.1.0"

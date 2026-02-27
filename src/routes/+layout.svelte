@@ -15,6 +15,10 @@
   import { fly, fade } from "svelte/transition";
   import { cubicOut, cubicIn } from "svelte/easing";
 
+  import Clarity from '@microsoft/clarity';
+
+  Clarity.init("vns8mokhsm")
+
   let { children }: { children: Snippet; } =
     $props();
 </script>
