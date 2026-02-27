@@ -17,8 +17,6 @@
 
   import Clarity from '@microsoft/clarity';
 
-  Clarity.init("vns8mokhsm")
-
   let { children }: { children: Snippet; } =
     $props();
 </script>
