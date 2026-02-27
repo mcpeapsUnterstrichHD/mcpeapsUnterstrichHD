@@ -4,11 +4,11 @@
   import { page } from "$app/state";
   import { useLocale, useIntlayer } from "svelte-intlayer";
   import { getLocalizedUrl, type Locale } from "intlayer";
-  import { languages, type Language } from "$lib/lang";
+  import { languages } from "$lib/lang";
 
   let { children, data }: { children: Snippet; data: { locale: Locale } } =
     $props();
-  const { locale, availableLocales, setLocale } = useLocale();
+  const { locale, setLocale } = useLocale();
   const layout = useIntlayer("layout");
 
   // Sync server-detected locale with client-side intlayer (once on mount only)
@@ -18,14 +18,21 @@
     }
   });
 
+  // Keep <html lang="..." dir="..."> in sync on client-side locale changes
+  $effect(() => {
+    const lang = languages.find((l) => l.code === $locale);
+    document.documentElement.lang = $locale;
+    document.documentElement.dir = lang?.dir ?? "ltr";
+  });
+
   let canonicalUrl = $derived.by(() => {
     const path = page.url.pathname.replace(/\/$/, "") || "/";
-    return `${page.url.host}${path}`;
+    return `${path}`;
   });
 
   let pathForAlternates = $derived.by(() => {
     let path: string = page.url.pathname;
-    for (const loc of availableLocales) {
+    for (const loc of languages.map(l => l.code)) {
       if (path.startsWith(`/${loc}`)) {
         path = path.slice(`/${loc}`.length) || "/";
         break;
@@ -45,10 +52,13 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
   <!-- Canonical & hreflang -->
-  <link rel="canonical" href={canonicalUrl} />
-  {#each availableLocales as loc}
-    <link rel="alternate" hreflang={loc} href="{page.url.host}{getLocalizedUrl(pathForAlternates , loc)}" />
+  <link rel="canonical" href="{page.url.protocol}//{page.url.host}{canonicalUrl}" />
+  {#each languages.map(l => l.code) as loc}
+    <link rel="alternate" hreflang={loc} href="{page.url.protocol}//{page.url.host}{getLocalizedUrl(pathForAlternates, loc)}" />
   {/each}
+  {#if $locale}
+    <link rel="alternate" hreflang="x-default" href="{page.url.protocol}//{page.url.host}{pathForAlternates}" />
+  {/if}
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />

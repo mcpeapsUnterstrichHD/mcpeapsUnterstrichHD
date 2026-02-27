@@ -1,30 +1,23 @@
 import type { Handle } from "@sveltejs/kit";
 import { languages, type Language } from "$lib/lang";
 
-const LOCALE_COOKIE = "mahd-locale";
+const DEFAULT_LOCALE = languages[0].code;
 
 export const handle: Handle = async ({ event, resolve }) => {
-  // 1. Try to get locale from URL path (e.g., /en-US/aboutme)
   const firstSegment = event.url.pathname.split("/")[1];
-  let locale: string;
+  let locale: Language  ['code'];
   let dir: Language['dir'];
 
-  if (languages.map(l => l.code.toString()).includes(firstSegment)) {
-    locale = firstSegment;
+  if (languages.map(l => l.code).includes(firstSegment as Language['code'])) {
+    // URL has an explicit locale prefix → use it
+    locale = firstSegment as Language['code'];
   } else {
-    // 2. Fall back to locale cookie
-    const cookieLocale = event.cookies.get(LOCALE_COOKIE);
-    if (cookieLocale && languages.map(l => l.code.toString()).includes(cookieLocale)) {
-      locale = cookieLocale;
-    } else {
-      // 3. Fall back to Accept-Language header
-      const acceptLang = event.request.headers.get("accept-language") ?? "";
-      locale = negotiateLocale(acceptLang) ?? languages[0].code.toString(); // Default to first language if no match
-    }
+    // No locale prefix → with prefix-no-default, this IS the default locale
+    locale = DEFAULT_LOCALE;
   }
-  dir = languages.find(l => l.code.toString() === locale)?.dir ?? 'ltr';
+  dir = languages.find(l => l.code === locale)?.dir ?? 'ltr';
 
-  event.locals.locale = locale as any;
+  event.locals.locale = locale;
 
   // Replace %lang% placeholder in HTML
   return resolve(event, {
@@ -34,27 +27,3 @@ export const handle: Handle = async ({ event, resolve }) => {
     },
   });
 };
-
-function negotiateLocale(acceptLang: string): string | null {
-  // Parse Accept-Language header (e.g., "en-US,en;q=0.9,de;q=0.8")
-  const entries = acceptLang
-    .split(",")
-    .map((entry) => {
-      const [lang, qPart] = entry.trim().split(";");
-      const q = qPart ? parseFloat(qPart.replace("q=", "")) : 1.0;
-      return { lang: lang.trim(), q };
-    })
-    .sort((a, b) => b.q - a.q);
-
-  for (const { lang } of entries) {
-    // Exact match
-    if (languages.map(l => l.code.toString()).includes(lang)) return lang;
-    // Prefix match (e.g., "en" matches "en-US", "de" matches "de-DE")
-    const match = languages.find(
-      (l) => l.code.toString().toLowerCase().startsWith(lang.toLowerCase()),
-    )?.code.toString();
-    if (match) return match;
-  }
-
-  return null;
-}

@@ -155,7 +155,7 @@
       <Sidebar.GroupLabel>{t($footer, "connect")}</Sidebar.GroupLabel>
       <Sidebar.GroupContent>
         <Sidebar.Menu>
-          {#each connectLinks as item}
+          {#each connectLinks as item: S }
             <Sidebar.MenuItem>
               <Sidebar.MenuButton>
                 {#snippet child({ props })}

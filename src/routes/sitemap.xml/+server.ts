@@ -1,8 +1,8 @@
 import type { RequestHandler } from './$types';
+import { page } from '$app/state';
+import { languages } from '$lib/lang';
 
-const SITE = 'https://mcpeapsunterstrichhd.dev';
-const LOCALES = ['de-DE', 'en-US'];
-const DEFAULT_LOCALE = 'de-DE';
+const DEFAULT_LOCALE = languages[0].code;
 
 interface SitemapEntry {
 	path: string;
@@ -22,10 +22,10 @@ const pages: SitemapEntry[] = [
 
 function buildUrl(locale: string, path: string): string {
 	if (locale === DEFAULT_LOCALE) {
-		return `${SITE}${path}`;
+		return `${page.url.host}${path}`;
 	}
 	const suffix = path === '/' ? '/' : path;
-	return `${SITE}/${locale}${suffix}`;
+	return `${page.url.host}/${locale}${suffix}`;
 }
 
 export const GET: RequestHandler = async () => {
@@ -33,9 +33,10 @@ export const GET: RequestHandler = async () => {
 
 	const urls = pages
 		.map((page) => {
-			const xhtmlLinks = LOCALES.map(
+			const xhtmlLinks = languages
+				.map(
 				(loc) =>
-					`    <xhtml:link rel="alternate" hreflang="${loc}" href="${buildUrl(loc, page.path)}" />`
+					`    <xhtml:link rel="alternate" hreflang="${loc.code}" href="${buildUrl(loc.code, page.path)}" />`
 			).join('\n');
 
 			return `  <url>
