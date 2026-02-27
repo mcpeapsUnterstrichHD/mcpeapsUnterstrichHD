@@ -10,7 +10,7 @@ I love developing software, exploring systems, and producing music.
 
 ### 🚀 Currently Building: My Interactive Profile
 
-This profile page you are looking at is actually a fully interactive **Next.js 16** application!
+This profile page you are looking at is actually a fully interactive **SvelteKit / Svelte 5** application!
 I'm constantly experimenting with the latest web technologies here.
 
 **Check out the source code:**
@@ -19,19 +19,19 @@ I'm constantly experimenting with the latest web technologies here.
 
 ---
 
-### 🛠 Tech Stack
+### 🛠 Tech Stack of my webside
 
 The technologies driving this project and my current focus:
 
 <p align="left">
   <!-- Core -->
-  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js_16-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js 16" /></a>
-  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React_19-20232a?style=for-the-badge&logo=react&logoColor=61dafb" alt="React 19" /></a>
+  <a href="https://svelte.dev/"><img src="https://img.shields.io/badge/Svelte_5-FF3E00?style=for-the-badge&logo=svelte&logoColor=white" alt="Svelte 5" /></a>
+  <a href="https://svelte.dev/docs/kit"><img src="https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=svelte&logoColor=white" alt="SvelteKit" /></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
   <br />
   <!-- Styling & UI -->
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS v4" /></a>
-  <a href="https://motion.dev/"><img src="https://img.shields.io/badge/Motion-000000?style=for-the-badge&logo=framer&logoColor=white" alt="Motion" /></a>
+  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
   <br />
   <!-- Infrastructure & Tools -->
   <a href="https://workers.cloudflare.com/"><img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare" /></a>
