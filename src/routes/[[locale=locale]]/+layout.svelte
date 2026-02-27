@@ -53,12 +53,10 @@
 
   <!-- Canonical & hreflang -->
   <link rel="canonical" href="{page.url.protocol}//{page.url.host}{canonicalUrl}" />
-  {#each languages.map(l => l.code) as loc}
-    <link rel="alternate" hreflang={loc} href="{page.url.protocol}//{page.url.host}{getLocalizedUrl(pathForAlternates, loc)}" />
+  <link rel="alternate" hreflang="x-default" href="{page.url.protocol}//{page.url.host}{pathForAlternates}" />
+  {#each languages as lang}
+    <link rel="alternate" hreflang={lang.code} href="{page.url.protocol}//{page.url.host}/{lang.code}{pathForAlternates === '/' ? '' : pathForAlternates}" />
   {/each}
-  {#if $locale}
-    <link rel="alternate" hreflang="x-default" href="{page.url.protocol}//{page.url.host}{pathForAlternates}" />
-  {/if}
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />

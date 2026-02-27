@@ -1,5 +1,4 @@
 import type { RequestHandler } from './$types';
-import { page } from '$app/state';
 import { languages } from '$lib/lang';
 
 const DEFAULT_LOCALE = languages[0].code;
@@ -20,15 +19,16 @@ const pages: SitemapEntry[] = [
 	{ path: '/imprint', priority: 0.5, changefreq: 'daily' },
 ];
 
-function buildUrl(locale: string, path: string): string {
+function buildUrl(origin: string, locale: string, path: string): string {
 	if (locale === DEFAULT_LOCALE) {
-		return `${page.url.host}${path}`;
+		return `${origin}${path}`;
 	}
 	const suffix = path === '/' ? '/' : path;
-	return `${page.url.host}/${locale}${suffix}`;
+	return `${origin}/${locale}${suffix}`;
 }
 
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async ({ url }) => {
+	const origin = url.origin;
 	const today = new Date().toISOString().split('T')[0];
 
 	const urls = pages
@@ -36,11 +36,11 @@ export const GET: RequestHandler = async () => {
 			const xhtmlLinks = languages
 				.map(
 				(loc) =>
-					`    <xhtml:link rel="alternate" hreflang="${loc.code}" href="${buildUrl(loc.code, page.path)}" />`
+					`    <xhtml:link rel="alternate" hreflang="${loc.code}" href="${buildUrl(origin, loc.code, page.path)}" />`
 			).join('\n');
 
 			return `  <url>
-    <loc>${buildUrl(DEFAULT_LOCALE, page.path)}</loc>
+    <loc>${buildUrl(origin, DEFAULT_LOCALE, page.path)}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
