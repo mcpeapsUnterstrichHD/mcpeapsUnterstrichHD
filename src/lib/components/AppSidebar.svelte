@@ -2,7 +2,7 @@
   import { page } from "$app/state";
   import * as Sidebar from "$lib/components/ui/sidebar";
   import * as Tooltip from "$lib/components/ui/tooltip";
-  import * as Avatar from "$lib/components/ui/avatar";
+  import UserAvatar from "$lib/components/UserAvatar.svelte";
   import TypingAnimation from "$lib/components/TypingAnimation.svelte";
   import Langswitcher from "$lib/components/Langswitcher.svelte";
   import SidebarToggle from "$lib/components/SidebarToggle.svelte";
@@ -85,13 +85,13 @@
                   href="/"
                   class="flex w-full items-center gap-2 overflow-hidden"
                 >
-                  <Avatar.Root class="h-8 w-8 rounded-sm">
-                    <Avatar.Image
-                      src="/pictures/logo.png"
-                      alt={t($logo, "alt")}
-                    />
-                    <Avatar.Fallback class="rounded-sm">MAHD</Avatar.Fallback>
-                  </Avatar.Root>
+                  <UserAvatar
+                    name={t($aboutme, "name")}
+                    githubUserName="mcpeapsUnterstrichHD"
+                    image={{ src: "/pictures/logo.png", alt: t($logo, "alt") }}
+                    imageFallback="MAHD"
+                    class="h-8 w-8 rounded-sm"
+                  />
                   <span class="group-data-[collapsible=icon]:hidden">
                     <TypingAnimation
                       text={t($aboutme, "name")}
@@ -128,7 +128,8 @@
               <Sidebar.MenuButton>
                 {#snippet child({ props })}
                   <LocalizedLink href={item.url} {...props}>
-                    <svelte:component this={item.icon} title={item.title} />
+                    {@const Icon = item.icon}
+                    <Icon title={item.title} />
                     <span
                       class="flex-1 truncate group-data-[collapsible=icon]:hidden"
                       >{item.title}</span
@@ -154,12 +155,13 @@
       <Sidebar.GroupLabel>{t($footer, "connect")}</Sidebar.GroupLabel>
       <Sidebar.GroupContent>
         <Sidebar.Menu>
-          {#each connectLinks as item}
+          {#each connectLinks as item: S }
             <Sidebar.MenuItem>
               <Sidebar.MenuButton>
                 {#snippet child({ props })}
                   <LocalizedLink href={item.url} {...props}>
-                    <svelte:component this={item.icon} title={item.title} />
+                    {@const Icon = item.icon}
+                    <Icon title={item.title} />
                     <span
                       class="flex-1 truncate group-data-[collapsible=icon]:hidden"
                       >{item.title}</span
@@ -190,7 +192,8 @@
               <Sidebar.MenuButton>
                 {#snippet child({ props })}
                   <LocalizedLink href={item.url} {...props}>
-                    <svelte:component this={item.icon} title={item.title} />
+                    {@const Icon = item.icon}
+                    <Icon title={item.title} />
                     <span
                       class="flex-1 truncate group-data-[collapsible=icon]:hidden"
                       >{item.title}</span

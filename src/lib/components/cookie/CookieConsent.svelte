@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { cookieConsentConfig } from './cookieConfig';
-  import { cookieState } from './cookieState.svelte';
-  import * as Sheet from '$lib/components/ui/sheet';
-  import { Button } from '$lib/components/ui/button';
-  import Langswitcher from '$lib/components/Langswitcher.svelte';
-  import { useIntlayer } from 'svelte-intlayer';
+  import { onMount } from "svelte";
+  import { cookieConsentConfig } from "./cookieConfig";
+  import { cookieState } from "./cookieState.svelte";
+  import * as Sheet from "$lib/components/ui/sheet";
+  import { Button } from "$lib/components/ui/button";
+  import Langswitcher from "$lib/components/Langswitcher.svelte";
+  import { useIntlayer, useLocale } from "svelte-intlayer";
   import {
     Cookie,
     ExternalLink,
@@ -14,24 +14,25 @@
     Share2,
     Phone,
     Globe,
-  } from '@lucide/svelte';
-  import { getLocalizedUrl } from 'intlayer';
+  } from "@lucide/svelte";
+  import { getLocalizedUrl } from "intlayer";
 
-  const cookieConsent = useIntlayer('cookieConsent');
+  const cookieConsent = useIntlayer("cookieConsent");
+  const { locale } = useLocale();
 
   let isVisible = $state(false);
   let sheetOpen = $state(false);
 
   function syncCategories() {
-    import('vanilla-cookieconsent').then(CC => {
-      cookieState.multimedia = CC.acceptedCategory('multimedia');
-      cookieState.socialMedia = CC.acceptedCategory('socialMedia');
-      cookieState.contact = CC.acceptedCategory('contact');
+    import("vanilla-cookieconsent").then((CC) => {
+      cookieState.multimedia = CC.acceptedCategory("multimedia");
+      cookieState.socialMedia = CC.acceptedCategory("socialMedia");
+      cookieState.contact = CC.acceptedCategory("contact");
     });
   }
 
   onMount(() => {
-    import('vanilla-cookieconsent').then(CC => {
+    import("vanilla-cookieconsent").then((CC) => {
       CC.run({
         ...cookieConsentConfig,
         onFirstConsent: () => {
@@ -52,32 +53,32 @@
       syncCategories();
       sheetOpen = true;
     };
-    window.addEventListener('show-cookie-consent', handleShowBanner);
+    window.addEventListener("show-cookie-consent", handleShowBanner);
     return () => {
-      window.removeEventListener('show-cookie-consent', handleShowBanner);
+      window.removeEventListener("show-cookie-consent", handleShowBanner);
     };
   });
 
   async function handleAcceptAll() {
-    const CC = await import('vanilla-cookieconsent');
-    CC.acceptCategory('all');
+    const CC = await import("vanilla-cookieconsent");
+    CC.acceptCategory("all");
     isVisible = false;
     sheetOpen = false;
   }
 
   async function handleRejectAll() {
-    const CC = await import('vanilla-cookieconsent');
+    const CC = await import("vanilla-cookieconsent");
     CC.acceptCategory([]);
     isVisible = false;
     sheetOpen = false;
   }
 
   async function handleSavePreferences() {
-    const CC = await import('vanilla-cookieconsent');
-    const accepted: string[] = ['necessary'];
-    if (cookieState.multimedia) accepted.push('multimedia');
-    if (cookieState.socialMedia) accepted.push('socialMedia');
-    if (cookieState.contact) accepted.push('contact');
+    const CC = await import("vanilla-cookieconsent");
+    const accepted: string[] = ["necessary"];
+    if (cookieState.multimedia) accepted.push("multimedia");
+    if (cookieState.socialMedia) accepted.push("socialMedia");
+    if (cookieState.contact) accepted.push("contact");
     CC.acceptCategory(accepted);
     isVisible = false;
     sheetOpen = false;
@@ -91,7 +92,9 @@
 
 <!-- Compact Banner (bottom-right) -->
 {#if isVisible}
-  <div class="fixed bottom-4 right-4 z-50 max-w-sm print:hidden no-print animate-in slide-in-from-bottom-5 fade-in duration-300">
+  <div
+    class="fixed bottom-4 right-4 z-50 max-w-sm print:hidden no-print animate-in slide-in-from-bottom-5 fade-in duration-300"
+  >
     <div class="my-glass rounded-lg shadow-xl p-4 space-y-3">
       <div class="flex items-start gap-3">
         <div class="shrink-0 p-2 bg-primary/10 rounded-full">
@@ -111,16 +114,26 @@
         <Button onclick={handleAcceptAll} size="sm" class="flex-1 text-xs">
           {$cookieConsent.acceptAll}
         </Button>
-        <Button onclick={handleRejectAll} variant="outline" size="sm" class="flex-1 text-xs">
+        <Button
+          onclick={handleRejectAll}
+          variant="outline"
+          size="sm"
+          class="flex-1 text-xs"
+        >
           {$cookieConsent.rejectAll}
         </Button>
       </div>
       <div class="flex items-center justify-between">
-        <Button onclick={handleOpenSheet} variant="ghost" size="sm" class="text-xs text-muted-foreground hover:text-foreground px-1">
+        <Button
+          onclick={handleOpenSheet}
+          variant="ghost"
+          size="sm"
+          class="text-xs text-muted-foreground hover:text-foreground px-1"
+        >
           {$cookieConsent.managePreferences}
         </Button>
         <a
-          href={getLocalizedUrl('/imprint')}
+          href={getLocalizedUrl("/imprint", $locale)}
           class="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
           {$cookieConsent.moreInfo}
@@ -148,16 +161,25 @@
       <!-- Cookie Categories -->
       <div class="space-y-3">
         <!-- Necessary - always on -->
-        <label class="flex items-center justify-between p-3 rounded-lg bg-muted/30">
+        <label
+          class="flex items-center justify-between p-3 rounded-lg bg-muted/30"
+        >
           <span class="flex items-center gap-2 text-sm text-foreground">
             <Shield class="h-4 w-4 text-primary" />
             {$cookieConsent.technicalCookies.title}
           </span>
-          <input type="checkbox" checked disabled class="h-4 w-4 accent-primary" />
+          <input
+            type="checkbox"
+            checked
+            disabled
+            class="h-4 w-4 accent-primary"
+          />
         </label>
 
         <!-- Multimedia -->
-        <label class="flex items-center justify-between p-3 rounded-lg bg-muted/30 cursor-pointer hover:bg-muted/50 transition-colors">
+        <label
+          class="flex items-center justify-between p-3 rounded-lg bg-muted/30 cursor-pointer hover:bg-muted/50 transition-colors"
+        >
           <div class="flex-1 min-w-0">
             <span class="flex items-center gap-2 text-sm text-foreground">
               <Music class="h-4 w-4 text-primary" />
@@ -167,11 +189,17 @@
               {$cookieConsent.categories.multimedia.description}
             </p>
           </div>
-          <input type="checkbox" bind:checked={cookieState.multimedia} class="h-4 w-4 accent-primary cursor-pointer shrink-0" />
+          <input
+            type="checkbox"
+            bind:checked={cookieState.multimedia}
+            class="h-4 w-4 accent-primary cursor-pointer shrink-0"
+          />
         </label>
 
         <!-- Social Media -->
-        <label class="flex items-center justify-between p-3 rounded-lg bg-muted/30 cursor-pointer hover:bg-muted/50 transition-colors">
+        <label
+          class="flex items-center justify-between p-3 rounded-lg bg-muted/30 cursor-pointer hover:bg-muted/50 transition-colors"
+        >
           <div class="flex-1 min-w-0">
             <span class="flex items-center gap-2 text-sm text-foreground">
               <Share2 class="h-4 w-4 text-primary" />
@@ -181,11 +209,17 @@
               {$cookieConsent.categories.socialMedia.description}
             </p>
           </div>
-          <input type="checkbox" bind:checked={cookieState.socialMedia} class="h-4 w-4 accent-primary cursor-pointer shrink-0" />
+          <input
+            type="checkbox"
+            bind:checked={cookieState.socialMedia}
+            class="h-4 w-4 accent-primary cursor-pointer shrink-0"
+          />
         </label>
 
         <!-- Contact -->
-        <label class="flex items-center justify-between p-3 rounded-lg bg-muted/30 cursor-pointer hover:bg-muted/50 transition-colors">
+        <label
+          class="flex items-center justify-between p-3 rounded-lg bg-muted/30 cursor-pointer hover:bg-muted/50 transition-colors"
+        >
           <div class="flex-1 min-w-0">
             <span class="flex items-center gap-2 text-sm text-foreground">
               <Phone class="h-4 w-4 text-primary" />
@@ -195,7 +229,11 @@
               {$cookieConsent.categories.contact.description}
             </p>
           </div>
-          <input type="checkbox" bind:checked={cookieState.contact} class="h-4 w-4 accent-primary cursor-pointer shrink-0" />
+          <input
+            type="checkbox"
+            bind:checked={cookieState.contact}
+            class="h-4 w-4 accent-primary cursor-pointer shrink-0"
+          />
         </label>
       </div>
 
@@ -244,15 +282,25 @@
           {$cookieConsent.savePreferences}
         </Button>
         <div class="flex gap-2">
-          <Button onclick={handleAcceptAll} variant="outline" size="sm" class="flex-1 text-xs">
+          <Button
+            onclick={handleAcceptAll}
+            variant="outline"
+            size="sm"
+            class="flex-1 text-xs"
+          >
             {$cookieConsent.acceptAll}
           </Button>
-          <Button onclick={handleRejectAll} variant="outline" size="sm" class="flex-1 text-xs">
+          <Button
+            onclick={handleRejectAll}
+            variant="outline"
+            size="sm"
+            class="flex-1 text-xs"
+          >
             {$cookieConsent.rejectAll}
           </Button>
         </div>
         <a
-          href={getLocalizedUrl('/imprint')}
+          href={getLocalizedUrl("/imprint", $locale)}
           class="inline-flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors pt-1"
         >
           {$cookieConsent.moreInfo}

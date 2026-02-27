@@ -1,13 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { page } from "$app/state";
-  import { useIntlayer } from "svelte-intlayer";
   import * as Card from "$lib/components/ui/card";
   import { Skeleton } from "$lib/components/ui/skeleton";
-  import { t } from "$lib/i18n";
-
-  const sites = useIntlayer("sites");
-  const layout = useIntlayer("layout");
 
   let status = $derived(page.status);
   let errorMessage = $derived(page.error?.message ?? "");
@@ -16,7 +11,6 @@
   let isLoading = $state(true);
 
   onMount(async () => {
-    if (status === 404) {
       try {
         const res = await fetch("https://naas.isalman.dev/no");
         const data = await res.json();
@@ -24,13 +18,13 @@
       } catch {
         reason = null;
       }
-    }
+
     isLoading = false;
   });
 </script>
 
 <svelte:head>
-  <title>{status} | {$layout.title}</title>
+  <title>Error {status} - {errorMessage} </title>
 </svelte:head>
 
 <div
@@ -90,11 +84,7 @@
             <Skeleton class="h-7 w-48" />
           {:else}
             <Card.Title class="text-xl md:text-2xl">
-              {#if status === 404}
-                {t($sites, "notFound") ?? "Not Found"}
-              {:else}
-                {errorMessage || "Something went wrong"}
-              {/if}
+                Error {status}
             </Card.Title>
           {/if}
         </div>
@@ -107,13 +97,12 @@
             <Skeleton class="h-4 w-48" />
             <Skeleton class="h-4 w-32" />
           </div>
-        {:else if status === 404 && reason}
+        {:else if reason && errorMessage}
+          <div class="text-muted-foreground text-sm">
+            {status} - {errorMessage}
+          </div>
           <div class="text-muted-foreground text-sm">
             {reason}
-          </div>
-        {:else if status !== 404 && errorMessage}
-          <div class="text-muted-foreground text-sm">
-            {errorMessage}
           </div>
         {/if}
       </Card.Content>

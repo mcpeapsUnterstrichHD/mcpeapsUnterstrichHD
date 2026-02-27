@@ -26,16 +26,26 @@
   }: Props = $props();
 
   // Determine which image to show (print variant handled via CSS media query if needed)
-  const currentImage = $derived(image);
 </script>
 
 <Card.Root class="my-glass p-4 mb-4 break-inside-avoid">
   <Card.Header class="pb-1">
     <div class="flex flex-row items-center gap-3">
-      <Avatar.Root>
-        <Avatar.Image src={currentImage} alt={imageAlt} />
-        <Avatar.Fallback>{imageFallback}</Avatar.Fallback>
-      </Avatar.Root>
+      {#if imagePrint}
+        <Avatar.Root class="print:hidden">
+          <Avatar.Image src={image} alt={imageAlt} />
+          <Avatar.Fallback>{imageFallback}</Avatar.Fallback>
+        </Avatar.Root>
+        <Avatar.Root class="hidden print:flex">
+          <Avatar.Image src={imagePrint} alt={imageAlt} />
+          <Avatar.Fallback>{imageFallback}</Avatar.Fallback>
+        </Avatar.Root>
+      {:else}
+        <Avatar.Root>
+          <Avatar.Image src={image} alt={imageAlt} />
+          <Avatar.Fallback>{imageFallback}</Avatar.Fallback>
+        </Avatar.Root>
+      {/if}
       <Card.Title>{title}</Card.Title>
     </div>
     <Card.Description>

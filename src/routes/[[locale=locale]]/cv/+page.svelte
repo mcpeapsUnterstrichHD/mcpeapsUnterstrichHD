@@ -31,6 +31,7 @@
   const cv = useIntlayer("cv");
   const aboutme = useIntlayer("aboutme");
   const sites = useIntlayer("sites");
+  const layout = useIntlayer("layout");
 
   const sortedEducation = sortByEndDate(educationItems);
   const sortedExperience = sortByEndDate(experienceItems);
@@ -58,7 +59,7 @@
 </script>
 
 <svelte:head>
-  <title>{$sites.cv} — {$aboutme.name}</title>
+  <title>{$sites.cv} | {$layout.title}</title>
 </svelte:head>
 
 <div class="flex flex-col gap-8 px-4 py-6 mx-auto">
@@ -125,9 +126,9 @@
     <!-- Large Timeline (Hidden on small screens) -->
     <div class="hidden sm:flex flex-col w-full mx-auto">
       {#each sortedEducation as item, i}
-        <div class="flex flex-row w-full min-h-[100px]">
+        <div class="flex flex-row w-full min-h-25">
           <!-- Opposite content (Dates) -->
-          <div class="w-[150px] shrink-0 text-right pr-4 pt-[18px]">
+          <div class="w-37.5 shrink-0 text-right pr-4 pt-4.5">
             <Badge
               variant="default"
               class="text-[10px] whitespace-nowrap opacity-80 font-normal tracking-wide"
@@ -137,18 +138,18 @@
           </div>
           <!-- Separator (Line + Dot) -->
           <div
-            class="flex flex-col items-center flex-none relative w-[11px] mx-6"
+            class="flex flex-col items-center flex-none relative w-2.75 mx-6"
           >
             <!-- Continuous line -->
             <div
-              class="absolute w-[2px] bg-border/50 min-h-[50px] {i === 0
-                ? 'top-[24px]'
+              class="absolute w-0.5 bg-border/50 min-h-12.5 {i === 0
+                ? 'top-6'
                 : 'top-0'} {i === sortedEducation.length - 1
                 ? 'bottom-[calc(100%-30px)]'
                 : 'bottom-0'}"
             ></div>
             <div
-              class="w-[11px] h-[11px] rounded-full bg-background border-2 border-muted-foreground mt-5 z-10 shadow-sm relative"
+              class="w-2.75 h-2.75 rounded-full bg-background border-2 border-muted-foreground mt-5 z-10 shadow-sm relative"
             ></div>
           </div>
           <!-- Content (Card) -->
@@ -176,12 +177,12 @@
 
     <!-- Small Timeline (Visible on small screens) -->
     <div
-      class="block sm:hidden relative ml-3 border-l-[2px] border-border/50 pl-6 space-y-8 pb-4"
+      class="block sm:hidden relative ml-3 border-l-2 border-border/50 pl-6 space-y-8 pb-4"
     >
       {#each sortedEducation as item}
         <div class="relative">
           <div
-            class="absolute -left-[calc(1.5rem+6px)] top-5 w-[11px] h-[11px] rounded-full bg-transparent border-2 border-muted-foreground z-10 shadow-sm bg-background"
+            class="absolute -left-7.5 top-5 w-2.75 h-2.75 rounded-full bg-transparent border-2 border-muted-foreground z-10 shadow-sm"
           ></div>
           <TimelineCard.Root
             image={item.image || ""}
@@ -219,9 +220,9 @@
     <!-- Large Timeline (Hidden on small screens) -->
     <div class="hidden sm:flex flex-col w-full mx-auto">
       {#each sortedExperience as item, i}
-        <div class="flex flex-row w-full min-h-[100px]">
+        <div class="flex flex-row w-full min-h-25">
           <!-- Opposite content (Dates) -->
-          <div class="w-[150px] shrink-0 text-right pr-4 pt-[18px]">
+          <div class="w-37.5 shrink-0 text-right pr-4 pt-4.5">
             <Badge
               variant="default"
               class="text-[10px] whitespace-nowrap opacity-80 font-normal tracking-wide"
@@ -231,18 +232,18 @@
           </div>
           <!-- Separator (Line + Dot) -->
           <div
-            class="flex flex-col items-center flex-none relative w-[11px] mx-6"
+            class="flex flex-col items-center flex-none relative w-2.75 mx-6"
           >
             <!-- Continuous line -->
             <div
-              class="absolute w-[2px] bg-border/50 min-h-[50px] {i === 0
-                ? 'top-[24px]'
+              class="absolute w-0.5 bg-border/50 min-h-12.5 {i === 0
+                ? 'top-6'
                 : 'top-0'} {i === sortedExperience.length - 1
                 ? 'bottom-[calc(100%-30px)]'
                 : 'bottom-0'}"
             ></div>
             <div
-              class="w-[11px] h-[11px] rounded-full bg-background border-2 border-muted-foreground mt-5 z-10 shadow-sm relative"
+              class="w-2.75 h-2.75 rounded-full bg-background border-2 border-muted-foreground mt-5 z-10 shadow-sm relative"
             ></div>
           </div>
           <!-- Content (Card) -->
@@ -268,12 +269,12 @@
 
     <!-- Small Timeline (Visible on small screens) -->
     <div
-      class="block sm:hidden relative ml-3 border-l-[2px] border-border/50 pl-6 space-y-8 pb-4"
+      class="block sm:hidden relative ml-3 border-l-2 border-border/50 pl-6 space-y-8 pb-4"
     >
       {#each sortedExperience as item}
         <div class="relative">
           <div
-            class="absolute -left-[calc(1.5rem+6px)] top-5 w-[11px] h-[11px] rounded-full bg-transparent border-2 border-muted-foreground z-10 shadow-sm bg-background"
+            class="absolute -left-7.5 top-5 w-2.75 h-2.75 rounded-full bg-transparent border-2 border-muted-foreground z-10 shadow-sm"
           ></div>
           <TimelineCard.Root
             image={item.image || ""}

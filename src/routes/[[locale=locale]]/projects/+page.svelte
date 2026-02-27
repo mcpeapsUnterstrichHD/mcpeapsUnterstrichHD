@@ -11,6 +11,7 @@
 
   const projects = useIntlayer("projects");
   const aboutme = useIntlayer("aboutme");
+  const layout = useIntlayer("layout");
 
   let completedProjects = $derived(
     getAllProjectsData().sort((a, b) =>
@@ -22,7 +23,7 @@
 </script>
 
 <svelte:head>
-  <title>{t($projects, "title")} — {t($aboutme, "name")}</title>
+  <title>{t($projects, "title")} | {$layout.title}</title>
 </svelte:head>
 
 <div class="flex flex-col gap-8 px-4 py-6 mx-auto">

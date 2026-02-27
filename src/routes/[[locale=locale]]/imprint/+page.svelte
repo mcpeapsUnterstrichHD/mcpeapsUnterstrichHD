@@ -20,10 +20,11 @@
   const aboutme = useIntlayer("aboutme");
   const cv = useIntlayer("cv");
   const cookieConsent = useIntlayer("cookieConsent");
+  const layout = useIntlayer("layout");
 </script>
 
 <svelte:head>
-  <title>{$imprint.title} — {$aboutme.name}</title>
+  <title>{$imprint.title} | {$layout.title}</title>
 </svelte:head>
 
 <div class="flex flex-col gap-8 px-4 py-6 mx-auto">

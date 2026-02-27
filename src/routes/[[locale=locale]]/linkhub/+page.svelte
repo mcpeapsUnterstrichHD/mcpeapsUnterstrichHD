@@ -11,12 +11,13 @@
   const linkhub = useIntlayer('linkhub');
   const aboutme = useIntlayer('aboutme');
   const sites = useIntlayer('sites');
+  const layout = useIntlayer('layout');
 
   const spotifyUrl = "https://open.spotify.com/embed/track/25S3D2lEwF25iur275I4d4?utm_source=generator&theme=0";
 </script>
 
 <svelte:head>
-  <title>{$sites.linkhub} — {$aboutme.name}</title>
+  <title>{$sites.linkhub} | {$layout.title}</title>
 </svelte:head>
 
 <div class="flex flex-col gap-8 px-4 py-6 mx-auto">

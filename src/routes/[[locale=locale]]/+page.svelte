@@ -11,11 +11,12 @@
 
   const aboutme = useIntlayer('aboutme');
   const sites = useIntlayer('sites');
+  const layout = useIntlayer('layout');
   const recommendation = useIntlayer('recommendation');
 </script>
 
 <svelte:head>
-  <title>{$aboutme.name} — {$aboutme.title}</title>
+  <title>{$aboutme.name} — {$aboutme.title} | {$layout.title}</title>
   <meta name="description" content={$aboutme.title} />
 </svelte:head>
 

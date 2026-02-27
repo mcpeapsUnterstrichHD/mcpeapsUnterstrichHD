@@ -13,6 +13,7 @@
   const cv = useIntlayer("cv");
   const aboutme = useIntlayer("aboutme");
   const sites = useIntlayer("sites");
+  const layout = useIntlayer("layout");
 
   function formatDate(d: string): string {
     const parts = d.split(".");
@@ -26,7 +27,7 @@
 </script>
 
 <svelte:head>
-  <title>{$sites.cv} ATS — {$aboutme.name}</title>
+  <title>{$sites.cv} | {$layout.title}</title>
 </svelte:head>
 
 <div class="ats-cv">
