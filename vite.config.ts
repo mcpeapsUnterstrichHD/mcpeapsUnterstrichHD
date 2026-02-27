@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [
 		intlayer(),
-		intlayerProxy(),
+		//intlayerProxy(),
 		tailwindcss(),
 		sveltekit(),
 		devtoolsJson()

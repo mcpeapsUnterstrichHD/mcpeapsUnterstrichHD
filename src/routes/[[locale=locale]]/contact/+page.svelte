@@ -14,6 +14,7 @@
   const contact = useIntlayer('contact');
   const aboutme = useIntlayer('aboutme');
   const sites = useIntlayer('sites');
+  const layout = useIntlayer('layout');
 
   type Platform = "desktop" | "ios" | "android" | "unknown";
 
@@ -38,7 +39,7 @@
 </script>
 
 <svelte:head>
-  <title>{$sites.contact} — {$aboutme.name}</title>
+  <title>{$sites.contact} | {$layout.title}</title>
 </svelte:head>
 
 <div class="flex flex-col gap-8 px-4 py-8 mx-auto min-h-[80vh]">

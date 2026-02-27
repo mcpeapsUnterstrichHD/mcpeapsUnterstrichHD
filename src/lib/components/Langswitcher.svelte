@@ -2,9 +2,7 @@
   import { page } from "$app/state";
   import {
     getLocalizedUrl,
-    getLocaleName,
-    type Locale,
-    Locales,
+     type Locale,
   } from "intlayer";
   import { useLocale, useIntlayer } from "svelte-intlayer";
   import { goto } from "$app/navigation";
@@ -19,6 +17,7 @@
     Dot,
   } from "@lucide/svelte";
   import { t } from "$lib/i18n";
+  import { languages , type Language } from "$lib/lang";
 
   interface Props {
     sidebar?: boolean;
@@ -38,16 +37,7 @@
     },
   });
 
-  interface Language {
-    code: Locale;
-    name: string;
-    country: string;
-  }
 
-  const languages: Language[] = [
-    { code: Locales.GERMAN_GERMANY, name: "Deutsch", country: "Deutschland" },
-    { code: Locales.ENGLISH_UNITED_STATES, name: "English", country: "USA" },
-  ];
 
   const currentLanguage = $derived(
     languages.find((l: Language) => l.code === $locale),
@@ -171,7 +161,7 @@
   <Collapsible.Content>
     {#if sidebar}
       <Sidebar.MenuSub
-        class="px-2 py-1.5 max-h-[300px] overflow-y-auto flex flex-col gap-2"
+        class="px-2 py-1.5 max-h-75 overflow-y-auto flex flex-col gap-2"
       >
         {#if filteredLanguages.length === 0}
           <span class="py-2 text-center text-xs text-muted-foreground"
@@ -199,7 +189,7 @@
       </Sidebar.MenuSub>
     {:else}
       <div
-        class="absolute bottom-full left-0 right-0 mb-1 px-2 py-1.5 max-h-[200px] overflow-y-auto flex flex-col gap-2 my-glass rounded-md shadow-lg z-50"
+        class="absolute bottom-full left-0 right-0 mb-1 px-2 py-1.5 max-h-50 overflow-y-auto flex flex-col gap-2 my-glass rounded-md shadow-lg z-50"
       >
         {#if filteredLanguages.length === 0}
           <span class="py-2 text-center text-xs text-muted-foreground"

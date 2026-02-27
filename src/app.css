@@ -350,9 +350,9 @@
   .dark {
     --background: oklch(1 0 0) !important;
     --foreground: oklch(0.3244 0.0229 264.182) !important;
-    --card: oklch(1 0 0);
+    --card: oklch(1 0 0) !important;
     --card-foreground: oklch(0.3244 0.0229 264.182) !important;
-    --popover: oklch(1 0 0);
+    --popover: oklch(1 0 0) !important;
     --popover-foreground: oklch(0.3244 0.0229 264.182) !important;
     --primary: oklch(0.7694 0.0794 131.3824) !important;
     --primary-foreground: oklch(0.3244 0.0229 264.182) !important;
@@ -601,6 +601,12 @@
   }
   .my-glass[data-slot="sidebar-container"]:hover {
     @apply bg-sidebar/60 border-sidebar-border/20 shadow-lg;
+  }
+  @media print {
+    .my-glass,
+    .my-glass[data-slot="sidebar-container"] {
+      @apply bg-card! backdrop-blur-none! border-border! shadow-none! saturate-100!;
+    }
   }
 }
 

@@ -10,6 +10,7 @@
 
   const aboutme = useIntlayer("aboutme");
   const sites = useIntlayer("sites");
+  const layout = useIntlayer("layout");
 
   // Calculate age dynamically
   const today = new Date();
@@ -22,7 +23,7 @@
 </script>
 
 <svelte:head>
-  <title>{t($sites, "aboutme")} — {t($aboutme, "name")}</title>
+  <title>{t($sites, "aboutme")} | {$layout.title}</title>
 </svelte:head>
 
 <div class="flex flex-col gap-8 px-4 py-6 mx-auto">

@@ -11,16 +11,16 @@ const config: IntlayerConfig = {
     mode: 'prefix-no-default',
     storage: [
       {
-        type: "localStorage",
-        name: "mahd-locale",
-      },
-      {
         type: "cookie",
         name: "mahd-locale",
         expires: /* 60 * 60 * 24 * */ 7,
         secure: true,
         sameSite: "strict",
         httpOnly: false,
+      },
+      {
+        type: "localStorage",
+        name: "mahd-locale",
       },
       {
         type: "header",
