@@ -1,5 +1,33 @@
+/**
+ * @module project-data
+ * @description Portfolio project data for the projects showcase page.
+ * Contains metadata for all projects displayed on the site including images,
+ * badges, GitHub links, and pinned status. Project titles and descriptions
+ * are stored in Intlayer dictionaries (`Projects.content.ts`) and resolved
+ * via the project's `id` which maps to the dictionary key.
+ *
+ * @see `src/lib/content/Projects.content.ts` — Localized project titles/descriptions
+ * @see `src/routes/[[locale=locale]]/projects/+page.svelte` — Projects page
+ * @see {@link module:cv-data} — Related CV data module
+ */
+
+/**
+ * Represents a single portfolio project entry.
+ *
+ * @property id - Unique identifier matching the Intlayer dictionary key
+ *               (e.g. `"portfolio"`, `"simplesql"`) used to resolve
+ *               localized title and description via `t($projectsDict, id + ".title")`
+ * @property image - Path to the project screenshot/logo (relative to `/static/`)
+ * @property bgColor - Optional Tailwind background class for the image container
+ *                     (e.g. `"bg-white"` for logos on transparent backgrounds)
+ * @property badges - Array of short uppercase labels displayed as chips
+ *                    (e.g. `["FOSS", "WEB", "NEW"]`)
+ * @property link - URL to the project's GitHub repository or external page
+ * @property pinned - Whether this project appears in the "Pinned Projects" section
+ *                    on the home and about pages
+ */
 export interface ProjectItem {
-  id: string; // The key used in Intlayer dictionary (e.g., 'portfolio', 'simplesql')
+  id: string;
   image: string;
   bgColor: string;
   badges: string[];
@@ -7,6 +35,11 @@ export interface ProjectItem {
   pinned: boolean;
 }
 
+/**
+ * All portfolio project entries.
+ * Projects are displayed alphabetically on the projects page,
+ * with pinned projects highlighted first.
+ */
 export const projectsData: ProjectItem[] = [
   {
     id: 'portfolio',
@@ -122,10 +155,22 @@ export const projectsData: ProjectItem[] = [
   },
 ]
 
+/**
+ * Returns only the projects marked as pinned.
+ * Used on the home page and about page to show featured projects.
+ *
+ * @returns Array of {@link ProjectItem} where `pinned === true`
+ */
 export function getPinnedProjectsData() {
   return projectsData.filter(p => p.pinned);
 }
 
+/**
+ * Returns all projects (pinned and non-pinned).
+ * Used on the full projects page.
+ *
+ * @returns Complete array of all {@link ProjectItem} entries
+ */
 export function getAllProjectsData() {
   return projectsData;
 }

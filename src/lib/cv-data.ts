@@ -1,4 +1,33 @@
-// Shared CV data types and structure
+/**
+ * @module cv-data
+ * @description Centralized CV (Curriculum Vitae) data structures and content.
+ * Contains all education history, work experience, skills, and skill categories
+ * displayed on the interactive CV page and the ATS-friendly CV variant.
+ *
+ * All user-facing text uses Intlayer dictionary keys (e.g. `"Cv.education.items.tuberlin.name"`)
+ * that are resolved at render time via `t()` from {@link module:i18n}.
+ *
+ * Date strings use German format: `"DD.MM.YYYY"` or `"MM.YYYY"` for month-only precision.
+ * Items are sorted chronologically (most recent first) using {@link sortByEndDate}.
+ *
+ * @see {@link module:i18n} — for resolving translation keys
+ * @see `src/routes/[[locale=locale]]/cv/+page.svelte` — Interactive CV page
+ * @see `src/routes/[[locale=locale]]/cv/ats/+page.svelte` — ATS-friendly CV page
+ */
+
+/**
+ * Represents a single education entry (school, university, or training period).
+ *
+ * @property key - Unique identifier for this education item (e.g. `"tuberlin"`, `"oszimt"`)
+ * @property nameKey - Intlayer dictionary key for the institution name
+ * @property imgAltKey - Intlayer dictionary key for the institution logo alt text
+ * @property descriptionKey - Intlayer dictionary key for the education description
+ * @property image - Path to the institution logo (relative to `/static/`)
+ * @property imageFallback - Short text fallback if the image fails to load
+ * @property startdate - Start date in German format (`"MM.YYYY"` or `"DD.MM.YYYY"`)
+ * @property enddate - End date in German format (`"MM.YYYY"` or `"DD.MM.YYYY"`)
+ * @property badgeKeys - Array of Intlayer dictionary keys for badges (e.g. location, degree type)
+ */
 export interface EducationItem {
   key: string;
   nameKey: string;
@@ -11,6 +40,19 @@ export interface EducationItem {
   badgeKeys: string[];
 }
 
+/**
+ * Represents a single work experience entry (internship, job, etc.).
+ *
+ * @property key - Unique identifier for this experience item (e.g. `"kfw"`, `"adk"`)
+ * @property nameKey - Intlayer dictionary key for the company/organization name
+ * @property imgAltKey - Intlayer dictionary key for the company logo alt text
+ * @property descriptionKey - Intlayer dictionary key for the experience description
+ * @property badgesKey - Intlayer dictionary key for the badges (single key, resolved as array)
+ * @property image - Path to the company logo (relative to `/static/`)
+ * @property imageFallback - Short text fallback if the image fails to load
+ * @property startdate - Start date in German format (`"DD.MM.YYYY"` or `"MM.YYYY"`)
+ * @property enddate - End date in German format (`"DD.MM.YYYY"` or `"MM.YYYY"`)
+ */
 export interface ExperienceItem {
   key: string;
   nameKey: string;
@@ -23,6 +65,10 @@ export interface ExperienceItem {
   enddate: string;
 }
 
+/**
+ * Union type of all valid skill category identifiers.
+ * Each category groups related skills together on the CV page.
+ */
 export type SkillCategoryKey =
   | "programming"
   | "databases"
@@ -33,6 +79,20 @@ export type SkillCategoryKey =
   | "office"
   | "languages";
 
+/**
+ * Represents a single skill with proficiency level and metadata.
+ *
+ * @property title - Display name of the skill (e.g. `"Java"`, `"Swift (SwiftUI)"`)
+ * @property category - Which {@link SkillCategoryKey} this skill belongs to
+ * @property badgeKeys - Intlayer dictionary keys for localized badge labels
+ * @property staticBadges - Optional non-localized badge labels (e.g. `"Apple"`, `"C++23"`)
+ * @property image - Path to the skill/technology logo
+ * @property imageAlt - Alt text for the logo image
+ * @property imageFallback - Short text fallback if the image fails to load
+ * @property level - Proficiency level from 0–100, rendered as a progress bar
+ * @property darkImage - Optional alternative logo for dark mode
+ * @property experience - Optional duration of experience (e.g. `{ type: "years", count: 3 }`)
+ */
 export interface SkillItem {
   title: string;
   category: SkillCategoryKey;
@@ -43,17 +103,25 @@ export interface SkillItem {
   imageFallback: string;
   level: number;
   darkImage?: string;
-  // Experience duration: { type: 'years' | 'months' | 'month' | 'year', count: number }
   experience?: { type: 'years' | 'months' | 'month' | 'year'; count: number };
 }
 
+/**
+ * Represents a skill category heading used to group skills on the CV page.
+ *
+ * @property key - The {@link SkillCategoryKey} identifier for this category
+ * @property titleKey - Intlayer dictionary key for the category's localized title
+ */
 export interface SkillCategory {
-  key: SkillCategoryKey;  // Unique key for the category
-  titleKey: string;  // Translation key for title
+  key: SkillCategoryKey;
+  titleKey: string;
 }
 
 
-// Education items
+/**
+ * All education entries, ordered by data entry (use {@link sortByEndDate} for chronological display).
+ * Includes university, vocational training, and school history.
+ */
 export const educationItems: EducationItem[] = [
   {
     key: "tuberlin",
@@ -111,7 +179,10 @@ export const educationItems: EducationItem[] = [
   },
 ];
 
-// Experience items
+/**
+ * All work experience entries, ordered by data entry.
+ * Includes internships and professional experiences.
+ */
 export const experienceItems: ExperienceItem[] = [
   {
     key: "kfw",
@@ -159,8 +230,12 @@ export const experienceItems: ExperienceItem[] = [
   },
 ];
 
-// Skill items (with badge keys for translation)
-// Skill items (with badge keys for translation)
+/**
+ * All skill entries across all categories.
+ * Each skill includes proficiency level (0–100), technology logos, and localized badges.
+ * Skills span programming languages, databases, automation tools, operating systems,
+ * networking, development environments, office tools, and spoken languages.
+ */
 export const skillItems: SkillItem[] = [
   { title: "Java", category: "programming", badgeKeys: ["Cv.skills.badges.development"], staticBadges: [], image: "/pictures/lebenslauf/skills/java.svg", imageAlt: "Java Logo", imageFallback: "JDK", level: 80, experience: { type: "years", count: 3 } },
   { title: "Swift (SwiftUI)", category: "programming", badgeKeys: ["Cv.skills.badges.development", "Cv.skills.badges.frontend"], staticBadges: ["Apple"], image: "/pictures/lebenslauf/skills/swift.svg", imageAlt: "Swift Logo", imageFallback: "SUI", level: 60, experience: { type: "years", count: 2 } },
@@ -192,7 +267,11 @@ export const skillItems: SkillItem[] = [
 ];
 
 
-// ATS-friendly skill categories
+/**
+ * Ordered list of skill categories for section headings on the CV page.
+ * Determines the display order of skill groups; each category's title
+ * is resolved via Intlayer at render time.
+ */
 export const skillCategories: SkillCategory[] = [
   {
     key: "languages",
@@ -230,7 +309,25 @@ export const skillCategories: SkillCategory[] = [
 
 
 
-// Helper to parse date strings
+/**
+ * Parses a German-format date string into a JavaScript `Date` object.
+ *
+ * Supports two formats:
+ * - `"DD.MM.YYYY"` — full date with day precision
+ * - `"MM.YYYY"` — month-only precision (day defaults to 1st)
+ *
+ * Returns `new Date(0)` (epoch) for undefined or unparseable input.
+ *
+ * @param s - Date string in German format, or undefined
+ * @returns Parsed `Date` object
+ *
+ * @example
+ * ```ts
+ * parseDate("27.11.2023"); // Date: November 27, 2023
+ * parseDate("10.2025");    // Date: October 1, 2025
+ * parseDate(undefined);    // Date: January 1, 1970 (epoch)
+ * ```
+ */
 export function parseDate(s?: string): Date {
   if (!s) return new Date(0);
   const parts = s.split(".").map((p) => Number.parseInt(p, 10));
@@ -245,7 +342,21 @@ export function parseDate(s?: string): Date {
   return new Date(0);
 }
 
-// Helper to sort by end date descending
+/**
+ * Sorts items by their end date in descending order (most recent first).
+ * Falls back to start date if end date is not available.
+ * Returns a new array without mutating the original.
+ *
+ * @template T - Any type with optional `enddate` and `startdate` string properties
+ * @param items - Array of items to sort
+ * @returns New array sorted by end date descending
+ *
+ * @example
+ * ```ts
+ * const sorted = sortByEndDate(educationItems);
+ * // sorted[0] is the most recent education entry
+ * ```
+ */
 export function sortByEndDate<T extends { enddate?: string; startdate?: string }>(items: T[]): T[] {
   return [...items].sort((a, b) => {
     const da = parseDate(a.enddate ?? a.startdate);

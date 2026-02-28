@@ -1,4 +1,35 @@
 <script lang="ts">
+  /**
+   * @module routes/[[locale=locale]]/linkhub/+page
+   * @description Link hub / "link in bio" page aggregating all social media profiles,
+   * websites, and other external links. Serves as a central landing page for sharing
+   * across social platforms (similar to Linktree).
+   *
+   * The page is organized into three sections:
+   *
+   * 1. **Social Media** - Cards linking to Instagram, TikTok, Threads, Bluesky, X/Twitter,
+   *    Discord, and YouTube profiles, each with platform icon, title, and description
+   * 2. **Websites** - Cards linking to the main portfolio site, ComBoomPunktSucht app,
+   *    and the CBPS blog
+   * 3. **Other** - GitHub profile link, plus embedded Apple Music playlist and current
+   *    song via Odesli/song.link, both wrapped in `ConsentIframe` for GDPR consent gating
+   *
+   * Each link is rendered as a `LinkCard.Root` component within a `MasonryGrid`.
+   * The music embeds use inline `Card` components with `ConsentIframe` for consent-gated
+   * third-party content.
+   *
+   * All text content is internationalized via the Intlayer `linkhub`, `aboutme`, `sites`,
+   * and `layout` dictionaries.
+   *
+   * Link hub page following iOS Settings-style grouped sections pattern --
+   * categorized link lists (Social, Websites, Other) with leading icons and
+   * descriptions.
+   *
+   * @see {@link $lib/components/link-card} for individual link card components
+   * @see {@link $lib/components/MasonryGrid.svelte} for masonry grid layout
+   * @see {@link $lib/components/cookie/ConsentIframe.svelte} for consent-gated iframes
+   */
+
   import { useIntlayer } from 'svelte-intlayer';
   import * as Card from '$lib/components/ui/card';
   import AuroraText from '$lib/components/AuroraText.svelte';
@@ -13,6 +44,7 @@
   const sites = useIntlayer('sites');
   const layout = useIntlayer('layout');
 
+  /** @constant {string} spotifyUrl - Embedded Spotify track URL for the music widget */
   const spotifyUrl = "https://open.spotify.com/embed/track/25S3D2lEwF25iur275I4d4?utm_source=generator&theme=0";
 </script>
 
@@ -20,9 +52,9 @@
   <title>{$sites.linkhub} | {$layout.title}</title>
 </svelte:head>
 
-<div class="flex flex-col gap-8 px-4 py-6 mx-auto">
+<div class="flex flex-col gap-12 px-6 py-10 lg:px-8 mx-auto">
   <!-- Hero Section -->
-  <section class="text-center space-y-3">
+  <section class="text-center space-y-4">
     <AuroraText class="text-4xl md:text-5xl lg:text-6xl font-bold" colors={['#C16069', '#A2BF8A', '#C16069', '#A2BF8A']} speed={3}>
       <TypingAnimation text={$aboutme.name as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
     </AuroraText>
@@ -32,9 +64,9 @@
   </section>
 
   <!-- Social Media Section -->
-  <section class="space-y-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
-      <Share2 class="w-6 h-6 text-primary" />
+  <section class="space-y-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3">
+      <Share2 class="w-7 h-7 text-primary" />
       <TypingAnimation text={$linkhub.sections.socialMedia.title as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
     </h2>
     <MasonryGrid variant="links">
@@ -49,9 +81,9 @@
   </section>
 
   <!-- Websites Section -->
-  <section class="space-y-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
-      <Globe class="w-6 h-6 text-primary" />
+  <section class="space-y-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3">
+      <Globe class="w-7 h-7 text-primary" />
       <TypingAnimation text={$linkhub.sections.websites.title as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
     </h2>
     <MasonryGrid variant="links">
@@ -62,9 +94,9 @@
   </section>
 
   <!-- Other Section -->
-  <section class="space-y-4">
-    <h2 class="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
-      <MoreHorizontal class="w-6 h-6 text-primary" />
+  <section class="space-y-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3">
+      <MoreHorizontal class="w-7 h-7 text-primary" />
       <TypingAnimation text={$linkhub.sections.other.title as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
     </h2>
     <MasonryGrid variant="links">

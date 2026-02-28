@@ -1,3 +1,26 @@
+/**
+ * @module Imprint.content
+ *
+ * @description
+ * Intlayer content dictionary for the Legal Notice (Impressum) page. Contains
+ * translations structured into the following sub-sections:
+ *
+ * - **title** -- Page heading ("Legal Notice" / "Impressum")
+ * - **tmg** -- Information required under Section 5 of the German Telemedia Act,
+ *   including the country label
+ * - **contact** -- Contact section heading
+ * - **rstv** -- Content responsibility notice under Section 55(2) of the German
+ *   Interstate Broadcasting Treaty
+ * - **cookies** -- Comprehensive cookie policy including sub-sections for
+ *   no-analytics notice, technical cookies, third-party content, and consent
+ *   storage duration
+ *
+ * Translations are available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"imprint"`
+ *
+ * @see {@link src/routes/[[locale=locale]]/imprint/+page.svelte} -- imprint page consuming `useIntlayer("imprint")`
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const imprintContent = {

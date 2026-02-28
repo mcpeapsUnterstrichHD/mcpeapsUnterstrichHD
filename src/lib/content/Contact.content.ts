@@ -1,3 +1,16 @@
+/**
+ * @module Contact.content
+ *
+ * @description
+ * Intlayer content dictionary for the Contact page. Provides translations for
+ * the contact section description, the "Book a Meeting" call-to-action button
+ * label, and the Cal.com scheduling widget description. Translations are
+ * available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"contact"`
+ *
+ * @see {@link src/routes/[[locale=locale]]/contact/+page.svelte} -- contact page consuming `useIntlayer("contact")`
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const contactContent = {

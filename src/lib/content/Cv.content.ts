@@ -1,3 +1,35 @@
+/**
+ * @module Cv.content
+ *
+ * @description
+ * Intlayer content dictionary for the Curriculum Vitae (Resume) section.
+ * This is the largest dictionary in the application and provides comprehensive
+ * translations for the entire CV, organized into the following sections:
+ *
+ * - **recommendation** -- Print settings guidance and PDF download notice
+ * - **about** -- Professional title, contact labels (email, phone), address,
+ *   and date of birth label
+ * - **education** -- Section heading, qualification badges (vocational training,
+ *   technical diploma, bachelor's degree, semesters, years), and detailed
+ *   entries for TU Berlin, OSZ IMT, Carl-von-Linne-Schule, and a gap year
+ * - **experience** -- Section heading and detailed entries for KfW internship,
+ *   Academy of Arts, Tosa Security, and Pfennigpfeiffer, each with name,
+ *   image alt, description bullets, and skill badges
+ * - **skills** -- Section heading, category badges (development, frontend,
+ *   automation, languages, etc.), duration labels with `{count}` placeholders,
+ *   and skill category titles (programming, databases, DevOps, networking,
+ *   operating systems, dev environments, office)
+ *
+ * Translations are available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"cv"`
+ *
+ * @see {@link src/routes/[[locale=locale]]/cv/+page.svelte} -- main CV page
+ * @see {@link src/routes/[[locale=locale]]/cv/+layout.svelte} -- CV layout (print notice)
+ * @see {@link src/routes/[[locale=locale]]/cv/ats/+page.svelte} -- ATS-optimized CV variant
+ * @see {@link src/routes/[[locale=locale]]/imprint/+page.svelte} -- imprint (contact info)
+ * @see {@link src/lib/components/Footer.svelte} -- footer (contact details)
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const cvContent = {
@@ -20,8 +52,8 @@ const cvContent = {
           [Locales.GERMAN_GERMANY]: "Empfehlung für den Druck"
         }),
         description: t({
-          [Locales.ENGLISH_UNITED_STATES]: "Use the PDF button in the bottom right corner for optimal printing.",
-          [Locales.GERMAN_GERMANY]: "Nutzen Sie den PDF-Button unten rechts, um den Lebenslauf optimal zu drucken."
+          [Locales.ENGLISH_UNITED_STATES]: "Use the PDF button in the top right corner for optimal printing.",
+          [Locales.GERMAN_GERMANY]: "Nutzen Sie den PDF-Button oberen rechts, um den Lebenslauf optimal zu drucken."
         }),
       },
     },

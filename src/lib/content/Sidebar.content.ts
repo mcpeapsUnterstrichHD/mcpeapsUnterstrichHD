@@ -1,3 +1,17 @@
+/**
+ * @module Sidebar.content
+ *
+ * @description
+ * Intlayer content dictionary for the sidebar navigation and language switcher
+ * components. Contains translations for the sidebar toggle button label, the
+ * language search input placeholder, and the "no language found" fallback
+ * message. Translations are available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"sidebar"`
+ *
+ * @see {@link src/lib/components/SidebarToggle.svelte} -- sidebar toggle button consuming `useIntlayer("sidebar")`
+ * @see {@link src/lib/components/Langswitcher.svelte} -- language switcher dropdown consuming `useIntlayer("sidebar")`
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const sidebarContent = {

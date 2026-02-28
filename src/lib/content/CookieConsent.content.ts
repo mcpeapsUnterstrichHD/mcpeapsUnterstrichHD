@@ -1,3 +1,29 @@
+/**
+ * @module CookieConsent.content
+ *
+ * @description
+ * Intlayer content dictionary for the cookie consent banner, preferences dialog,
+ * and blocked-content overlay. Contains translations for:
+ *
+ * - **Banner** -- Title, description, and action buttons (Accept All, Reject All,
+ *   Manage Preferences, Save Preferences, More Information, Cookie Settings)
+ * - **Cookie categories** -- Technical cookies (always-on) and third-party
+ *   cookies, each with title and explanatory description
+ * - **Consent categories** -- Multimedia (Apple Music, Songlink), Social Media,
+ *   and Contact & Booking (Cal.com), each with title and description
+ * - **Blocked content overlay** -- Title, description with `{category}`
+ *   placeholder, and settings button label
+ * - **Language** -- Label for the language selector within the consent dialog
+ *
+ * Translations are available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"cookieConsent"`
+ *
+ * @see {@link src/lib/components/cookie/CookieConsent.svelte} -- cookie consent banner/dialog
+ * @see {@link src/lib/components/cookie/ConsentIframe.svelte} -- blocked content overlay for iframes
+ * @see {@link src/lib/components/Footer.svelte} -- footer cookie settings button
+ * @see {@link src/routes/[[locale=locale]]/imprint/+page.svelte} -- imprint page cookie policy section
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const cookieConsentContent = {

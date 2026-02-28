@@ -1,4 +1,33 @@
 <script lang="ts">
+  /**
+   * @module routes/[[locale=locale]]/cv/ats/+page
+   * @description ATS (Applicant Tracking System) optimized version of the CV page.
+   * Renders the curriculum vitae in a plain-text, machine-readable format designed
+   * to maximize compatibility with automated resume parsing systems.
+   *
+   * Unlike the styled CV page (`/cv`), this version:
+   * - Uses simple semantic HTML without complex layouts or images
+   * - Avoids masonry grids, skill level bars, and timeline cards
+   * - Formats dates as `MM/YYYY` via the `formatDate()` helper
+   * - Lists skills inline as comma-separated text grouped by category
+   * - Strips bullet point characters and normalizes whitespace in descriptions
+   * - Uses scoped CSS with plain fonts, borders, and minimal styling
+   *
+   * The page is structured as:
+   * 1. **Header** - Name, title, and contact info (email, phone, address, birthday)
+   * 2. **Education** - Entries with title, date range, and description
+   * 3. **Experience** - Entries with title, date range, and description
+   * 4. **Skills** - Categories with inline comma-separated skill names and details
+   *
+   * Data sources are shared with the styled CV page via `$lib/cv-data` and `$lib/contact`.
+   * Includes scoped CSS providing ATS-friendly typography and layout.
+   *
+   * @see {@link routes/[[locale=locale]]/cv/+page.svelte} for the visually styled CV
+   * @see {@link routes/[[locale=locale]]/cv/+layout.svelte} for the shared CV layout
+   * @see {@link $lib/cv-data} for CV data structures
+   * @see {@link $lib/contact} for contact details
+   */
+
   import { useIntlayer } from "svelte-intlayer";
   import { contactDetails } from "$lib/contact";
   import {
@@ -9,12 +38,26 @@
     sortByEndDate,
   } from "$lib/cv-data";
   import { t } from "$lib/i18n";
+  import { cn } from "$lib/utils";
+
+
 
   const cv = useIntlayer("cv");
   const aboutme = useIntlayer("aboutme");
   const sites = useIntlayer("sites");
   const layout = useIntlayer("layout");
 
+  /**
+   * Converts a German-style date string (e.g. "06.2003" or "01.06.2003")
+   * into an ATS-friendly `MM/YYYY` format.
+   *
+   * @param {string} d - Date string in dot-separated format (e.g. "06.2003" or "01.06.2003")
+   * @returns {string} Reformatted date string (e.g. "06/2003" or "06/2003"), or original if unparseable
+   *
+   * @example
+   * formatDate("06.2023")     // => "06/2023"
+   * formatDate("01.06.2003")  // => "06/2003"
+   */
   function formatDate(d: string): string {
     const parts = d.split(".");
     if (parts.length === 2) return `${parts[0]}/${parts[1]}`;
@@ -22,7 +65,9 @@
     return d;
   }
 
+  /** @constant {Array} sortedEducation - Education entries sorted by end date (most recent first) */
   const sortedEducation = sortByEndDate(educationItems);
+  /** @constant {Array} sortedExperience - Experience entries sorted by end date (most recent first) */
   const sortedExperience = sortByEndDate(experienceItems);
 </script>
 
@@ -30,13 +75,13 @@
   <title>{$sites.cv} | {$layout.title}</title>
 </svelte:head>
 
-<div class="ats-cv">
+<div class={cn("ats-cv")}>
   <!-- Header -->
   <h1>{$aboutme.name}</h1>
-  <div class="text-foreground subtitle">{$cv.about.title}</div>
+  <div class={cn("text-foreground subtitle")}>{$cv.about.title}</div>
 
   <!-- Contact Info -->
-  <div class="contact-info">
+  <div class={cn("contact-info")}>
     <span>{contactDetails.email.display}</span>
     <span>|</span>
     <span>{contactDetails.telephone.display}</span>
@@ -57,12 +102,21 @@
   {#each sortedEducation as edu}
     {@const dateRange = `${formatDate(edu.startdate)} – ${formatDate(edu.enddate)}`}
     {@const description = t($cv, edu.descriptionKey).replace(/[•]/g, "-")}
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">{t($cv, edu.nameKey)}</span>
-        <span class="entry-date">{dateRange}</span>
+
+    {@const badges = edu.badgeKeys && edu.badgeKeys.length > 0
+      ? edu.badgeKeys.map(k => t($cv, k)).join(", ")
+      : ""}
+
+    <div class={cn("entry")}>
+      <div class={cn("entry-header")}>
+        <span class={cn("entry-title")}>{t($cv, edu.nameKey)}</span>
+        <span class={cn("entry-date")}>{dateRange}</span>
       </div>
-      <p class="entry-description">{description}</p>
+      <p class={cn("entry-description")}>{description}</p>
+
+      {#if badges}
+        <p class={cn("entry-badges")}><strong>Keywords:</strong> {badges}</p>
+      {/if}
     </div>
   {/each}
 
@@ -72,14 +126,21 @@
     {@const dateRange = `${formatDate(exp.startdate)} – ${formatDate(exp.enddate)}`}
     {@const description = t($cv, exp.descriptionKey)
       .replace(/[•]/g, "")
-      .replace(/\\n/g, " ")
+      .replace(/\n/g, " ")
       .trim()}
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">{t($cv, exp.nameKey)}</span>
-        <span class="entry-date">{dateRange}</span>
+
+    {@const badges = exp.badgesKey ? t($cv, exp.badgesKey) : ""}
+
+    <div class={cn("entry")}>
+      <div class={cn("entry-header")}>
+        <span class={cn("entry-title")}>{t($cv, exp.nameKey)}</span>
+        <span class={cn("entry-date")}>{dateRange}</span>
       </div>
-      <p class="entry-description">{description}</p>
+      <p class={cn("entry-description")}>{description}</p>
+
+      {#if badges}
+        <p class={cn("entry-badges")}><strong>Keywords:</strong> {badges}</p>
+      {/if}
     </div>
   {/each}
 
@@ -113,9 +174,9 @@
       })
       .join(", ")}
     {#if catSkills}
-      <div class="skills-category">
-        <span class="skills-title">{t($cv, cat.titleKey)}: </span>
-        <span class="skills-list">{catSkills}</span>
+      <div class={cn("skills-category")}>
+        <span class={cn("skills-title")}>{t($cv, cat.titleKey)}: </span>
+        <span class={cn("skills-list")}>{catSkills}</span>
       </div>
     {/if}
   {/each}
@@ -175,5 +236,10 @@
   }
   .ats-cv .skills-list {
     display: inline;
+  }
+  .ats-cv .entry-badges {
+    margin: 4px 0 0 0;
+    font-size: 0.9em;
+    color: var(--color-muted-foreground); /* Optional, falls du es leicht gräulich haben willst */
   }
 </style>

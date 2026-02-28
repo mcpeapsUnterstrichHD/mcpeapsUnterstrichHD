@@ -1,3 +1,24 @@
+/**
+ * @module Linkhub.content
+ *
+ * @description
+ * Intlayer content dictionary for the Link Hub (link-in-bio) page. Contains a
+ * top-level description and three categorized sections of external links:
+ *
+ * - **socialMedia** -- Section title/description and individual entries for
+ *   Instagram, TikTok, Threads, Bluesky, X/Twitter, Discord, and YouTube,
+ *   each with a title, handle heading, and description
+ * - **websites** -- Section title/description and entries for the portfolio
+ *   website, comboom.sucht community site, and the comboom.sucht blog
+ * - **other** -- Section title/description and entries for GitHub, a Spotify
+ *   playlist, and the latest music release
+ *
+ * Translations are available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"linkhub"`
+ *
+ * @see {@link src/routes/[[locale=locale]]/linkhub/+page.svelte} -- link hub page consuming `useIntlayer("linkhub")`
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const linkhubContent = {

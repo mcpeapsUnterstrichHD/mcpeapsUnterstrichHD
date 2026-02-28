@@ -1,13 +1,37 @@
 <script lang="ts">
+  /**
+   * @module routes/+error
+   * @description Root-level error page displayed when an unhandled error occurs outside
+   * the locale-scoped layout (e.g. errors at the topmost routing level).
+   * Renders a visually rich error card with the HTTP status code displayed as a large
+   * gradient-text heading, animated background gradient orbs, and skeleton loading states.
+   *
+   * On mount, for any error status, this component fetches a humorous "reason" string from
+   * the external NAAS API (`https://naas.isalman.dev/no`) and displays it alongside
+   * the standard error message. Uses glassmorphism card styling consistent with the
+   * site's Nord-themed design.
+   *
+   * @reactive {number} status - Derived from `page.status`; the HTTP error status code (e.g. 404, 500)
+   * @reactive {string} errorMessage - Derived from `page.error?.message`; the error description string
+   * @state {string | null} reason - The humorous reason fetched from the NAAS external API, or null on failure
+   * @state {boolean} isLoading - Controls skeleton visibility while the API fetch is in progress
+   *
+   * @see {@link routes/[[locale=locale]]/+error.svelte} for the locale-aware error page
+   */
+
   import { onMount } from "svelte";
   import { page } from "$app/state";
   import * as Card from "$lib/components/ui/card";
   import { Skeleton } from "$lib/components/ui/skeleton";
 
+  /** @reactive Derived HTTP status code from the current page error state */
   let status = $derived(page.status);
+  /** @reactive Derived error message string, defaults to empty string if unavailable */
   let errorMessage = $derived(page.error?.message ?? "");
 
+  /** @state Humorous denial reason fetched from external NAAS API */
   let reason = $state<string | null>(null);
+  /** @state Loading flag controlling skeleton placeholder visibility */
   let isLoading = $state(true);
 
   onMount(async () => {

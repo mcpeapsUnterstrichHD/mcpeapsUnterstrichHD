@@ -1,3 +1,21 @@
+/**
+ * @module Projects.content
+ *
+ * @description
+ * Intlayer content dictionary for the Projects section of the portfolio.
+ * Contains section headings (pinned, all, title), a dynamic project count
+ * label (with `{count}` placeholder), and detailed per-project entries. Each
+ * project item includes a localized title, description, and image alt text.
+ * Projects span the portfolio itself, simplesql CLI/GUI tools, self-hosted
+ * services, school and university repositories, dotfiles configurations,
+ * community websites/apps, and a live wallpaper experiment. Translations are
+ * available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"projects"`
+ *
+ * @see {@link src/routes/[[locale=locale]]/projects/+page.svelte} -- full projects listing page
+ * @see {@link src/lib/components/PinnedProjects.svelte} -- pinned projects showcase component
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const projectsContent = {
