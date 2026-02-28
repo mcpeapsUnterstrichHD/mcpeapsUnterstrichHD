@@ -47,8 +47,6 @@
   import { cubicOut, cubicIn } from "svelte/easing";
   import { cn } from "$lib/utils";
 
-  import Clarity from '@microsoft/clarity';
-
   let { children }: { children: Snippet; } =
     $props();
 </script>

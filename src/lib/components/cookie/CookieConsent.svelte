@@ -180,7 +180,7 @@
     if (cookieState.multimedia) accepted.push("multimedia");
     if (cookieState.socialMedia) accepted.push("socialMedia");
     if (cookieState.contact) accepted.push("contact");
-    CC.language($locale);
+    CC.setLanguage($locale);
     CC.acceptCategory(accepted);
     isVisible = false;
     sheetOpen = false;
@@ -196,6 +196,7 @@
    * @returns {void}
    */
   function handleOpenSheet() {
+    CC.setLanguage($locale);
     syncCategories();
     sheetOpen = true;
   }

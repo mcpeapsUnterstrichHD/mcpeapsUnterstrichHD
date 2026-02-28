@@ -11,9 +11,6 @@ importers:
       '@icons-pack/svelte-simple-icons':
         specifier: ^7.0.1
         version: 7.0.1(@sveltejs/kit@2.53.4(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.53.6)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)))(svelte@5.53.6)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)))(svelte@5.53.6)
-      '@microsoft/clarity':
-        specifier: ^1.0.2
-        version: 1.0.2
       intlayer:
         specifier: ^8.1.8
         version: 8.1.8(typescript@5.9.3)(zod@4.3.6)
@@ -941,9 +938,6 @@ packages:
   '@lukeed/ms@2.0.2':
     resolution: {integrity: sha512-9I2Zn6+NJLfaGoz9jN3lpwDgAYvfGeNYdbAIjJOqzs4Tpc+VU3Jqq4IofSUBKajiDS8k9fZIg18/z13mpk1bsA==}
     engines: {node: '>=8'}
-
-  '@microsoft/clarity@1.0.2':
-    resolution: {integrity: sha512-9EZYROFpJxEGmQpHvUFqvD3ZJ7QQSqnibYSWmS+1xusoZfG1QQ1/Al9yVBBc11DWMbJrs1pe1hLT273it/skJg==}
 
   '@neoconfetti/svelte@2.2.2':
     resolution: {integrity: sha512-E7xCFVEEm5Ctnj2udTJy1b9oaTvjz1zi1mYdEtE8rB5BVwq6kHisosDS+zdWN5PMfEMjtbsOV9Cl6tsNSAD1sA==}
@@ -3450,8 +3444,6 @@ snapshots:
       svelte: 5.53.6
 
   '@lukeed/ms@2.0.2': {}
-
-  '@microsoft/clarity@1.0.2': {}
 
   '@neoconfetti/svelte@2.2.2(svelte@5.53.6)':
     dependencies:
