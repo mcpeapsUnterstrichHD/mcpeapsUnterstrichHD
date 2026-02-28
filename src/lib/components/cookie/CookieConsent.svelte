@@ -35,6 +35,7 @@
    * @see {@link ConsentIframe.svelte} for the consent-gated iframe component
    */
   import { onMount } from "svelte";
+  import * as CC from "vanilla-cookieconsent";
   import { cookieConsentConfig } from "./cookieConfig";
   import { cookieState } from "./cookieState.svelte";
   import * as Sheet from "$lib/components/ui/sheet";
@@ -84,11 +85,10 @@
    * @returns {void}
    */
   function syncCategories() {
-    import("vanilla-cookieconsent").then((CC) => {
+      CC.setLanguage($locale);
       cookieState.multimedia = CC.acceptedCategory("multimedia");
       cookieState.socialMedia = CC.acceptedCategory("socialMedia");
       cookieState.contact = CC.acceptedCategory("contact");
-    });
   }
 
   /**
@@ -104,7 +104,6 @@
    *    that removes the listener on component destroy.
    */
   onMount(() => {
-    import("vanilla-cookieconsent").then((CC) => {
       CC.run({
         ...cookieConsentConfig,
         onFirstConsent: () => {
@@ -119,7 +118,6 @@
       } else {
         syncCategories();
       }
-    });
 
     const handleShowBanner = () => {
       syncCategories();
@@ -142,7 +140,7 @@
    * @returns {Promise<void>}
    */
   async function handleAcceptAll() {
-    const CC = await import("vanilla-cookieconsent");
+    CC.setLanguage($locale);
     CC.acceptCategory("all");
     isVisible = false;
     sheetOpen = false;
@@ -160,7 +158,7 @@
    * @returns {Promise<void>}
    */
   async function handleRejectAll() {
-    const CC = await import("vanilla-cookieconsent");
+    CC.setLanguage($locale);
     CC.acceptCategory([]);
     isVisible = false;
     sheetOpen = false;
@@ -178,11 +176,11 @@
    * @returns {Promise<void>}
    */
   async function handleSavePreferences() {
-    const CC = await import("vanilla-cookieconsent");
     const accepted: string[] = ["necessary"];
     if (cookieState.multimedia) accepted.push("multimedia");
     if (cookieState.socialMedia) accepted.push("socialMedia");
     if (cookieState.contact) accepted.push("contact");
+    CC.language($locale);
     CC.acceptCategory(accepted);
     isVisible = false;
     sheetOpen = false;
