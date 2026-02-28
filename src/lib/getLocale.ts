@@ -1,3 +1,19 @@
+/**
+ * @module getLocale
+ * @description Server-side locale detection for SvelteKit request handling.
+ * Determines the user's preferred language using a multi-step fallback strategy:
+ * 1. Intlayer storage (cookies or custom HTTP headers)
+ * 2. Browser `Accept-Language` header negotiation
+ * 3. Application default locale
+ *
+ * Used exclusively in the server hooks (`src/hooks.server.ts`) to set the locale
+ * for each incoming request before rendering.
+ *
+ * @see {@link module:lang} — Supported language definitions
+ * @see {@link module:i18n} — Client-side translation resolution
+ * @see `src/hooks.server.ts` — Where this function is called
+ */
+
 import {
   configuration,
   getLocaleFromStorage,

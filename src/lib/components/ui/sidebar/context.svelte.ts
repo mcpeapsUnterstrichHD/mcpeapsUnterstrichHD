@@ -1,4 +1,5 @@
 import { IsMobile } from "$lib/hooks/is-mobile.svelte.js";
+import { IsTablet } from "$lib/hooks/is-tablet.svelte.js";
 import { getContext, setContext } from "svelte";
 import { SIDEBAR_KEYBOARD_SHORTCUT } from "./constants.js";
 
@@ -26,11 +27,13 @@ class SidebarState {
 	openMobile = $state(false);
 	setOpen: SidebarStateProps["setOpen"];
 	#isMobile: IsMobile;
+	#isTablet: IsTablet;
 	state = $derived.by(() => (this.open ? "expanded" : "collapsed"));
 
 	constructor(props: SidebarStateProps) {
 		this.setOpen = props.setOpen;
 		this.#isMobile = new IsMobile();
+		this.#isTablet = new IsTablet();
 		this.props = props;
 	}
 
@@ -38,6 +41,11 @@ class SidebarState {
 	// without this, we would need to use `sidebar.isMobile.current` everywhere
 	get isMobile() {
 		return this.#isMobile.current;
+	}
+
+	/** Whether the viewport is in the iPadOS-class tablet range (768px-1024px). */
+	get isTablet() {
+		return this.#isTablet.current;
 	}
 
 	// Event handler to apply to the `<svelte:window>`

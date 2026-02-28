@@ -1,3 +1,23 @@
+/**
+ * @module Recommendation.content
+ *
+ * @description
+ * Intlayer content dictionary for the recommendation toast notifications shown
+ * to visitors as contextual suggestions. Contains localized title, description,
+ * and call-to-action label for each recommendation type:
+ *
+ * - **Internal pages** -- Projects, About Me, CV/Resume, and Link Hub
+ * - **External profiles** -- GitHub, X/Twitter, Instagram, TikTok, Threads,
+ *   and Bluesky
+ *
+ * Each entry follows a `{ title, description, action: { label } }` structure.
+ * Translations are available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"recommendation"`
+ *
+ * @see {@link src/lib/components/RecommendationToasts.svelte} -- toast notification component consuming `useIntlayer("recommendation")`
+ * @see {@link src/routes/[[locale=locale]]/+page.svelte} -- home page triggering recommendation toasts
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const recommendationContent = {

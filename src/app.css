@@ -1,3 +1,18 @@
+/**
+ * Global stylesheet implementing Apple Liquid Glass design language with Nord color scheme.
+ *
+ * The `my-glass` utility provides translucent surfaces with backdrop-blur (2xl),
+ * saturation boost (150%), and hover-responsive opacity — inspired by Apple's
+ * Liquid Glass material for SwiftUI.
+ *
+ * Design tokens use OKLCH color space, mapping Nord palette colors to Apple semantic
+ * roles (background, foreground, primary, accent, destructive).
+ *
+ * Platform-adaptive: targets macOS-class (desktop), iPadOS-class (tablet), and
+ * iOS-class (mobile) viewport widths via Tailwind breakpoints.
+ */
+
+/*@import url("/css/reset.css");*/
 @layer theme, base, components, utilities;
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -567,10 +582,15 @@
       "Droid Sans",
       "Helvetica Neue",
       sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     hyphens: auto;
     -webkit-hyphens: auto;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
   }
   code {
     font-family:
@@ -582,31 +602,135 @@
   }
 }
 
-/* Glass Effect Utilities */
+/* Liquid Glass Material Utilities */
 @layer utilities {
+  /* Standard glass — cards, footer, sidebar, tab bar */
   .my-glass {
     @apply bg-card/30;
     @apply backdrop-blur-2xl saturate-150;
     @apply border border-card/10;
     @apply transition-all duration-300;
+    box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.04);
   }
   .my-glass:hover {
     @apply bg-card/50 shadow-lg border-card/20;
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.06),
+      var(--shadow-lg);
   }
   .my-glass[data-slot="sidebar-container"] {
     @apply bg-sidebar/30;
     @apply backdrop-blur-2xl saturate-150;
     @apply border border-sidebar-border/10;
     @apply transition-all duration-300;
+    box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.04);
   }
   .my-glass[data-slot="sidebar-container"]:hover {
-    @apply bg-sidebar/60 border-sidebar-border/20 shadow-lg;
+    @apply bg-sidebar/60 border-sidebar-border/20;
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.06),
+      var(--shadow-lg);
   }
+
+  /* Thin glass — toolbars, tabs, badges, lightweight surfaces */
+  .my-glass-thin {
+    @apply bg-card/15;
+    @apply backdrop-blur-xl saturate-125;
+    @apply border border-card/5;
+    @apply transition-all duration-300;
+    box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.03);
+  }
+  .my-glass-thin:hover {
+    @apply bg-card/25 border-card/10;
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.05),
+      var(--shadow-sm);
+  }
+
+  /* Thick glass — dialogs, sheets, drawers (higher readability) */
+  .my-glass-thick {
+    @apply bg-card/60;
+    @apply backdrop-blur-3xl saturate-150;
+    @apply border border-card/15;
+    @apply transition-all duration-300;
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.06),
+      var(--shadow-xl);
+  }
+
   @media print {
     .my-glass,
+    .my-glass-thin,
+    .my-glass-thick,
     .my-glass[data-slot="sidebar-container"] {
       @apply bg-card! backdrop-blur-none! border-border! shadow-none! saturate-100!;
+      box-shadow: none !important;
     }
+  }
+}
+
+/* ─── Glass Material Overrides (data-slot selectors) ─────────────────────────
+   Override default shadcn component backgrounds with Liquid Glass effects.
+   Using data-slot selectors keeps component files unmodified so they can be
+   safely updated via `shadcn-svelte add --overwrite` without losing the look.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Thick glass — dialogs, alert dialogs */
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"] {
+  @apply bg-card/60 backdrop-blur-3xl saturate-150 border-card/15;
+  box-shadow:
+    inset 0 1px 0 0 oklch(1 0 0 / 0.06),
+    var(--shadow-xl);
+}
+
+/* Thick glass — sheets, drawers */
+[data-slot="sheet-content"],
+[data-slot="drawer-content"] {
+  @apply bg-card/60 backdrop-blur-3xl saturate-150;
+  box-shadow:
+    inset 0 1px 0 0 oklch(1 0 0 / 0.06),
+    var(--shadow-xl);
+}
+
+/* Standard glass — popovers, hover cards */
+[data-slot="popover-content"],
+[data-slot="hover-card-content"] {
+  @apply bg-popover/50 backdrop-blur-2xl saturate-150 border-card/10;
+  box-shadow:
+    inset 0 1px 0 0 oklch(1 0 0 / 0.04),
+    var(--shadow-md);
+}
+
+/* Thin glass — tooltip */
+[data-slot="tooltip-content"] {
+  @apply bg-foreground/80 backdrop-blur-xl saturate-125;
+}
+
+/* Thin glass — tabs list */
+[data-slot="tabs-list"] {
+  @apply bg-muted/30 backdrop-blur-xl saturate-125 border border-card/5;
+  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.03);
+}
+
+/* Subtle glass — inputs */
+[data-slot="input"] {
+  @apply backdrop-blur-sm;
+}
+
+/* Print: remove all glass data-slot overrides */
+@media print {
+  [data-slot="dialog-content"],
+  [data-slot="alert-dialog-content"],
+  [data-slot="sheet-content"],
+  [data-slot="drawer-content"],
+  [data-slot="popover-content"],
+  [data-slot="hover-card-content"],
+  [data-slot="tooltip-content"],
+  [data-slot="tabs-list"],
+  [data-slot="input"] {
+    @apply backdrop-blur-none saturate-100;
+    box-shadow: none !important;
   }
 }
 
@@ -719,3 +843,32 @@ html {
 }
 
 /* End app.css */
+
+/* Apple Dynamic Type scale — available as Tailwind utilities for incremental adoption */
+@utility text-large-title { font-size: 2.125rem; line-height: 2.5rem; font-weight: 700; }
+@utility text-title-1 { font-size: 1.75rem; line-height: 2.125rem; font-weight: 700; }
+@utility text-title-2 { font-size: 1.375rem; line-height: 1.75rem; font-weight: 700; }
+@utility text-title-3 { font-size: 1.25rem; line-height: 1.625rem; font-weight: 600; }
+@utility text-headline { font-size: 1.0625rem; line-height: 1.375rem; font-weight: 600; }
+@utility text-apple-body { font-size: 1.0625rem; line-height: 1.375rem; font-weight: 400; }
+@utility text-callout { font-size: 1rem; line-height: 1.25rem; font-weight: 400; }
+@utility text-subheadline { font-size: 0.9375rem; line-height: 1.25rem; font-weight: 400; }
+@utility text-footnote { font-size: 0.8125rem; line-height: 1.125rem; font-weight: 400; }
+@utility text-caption-1 { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
+@utility text-caption-2 { font-size: 0.6875rem; line-height: 0.875rem; font-weight: 400; }
+
+/* Touch target enforcement for touch devices (Apple HIG: 44pt minimum) */
+@media (pointer: coarse) {
+  button,
+  [role="button"],
+  a[role="button"] {
+    min-height: 44px;
+  }
+}
+
+/* Push Sonner toasts above the TabBar on mobile */
+@media (max-width: 767px) {
+  [data-sonner-toaster] {
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}

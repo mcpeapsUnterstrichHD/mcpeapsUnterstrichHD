@@ -1,3 +1,25 @@
+/**
+ * @module Aboutme.content
+ *
+ * @description
+ * Intlayer content dictionary for the "About Me" section of the portfolio.
+ * Contains biographical translations including greeting text, name, professional
+ * title, a detailed personal description (with an `{age}` interpolation
+ * placeholder), and labels for the embedded Spotify playlist and latest song
+ * sections. Translations are available in German (de-DE) and English (en-US).
+ *
+ * Dictionary key: `"aboutme"`
+ *
+ * @see {@link src/routes/[[locale=locale]]/aboutme/+page.svelte} -- dedicated About Me page
+ * @see {@link src/routes/[[locale=locale]]/+page.svelte} -- home page hero section
+ * @see {@link src/routes/[[locale=locale]]/linkhub/+page.svelte} -- link hub (name reference)
+ * @see {@link src/routes/[[locale=locale]]/cv/+page.svelte} -- CV page (name/title)
+ * @see {@link src/routes/[[locale=locale]]/cv/ats/+page.svelte} -- ATS CV page
+ * @see {@link src/routes/[[locale=locale]]/imprint/+page.svelte} -- imprint page
+ * @see {@link src/routes/[[locale=locale]]/contact/+page.svelte} -- contact page
+ * @see {@link src/lib/components/AppSidebar.svelte} -- sidebar (name display)
+ * @see {@link src/lib/components/Footer.svelte} -- footer (name/copyright)
+ */
 import { Locales, t, type Dictionary } from "intlayer";
 
 const aboutmeContent = {
