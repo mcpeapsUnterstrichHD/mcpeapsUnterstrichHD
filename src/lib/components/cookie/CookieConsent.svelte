@@ -385,7 +385,7 @@
             {$cookieConsent.language}
           </p>
         </div>
-        <Langswitcher />
+        <Langswitcher sidebar />
       </div>
     </div>
 
