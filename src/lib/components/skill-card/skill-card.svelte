@@ -96,6 +96,6 @@
     </Card.Description>
   </Card.Header>
   <Card.Content class={cn("pt-1 pb-2")}>
-    <Progress value={level} />
+    <Progress value={level} aria-label={`Proficiency level: ${level}%`} />
   </Card.Content>
 </Card.Root>
