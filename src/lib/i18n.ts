@@ -55,7 +55,7 @@ export function t(storeValue: any, key: string, params?: Record<string, any>): s
     if (cleanKey.startsWith(`${prefix}_`)) cleanKey = cleanKey.replace(`${prefix}_`, '');
   }
 
-  const parts = cleanKey.split(/[._]/);
+  const parts = cleanKey.split('.');
   let current = storeValue;
 
   for (const part of parts) {

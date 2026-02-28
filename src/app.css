@@ -872,3 +872,9 @@ html {
     bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+
+[data-slot="badge"] {
+  @apply text-wrap;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}

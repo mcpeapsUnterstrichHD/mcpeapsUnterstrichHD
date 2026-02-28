@@ -52,8 +52,8 @@ const cvContent = {
           [Locales.GERMAN_GERMANY]: "Empfehlung für den Druck"
         }),
         description: t({
-          [Locales.ENGLISH_UNITED_STATES]: "Use the PDF button in the bottom right corner for optimal printing.",
-          [Locales.GERMAN_GERMANY]: "Nutzen Sie den PDF-Button unten rechts, um den Lebenslauf optimal zu drucken."
+          [Locales.ENGLISH_UNITED_STATES]: "Use the PDF button in the top right corner for optimal printing.",
+          [Locales.GERMAN_GERMANY]: "Nutzen Sie den PDF-Button oberen rechts, um den Lebenslauf optimal zu drucken."
         }),
       },
     },

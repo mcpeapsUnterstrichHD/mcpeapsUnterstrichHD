@@ -44,6 +44,7 @@
 
   /** @reactive Derived flag that is true when the user is on the ATS variant of the CV page */
   let isAtsPage = $derived(page.url.pathname.includes("/cv/ats"));
+  let href = $derived(isAtsPage ? "/cv" : "/cv/ats");
 
   /**
    * Triggers the browser's native print dialog for PDF export.
@@ -87,7 +88,7 @@
     <Download class={cn("w-4 h-4")} />
     PDF
   </Button.Root>
-  <LocalizedLink href={isAtsPage ? "/cv" : "/cv/ats"}>
+  <LocalizedLink href={href}>
     <Button.Root variant="outline" class={cn("my-glass gap-2 shadow-lg")} size="lg">
       <FileText class={cn("w-4 h-4")} />
       {isAtsPage ? "Normal" : "ATS"}

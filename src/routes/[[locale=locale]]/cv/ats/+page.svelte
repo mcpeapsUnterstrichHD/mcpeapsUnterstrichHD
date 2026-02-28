@@ -102,12 +102,21 @@
   {#each sortedEducation as edu}
     {@const dateRange = `${formatDate(edu.startdate)} – ${formatDate(edu.enddate)}`}
     {@const description = t($cv, edu.descriptionKey).replace(/[•]/g, "-")}
+
+    {@const badges = edu.badgeKeys && edu.badgeKeys.length > 0
+      ? edu.badgeKeys.map(k => t($cv, k)).join(", ")
+      : ""}
+
     <div class={cn("entry")}>
       <div class={cn("entry-header")}>
         <span class={cn("entry-title")}>{t($cv, edu.nameKey)}</span>
         <span class={cn("entry-date")}>{dateRange}</span>
       </div>
       <p class={cn("entry-description")}>{description}</p>
+
+      {#if badges}
+        <p class={cn("entry-badges")}><strong>Keywords:</strong> {badges}</p>
+      {/if}
     </div>
   {/each}
 
@@ -117,14 +126,21 @@
     {@const dateRange = `${formatDate(exp.startdate)} – ${formatDate(exp.enddate)}`}
     {@const description = t($cv, exp.descriptionKey)
       .replace(/[•]/g, "")
-      .replace(/\\n/g, " ")
+      .replace(/\n/g, " ")
       .trim()}
+
+    {@const badges = exp.badgesKey ? t($cv, exp.badgesKey) : ""}
+
     <div class={cn("entry")}>
       <div class={cn("entry-header")}>
         <span class={cn("entry-title")}>{t($cv, exp.nameKey)}</span>
         <span class={cn("entry-date")}>{dateRange}</span>
       </div>
       <p class={cn("entry-description")}>{description}</p>
+
+      {#if badges}
+        <p class={cn("entry-badges")}><strong>Keywords:</strong> {badges}</p>
+      {/if}
     </div>
   {/each}
 
@@ -220,5 +236,10 @@
   }
   .ats-cv .skills-list {
     display: inline;
+  }
+  .ats-cv .entry-badges {
+    margin: 4px 0 0 0;
+    font-size: 0.9em;
+    color: var(--color-muted-foreground); /* Optional, falls du es leicht gräulich haben willst */
   }
 </style>
