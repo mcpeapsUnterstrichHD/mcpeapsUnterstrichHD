@@ -36,5 +36,13 @@ export default defineConfig({
 		port: 3000,
 		host: true,
 		open: true,
+		hmr: true,
 	},
+	build: {
+		target: 'esnext',
+		minify: true,
+		cssMinify: true,
+		license: true,
+		ssr: true,
+	}
 });

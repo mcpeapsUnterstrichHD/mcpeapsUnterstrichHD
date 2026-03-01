@@ -79,7 +79,7 @@
     "fixed bottom-0 left-0 right-0 z-40",
     "bg-card/60 backdrop-blur-2xl saturate-150 border-t border-card/10",
     "transition-transform duration-300 ease-out",
-    "md:hidden",
+    "md:hidden xl:hidden",
     "print:hidden no-print",
     sidebar.openMobile && "translate-y-full"
   )}
@@ -93,7 +93,7 @@
         <LocalizedLink
           href={tab.url}
           class={cn(
-            "flex flex-col items-center justify-center gap-0.5 py-2 min-h-[50px]",
+            "flex flex-col items-center justify-center gap-0.5 py-2 min-h-12.5",
             "transition-colors duration-200",
             isActive(tab.url, tab.url2)
               ? "text-primary"
@@ -114,7 +114,7 @@
       <button
         onclick={() => sidebar.setOpenMobile(true)}
         class={cn(
-          "flex flex-col items-center justify-center gap-0.5 py-2 w-full min-h-[50px]",
+          "flex flex-col items-center justify-center gap-0.5 py-2 w-full min-h-12.5",
           "transition-colors duration-200",
           moreIsActive
             ? "text-primary"
