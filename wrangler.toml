@@ -10,4 +10,9 @@ binding = "ASSETS"
 directory = ".svelte-kit/cloudflare"
 
 [observability]
+[observability.logs]
+enabled = true
+invocation_logs = true
+
+[observability.traces]
 enabled = true
