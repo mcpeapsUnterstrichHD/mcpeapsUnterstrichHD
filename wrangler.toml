@@ -4,7 +4,9 @@ compatibility_flags = ["nodejs_compat"]
 main = ".svelte-kit/cloudflare/_worker.js"
 workers_dev = true
 preview_urls = true
-placement = { mode = "smart"}
+
+[placement]
+mode = "smart"
 
 [assets]
 binding = "ASSETS"
