@@ -19,3 +19,25 @@ invocation_logs = true
 
 [observability.traces]
 enabled = true
+
+# ── Production (main branch) ──
+[[routes]]
+pattern = "www.mcpeapsunterstrichhd.dev"
+custom_domain = true
+
+[[routes]]
+pattern = "mcpeapsunterstrichhd.dev"
+custom_domain = true
+
+# ── Dev branch ──
+[env.dev]
+name = "mcpeapsunterstrichhd-dev"
+workers_dev = true
+
+[[env.dev.routes]]
+pattern = "dev.mcpeapsunterstrichhd.dev"
+custom_domain = true
+
+[[env.dev.routes]]
+pattern = "www.dev.mcpeapsunterstrichhd.dev"
+custom_domain = true
