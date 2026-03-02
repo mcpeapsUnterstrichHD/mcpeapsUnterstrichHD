@@ -30,3 +30,11 @@ dev:
 # build production files
 build:
     {{ nvm_prefix }} {{ npm }} run build
+
+# deploy to production (main branch)
+deploy:
+    {{ nvm_prefix }} {{ npm }} run deploy
+
+# deploy to dev environment (dev branch)
+deploy-dev:
+    {{ nvm_prefix }} {{ npm }} run deploy:dev

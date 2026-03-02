@@ -32,7 +32,26 @@ custom_domain = true
 # ── Dev branch ──
 [env.dev]
 name = "mcpeapsunterstrichhd-dev"
+compatibility_date = "2026-02-27"
+compatibility_flags = ["nodejs_compat"]
+main = ".svelte-kit/cloudflare/_worker.js"
 workers_dev = true
+preview_urls = true
+
+[env.dev.placement]
+mode = "smart"
+
+[env.dev.assets]
+binding = "ASSETS"
+directory = ".svelte-kit/cloudflare"
+
+[env.dev.observability]
+[env.dev.observability.logs]
+enabled = true
+invocation_logs = true
+
+[env.dev.observability.traces]
+enabled = true
 
 [[env.dev.routes]]
 pattern = "dev.mcpeapsunterstrichhd.dev"
