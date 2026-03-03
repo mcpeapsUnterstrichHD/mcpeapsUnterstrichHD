@@ -32,6 +32,10 @@
     Ellipsis,
   } from "@lucide/svelte";
   import { cn } from "$lib/utils";
+    import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   const sidebar = useSidebar();
   const sites = useIntlayer("sites");
@@ -100,6 +104,13 @@
               : "text-muted-foreground"
           )}
           role="tab"
+          onclick={() => {trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])}}
           aria-selected={isActive(tab.url, tab.url2)}
           aria-current={isActive(tab.url, tab.url2) ? "page" : undefined}
         >
@@ -112,7 +123,16 @@
     <!-- More tab (opens sidebar drawer) -->
     <li class="flex-1">
       <button
-        onclick={() => sidebar.setOpenMobile(true)}
+        onclick={() => {
+          sidebar.setOpenMobile(true);
+          trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
+          }}
         class={cn(
           "flex flex-col items-center justify-center gap-0.5 py-2 w-full min-h-12.5",
           "transition-colors duration-200",

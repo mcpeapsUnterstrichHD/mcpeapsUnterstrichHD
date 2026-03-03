@@ -47,6 +47,10 @@
   import TypingAnimation from "$lib/components/TypingAnimation.svelte";
   import * as Card from "$lib/components/ui/card";
   import { cn } from "$lib/utils";
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   const imprint = useIntlayer("imprint");
   const cv = useIntlayer("cv");
@@ -208,6 +212,13 @@
         type="button"
         onclick={() => {
           if (typeof window !== "undefined") {
+            trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
             window.dispatchEvent(new CustomEvent("show-cookie-consent"));
           }
         }}

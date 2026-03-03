@@ -35,6 +35,10 @@
   import { onMount } from 'svelte';
   import { spring } from 'svelte/motion';
   import { cn } from '$lib/utils';
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   /**
    * Props for the Lens component.
@@ -134,9 +138,27 @@
 <div
   bind:this={containerRef}
   class={cn("relative z-20 overflow-hidden rounded-xl w-full h-full")}
-  onmouseenter={() => setIsHovering(true)}
-  onmouseleave={() => setIsHovering(false)}
-  onmousemove={handleMouseMove}
+  onpointerenter={() => {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
+    setIsHovering(true);
+  }}
+  onpointerleave={() => {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
+    setIsHovering(false)
+    }}
+  onpointermove={handleMouseMove}
   onkeydown={handleKeyDown}
   role="region"
   aria-label={ariaLabel}

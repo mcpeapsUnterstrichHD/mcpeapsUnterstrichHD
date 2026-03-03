@@ -56,6 +56,10 @@
   import { t } from "$lib/i18n";
   import { languages , type Language } from "$lib/lang";
   import { cn } from "$lib/utils";
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   /**
    * Props for the Langswitcher component.
@@ -153,6 +157,13 @@
     class={cn(containerClasses)}
     onclick={() => {
       open = !open;
+      trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
     }}
     role="button"
     tabindex="0"
@@ -190,12 +201,35 @@
         oninput={(e) => {
           search = (e.target as HTMLInputElement).value;
           if (!open) open = true;
+          trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
         }}
         onfocus={() => {
           open = true;
           search = "";
+          trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
         }}
-        onclick={(e) => e.stopPropagation()}
+        onclick={(e) => {
+          e.stopPropagation();
+          trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
+        }}
         class={cn("h-auto p-0 border-0 focus-visible:ring-0 focus:outline-none bg-transparent w-full cursor-pointer placeholder:text-muted-foreground/70 text-inherit")}
       />
     </div>
@@ -235,6 +269,13 @@
               onclick={(e) => {
                 e.preventDefault();
                 setLanguage(lang);
+                trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
               }}
               class={cn(buttonClasses, "flex items-center justify-between")}
             >
@@ -263,6 +304,13 @@
               onclick={(e) => {
                 e.preventDefault();
                 setLanguage(lang);
+                trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
               }}
               class={cn(buttonClasses, "flex items-center justify-between")}
             >

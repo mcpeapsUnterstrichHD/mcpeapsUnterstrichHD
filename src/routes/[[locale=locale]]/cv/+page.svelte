@@ -275,7 +275,7 @@
       {#each sortedExperience as item, i}
         <div class={cn("flex flex-row w-full min-h-25")}>
           <!-- Opposite content (Dates) -->
-          <div class={cn("w-37.5 shrink-0 text-right pr-4 pt-4.5")}>
+          <div class={cn("w-50 shrink-0 text-right pr-4 pt-4.5")}>
             <Badge
               variant="default"
               class={cn("text-[10px] whitespace-nowrap opacity-80 font-normal tracking-wide")}

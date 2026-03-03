@@ -53,6 +53,10 @@
   } from "@lucide/svelte";
   import { getLocalizedUrl } from "intlayer";
   import {cn} from "$lib/utils";
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   /** @description Intlayer dictionary for all cookie consent UI strings. */
   const cookieConsent = useIntlayer("cookieConsent");
@@ -85,6 +89,13 @@
    * @returns {void}
    */
   function syncCategories() {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
       CC.setLanguage($locale);
       cookieState.multimedia = CC.acceptedCategory("multimedia");
       cookieState.socialMedia = CC.acceptedCategory("socialMedia");
@@ -104,6 +115,13 @@
    *    that removes the listener on component destroy.
    */
   onMount(() => {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
       CC.run({
         ...cookieConsentConfig,
         onFirstConsent: () => {
@@ -140,6 +158,13 @@
    * @returns {Promise<void>}
    */
   async function handleAcceptAll() {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
     CC.setLanguage($locale);
     CC.acceptCategory("all");
     isVisible = false;
@@ -158,6 +183,13 @@
    * @returns {Promise<void>}
    */
   async function handleRejectAll() {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
     CC.setLanguage($locale);
     CC.acceptCategory([]);
     isVisible = false;
@@ -176,6 +208,13 @@
    * @returns {Promise<void>}
    */
   async function handleSavePreferences() {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
     const accepted: string[] = ["necessary"];
     if (cookieState.multimedia) accepted.push("multimedia");
     if (cookieState.socialMedia) accepted.push("socialMedia");
@@ -196,6 +235,13 @@
    * @returns {void}
    */
   function handleOpenSheet() {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
     CC.setLanguage($locale);
     syncCategories();
     sheetOpen = true;
@@ -303,6 +349,15 @@
           </div>
           <input
             type="checkbox"
+            onclick={() => {
+              trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+            }}
             bind:checked={cookieState.multimedia}
             class={cn("h-4 w-4 accent-primary cursor-pointer shrink-0")}
           />
@@ -323,6 +378,15 @@
           </div>
           <input
             type="checkbox"
+            onclick={() => {
+              trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+            }}
             bind:checked={cookieState.socialMedia}
             class={cn("h-4 w-4 accent-primary cursor-pointer shrink-0")}
           />
@@ -343,6 +407,15 @@
           </div>
           <input
             type="checkbox"
+            onclick={() => {
+              trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+            }}
             bind:checked={cookieState.contact}
             class={cn("h-4 w-4 accent-primary cursor-pointer shrink-0")}
           />
