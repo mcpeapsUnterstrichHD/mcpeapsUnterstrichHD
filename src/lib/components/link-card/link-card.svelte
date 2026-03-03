@@ -20,6 +20,10 @@
    */
   import * as Card from '$lib/components/ui/card';
   import { cn } from '$lib/utils';
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   /**
    * Props for the LinkCard component.
@@ -42,7 +46,23 @@
 </script>
 
 <div class={cn("break-inside-avoid mb-4")}>
-  <a href={url} target="_blank" rel="noopener noreferrer">
+  <a href={url} onclick={() => {
+  trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+}} onpointerenter={() => {
+  trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+}} target="_blank" rel="noopener noreferrer">
     <Card.Root class={cn("my-glass")}>
       <Card.Header>
         <div class={cn("flex items-center gap-3")}>

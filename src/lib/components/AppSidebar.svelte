@@ -48,6 +48,10 @@
   import LocalizedLink from "$lib/components/LocalizedLink.svelte";
   import { t } from "$lib/i18n";
   import { cn } from "$lib/utils";
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   const footer = useIntlayer("footer");
   const sites = useIntlayer("sites");
@@ -124,7 +128,15 @@
     <Sidebar.Group>
       <Sidebar.GroupContent>
         <Sidebar.Menu>
-          <Sidebar.MenuItem>
+          <Sidebar.MenuItem onclick={
+            () => trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+          }>
             <Tooltip.Root>
               <Tooltip.Trigger
                 onclick={() => {}}
@@ -174,7 +186,15 @@
         <Sidebar.Menu>
           {#each navigationLinks as item}
             <Sidebar.MenuItem>
-              <Sidebar.MenuButton>
+              <Sidebar.MenuButton onclick={
+            () => trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+          }>
                 {#snippet child({ props })}
                   <LocalizedLink href={item.url} {...props}>
                     {@const Icon = item.icon}
@@ -206,7 +226,15 @@
         <Sidebar.Menu>
           {#each connectLinks as item: S }
             <Sidebar.MenuItem>
-              <Sidebar.MenuButton>
+              <Sidebar.MenuButton onclick={
+            () => trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+          }>
                 {#snippet child({ props })}
                   <LocalizedLink href={item.url} {...props}>
                     {@const Icon = item.icon}
@@ -238,7 +266,15 @@
         <Sidebar.Menu>
           {#each legalLinks as item}
             <Sidebar.MenuItem>
-              <Sidebar.MenuButton>
+              <Sidebar.MenuButton onclick={
+            () => trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+          }>
                 {#snippet child({ props })}
                   <LocalizedLink href={item.url} {...props}>
                     {@const Icon = item.icon}

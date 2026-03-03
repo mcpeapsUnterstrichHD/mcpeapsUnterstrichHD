@@ -39,6 +39,10 @@
   import { getLocalizedUrl, type Locale } from 'intlayer';
   import { useLocale } from 'svelte-intlayer';
   import Lens from '$lib/components/Lens.svelte';
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   /** The current locale from svelte-intlayer, used to localize internal project links. */
   const { locale } = useLocale();
@@ -86,7 +90,23 @@
   let rel = $derived(isExternal ? 'noopener noreferrer' : undefined);
 </script>
 
-<a {href} {target} {rel} class="break-inside-avoid mb-4 block">
+<a {href} {target} {rel} onclick={() => {
+  trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+}} onpointerenter={() => {
+  trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+}} class="break-inside-avoid mb-4 block">
   <Card.Root class="my-glass">
     <Card.Header>
       <Card.Title>{projektTitle}</Card.Title>

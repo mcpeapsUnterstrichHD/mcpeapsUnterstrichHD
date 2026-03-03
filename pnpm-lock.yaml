@@ -20,6 +20,9 @@ importers:
       vanilla-cookieconsent:
         specifier: ^3.1.0
         version: 3.1.0
+      web-haptics:
+        specifier: ^0.0.6
+        version: 0.0.6(svelte@5.53.6)
     devDependencies:
       '@fontsource/fira-mono':
         specifier: ^5.2.7
@@ -2639,6 +2642,23 @@ packages:
       vite:
         optional: true
 
+  web-haptics@0.0.6:
+    resolution: {integrity: sha512-eCzcf1LDi20+Fr0x9V3OkX92k0gxEQXaHajmhXHitsnk6SxPeshv8TBtBRqxyst8HI1uf2FyFVE7QS3jo1gkrw==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+      svelte: '>=4'
+      vue: '>=3'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+
   workerd@1.20260305.0:
     resolution: {integrity: sha512-JkhfCLU+w+KbQmZ9k49IcDYc78GBo7eG8Mir8E2+KVjR7otQAmpcLlsous09YLh8WQ3Bt3Mi6/WMStvMAPukeA==}
     engines: {node: '>=16'}
@@ -5154,6 +5174,10 @@ snapshots:
   vitefu@1.1.2(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)):
     optionalDependencies:
       vite: 7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)
+
+  web-haptics@0.0.6(svelte@5.53.6):
+    optionalDependencies:
+      svelte: 5.53.6
 
   workerd@1.20260305.0:
     optionalDependencies:

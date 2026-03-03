@@ -30,6 +30,10 @@
   import * as Button from "$lib/components/ui/button";
   import { t } from "$lib/i18n";
   import { cn } from "$lib/utils";
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
 
   /** @description Intlayer dictionary for cookie consent UI strings, including blocked content messages. */
@@ -102,6 +106,13 @@
    */
   function showCookieSettings() {
     if (typeof window !== "undefined") {
+      trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
       window.dispatchEvent(new CustomEvent("show-cookie-consent"));
     }
   }

@@ -37,7 +37,10 @@
   import { t } from "$lib/i18n";
   import { cn } from "$lib/utils";
   import LocalizedLink from "$lib/components/LocalizedLink.svelte";
-
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
   const cv = useIntlayer("cv");
 
   let { children } = $props();
@@ -54,29 +57,29 @@
     window.print();
   }
 
-  onMount(() => {
-    // Toast for printing settings
+  // Toast for printing settings
     const printToast = () => {
       toast(t($cv, "recommendation.printingSettings.title"), {
         description: t($cv, "recommendation.printingSettings.description"),
       });
     };
-    printToast();
-    const id1 = setInterval(printToast, 60_000);
-
     // Toast for printing notice
     const noticeToast = () => {
       toast(t($cv, "recommendation.printingNotice.title"), {
         description: t($cv, "recommendation.printingNotice.description"),
       });
     };
-    noticeToast();
-    const id2 = setInterval(noticeToast, 120_000);
 
-    return () => {
-      clearInterval(id1);
-      clearInterval(id2);
-    };
+  onMount(() => {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+    printToast();
+    noticeToast();
   });
 </script>
 
@@ -84,12 +87,39 @@
 
 <!-- Action Buttons - shared across all CV pages -->
 <div class={cn("fixed top-4 right-4 z-50 print:hidden grid grid-cols-1 gap-2")}>
-  <Button.Root onclick={handlePrint} class={cn("gap-2 shadow-lg")} size="lg">
+  <Button.Root onclick={() => {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
+    handlePrint();
+    }} onpointerenter={() => {
+      trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
+    printToast();
+    noticeToast();
+  }} class={cn("gap-2 shadow-lg")} size="lg">
     <Download class={cn("w-4 h-4")} />
     PDF
   </Button.Root>
   <LocalizedLink href={href}>
-    <Button.Root variant="outline" class={cn("my-glass gap-2 shadow-lg")} size="lg">
+    <Button.Root onclick={() => {
+    trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
+    }} variant="outline" class={cn("my-glass gap-2 shadow-lg")} size="lg">
       <FileText class={cn("w-4 h-4")} />
       {isAtsPage ? "Normal" : "ATS"}
     </Button.Root>

@@ -39,6 +39,10 @@
   import { t } from "$lib/i18n";
   import { PanelLeft } from "@lucide/svelte";
   import { cn } from "$lib/utils";
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   /**
    * Props for the SidebarToggle component.
@@ -73,7 +77,16 @@
 <Tooltip.Root>
   <Tooltip.Trigger
     class={cn(baseClasses, variantClasses)}
-    onclick={() => sidebar.toggle()}
+    onclick={() => {
+      sidebar.toggle();
+      trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+]);
+      }}
   >
     <PanelLeft class={cn("h-4 w-4")} />
     <span class={cn("group-data-[collapsible=icon]:hidden")}>

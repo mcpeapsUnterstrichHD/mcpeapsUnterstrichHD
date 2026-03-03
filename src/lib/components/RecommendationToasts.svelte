@@ -23,6 +23,10 @@
   import { goto } from '$app/navigation';
   import { useIntlayer, useLocale } from 'svelte-intlayer';
   import { getLocalizedUrl, type Locale } from 'intlayer';
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
 
   /** The current locale from svelte-intlayer, used to localize internal recommendation links. */
   const { locale } = useLocale();
@@ -99,6 +103,13 @@
    */
   onMount(() => {
     function showRecommendation() {
+      trigger([
+  { duration: 60, intensity: 1 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60 },
+  { delay: 30, duration: 60, intensity: 0.75 },
+  { delay: 30, duration: 60, intensity: 1 },
+])
       const rec = recommendations[currentIndex];
       toast(rec.title, {
         description: rec.description,
