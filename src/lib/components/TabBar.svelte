@@ -2,18 +2,19 @@
   /**
    * @component TabBar
    *
-   * iOS-style bottom tab bar for mobile navigation, following Apple HIG UITabBar
-   * conventions. Renders a fixed bottom bar with 5 tabs: Home, About Me, Projects,
-   * CV, and More. The "More" tab opens the sidebar drawer for access to additional
-   * navigation items (Contact, Linkhub, Imprint, Language Switch).
+   * iOS 26 Liquid Glass pill tab bar for mobile navigation. Renders a floating,
+   * pill-shaped bottom bar with translucent glass material containing 5 tabs:
+   * Home, About Me, Projects, CV, and More. The "More" tab opens the sidebar
+   * drawer for access to additional navigation items.
    *
-   * Shown only on iOS-class viewports (below md/768px breakpoint) and hidden when
-   * the sidebar drawer is already open. Uses Liquid Glass material (my-glass) for
-   * translucent Nord-themed background with safe area inset padding at the bottom
-   * for iPhone notch/Dynamic Island support.
+   * Shown only on mobile viewports (below md/768px breakpoint) and hidden when
+   * the sidebar drawer is already open. Uses the project's Liquid Glass material
+   * system (my-glass) with safe area inset padding for notch/Dynamic Island.
    *
-   * Active tab is highlighted with the Nord Frost primary color. All touch targets
-   * meet Apple's 44pt minimum requirement.
+   * The active tab gets a pill-shaped highlight capsule behind it. All touch
+   * targets meet Apple's 44pt minimum requirement.
+   *
+   * Built on shadcn-svelte NavigationMenu primitives.
    *
    * @see {@link AppSidebar} -- Full sidebar opened by the "More" tab
    * @see {@link NavBar} -- Desktop-only fallback header (complementary to TabBar)
@@ -22,8 +23,8 @@
   import { useSidebar } from "$lib/components/ui/sidebar";
   import { useIntlayer, useLocale } from "svelte-intlayer";
   import { getLocalizedUrl, type Locale } from "intlayer";
-  import LocalizedLink from "$lib/components/LocalizedLink.svelte";
   import { t } from "$lib/i18n";
+  import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
   import {
     House,
     User,
@@ -32,8 +33,9 @@
     Ellipsis,
   } from "@lucide/svelte";
   import { cn } from "$lib/utils";
-    import { createWebHaptics } from "web-haptics/svelte";
+  import { createWebHaptics } from "web-haptics/svelte";
   import { onDestroy } from "svelte";
+
   const { trigger, destroy } = createWebHaptics();
   onDestroy(destroy);
 
@@ -41,6 +43,14 @@
   const sites = useIntlayer("sites");
   const sidebarContent = useIntlayer("sidebar");
   const { locale } = useLocale();
+
+  const hapticPattern = [
+    { duration: 60, intensity: 1 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60, intensity: 1 },
+  ];
 
   interface TabItem {
     title: string;
@@ -67,6 +77,10 @@
     return path === localized1 || (!!localized2 && path === localized2);
   }
 
+  function localizedHref(url: string): string {
+    return getLocalizedUrl(url, $locale as Locale);
+  }
+
   /** Whether any of the sidebar-only routes (Contact, Linkhub, Imprint) are active */
   let moreIsActive: boolean = $derived(
     ["/contact/", "/linkhub/", "/imprint/"].some((url) => {
@@ -78,75 +92,66 @@
   );
 </script>
 
-<nav
+<!-- Floating pill container with safe-area bottom offset -->
+<div
   class={cn(
-    "fixed bottom-0 left-0 right-0 z-40",
-    "bg-card/60 backdrop-blur-2xl saturate-150 border-t border-card/10",
+    "fixed bottom-2 left-2 right-2 z-40",
+    "flex justify-center",
+    "pointer-events-none",
     "transition-transform duration-300 ease-out",
     "md:hidden xl:hidden",
     "print:hidden no-print",
     sidebar.openMobile && "translate-y-full"
   )}
-  style="padding-bottom: env(safe-area-inset-bottom, 0px);
-         box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.04);"
-  aria-label="Main navigation"
+  style="padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);"
 >
-  <ul class="flex items-stretch justify-around px-2" role="tablist">
-    {#each tabs as tab}
-      <li class="flex-1">
-        <LocalizedLink
-          href={tab.url}
-          class={cn(
-            "flex flex-col items-center justify-center gap-0.5 py-2 min-h-12.5",
-            "transition-colors duration-200",
-            isActive(tab.url, tab.url2)
-              ? "text-primary"
-              : "text-muted-foreground"
-          )}
-          role="tab"
-          onclick={() => {trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-])}}
-          aria-selected={isActive(tab.url, tab.url2)}
-          aria-current={isActive(tab.url, tab.url2) ? "page" : undefined}
-        >
-          <tab.icon class="size-5" />
-          <span class="text-[10px] leading-tight font-medium">{tab.title}</span>
-        </LocalizedLink>
-      </li>
-    {/each}
+  <NavigationMenu.Root
+    viewport={false}
+    class="pointer-events-auto my-glass max-w-none rounded-full px-2 py-1"
+    aria-label="Main navigation"
+  >
+    <NavigationMenu.List class="flex items-center gap-1">
+      {#each tabs as tab}
+        <NavigationMenu.Item>
+          <NavigationMenu.Link
+            href={localizedHref(tab.url)}
+            data-active={isActive(tab.url, tab.url2)}
+            class={cn(
+              "relative flex flex-col items-center justify-center gap-0.5 rounded-full px-2 py-2 min-h-11 min-w-11",
+              "bg-transparent transition-all duration-200",
+              "hover:bg-card/20 focus:bg-card/20",
+              isActive(tab.url, tab.url2)
+                ? "bg-primary/15 text-primary data-[active=true]:bg-primary/15 data-[active=true]:hover:bg-primary/20 data-[active=true]:focus:bg-primary/20"
+                : "text-muted-foreground"
+            )}
+            onclick={() => trigger(hapticPattern)}
+          >
+            <tab.icon class="size-5" />
+            <span class="text-[10px] leading-tight font-medium">{tab.title}</span>
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+      {/each}
 
-    <!-- More tab (opens sidebar drawer) -->
-    <li class="flex-1">
-      <button
-        onclick={() => {
-          sidebar.setOpenMobile(true);
-          trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-]);
+      <!-- More tab (opens sidebar drawer) -->
+      <NavigationMenu.Item>
+        <button
+          onclick={() => {
+            sidebar.setOpenMobile(true);
+            trigger(hapticPattern);
           }}
-        class={cn(
-          "flex flex-col items-center justify-center gap-0.5 py-2 w-full min-h-12.5",
-          "transition-colors duration-200",
-          moreIsActive
-            ? "text-primary"
-            : "text-muted-foreground"
-        )}
-        role="tab"
-        aria-selected={moreIsActive}
-        aria-label={t($sidebarContent, "toggleSidebar")}
-      >
-        <Ellipsis class="size-5" />
-        <span class="text-[10px] leading-tight font-medium">More</span>
-      </button>
-    </li>
-  </ul>
-</nav>
+          class={cn(
+            "relative flex flex-col items-center justify-center gap-0.5 rounded-full px-4 py-2 min-h-11 min-w-11",
+            "transition-all duration-200",
+            moreIsActive
+              ? "bg-primary/15 text-primary"
+              : "text-muted-foreground hover:bg-card/20"
+          )}
+          aria-label={t($sidebarContent, "toggleSidebar")}
+        >
+          <Ellipsis class="size-5" />
+          <span class="text-[10px] leading-tight font-medium">More</span>
+        </button>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</div>
