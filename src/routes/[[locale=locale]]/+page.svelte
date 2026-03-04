@@ -28,11 +28,15 @@
   import { getLocalizedUrl, type Locale } from 'intlayer';
   import { useLocale } from 'svelte-intlayer';
   import AuroraText from '$lib/components/AuroraText.svelte';
-
-  const { locale } = useLocale();
   import TypingAnimation from '$lib/components/TypingAnimation.svelte';
   import { User, FolderOpen, FileText, Mail } from '@lucide/svelte';
   import * as Button from '$lib/components/ui/button';
+  import { createWebHaptics } from "web-haptics/svelte";
+  import { onDestroy } from "svelte";
+  const { trigger, destroy } = createWebHaptics();
+  onDestroy(destroy);
+
+  const { locale } = useLocale();
 
   const aboutme = useIntlayer('aboutme');
   const sites = useIntlayer('sites');
@@ -99,19 +103,51 @@
 
     <!-- CTA Buttons -->
     <div class="flex flex-wrap gap-4 mt-12 justify-center">
-      <Button.Root href={getLocalizedUrl('/aboutme', $locale as Locale)} variant="default" size="lg" class="group gap-2">
+      <Button.Root onclick={
+        () => trigger([
+{ duration: 60, intensity: 1 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60, intensity: 1 },
+])
+      } href={getLocalizedUrl('/aboutme', $locale as Locale)} variant="default" size="lg" class="group gap-2">
         <User class="w-4 h-4 group-hover:scale-110 transition-transform" />
         {$recommendation.aboutme.action.label}
       </Button.Root>
-      <Button.Root href={getLocalizedUrl('/projects', $locale as Locale)} variant="secondary" size="lg" class="group gap-2">
+      <Button.Root onclick={
+        () => trigger([
+{ duration: 60, intensity: 1 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60, intensity: 1 },
+])
+      } href={getLocalizedUrl('/projects', $locale as Locale)} variant="secondary" size="lg" class="group gap-2">
         <FolderOpen class="w-4 h-4 group-hover:scale-110 transition-transform" />
         {$recommendation.projects.action.label}
       </Button.Root>
-      <Button.Root href={getLocalizedUrl('/cv', $locale as Locale)} variant="outline" size="lg" class="my-glass group gap-2">
+      <Button.Root onclick={
+        () => trigger([
+{ duration: 60, intensity: 1 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60, intensity: 1 },
+])
+      } href={getLocalizedUrl('/cv', $locale as Locale)} variant="outline" size="lg" class="my-glass group gap-2">
         <FileText class="w-4 h-4 group-hover:scale-110 transition-transform" />
         {$recommendation.cv.action.label}
       </Button.Root>
-      <Button.Root href={getLocalizedUrl('/contact', $locale as Locale)} variant="ghost" size="lg" class="group gap-2">
+      <Button.Root onclick={
+        () => trigger([
+{ duration: 60, intensity: 1 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60 },
+{ delay: 30, duration: 60, intensity: 0.75 },
+{ delay: 30, duration: 60, intensity: 1 },
+])
+      } href={getLocalizedUrl('/contact', $locale as Locale)} variant="ghost" size="lg" class="group gap-2">
         <Mail class="w-4 h-4 group-hover:scale-110 transition-transform" />
         {$sites.contact}
       </Button.Root>
