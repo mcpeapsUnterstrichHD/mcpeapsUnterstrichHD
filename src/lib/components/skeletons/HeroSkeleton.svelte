@@ -1,37 +1,37 @@
 <script lang="ts">
-  /**
-   * @component HeroSkeleton
-   *
-   * A hero-section loading skeleton used as a placeholder while the main
-   * hero content is being fetched or hydrated. It mirrors the typical hero
-   * layout: a centered subtitle, large title, secondary tagline, optional
-   * multi-line description, and optional action buttons.
-   *
-   * All skeleton elements are centered and responsive (e.g., the main title
-   * skeleton grows from `h-12 w-72` to `h-16 w-96` on medium screens). The
-   * section uses a fade-in entrance animation (`animate-in fade-in duration-500`).
-   *
-   * @see {@link CardSkeleton} for card-shaped loading placeholders
-   *
-   * @example Default hero skeleton (subtitle, title, tagline)
-   * ```svelte
-   * <HeroSkeleton />
-   * ```
-   *
-   * @example Full hero skeleton with description and buttons
-   * ```svelte
-   * <HeroSkeleton showSubtitle showDescription buttonCount={2} />
-   * ```
-   *
-   * @example Minimal hero skeleton (title and tagline only)
-   * ```svelte
-   * <HeroSkeleton showSubtitle={false} />
-   * ```
-   */
-  import { Skeleton } from '$lib/components/ui/skeleton';
-  import { cn } from '$lib/utils';
+/**
+ * @component HeroSkeleton
+ *
+ * A hero-section loading skeleton used as a placeholder while the main
+ * hero content is being fetched or hydrated. It mirrors the typical hero
+ * layout: a centered subtitle, large title, secondary tagline, optional
+ * multi-line description, and optional action buttons.
+ *
+ * All skeleton elements are centered and responsive (e.g., the main title
+ * skeleton grows from `h-12 w-72` to `h-16 w-96` on medium screens). The
+ * section uses a fade-in entrance animation (`animate-in fade-in duration-500`).
+ *
+ * @see {@link CardSkeleton} for card-shaped loading placeholders
+ *
+ * @example Default hero skeleton (subtitle, title, tagline)
+ * ```svelte
+ * <HeroSkeleton />
+ * ```
+ *
+ * @example Full hero skeleton with description and buttons
+ * ```svelte
+ * <HeroSkeleton showSubtitle showDescription buttonCount={2} />
+ * ```
+ *
+ * @example Minimal hero skeleton (title and tagline only)
+ * ```svelte
+ * <HeroSkeleton showSubtitle={false} />
+ * ```
+ */
+import { Skeleton } from "$lib/components/ui/skeleton";
+import { cn } from "$lib/utils";
 
-  /**
+/**
 
   /**
    * Props for the HeroSkeleton component.
@@ -43,17 +43,17 @@
    * @property {number} [buttonCount=0] - Number of button-shaped skeletons to
    *   render in a centered flex row below the description.
    */
-  interface Props {
-    showSubtitle?: boolean;
-    showDescription?: boolean;
-    buttonCount?: number;
-  }
+interface Props {
+  showSubtitle?: boolean;
+  showDescription?: boolean;
+  buttonCount?: number;
+}
 
-  let {
-    showSubtitle = true,
-    showDescription = false,
-    buttonCount = 0,
-  }: Props = $props();
+let {
+  showSubtitle = true,
+  showDescription = false,
+  buttonCount = 0,
+}: Props = $props();
 </script>
 
 <section class={cn("text-center space-y-4 animate-in fade-in duration-500")}>

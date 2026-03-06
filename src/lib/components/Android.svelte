@@ -1,88 +1,88 @@
 <script lang="ts">
-  /**
-   * @component Android
-   *
-   * An Android device mockup rendered with SVG. The frame features a realistic
-   * device body with rounded corners, two side buttons (volume rocker and power),
-   * and a centered front-facing camera punch-hole at the top of the screen.
-   *
-   * The component uses a layered rendering approach:
-   * 1. Background SVG layer: phone frame, screen area, image/video content.
-   * 2. Children layer: arbitrary Svelte content positioned inside the screen.
-   * 3. Foreground SVG layer: camera circles rendered on top of everything.
-   *
-   * Supports light and dark mode via Tailwind `dark:` class variants on SVG fills.
-   *
-   * Uses Svelte 4 syntax (`export let` props, `$:` reactive statements).
-   *
-   * @see {@link Safari.svelte} for browser mockup
-   * @see {@link Iphone.svelte} for iOS device mockup
-   *
-   * @example
-   * ```svelte
-   * <Android src="/android-screenshot.png" />
-   * ```
-   *
-   * @example With video
-   * ```svelte
-   * <Android videoSrc="/android-demo.mp4" className="max-w-xs" />
-   * ```
-   *
-   * @example With custom children
-   * ```svelte
-   * <Android>
-   *   <div class="flex items-center justify-center h-full bg-gray-100">
-   *     Custom app content
-   *   </div>
-   * </Android>
-   * ```
-   */
-  import type { Snippet } from "svelte";
-  import type { SVGAttributes } from "svelte/elements";
-  import { cn } from "$lib/utils";
+/**
+ * @component Android
+ *
+ * An Android device mockup rendered with SVG. The frame features a realistic
+ * device body with rounded corners, two side buttons (volume rocker and power),
+ * and a centered front-facing camera punch-hole at the top of the screen.
+ *
+ * The component uses a layered rendering approach:
+ * 1. Background SVG layer: phone frame, screen area, image/video content.
+ * 2. Children layer: arbitrary Svelte content positioned inside the screen.
+ * 3. Foreground SVG layer: camera circles rendered on top of everything.
+ *
+ * Supports light and dark mode via Tailwind `dark:` class variants on SVG fills.
+ *
+ * Uses Svelte 4 syntax (`export let` props, `$:` reactive statements).
+ *
+ * @see {@link Safari.svelte} for browser mockup
+ * @see {@link Iphone.svelte} for iOS device mockup
+ *
+ * @example
+ * ```svelte
+ * <Android src="/android-screenshot.png" />
+ * ```
+ *
+ * @example With video
+ * ```svelte
+ * <Android videoSrc="/android-demo.mp4" className="max-w-xs" />
+ * ```
+ *
+ * @example With custom children
+ * ```svelte
+ * <Android>
+ *   <div class="flex items-center justify-center h-full bg-gray-100">
+ *     Custom app content
+ *   </div>
+ * </Android>
+ * ```
+ */
+import type { Snippet } from "svelte";
+import type { SVGAttributes } from "svelte/elements";
+import { cn } from "$lib/utils";
 
-  /**
+/**
 
   /** Total SVG viewBox width of the Android frame. */
-  const ANDROID_WIDTH = 433;
-  /** Total SVG viewBox height of the Android frame. */
-  const ANDROID_HEIGHT = 882;
-  /** X offset of the screen content area within the SVG viewBox. */
-  const SCREEN_X = 9;
-  /** Y offset of the screen content area within the SVG viewBox. */
-  const SCREEN_Y = 14;
-  /** Width of the screen content area in SVG units. */
-  const SCREEN_WIDTH = 360;
-  /** Height of the screen content area in SVG units. */
-  const SCREEN_HEIGHT = 800;
+const ANDROID_WIDTH = 433;
+/** Total SVG viewBox height of the Android frame. */
+const ANDROID_HEIGHT = 882;
+/** X offset of the screen content area within the SVG viewBox. */
+const SCREEN_X = 9;
+/** Y offset of the screen content area within the SVG viewBox. */
+const SCREEN_Y = 14;
+/** Width of the screen content area in SVG units. */
+const SCREEN_WIDTH = 360;
+/** Height of the screen content area in SVG units. */
+const SCREEN_HEIGHT = 800;
 
-  /** Screen X offset as a percentage of device width, for absolute positioning. */
-  const LEFT_PCT = (SCREEN_X / ANDROID_WIDTH) * 100;
-  /** Screen Y offset as a percentage of device height. */
-  const TOP_PCT = (SCREEN_Y / ANDROID_HEIGHT) * 100;
-  /** Screen width as a percentage of device width. */
-  const WIDTH_PCT = (SCREEN_WIDTH / ANDROID_WIDTH) * 100;
-  /** Screen height as a percentage of device height. */
-  const HEIGHT_PCT = (SCREEN_HEIGHT / ANDROID_HEIGHT) * 100;
+/** Screen X offset as a percentage of device width, for absolute positioning. */
+const LEFT_PCT = (SCREEN_X / ANDROID_WIDTH) * 100;
+/** Screen Y offset as a percentage of device height. */
+const TOP_PCT = (SCREEN_Y / ANDROID_HEIGHT) * 100;
+/** Screen width as a percentage of device width. */
+const WIDTH_PCT = (SCREEN_WIDTH / ANDROID_WIDTH) * 100;
+/** Screen height as a percentage of device height. */
+const HEIGHT_PCT = (SCREEN_HEIGHT / ANDROID_HEIGHT) * 100;
 
-  /**
-   * @prop {number} [width=433] - SVG viewBox width (defaults to ANDROID_WIDTH).
-   * @prop {number} [height=882] - SVG viewBox height (defaults to ANDROID_HEIGHT).
-   * @prop {string} [src=''] - Source URL for a static image rendered via SVG `<image>`.
-   * @prop {string} [videoSrc=''] - Source URL for a video rendered via SVG `<foreignObject>`.
-   *   Takes priority over `src` visually (both can technically render simultaneously).
-   * @prop {string} [className=''] - Additional CSS class(es) on the wrapper div.
-   * @prop {Snippet} [children] - Optional Svelte snippet rendered inside the screen area.
-   */
-  export let width: number = ANDROID_WIDTH;
-  export let height: number = ANDROID_HEIGHT;
-  export let src: string = "";
-  export let videoSrc: string = "";
-  export let className: string = "";
-  export let children: Snippet | undefined = undefined;
+/**
+ * @prop {number} [width=433] - SVG viewBox width (defaults to ANDROID_WIDTH).
+ * @prop {number} [height=882] - SVG viewBox height (defaults to ANDROID_HEIGHT).
+ * @prop {string} [src=''] - Source URL for a static image rendered via SVG `<image>`.
+ * @prop {string} [videoSrc=''] - Source URL for a video rendered via SVG `<foreignObject>`.
+ *   Takes priority over `src` visually (both can technically render simultaneously).
+ * @prop {string} [className=''] - Additional CSS class(es) on the wrapper div.
+ * @prop {Snippet} [children] - Optional Svelte snippet rendered inside the screen area.
+ */
+export let width: number = ANDROID_WIDTH;
+export let height: number = ANDROID_HEIGHT;
+export let src: string = "";
+export let videoSrc: string = "";
+export let className: string = "";
+export let children: Snippet | undefined = undefined;
 
-  /** Whether a video source was provided. */
-  $: hasVideo = !!videoSrc;
+/** Whether a video source was provided. */
+$: hasVideo = !!videoSrc;
 </script>
 
 <div

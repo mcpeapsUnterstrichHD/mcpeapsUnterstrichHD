@@ -1,91 +1,103 @@
 <script lang="ts">
-  /**
-   * @module routes/[[locale=locale]]/+layout
-   * @description Locale-aware layout component that wraps all pages under the optional
-   * `[[locale=locale]]` route parameter. This layout is responsible for:
-   *
-   * 1. **Locale synchronization** - Syncs the server-detected locale (from `+layout.server.ts`)
-   *    with the client-side Intlayer locale store on initial mount.
-   * 2. **HTML lang/dir attributes** - Keeps `<html lang="..." dir="...">` in sync reactively
-   *    whenever the client-side locale changes, supporting LTR/RTL directionality.
-   * 3. **SEO meta tags** - Injects `<title>`, `<meta description>`, canonical URL, hreflang
-   *    alternate links, Open Graph tags, and Twitter Card meta tags into `<svelte:head>`.
-   * 4. **Canonical & hreflang** - Computes the canonical URL (trailing slash stripped) and
-   *    generates hreflang alternate links for all supported languages plus `x-default`.
-   *
-   * The layout uses Intlayer's `useLocale()` for locale state management and `useIntlayer()`
-   * for retrieving localized content dictionaries (title, description, etc.).
-   *
-   * @property {Snippet} children - The child page/layout content to render
-   * @property {{ locale: Locale }} data - Server load data containing the detected locale
-   *
-   * @reactive {string} canonicalUrl - Derived canonical URL path with trailing slash removed
-   * @reactive {string} pathForAlternates - Derived locale-stripped path used for hreflang href generation
-   *
-   * Locale-aware layout wrapper handling SEO metadata, canonical URLs, and hreflang
-   * links. Functions as a SwiftUI NavigationStack-equivalent document head manager
-   * for localized routes.
-   *
-   * @see {@link routes/[[locale=locale]]/+layout.server.ts} for server-side locale detection
-   * @see {@link $lib/lang} for supported language definitions
-   */
+/**
+ * @module routes/[[locale=locale]]/+layout
+ * @description Locale-aware layout component that wraps all pages under the optional
+ * `[[locale=locale]]` route parameter. This layout is responsible for:
+ *
+ * 1. **Locale synchronization** - Syncs the server-detected locale (from `+layout.server.ts`)
+ *    with the client-side Intlayer locale store on initial mount.
+ * 2. **HTML lang/dir attributes** - Keeps `<html lang="..." dir="...">` in sync reactively
+ *    whenever the client-side locale changes, supporting LTR/RTL directionality.
+ * 3. **SEO meta tags** - Injects `<title>`, `<meta description>`, canonical URL, hreflang
+ *    alternate links, Open Graph tags, and Twitter Card meta tags into `<svelte:head>`.
+ * 4. **Canonical & hreflang** - Computes the canonical URL (trailing slash stripped) and
+ *    generates hreflang alternate links for all supported languages plus `x-default`.
+ *
+ * The layout uses Intlayer's `useLocale()` for locale state management and `useIntlayer()`
+ * for retrieving localized content dictionaries (title, description, etc.).
+ *
+ * @property {Snippet} children - The child page/layout content to render
+ * @property {{ locale: Locale }} data - Server load data containing the detected locale
+ *
+ * @reactive {string} canonicalUrl - Derived canonical URL path with trailing slash removed
+ * @reactive {string} pathForAlternates - Derived locale-stripped path used for hreflang href generation
+ *
+ * Locale-aware layout wrapper handling SEO metadata, canonical URLs, and hreflang
+ * links. Functions as a SwiftUI NavigationStack-equivalent document head manager
+ * for localized routes.
+ *
+ * @see {@link routes/[[locale=locale]]/+layout.server.ts} for server-side locale detection
+ * @see {@link $lib/lang} for supported language definitions
+ */
 
-  import { onMount } from "svelte";
-  import type { Snippet } from "svelte";
-  import { page } from "$app/state";
-  import { useLocale, useIntlayer } from "svelte-intlayer";
-  import { getLocalizedUrl, type Locale } from "intlayer";
-  import { languages } from "$lib/lang";
+import { onMount } from "svelte";
+import type { Snippet } from "svelte";
+import { page } from "$app/state";
+import { browser } from "$app/environment";
+import { useLocale, useIntlayer } from "svelte-intlayer";
+import { getLocalizedUrl, type Locale } from "intlayer";
+import { languages } from "$lib/lang";
 
-  let { children, data }: { children: Snippet; data: { locale: Locale } } =
-    $props();
-  const { locale, setLocale } = useLocale();
-  const layout = useIntlayer("layout");
+let { children, data }: { children: Snippet; data: { locale: Locale } } =
+  $props();
+const { locale, setLocale } = useLocale();
+const layout = useIntlayer("layout");
 
-  // Sync server-detected locale with client-side intlayer (once on mount only)
-  onMount(() => {
-    if (data.locale && $locale !== data.locale) {
-      setLocale(data.locale);
-    }
-  });
+// Sync server-detected locale with client-side intlayer (once on mount only)
+onMount(() => {
+  if (data.locale && $locale !== data.locale) {
+    setLocale(data.locale);
+  }
+});
 
-  // Keep <html lang="..." dir="..."> in sync on client-side locale changes
-  $effect(() => {
+// Keep <html lang="..." dir="..."> in sync on client-side locale changes
+$effect(() => {
+  if (browser) {
     const lang = languages.find((l) => l.code === $locale);
     document.documentElement.lang = $locale;
     document.documentElement.dir = lang?.dir ?? "ltr";
-  });
+  }
+});
 
-  /**
-   * @reactive Derived canonical URL path for the current page.
-   * Strips trailing slashes and defaults to "/" for the root path.
-   * Used in the `<link rel="canonical">` tag.
-   */
-  let canonicalUrl = $derived.by(() => {
-    const path = page.url.pathname.replace(/\/$/, "") || "/";
-    return `${path}`;
-  });
+/**
+ * @reactive Derived canonical URL path for the current page.
+ * Strips trailing slashes and defaults to "/" for the root path.
+ * Used in the `<link rel="canonical">` tag.
+ */
+let canonicalUrl = $derived.by(() => {
+  const path = page.url.pathname.replace(/\/$/, "") || "/";
+  return `${path}`;
+});
 
-  /**
-   * @reactive Derived locale-agnostic path used for generating hreflang alternate links.
-   * Strips any locale prefix (e.g. `/en-US`) from the current pathname so each language
-   * alternate can be constructed by prepending its own locale code.
-   */
-  let pathForAlternates = $derived.by(() => {
-    let path: string = page.url.pathname;
-    for (const loc of languages.map(l => l.code)) {
-      if (path.startsWith(`/${loc}`)) {
-        path = path.slice(`/${loc}`.length) || "/";
-        break;
-      }
+/**
+ * @reactive Derived locale-agnostic path used for generating hreflang alternate links.
+ * Strips any locale prefix (e.g. `/en-US`) from the current pathname so each language
+ * alternate can be constructed by prepending its own locale code.
+ */
+let pathForAlternates = $derived.by(() => {
+  let path: string = page.url.pathname;
+  for (const loc of languages.map((l) => l.code)) {
+    if (path.startsWith(`/${loc}`)) {
+      path = path.slice(`/${loc}`.length) || "/";
+      break;
     }
-    return path as Parameters<typeof getLocalizedUrl>[0];
-  });
+  }
+  return path as Parameters<typeof getLocalizedUrl>[0];
+});
 </script>
 
 <svelte:head>
+  <meta charset="utf-8" />
   <title>{$layout.title}</title>
   <meta name="description" content={$layout.description} />
+	<link rel="icon" href="/pictures/favicon.ico" />
+	<link rel="manifest" href="/manifest.webmanifest" />
+	<link rel="apple-touch-icon" href="/pictures/logo192.png" />
+		<meta name="theme-color" content="#2E3440" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1,user-scalable=yes viewport-fit=cover, interactive-widget=overlays-content"
+		/>
   <meta
     name="keywords"
     content="portfolio, website, impressum, github, linkedin, aps, fabian"

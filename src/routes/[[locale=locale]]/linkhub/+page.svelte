@@ -1,51 +1,52 @@
 <script lang="ts">
-  /**
-   * @module routes/[[locale=locale]]/linkhub/+page
-   * @description Link hub / "link in bio" page aggregating all social media profiles,
-   * websites, and other external links. Serves as a central landing page for sharing
-   * across social platforms (similar to Linktree).
-   *
-   * The page is organized into three sections:
-   *
-   * 1. **Social Media** - Cards linking to Instagram, TikTok, Threads, Bluesky, X/Twitter,
-   *    Discord, and YouTube profiles, each with platform icon, title, and description
-   * 2. **Websites** - Cards linking to the main portfolio site, ComBoomPunktSucht app,
-   *    and the CBPS blog
-   * 3. **Other** - GitHub profile link, plus embedded Apple Music playlist and current
-   *    song via Odesli/song.link, both wrapped in `ConsentIframe` for GDPR consent gating
-   *
-   * Each link is rendered as a `LinkCard.Root` component within a `MasonryGrid`.
-   * The music embeds use inline `Card` components with `ConsentIframe` for consent-gated
-   * third-party content.
-   *
-   * All text content is internationalized via the Intlayer `linkhub`, `aboutme`, `sites`,
-   * and `layout` dictionaries.
-   *
-   * Link hub page following iOS Settings-style grouped sections pattern --
-   * categorized link lists (Social, Websites, Other) with leading icons and
-   * descriptions.
-   *
-   * @see {@link $lib/components/link-card} for individual link card components
-   * @see {@link $lib/components/MasonryGrid.svelte} for masonry grid layout
-   * @see {@link $lib/components/cookie/ConsentIframe.svelte} for consent-gated iframes
-   */
+/**
+ * @module routes/[[locale=locale]]/linkhub/+page
+ * @description Link hub / "link in bio" page aggregating all social media profiles,
+ * websites, and other external links. Serves as a central landing page for sharing
+ * across social platforms (similar to Linktree).
+ *
+ * The page is organized into three sections:
+ *
+ * 1. **Social Media** - Cards linking to Instagram, TikTok, Threads, Bluesky, X/Twitter,
+ *    Discord, and YouTube profiles, each with platform icon, title, and description
+ * 2. **Websites** - Cards linking to the main portfolio site, ComBoomPunktSucht app,
+ *    and the CBPS blog
+ * 3. **Other** - GitHub profile link, plus embedded Apple Music playlist and current
+ *    song via Odesli/song.link, both wrapped in `ConsentIframe` for GDPR consent gating
+ *
+ * Each link is rendered as a `LinkCard.Root` component within a `MasonryGrid`.
+ * The music embeds use inline `Card` components with `ConsentIframe` for consent-gated
+ * third-party content.
+ *
+ * All text content is internationalized via the Intlayer `linkhub`, `aboutme`, `sites`,
+ * and `layout` dictionaries.
+ *
+ * Link hub page following iOS Settings-style grouped sections pattern --
+ * categorized link lists (Social, Websites, Other) with leading icons and
+ * descriptions.
+ *
+ * @see {@link $lib/components/link-card} for individual link card components
+ * @see {@link $lib/components/MasonryGrid.svelte} for masonry grid layout
+ * @see {@link $lib/components/cookie/ConsentIframe.svelte} for consent-gated iframes
+ */
 
-  import { useIntlayer } from 'svelte-intlayer';
-  import * as Card from '$lib/components/ui/card';
-  import AuroraText from '$lib/components/AuroraText.svelte';
-  import TypingAnimation from '$lib/components/TypingAnimation.svelte';
-  import ConsentIframe from '$lib/components/cookie/ConsentIframe.svelte';
-  import MasonryGrid from '$lib/components/MasonryGrid.svelte';
-  import * as LinkCard from '$lib/components/link-card';
-  import { Share2, Globe, MoreHorizontal } from '@lucide/svelte';
+import { useIntlayer } from "svelte-intlayer";
+import * as Card from "$lib/components/ui/card";
+import AuroraText from "$lib/components/AuroraText.svelte";
+import TypingAnimation from "$lib/components/TypingAnimation.svelte";
+import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
+import MasonryGrid from "$lib/components/MasonryGrid.svelte";
+import * as LinkCard from "$lib/components/link-card";
+import { Share2, Globe, MoreHorizontal } from "@lucide/svelte";
 
-  const linkhub = useIntlayer('linkhub');
-  const aboutme = useIntlayer('aboutme');
-  const sites = useIntlayer('sites');
-  const layout = useIntlayer('layout');
+const linkhub = useIntlayer("linkhub");
+const aboutme = useIntlayer("aboutme");
+const sites = useIntlayer("sites");
+const layout = useIntlayer("layout");
 
-  /** @constant {string} spotifyUrl - Embedded Spotify track URL for the music widget */
-  const spotifyUrl = "https://open.spotify.com/embed/track/25S3D2lEwF25iur275I4d4?utm_source=generator&theme=0";
+/** @constant {string} spotifyUrl - Embedded Spotify track URL for the music widget */
+const spotifyUrl =
+  "https://open.spotify.com/embed/track/25S3D2lEwF25iur275I4d4?utm_source=generator&theme=0";
 </script>
 
 <svelte:head>

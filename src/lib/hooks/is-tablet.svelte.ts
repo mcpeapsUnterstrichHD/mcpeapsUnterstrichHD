@@ -10,10 +10,10 @@ const DEFAULT_TABLET_UPPER_BREAKPOINT = 1024;
  * updates (`shadcn-svelte add --overwrite`) don't remove it.
  */
 export class IsTablet extends MediaQuery {
-	constructor(
-		lower: number = DEFAULT_MOBILE_BREAKPOINT,
-		upper: number = DEFAULT_TABLET_UPPER_BREAKPOINT
-	) {
-		super(`(min-width: ${lower}px) and (max-width: ${upper - 1}px)`);
-	}
+  constructor(
+    lower: number = DEFAULT_MOBILE_BREAKPOINT,
+    upper: number = DEFAULT_TABLET_UPPER_BREAKPOINT,
+  ) {
+    super(`(min-width: ${lower}px) and (max-width: ${upper - 1}px)`);
+  }
 }

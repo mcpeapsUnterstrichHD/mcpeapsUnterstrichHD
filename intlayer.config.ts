@@ -1,15 +1,14 @@
-import {type IntlayerConfig } from "intlayer";
+import { type IntlayerConfig } from "intlayer";
 import { languages } from "./src/lib/lang";
-
 
 const config: IntlayerConfig = {
   internationalization: {
-    locales: languages.map(l => l.code),
+    locales: languages.map((l) => l.code),
     defaultLocale: languages[0].code,
-    strictMode: "strict"
+    strictMode: "strict",
   },
   routing: {
-    mode: 'prefix-no-default',
+    mode: "prefix-no-default",
     storage: [
       {
         type: "cookie",
@@ -26,7 +25,7 @@ const config: IntlayerConfig = {
       {
         type: "header",
         name: "x-mahd-locale",
-      }
+      },
     ],
   },
 };

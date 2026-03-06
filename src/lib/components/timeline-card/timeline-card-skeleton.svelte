@@ -1,22 +1,22 @@
 <script lang="ts">
-  /**
-   * @component TimelineCardSkeleton
-   *
-   * A loading-state placeholder that mirrors the layout of {@link TimelineCard}.
-   * Renders shimmer `Skeleton` primitives for the avatar, title, badge row, and
-   * body text inside a shadcn-svelte `Card` with `my-glass` styling.
-   *
-   * Uses `animate-in fade-in duration-500` for a smooth entrance when swapped
-   * in during data fetching.
-   *
-   * This component accepts no props and is meant to be rendered one-to-one in
-   * place of each `TimelineCard.Root` while timeline data is loading.
-   *
-   * @see {@link TimelineCard} -- The data-populated counterpart
-   */
-  import { Card } from "$lib/components/ui/card";
-  import { Skeleton } from "$lib/components/ui/skeleton";
-  import { cn } from "$lib/utils";
+/**
+ * @component TimelineCardSkeleton
+ *
+ * A loading-state placeholder that mirrors the layout of {@link TimelineCard}.
+ * Renders shimmer `Skeleton` primitives for the avatar, title, badge row, and
+ * body text inside a shadcn-svelte `Card` with `my-glass` styling.
+ *
+ * Uses `animate-in fade-in duration-500` for a smooth entrance when swapped
+ * in during data fetching.
+ *
+ * This component accepts no props and is meant to be rendered one-to-one in
+ * place of each `TimelineCard.Root` while timeline data is loading.
+ *
+ * @see {@link TimelineCard} -- The data-populated counterpart
+ */
+import { Card } from "$lib/components/ui/card";
+import { Skeleton } from "$lib/components/ui/skeleton";
+import { cn } from "$lib/utils";
 </script>
 
 <Card.Root class={cn("my-glass animate-in fade-in duration-500")}>

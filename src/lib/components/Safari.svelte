@@ -1,90 +1,90 @@
 <script lang="ts">
-  /**
-   * @component Safari
-   *
-   * A Safari browser mockup frame rendered entirely with SVG. The component
-   * displays Apple-style window chrome (traffic-light buttons, address bar with
-   * lock icon, navigation/share icons in "default" mode) surrounding a content
-   * area that can show an image, an auto-playing video, or arbitrary Svelte
-   * children.
-   *
-   * The SVG frame supports light and dark mode via Tailwind `dark:` class
-   * variants on fill paths. Content is absolutely positioned within the screen
-   * area using percentage-based coordinates derived from the SVG viewBox
-   * dimensions.
-   *
-   * Uses Svelte 4 syntax (`export let` props, `$:` reactive statements).
-   *
-   * @see {@link Iphone.svelte} for iOS device mockup
-   * @see {@link Android.svelte} for Android device mockup
-   *
-   * @example
-   * ```svelte
-   * <Safari url="mcpeaps.com" imageSrc="/screenshot.png" />
-   * ```
-   *
-   * @example With video content
-   * ```svelte
-   * <Safari url="example.com" videoSrc="/demo.mp4" mode="simple" />
-   * ```
-   *
-   * @example With custom children
-   * ```svelte
-   * <Safari url="app.dev">
-   *   <div class="p-4">Custom content inside the browser frame</div>
-   * </Safari>
-   * ```
-   */
-  import type { Snippet } from "svelte";
-  import { cn } from "$lib/utils";
+/**
+ * @component Safari
+ *
+ * A Safari browser mockup frame rendered entirely with SVG. The component
+ * displays Apple-style window chrome (traffic-light buttons, address bar with
+ * lock icon, navigation/share icons in "default" mode) surrounding a content
+ * area that can show an image, an auto-playing video, or arbitrary Svelte
+ * children.
+ *
+ * The SVG frame supports light and dark mode via Tailwind `dark:` class
+ * variants on fill paths. Content is absolutely positioned within the screen
+ * area using percentage-based coordinates derived from the SVG viewBox
+ * dimensions.
+ *
+ * Uses Svelte 4 syntax (`export let` props, `$:` reactive statements).
+ *
+ * @see {@link Iphone.svelte} for iOS device mockup
+ * @see {@link Android.svelte} for Android device mockup
+ *
+ * @example
+ * ```svelte
+ * <Safari url="mcpeaps.com" imageSrc="/screenshot.png" />
+ * ```
+ *
+ * @example With video content
+ * ```svelte
+ * <Safari url="example.com" videoSrc="/demo.mp4" mode="simple" />
+ * ```
+ *
+ * @example With custom children
+ * ```svelte
+ * <Safari url="app.dev">
+ *   <div class="p-4">Custom content inside the browser frame</div>
+ * </Safari>
+ * ```
+ */
+import type { Snippet } from "svelte";
+import { cn } from "$lib/utils";
 
-  /** Total SVG viewBox width of the Safari frame. */
-  const SAFARI_WIDTH = 1206;
-  /** Total SVG viewBox height of the Safari frame. */
-  const SAFARI_HEIGHT = 755;
-  /** X offset of the screen content area within the SVG viewBox. */
-  const SCREEN_X = 3;
-  /** Y offset of the screen content area (below the toolbar). */
-  const SCREEN_Y = 52;
-  /** Width of the screen content area in SVG units. */
-  const SCREEN_WIDTH = 1200;
-  /** Height of the screen content area in SVG units. */
-  const SCREEN_HEIGHT = 700;
+/** Total SVG viewBox width of the Safari frame. */
+const SAFARI_WIDTH = 1206;
+/** Total SVG viewBox height of the Safari frame. */
+const SAFARI_HEIGHT = 755;
+/** X offset of the screen content area within the SVG viewBox. */
+const SCREEN_X = 3;
+/** Y offset of the screen content area (below the toolbar). */
+const SCREEN_Y = 52;
+/** Width of the screen content area in SVG units. */
+const SCREEN_WIDTH = 1200;
+/** Height of the screen content area in SVG units. */
+const SCREEN_HEIGHT = 700;
 
-  /** Screen X offset as a percentage of total frame width, for absolute positioning. */
-  const LEFT_PCT = (SCREEN_X / SAFARI_WIDTH) * 100;
-  /** Screen Y offset as a percentage of total frame height. */
-  const TOP_PCT = (SCREEN_Y / SAFARI_HEIGHT) * 100;
-  /** Screen width as a percentage of total frame width. */
-  const WIDTH_PCT = (SCREEN_WIDTH / SAFARI_WIDTH) * 100;
-  /** Screen height as a percentage of total frame height. */
-  const HEIGHT_PCT = (SCREEN_HEIGHT / SAFARI_HEIGHT) * 100;
+/** Screen X offset as a percentage of total frame width, for absolute positioning. */
+const LEFT_PCT = (SCREEN_X / SAFARI_WIDTH) * 100;
+/** Screen Y offset as a percentage of total frame height. */
+const TOP_PCT = (SCREEN_Y / SAFARI_HEIGHT) * 100;
+/** Screen width as a percentage of total frame width. */
+const WIDTH_PCT = (SCREEN_WIDTH / SAFARI_WIDTH) * 100;
+/** Screen height as a percentage of total frame height. */
+const HEIGHT_PCT = (SCREEN_HEIGHT / SAFARI_HEIGHT) * 100;
 
-  /**
-   * @prop {string} [url=''] - URL text displayed in the Safari address bar.
-   * @prop {string} [imageSrc=''] - Source URL for a static screenshot to display in the screen area.
-   *   Ignored when `videoSrc` is provided.
-   * @prop {string} [videoSrc=''] - Source URL for a video to auto-play in the screen area.
-   *   Takes priority over `imageSrc`.
-   * @prop {'default' | 'simple'} [mode='default'] - Frame complexity. "default" shows full
-   *   browser chrome (navigation arrows, share, tabs icons). "simple" shows only the
-   *   minimal toolbar.
-   * @prop {string} [className=''] - Additional CSS class(es) on the wrapper div.
-   * @prop {string} [style=''] - Inline styles appended to the wrapper div.
-   * @prop {Snippet} [children] - Optional Svelte snippet rendered inside the screen area.
-   */
-  export let url: string = "";
-  export let imageSrc: string = "";
-  export let videoSrc: string = "";
-  export let mode: "default" | "simple" = "default";
-  export let className: string = "";
-  export let style: string = "";
-  export let children: Snippet | undefined = undefined;
+/**
+ * @prop {string} [url=''] - URL text displayed in the Safari address bar.
+ * @prop {string} [imageSrc=''] - Source URL for a static screenshot to display in the screen area.
+ *   Ignored when `videoSrc` is provided.
+ * @prop {string} [videoSrc=''] - Source URL for a video to auto-play in the screen area.
+ *   Takes priority over `imageSrc`.
+ * @prop {'default' | 'simple'} [mode='default'] - Frame complexity. "default" shows full
+ *   browser chrome (navigation arrows, share, tabs icons). "simple" shows only the
+ *   minimal toolbar.
+ * @prop {string} [className=''] - Additional CSS class(es) on the wrapper div.
+ * @prop {string} [style=''] - Inline styles appended to the wrapper div.
+ * @prop {Snippet} [children] - Optional Svelte snippet rendered inside the screen area.
+ */
+export let url: string = "";
+export let imageSrc: string = "";
+export let videoSrc: string = "";
+export let mode: "default" | "simple" = "default";
+export let className: string = "";
+export let style: string = "";
+export let children: Snippet | undefined = undefined;
 
-  /** Whether a video source was provided (video takes priority over image). */
-  $: hasVideo = !!videoSrc;
-  /** Whether any screen content exists (video, image, or children). Used to apply the SVG punch-out mask. */
-  $: hasMedia = hasVideo || !!imageSrc || !!children;
+/** Whether a video source was provided (video takes priority over image). */
+$: hasVideo = !!videoSrc;
+/** Whether any screen content exists (video, image, or children). Used to apply the SVG punch-out mask. */
+$: hasMedia = hasVideo || !!imageSrc || !!children;
 </script>
 
 <div

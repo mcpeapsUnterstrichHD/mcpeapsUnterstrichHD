@@ -1,56 +1,56 @@
 <script lang="ts">
-  /**
-   * @module routes/[[locale=locale]]/aboutme/+page
-   * @description "About Me" page providing a personal introduction to the portfolio owner.
-   * Renders a hero section with animated typing effects for greeting, name, and professional
-   * title using `AuroraText` and `TypingAnimation` components.
-   *
-   * The page includes:
-   * - **Hero section** - Animated greeting, name with gradient aurora text, and title tagline
-   * - **Description section** - Personal bio text with dynamically calculated age
-   *   (born 2003-06-06), injected via `{age}` placeholder replacement
-   * - **Music section** - Two cards side-by-side: an embedded Apple Music playlist and a
-   *   current song embed via Odesli/song.link, both wrapped in `ConsentIframe` for
-   *   GDPR cookie consent gating
-   * - **Pinned Projects section** - Displays featured GitHub pinned repositories
-   *
-   * All text content is internationalized via the Intlayer `aboutme`, `sites`, and `layout`
-   * dictionaries accessed through the `t()` helper and `useIntlayer()` stores.
-   *
-   * About page using iPadOS-style 2-column grid layout on md+ viewports
-   * (md:grid-cols-2), collapsing to full-width stack on iOS-class viewports.
-   *
-   * @see {@link $lib/components/cookie/ConsentIframe.svelte} for consent-gated iframe embedding
-   * @see {@link $lib/components/PinnedProjects.svelte} for GitHub pinned repositories display
-   * @see {@link $lib/components/AuroraText.svelte} for gradient text animation
-   */
+/**
+ * @module routes/[[locale=locale]]/aboutme/+page
+ * @description "About Me" page providing a personal introduction to the portfolio owner.
+ * Renders a hero section with animated typing effects for greeting, name, and professional
+ * title using `AuroraText` and `TypingAnimation` components.
+ *
+ * The page includes:
+ * - **Hero section** - Animated greeting, name with gradient aurora text, and title tagline
+ * - **Description section** - Personal bio text with dynamically calculated age
+ *   (born 2003-06-06), injected via `{age}` placeholder replacement
+ * - **Music section** - Two cards side-by-side: an embedded Apple Music playlist and a
+ *   current song embed via Odesli/song.link, both wrapped in `ConsentIframe` for
+ *   GDPR cookie consent gating
+ * - **Pinned Projects section** - Displays featured GitHub pinned repositories
+ *
+ * All text content is internationalized via the Intlayer `aboutme`, `sites`, and `layout`
+ * dictionaries accessed through the `t()` helper and `useIntlayer()` stores.
+ *
+ * About page using iPadOS-style 2-column grid layout on md+ viewports
+ * (md:grid-cols-2), collapsing to full-width stack on iOS-class viewports.
+ *
+ * @see {@link $lib/components/cookie/ConsentIframe.svelte} for consent-gated iframe embedding
+ * @see {@link $lib/components/PinnedProjects.svelte} for GitHub pinned repositories display
+ * @see {@link $lib/components/AuroraText.svelte} for gradient text animation
+ */
 
-  import { useIntlayer } from "svelte-intlayer";
-  import * as Card from "$lib/components/ui/card";
-  import AuroraText from "$lib/components/AuroraText.svelte";
-  import TypingAnimation from "$lib/components/TypingAnimation.svelte";
-  import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
-  import PinnedProjects from "$lib/components/PinnedProjects.svelte";
-  import { Music, Disc3 } from "@lucide/svelte";
-  import { t } from "$lib/i18n";
-  import { cn } from "$lib/utils";
+import { useIntlayer } from "svelte-intlayer";
+import * as Card from "$lib/components/ui/card";
+import AuroraText from "$lib/components/AuroraText.svelte";
+import TypingAnimation from "$lib/components/TypingAnimation.svelte";
+import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
+import PinnedProjects from "$lib/components/PinnedProjects.svelte";
+import { Music, Disc3 } from "@lucide/svelte";
+import { t } from "$lib/i18n";
+import { cn } from "$lib/utils";
 
-  const aboutme = useIntlayer("aboutme");
-  const sites = useIntlayer("sites");
-  const layout = useIntlayer("layout");
+const aboutme = useIntlayer("aboutme");
+const sites = useIntlayer("sites");
+const layout = useIntlayer("layout");
 
-  /**
-   * Dynamically calculates the portfolio owner's current age based on the
-   * birth date of June 6, 2003. Accounts for whether the birthday has
-   * occurred yet in the current year.
-   */
-  const today = new Date();
-  const birthday = new Date("2003-06-06");
-  let age = today.getFullYear() - birthday.getFullYear();
-  const mo = today.getMonth() - birthday.getMonth();
-  if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) {
-    age--;
-  }
+/**
+ * Dynamically calculates the portfolio owner's current age based on the
+ * birth date of June 6, 2003. Accounts for whether the birthday has
+ * occurred yet in the current year.
+ */
+const today = new Date();
+const birthday = new Date("2003-06-06");
+let age = today.getFullYear() - birthday.getFullYear();
+const mo = today.getMonth() - birthday.getMonth();
+if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) {
+  age--;
+}
 </script>
 
 <svelte:head>

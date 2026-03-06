@@ -1,257 +1,251 @@
 <script lang="ts">
-  /**
-   * @component CookieConsent
-   * @description The primary cookie consent UI component for the application. Renders a
-   * compact bottom-right banner for first-time visitors and a slide-in preferences sheet
-   * for granular category management. Designed following Apple HIG layout principles
-   * with Nord color scheme styling.
-   *
-   * Consent management UI following Apple's permission request UX patterns -- presents
-   * choices via a right-side Sheet (macOS convention) with clear accept/reject/customize
-   * options, similar to iOS App Tracking Transparency prompts. The banner and sheet use
-   * Liquid Glass material (`my-glass`) and Nord color scheme for consistent SwiftUI-inspired
-   * appearance across desktop (macOS), tablet (iPadOS), and mobile (iOS) viewports.
-   *
-   * This component serves as the bridge between the `vanilla-cookieconsent` library
-   * (which handles persistence, bot detection, and script management) and the custom
-   * Svelte-based UI. It dynamically imports `vanilla-cookieconsent` on mount to avoid
-   * SSR issues and keeps the shared {@link cookieState} in sync with the library's
-   * internal consent state.
-   *
-   * **Architecture overview:**
-   * 1. On mount, initializes `vanilla-cookieconsent` with {@link cookieConsentConfig}
-   * 2. Checks for existing valid consent; if none exists, shows the compact banner
-   * 3. Listens for the custom `show-cookie-consent` window event (dispatched by
-   *    {@link ConsentIframe.svelte} and other components) to re-open the preferences sheet
-   * 4. Synchronizes accepted categories into {@link cookieState} on every consent change
-   *
-   * **UI sections:**
-   * - Compact banner: shows title, description, accept/reject buttons, and link to preferences
-   * - Preferences sheet: full category toggles (necessary, multimedia, socialMedia, contact),
-   *   informational sections, language switcher, and action buttons
-   *
-   * @see {@link cookieConfig.ts} for the vanilla-cookieconsent configuration
-   * @see {@link cookieState.svelte.ts} for the reactive consent state
-   * @see {@link ConsentIframe.svelte} for the consent-gated iframe component
-   */
-  import { onMount } from "svelte";
-  import * as CC from "vanilla-cookieconsent";
-  import { cookieConsentConfig } from "./cookieConfig";
-  import { cookieState } from "./cookieState.svelte";
-  import * as Sheet from "$lib/components/ui/sheet";
-  import { Button } from "$lib/components/ui/button";
-  import Langswitcher from "$lib/components/Langswitcher.svelte";
-  import { useIntlayer, useLocale } from "svelte-intlayer";
-  import {
-    Cookie,
-    ExternalLink,
-    Shield,
-    Music,
-    Share2,
-    Phone,
-    Globe,
-  } from "@lucide/svelte";
-  import { getLocalizedUrl } from "intlayer";
-  import {cn} from "$lib/utils";
-  import { createWebHaptics } from "web-haptics/svelte";
-  import { onDestroy } from "svelte";
-  const { trigger, destroy } = createWebHaptics();
-  onDestroy(destroy);
+/**
+ * @component CookieConsent
+ * @description The primary cookie consent UI component for the application. Renders a
+ * compact bottom-right banner for first-time visitors and a slide-in preferences sheet
+ * for granular category management. Designed following Apple HIG layout principles
+ * with Nord color scheme styling.
+ *
+ * Consent management UI following Apple's permission request UX patterns -- presents
+ * choices via a right-side Sheet (macOS convention) with clear accept/reject/customize
+ * options, similar to iOS App Tracking Transparency prompts. The banner and sheet use
+ * Liquid Glass material (`my-glass`) and Nord color scheme for consistent SwiftUI-inspired
+ * appearance across desktop (macOS), tablet (iPadOS), and mobile (iOS) viewports.
+ *
+ * This component serves as the bridge between the `vanilla-cookieconsent` library
+ * (which handles persistence, bot detection, and script management) and the custom
+ * Svelte-based UI. It dynamically imports `vanilla-cookieconsent` on mount to avoid
+ * SSR issues and keeps the shared {@link cookieState} in sync with the library's
+ * internal consent state.
+ *
+ * **Architecture overview:**
+ * 1. On mount, initializes `vanilla-cookieconsent` with {@link cookieConsentConfig}
+ * 2. Checks for existing valid consent; if none exists, shows the compact banner
+ * 3. Listens for the custom `show-cookie-consent` window event (dispatched by
+ *    {@link ConsentIframe.svelte} and other components) to re-open the preferences sheet
+ * 4. Synchronizes accepted categories into {@link cookieState} on every consent change
+ *
+ * **UI sections:**
+ * - Compact banner: shows title, description, accept/reject buttons, and link to preferences
+ * - Preferences sheet: full category toggles (necessary, multimedia, socialMedia, contact),
+ *   informational sections, language switcher, and action buttons
+ *
+ * @see {@link cookieConfig.ts} for the vanilla-cookieconsent configuration
+ * @see {@link cookieState.svelte.ts} for the reactive consent state
+ * @see {@link ConsentIframe.svelte} for the consent-gated iframe component
+ */
+import { onMount } from "svelte";
+import * as CC from "vanilla-cookieconsent";
+import { cookieConsentConfig } from "./cookieConfig";
+import { cookieState } from "./cookieState.svelte";
+import * as Sheet from "$lib/components/ui/sheet";
+import { Button } from "$lib/components/ui/button";
+import Langswitcher from "$lib/components/Langswitcher.svelte";
+import { useIntlayer, useLocale } from "svelte-intlayer";
+import {
+  Cookie,
+  ExternalLink,
+  Shield,
+  Music,
+  Share2,
+  Phone,
+  Globe,
+} from "@lucide/svelte";
+import { getLocalizedUrl } from "intlayer";
+import { cn } from "$lib/utils";
+import { createWebHaptics } from "web-haptics/svelte";
+import { onDestroy } from "svelte";
+const { trigger, destroy } = createWebHaptics();
+onDestroy(destroy);
 
-  /** @description Intlayer dictionary for all cookie consent UI strings. */
-  const cookieConsent = useIntlayer("cookieConsent");
-  /** @description Current locale from the intlayer locale context. */
-  const { locale } = useLocale();
+/** @description Intlayer dictionary for all cookie consent UI strings. */
+const cookieConsent = useIntlayer("cookieConsent");
+/** @description Current locale from the intlayer locale context. */
+const { locale } = useLocale();
 
-  /**
-   * @description Reactive flag controlling the visibility of the compact consent banner.
-   * Set to `true` when no valid consent exists; set to `false` after any consent action.
-   * Uses Svelte 5 `$state` rune.
-   */
-  let isVisible = $state(false);
+/**
+ * @description Reactive flag controlling the visibility of the compact consent banner.
+ * Set to `true` when no valid consent exists; set to `false` after any consent action.
+ * Uses Svelte 5 `$state` rune.
+ */
+let isVisible = $state(false);
 
-  /**
-   * @description Reactive flag controlling the open/close state of the preferences sheet.
-   * Toggled by user interaction or the `show-cookie-consent` custom window event.
-   * Uses Svelte 5 `$state` rune.
-   */
-  let sheetOpen = $state(false);
+/**
+ * @description Reactive flag controlling the open/close state of the preferences sheet.
+ * Toggled by user interaction or the `show-cookie-consent` custom window event.
+ * Uses Svelte 5 `$state` rune.
+ */
+let sheetOpen = $state(false);
 
-  /**
-   * Synchronizes the global {@link cookieState} with vanilla-cookieconsent's internal state.
-   *
-   * @description Dynamically imports the `vanilla-cookieconsent` module and reads the
-   * accepted status of each optional category (`multimedia`, `socialMedia`, `contact`),
-   * writing the boolean results into the shared reactive {@link cookieState} object.
-   * This function is called on initial consent, on consent change, and whenever the
-   * preferences sheet is opened.
-   *
-   * @returns {void}
-   */
-  function syncCategories() {
-    trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-])
-      CC.setLanguage($locale);
-      cookieState.multimedia = CC.acceptedCategory("multimedia");
-      cookieState.socialMedia = CC.acceptedCategory("socialMedia");
-      cookieState.contact = CC.acceptedCategory("contact");
-  }
+/**
+ * Synchronizes the global {@link cookieState} with vanilla-cookieconsent's internal state.
+ *
+ * @description Dynamically imports the `vanilla-cookieconsent` module and reads the
+ * accepted status of each optional category (`multimedia`, `socialMedia`, `contact`),
+ * writing the boolean results into the shared reactive {@link cookieState} object.
+ * This function is called on initial consent, on consent change, and whenever the
+ * preferences sheet is opened.
+ *
+ * @returns {void}
+ */
+function syncCategories() {
+  trigger([
+    { duration: 60, intensity: 1 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60, intensity: 1 },
+  ]);
+  CC.setLanguage($locale);
+  cookieState.multimedia = CC.acceptedCategory("multimedia");
+  cookieState.socialMedia = CC.acceptedCategory("socialMedia");
+  cookieState.contact = CC.acceptedCategory("contact");
+}
 
-  /**
-   * Lifecycle hook: initializes the cookie consent system on component mount.
-   *
-   * @description Performs three key tasks on mount:
-   * 1. Dynamically imports and runs `vanilla-cookieconsent` with the merged config
-   *    (base config + event callbacks for `onFirstConsent`, `onConsent`, `onChange`).
-   * 2. Checks for existing valid consent: if absent, shows the compact banner;
-   *    if present, synchronizes categories immediately.
-   * 3. Registers a `show-cookie-consent` window event listener so other components
-   *    can programmatically open the preferences sheet. Returns a cleanup function
-   *    that removes the listener on component destroy.
-   */
-  onMount(() => {
-    trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-])
-      CC.run({
-        ...cookieConsentConfig,
-        onFirstConsent: () => {
-          isVisible = false;
-        },
-        onConsent: () => syncCategories(),
-        onChange: () => syncCategories(),
-      });
-
-      if (!CC.validConsent()) {
-        isVisible = true;
-      } else {
-        syncCategories();
-      }
-
-    const handleShowBanner = () => {
-      syncCategories();
-      sheetOpen = true;
-    };
-    window.addEventListener("show-cookie-consent", handleShowBanner);
-    return () => {
-      window.removeEventListener("show-cookie-consent", handleShowBanner);
-    };
+/**
+ * Lifecycle hook: initializes the cookie consent system on component mount.
+ *
+ * @description Performs three key tasks on mount:
+ * 1. Dynamically imports and runs `vanilla-cookieconsent` with the merged config
+ *    (base config + event callbacks for `onFirstConsent`, `onConsent`, `onChange`).
+ * 2. Checks for existing valid consent: if absent, shows the compact banner;
+ *    if present, synchronizes categories immediately.
+ * 3. Registers a `show-cookie-consent` window event listener so other components
+ *    can programmatically open the preferences sheet. Returns a cleanup function
+ *    that removes the listener on component destroy.
+ */
+onMount(() => {
+  CC.run({
+    ...cookieConsentConfig,
+    onFirstConsent: () => {
+      isVisible = false;
+    },
+    onConsent: () => syncCategories(),
+    onChange: () => syncCategories(),
   });
 
-  /**
-   * Accepts all cookie categories and closes both the banner and preferences sheet.
-   *
-   * @description Dynamically imports `vanilla-cookieconsent` and calls `acceptCategory("all")`
-   * to grant consent for every defined category. Both the compact banner and the
-   * preferences sheet are hidden immediately after acceptance.
-   *
-   * @async
-   * @returns {Promise<void>}
-   */
-  async function handleAcceptAll() {
-    trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-])
-    CC.setLanguage($locale);
-    CC.acceptCategory("all");
-    isVisible = false;
-    sheetOpen = false;
+  if (!CC.validConsent()) {
+    isVisible = true;
+  } else {
+    syncCategories();
   }
 
-  /**
-   * Rejects all optional cookie categories and closes both the banner and preferences sheet.
-   *
-   * @description Dynamically imports `vanilla-cookieconsent` and calls `acceptCategory([])`
-   * with an empty array, which rejects all optional categories while preserving the
-   * `necessary` category (which is always enabled and read-only). Both the compact banner
-   * and the preferences sheet are hidden immediately after rejection.
-   *
-   * @async
-   * @returns {Promise<void>}
-   */
-  async function handleRejectAll() {
-    trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-])
-    CC.setLanguage($locale);
-    CC.acceptCategory([]);
-    isVisible = false;
-    sheetOpen = false;
-  }
-
-  /**
-   * Saves the user's per-category preferences from the preferences sheet.
-   *
-   * @description Reads the current toggle states from {@link cookieState} and builds
-   * an array of accepted category names (always including `"necessary"`). Passes the
-   * array to `vanilla-cookieconsent`'s `acceptCategory()` to persist the selection.
-   * Both the compact banner and the preferences sheet are hidden after saving.
-   *
-   * @async
-   * @returns {Promise<void>}
-   */
-  async function handleSavePreferences() {
-    trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-])
-    const accepted: string[] = ["necessary"];
-    if (cookieState.multimedia) accepted.push("multimedia");
-    if (cookieState.socialMedia) accepted.push("socialMedia");
-    if (cookieState.contact) accepted.push("contact");
-    CC.setLanguage($locale);
-    CC.acceptCategory(accepted);
-    isVisible = false;
-    sheetOpen = false;
-  }
-
-  /**
-   * Opens the preferences sheet for detailed category management.
-   *
-   * @description First synchronizes the {@link cookieState} with the library's current
-   * accepted categories (so the toggles reflect the persisted state), then opens the
-   * slide-in sheet. Called when the user clicks "Manage Preferences" on the compact banner.
-   *
-   * @returns {void}
-   */
-  function handleOpenSheet() {
-    trigger([
-  { duration: 60, intensity: 1 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60 },
-  { delay: 30, duration: 60, intensity: 0.75 },
-  { delay: 30, duration: 60, intensity: 1 },
-])
-    CC.setLanguage($locale);
+  const handleShowBanner = () => {
     syncCategories();
     sheetOpen = true;
-  }
+  };
+  window.addEventListener("show-cookie-consent", handleShowBanner);
+  return () => {
+    window.removeEventListener("show-cookie-consent", handleShowBanner);
+  };
+});
+
+/**
+ * Accepts all cookie categories and closes both the banner and preferences sheet.
+ *
+ * @description Dynamically imports `vanilla-cookieconsent` and calls `acceptCategory("all")`
+ * to grant consent for every defined category. Both the compact banner and the
+ * preferences sheet are hidden immediately after acceptance.
+ *
+ * @async
+ * @returns {Promise<void>}
+ */
+async function handleAcceptAll() {
+  trigger([
+    { duration: 60, intensity: 1 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60, intensity: 1 },
+  ]);
+  CC.setLanguage($locale);
+  CC.acceptCategory("all");
+  isVisible = false;
+  sheetOpen = false;
+}
+
+/**
+ * Rejects all optional cookie categories and closes both the banner and preferences sheet.
+ *
+ * @description Dynamically imports `vanilla-cookieconsent` and calls `acceptCategory([])`
+ * with an empty array, which rejects all optional categories while preserving the
+ * `necessary` category (which is always enabled and read-only). Both the compact banner
+ * and the preferences sheet are hidden immediately after rejection.
+ *
+ * @async
+ * @returns {Promise<void>}
+ */
+async function handleRejectAll() {
+  trigger([
+    { duration: 60, intensity: 1 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60, intensity: 1 },
+  ]);
+  CC.setLanguage($locale);
+  CC.acceptCategory([]);
+  isVisible = false;
+  sheetOpen = false;
+}
+
+/**
+ * Saves the user's per-category preferences from the preferences sheet.
+ *
+ * @description Reads the current toggle states from {@link cookieState} and builds
+ * an array of accepted category names (always including `"necessary"`). Passes the
+ * array to `vanilla-cookieconsent`'s `acceptCategory()` to persist the selection.
+ * Both the compact banner and the preferences sheet are hidden after saving.
+ *
+ * @async
+ * @returns {Promise<void>}
+ */
+async function handleSavePreferences() {
+  trigger([
+    { duration: 60, intensity: 1 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60, intensity: 1 },
+  ]);
+  const accepted: string[] = ["necessary"];
+  if (cookieState.multimedia) accepted.push("multimedia");
+  if (cookieState.socialMedia) accepted.push("socialMedia");
+  if (cookieState.contact) accepted.push("contact");
+  CC.setLanguage($locale);
+  CC.acceptCategory(accepted);
+  isVisible = false;
+  sheetOpen = false;
+}
+
+/**
+ * Opens the preferences sheet for detailed category management.
+ *
+ * @description First synchronizes the {@link cookieState} with the library's current
+ * accepted categories (so the toggles reflect the persisted state), then opens the
+ * slide-in sheet. Called when the user clicks "Manage Preferences" on the compact banner.
+ *
+ * @returns {void}
+ */
+function handleOpenSheet() {
+  trigger([
+    { duration: 60, intensity: 1 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60 },
+    { delay: 30, duration: 60, intensity: 0.75 },
+    { delay: 30, duration: 60, intensity: 1 },
+  ]);
+  CC.setLanguage($locale);
+  syncCategories();
+  sheetOpen = true;
+}
 </script>
 
 <!-- Compact Banner (bottom-right) -->
 {#if isVisible}
   <div
     class={cn("fixed bottom-22 md:bottom-4 right-4 z-50 max-w-sm print:hidden no-print animate-in slide-in-from-bottom-5 fade-in duration-300")}
+    aria-label="cookie consent banner"
   >
     <div class={cn("my-glass rounded-lg shadow-xl p-4 space-y-3")}>
       <div class={cn("flex items-start gap-3")}>

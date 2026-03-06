@@ -550,18 +550,9 @@
 @layer base {
   * {
     font-family:
-      "CaskaydiaCoveNerdFontPropo",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      "Roboto",
-      "Oxygen",
-      "Ubuntu",
-      "Cantarell",
-      "Fira Sans",
-      "Droid Sans",
-      "Helvetica Neue",
-      sans-serif;
+      "CaskaydiaCoveNerdFontPropo", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+      "Droid Sans", "Helvetica Neue", sans-serif;
     @apply border-border outline-ring/50;
   }
   *:focus-visible {
@@ -570,18 +561,9 @@
   body {
     @apply bg-background text-foreground m-0;
     font-family:
-      "CaskaydiaCoveNerdFontPropo",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      "Roboto",
-      "Oxygen",
-      "Ubuntu",
-      "Cantarell",
-      "Fira Sans",
-      "Droid Sans",
-      "Helvetica Neue",
-      sans-serif;
+      "CaskaydiaCoveNerdFontPropo", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+      "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 1.125rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -845,17 +827,61 @@ html {
 /* End app.css */
 
 /* Apple Dynamic Type scale — available as Tailwind utilities for incremental adoption */
-@utility text-large-title { font-size: 2.125rem; line-height: 2.5rem; font-weight: 700; }
-@utility text-title-1 { font-size: 1.75rem; line-height: 2.125rem; font-weight: 700; }
-@utility text-title-2 { font-size: 1.375rem; line-height: 1.75rem; font-weight: 700; }
-@utility text-title-3 { font-size: 1.25rem; line-height: 1.625rem; font-weight: 600; }
-@utility text-headline { font-size: 1.0625rem; line-height: 1.375rem; font-weight: 600; }
-@utility text-apple-body { font-size: 1.0625rem; line-height: 1.375rem; font-weight: 400; }
-@utility text-callout { font-size: 1rem; line-height: 1.25rem; font-weight: 400; }
-@utility text-subheadline { font-size: 0.9375rem; line-height: 1.25rem; font-weight: 400; }
-@utility text-footnote { font-size: 0.8125rem; line-height: 1.125rem; font-weight: 400; }
-@utility text-caption-1 { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
-@utility text-caption-2 { font-size: 0.6875rem; line-height: 0.875rem; font-weight: 400; }
+@utility text-large-title {
+  font-size: 2.125rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+}
+@utility text-title-1 {
+  font-size: 1.75rem;
+  line-height: 2.125rem;
+  font-weight: 700;
+}
+@utility text-title-2 {
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+@utility text-title-3 {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  font-weight: 600;
+}
+@utility text-headline {
+  font-size: 1.0625rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+}
+@utility text-apple-body {
+  font-size: 1.0625rem;
+  line-height: 1.375rem;
+  font-weight: 400;
+}
+@utility text-callout {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+@utility text-subheadline {
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+@utility text-footnote {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+@utility text-caption-1 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+}
+@utility text-caption-2 {
+  font-size: 0.6875rem;
+  line-height: 0.875rem;
+  font-weight: 400;
+}
 
 /* Touch target enforcement for touch devices (Apple HIG: 44pt minimum) */
 @media (pointer: coarse) {
