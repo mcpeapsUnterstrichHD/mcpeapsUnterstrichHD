@@ -1,114 +1,114 @@
 <script lang="ts">
-  /**
-   * @module routes/[[locale=locale]]/cv/+page
-   * @description Visually styled Curriculum Vitae (CV) page with a rich, print-friendly layout.
-   * Displays the portfolio owner's professional profile in four major sections:
-   *
-   * 1. **Personal Info Card** - Name, title, contact details (email, phone, birthday),
-   *    and physical address, rendered in a glassmorphism card with print-safe styling
-   * 2. **Education Section** - Timeline of education history with responsive layouts:
-   *    a full horizontal timeline on `sm+` screens and a vertical border-left timeline
-   *    on mobile. Each entry shows institution, date range badges, and description.
-   * 3. **Experience Section** - Work experience in the same dual-timeline layout as education,
-   *    with badge-based skills and descriptive text for each position
-   * 4. **Skills Section** - Technical and soft skills grouped by category, displayed as
-   *    `SkillCard` components within a `MasonryGrid`. Each skill shows proficiency level,
-   *    experience duration badges, and an icon/image.
-   *
-   * Data sources:
-   * - `$lib/cv-data` provides `educationItems`, `experienceItems`, `skillItems`,
-   *   `skillCategories`, and the `sortByEndDate()` utility
-   * - `$lib/contact` provides structured `contactDetails`
-   * - Intlayer dictionaries `cv`, `aboutme`, `sites`, `layout` for i18n
-   *
-   * The page includes print-specific CSS classes (e.g. `print:bg-white`, `print:text-black`)
-   * for clean PDF output via the browser print dialog.
-   *
-   * Styled CV with dual timeline rendering: horizontal layout on macOS-class
-   * viewports (sm+), vertical timeline on iOS-class for better mobile readability.
-   *
-   * @see {@link $lib/cv-data} for CV data structures and helpers
-   * @see {@link $lib/contact} for contact detail constants
-   * @see {@link $lib/components/timeline-card} for timeline entry cards
-   * @see {@link $lib/components/skill-card} for skill display cards
-   * @see {@link routes/[[locale=locale]]/cv/+layout.svelte} for shared CV layout with print/toggle buttons
-   */
+/**
+ * @module routes/[[locale=locale]]/cv/+page
+ * @description Visually styled Curriculum Vitae (CV) page with a rich, print-friendly layout.
+ * Displays the portfolio owner's professional profile in four major sections:
+ *
+ * 1. **Personal Info Card** - Name, title, contact details (email, phone, birthday),
+ *    and physical address, rendered in a glassmorphism card with print-safe styling
+ * 2. **Education Section** - Timeline of education history with responsive layouts:
+ *    a full horizontal timeline on `sm+` screens and a vertical border-left timeline
+ *    on mobile. Each entry shows institution, date range badges, and description.
+ * 3. **Experience Section** - Work experience in the same dual-timeline layout as education,
+ *    with badge-based skills and descriptive text for each position
+ * 4. **Skills Section** - Technical and soft skills grouped by category, displayed as
+ *    `SkillCard` components within a `MasonryGrid`. Each skill shows proficiency level,
+ *    experience duration badges, and an icon/image.
+ *
+ * Data sources:
+ * - `$lib/cv-data` provides `educationItems`, `experienceItems`, `skillItems`,
+ *   `skillCategories`, and the `sortByEndDate()` utility
+ * - `$lib/contact` provides structured `contactDetails`
+ * - Intlayer dictionaries `cv`, `aboutme`, `sites`, `layout` for i18n
+ *
+ * The page includes print-specific CSS classes (e.g. `print:bg-white`, `print:text-black`)
+ * for clean PDF output via the browser print dialog.
+ *
+ * Styled CV with dual timeline rendering: horizontal layout on macOS-class
+ * viewports (sm+), vertical timeline on iOS-class for better mobile readability.
+ *
+ * @see {@link $lib/cv-data} for CV data structures and helpers
+ * @see {@link $lib/contact} for contact detail constants
+ * @see {@link $lib/components/timeline-card} for timeline entry cards
+ * @see {@link $lib/components/skill-card} for skill display cards
+ * @see {@link routes/[[locale=locale]]/cv/+layout.svelte} for shared CV layout with print/toggle buttons
+ */
 
-  import { useIntlayer } from "svelte-intlayer";
-  import * as Card from "$lib/components/ui/card";
-  import MasonryGrid from "$lib/components/MasonryGrid.svelte";
-  import * as TimelineCard from "$lib/components/timeline-card";
-  import * as SkillCard from "$lib/components/skill-card";
-  import { contactDetails } from "$lib/contact";
-  import {
-    educationItems,
-    experienceItems,
-    skillItems,
-    skillCategories,
-    sortByEndDate,
-    type SkillItem,
-  } from "$lib/cv-data";
-  import {
-    GraduationCap,
-    Briefcase,
-    Wrench,
-    Mail,
-    Phone,
-    MapPin,
-    User,
-    Calendar,
-  } from "@lucide/svelte";
-  import { Badge } from "$lib/components/ui/badge";
-  import { t, tArr } from "$lib/i18n";
-  import { cn } from "$lib/utils";
+import { useIntlayer } from "svelte-intlayer";
+import * as Card from "$lib/components/ui/card";
+import MasonryGrid from "$lib/components/MasonryGrid.svelte";
+import * as TimelineCard from "$lib/components/timeline-card";
+import * as SkillCard from "$lib/components/skill-card";
+import { contactDetails } from "$lib/contact";
+import {
+  educationItems,
+  experienceItems,
+  skillItems,
+  skillCategories,
+  sortByEndDate,
+  type SkillItem,
+} from "$lib/cv-data";
+import {
+  GraduationCap,
+  Briefcase,
+  Wrench,
+  Mail,
+  Phone,
+  MapPin,
+  User,
+  Calendar,
+} from "@lucide/svelte";
+import { Badge } from "$lib/components/ui/badge";
+import { t, tArr } from "$lib/i18n";
+import { cn } from "$lib/utils";
 
-  const cv = useIntlayer("cv");
-  const aboutme = useIntlayer("aboutme");
-  const sites = useIntlayer("sites");
-  const layout = useIntlayer("layout");
+const cv = useIntlayer("cv");
+const aboutme = useIntlayer("aboutme");
+const sites = useIntlayer("sites");
+const layout = useIntlayer("layout");
 
-  /** @constant {Array} sortedEducation - Education items sorted by end date (most recent first) */
-  const sortedEducation = sortByEndDate(educationItems);
-  /** @constant {Array} sortedExperience - Experience items sorted by end date (most recent first) */
-  const sortedExperience = sortByEndDate(experienceItems);
+/** @constant {Array} sortedEducation - Education items sorted by end date (most recent first) */
+const sortedEducation = sortByEndDate(educationItems);
+/** @constant {Array} sortedExperience - Experience items sorted by end date (most recent first) */
+const sortedExperience = sortByEndDate(experienceItems);
 
-  /**
-   * Filters and sorts skills belonging to a specific category by proficiency level (descending).
-   *
-   * @param {string} cat - The category key to filter skills by (e.g. 'languages', 'frameworks')
-   * @returns {SkillItem[]} Array of skills in the given category, sorted highest level first
-   */
-  function getSkillsByCategory(cat: string): SkillItem[] {
-    return skillItems
-      .filter((s) => s.category === cat)
-      .sort((a, b) => b.level - a.level);
-  }
-  /**
-   * Generates a human-readable experience label for a skill item by looking up the
-   * localized badge string from the Intlayer `cv` dictionary. Falls back to
-   * `"{count} {type}"` if the localization key is not found.
-   *
-   * @param {SkillItem} skill - The skill item containing an optional `experience` property
-   * @returns {string} The formatted experience label (e.g. "3 years") or empty string
-   */
-  function getExperienceLabel(skill: SkillItem): string {
-    if (!skill.experience) return "";
-    const { type, count } = skill.experience;
-    const key = `skills.badges.${type}`;
-    const result = t($cv, key, { count });
-    return result !== key ? result : `${count} ${type}`;
-  }
+/**
+ * Filters and sorts skills belonging to a specific category by proficiency level (descending).
+ *
+ * @param {string} cat - The category key to filter skills by (e.g. 'languages', 'frameworks')
+ * @returns {SkillItem[]} Array of skills in the given category, sorted highest level first
+ */
+function getSkillsByCategory(cat: string): SkillItem[] {
+  return skillItems
+    .filter((s) => s.category === cat)
+    .sort((a, b) => b.level - a.level);
+}
+/**
+ * Generates a human-readable experience label for a skill item by looking up the
+ * localized badge string from the Intlayer `cv` dictionary. Falls back to
+ * `"{count} {type}"` if the localization key is not found.
+ *
+ * @param {SkillItem} skill - The skill item containing an optional `experience` property
+ * @returns {string} The formatted experience label (e.g. "3 years") or empty string
+ */
+function getExperienceLabel(skill: SkillItem): string {
+  if (!skill.experience) return "";
+  const { type, count } = skill.experience;
+  const key = `skills.badges.${type}`;
+  const result = t($cv, key, { count });
+  return result !== key ? result : `${count} ${type}`;
+}
 
-  /**
-   * Dynamically calculates the portfolio owner's current age based on
-   * the birth date of June 6, 2003. Used in the personal info card header.
-   */
-  // Calculate age
-  const today = new Date();
-  const birthday = new Date("2003-06-06");
-  let age = today.getFullYear() - birthday.getFullYear();
-  const mo = today.getMonth() - birthday.getMonth();
-  if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) age--;
+/**
+ * Dynamically calculates the portfolio owner's current age based on
+ * the birth date of June 6, 2003. Used in the personal info card header.
+ */
+// Calculate age
+const today = new Date();
+const birthday = new Date("2003-06-06");
+let age = today.getFullYear() - birthday.getFullYear();
+const mo = today.getMonth() - birthday.getMonth();
+if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) age--;
 </script>
 
 <svelte:head>

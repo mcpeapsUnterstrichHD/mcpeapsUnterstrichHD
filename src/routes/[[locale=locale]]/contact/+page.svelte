@@ -1,84 +1,88 @@
 <script lang="ts">
-  /**
-   * @module routes/[[locale=locale]]/contact/+page
-   * @description Contact page featuring an embedded Cal.com meeting scheduler.
-   * The page adapts its iframe presentation based on the detected user platform,
-   * rendering the calendar inside a device-specific frame mockup:
-   *
-   * - **Desktop** - Displayed inside a `Safari` browser frame mockup
-   * - **iOS** - Displayed inside an `Iphone` device frame mockup
-   * - **Android** - Displayed inside an `Android` device frame mockup
-   * - **Unknown** - Displayed as a plain bordered iframe
-   *
-   * Platform detection is performed client-side on mount via user agent sniffing.
-   * The calendar iframe is wrapped in `ConsentIframe` for GDPR cookie consent gating
-   * under the "contact" consent category.
-   *
-   * The hero section displays an animated contact title and description with
-   * `AuroraText` and `TypingAnimation` components.
-   *
-   * @state {Platform} platform - Detected user platform, one of "desktop", "ios", "android", or "unknown"
-   *
-   * Contact page with platform-adaptive device frame -- Safari browser frame on Mac,
-   * iPhone frame on iOS, Android frame on Android. Follows Apple's convention of
-   * presenting content within contextually appropriate device chrome.
-   *
-   * @see {@link $lib/components/cookie/ConsentIframe.svelte} for consent-gated iframe embedding
-   * @see {@link $lib/components/Safari.svelte} for desktop browser frame mockup
-   * @see {@link $lib/components/Iphone.svelte} for iOS device frame mockup
-   * @see {@link $lib/components/Android.svelte} for Android device frame mockup
-   * @see {@link $lib/contact} for contact detail constants
-   */
+/**
+ * @module routes/[[locale=locale]]/contact/+page
+ * @description Contact page featuring an embedded Cal.com meeting scheduler.
+ * The page adapts its iframe presentation based on the detected user platform,
+ * rendering the calendar inside a device-specific frame mockup:
+ *
+ * - **Desktop** - Displayed inside a `Safari` browser frame mockup
+ * - **iOS** - Displayed inside an `Iphone` device frame mockup
+ * - **Android** - Displayed inside an `Android` device frame mockup
+ * - **Unknown** - Displayed as a plain bordered iframe
+ *
+ * Platform detection is performed client-side on mount via user agent sniffing.
+ * The calendar iframe is wrapped in `ConsentIframe` for GDPR cookie consent gating
+ * under the "contact" consent category.
+ *
+ * The hero section displays an animated contact title and description with
+ * `AuroraText` and `TypingAnimation` components.
+ *
+ * @state {Platform} platform - Detected user platform, one of "desktop", "ios", "android", or "unknown"
+ *
+ * Contact page with platform-adaptive device frame -- Safari browser frame on Mac,
+ * iPhone frame on iOS, Android frame on Android. Follows Apple's convention of
+ * presenting content within contextually appropriate device chrome.
+ *
+ * @see {@link $lib/components/cookie/ConsentIframe.svelte} for consent-gated iframe embedding
+ * @see {@link $lib/components/Safari.svelte} for desktop browser frame mockup
+ * @see {@link $lib/components/Iphone.svelte} for iOS device frame mockup
+ * @see {@link $lib/components/Android.svelte} for Android device frame mockup
+ * @see {@link $lib/contact} for contact detail constants
+ */
 
-  import { useIntlayer } from 'svelte-intlayer';
-  import * as Card from '$lib/components/ui/card';
-  import AuroraText from '$lib/components/AuroraText.svelte';
-  import TypingAnimation from '$lib/components/TypingAnimation.svelte';
-  import ConsentIframe from '$lib/components/cookie/ConsentIframe.svelte';
-  import { Mail, MessageSquare, Calendar } from '@lucide/svelte';
-  import { contactDetails } from '$lib/contact';
-  import Safari from '$lib/components/Safari.svelte';
-  import Iphone from '$lib/components/Iphone.svelte';
-  import Android from '$lib/components/Android.svelte';
-  import { onMount } from 'svelte';
-  import { cn } from '$lib/utils';
+import { useIntlayer } from "svelte-intlayer";
+import * as Card from "$lib/components/ui/card";
+import AuroraText from "$lib/components/AuroraText.svelte";
+import TypingAnimation from "$lib/components/TypingAnimation.svelte";
+import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
+import { Mail, MessageSquare, Calendar } from "@lucide/svelte";
+import { contactDetails } from "$lib/contact";
+import Safari from "$lib/components/Safari.svelte";
+import Iphone from "$lib/components/Iphone.svelte";
+import Android from "$lib/components/Android.svelte";
+import { onMount } from "svelte";
+import { cn } from "$lib/utils";
 
-  const contact = useIntlayer('contact');
-  const sites = useIntlayer('sites');
-  const layout = useIntlayer('layout');
+const contact = useIntlayer("contact");
+const sites = useIntlayer("sites");
+const layout = useIntlayer("layout");
 
-  /**
-   * Supported platform types for adaptive device frame rendering.
-   * @typedef {"desktop" | "ios" | "android" | "unknown"} Platform
-   */
-  type Platform = "desktop" | "ios" | "android" | "unknown";
+/**
+ * Supported platform types for adaptive device frame rendering.
+ * @typedef {"desktop" | "ios" | "android" | "unknown"} Platform
+ */
+type Platform = "desktop" | "ios" | "android" | "unknown";
 
-  /** @state Current detected platform, determines which device frame to render */
-  let platform: Platform = $state("unknown");
-  /** @constant The Cal.com booking URL embedded in the calendar iframe */
-  const selectedLink = $state("https://cal.com/mcpeapsunterstrichhd");
+/** @state Current detected platform, determines which device frame to render */
+let platform: Platform = $state("unknown");
+/** @constant The Cal.com booking URL embedded in the calendar iframe */
+const selectedLink = $state("https://cal.com/mcpeapsunterstrichhd");
 
-  /**
-   * Detects the user's platform by inspecting the browser user agent string.
-   * Returns a `Platform` discriminator used to select the appropriate device frame mockup.
-   *
-   * @returns {Platform} The detected platform: "ios", "android", "desktop", or "unknown"
-   */
-  function detectPlatform(): Platform {
-    if (typeof navigator === "undefined") return "unknown";
-    const userAgent = navigator.userAgent;
+/**
+ * Detects the user's platform by inspecting the browser user agent string.
+ * Returns a `Platform` discriminator used to select the appropriate device frame mockup.
+ *
+ * @returns {Platform} The detected platform: "ios", "android", "desktop", or "unknown"
+ */
+function detectPlatform(): Platform {
+  if (typeof navigator === "undefined") return "unknown";
+  const userAgent = navigator.userAgent;
 
-    if (/iphone|ipad|ipod/i.test(userAgent)) return "ios";
-    if (/android/i.test(userAgent)) return "android";
-    if (!/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase())) {
-      return "desktop";
-    }
-    return "unknown";
+  if (/iphone|ipad|ipod/i.test(userAgent)) return "ios";
+  if (/android/i.test(userAgent)) return "android";
+  if (
+    !/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+      userAgent.toLowerCase(),
+    )
+  ) {
+    return "desktop";
   }
+  return "unknown";
+}
 
-  onMount(() => {
-    platform = detectPlatform();
-  });
+onMount(() => {
+  platform = detectPlatform();
+});
 </script>
 
 <svelte:head>

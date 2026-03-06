@@ -1,102 +1,114 @@
 <script lang="ts">
-  /**
-   * @component Footer
-   *
-   * Platform-adaptive footer following Apple HIG responsive patterns. Renders as a
-   * 4-column grid on macOS-class viewports (md+), 2-column on iPadOS-class (sm),
-   * and single-column stack on iOS-class (mobile). Uses Liquid Glass material
-   * (my-glass) for translucent Nord-themed background.
-   *
-   * Organises content into four sections (Brand, Navigation, Connect, Legal).
-   *
-   * **Brand section** -- displays the user name, title, and a row of social media
-   * icon links (GitHub, Instagram, X/Twitter, TikTok, Threads, Bluesky) using
-   * icons from `@icons-pack/svelte-simple-icons`.
-   *
-   * **Navigation section** -- internal page links mirroring the sidebar's
-   * navigation group (Home, About Me, Projects, CV).
-   *
-   * **Connect section** -- contact and linkhub pages, plus a direct email link
-   * sourced from the shared `contactDetails` module.
-   *
-   * **Legal section** -- imprint link and a cookie-settings button that dispatches
-   * a `show-cookie-consent` custom DOM event to re-open the {@link CookieConsent}
-   * banner.
-   *
-   * A bottom bar renders a copyright notice with the current year and an inline
-   * {@link Langswitcher} for locale toggling.
-   *
-   * The footer is hidden in print layouts via `print:hidden` / `no-print` classes
-   * and uses the `my-glass` utility for the frosted-glass card backdrop styled
-   * with the Nord color palette.
-   *
-   * @see {@link AppSidebar} -- Primary navigation sidebar with the same link groups
-   * @see {@link Langswitcher} -- Language picker embedded in the footer bottom bar
-   * @see {@link LocalizedLink} -- Locale-aware anchor used for all internal links
-   */
-  import { useIntlayer } from 'svelte-intlayer';
-  import { Mail, Cookie } from '@lucide/svelte';
-  import LocalizedLink from '$lib/components/LocalizedLink.svelte';
-  import Langswitcher from '$lib/components/Langswitcher.svelte';
-  import CookieConsent from '$lib/components/cookie/CookieConsent.svelte';
-  import { contactDetails } from '$lib/contact';
-  import {
+/**
+ * @component Footer
+ *
+ * Platform-adaptive footer following Apple HIG responsive patterns. Renders as a
+ * 4-column grid on macOS-class viewports (md+), 2-column on iPadOS-class (sm),
+ * and single-column stack on iOS-class (mobile). Uses Liquid Glass material
+ * (my-glass) for translucent Nord-themed background.
+ *
+ * Organises content into four sections (Brand, Navigation, Connect, Legal).
+ *
+ * **Brand section** -- displays the user name, title, and a row of social media
+ * icon links (GitHub, Instagram, X/Twitter, TikTok, Threads, Bluesky) using
+ * icons from `@icons-pack/svelte-simple-icons`.
+ *
+ * **Navigation section** -- internal page links mirroring the sidebar's
+ * navigation group (Home, About Me, Projects, CV).
+ *
+ * **Connect section** -- contact and linkhub pages, plus a direct email link
+ * sourced from the shared `contactDetails` module.
+ *
+ * **Legal section** -- imprint link and a cookie-settings button that dispatches
+ * a `show-cookie-consent` custom DOM event to re-open the {@link CookieConsent}
+ * banner.
+ *
+ * A bottom bar renders a copyright notice with the current year and an inline
+ * {@link Langswitcher} for locale toggling.
+ *
+ * The footer is hidden in print layouts via `print:hidden` / `no-print` classes
+ * and uses the `my-glass` utility for the frosted-glass card backdrop styled
+ * with the Nord color palette.
+ *
+ * @see {@link AppSidebar} -- Primary navigation sidebar with the same link groups
+ * @see {@link Langswitcher} -- Language picker embedded in the footer bottom bar
+ * @see {@link LocalizedLink} -- Locale-aware anchor used for all internal links
+ */
+import { useIntlayer } from "svelte-intlayer";
+import { Mail, Cookie } from "@lucide/svelte";
+import LocalizedLink from "$lib/components/LocalizedLink.svelte";
+import Langswitcher from "$lib/components/Langswitcher.svelte";
+import CookieConsent from "$lib/components/cookie/CookieConsent.svelte";
+import { contactDetails } from "$lib/contact";
+import {
   SiGithub as Github,
   SiInstagram as Instagram,
   SiX as Twitter,
   SiTiktok as TikTok,
   SiThreads as Threads,
-  SiBluesky as Bluesky
+  SiBluesky as Bluesky,
 } from "@icons-pack/svelte-simple-icons";
-import { cn } from '$lib/utils';
+import { cn } from "$lib/utils";
 
-  const aboutme = useIntlayer('aboutme');
-  const sites = useIntlayer('sites');
-  const footer = useIntlayer('footer');
-  const cookieConsent = useIntlayer('cookieConsent');
-  const cv = useIntlayer('cv');
+const aboutme = useIntlayer("aboutme");
+const sites = useIntlayer("sites");
+const footer = useIntlayer("footer");
+const cookieConsent = useIntlayer("cookieConsent");
+const cv = useIntlayer("cv");
 
-  const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear();
 
-  /** Derived array of primary internal navigation links. Re-computes when locale changes. */
-  let navigationLinks = $derived([
-    { href: '/', label: () => $sites.root },
-    { href: '/aboutme', label: () => $sites.aboutme },
-    { href: '/projects', label: () => $sites.projects },
-    { href: '/cv', label: () => $sites.cv },
-  ]);
+/** Derived array of primary internal navigation links. Re-computes when locale changes. */
+let navigationLinks = $derived([
+  { href: "/", label: () => $sites.root },
+  { href: "/aboutme", label: () => $sites.aboutme },
+  { href: "/projects", label: () => $sites.projects },
+  { href: "/cv", label: () => $sites.cv },
+]);
 
-  /** Derived array of connect links (Contact, Linkhub). Re-computes when locale changes. */
-  let connectLinks = $derived([
-    { href: '/contact', label: () => $sites.contact },
-    { href: '/linkhub', label: () => $sites.linkhub },
-  ]);
+/** Derived array of connect links (Contact, Linkhub). Re-computes when locale changes. */
+let connectLinks = $derived([
+  { href: "/contact", label: () => $sites.contact },
+  { href: "/linkhub", label: () => $sites.linkhub },
+]);
 
-  /** Static array of external social media links with their Simple Icons components. */
-  const socialLinks = [
-    { href: 'https://github.com/mcpeapsUnterstrichHD', label: 'GitHub', icon: Github },
-    { href: 'https://instagram.com/mcpeaps_hd', label: 'Instagram', icon: Instagram },
-    { href: 'https://x.com/mcpeaps_HD', label: 'X/Twitter', icon: Twitter },
-    { href: 'https://tiktok.com/@mcpeaps_hd', label: 'TikTok', icon: TikTok },
-    { href: 'https://threads.net/@mcpeaps_hd', label: 'Threads', icon: Threads },
-    { href: 'https://bsky.mcpeapsunterstrichhd.dev', label: 'Bluesky', icon: Bluesky },
-  ];
+/** Static array of external social media links with their Simple Icons components. */
+const socialLinks = [
+  {
+    href: "https://github.com/mcpeapsUnterstrichHD",
+    label: "GitHub",
+    icon: Github,
+  },
+  {
+    href: "https://instagram.com/mcpeaps_hd",
+    label: "Instagram",
+    icon: Instagram,
+  },
+  { href: "https://x.com/mcpeaps_HD", label: "X/Twitter", icon: Twitter },
+  { href: "https://tiktok.com/@mcpeaps_hd", label: "TikTok", icon: TikTok },
+  { href: "https://threads.net/@mcpeaps_hd", label: "Threads", icon: Threads },
+  {
+    href: "https://bsky.mcpeapsunterstrichhd.dev",
+    label: "Bluesky",
+    icon: Bluesky,
+  },
+];
 
-  /** Derived array of legal links (Imprint). Re-computes when locale changes. */
-  let legalLinks = $derived([
-    { href: '/imprint', label: () => $sites.impressum },
-  ]);
+/** Derived array of legal links (Imprint). Re-computes when locale changes. */
+let legalLinks = $derived([
+  { href: "/imprint", label: () => $sites.impressum },
+]);
 
-  /**
-   * Dispatches a `show-cookie-consent` custom event on the window to re-open
-   * the {@link CookieConsent} dialog, allowing the user to update their cookie
-   * preferences from the footer.
-   */
-  function showCookieSettings() {
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('show-cookie-consent'));
-    }
+/**
+ * Dispatches a `show-cookie-consent` custom event on the window to re-open
+ * the {@link CookieConsent} dialog, allowing the user to update their cookie
+ * preferences from the footer.
+ */
+function showCookieSettings() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("show-cookie-consent"));
   }
+}
 </script>
 
 <footer id="footer" class={cn("w-full z-10 print:hidden no-print mt-auto p-2 pb-[calc(5rem+env(safe-area-inset-bottom,0px))] lg:pb-2")}>

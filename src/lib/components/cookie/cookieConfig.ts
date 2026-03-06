@@ -28,8 +28,8 @@
  * });
  * ```
  */
-import { Locales } from 'intlayer';
-import type { CookieConsentConfig } from 'vanilla-cookieconsent';
+import { Locales } from "intlayer";
+import type { CookieConsentConfig } from "vanilla-cookieconsent";
 
 /**
  * The core configuration object for vanilla-cookieconsent v3.
@@ -67,7 +67,7 @@ export const cookieConsentConfig: CookieConsentConfig = {
   hideFromBots: true,
 
   cookie: {
-    name: 'mahd-cookie-consent',
+    name: "mahd-cookie-consent",
     expiresAfterDays: 7,
   },
 
@@ -94,29 +94,29 @@ export const cookieConsentConfig: CookieConsentConfig = {
     translations: {
       [Locales.GERMAN_GERMANY]: {
         consentModal: {
-          title: '',
-          description: '',
+          title: "",
+          description: "",
         },
         preferencesModal: {
-          title: '',
-          acceptAllBtn: '',
-          acceptNecessaryBtn: '',
-          savePreferencesBtn: '',
-          closeIconLabel: 'Schließen',
+          title: "",
+          acceptAllBtn: "",
+          acceptNecessaryBtn: "",
+          savePreferencesBtn: "",
+          closeIconLabel: "Schließen",
           sections: [],
         },
       },
       [Locales.ENGLISH_UNITED_STATES]: {
         consentModal: {
-          title: '',
-          description: '',
+          title: "",
+          description: "",
         },
         preferencesModal: {
-          title: '',
-          acceptAllBtn: '',
-          acceptNecessaryBtn: '',
-          savePreferencesBtn: '',
-          closeIconLabel: 'Close',
+          title: "",
+          acceptAllBtn: "",
+          acceptNecessaryBtn: "",
+          savePreferencesBtn: "",
+          closeIconLabel: "Close",
           sections: [],
         },
       },

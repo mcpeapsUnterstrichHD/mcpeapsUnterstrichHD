@@ -1,151 +1,140 @@
 <script lang="ts">
-  /**
-   * @component Langswitcher
-   *
-   * An inline language-picker widget with real-time search, used in both the
-   * {@link AppSidebar} footer (sidebar variant) and the {@link Footer} bottom bar
-   * (standalone variant). The two layout modes are controlled by the `sidebar`
-   * prop and affect container classes, chevron direction, and dropdown placement.
-   *
-   * **Sidebar variant** (`sidebar={true}`) -- renders inside a `Sidebar.MenuSub`
-   * with `ChevronRight`, sized to match other sidebar menu items.
-   *
-   * **Footer / standalone variant** (`sidebar={false}`) -- renders with a
-   * `ChevronDown` and opens an absolutely-positioned dropdown *above* the trigger
-   * (bottom-anchored positioning).
-   *
-   * The search input doubles as the current-language display: when closed it shows
-   * `"Language (Country)"`, when opened it becomes a text field with a
-   * {@link Search} icon. An `$effect` watches for exact matches (by code, name,
-   * or country) and auto-selects them immediately.
-   *
-   * Language data is sourced from `$lib/lang` (`languages` array of `Language`
-   * objects) and locale switching is handled via `useLocale().setLocale()`, which
-   * triggers a `goto()` to the new locale-prefixed path.
-   *
-   * @example Sidebar usage
-   * ```svelte
-   * <Langswitcher sidebar />
-   * ```
-   *
-   * @example Footer / standalone usage
-   * ```svelte
-   * <Langswitcher />
-   * ```
-   *
-   * @see {@link AppSidebar} -- Embeds Langswitcher in sidebar footer
-   * @see {@link Footer} -- Embeds Langswitcher in the bottom bar
-   */
-  import { page } from "$app/state";
-  import {
-    getLocalizedUrl,
-     type Locale,
-  } from "intlayer";
-  import { useLocale, useIntlayer } from "svelte-intlayer";
-  import { goto } from "$app/navigation";
-  import * as Collapsible from "$lib/components/ui/collapsible";
-  import * as Tooltip from "$lib/components/ui/tooltip";
-  import * as Sidebar from "$lib/components/ui/sidebar";
-  import {
-    Globe,
-    ChevronRight,
-    ChevronDown,
-    Search,
-    Dot,
-  } from "@lucide/svelte";
-  import { t } from "$lib/i18n";
-  import { languages , type Language } from "$lib/lang";
-  import { cn } from "$lib/utils";
-  import { createWebHaptics } from "web-haptics/svelte";
-  import { onDestroy } from "svelte";
-  const { trigger, destroy } = createWebHaptics();
-  onDestroy(destroy);
+/**
+ * @component Langswitcher
+ *
+ * An inline language-picker widget with real-time search, used in both the
+ * {@link AppSidebar} footer (sidebar variant) and the {@link Footer} bottom bar
+ * (standalone variant). The two layout modes are controlled by the `sidebar`
+ * prop and affect container classes, chevron direction, and dropdown placement.
+ *
+ * **Sidebar variant** (`sidebar={true}`) -- renders inside a `Sidebar.MenuSub`
+ * with `ChevronRight`, sized to match other sidebar menu items.
+ *
+ * **Footer / standalone variant** (`sidebar={false}`) -- renders with a
+ * `ChevronDown` and opens an absolutely-positioned dropdown *above* the trigger
+ * (bottom-anchored positioning).
+ *
+ * The search input doubles as the current-language display: when closed it shows
+ * `"Language (Country)"`, when opened it becomes a text field with a
+ * {@link Search} icon. An `$effect` watches for exact matches (by code, name,
+ * or country) and auto-selects them immediately.
+ *
+ * Language data is sourced from `$lib/lang` (`languages` array of `Language`
+ * objects) and locale switching is handled via `useLocale().setLocale()`, which
+ * triggers a `goto()` to the new locale-prefixed path.
+ *
+ * @example Sidebar usage
+ * ```svelte
+ * <Langswitcher sidebar />
+ * ```
+ *
+ * @example Footer / standalone usage
+ * ```svelte
+ * <Langswitcher />
+ * ```
+ *
+ * @see {@link AppSidebar} -- Embeds Langswitcher in sidebar footer
+ * @see {@link Footer} -- Embeds Langswitcher in the bottom bar
+ */
+import { page } from "$app/state";
+import { getLocalizedUrl, type Locale } from "intlayer";
+import { useLocale, useIntlayer } from "svelte-intlayer";
+import { goto } from "$app/navigation";
+import * as Collapsible from "$lib/components/ui/collapsible";
+import * as Tooltip from "$lib/components/ui/tooltip";
+import * as Sidebar from "$lib/components/ui/sidebar";
+import { Globe, ChevronRight, ChevronDown, Search, Dot } from "@lucide/svelte";
+import { t } from "$lib/i18n";
+import { languages, type Language } from "$lib/lang";
+import { cn } from "$lib/utils";
+import { createWebHaptics } from "web-haptics/svelte";
+import { onDestroy } from "svelte";
+const { trigger, destroy } = createWebHaptics();
+onDestroy(destroy);
 
-  /**
-   * Props for the Langswitcher component.
-   *
-   * @property {boolean} [sidebar=false] - When true, renders in sidebar-optimised layout
-   *   (smaller text, right-chevron, Sidebar.MenuSub dropdown). When false, renders as a
-   *   standalone glass-card widget with an upward-opening dropdown.
-   */
-  interface Props {
-    sidebar?: boolean;
-  }
+/**
+ * Props for the Langswitcher component.
+ *
+ * @property {boolean} [sidebar=false] - When true, renders in sidebar-optimised layout
+ *   (smaller text, right-chevron, Sidebar.MenuSub dropdown). When false, renders as a
+ *   standalone glass-card widget with an upward-opening dropdown.
+ */
+interface Props {
+  sidebar?: boolean;
+}
 
-  let { sidebar = false }: Props = $props();
+let { sidebar = false }: Props = $props();
 
-  /** Whether the language dropdown is currently expanded. */
-  let open = $state(false);
-  /** Current search query typed into the language filter input. */
-  let search = $state("");
+/** Whether the language dropdown is currently expanded. */
+let open = $state(false);
+/** Current search query typed into the language filter input. */
+let search = $state("");
 
-  const sidebarText = useIntlayer("sidebar");
+const sidebarText = useIntlayer("sidebar");
 
-  const { locale, setLocale } = useLocale({
-    onLocaleChange: (newLocale) => {
-      const localizedPath = getLocalizedUrl(page.url.pathname, newLocale);
-      goto(localizedPath, { invalidateAll: true });
-    },
-  });
+const { locale, setLocale } = useLocale({
+  onLocaleChange: (newLocale) => {
+    const localizedPath = getLocalizedUrl(page.url.pathname, newLocale);
+    goto(localizedPath, { invalidateAll: true });
+  },
+});
 
+/** Derived `Language` object for the currently active locale. */
+const currentLanguage = $derived(
+  languages.find((l: Language) => l.code === $locale),
+);
 
+/** Derived subset of `languages` filtered by the current `search` query (name, country, or code). */
+const filteredLanguages = $derived(
+  languages.filter((lang: Language) => {
+    if (!search) return true;
+    const v = `${lang.name} ${lang.country} ${lang.code}`.toLowerCase();
+    return v.includes(search.toLowerCase());
+  }),
+);
 
-  /** Derived `Language` object for the currently active locale. */
-  const currentLanguage = $derived(
-    languages.find((l: Language) => l.code === $locale),
+/**
+ * Applies the selected language: updates the locale store, closes the
+ * dropdown, and clears the search input.
+ *
+ * @param {Language} lang - The language entry to activate.
+ */
+function setLanguage(lang: Language) {
+  setLocale(lang.code);
+  open = false;
+  search = "";
+}
+
+/**
+ * Reactive effect that auto-selects a language when the search query exactly
+ * matches a language code, name, or country (case-insensitive). This provides
+ * a "type-to-select" shortcut for power users.
+ */
+$effect(() => {
+  if (!search) return;
+  const lowerSearch = search.toLowerCase();
+  const exactMatch = languages.find(
+    (l) =>
+      l.code.toLowerCase() === lowerSearch ||
+      l.name.toLowerCase() === lowerSearch ||
+      l.country.toLowerCase() === lowerSearch,
   );
+  if (exactMatch) setLanguage(exactMatch);
+});
 
-  /** Derived subset of `languages` filtered by the current `search` query (name, country, or code). */
-  const filteredLanguages = $derived(
-    languages.filter((lang: Language) => {
-      if (!search) return true;
-      const v = `${lang.name} ${lang.country} ${lang.code}`.toLowerCase();
-      return v.includes(search.toLowerCase());
-    }),
-  );
+/** Derived Tailwind classes for the outer trigger container, switching between sidebar and standalone styles. */
+const containerClasses = $derived(
+  sidebar
+    ? "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden"
+    : "gap-2 rounded-md my-glass p-2 text-left text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground focus-visible:ring-2 flex items-center outline-hidden cursor-pointer",
+);
 
-  /**
-   * Applies the selected language: updates the locale store, closes the
-   * dropdown, and clears the search input.
-   *
-   * @param {Language} lang - The language entry to activate.
-   */
-  function setLanguage(lang: Language) {
-    setLocale(lang.code);
-    open = false;
-    search = "";
-  }
-
-  /**
-   * Reactive effect that auto-selects a language when the search query exactly
-   * matches a language code, name, or country (case-insensitive). This provides
-   * a "type-to-select" shortcut for power users.
-   */
-  $effect(() => {
-    if (!search) return;
-    const lowerSearch = search.toLowerCase();
-    const exactMatch = languages.find(
-      (l) =>
-        l.code.toLowerCase() === lowerSearch ||
-        l.name.toLowerCase() === lowerSearch ||
-        l.country.toLowerCase() === lowerSearch,
-    );
-    if (exactMatch) setLanguage(exactMatch);
-  });
-
-  /** Derived Tailwind classes for the outer trigger container, switching between sidebar and standalone styles. */
-  const containerClasses = $derived(
-    sidebar
-      ? "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground gap-2 rounded-[calc(var(--radius-sm)+2px)] p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 flex w-full items-center overflow-hidden outline-hidden"
-      : "gap-2 rounded-md my-glass p-2 text-left text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground focus-visible:ring-2 flex items-center outline-hidden cursor-pointer",
-  );
-
-  /** Derived Tailwind classes for each language option button inside the dropdown list. */
-  const buttonClasses = $derived(
-    sidebar
-      ? "cursor-pointer px-2 py-1.5 h-8 text-xs rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-left w-full"
-      : "cursor-pointer px-2 py-1.5 h-8 text-sm rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-left w-full",
-  );
+/** Derived Tailwind classes for each language option button inside the dropdown list. */
+const buttonClasses = $derived(
+  sidebar
+    ? "cursor-pointer px-2 py-1.5 h-8 text-xs rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-left w-full"
+    : "cursor-pointer px-2 py-1.5 h-8 text-sm rounded-md hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-left w-full",
+);
 </script>
 
 <Collapsible.Root

@@ -1,22 +1,22 @@
 <script lang="ts">
-  /**
-   * @component SkillCardSkeleton
-   *
-   * A loading-state placeholder that mirrors the layout of {@link SkillCard}.
-   * Renders shimmer `Skeleton` primitives for the avatar, title, badge row,
-   * and progress bar inside a shadcn-svelte `Card` with `my-glass` styling.
-   *
-   * Uses `animate-in fade-in duration-500` for a smooth entrance when swapped
-   * in during data fetching.
-   *
-   * This component accepts no props and is meant to be rendered one-to-one in
-   * place of each `SkillCard.Root` while skill data is loading.
-   *
-   * @see {@link SkillCard} -- The data-populated counterpart
-   */
-  import { Card } from "$lib/components/ui/card";
-  import { Skeleton } from "$lib/components/ui/skeleton";
-  import { cn } from "$lib/utils";
+/**
+ * @component SkillCardSkeleton
+ *
+ * A loading-state placeholder that mirrors the layout of {@link SkillCard}.
+ * Renders shimmer `Skeleton` primitives for the avatar, title, badge row,
+ * and progress bar inside a shadcn-svelte `Card` with `my-glass` styling.
+ *
+ * Uses `animate-in fade-in duration-500` for a smooth entrance when swapped
+ * in during data fetching.
+ *
+ * This component accepts no props and is meant to be rendered one-to-one in
+ * place of each `SkillCard.Root` while skill data is loading.
+ *
+ * @see {@link SkillCard} -- The data-populated counterpart
+ */
+import { Card } from "$lib/components/ui/card";
+import { Skeleton } from "$lib/components/ui/skeleton";
+import { cn } from "$lib/utils";
 </script>
 
 <Card.Root class={cn("my-glass p-4 animate-in fade-in duration-500")}>

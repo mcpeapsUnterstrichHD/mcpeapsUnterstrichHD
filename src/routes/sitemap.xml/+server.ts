@@ -22,8 +22,8 @@
  * // </url>
  */
 
-import type { RequestHandler } from './$types';
-import { languages } from '$lib/lang';
+import type { RequestHandler } from "./$types";
+import { languages } from "$lib/lang";
 
 /**
  * The default locale code, taken as the first entry from the languages configuration.
@@ -40,9 +40,9 @@ const DEFAULT_LOCALE = languages[0].code;
  * @property {string} changefreq - Expected change frequency ('daily', 'weekly', etc.)
  */
 interface SitemapEntry {
-	path: string;
-	priority: number;
-	changefreq: string;
+  path: string;
+  priority: number;
+  changefreq: string;
 }
 
 /**
@@ -51,13 +51,13 @@ interface SitemapEntry {
  * @constant {SitemapEntry[]}
  */
 const pages: SitemapEntry[] = [
-	{ path: '/', priority: 1.0, changefreq: 'daily' },
-	{ path: '/aboutme', priority: 0.8, changefreq: 'daily' },
-	{ path: '/projects', priority: 0.8, changefreq: 'daily' },
-	{ path: '/cv', priority: 0.8, changefreq: 'daily' },
-	{ path: '/linkhub', priority: 0.8, changefreq: 'daily' },
-	{ path: '/contact', priority: 0.5, changefreq: 'daily' },
-	{ path: '/imprint', priority: 0.5, changefreq: 'daily' },
+  { path: "/", priority: 1.0, changefreq: "daily" },
+  { path: "/aboutme", priority: 0.8, changefreq: "daily" },
+  { path: "/projects", priority: 0.8, changefreq: "daily" },
+  { path: "/cv", priority: 0.8, changefreq: "daily" },
+  { path: "/linkhub", priority: 0.8, changefreq: "daily" },
+  { path: "/contact", priority: 0.5, changefreq: "daily" },
+  { path: "/imprint", priority: 0.5, changefreq: "daily" },
 ];
 
 /**
@@ -79,11 +79,11 @@ const pages: SitemapEntry[] = [
  * // => 'https://example.com/en-US/aboutme'
  */
 function buildUrl(origin: string, locale: string, path: string): string {
-	if (locale === DEFAULT_LOCALE) {
-		return `${origin}${path}`;
-	}
-	const suffix = path === '/' ? '/' : path;
-	return `${origin}/${locale}${suffix}`;
+  if (locale === DEFAULT_LOCALE) {
+    return `${origin}${path}`;
+  }
+  const suffix = path === "/" ? "/" : path;
+  return `${origin}/${locale}${suffix}`;
 }
 
 /**
@@ -96,28 +96,29 @@ function buildUrl(origin: string, locale: string, path: string): string {
  * @returns {Promise<Response>} XML response with Content-Type 'application/xml' and 1-hour cache
  */
 export const GET: RequestHandler = async ({ url }) => {
-	const origin = url.origin;
-	const today = new Date().toISOString().split('T')[0];
+  const origin = url.origin;
+  const today = new Date().toISOString().split("T")[0];
 
-	const urls = pages
-		.map((page) => {
-			const xhtmlLinks = languages
-				.map(
-				(loc) =>
-					`    <xhtml:link rel="alternate" hreflang="${loc.code}" href="${buildUrl(origin, loc.code, page.path)}" />`
-			).join('\n');
+  const urls = pages
+    .map((page) => {
+      const xhtmlLinks = languages
+        .map(
+          (loc) =>
+            `    <xhtml:link rel="alternate" hreflang="${loc.code}" href="${buildUrl(origin, loc.code, page.path)}" />`,
+        )
+        .join("\n");
 
-			return `  <url>
+      return `  <url>
     <loc>${buildUrl(origin, DEFAULT_LOCALE, page.path)}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
 ${xhtmlLinks}
   </url>`;
-		})
-		.join('\n');
+    })
+    .join("\n");
 
-	const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -125,10 +126,10 @@ ${xhtmlLinks}
 ${urls}
 </urlset>`;
 
-	return new Response(xml, {
-		headers: {
-			'Content-Type': 'application/xml',
-			'Cache-Control': 'max-age=3600',
-		},
-	});
+  return new Response(xml, {
+    headers: {
+      "Content-Type": "application/xml",
+      "Cache-Control": "max-age=3600",
+    },
+  });
 };

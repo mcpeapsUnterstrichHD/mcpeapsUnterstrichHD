@@ -1,74 +1,72 @@
 <script lang="ts">
-  /**
-   * @module routes/[[locale=locale]]/cv/ats/+page
-   * @description ATS (Applicant Tracking System) optimized version of the CV page.
-   * Renders the curriculum vitae in a plain-text, machine-readable format designed
-   * to maximize compatibility with automated resume parsing systems.
-   *
-   * Unlike the styled CV page (`/cv`), this version:
-   * - Uses simple semantic HTML without complex layouts or images
-   * - Avoids masonry grids, skill level bars, and timeline cards
-   * - Formats dates as `MM/YYYY` via the `formatDate()` helper
-   * - Lists skills inline as comma-separated text grouped by category
-   * - Strips bullet point characters and normalizes whitespace in descriptions
-   * - Uses scoped CSS with plain fonts, borders, and minimal styling
-   *
-   * The page is structured as:
-   * 1. **Header** - Name, title, and contact info (email, phone, address, birthday)
-   * 2. **Education** - Entries with title, date range, and description
-   * 3. **Experience** - Entries with title, date range, and description
-   * 4. **Skills** - Categories with inline comma-separated skill names and details
-   *
-   * Data sources are shared with the styled CV page via `$lib/cv-data` and `$lib/contact`.
-   * Includes scoped CSS providing ATS-friendly typography and layout.
-   *
-   * @see {@link routes/[[locale=locale]]/cv/+page.svelte} for the visually styled CV
-   * @see {@link routes/[[locale=locale]]/cv/+layout.svelte} for the shared CV layout
-   * @see {@link $lib/cv-data} for CV data structures
-   * @see {@link $lib/contact} for contact details
-   */
+/**
+ * @module routes/[[locale=locale]]/cv/ats/+page
+ * @description ATS (Applicant Tracking System) optimized version of the CV page.
+ * Renders the curriculum vitae in a plain-text, machine-readable format designed
+ * to maximize compatibility with automated resume parsing systems.
+ *
+ * Unlike the styled CV page (`/cv`), this version:
+ * - Uses simple semantic HTML without complex layouts or images
+ * - Avoids masonry grids, skill level bars, and timeline cards
+ * - Formats dates as `MM/YYYY` via the `formatDate()` helper
+ * - Lists skills inline as comma-separated text grouped by category
+ * - Strips bullet point characters and normalizes whitespace in descriptions
+ * - Uses scoped CSS with plain fonts, borders, and minimal styling
+ *
+ * The page is structured as:
+ * 1. **Header** - Name, title, and contact info (email, phone, address, birthday)
+ * 2. **Education** - Entries with title, date range, and description
+ * 3. **Experience** - Entries with title, date range, and description
+ * 4. **Skills** - Categories with inline comma-separated skill names and details
+ *
+ * Data sources are shared with the styled CV page via `$lib/cv-data` and `$lib/contact`.
+ * Includes scoped CSS providing ATS-friendly typography and layout.
+ *
+ * @see {@link routes/[[locale=locale]]/cv/+page.svelte} for the visually styled CV
+ * @see {@link routes/[[locale=locale]]/cv/+layout.svelte} for the shared CV layout
+ * @see {@link $lib/cv-data} for CV data structures
+ * @see {@link $lib/contact} for contact details
+ */
 
-  import { useIntlayer } from "svelte-intlayer";
-  import { contactDetails } from "$lib/contact";
-  import {
-    educationItems,
-    experienceItems,
-    skillItems,
-    skillCategories,
-    sortByEndDate,
-  } from "$lib/cv-data";
-  import { t } from "$lib/i18n";
-  import { cn } from "$lib/utils";
+import { useIntlayer } from "svelte-intlayer";
+import { contactDetails } from "$lib/contact";
+import {
+  educationItems,
+  experienceItems,
+  skillItems,
+  skillCategories,
+  sortByEndDate,
+} from "$lib/cv-data";
+import { t } from "$lib/i18n";
+import { cn } from "$lib/utils";
 
+const cv = useIntlayer("cv");
+const aboutme = useIntlayer("aboutme");
+const sites = useIntlayer("sites");
+const layout = useIntlayer("layout");
 
+/**
+ * Converts a German-style date string (e.g. "06.2003" or "01.06.2003")
+ * into an ATS-friendly `MM/YYYY` format.
+ *
+ * @param {string} d - Date string in dot-separated format (e.g. "06.2003" or "01.06.2003")
+ * @returns {string} Reformatted date string (e.g. "06/2003" or "06/2003"), or original if unparseable
+ *
+ * @example
+ * formatDate("06.2023")     // => "06/2023"
+ * formatDate("01.06.2003")  // => "06/2003"
+ */
+function formatDate(d: string): string {
+  const parts = d.split(".");
+  if (parts.length === 2) return `${parts[0]}/${parts[1]}`;
+  if (parts.length === 3) return `${parts[1]}/${parts[2]}`;
+  return d;
+}
 
-  const cv = useIntlayer("cv");
-  const aboutme = useIntlayer("aboutme");
-  const sites = useIntlayer("sites");
-  const layout = useIntlayer("layout");
-
-  /**
-   * Converts a German-style date string (e.g. "06.2003" or "01.06.2003")
-   * into an ATS-friendly `MM/YYYY` format.
-   *
-   * @param {string} d - Date string in dot-separated format (e.g. "06.2003" or "01.06.2003")
-   * @returns {string} Reformatted date string (e.g. "06/2003" or "06/2003"), or original if unparseable
-   *
-   * @example
-   * formatDate("06.2023")     // => "06/2023"
-   * formatDate("01.06.2003")  // => "06/2003"
-   */
-  function formatDate(d: string): string {
-    const parts = d.split(".");
-    if (parts.length === 2) return `${parts[0]}/${parts[1]}`;
-    if (parts.length === 3) return `${parts[1]}/${parts[2]}`;
-    return d;
-  }
-
-  /** @constant {Array} sortedEducation - Education entries sorted by end date (most recent first) */
-  const sortedEducation = sortByEndDate(educationItems);
-  /** @constant {Array} sortedExperience - Experience entries sorted by end date (most recent first) */
-  const sortedExperience = sortByEndDate(experienceItems);
+/** @constant {Array} sortedEducation - Education entries sorted by end date (most recent first) */
+const sortedEducation = sortByEndDate(educationItems);
+/** @constant {Array} sortedExperience - Experience entries sorted by end date (most recent first) */
+const sortedExperience = sortByEndDate(experienceItems);
 </script>
 
 <svelte:head>

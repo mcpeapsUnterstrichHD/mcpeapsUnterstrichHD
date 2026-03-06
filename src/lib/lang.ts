@@ -39,6 +39,16 @@ export interface Language {
  * ```
  */
 export const languages: Language[] = [
-  { code: Locales.GERMAN_GERMANY, name: "Deutsch", country: "Deutschland", dir: "ltr" },
-  { code: Locales.ENGLISH_UNITED_STATES, name: "English", country: "USA", dir: "ltr" },
+  {
+    code: Locales.GERMAN_GERMANY,
+    name: "Deutsch",
+    country: "Deutschland",
+    dir: "ltr",
+  },
+  {
+    code: Locales.ENGLISH_UNITED_STATES,
+    name: "English",
+    country: "USA",
+    dir: "ltr",
+  },
 ];

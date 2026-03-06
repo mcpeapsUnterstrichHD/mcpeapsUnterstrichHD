@@ -1,38 +1,37 @@
 <script lang="ts">
-  /**
-   * @component PinnedProjects
-   *
-   * Displays the portfolio's pinned (featured) projects in a responsive masonry
-   * grid. The section heading uses a {@link TypingAnimation} with the localized
-   * "pinned" label and a Lucide pin icon.
-   *
-   * Project data is sourced from `getPinnedProjectsData()` and rendered as
-   * {@link ProjectCard.Root} components with i18n-resolved titles, descriptions,
-   * image alt texts, and badge arrays. The masonry layout is handled by
-   * {@link MasonryGrid} in its "pinned_projects" variant.
-   *
-   * This component has no external props -- it is a self-contained section widget
-   * meant to be placed directly in a page layout.
-   *
-   * @see {@link TypingAnimation} for the animated heading
-   * @see {@link MasonryGrid} for the responsive column layout
-   * @see {@link project-card/project-card.svelte} for individual project cards
-   */
-  import { useIntlayer } from "svelte-intlayer";
-  import TypingAnimation from "$lib/components/TypingAnimation.svelte";
-  import MasonryGrid from "$lib/components/MasonryGrid.svelte";
-  import * as ProjectCard from "$lib/components/project-card";
-  import { Pin } from "@lucide/svelte";
-  import { t } from "$lib/i18n";
-  import { getPinnedProjectsData } from "$lib/project-data";
-  import { cn } from "$lib/utils";
+/**
+ * @component PinnedProjects
+ *
+ * Displays the portfolio's pinned (featured) projects in a responsive masonry
+ * grid. The section heading uses a {@link TypingAnimation} with the localized
+ * "pinned" label and a Lucide pin icon.
+ *
+ * Project data is sourced from `getPinnedProjectsData()` and rendered as
+ * {@link ProjectCard.Root} components with i18n-resolved titles, descriptions,
+ * image alt texts, and badge arrays. The masonry layout is handled by
+ * {@link MasonryGrid} in its "pinned_projects" variant.
+ *
+ * This component has no external props -- it is a self-contained section widget
+ * meant to be placed directly in a page layout.
+ *
+ * @see {@link TypingAnimation} for the animated heading
+ * @see {@link MasonryGrid} for the responsive column layout
+ * @see {@link project-card/project-card.svelte} for individual project cards
+ */
+import { useIntlayer } from "svelte-intlayer";
+import TypingAnimation from "$lib/components/TypingAnimation.svelte";
+import MasonryGrid from "$lib/components/MasonryGrid.svelte";
+import * as ProjectCard from "$lib/components/project-card";
+import { Pin } from "@lucide/svelte";
+import { t } from "$lib/i18n";
+import { getPinnedProjectsData } from "$lib/project-data";
+import { cn } from "$lib/utils";
 
+/** Intlayer dictionary for the "projects" content key, providing localized strings. */
+const projectsInt = useIntlayer("projects");
 
-  /** Intlayer dictionary for the "projects" content key, providing localized strings. */
-  const projectsInt = useIntlayer("projects");
-
-  /** Derived array of pinned project data objects, re-evaluated when locale changes. */
-  let pinnedProjects = $derived(getPinnedProjectsData());
+/** Derived array of pinned project data objects, re-evaluated when locale changes. */
+let pinnedProjects = $derived(getPinnedProjectsData());
 </script>
 
 <div class={cn("w-full px-4")}>

@@ -15,9 +15,9 @@
  * Enumeration of supported contact methods.
  */
 enum ContactType {
-telephone = "telephone",
-email = "email",
-address = "address"
+  telephone = "telephone",
+  email = "email",
+  address = "address",
 }
 
 /**
@@ -27,8 +27,8 @@ address = "address"
  * @property link - Actionable URI for the contact method (e.g. `tel:`, `mailto:`)
  */
 interface ContactDetails {
-display: string,
-link: string
+  display: string;
+  link: string;
 }
 
 /**
@@ -41,11 +41,11 @@ link: string
  * @property link - Deep link to the address on Apple Maps
  */
 interface AddressDetails {
-street: string,
-zip: string,
-city: string,
-country: string,
-link: string
+  street: string;
+  zip: string;
+  city: string;
+  country: string;
+  link: string;
 }
 
 /**
@@ -63,23 +63,23 @@ link: string
  * ```
  */
 export const contactDetails: {
-[ContactType.telephone]: ContactDetails
-[ContactType.email]: ContactDetails
-[ContactType.address]: AddressDetails
+  [ContactType.telephone]: ContactDetails;
+  [ContactType.email]: ContactDetails;
+  [ContactType.address]: AddressDetails;
 } = {
   [ContactType.telephone]: {
-  display: "+4917645172171",
-  link: "tel:+4917645172171"
+    display: "+4917645172171",
+    link: "tel:+4917645172171",
   },
   [ContactType.email]: {
-  display: "aps.fabian@mcpeapsunterstrichhd.dev",
-  link: "mailto:aps.fabian@mcpeapsunterstrichhd.dev"
+    display: "aps.fabian@mcpeapsunterstrichhd.dev",
+    link: "mailto:aps.fabian@mcpeapsunterstrichhd.dev",
   },
   [ContactType.address]: {
-  street: "Ludwig-Renn-Straße 33",
-  zip: "12679",
-  city: "Cv.about.address.berlin",
-  country: "Cv.about.address.germany",
-  link: "https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland"
-  }
-}
+    street: "Ludwig-Renn-Straße 33",
+    zip: "12679",
+    city: "Cv.about.address.berlin",
+    country: "Cv.about.address.germany",
+    link: "https://maps.apple.com/?address=Ludwig-Renn-Stra%C3%9Fe%2033,%2012679%20Berlin,%20Deutschland",
+  },
+};

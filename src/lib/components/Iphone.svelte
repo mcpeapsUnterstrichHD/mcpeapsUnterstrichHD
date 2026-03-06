@@ -1,89 +1,89 @@
 <script lang="ts">
-  /**
-   * @component Iphone
-   *
-   * An iPhone device mockup rendered entirely with SVG. The frame includes
-   * realistic details: rounded device body, volume/power side buttons, and the
-   * Dynamic Island (camera punch-hole and pill-shaped sensor housing) at the top.
-   *
-   * The screen area supports three content modes: a static image (`src`), an
-   * auto-playing looped video (`videoSrc`), or arbitrary Svelte children. Content
-   * is absolutely positioned within the screen cutout using percentage-based
-   * coordinates. The frame supports light and dark mode via Tailwind `dark:`
-   * class variants.
-   *
-   * Uses Svelte 4 syntax (`export let` props, `$:` reactive statements).
-   *
-   * @see {@link Safari.svelte} for browser mockup
-   * @see {@link Android.svelte} for Android device mockup
-   *
-   * @example
-   * ```svelte
-   * <Iphone src="/mobile-screenshot.png" />
-   * ```
-   *
-   * @example With video
-   * ```svelte
-   * <Iphone videoSrc="/app-demo.mp4" className="max-w-xs" />
-   * ```
-   *
-   * @example With custom children
-   * ```svelte
-   * <Iphone>
-   *   <div class={cn("flex items-center justify-center h-full">App content</div>
-   * </Iphone>
-   * ```
-   */
-  import type { Snippet } from "svelte";
-  import {cn} from "$lib/utils";
+/**
+ * @component Iphone
+ *
+ * An iPhone device mockup rendered entirely with SVG. The frame includes
+ * realistic details: rounded device body, volume/power side buttons, and the
+ * Dynamic Island (camera punch-hole and pill-shaped sensor housing) at the top.
+ *
+ * The screen area supports three content modes: a static image (`src`), an
+ * auto-playing looped video (`videoSrc`), or arbitrary Svelte children. Content
+ * is absolutely positioned within the screen cutout using percentage-based
+ * coordinates. The frame supports light and dark mode via Tailwind `dark:`
+ * class variants.
+ *
+ * Uses Svelte 4 syntax (`export let` props, `$:` reactive statements).
+ *
+ * @see {@link Safari.svelte} for browser mockup
+ * @see {@link Android.svelte} for Android device mockup
+ *
+ * @example
+ * ```svelte
+ * <Iphone src="/mobile-screenshot.png" />
+ * ```
+ *
+ * @example With video
+ * ```svelte
+ * <Iphone videoSrc="/app-demo.mp4" className="max-w-xs" />
+ * ```
+ *
+ * @example With custom children
+ * ```svelte
+ * <Iphone>
+ *   <div class={cn("flex items-center justify-center h-full">App content</div>
+ * </Iphone>
+ * ```
+ */
+import type { Snippet } from "svelte";
+import { cn } from "$lib/utils";
 
-  /** Total SVG viewBox width of the iPhone frame. */
-  const PHONE_WIDTH = 433;
-  /** Total SVG viewBox height of the iPhone frame. */
-  const PHONE_HEIGHT = 882;
-  /** X offset of the screen content area within the SVG viewBox. */
-  const SCREEN_X = 21.25;
-  /** Y offset of the screen content area within the SVG viewBox. */
-  const SCREEN_Y = 19.25;
-  /** Width of the screen content area in SVG units. */
-  const SCREEN_WIDTH = 389.5;
-  /** Height of the screen content area in SVG units. */
-  const SCREEN_HEIGHT = 843.5;
-  /** Corner radius of the screen area in SVG units, for rounded clipping. */
-  const SCREEN_RADIUS = 55.75;
+/** Total SVG viewBox width of the iPhone frame. */
+const PHONE_WIDTH = 433;
+/** Total SVG viewBox height of the iPhone frame. */
+const PHONE_HEIGHT = 882;
+/** X offset of the screen content area within the SVG viewBox. */
+const SCREEN_X = 21.25;
+/** Y offset of the screen content area within the SVG viewBox. */
+const SCREEN_Y = 19.25;
+/** Width of the screen content area in SVG units. */
+const SCREEN_WIDTH = 389.5;
+/** Height of the screen content area in SVG units. */
+const SCREEN_HEIGHT = 843.5;
+/** Corner radius of the screen area in SVG units, for rounded clipping. */
+const SCREEN_RADIUS = 55.75;
 
-  /** Screen X offset as a percentage of phone width, for absolute positioning. */
-  const LEFT_PCT = (SCREEN_X / PHONE_WIDTH) * 100;
-  /** Screen Y offset as a percentage of phone height. */
-  const TOP_PCT = (SCREEN_Y / PHONE_HEIGHT) * 100;
-  /** Screen width as a percentage of phone width. */
-  const WIDTH_PCT = (SCREEN_WIDTH / PHONE_WIDTH) * 100;
-  /** Screen height as a percentage of phone height. */
-  const HEIGHT_PCT = (SCREEN_HEIGHT / PHONE_HEIGHT) * 100;
-  /** Horizontal border-radius percentage for CSS rounded corners matching the SVG screen area. */
-  const RADIUS_H = (SCREEN_RADIUS / SCREEN_WIDTH) * 100;
-  /** Vertical border-radius percentage for CSS rounded corners matching the SVG screen area. */
-  const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100;
+/** Screen X offset as a percentage of phone width, for absolute positioning. */
+const LEFT_PCT = (SCREEN_X / PHONE_WIDTH) * 100;
+/** Screen Y offset as a percentage of phone height. */
+const TOP_PCT = (SCREEN_Y / PHONE_HEIGHT) * 100;
+/** Screen width as a percentage of phone width. */
+const WIDTH_PCT = (SCREEN_WIDTH / PHONE_WIDTH) * 100;
+/** Screen height as a percentage of phone height. */
+const HEIGHT_PCT = (SCREEN_HEIGHT / PHONE_HEIGHT) * 100;
+/** Horizontal border-radius percentage for CSS rounded corners matching the SVG screen area. */
+const RADIUS_H = (SCREEN_RADIUS / SCREEN_WIDTH) * 100;
+/** Vertical border-radius percentage for CSS rounded corners matching the SVG screen area. */
+const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100;
 
-  /**
-   * @prop {string} [src=''] - Source URL for a static image to display in the screen area.
-   *   Ignored when `videoSrc` is provided.
-   * @prop {string} [videoSrc=''] - Source URL for a video to auto-play (looped, muted) in the screen area.
-   *   Takes priority over `src`.
-   * @prop {string} [className=''] - Additional CSS class(es) on the wrapper div.
-   * @prop {string} [style=''] - Inline styles appended to the wrapper div.
-   * @prop {Snippet} [children] - Optional Svelte snippet rendered inside the screen area.
-   */
-  export let src: string = "";
-  export let videoSrc: string = "";
-  export let className: string = "";
-  export let style: string = "";
-  export let children: Snippet | undefined = undefined;
+/**
+ * @prop {string} [src=''] - Source URL for a static image to display in the screen area.
+ *   Ignored when `videoSrc` is provided.
+ * @prop {string} [videoSrc=''] - Source URL for a video to auto-play (looped, muted) in the screen area.
+ *   Takes priority over `src`.
+ * @prop {string} [className=''] - Additional CSS class(es) on the wrapper div.
+ * @prop {string} [style=''] - Inline styles appended to the wrapper div.
+ * @prop {Snippet} [children] - Optional Svelte snippet rendered inside the screen area.
+ */
+export let src: string = "";
+export let videoSrc: string = "";
+export let className: string = "";
+export let style: string = "";
+export let children: Snippet | undefined = undefined;
 
-  /** Whether a video source was provided (video takes priority over image). */
-  $: hasVideo = !!videoSrc;
-  /** Whether any screen content exists (video, image, or children). Used to apply the SVG punch-out mask. */
-  $: hasMedia = hasVideo || !!src || !!children;
+/** Whether a video source was provided (video takes priority over image). */
+$: hasVideo = !!videoSrc;
+/** Whether any screen content exists (video, image, or children). Used to apply the SVG punch-out mask. */
+$: hasMedia = hasVideo || !!src || !!children;
 </script>
 
 <div

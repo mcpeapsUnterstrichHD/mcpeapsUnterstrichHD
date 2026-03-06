@@ -1,47 +1,47 @@
 <script lang="ts">
-  /**
-   * @module routes/[[locale=locale]]/+page
-   * @description Home / landing page of the portfolio website. Displays a fullscreen
-   * hero section with animated typing effects for the greeting, name, and professional
-   * title. The name is rendered with an `AuroraText` gradient animation using
-   * Nord-inspired colors (#C16069 red / #A2BF8A green).
-   *
-   * Below the hero text, four call-to-action buttons link to the main sections:
-   * About Me, Projects, CV, and Contact. All links are locale-aware via
-   * `getLocalizedUrl()`, ensuring correct routing under the optional locale prefix.
-   *
-   * The page uses multiple Intlayer content dictionaries:
-   * - `aboutme` - for name, greeting, title
-   * - `sites` - for navigation labels
-   * - `layout` - for the site-wide title
-   * - `recommendation` - for CTA button labels
-   *
-   * Hero landing page with centered content following iOS onboarding screen
-   * patterns. Typography scales responsively across Apple viewport classes
-   * (4xl iPhone to 8xl Mac).
-   *
-   * @see {@link $lib/components/AuroraText.svelte} for the gradient text animation
-   * @see {@link $lib/components/TypingAnimation.svelte} for the typewriter effect
-   */
+/**
+ * @module routes/[[locale=locale]]/+page
+ * @description Home / landing page of the portfolio website. Displays a fullscreen
+ * hero section with animated typing effects for the greeting, name, and professional
+ * title. The name is rendered with an `AuroraText` gradient animation using
+ * Nord-inspired colors (#C16069 red / #A2BF8A green).
+ *
+ * Below the hero text, four call-to-action buttons link to the main sections:
+ * About Me, Projects, CV, and Contact. All links are locale-aware via
+ * `getLocalizedUrl()`, ensuring correct routing under the optional locale prefix.
+ *
+ * The page uses multiple Intlayer content dictionaries:
+ * - `aboutme` - for name, greeting, title
+ * - `sites` - for navigation labels
+ * - `layout` - for the site-wide title
+ * - `recommendation` - for CTA button labels
+ *
+ * Hero landing page with centered content following iOS onboarding screen
+ * patterns. Typography scales responsively across Apple viewport classes
+ * (4xl iPhone to 8xl Mac).
+ *
+ * @see {@link $lib/components/AuroraText.svelte} for the gradient text animation
+ * @see {@link $lib/components/TypingAnimation.svelte} for the typewriter effect
+ */
 
-  import { useIntlayer } from 'svelte-intlayer';
-  import { getLocalizedUrl, type Locale } from 'intlayer';
-  import { useLocale } from 'svelte-intlayer';
-  import AuroraText from '$lib/components/AuroraText.svelte';
-  import TypingAnimation from '$lib/components/TypingAnimation.svelte';
-  import { User, FolderOpen, FileText, Mail } from '@lucide/svelte';
-  import * as Button from '$lib/components/ui/button';
-  import { createWebHaptics } from "web-haptics/svelte";
-  import { onDestroy } from "svelte";
-  const { trigger, destroy } = createWebHaptics();
-  onDestroy(destroy);
+import { useIntlayer } from "svelte-intlayer";
+import { getLocalizedUrl, type Locale } from "intlayer";
+import { useLocale } from "svelte-intlayer";
+import AuroraText from "$lib/components/AuroraText.svelte";
+import TypingAnimation from "$lib/components/TypingAnimation.svelte";
+import { User, FolderOpen, FileText, Mail } from "@lucide/svelte";
+import * as Button from "$lib/components/ui/button";
+import { createWebHaptics } from "web-haptics/svelte";
+import { onDestroy } from "svelte";
+const { trigger, destroy } = createWebHaptics();
+onDestroy(destroy);
 
-  const { locale } = useLocale();
+const { locale } = useLocale();
 
-  const aboutme = useIntlayer('aboutme');
-  const sites = useIntlayer('sites');
-  const layout = useIntlayer('layout');
-  const recommendation = useIntlayer('recommendation');
+const aboutme = useIntlayer("aboutme");
+const sites = useIntlayer("sites");
+const layout = useIntlayer("layout");
+const recommendation = useIntlayer("recommendation");
 </script>
 
 <svelte:head>
