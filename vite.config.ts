@@ -151,6 +151,7 @@ export default defineConfig({
   ],
   ssr: {
     noExternal: ["@icons-pack/svelte-simple-icons"],
+    external: ["workbox-window"],
   },
   server: {
     watch: {
