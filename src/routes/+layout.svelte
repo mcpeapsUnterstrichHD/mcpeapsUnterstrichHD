@@ -39,6 +39,7 @@ import Particles from "$lib/components/Particles.svelte";
 import Footer from "$lib/components/Footer.svelte";
 import RecommendationToasts from "$lib/components/RecommendationToasts.svelte";
 import CookieConsent from "$lib/components/cookie/CookieConsent.svelte";
+import ReloadPrompt from "$lib/components/ReloadPrompt.svelte";
 import { Toaster } from "$lib/components/ui/sonner";
 import { ModeWatcher } from "mode-watcher";
 import type { Snippet } from "svelte";
@@ -93,6 +94,7 @@ let { children }: { children: Snippet } = $props();
       />
       <RecommendationToasts />
       <CookieConsent />
+      <ReloadPrompt />
       <Footer />
       <TabBar />
     </div>

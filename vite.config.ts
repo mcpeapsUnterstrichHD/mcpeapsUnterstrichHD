@@ -7,6 +7,7 @@ import biomePlugin from "vite-plugin-biome";
 import Icons from "unplugin-icons/vite";
 import TurboConsole from "unplugin-turbo-console/vite";
 import ViteRestart from "vite-plugin-restart";
+import { SvelteKitPWA } from "@vite-pwa/sveltekit";
 import { qrcode } from "vite-plugin-qrcode";
 
 export default defineConfig({
@@ -29,6 +30,107 @@ export default defineConfig({
     }),
     tailwindcss(),
     sveltekit(),
+    SvelteKitPWA({
+      srcDir: "src",
+      strategies: "generateSW",
+      registerType: "prompt",
+      includeAssets: [
+        "pictures/favicon.ico",
+        "pictures/logo192.png",
+        "pictures/logo512.png",
+        "pictures/logo_maskable_icon.png",
+      ],
+      manifest: {
+        name: "Fabian Aps",
+        short_name: "Fabian Aps",
+        description: "my own portfolio/impressum website",
+        start_url: "/",
+        display: "standalone",
+        display_override: ["standalone", "window-controls-overlay"],
+        background_color: "#2E3440",
+        theme_color: "#2E3440",
+        lang: "de-DE",
+        id: "dev.mcpeapsUnterstrichHD.mcpeapsUnterstrichHD",
+        icons: [
+          {
+            src: "pictures/favicon.ico",
+            sizes: "any",
+            type: "image/x-icon",
+          },
+          {
+            src: "pictures/logo192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "pictures/logo512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "pictures/logo_maskable_icon.png",
+            sizes: "1024x1024",
+            type: "image/png",
+            purpose: "maskable",
+          },
+        ],
+        screenshots: [
+          {
+            src: "pictures/logo.png",
+            sizes: "3000x3000",
+            type: "image/png",
+            form_factor: "wide",
+            label: "Logo of mcpeaps_HD",
+          },
+          {
+            src: "pictures/logo.png",
+            sizes: "3000x3000",
+            type: "image/png",
+            form_factor: "narrow",
+            label: "Logo of mcpeaps_HD",
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "google-fonts-cache",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "gstatic-fonts-cache",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
+      },
+      devOptions: {
+        enabled: true,
+        type: "module",
+        navigateFallback: "/",
+      },
+    }),
     devtoolsJson(),
   ],
   ssr: {
