@@ -91,7 +91,6 @@ let pathForAlternates = $derived.by(() => {
   <title>{$layout.title}</title>
   <meta name="description" content={$layout.description} />
 	<link rel="icon" href="/pictures/favicon.ico" />
-	<link rel="manifest" href="/manifest.webmanifest" />
 	<link rel="apple-touch-icon" href="/pictures/logo192.png" />
 		<meta name="theme-color" content="#2E3440" />
 		<meta
