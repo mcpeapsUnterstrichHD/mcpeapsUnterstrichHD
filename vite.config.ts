@@ -181,5 +181,8 @@ export default defineConfig({
     cssMinify: true,
     license: true,
     ssr: true,
+    rollupOptions: {
+      external: ["workbox-window"],
+    },
   },
 });
