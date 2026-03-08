@@ -56,6 +56,7 @@ const webManifest = $derived(pwaInfo ? pwaInfo.webManifest.linkTag : "");
 </script>
 
 <svelte:head>
+<meta charset="utf-8" />
   {#if pwaAssetsHead.themeColor}
     <meta name="theme-color" content={pwaAssetsHead.themeColor.content} />
   {/if}
