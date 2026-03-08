@@ -54,11 +54,6 @@ export default defineConfig({
         id: "dev.mcpeapsUnterstrichHD.mcpeapsUnterstrichHD",
         icons: [
           {
-            src: "pictures/favicon.ico",
-            sizes: "any",
-            type: "image/x-icon",
-          },
-          {
             src: "pictures/logo192.png",
             sizes: "192x192",
             type: "image/png",
@@ -185,8 +180,6 @@ export default defineConfig({
     minify: true,
     cssMinify: true,
     license: true,
-    rollupOptions: {
-      external: ["workbox-window"],
-    },
+    rollupOptions: {},
   },
 });

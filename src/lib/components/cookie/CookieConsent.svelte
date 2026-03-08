@@ -89,13 +89,6 @@ let sheetOpen = $state(false);
  * @returns {void}
  */
 function syncCategories() {
-  trigger([
-    { duration: 60, intensity: 1 },
-    { delay: 30, duration: 60, intensity: 0.75 },
-    { delay: 30, duration: 60 },
-    { delay: 30, duration: 60, intensity: 0.75 },
-    { delay: 30, duration: 60, intensity: 1 },
-  ]);
   CC.setLanguage($locale);
   cookieState.multimedia = CC.acceptedCategory("multimedia");
   cookieState.socialMedia = CC.acceptedCategory("socialMedia");
