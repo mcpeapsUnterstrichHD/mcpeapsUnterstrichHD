@@ -39,7 +39,6 @@ import Particles from "$lib/components/Particles.svelte";
 import Footer from "$lib/components/Footer.svelte";
 import RecommendationToasts from "$lib/components/RecommendationToasts.svelte";
 import CookieConsent from "$lib/components/cookie/CookieConsent.svelte";
-import ReloadPrompt from "$lib/components/ReloadPrompt.svelte";
 import { Toaster } from "$lib/components/ui/sonner";
 import { ModeWatcher } from "mode-watcher";
 import type { Snippet } from "svelte";
@@ -47,9 +46,18 @@ import { page } from "$app/state";
 import { fly, fade } from "svelte/transition";
 import { cubicOut, cubicIn } from "svelte/easing";
 import { cn } from "$lib/utils";
+import { pwaInfo } from "virtual:pwa-info";
 
 let { children }: { children: Snippet } = $props();
+
+const webManifest = $derived(pwaInfo ? pwaInfo.webManifest.linkTag : "");
 </script>
+
+<svelte:head>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html webManifest}
+</svelte:head>
+
 <ModeWatcher defaultMode="dark" />
 
 <ClickSpark
@@ -94,7 +102,9 @@ let { children }: { children: Snippet } = $props();
       />
       <RecommendationToasts />
       <CookieConsent />
-      <ReloadPrompt />
+      {#await import("$lib/components/ReloadPrompt.svelte") then { default: ReloadPrompt }}
+        <ReloadPrompt />
+      {/await}
       <Footer />
       <TabBar />
     </div>

@@ -93,8 +93,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
-        navigateFallback: "/offline.html",
+        globPatterns: ["client/**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.mode === "navigate",
@@ -109,6 +108,12 @@ export default defineConfig({
                 statuses: [0, 200],
               },
               networkTimeoutSeconds: 3,
+              plugins: [
+                {
+                  handlerDidError: async () =>
+                    Response.redirect("/offline.html", 302),
+                },
+              ],
             },
           },
           {
@@ -146,12 +151,14 @@ export default defineConfig({
         type: "module",
         navigateFallback: "/",
       },
+      kit: {
+        includeVersionFile: true,
+      },
     }),
     devtoolsJson(),
   ],
   ssr: {
     noExternal: ["@icons-pack/svelte-simple-icons"],
-    external: ["workbox-window"],
   },
   server: {
     watch: {
@@ -180,8 +187,5 @@ export default defineConfig({
     minify: true,
     cssMinify: true,
     license: true,
-    rollupOptions: {
-      external: ["workbox-window"],
-    },
   },
 });
