@@ -1,58 +1,33 @@
 <script lang="ts">
-import { useRegisterSW } from "virtual:pwa-register/svelte";
+import { onMount } from "svelte";
 import { toast } from "svelte-sonner";
 
-let intervalId: ReturnType<typeof setInterval> | undefined;
+async function detectSWUpdate() {
+  const registration = await navigator.serviceWorker.ready;
 
-const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
-  onRegisteredSW(swUrl: string, r: ServiceWorkerRegistration | undefined) {
-    console.log(`SW registered: ${swUrl}`);
-    if (!r) return;
-    intervalId = setInterval(
-      async () => {
-        if (r.installing || !navigator) return;
-        if ("connection" in navigator && !navigator.onLine) return;
-        const resp = await fetch(swUrl, {
-          cache: "no-store",
-          headers: { cache: "no-store", "cache-control": "no-cache" },
-        });
-        if (resp?.status === 200) await r.update();
-      },
-      60 * 60 * 1000,
-    );
-  },
-  onOfflineReady() {
-    console.log("PWA application ready to work offline");
-  },
-  onRegisterError(error: unknown) {
-    console.log("SW registration error", error);
-  },
-});
+  registration.addEventListener("updatefound", () => {
+    const newSW = registration.installing;
 
-$effect(() => {
-  return () => {
-    if (intervalId) clearInterval(intervalId);
-  };
-});
+    if (newSW) {
+      newSW.addEventListener("statechange", () => {
+        if (newSW.state === "installed") {
+          toast("A new version is available. Please refresh the page.", {
+            duration: Infinity,
+            action: {
+              label: "Refresh",
+              onClick: () => {
+                newSW.postMessage({ action: "skipWaiting" });
+                window.location.reload();
+              },
+            },
+          });
+        }
+      });
+    }
+  });
+}
 
-$effect(() => {
-  if ($offlineReady) {
-    toast.success("App ready to work offline.");
-    offlineReady.set(false);
-  }
-});
-
-$effect(() => {
-  if ($needRefresh) {
-    toast("New content available", {
-      description: "Click reload to update.",
-      duration: Infinity,
-      action: {
-        label: "Reload",
-        onClick: () => updateServiceWorker(true),
-      },
-    });
-    needRefresh.set(false);
-  }
+onMount(() => {
+  detectSWUpdate();
 });
 </script>

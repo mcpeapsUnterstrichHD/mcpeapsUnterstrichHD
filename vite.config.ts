@@ -1,5 +1,4 @@
 import { intlayer, intlayerProxy } from "vite-intlayer";
-import process from "node:process";
 import tailwindcss from "@tailwindcss/vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import { sveltekit } from "@sveltejs/kit/vite";
@@ -8,7 +7,7 @@ import biomePlugin from "vite-plugin-biome";
 import Icons from "unplugin-icons/vite";
 import TurboConsole from "unplugin-turbo-console/vite";
 import ViteRestart from "vite-plugin-restart";
-import { SvelteKitPWA } from "@vite-pwa/sveltekit";
+import { VitePWA } from "vite-plugin-pwa";
 import { qrcode } from "vite-plugin-qrcode";
 
 export default defineConfig({
@@ -31,15 +30,16 @@ export default defineConfig({
     }),
     tailwindcss(),
     sveltekit(),
-    SvelteKitPWA({
-      srcDir: "src",
-      strategies: "generateSW",
+    VitePWA({
+      srcDir: "src/service-worker",
+      filename: "index.ts",
+      strategies: "injectManifest",
       registerType: "prompt",
       scope: "/",
       base: "/",
-      selfDestroying: true,
       pwaAssets: {
         config: true,
+        overrideManifestIcons: true,
       },
       manifest: {
         name: "Fabian Aps",
@@ -69,95 +69,9 @@ export default defineConfig({
           },
         ],
       },
-      workbox: {
-        cleanupOutdatedCaches: true,
-        runtimeCaching: [
-          {
-            urlPattern: ({ request }) => request.mode === "navigate",
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "pages-cache",
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-              networkTimeoutSeconds: 30,
-            },
-          },
-          {
-            urlPattern: /\/__data\.json(\?.*)?$/,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "data-cache",
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-              networkTimeoutSeconds: 30,
-            },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "google-fonts-cache",
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "gstatic-fonts-cache",
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
-            urlPattern: ({ request }) =>
-              request.destination === "image" ||
-              request.destination === "script" ||
-              request.destination === "style" ||
-              request.destination === "font",
-            handler: "CacheFirst",
-            options: {
-              cacheName: "assets-cache",
-              expiration: {
-                maxEntries: 200,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-        ],
-      },
       devOptions: {
-        enabled: process.env.ENV === "development",
-        suppressWarnings: true,
+        enabled: true,
         type: "module",
-      },
-      kit: {
-        includeVersionFile: true,
-        trailingSlash: "ignore",
       },
     }),
     devtoolsJson(),
@@ -177,7 +91,7 @@ export default defineConfig({
       ignorePermissionErrors: true,
       interval: 100,
       binaryInterval: 100,
-      disableGlobbing: true,
+      disableGlobbing: false,
     },
     fs: {
       strict: true,

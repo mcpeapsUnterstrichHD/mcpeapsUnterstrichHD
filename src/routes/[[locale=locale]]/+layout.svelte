@@ -87,7 +87,6 @@ let pathForAlternates = $derived.by(() => {
 </script>
 
 <svelte:head>
-  <meta charset="utf-8" />
   <title>{$layout.title}</title>
   <meta name="description" content={$layout.description} />
   <meta

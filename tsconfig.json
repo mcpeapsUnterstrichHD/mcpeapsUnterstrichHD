@@ -14,9 +14,7 @@
     "types": [
       "./worker-configuration.d.ts",
       "vite-plugin-pwa/info",
-      "vite-plugin-pwa/pwa-assets",
-      "vite-plugin-pwa/vanillajs",
-      "vite-plugin-pwa/svelte"
+      "vite-plugin-pwa/pwa-assets"
     ]
   }
 }
