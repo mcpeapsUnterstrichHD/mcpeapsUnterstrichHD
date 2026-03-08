@@ -156,6 +156,9 @@ importers:
       vite-plugin-restart:
         specifier: ^2.0.0
         version: 2.0.0(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0))
+      workbox-window:
+        specifier: ^7.4.0
+        version: 7.4.0
       wrangler:
         specifier: ^4.69.0
         version: 4.69.0

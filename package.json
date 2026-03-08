@@ -59,6 +59,7 @@
     "vite-plugin-pwa": "^1.2.0",
     "vite-plugin-qrcode": "^0.3.0",
     "vite-plugin-restart": "^2.0.0",
+    "workbox-window": "^7.4.0",
     "wrangler": "^4.69.0"
   },
   "dependencies": {
