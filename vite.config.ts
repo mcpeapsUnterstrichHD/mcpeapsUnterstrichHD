@@ -1,4 +1,5 @@
 import { intlayer, intlayerProxy } from "vite-intlayer";
+import process from "node:process";
 import tailwindcss from "@tailwindcss/vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import { sveltekit } from "@sveltejs/kit/vite";
@@ -34,12 +35,12 @@ export default defineConfig({
       srcDir: "src",
       strategies: "generateSW",
       registerType: "prompt",
-      includeAssets: [
-        "pictures/favicon.ico",
-        "pictures/logo192.png",
-        "pictures/logo512.png",
-        "pictures/logo_maskable_icon.png",
-      ],
+      scope: "/",
+      base: "/",
+      selfDestroying: process.env.SELF_DESTROYING_SW === "true",
+      pwaAssets: {
+        config: true,
+      },
       manifest: {
         name: "Fabian Aps",
         short_name: "Fabian Aps",
@@ -93,7 +94,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
+        globPatterns: ["client/**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
         navigateFallback: "/offline.html",
         runtimeCaching: [
           {
@@ -142,9 +143,13 @@ export default defineConfig({
         ],
       },
       devOptions: {
-        enabled: true,
+        enabled: false,
+        suppressWarnings: process.env.SUPPRESS_WARNING === "true",
         type: "module",
         navigateFallback: "/",
+      },
+      kit: {
+        includeVersionFile: true,
       },
     }),
     devtoolsJson(),
