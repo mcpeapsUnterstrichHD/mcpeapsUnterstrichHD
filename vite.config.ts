@@ -7,7 +7,7 @@ import biomePlugin from "vite-plugin-biome";
 import Icons from "unplugin-icons/vite";
 import TurboConsole from "unplugin-turbo-console/vite";
 import ViteRestart from "vite-plugin-restart";
-import { VitePWA } from "vite-plugin-pwa";
+import { SvelteKitPWA } from "@vite-pwa/sveltekit";
 import { qrcode } from "vite-plugin-qrcode";
 
 export default defineConfig({
@@ -30,7 +30,7 @@ export default defineConfig({
     }),
     tailwindcss(),
     sveltekit(),
-    VitePWA({
+    SvelteKitPWA({
       srcDir: "src/service-worker",
       filename: "index.ts",
       strategies: "injectManifest",
@@ -38,9 +38,13 @@ export default defineConfig({
       scope: "/",
       base: "/",
       pwaAssets: {
+        integration: {
+          publicDir: "static",
+        },
         config: true,
         overrideManifestIcons: true,
       },
+      minify: true,
       manifest: {
         name: "Fabian Aps",
         short_name: "Fabian Aps",
