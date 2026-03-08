@@ -52,25 +52,6 @@ export default defineConfig({
         theme_color: "#2E3440",
         lang: "de-DE",
         id: "dev.mcpeapsUnterstrichHD.mcpeapsUnterstrichHD",
-        icons: [
-          {
-            src: "pictures/logo192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "pictures/logo512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any",
-          },
-          {
-            src: "pictures/logo_maskable_icon.png",
-            sizes: "1024x1024",
-            type: "image/png",
-            purpose: "maskable",
-          },
-        ],
         screenshots: [
           {
             src: "pictures/logo.png",
@@ -89,8 +70,9 @@ export default defineConfig({
         ],
       },
       workbox: {
+        cleanupOutdatedCaches: true,
         globPatterns: ["client/**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
-        navigateFallback: "/offline.html",
+        globIgnores: ["server/**", "sw.js", "workbox-*.js"],
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.mode === "navigate",
@@ -104,7 +86,22 @@ export default defineConfig({
               cacheableResponse: {
                 statuses: [0, 200],
               },
-              networkTimeoutSeconds: 3,
+              networkTimeoutSeconds: 30,
+            },
+          },
+          {
+            urlPattern: /\/__data\.json(\?.*)?$/,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "data-cache",
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+              networkTimeoutSeconds: 30,
             },
           },
           {
@@ -135,13 +132,30 @@ export default defineConfig({
               },
             },
           },
+          {
+            urlPattern: ({ request }) =>
+              request.destination === "image" ||
+              request.destination === "script" ||
+              request.destination === "style" ||
+              request.destination === "font",
+            handler: "CacheFirst",
+            options: {
+              cacheName: "assets-cache",
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
         ],
       },
       devOptions: {
-        enabled: false,
+        enabled: process.env.NODE_ENV === "development",
         suppressWarnings: process.env.SUPPRESS_WARNING === "true",
         type: "module",
-        navigateFallback: "/",
       },
       kit: {
         includeVersionFile: true,
@@ -173,7 +187,9 @@ export default defineConfig({
     port: 3000,
     host: true,
     open: true,
-    hmr: true,
+    hmr: {
+      port: 3000,
+    },
   },
   build: {
     target: "esnext",
