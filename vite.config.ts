@@ -37,7 +37,7 @@ export default defineConfig({
       registerType: "prompt",
       scope: "/",
       base: "/",
-      selfDestroying: process.env.SELF_DESTROYING_SW === "true",
+      selfDestroying: true,
       pwaAssets: {
         config: true,
       },
@@ -71,8 +71,6 @@ export default defineConfig({
       },
       workbox: {
         cleanupOutdatedCaches: true,
-        globPatterns: ["client/**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
-        globIgnores: ["server/**", "sw.js", "workbox-*.js"],
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.mode === "navigate",
@@ -153,12 +151,13 @@ export default defineConfig({
         ],
       },
       devOptions: {
-        enabled: process.env.NODE_ENV === "development",
-        suppressWarnings: process.env.SUPPRESS_WARNING === "true",
+        enabled: process.env.ENV === "development",
+        suppressWarnings: true,
         type: "module",
       },
       kit: {
         includeVersionFile: true,
+        trailingSlash: "ignore",
       },
     }),
     devtoolsJson(),
@@ -178,7 +177,7 @@ export default defineConfig({
       ignorePermissionErrors: true,
       interval: 100,
       binaryInterval: 100,
-      disableGlobbing: false,
+      disableGlobbing: true,
     },
     fs: {
       strict: true,
