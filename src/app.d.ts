@@ -9,6 +9,9 @@
  * @see `src/hooks.server.ts` — Where `locals.locale` is set
  */
 import "unplugin-icons/types/svelte";
+import "vite-plugin-pwa/svelte";
+import "vite-plugin-pwa/info";
+import "vite-plugin-pwa/pwa-assets";
 
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces

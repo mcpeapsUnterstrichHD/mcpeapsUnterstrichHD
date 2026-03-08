@@ -1,4 +1,5 @@
 import { intlayer, intlayerProxy } from "vite-intlayer";
+import process from "node:process";
 import tailwindcss from "@tailwindcss/vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import { sveltekit } from "@sveltejs/kit/vite";
@@ -34,12 +35,12 @@ export default defineConfig({
       srcDir: "src",
       strategies: "generateSW",
       registerType: "prompt",
-      includeAssets: [
-        "pictures/favicon.ico",
-        "pictures/logo192.png",
-        "pictures/logo512.png",
-        "pictures/logo_maskable_icon.png",
-      ],
+      scope: "/",
+      base: "/",
+      selfDestroying: true,
+      pwaAssets: {
+        config: true,
+      },
       manifest: {
         name: "Fabian Aps",
         short_name: "Fabian Aps",
@@ -51,30 +52,6 @@ export default defineConfig({
         theme_color: "#2E3440",
         lang: "de-DE",
         id: "dev.mcpeapsUnterstrichHD.mcpeapsUnterstrichHD",
-        icons: [
-          {
-            src: "pictures/favicon.ico",
-            sizes: "any",
-            type: "image/x-icon",
-          },
-          {
-            src: "pictures/logo192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "pictures/logo512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any",
-          },
-          {
-            src: "pictures/logo_maskable_icon.png",
-            sizes: "1024x1024",
-            type: "image/png",
-            purpose: "maskable",
-          },
-        ],
         screenshots: [
           {
             src: "pictures/logo.png",
@@ -93,8 +70,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff,woff2}"],
-        navigateFallback: "/offline.html",
+        cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.mode === "navigate",
@@ -108,7 +84,22 @@ export default defineConfig({
               cacheableResponse: {
                 statuses: [0, 200],
               },
-              networkTimeoutSeconds: 3,
+              networkTimeoutSeconds: 30,
+            },
+          },
+          {
+            urlPattern: /\/__data\.json(\?.*)?$/,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "data-cache",
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+              networkTimeoutSeconds: 30,
             },
           },
           {
@@ -139,12 +130,34 @@ export default defineConfig({
               },
             },
           },
+          {
+            urlPattern: ({ request }) =>
+              request.destination === "image" ||
+              request.destination === "script" ||
+              request.destination === "style" ||
+              request.destination === "font",
+            handler: "CacheFirst",
+            options: {
+              cacheName: "assets-cache",
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
         ],
       },
       devOptions: {
-        enabled: true,
+        enabled: process.env.ENV === "development",
+        suppressWarnings: true,
         type: "module",
-        navigateFallback: "/",
+      },
+      kit: {
+        includeVersionFile: true,
+        trailingSlash: "ignore",
       },
     }),
     devtoolsJson(),
@@ -164,7 +177,7 @@ export default defineConfig({
       ignorePermissionErrors: true,
       interval: 100,
       binaryInterval: 100,
-      disableGlobbing: false,
+      disableGlobbing: true,
     },
     fs: {
       strict: true,
@@ -173,15 +186,15 @@ export default defineConfig({
     port: 3000,
     host: true,
     open: true,
-    hmr: true,
+    hmr: {
+      port: 3000,
+    },
   },
   build: {
     target: "esnext",
     minify: true,
     cssMinify: true,
     license: true,
-    rollupOptions: {
-      external: ["workbox-window"],
-    },
+    rollupOptions: {},
   },
 });

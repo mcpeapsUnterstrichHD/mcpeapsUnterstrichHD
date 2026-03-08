@@ -90,13 +90,10 @@ let pathForAlternates = $derived.by(() => {
   <meta charset="utf-8" />
   <title>{$layout.title}</title>
   <meta name="description" content={$layout.description} />
-	<link rel="icon" href="/pictures/favicon.ico" />
-	<link rel="apple-touch-icon" href="/pictures/logo192.png" />
-		<meta name="theme-color" content="#2E3440" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1,user-scalable=yes viewport-fit=cover, interactive-widget=overlays-content"
-		/>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover, interactive-widget=overlays-content"
+  />
   <meta
     name="keywords"
     content="portfolio, website, impressum, github, linkedin, aps, fabian"
