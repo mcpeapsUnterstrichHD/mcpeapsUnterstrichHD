@@ -60,6 +60,7 @@ const webManifest = $derived(pwaInfo ? pwaInfo.webManifest.linkTag : "");
   {#if pwaAssetsHead.themeColor}
     <meta name="theme-color" content={pwaAssetsHead.themeColor.content} />
   {/if}
+  <link rel="icon" href="/favicon.ico" />
   {#each pwaAssetsHead.links as link}
     <link {...link} />
   {/each}
