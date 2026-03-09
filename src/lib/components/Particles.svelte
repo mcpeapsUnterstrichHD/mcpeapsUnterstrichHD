@@ -1,8 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
-import { cn } from "$lib/utils"; // Aus deinem Projekt
+import { cn } from "$lib/utils";
 
-// Deine ursprünglichen Svelte 5 Props
 interface Props {
   class?: string;
   quantity?: number;
@@ -21,12 +20,16 @@ let {
 
 let canvas: HTMLCanvasElement;
 
-// Maus-Logik für den Parallax-Effekt
 let mouse = { x: 0, y: 0 };
+// Speichert die aktuelle reale CSS-Größe des Canvas
+let canvasSize = { w: 0, h: 0 };
+
 function handleMouseMove(event: MouseEvent) {
-  // Maus relativ zum Bildschirmzentrum
-  mouse.x = event.clientX - window.innerWidth / 2;
-  mouse.y = event.clientY - window.innerHeight / 2;
+  if (!canvas) return;
+  const rect = canvas.getBoundingClientRect();
+  // Parallax relativ zum exakten Zentrum dieses Canvas
+  mouse.x = event.clientX - rect.left - rect.width / 2;
+  mouse.y = event.clientY - rect.top - rect.height / 2;
 }
 
 // --- SHADER CODE ---
@@ -56,10 +59,9 @@ const fsSource = `#version 300 es
   }`;
 
 onMount(() => {
-  const gl = canvas.getContext("webgl2", { alpha: true, antialias: true });
+  const gl = canvas.getContext("webgl2", { alpha: true, antialias: false });
   if (!gl) return;
 
-  // Shader Kompilierung
   const vShader = gl.createShader(gl.VERTEX_SHADER)!;
   gl.shaderSource(vShader, vsSource);
   gl.compileShader(vShader);
@@ -79,22 +81,20 @@ onMount(() => {
   const floatsPerParticle = 7;
   const particleData = new Float32Array(quantity * floatsPerParticle);
 
-  // Nord Colors aus deiner Config umgerechnet für WebGL (0.0 bis 1.0)
-  const nord11 = [191 / 255, 97 / 255, 106 / 255]; // Red
-  const nord14 = [163 / 255, 190 / 255, 140 / 255]; // Green
+  const nord11 = [191 / 255, 97 / 255, 106 / 255];
+  const nord14 = [163 / 255, 190 / 255, 140 / 255];
 
-  // Deine Original-Physik-Logik (CPU)
   const circles = Array.from({ length: quantity }, () => {
     const isRed = Math.random() > 0.5;
     return {
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
+      x: Math.random() * (window.innerWidth || 1000),
+      y: Math.random() * (window.innerHeight || 1000),
       translateX: 0,
       translateY: 0,
-      dx: (Math.random() - 0.5) * 0.5, // Langsames Driften
+      dx: (Math.random() - 0.5) * 0.5,
       dy: (Math.random() - 0.5) * 0.5,
       magnetism: 0.1 + Math.random() * 4,
-      size: Math.random() * 2 + 3, // Original war meist 3-4
+      size: Math.random() * 2 + 3,
       color: isRed ? nord11 : nord14,
       targetAlpha: Math.random() * 0.5 + 0.2,
     };
@@ -112,69 +112,91 @@ onMount(() => {
   gl.enableVertexAttribArray(sizeLoc);
   gl.vertexAttribPointer(sizeLoc, 1, gl.FLOAT, false, stride, 6 * 4);
 
-  function resize() {
-    canvas.width = window.innerWidth * window.devicePixelRatio;
-    canvas.height = window.innerHeight * window.devicePixelRatio;
-    gl!.viewport(0, 0, canvas.width, canvas.height);
-  }
-  window.addEventListener("resize", resize);
-  resize();
+  // NEU: ResizeObserver übernimmt das automatische Skalieren
+  const resizeObserver = new ResizeObserver(() => {
+    if (!canvas || !canvas.parentElement) return;
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.parentElement.getBoundingClientRect();
+    // Alternativ: canvas.getBoundingClientRect(), je nachdem wie dein Layout aufgebaut ist
+
+    // 1. Logische Größe für die Partikel-Physik (Kollisionen an den Rändern)
+    canvasSize.w = rect.width;
+    canvasSize.h = rect.height;
+
+    // 2. Physische Pixel-Auflösung für gestochen scharfes WebGL-Rendering
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+
+    // 3. CSS-Größe explizit setzen, damit der Canvas nicht endlos weiterwächst
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+
+    // 4. Viewport sofort updaten
+    if (gl) {
+      gl.viewport(0, 0, canvas.width, canvas.height);
+    }
+  });
+  resizeObserver.observe(canvas);
 
   let animationFrameId: number;
 
   function render() {
-    // CPU: Berechne Physik & Maus-Magnetismus (Dein Original-Code)
+    // Nur zeichnen, wenn das Canvas auch wirklich eine Größe hat
+    if (canvasSize.w === 0 || canvasSize.h === 0) {
+      animationFrameId = requestAnimationFrame(render);
+      return;
+    }
+
     for (let i = 0; i < quantity; i++) {
       const p = circles[i];
 
       p.x += p.dx;
       p.y += p.dy;
-
-      // Parallax-Effekt zur Maus (Ease & Staticity Props)
       p.translateX +=
         ((mouse.x / staticity) * p.magnetism - p.translateX) / ease;
       p.translateY +=
         ((mouse.y / staticity) * p.magnetism - p.translateY) / ease;
 
-      // Respawn am anderen Bildschirmrand, wenn er rausfliegt
-      if (p.x < -10 || p.x > window.innerWidth + 10) {
-        p.x = p.x < 0 ? window.innerWidth + 10 : -10;
+      // Dynamischer Respawn anhand der echten Canvas-Größe
+      if (p.x < -10 || p.x > canvasSize.w + 10) {
+        p.x = p.x < 0 ? canvasSize.w + 10 : -10;
         p.translateX = 0;
       }
-      if (p.y < -10 || p.y > window.innerHeight + 10) {
-        p.y = p.y < 0 ? window.innerHeight + 10 : -10;
+      if (p.y < -10 || p.y > canvasSize.h + 10) {
+        p.y = p.y < 0 ? canvasSize.h + 10 : -10;
         p.translateY = 0;
       }
 
-      // Fade In/Out am Rand (Alpha Remapping)
       const edgeX = Math.min(
         p.x + p.translateX,
-        window.innerWidth - (p.x + p.translateX),
+        canvasSize.w - (p.x + p.translateX),
       );
       const edgeY = Math.min(
         p.y + p.translateY,
-        window.innerHeight - (p.y + p.translateY),
+        canvasSize.h - (p.y + p.translateY),
       );
       const dist = Math.min(edgeX, edgeY);
       let drawAlpha = p.targetAlpha;
       if (dist < 50) {
-        drawAlpha = p.targetAlpha * Math.max(0, dist / 50); // Fadeout auf den letzten 50px
+        drawAlpha = p.targetAlpha * Math.max(0, dist / 50);
       }
 
-      // Daten in den Puffer schreiben
       const idx = i * floatsPerParticle;
       particleData[idx + 0] = (p.x + p.translateX) * window.devicePixelRatio;
       particleData[idx + 1] = (p.y + p.translateY) * window.devicePixelRatio;
-      particleData[idx + 2] = p.color[0]; // R
-      particleData[idx + 3] = p.color[1]; // G
-      particleData[idx + 4] = p.color[2]; // B
-      particleData[idx + 5] = drawAlpha; // A
-      particleData[idx + 6] = p.size * 2.0 * window.devicePixelRatio; // Durchmesser (Gl_PointSize)
+      particleData[idx + 2] = p.color[0];
+      particleData[idx + 3] = p.color[1];
+      particleData[idx + 4] = p.color[2];
+      particleData[idx + 5] = drawAlpha;
+      particleData[idx + 6] = p.size * 2.0 * window.devicePixelRatio;
     }
 
-    // WebGL GPU Draw Call (Ein Rutsch)
     gl!.bindBuffer(gl!.ARRAY_BUFFER, buffer);
     gl!.bufferSubData(gl!.ARRAY_BUFFER, 0, particleData);
+
+    // NEU UND WICHTIG: Viewport-Größe an aktuelle physische Auflösung anpassen
+    gl!.viewport(0, 0, canvas.width, canvas.height);
+
     gl!.clearColor(0, 0, 0, 0);
     gl!.clear(gl!.COLOR_BUFFER_BIT);
     gl!.useProgram(program);
@@ -188,7 +210,7 @@ onMount(() => {
   render();
 
   return () => {
-    window.removeEventListener("resize", resize);
+    resizeObserver.disconnect();
     cancelAnimationFrame(animationFrameId);
     gl!.deleteProgram(program);
   };
@@ -199,7 +221,6 @@ onMount(() => {
 
 <canvas
   bind:this={canvas}
-  class={cn("no-print", className)}
+  class={cn("w-full h-full block absolute top-0 left-0 pointer-events-none", className)}
   aria-hidden="true"
-  style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"
 ></canvas>
