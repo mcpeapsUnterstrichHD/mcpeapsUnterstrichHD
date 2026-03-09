@@ -1,44 +1,8 @@
 <script lang="ts">
-/**
- * @component Particles
- *
- * A canvas-based particle background that renders floating circles in Nord
- * palette colors (nord11 red and nord14 green). Particles drift slowly with
- * subtle parallax movement driven by mouse position, creating an ambient
- * decorative backdrop for the portfolio.
- *
- * The component is rendered as a fixed, full-viewport overlay at `z-[-1]` with
- * `pointer-events-none` so it never intercepts user interaction. It carries the
- * `no-print` class and `aria-hidden="true"` to be excluded from print layouts
- * and assistive technology.
- *
- * Particles respawn when they drift off-canvas and fade in/out near edges using
- * alpha remapping. The canvas is DPR-aware for crisp rendering on Retina displays.
- *
- * @example
- * ```svelte
- * <Particles quantity={80} staticity={60} ease={30} />
- * ```
- *
- * @example Fewer particles, higher mouse responsiveness
- * ```svelte
- * <Particles quantity={40} staticity={20} ease={10} />
- * ```
- */
 import { onMount } from "svelte";
-import { cn } from "$lib/utils";
+import { cn } from "$lib/utils"; // Aus deinem Projekt
 
-/**
- * Props for the Particles component.
- *
- * @property {string} [class=''] - Additional CSS class(es) forwarded to the container `<div>`.
- * @property {number} [quantity=120] - Number of particle circles to render on the canvas.
- * @property {number} [staticity=50] - Controls how resistant particles are to mouse movement.
- *   Higher values make particles less responsive to the cursor (more static).
- * @property {number} [ease=20] - Easing divisor for particle translation toward the mouse.
- *   Higher values produce slower, smoother following; lower values feel snappier.
- * @property {boolean} [refresh=true] - Reserved for future use; not currently read by the component.
- */
+// Deine ursprünglichen Svelte 5 Props
 interface Props {
   class?: string;
   quantity?: number;
@@ -55,260 +19,187 @@ let {
   refresh = true,
 }: Props = $props();
 
-/** Reference to the `<canvas>` element used for particle rendering. */
-let canvasEl: HTMLCanvasElement;
-/** Reference to the container `<div>` used to measure available dimensions. */
-let containerEl: HTMLDivElement;
-/** The 2D rendering context of the canvas, obtained on mount. */
-let ctx: CanvasRenderingContext2D | null = null;
-/** Array of all active particle circle objects currently being animated. */
-let circles: Circle[] = [];
-/** Current mouse position relative to the canvas center, used for parallax displacement. */
+let canvas: HTMLCanvasElement;
+
+// Maus-Logik für den Parallax-Effekt
 let mouse = { x: 0, y: 0 };
-/** Current canvas logical dimensions (before DPR scaling). */
-let canvasSize = { w: 0, h: 0 };
-/** Device pixel ratio for Retina-aware canvas rendering. */
-let dpr = 1;
-/** ID from `requestAnimationFrame`, used to cancel the animation loop on cleanup. */
-let animationId: number;
-
-/**
- * Describes a single particle circle on the canvas.
- *
- * @property {number} x - Horizontal position in canvas logical pixels.
- * @property {number} y - Vertical position in canvas logical pixels.
- * @property {number} translateX - Mouse-driven horizontal offset (parallax).
- * @property {number} translateY - Mouse-driven vertical offset (parallax).
- * @property {number} size - Radius of the circle in pixels (3-4).
- * @property {number} alpha - Current opacity (animated toward `targetAlpha`).
- * @property {number} targetAlpha - The target resting opacity for this particle.
- * @property {number} dx - Horizontal drift velocity per frame.
- * @property {number} dy - Vertical drift velocity per frame.
- * @property {number} magnetism - How strongly this particle is attracted to the mouse (0.1-4.1).
- * @property {string} color - RGBA color string, randomly chosen between Nord red and Nord green.
- */
-type Circle = {
-  x: number;
-  y: number;
-  translateX: number;
-  translateY: number;
-  size: number;
-  alpha: number;
-  targetAlpha: number;
-  dx: number;
-  dy: number;
-  magnetism: number;
-  color: string;
-};
-
-/**
- * Generates randomized parameters for a new particle circle.
- * Position is uniformly distributed across the canvas, size ranges 3-4px,
- * and color is randomly chosen between Nord red (nord11) and Nord green (nord14).
- *
- * @returns {Circle} A fully initialized circle object ready for drawing.
- */
-function circleParams(): Circle {
-  const getRandomColor = (one: string, two: string): string =>
-    Math.random() < 0.5 ? one : two;
-
-  const x = Math.floor(Math.random() * canvasSize.w);
-  const y = Math.floor(Math.random() * canvasSize.h);
-  const size = Math.floor(Math.random() * 2) + 3;
-  const alpha = Number.parseFloat((Math.random() * 0.8 + 0.1).toFixed(1));
-  const targetAlpha = Number.parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
-
-  return {
-    x,
-    y,
-    translateX: 0,
-    translateY: 0,
-    size,
-    alpha,
-    targetAlpha,
-    dx: (Math.random() - 0.5) * 0.2,
-    dy: (Math.random() - 0.5) * 0.2,
-    magnetism: 0.1 + Math.random() * 4,
-    color: getRandomColor(
-      `rgba(191,97,106,${alpha})`, // Nord red (nord11)
-      `rgba(163,190,140,${alpha})`, // Nord green (nord14)
-    ),
-  };
+function handleMouseMove(event: MouseEvent) {
+  // Maus relativ zum Bildschirmzentrum
+  mouse.x = event.clientX - window.innerWidth / 2;
+  mouse.y = event.clientY - window.innerHeight / 2;
 }
 
-/**
- * Draws a single circle onto the canvas at its current position (including translation).
- * When `update` is false (initial draw), the circle is also pushed into the `circles` array.
- *
- * @param {Circle} circle - The circle object to render.
- * @param {boolean} [update=false] - If true, this is a redraw of an existing circle (skip push).
- */
-function drawCircle(circle: Circle, update = false) {
-  if (!ctx) return;
-  ctx.translate(circle.translateX, circle.translateY);
-  ctx.beginPath();
-  ctx.arc(circle.x, circle.y, circle.size, 0, 2 * Math.PI);
-  ctx.fillStyle = circle.color;
-  ctx.fill();
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  if (!update) circles.push(circle);
-}
+// --- SHADER CODE ---
+const vsSource = `#version 300 es
+  in vec2 a_position;
+  in vec4 a_color;
+  in float a_size;
+  uniform vec2 u_resolution;
+  out vec4 v_color;
+  void main() {
+      vec2 zeroToOne = a_position / u_resolution;
+      vec2 clipSpace = (zeroToOne * 2.0) - 1.0;
+      gl_Position = vec4(clipSpace * vec2(1, -1), 0.0, 1.0);
+      gl_PointSize = a_size;
+      v_color = a_color;
+  }`;
 
-/** Clears the entire canvas, preparing it for the next animation frame. */
-function clearContext() {
-  ctx?.clearRect(0, 0, canvasSize.w, canvasSize.h);
-}
+const fsSource = `#version 300 es
+  precision mediump float;
+  in vec4 v_color;
+  out vec4 outColor;
+  void main() {
+      float dist = distance(gl_PointCoord, vec2(0.5, 0.5)) * 2.0;
+      float alpha = 1.0 - smoothstep(0.8, 1.0, dist);
+      if (dist > 1.0) discard;
+      outColor = vec4(v_color.rgb, v_color.a * alpha);
+  }`;
 
-/** Clears the canvas and creates `quantity` new particles with random parameters. */
-function drawParticles() {
-  clearContext();
-  for (let i = 0; i < quantity; i++) {
-    drawCircle(circleParams());
-  }
-}
-
-/**
- * Resizes the canvas to match its container dimensions (DPR-aware),
- * resets the circles array, and redraws all particles from scratch.
- * Called on mount and on `window.resize`.
- */
-function resizeCanvas() {
-  if (!containerEl || !canvasEl || !ctx) return;
-  circles = [];
-  const rect = containerEl.getBoundingClientRect();
-  canvasSize.w = rect.width || window.innerWidth;
-  canvasSize.h = rect.height || window.innerHeight;
-  canvasEl.width = canvasSize.w * dpr;
-  canvasEl.height = canvasSize.h * dpr;
-  canvasEl.style.width = `${canvasSize.w}px`;
-  canvasEl.style.height = `${canvasSize.h}px`;
-  ctx.scale(dpr, dpr);
-  drawParticles();
-}
-
-/**
- * Linearly remaps a value from one range to another, clamped to a minimum of 0.
- * Used to fade particle alpha near canvas edges.
- *
- * @param {number} value - The input value to remap.
- * @param {number} start1 - Start of the source range.
- * @param {number} end1 - End of the source range.
- * @param {number} start2 - Start of the target range.
- * @param {number} end2 - End of the target range.
- * @returns {number} The remapped value, clamped to >= 0.
- */
-function remapValue(
-  value: number,
-  start1: number,
-  end1: number,
-  start2: number,
-  end2: number,
-): number {
-  const remapped =
-    ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
-  return remapped > 0 ? remapped : 0;
-}
-
-/**
- * The main animation loop driven by `requestAnimationFrame`. On each frame it:
- * 1. Clears the canvas.
- * 2. Updates each particle's position (drift + mouse parallax).
- * 3. Fades alpha near canvas edges using `remapValue`.
- * 4. Respawns particles that drift off-screen.
- * 5. Redraws all particles and schedules the next frame.
- */
-function animate() {
-  clearContext();
-  circles.forEach((circle, i) => {
-    const edge = [
-      circle.x + circle.translateX - circle.size,
-      canvasSize.w - circle.x - circle.translateX - circle.size,
-      circle.y + circle.translateY - circle.size,
-      canvasSize.h - circle.y - circle.translateY - circle.size,
-    ];
-    const closestEdge = Math.min(...edge);
-    const remapClosestEdge = parseFloat(
-      remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
-    );
-
-    if (remapClosestEdge > 1) {
-      circle.alpha += 0.02;
-      if (circle.alpha > circle.targetAlpha) circle.alpha = circle.targetAlpha;
-    } else {
-      circle.alpha = circle.targetAlpha * remapClosestEdge;
-    }
-
-    circle.x += circle.dx;
-    circle.y += circle.dy;
-    circle.translateX +=
-      (mouse.x / (staticity / circle.magnetism) - circle.translateX) / ease;
-    circle.translateY +=
-      (mouse.y / (staticity / circle.magnetism) - circle.translateY) / ease;
-
-    if (
-      circle.x < -circle.size ||
-      circle.x > canvasSize.w + circle.size ||
-      circle.y < -circle.size ||
-      circle.y > canvasSize.h + circle.size
-    ) {
-      circles.splice(i, 1);
-      drawCircle(circleParams());
-    } else {
-      drawCircle({ ...circle }, true);
-    }
-  });
-  animationId = requestAnimationFrame(animate);
-}
-
-/**
- * Tracks mouse position relative to the canvas center, updating the `mouse`
- * coordinates used by the parallax calculation in `animate()`. Ignores mouse
- * events that fall outside the canvas bounds.
- *
- * @param {MouseEvent} event - The native mousemove event.
- */
-function onMouseMove(event: MouseEvent) {
-  if (!canvasEl) return;
-  const rect = canvasEl.getBoundingClientRect();
-  const x = event.clientX - rect.left - canvasSize.w / 2;
-  const y = event.clientY - rect.top - canvasSize.h / 2;
-  const inside =
-    x < canvasSize.w / 2 &&
-    x > -canvasSize.w / 2 &&
-    y < canvasSize.h / 2 &&
-    y > -canvasSize.h / 2;
-  if (inside) {
-    mouse.x = x;
-    mouse.y = y;
-  }
-}
-
-/**
- * Initializes the canvas context, triggers initial particle draw, starts the
- * animation loop, and registers resize/mousemove listeners. Cleanup cancels
- * the animation frame and removes global listeners.
- */
 onMount(() => {
-  dpr = window.devicePixelRatio || 1;
-  ctx = canvasEl.getContext("2d");
-  resizeCanvas();
-  animate();
+  const gl = canvas.getContext("webgl2", { alpha: true, antialias: true });
+  if (!gl) return;
 
-  window.addEventListener("resize", resizeCanvas);
-  window.addEventListener("mousemove", onMouseMove);
+  // Shader Kompilierung
+  const vShader = gl.createShader(gl.VERTEX_SHADER)!;
+  gl.shaderSource(vShader, vsSource);
+  gl.compileShader(vShader);
+  const fShader = gl.createShader(gl.FRAGMENT_SHADER)!;
+  gl.shaderSource(fShader, fsSource);
+  gl.compileShader(fShader);
+  const program = gl.createProgram()!;
+  gl.attachShader(program, vShader);
+  gl.attachShader(program, fShader);
+  gl.linkProgram(program);
+
+  const posLoc = gl.getAttribLocation(program, "a_position");
+  const colorLoc = gl.getAttribLocation(program, "a_color");
+  const sizeLoc = gl.getAttribLocation(program, "a_size");
+  const resLoc = gl.getUniformLocation(program, "u_resolution");
+
+  const floatsPerParticle = 7;
+  const particleData = new Float32Array(quantity * floatsPerParticle);
+
+  // Nord Colors aus deiner Config umgerechnet für WebGL (0.0 bis 1.0)
+  const nord11 = [191 / 255, 97 / 255, 106 / 255]; // Red
+  const nord14 = [163 / 255, 190 / 255, 140 / 255]; // Green
+
+  // Deine Original-Physik-Logik (CPU)
+  const circles = Array.from({ length: quantity }, () => {
+    const isRed = Math.random() > 0.5;
+    return {
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      translateX: 0,
+      translateY: 0,
+      dx: (Math.random() - 0.5) * 0.5, // Langsames Driften
+      dy: (Math.random() - 0.5) * 0.5,
+      magnetism: 0.1 + Math.random() * 4,
+      size: Math.random() * 2 + 3, // Original war meist 3-4
+      color: isRed ? nord11 : nord14,
+      targetAlpha: Math.random() * 0.5 + 0.2,
+    };
+  });
+
+  const buffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, particleData.byteLength, gl.DYNAMIC_DRAW);
+
+  const stride = floatsPerParticle * 4;
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, stride, 0);
+  gl.enableVertexAttribArray(colorLoc);
+  gl.vertexAttribPointer(colorLoc, 4, gl.FLOAT, false, stride, 2 * 4);
+  gl.enableVertexAttribArray(sizeLoc);
+  gl.vertexAttribPointer(sizeLoc, 1, gl.FLOAT, false, stride, 6 * 4);
+
+  function resize() {
+    canvas.width = window.innerWidth * window.devicePixelRatio;
+    canvas.height = window.innerHeight * window.devicePixelRatio;
+    gl!.viewport(0, 0, canvas.width, canvas.height);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  let animationFrameId: number;
+
+  function render() {
+    // CPU: Berechne Physik & Maus-Magnetismus (Dein Original-Code)
+    for (let i = 0; i < quantity; i++) {
+      const p = circles[i];
+
+      p.x += p.dx;
+      p.y += p.dy;
+
+      // Parallax-Effekt zur Maus (Ease & Staticity Props)
+      p.translateX +=
+        ((mouse.x / staticity) * p.magnetism - p.translateX) / ease;
+      p.translateY +=
+        ((mouse.y / staticity) * p.magnetism - p.translateY) / ease;
+
+      // Respawn am anderen Bildschirmrand, wenn er rausfliegt
+      if (p.x < -10 || p.x > window.innerWidth + 10) {
+        p.x = p.x < 0 ? window.innerWidth + 10 : -10;
+        p.translateX = 0;
+      }
+      if (p.y < -10 || p.y > window.innerHeight + 10) {
+        p.y = p.y < 0 ? window.innerHeight + 10 : -10;
+        p.translateY = 0;
+      }
+
+      // Fade In/Out am Rand (Alpha Remapping)
+      const edgeX = Math.min(
+        p.x + p.translateX,
+        window.innerWidth - (p.x + p.translateX),
+      );
+      const edgeY = Math.min(
+        p.y + p.translateY,
+        window.innerHeight - (p.y + p.translateY),
+      );
+      const dist = Math.min(edgeX, edgeY);
+      let drawAlpha = p.targetAlpha;
+      if (dist < 50) {
+        drawAlpha = p.targetAlpha * Math.max(0, dist / 50); // Fadeout auf den letzten 50px
+      }
+
+      // Daten in den Puffer schreiben
+      const idx = i * floatsPerParticle;
+      particleData[idx + 0] = (p.x + p.translateX) * window.devicePixelRatio;
+      particleData[idx + 1] = (p.y + p.translateY) * window.devicePixelRatio;
+      particleData[idx + 2] = p.color[0]; // R
+      particleData[idx + 3] = p.color[1]; // G
+      particleData[idx + 4] = p.color[2]; // B
+      particleData[idx + 5] = drawAlpha; // A
+      particleData[idx + 6] = p.size * 2.0 * window.devicePixelRatio; // Durchmesser (Gl_PointSize)
+    }
+
+    // WebGL GPU Draw Call (Ein Rutsch)
+    gl!.bindBuffer(gl!.ARRAY_BUFFER, buffer);
+    gl!.bufferSubData(gl!.ARRAY_BUFFER, 0, particleData);
+    gl!.clearColor(0, 0, 0, 0);
+    gl!.clear(gl!.COLOR_BUFFER_BIT);
+    gl!.useProgram(program);
+    gl!.uniform2f(resLoc, canvas.width, canvas.height);
+    gl!.enable(gl!.BLEND);
+    gl!.blendFunc(gl!.SRC_ALPHA, gl!.ONE_MINUS_SRC_ALPHA);
+    gl!.drawArrays(gl!.POINTS, 0, quantity);
+
+    animationFrameId = requestAnimationFrame(render);
+  }
+  render();
 
   return () => {
-    window.removeEventListener("resize", resizeCanvas);
-    window.removeEventListener("mousemove", onMouseMove);
-    cancelAnimationFrame(animationId);
+    window.removeEventListener("resize", resize);
+    cancelAnimationFrame(animationFrameId);
+    gl!.deleteProgram(program);
   };
 });
 </script>
 
-<div
-  class={cn("fixed inset-0 z-[-1] no-print pointer-events-none", className)}
-  bind:this={containerEl}
+<svelte:window onmousemove={handleMouseMove} />
+
+<canvas
+  bind:this={canvas}
+  class={cn("no-print", className)}
   aria-hidden="true"
->
-  <canvas bind:this={canvasEl}></canvas>
-</div>
+  style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"
+></canvas>
