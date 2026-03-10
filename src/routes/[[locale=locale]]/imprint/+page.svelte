@@ -32,15 +32,7 @@
  * @see {@link $lib/components/cookie/CookieConsent.svelte} for the cookie consent dialog
  */
 
-import { useIntlayer, useLocale } from "svelte-intlayer";
-import {
-  Shield,
-  Fingerprint,
-  Gavel,
-  Handshake,
-  ExternalLink,
-  Settings,
-} from "@lucide/svelte";
+import { useIntlayer } from "svelte-intlayer";
 import { contactDetails } from "$lib/contact";
 import { Mail, Phone, MapPin, Scale, User, Cookie } from "@lucide/svelte";
 import AuroraText from "$lib/components/AuroraText.svelte";
@@ -49,6 +41,7 @@ import * as Card from "$lib/components/ui/card";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
+import LocalizedLink from "$lib/components/LocalizedLink.svelte";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -95,7 +88,7 @@ const layout = useIntlayer("layout");
         </Card.Title>
       </Card.Header>
       <Card.Content>
-        <a
+        <LocalizedLink
           href={contactDetails.address.link}
           target="_blank"
           rel="noreferrer"
@@ -108,7 +101,7 @@ const layout = useIntlayer("layout");
             {contactDetails.address.zip}
             {$cv.about.address.berlin}, {$cv.about.address.germany}
           </div>
-        </a>
+        </LocalizedLink>
       </Card.Content>
     </Card.Root>
 
@@ -121,7 +114,7 @@ const layout = useIntlayer("layout");
         </Card.Title>
       </Card.Header>
       <Card.Content class={cn("flex flex-col gap-4")}>
-        <a
+        <LocalizedLink
           href={contactDetails.email.link}
           target="_blank"
           rel="noreferrer"
@@ -129,8 +122,8 @@ const layout = useIntlayer("layout");
         >
           <Mail class={cn("w-4 h-4")} />
           {contactDetails.email.display}
-        </a>
-        <a
+        </LocalizedLink>
+        <LocalizedLink
           href={contactDetails.telephone.link}
           target="_blank"
           rel="noreferrer"
@@ -138,7 +131,7 @@ const layout = useIntlayer("layout");
         >
           <Phone class={cn("w-4 h-4")} />
           {contactDetails.telephone.display}
-        </a>
+        </LocalizedLink>
       </Card.Content>
     </Card.Root>
   </div>
@@ -152,7 +145,7 @@ const layout = useIntlayer("layout");
       </Card.Title>
     </Card.Header>
     <Card.Content>
-      <a
+      <LocalizedLink
         href={contactDetails.address.link}
         target="_blank"
         rel="noreferrer"
@@ -165,7 +158,7 @@ const layout = useIntlayer("layout");
           {contactDetails.address.zip}
           {$cv.about.address.berlin}, {$cv.about.address.germany}
         </div>
-      </a>
+      </LocalizedLink>
     </Card.Content>
   </Card.Root>
 

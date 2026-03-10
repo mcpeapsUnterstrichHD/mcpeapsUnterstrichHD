@@ -37,18 +37,18 @@
  * @see {@link Footer} -- Embeds Langswitcher in the bottom bar
  */
 import { page } from "$app/state";
-import { getLocalizedUrl, type Locale } from "intlayer";
 import { useLocale, useIntlayer } from "svelte-intlayer";
 import { goto } from "$app/navigation";
 import * as Collapsible from "$lib/components/ui/collapsible";
 import * as Tooltip from "$lib/components/ui/tooltip";
 import * as Sidebar from "$lib/components/ui/sidebar";
 import { Globe, ChevronRight, ChevronDown, Search, Dot } from "@lucide/svelte";
-import { t } from "$lib/i18n";
+import { t, getLocalizedUrl } from "$lib/i18n";
 import { languages, type Language } from "$lib/lang";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
+import LocalizedLink from "./LocalizedLink.svelte";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -74,7 +74,10 @@ const sidebarText = useIntlayer("sidebar");
 
 const { locale, setLocale } = useLocale({
   onLocaleChange: (newLocale) => {
-    const localizedPath = getLocalizedUrl(page.url.pathname, newLocale);
+    const localizedPath = getLocalizedUrl(
+      page.url.pathname,
+      newLocale as Language["code"],
+    );
     goto(localizedPath, { invalidateAll: true });
   },
 });
@@ -253,8 +256,8 @@ const buttonClasses = $derived(
           >
         {:else}
           {#each filteredLanguages as lang}
-            <a
-              href={getLocalizedUrl(page.url.pathname, lang.code)}
+            <LocalizedLink
+              href={page.url.pathname}
               onclick={(e) => {
                 e.preventDefault();
                 setLanguage(lang);
@@ -274,7 +277,7 @@ const buttonClasses = $derived(
               {#if lang.code === $locale}
                 <Dot class={cn("text-primary")} size={32} strokeWidth={6} />
               {/if}
-            </a>
+            </LocalizedLink>
           {/each}
         {/if}
       </Sidebar.MenuSub>
@@ -288,8 +291,8 @@ const buttonClasses = $derived(
           >
         {:else}
           {#each filteredLanguages as lang}
-            <a
-              href={getLocalizedUrl(page.url.pathname, lang.code)}
+            <LocalizedLink
+              href={page.url.pathname}
               onclick={(e) => {
                 e.preventDefault();
                 setLanguage(lang);
@@ -309,7 +312,7 @@ const buttonClasses = $derived(
               {#if lang.code === $locale}
                 <Dot class={cn("text-primary")} size={32} strokeWidth={6} />
               {/if}
-            </a>
+            </LocalizedLink>
           {/each}
         {/if}
       </div>

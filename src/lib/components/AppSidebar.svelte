@@ -41,15 +41,15 @@ import {
   Link as LinkIcon,
   Scale,
   Dot,
-  type IconProps,
 } from "@lucide/svelte";
 import { useIntlayer, useLocale } from "svelte-intlayer";
-import { getLocalizedUrl, type Locale } from "intlayer";
 import LocalizedLink from "$lib/components/LocalizedLink.svelte";
-import { t } from "$lib/i18n";
+import { t, getLocalizedUrl } from "$lib/i18n";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
+import { type Locale } from "intlayer";
+import CommandMenuButton from "./command-menu/CommandMenuButton.svelte";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -310,6 +310,9 @@ function isActive(itemUrl: string, itemUrl2?: string): boolean {
         <Sidebar.Menu>
           <Sidebar.MenuItem>
             <Langswitcher sidebar />
+          </Sidebar.MenuItem>
+          <Sidebar.MenuItem>
+            <CommandMenuButton />
           </Sidebar.MenuItem>
           <Sidebar.MenuItem>
             <SidebarToggle />

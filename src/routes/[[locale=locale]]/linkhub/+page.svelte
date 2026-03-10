@@ -38,6 +38,7 @@ import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
 import MasonryGrid from "$lib/components/MasonryGrid.svelte";
 import * as LinkCard from "$lib/components/link-card";
 import { Share2, Globe, MoreHorizontal } from "@lucide/svelte";
+import LocalizedLink from "$lib/components/LocalizedLink.svelte";
 
 const linkhub = useIntlayer("linkhub");
 const aboutme = useIntlayer("aboutme");
@@ -104,7 +105,7 @@ const spotifyUrl =
       <LinkCard.Root title={$linkhub.sections.other.github.title as unknown as string} description={$linkhub.sections.other.github.description as unknown as string} heading={$linkhub.sections.other.github.headding as unknown as string} url="https://github.com/mcpeapsUnterstrichHD" icon="/pictures/linkhub/github-dark.svg" />
       <!-- Playlist with embed -->
       <div class="break-inside-avoid mb-4">
-        <a href="https://music.apple.com/de/playlist/favorite/pl.u-aZb0kXDFP7zBoV2" target="_blank" rel="noopener noreferrer">
+        <LocalizedLink href="https://music.apple.com/de/playlist/favorite/pl.u-aZb0kXDFP7zBoV2" target="_blank" rel="noopener noreferrer">
           <Card.Root class="my-glass">
             <Card.Header>
               <div class="flex items-center gap-3">
@@ -128,11 +129,11 @@ const spotifyUrl =
               />
             </Card.Content>
           </Card.Root>
-        </a>
+        </LocalizedLink>
       </div>
       <!-- Song with embed -->
       <div class="break-inside-avoid mb-4">
-        <a href="https://song.link/festival_dream&theme=dark" target="_blank" rel="noopener noreferrer">
+        <LocalizedLink href="https://song.link/festival_dream&theme=dark" target="_blank" rel="noopener noreferrer">
           <Card.Root class="my-glass">
             <Card.Header>
               <div class="flex items-center gap-3">
@@ -157,7 +158,7 @@ const spotifyUrl =
               />
             </Card.Content>
           </Card.Root>
-        </a>
+        </LocalizedLink>
       </div>
     </MasonryGrid>
   </section>

@@ -22,8 +22,8 @@
 import { page } from "$app/state";
 import { useSidebar } from "$lib/components/ui/sidebar";
 import { useIntlayer, useLocale } from "svelte-intlayer";
-import { getLocalizedUrl, type Locale } from "intlayer";
-import { t } from "$lib/i18n";
+import { type Locale } from "intlayer";
+import { t, getLocalizedUrl } from "$lib/i18n";
 import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
 import { House, User, FolderKanban, FileText, Ellipsis } from "@lucide/svelte";
 import { cn } from "$lib/utils";

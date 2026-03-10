@@ -22,6 +22,7 @@ import * as Card from "$lib/components/ui/card";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
+import LocalizedLink from "../LocalizedLink.svelte";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -46,7 +47,7 @@ let { title, description, heading, url, icon }: Props = $props();
 </script>
 
 <div class={cn("break-inside-avoid mb-4")}>
-  <a href={url} onclick={() => {
+  <LocalizedLink href={url} onclick={() => {
   trigger([
   { duration: 60, intensity: 1 },
   { delay: 30, duration: 60, intensity: 0.75 },
@@ -75,5 +76,5 @@ let { title, description, heading, url, icon }: Props = $props();
         <Card.Description>{description}</Card.Description>
       </Card.Header>
     </Card.Root>
-  </a>
+  </LocalizedLink>
 </div>

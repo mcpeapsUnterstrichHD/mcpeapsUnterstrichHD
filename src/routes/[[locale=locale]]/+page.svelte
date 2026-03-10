@@ -25,7 +25,8 @@
  */
 
 import { useIntlayer } from "svelte-intlayer";
-import { getLocalizedUrl, type Locale } from "intlayer";
+import { type Locale } from "intlayer";
+import { getLocalizedUrl } from "$lib/i18n";
 import { useLocale } from "svelte-intlayer";
 import AuroraText from "$lib/components/AuroraText.svelte";
 import TypingAnimation from "$lib/components/TypingAnimation.svelte";

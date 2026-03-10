@@ -40,7 +40,8 @@ import { t } from "$lib/i18n";
 import { PanelLeft } from "@lucide/svelte";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
-import { onDestroy } from "svelte";
+import { onDestroy, onMount } from "svelte";
+import { Kbd } from "./ui/kbd";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -72,6 +73,12 @@ const variantClasses = $derived(
     ? "rounded-sm text-foreground my-glass"
     : "w-full group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!",
 );
+
+let isMac = $state(false);
+
+onMount(() => {
+  isMac = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
+});
 </script>
 
 <Tooltip.Root>
@@ -89,8 +96,12 @@ const variantClasses = $derived(
       }}
   >
     <PanelLeft class={cn("h-4 w-4")} />
-    <span class={cn("group-data-[collapsible=icon]:hidden")}>
+    <span class={cn("flex items-center gap-2 group-data-[collapsible=icon]:hidden")}>
       {t($sidebarText, "toggleSidebar")}
+      <span class={cn("ml-auto flex items-center gap-0.5")}>
+        <Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd>
+        <Kbd>B</Kbd>
+      </span>
     </span>
   </Tooltip.Trigger>
   <Tooltip.Content side="right">
