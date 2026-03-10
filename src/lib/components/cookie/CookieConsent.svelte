@@ -55,6 +55,7 @@ import { getLocalizedUrl } from "intlayer";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
+import LocalizedLink from "../LocalizedLink.svelte";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -277,13 +278,13 @@ function handleOpenSheet() {
         >
           {$cookieConsent.managePreferences}
         </Button>
-        <a
-          href={getLocalizedUrl("/imprint", $locale)}
+        <LocalizedLink
+          href="/imprint"
           class={cn("inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors")}
         >
           {$cookieConsent.moreInfo}
           <ExternalLink class={cn("h-3 w-3")} />
-        </a>
+        </LocalizedLink>
       </div>
     </div>
   </div>
@@ -471,13 +472,13 @@ function handleOpenSheet() {
             {$cookieConsent.rejectAll}
           </Button>
         </div>
-        <a
-          href={getLocalizedUrl("/imprint", $locale)}
+        <LocalizedLink
+          href="/imprint"
           class={cn("inline-flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors pt-1")}
         >
           {$cookieConsent.moreInfo}
           <ExternalLink class={cn("h-3 w-3")} />
-        </a>
+        </LocalizedLink>
       </div>
     </Sheet.Footer>
   </Sheet.Content>

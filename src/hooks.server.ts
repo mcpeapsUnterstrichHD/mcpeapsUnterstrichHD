@@ -1,50 +1,99 @@
 /**
  * @module hooks.server
  * @description SvelteKit server-side hooks for locale detection and HTML transformation.
- *
- * This hook runs on every incoming request and performs two tasks:
- * 1. **Locale detection** — Extracts the locale from the URL path's first segment
- *    (e.g. `/en-US/about` → `en-US`). Falls back to the default locale (German)
- *    when no locale prefix is present (prefix-no-default strategy).
- * 2. **HTML transformation** — Replaces `%lang%` and `%dir%` placeholders in `app.html`
- *    with the detected locale code and text direction, ensuring correct `<html lang="..." dir="...">`.
- *
- * @see {@link module:lang} — Language definitions and default locale
- * @see {@link module:getLocale} — Alternative locale detection using Intlayer storage
- * @see `src/app.html` — HTML template with `%lang%` and `%dir%` placeholders
  */
 
 import type { Handle } from "@sveltejs/kit";
 import { languages, type Language } from "$lib/lang";
+import { getLocalizedUrl } from "$lib/i18n";
 
-/** The first language in the {@link languages} array serves as the default locale. */
 const DEFAULT_LOCALE = languages[0].code;
+const SUPPORTED_LOCALES = languages.map((l) => l.code);
 
 /**
- * SvelteKit server hook that detects locale from URL and injects it into
- * `event.locals` and the HTML response.
- *
- * @param event - The SvelteKit request event
- * @param resolve - The resolve function to continue request processing
- * @returns The response with locale-aware HTML transformations applied
+ * Hilfsfunktion zum Auslesen der bevorzugten Browser-Sprache aus dem Header.
  */
-export const handle: Handle = async ({ event, resolve }) => {
-  const firstSegment = event.url.pathname.split("/")[1];
-  let locale: Language["code"];
-  let dir: Language["dir"];
+function getPreferredLocale(acceptLanguage: Language["code"] | null): string {
+  if (!acceptLanguage) return DEFAULT_LOCALE;
 
-  if (languages.map((l) => l.code).includes(firstSegment as Language["code"])) {
-    // URL has an explicit locale prefix → use it
+  const preferredLangs = acceptLanguage
+    .split(",")
+    .map((lang) => {
+      const [code, q] = lang.split(";");
+      return {
+        code: code.trim(),
+        weight: q && q.startsWith("q=") ? parseFloat(q.split("=")[1]) : 1.0,
+      };
+    })
+    .sort((a, b) => b.weight - a.weight);
+
+  for (const { code } of preferredLangs) {
+    if (SUPPORTED_LOCALES.includes(code as Language["code"])) {
+      return code;
+    }
+    const baseCode = code.split("-")[0];
+    if (SUPPORTED_LOCALES.includes(baseCode as Language["code"])) {
+      return baseCode;
+    }
+  }
+
+  return DEFAULT_LOCALE;
+}
+
+export const handle: Handle = async ({ event, resolve }) => {
+  // Ignoriere statische Assets (.png, .css, etc.) und API-Routen
+  const isFileOrApi =
+    event.url.pathname.match(/\.[a-zA-Z0-9]+$/) ||
+    event.url.pathname.startsWith("/api");
+  if (isFileOrApi) {
+    return resolve(event);
+  }
+
+  const firstSegment = event.url.pathname.split("/")[1];
+  const urlHasLocale = SUPPORTED_LOCALES.includes(
+    firstSegment as Language["code"],
+  );
+
+  let locale: Language["code"];
+
+  // REGEL 1: Die URL ist das oberste Gesetz.
+  // Wenn ein unterstütztes Sprachkürzel (z.B. /en/...) in der URL steht, nutze es bedingungslos.
+  if (urlHasLocale) {
     locale = firstSegment as Language["code"];
   } else {
-    // No locale prefix → with prefix-no-default, this IS the default locale
+    // REGEL 2: Kein Kürzel in der URL bedeutet, wir sind auf der Default-Sprache (z.B. Deutsch).
     locale = DEFAULT_LOCALE;
-  }
-  dir = languages.find((l) => l.code === locale)?.dir ?? "ltr";
+    const hasCookie = event.cookies.get("mahd-cookie-consent") !== undefined;
 
+    // Nur beim allerersten Besuch (kein Cookie) versuchen wir, die UX durch einen
+    // automatischen Redirect zu verbessern, falls der Browser eine ANDERE Sprache bevorzugt.
+    if (!hasCookie) {
+      const acceptLanguage = event.request.headers.get("accept-language");
+      const browserLocaleTarget = getPreferredLocale(
+        acceptLanguage as Language["code"],
+      );
+
+      // Wenn der Browser z.B. "en" will, die URL aber aktuell "/" (Default) ist -> Umleiten
+      if (browserLocaleTarget !== DEFAULT_LOCALE) {
+        // Pfad sauber zusammenbauen (z.B. "/" -> "/en" ODER "/projects" -> "/en/projects")
+        const newPath = getLocalizedUrl(
+          event.url.pathname,
+          browserLocaleTarget as Language["code"],
+        );
+
+        return new Response(null, {
+          status: 302, // 302 ist wichtig für SEO, da es ein *temporärer* Redirect ist
+          headers: { location: newPath + event.url.search },
+        });
+      }
+    }
+  }
+
+  // Spracheinstellungen für das HTML anwenden
+  const dir = languages.find((l) => l.code === locale)?.dir ?? "ltr";
   event.locals.locale = locale;
 
-  // Replace %lang% placeholder in HTML
+  // Ersetze %lang% und %dir% Platzhalter in der app.html
   return resolve(event, {
     transformPageChunk: ({ html }) => {
       html = html.replace("%dir%", dir);

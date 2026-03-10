@@ -7,7 +7,7 @@
  * descriptive snippet (rendered via Svelte `children` snippet), and a zoomable
  * project image powered by the {@link Lens} component.
  *
- * The card wraps everything in an `<a>` tag. Internal links are localized via
+ * The card wraps everything in an `<LocalizedLink>` tag. Internal links are localized via
  * `intlayer`'s `getLocalizedUrl`, while external links open in a new tab with
  * `noopener noreferrer` for security.
  *
@@ -41,6 +41,7 @@ import { useLocale } from "svelte-intlayer";
 import Lens from "$lib/components/Lens.svelte";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
+import LocalizedLink from "../LocalizedLink.svelte";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -94,7 +95,7 @@ let target = $derived(isExternal ? "_blank" : undefined);
 let rel = $derived(isExternal ? "noopener noreferrer" : undefined);
 </script>
 
-<a {href} {target} {rel} onclick={() => {
+<LocalizedLink {href} {target} {rel} onclick={() => {
   trigger([
   { duration: 60, intensity: 1 },
   { delay: 30, duration: 60, intensity: 0.75 },
@@ -139,4 +140,4 @@ let rel = $derived(isExternal ? "noopener noreferrer" : undefined);
       </section>
     </Card.Footer>
   </Card.Root>
-</a>
+</LocalizedLink>

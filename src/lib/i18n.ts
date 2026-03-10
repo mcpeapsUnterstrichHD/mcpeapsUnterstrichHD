@@ -13,6 +13,8 @@
  * @see `src/lib/content/*.content.ts` — Intlayer dictionary definition files
  */
 
+import { languages, type Language } from "./lang";
+
 /**
  * Resolves a localized string from an Intlayer dictionary store using dot or underscore
  * notation key paths.
@@ -66,6 +68,7 @@ export function t(
     "CookieConsent",
     "Contact",
     "Common",
+    "CommandMenu",
   ];
   let cleanKey = key;
   for (const prefix of prefixes) {
@@ -194,4 +197,28 @@ export function tArr(
   }
   if (Array.isArray(result)) return result;
   return [];
+}
+
+export function getLocalizedUrl(href: string, currentLocale: Language["code"]) {
+  // 1. Externe Links oder E-Mails ignorieren wir
+  if (href.startsWith("http") || href.startsWith("mailto:")) return href;
+
+  // 2. Wenn wir uns auf der Default-Sprache (ohne Kürzel) befinden, bleibt der Link wie er ist
+  let isSupported = languages.some((l: Language) => l.code === currentLocale);
+  if (!isSupported) return href;
+
+  // 3. cut old locale prefix if it exists to prevent double-prefixing when switching languages
+  const supportedCodes = languages.map((l: Language) => l.code);
+  const segments = href.split("/");
+  if (
+    segments.length > 1 &&
+    supportedCodes.includes(segments[1] as Language["code"])
+  ) {
+    segments.splice(1, 1);
+    href = segments.join("/") || "/";
+  }
+
+  // 4. Das aktuelle Sprachkürzel an den Link anhängen
+  const cleanHref = href === "/" ? "" : href; // Verhindert doppelte Slashes bei Home
+  return `/${currentLocale}${cleanHref}`;
 }

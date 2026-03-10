@@ -37,6 +37,7 @@ import TabBar from "$lib/components/TabBar.svelte";
 import ClickSpark from "$lib/components/ClickSpark.svelte";
 import Particles from "$lib/components/Particles.svelte";
 import Footer from "$lib/components/Footer.svelte";
+import CommandMenu from "$lib/components/command-menu/CommandMenu.svelte";
 import RecommendationToasts from "$lib/components/RecommendationToasts.svelte";
 import CookieConsent from "$lib/components/cookie/CookieConsent.svelte";
 import ReloadPrompt from "$lib/components/ReloadPrompt.svelte";
@@ -114,6 +115,7 @@ const webManifest = $derived(pwaInfo ? pwaInfo.webManifest.linkTag : "");
       <ReloadPrompt />
       <Footer />
       <TabBar />
+      <CommandMenu />
     </div>
   </SidebarProvider>
 </ClickSpark>

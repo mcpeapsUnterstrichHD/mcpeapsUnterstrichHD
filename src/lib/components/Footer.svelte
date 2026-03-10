@@ -23,21 +23,18 @@
  * a `show-cookie-consent` custom DOM event to re-open the {@link CookieConsent}
  * banner.
  *
- * A bottom bar renders a copyright notice with the current year and an inline
- * {@link Langswitcher} for locale toggling.
- *
  * The footer is hidden in print layouts via `print:hidden` / `no-print` classes
  * and uses the `my-glass` utility for the frosted-glass card backdrop styled
  * with the Nord color palette.
  *
  * @see {@link AppSidebar} -- Primary navigation sidebar with the same link groups
- * @see {@link Langswitcher} -- Language picker embedded in the footer bottom bar
+ * @see {@link CommandMenu} -- Command Palette toggled by the footer button
  * @see {@link LocalizedLink} -- Locale-aware anchor used for all internal links
  */
 import { useIntlayer } from "svelte-intlayer";
 import { Mail, Cookie } from "@lucide/svelte";
 import LocalizedLink from "$lib/components/LocalizedLink.svelte";
-import Langswitcher from "$lib/components/Langswitcher.svelte";
+import CommandMenuButton from "$lib/components/command-menu/CommandMenuButton.svelte";
 import CookieConsent from "$lib/components/cookie/CookieConsent.svelte";
 import { contactDetails } from "$lib/contact";
 import {
@@ -237,8 +234,8 @@ function showCookieSettings() {
             &copy; {currentYear} {$aboutme.name}. {$footer.rights}
           </p>
 
-          <!-- Language Switcher -->
-          <Langswitcher />
+          <!-- Command Palette Button -->
+<CommandMenuButton />
         </div>
       </div>
     </div>

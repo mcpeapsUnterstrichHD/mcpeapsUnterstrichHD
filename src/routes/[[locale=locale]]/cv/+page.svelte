@@ -61,6 +61,7 @@ import {
 import { Badge } from "$lib/components/ui/badge";
 import { t, tArr } from "$lib/i18n";
 import { cn } from "$lib/utils";
+import LocalizedLink from "$lib/components/LocalizedLink.svelte";
 
 const cv = useIntlayer("cv");
 const aboutme = useIntlayer("aboutme");
@@ -128,20 +129,20 @@ if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) age--;
       >
         <!-- Contact Info -->
         <div class={cn("flex flex-col gap-2")}>
-          <a
+          <LocalizedLink
             href={contactDetails.email.link}
             class={cn("flex items-center gap-2 hover:text-primary transition-colors")}
           >
             <Mail class={cn("w-4 h-4")} />
             {contactDetails.email.display}
-          </a>
-          <a
+          </LocalizedLink>
+          <LocalizedLink
             href={contactDetails.telephone.link}
             class={cn("flex items-center gap-2 hover:text-primary transition-colors")}
           >
             <Phone class={cn("w-4 h-4")} />
             {contactDetails.telephone.display}
-          </a>
+          </LocalizedLink>
           <div class={cn("flex items-center gap-2 text-muted-foreground")}>
             <Calendar class={cn("w-4 h-4")} />
             {$cv.about.birthday}: 06.06.2003
@@ -149,7 +150,7 @@ if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) age--;
         </div>
         <!-- Address -->
         <div class={cn("flex flex-col gap-2")}>
-          <a
+          <LocalizedLink
             href={contactDetails.address.link}
             target="_blank"
             rel="noreferrer"
@@ -161,7 +162,7 @@ if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) age--;
               {contactDetails.address.zip}
               {$cv.about.address.berlin}, {$cv.about.address.germany}
             </div>
-          </a>
+          </LocalizedLink>
         </div>
       </div>
     </Card.Content>
