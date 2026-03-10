@@ -28,7 +28,6 @@
 import { useIntlayer } from "svelte-intlayer";
 import * as Card from "$lib/components/ui/card";
 import AuroraText from "$lib/components/AuroraText.svelte";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
 import PinnedProjects from "$lib/components/PinnedProjects.svelte";
 import { Music, Disc3 } from "@lucide/svelte";
@@ -61,17 +60,7 @@ if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) {
   <!-- Hero Section -->
   <section class={cn("text-center space-y-4")}>
     <p class={cn("text-muted-foreground text-xl")}>
-      <TypingAnimation
-        text="{t($aboutme, 'hello')} 󱠢"
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {t($aboutme, 'hello')} 󱠢
     </p>
 
     <AuroraText
@@ -79,31 +68,11 @@ if (mo < 0 || (mo === 0 && today.getDate() < birthday.getDate())) {
       colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
       speed={3}
     >
-      <TypingAnimation
-        text="{t($aboutme, 'iam')} {t($aboutme, 'name')}"
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
-    </AuroraText>
+    {t($aboutme, 'iam')} {t($aboutme, 'name')}
+  </AuroraText>
 
     <h2 class={cn("text-2xl md:text-3xl text-muted-foreground font-medium")}>
-      <TypingAnimation
-        text={t($aboutme, "title")}
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {t($aboutme, "title")}
     </h2>
   </section>
 

@@ -29,7 +29,6 @@ import { type Locale } from "intlayer";
 import { getLocalizedUrl } from "$lib/i18n";
 import { useLocale } from "svelte-intlayer";
 import AuroraText from "$lib/components/AuroraText.svelte";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import { User, FolderOpen, FileText, Mail } from "@lucide/svelte";
 import * as Button from "$lib/components/ui/button";
 import { createWebHaptics } from "web-haptics/svelte";
@@ -55,17 +54,7 @@ const recommendation = useIntlayer("recommendation");
   <div class="flex flex-col items-center gap-6 text-center">
     <!-- Animated Greeting -->
     <div class="text-muted-foreground text-xl md:text-2xl lg:text-3xl animate-fade-in">
-      <TypingAnimation
-        text="{$aboutme.hello} 󱠢 {$aboutme.iam}"
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {$aboutme.hello} 󱠢 {$aboutme.iam}
     </div>
 
     <!-- Animated Name with Gradient -->
@@ -74,32 +63,12 @@ const recommendation = useIntlayer("recommendation");
       colors={['#C16069', '#A2BF8A', '#C16069', '#A2BF8A', '#C16069', '#A2BF8A', '#C16069']}
       speed={3}
     >
-      <TypingAnimation
-        text={$aboutme.name}
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {$aboutme.name}
     </AuroraText>
 
     <!-- Animated Title/Tagline -->
     <div class="text-2xl md:text-3xl lg:text-4xl text-muted-foreground mt-4">
-      <TypingAnimation
-        text={$aboutme.title as unknown as string}
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {$aboutme.title as unknown as string}
     </div>
 
     <!-- CTA Buttons -->

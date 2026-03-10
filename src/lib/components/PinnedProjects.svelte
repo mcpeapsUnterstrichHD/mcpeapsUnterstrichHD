@@ -19,7 +19,6 @@
  * @see {@link project-card/project-card.svelte} for individual project cards
  */
 import { useIntlayer } from "svelte-intlayer";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import MasonryGrid from "$lib/components/MasonryGrid.svelte";
 import * as ProjectCard from "$lib/components/project-card";
 import { Pin } from "@lucide/svelte";
@@ -39,17 +38,7 @@ let pinnedProjects = $derived(getPinnedProjectsData());
     class={cn("text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2")}
   >
     <Pin class={cn("w-6 h-6 text-primary")} />
-    <TypingAnimation
-      text={`${t($projectsInt, "pinned")}:`}
-      typeSpeed={145}
-      pauseDelay={1450}
-      deleteSpeed={75}
-      showCursor
-      blinkCursor
-      loop
-      startOnView
-      cursorStyle="underscore"
-    />
+    {t($projectsInt, "pinned")}:
   </h2>
   <MasonryGrid variant="pinned_projects">
     {#each pinnedProjects as project}
