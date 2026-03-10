@@ -33,7 +33,6 @@
 import { useIntlayer } from "svelte-intlayer";
 import * as Card from "$lib/components/ui/card";
 import AuroraText from "$lib/components/AuroraText.svelte";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
 import { Mail, MessageSquare, Calendar } from "@lucide/svelte";
 import { contactDetails } from "$lib/contact";
@@ -93,12 +92,12 @@ onMount(() => {
   <!-- Hero Section -->
   <section class={cn("text-center space-y-6")}>
     <AuroraText class={cn("text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold")} colors={['#C16069', '#A2BF8A', '#C16069', '#A2BF8A']} speed={3}>
-      <TypingAnimation text={$sites.contact as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
+      {$sites.contact}
     </AuroraText>
 
     <p class={cn("text-muted-foreground text-xl max-w-2xl mx-auto flex items-center justify-center gap-3")}>
       <MessageSquare class={cn("w-6 h-6 text-primary")} />
-      <TypingAnimation text={$contact.description as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
+      {$contact.description}
     </p>
   </section>
 

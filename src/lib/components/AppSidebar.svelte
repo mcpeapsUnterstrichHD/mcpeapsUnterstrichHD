@@ -29,7 +29,6 @@ import { page } from "$app/state";
 import * as Sidebar from "$lib/components/ui/sidebar";
 import * as Tooltip from "$lib/components/ui/tooltip";
 import UserAvatar from "$lib/components/UserAvatar.svelte";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import Langswitcher from "$lib/components/Langswitcher.svelte";
 import SidebarToggle from "$lib/components/SidebarToggle.svelte";
 import {
@@ -154,17 +153,7 @@ function isActive(itemUrl: string, itemUrl2?: string): boolean {
                     class={cn("h-8 w-8 rounded-sm")}
                   />
                   <span class={cn("group-data-[collapsible=icon]:hidden")}>
-                    <TypingAnimation
-                      text={t($aboutme, "name")}
-                      typeSpeed={145}
-                      pauseDelay={1450}
-                      deleteSpeed={75}
-                      showCursor
-                      blinkCursor
-                      loop
-                      startOnView
-                      cursorStyle="underscore"
-                    />
+                    {t($aboutme, "name")}
                   </span>
                 </LocalizedLink>
               </Tooltip.Trigger>

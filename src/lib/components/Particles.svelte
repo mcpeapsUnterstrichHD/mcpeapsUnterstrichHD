@@ -221,6 +221,6 @@ onMount(() => {
 
 <canvas
   bind:this={canvas}
-  class={cn("w-full h-full block absolute top-0 left-0 pointer-events-none", className)}
+  class={cn("fixed inset-0 z-[-1] no-print animate-fade-in pointer-events-none", className)}
   aria-hidden="true"
 ></canvas>

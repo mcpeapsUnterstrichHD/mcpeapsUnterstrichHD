@@ -31,7 +31,6 @@
 
 import { useIntlayer } from "svelte-intlayer";
 import AuroraText from "$lib/components/AuroraText.svelte";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import MasonryGrid from "$lib/components/MasonryGrid.svelte";
 import * as ProjectCard from "$lib/components/project-card";
 import PinnedProjects from "$lib/components/PinnedProjects.svelte";
@@ -64,17 +63,7 @@ let completedProjects = $derived(
       colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
       speed={3}
     >
-      <TypingAnimation
-        text={t($projects, "title")}
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {t($projects, "title")}
     </AuroraText>
     <p class={cn("text-muted-foreground text-lg flex items-center justify-center gap-2")}>
       <FolderOpen class={cn("w-6 h-6")} />
@@ -96,17 +85,7 @@ let completedProjects = $derived(
       class={cn("text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3")}
     >
       <Grid3X3 class={cn("w-7 h-7 text-primary")} />
-      <TypingAnimation
-        text="{t($projects, 'all')}:"
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {t($projects, 'all')}:
     </h2>
     <MasonryGrid variant="projects">
       {#each completedProjects as project}

@@ -33,7 +33,6 @@
 import { useIntlayer } from "svelte-intlayer";
 import * as Card from "$lib/components/ui/card";
 import AuroraText from "$lib/components/AuroraText.svelte";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import ConsentIframe from "$lib/components/cookie/ConsentIframe.svelte";
 import MasonryGrid from "$lib/components/MasonryGrid.svelte";
 import * as LinkCard from "$lib/components/link-card";
@@ -58,7 +57,7 @@ const spotifyUrl =
   <!-- Hero Section -->
   <section class="text-center space-y-4">
     <AuroraText class="text-4xl md:text-5xl lg:text-6xl font-bold" colors={['#C16069', '#A2BF8A', '#C16069', '#A2BF8A']} speed={3}>
-      <TypingAnimation text={$aboutme.name as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
+      {$aboutme.name as unknown as string}
     </AuroraText>
     <p class="text-muted-foreground text-lg">
       {$linkhub.description}
@@ -69,7 +68,7 @@ const spotifyUrl =
   <section class="space-y-6">
     <h2 class="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3">
       <Share2 class="w-7 h-7 text-primary" />
-      <TypingAnimation text={$linkhub.sections.socialMedia.title as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
+      {$linkhub.sections.socialMedia.title as unknown as string}
     </h2>
     <MasonryGrid variant="links">
       <LinkCard.Root title={$linkhub.sections.socialMedia.instagram.title as unknown as string} description={$linkhub.sections.socialMedia.instagram.description as unknown as string} heading={$linkhub.sections.socialMedia.instagram.headding as unknown as string} url="https://instagram.com/mcpeaps_hd" icon="/pictures/linkhub/instagram-dark.svg" />
@@ -86,7 +85,7 @@ const spotifyUrl =
   <section class="space-y-6">
     <h2 class="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3">
       <Globe class="w-7 h-7 text-primary" />
-      <TypingAnimation text={$linkhub.sections.websites.title as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
+      {$linkhub.sections.websites.title as unknown as string}
     </h2>
     <MasonryGrid variant="links">
       <LinkCard.Root title={$linkhub.sections.websites.myWebsite.title as unknown as string} description={$linkhub.sections.websites.myWebsite.description as unknown as string} heading={$linkhub.sections.websites.myWebsite.headding as unknown as string} url="https://mcpeapsunterstrichhd.dev" icon="/pictures/logo.png" />
@@ -99,7 +98,7 @@ const spotifyUrl =
   <section class="space-y-6">
     <h2 class="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-3">
       <MoreHorizontal class="w-7 h-7 text-primary" />
-      <TypingAnimation text={$linkhub.sections.other.title as unknown as string} typeSpeed={145} pauseDelay={1450} deleteSpeed={75} showCursor blinkCursor loop startOnView cursorStyle="underscore" />
+      {$linkhub.sections.other.title as unknown as string}
     </h2>
     <MasonryGrid variant="links">
       <LinkCard.Root title={$linkhub.sections.other.github.title as unknown as string} description={$linkhub.sections.other.github.description as unknown as string} heading={$linkhub.sections.other.github.headding as unknown as string} url="https://github.com/mcpeapsUnterstrichHD" icon="/pictures/linkhub/github-dark.svg" />

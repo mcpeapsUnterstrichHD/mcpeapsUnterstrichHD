@@ -36,7 +36,6 @@ import { useIntlayer } from "svelte-intlayer";
 import { contactDetails } from "$lib/contact";
 import { Mail, Phone, MapPin, Scale, User, Cookie } from "@lucide/svelte";
 import AuroraText from "$lib/components/AuroraText.svelte";
-import TypingAnimation from "$lib/components/TypingAnimation.svelte";
 import * as Card from "$lib/components/ui/card";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
@@ -63,17 +62,7 @@ const layout = useIntlayer("layout");
       colors={["#C16069", "#A2BF8A", "#C16069", "#A2BF8A"]}
       speed={3}
     >
-      <TypingAnimation
-        text={$imprint.title as unknown as string}
-        typeSpeed={145}
-        pauseDelay={1450}
-        deleteSpeed={75}
-        showCursor
-        blinkCursor
-        loop
-        startOnView
-        cursorStyle="underscore"
-      />
+      {$imprint.title as unknown as string}
     </AuroraText>
   </section>
 
