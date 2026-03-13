@@ -258,7 +258,7 @@ const buttonClasses = $derived(
           {#each filteredLanguages as lang}
             <LocalizedLink
               href={page.url.pathname}
-              onclick={(e) => {
+              onclick={(e: Event) => {
                 e.preventDefault();
                 setLanguage(lang);
                 trigger([
@@ -293,7 +293,7 @@ const buttonClasses = $derived(
           {#each filteredLanguages as lang}
             <LocalizedLink
               href={page.url.pathname}
-              onclick={(e) => {
+              onclick={(e: Event) => {
                 e.preventDefault();
                 setLanguage(lang);
                 trigger([

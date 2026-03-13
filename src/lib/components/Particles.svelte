@@ -58,9 +58,25 @@ const fsSource = `#version 300 es
       outColor = vec4(v_color.rgb, v_color.a * alpha);
   }`;
 
+function handleResize() {
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+
+  canvasSize.w = window.innerWidth;
+  canvasSize.h = window.innerHeight;
+
+  canvas.width = canvasSize.w * dpr;
+  canvas.height = canvasSize.h * dpr;
+
+  canvas.style.width = `${canvasSize.w}px`;
+  canvas.style.height = `${canvasSize.h}px`;
+}
+
 onMount(() => {
-  const gl = canvas.getContext("webgl2", { alpha: true, antialias: false });
+  const gl = canvas.getContext("webgl2", { alpha: true, antialias: true });
   if (!gl) return;
+
+  handleResize();
 
   const vShader = gl.createShader(gl.VERTEX_SHADER)!;
   gl.shaderSource(vShader, vsSource);
@@ -111,32 +127,6 @@ onMount(() => {
   gl.vertexAttribPointer(colorLoc, 4, gl.FLOAT, false, stride, 2 * 4);
   gl.enableVertexAttribArray(sizeLoc);
   gl.vertexAttribPointer(sizeLoc, 1, gl.FLOAT, false, stride, 6 * 4);
-
-  // NEU: ResizeObserver übernimmt das automatische Skalieren
-  const resizeObserver = new ResizeObserver(() => {
-    if (!canvas || !canvas.parentElement) return;
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.parentElement.getBoundingClientRect();
-    // Alternativ: canvas.getBoundingClientRect(), je nachdem wie dein Layout aufgebaut ist
-
-    // 1. Logische Größe für die Partikel-Physik (Kollisionen an den Rändern)
-    canvasSize.w = rect.width;
-    canvasSize.h = rect.height;
-
-    // 2. Physische Pixel-Auflösung für gestochen scharfes WebGL-Rendering
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-
-    // 3. CSS-Größe explizit setzen, damit der Canvas nicht endlos weiterwächst
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
-
-    // 4. Viewport sofort updaten
-    if (gl) {
-      gl.viewport(0, 0, canvas.width, canvas.height);
-    }
-  });
-  resizeObserver.observe(canvas);
 
   let animationFrameId: number;
 
@@ -210,14 +200,13 @@ onMount(() => {
   render();
 
   return () => {
-    resizeObserver.disconnect();
     cancelAnimationFrame(animationFrameId);
     gl!.deleteProgram(program);
   };
 });
 </script>
 
-<svelte:window onmousemove={handleMouseMove} />
+<svelte:window onmousemove={handleMouseMove} onresize={handleResize} />
 
 <canvas
   bind:this={canvas}
