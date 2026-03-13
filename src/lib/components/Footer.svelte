@@ -46,6 +46,10 @@ import {
   SiBluesky as Bluesky,
 } from "@icons-pack/svelte-simple-icons";
 import { cn } from "$lib/utils";
+import { t } from "$lib/i18n";
+import { IsMobile } from "$lib/hooks/is-mobile.svelte";
+import { IsTablet } from "$lib/hooks/is-tablet.svelte";
+import Langswitcher from "./Langswitcher.svelte";
 
 const aboutme = useIntlayer("aboutme");
 const sites = useIntlayer("sites");
@@ -57,16 +61,16 @@ const currentYear = new Date().getFullYear();
 
 /** Derived array of primary internal navigation links. Re-computes when locale changes. */
 let navigationLinks = $derived([
-  { href: "/", label: () => $sites.root },
-  { href: "/aboutme", label: () => $sites.aboutme },
-  { href: "/projects", label: () => $sites.projects },
-  { href: "/cv", label: () => $sites.cv },
+  { href: "/", label: t($sites, "root") },
+  { href: "/aboutme", label: t($sites, "aboutme") },
+  { href: "/projects", label: t($sites, "projects") },
+  { href: "/cv", label: t($sites, "cv") },
 ]);
 
 /** Derived array of connect links (Contact, Linkhub). Re-computes when locale changes. */
 let connectLinks = $derived([
-  { href: "/contact", label: () => $sites.contact },
-  { href: "/linkhub", label: () => $sites.linkhub },
+  { href: "/contact", label: t($sites, "contact") },
+  { href: "/linkhub", label: t($sites, "linkhub") },
 ]);
 
 /** Static array of external social media links with their Simple Icons components. */
@@ -93,7 +97,7 @@ const socialLinks = [
 
 /** Derived array of legal links (Imprint). Re-computes when locale changes. */
 let legalLinks = $derived([
-  { href: "/imprint", label: () => $sites.impressum },
+  { href: "/imprint", label: t($sites, "impressum") },
 ]);
 
 /**
@@ -106,6 +110,9 @@ function showCookieSettings() {
     window.dispatchEvent(new CustomEvent("show-cookie-consent"));
   }
 }
+
+const isMobile = new IsMobile();
+const isTablet = new IsTablet();
 </script>
 
 <footer id="footer" class={cn("w-full z-10 print:hidden no-print mt-auto p-2 pb-[calc(5rem+env(safe-area-inset-bottom,0px))] lg:pb-2")}>
@@ -119,10 +126,10 @@ function showCookieSettings() {
             href="/"
             class={cn("text-lg font-semibold text-foreground hover:text-primary transition-colors")}
           >
-            {$aboutme.name}
+            {t($aboutme,"name")}
           </LocalizedLink>
           <p class={cn("mt-3 text-sm text-muted-foreground leading-relaxed hyphens-auto")}>
-            {$aboutme.title}
+            {t($aboutme,"title")}
           </p>
           <!-- Social Icons -->
           <div class={cn("mt-4 flex flex-wrap items-center gap-3")}>
@@ -147,7 +154,7 @@ function showCookieSettings() {
         <!-- Navigation -->
         <div>
           <h3 class={cn("text-sm font-semibold text-foreground mb-4")}>
-            {$footer.navigation}
+            {t($footer,"navigation")}
           </h3>
           <ul class={cn("space-y-3")}>
             {#each navigationLinks as link}
@@ -156,7 +163,7 @@ function showCookieSettings() {
                   href={link.href}
                   class={cn("text-sm text-muted-foreground hover:text-foreground transition-colors")}
                 >
-                  {link.label()}
+                  {link.label}
                 </LocalizedLink>
               </li>
             {/each}
@@ -166,7 +173,7 @@ function showCookieSettings() {
         <!-- Connect -->
         <div>
           <h3 class={cn("text-sm font-semibold text-foreground mb-4")}>
-            {$footer.connect}
+            {t($footer,"connect")}
           </h3>
           <ul class={cn("space-y-3")}>
             {#each connectLinks as link}
@@ -175,7 +182,7 @@ function showCookieSettings() {
                   href={link.href}
                   class={cn("text-sm text-muted-foreground hover:text-foreground transition-colors")}
                 >
-                  {link.label()}
+                  {link.label}
                 </LocalizedLink>
               </li>
             {/each}
@@ -185,7 +192,7 @@ function showCookieSettings() {
                 class={cn("text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5")}
               >
                 <Mail class={cn("h-3.5 w-3.5")} />
-                {$cv.about.email}
+                {t($cv,"about.email")}
               </LocalizedLink>
             </li>
           </ul>
@@ -194,7 +201,7 @@ function showCookieSettings() {
         <!-- Legal -->
         <div>
           <h3 class={cn("text-sm font-semibold text-foreground mb-4")}>
-            {$footer.legal}
+            {t($footer,"legal")}
           </h3>
           <ul class={cn("space-y-3")}>
             {#each legalLinks as link}
@@ -203,7 +210,7 @@ function showCookieSettings() {
                   href={link.href}
                   class={cn("text-sm text-muted-foreground hover:text-foreground transition-colors")}
                 >
-                  {link.label()}
+                  {link.label}
                 </LocalizedLink>
               </li>
             {/each}
@@ -231,11 +238,15 @@ function showCookieSettings() {
         <div class={cn("flex flex-col sm:flex-row items-center justify-between gap-4 p-4")}>
           <!-- Copyright -->
           <p class={cn("text-sm text-muted-foreground")}>
-            &copy; {currentYear} {$aboutme.name}. {$footer.rights}
+            &copy; {currentYear} {t($aboutme,"name")}. {t($footer,"rights")}
           </p>
 
           <!-- Command Palette Button -->
-<CommandMenuButton />
+          {#if !isMobile.current && !isTablet.current}
+            <CommandMenuButton />
+          {:else}
+            <Langswitcher />
+          {/if}
         </div>
       </div>
     </div>

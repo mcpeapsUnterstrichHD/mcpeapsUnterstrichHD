@@ -49,6 +49,8 @@ import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
 import { type Locale } from "intlayer";
 import CommandMenuButton from "./command-menu/CommandMenuButton.svelte";
+import { IsMobile } from "$lib/hooks/is-mobile.svelte";
+import { IsTablet } from "$lib/hooks/is-tablet.svelte";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -116,6 +118,9 @@ function isActive(itemUrl: string, itemUrl2?: string): boolean {
     : undefined;
   return path === localized1 || (!!localized2 && path === localized2);
 }
+
+const isMobile = new IsMobile();
+const isTablet = new IsTablet();
 </script>
 
 <Sidebar.Root
@@ -292,8 +297,7 @@ function isActive(itemUrl: string, itemUrl2?: string): boolean {
   <Sidebar.Footer>
     <Sidebar.Group>
       <Sidebar.GroupLabel class={cn("group-data-[collapsible=icon]:hidden")}>
-        &copy; {today.getFullYear()}
-        {t($aboutme, "name")}
+        &copy; {today.getFullYear()} {t($aboutme, "name")}
       </Sidebar.GroupLabel>
       <Sidebar.GroupContent>
         <Sidebar.Menu>
@@ -301,7 +305,9 @@ function isActive(itemUrl: string, itemUrl2?: string): boolean {
             <Langswitcher sidebar />
           </Sidebar.MenuItem>
           <Sidebar.MenuItem>
-            <CommandMenuButton />
+            {#if !isMobile.current && !isTablet.current}
+              <CommandMenuButton />
+            {/if}
           </Sidebar.MenuItem>
           <Sidebar.MenuItem>
             <SidebarToggle />

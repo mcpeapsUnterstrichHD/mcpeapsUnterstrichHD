@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 /**
  * @module project-data
  * @description Portfolio project data for the projects showcase page.
@@ -26,14 +28,15 @@
  * @property pinned - Whether this project appears in the "Pinned Projects" section
  *                    on the home and about pages
  */
-export interface ProjectItem {
-  id: string;
-  image: string;
-  bgColor: string;
-  badges: string[];
-  link: string;
-  pinned: boolean;
-}
+export const ProjectItemSchema = z.object({
+  id: z.string(),
+  image: z.string(),
+  bgColor: z.string(),
+  badges: z.array(z.string()),
+  link: z.string(),
+  pinned: z.boolean(),
+});
+export type ProjectItem = z.infer<typeof ProjectItemSchema>;
 
 /**
  * All portfolio project entries.

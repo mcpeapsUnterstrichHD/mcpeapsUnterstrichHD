@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 /**
  * @module cv-data
  * @description Centralized CV (Curriculum Vitae) data structures and content.
@@ -28,17 +30,18 @@
  * @property enddate - End date in German format (`"MM.YYYY"` or `"DD.MM.YYYY"`)
  * @property badgeKeys - Array of Intlayer dictionary keys for badges (e.g. location, degree type)
  */
-export interface EducationItem {
-  key: string;
-  nameKey: string;
-  imgAltKey: string;
-  descriptionKey: string;
-  image: string;
-  imageFallback: string;
-  startdate: string;
-  enddate: string;
-  badgeKeys: string[];
-}
+export const EducationItemSchema = z.object({
+  key: z.string(),
+  nameKey: z.string(),
+  imgAltKey: z.string(),
+  descriptionKey: z.string(),
+  image: z.string(),
+  imageFallback: z.string(),
+  startdate: z.string(),
+  enddate: z.string(),
+  badgeKeys: z.array(z.string()),
+});
+export type EducationItem = z.infer<typeof EducationItemSchema>;
 
 /**
  * Represents a single work experience entry (internship, job, etc.).
@@ -53,31 +56,34 @@ export interface EducationItem {
  * @property startdate - Start date in German format (`"DD.MM.YYYY"` or `"MM.YYYY"`)
  * @property enddate - End date in German format (`"DD.MM.YYYY"` or `"MM.YYYY"`)
  */
-export interface ExperienceItem {
-  key: string;
-  nameKey: string;
-  imgAltKey: string;
-  descriptionKey: string;
-  badgesKey: string;
-  image: string;
-  imageFallback: string;
-  startdate: string;
-  enddate: string;
-}
+export const ExperienceItemSchema = z.object({
+  key: z.string(),
+  nameKey: z.string(),
+  imgAltKey: z.string(),
+  descriptionKey: z.string(),
+  badgesKey: z.string(),
+  image: z.string(),
+  imageFallback: z.string(),
+  startdate: z.string(),
+  enddate: z.string(),
+});
+export type ExperienceItem = z.infer<typeof ExperienceItemSchema>;
 
 /**
  * Union type of all valid skill category identifiers.
  * Each category groups related skills together on the CV page.
  */
-export type SkillCategoryKey =
-  | "programming"
-  | "databases"
-  | "automation"
-  | "operatingSystems"
-  | "networking"
-  | "devEnvironments"
-  | "office"
-  | "languages";
+export const SkillCategoryKeySchema = z.enum([
+  "programming",
+  "databases",
+  "automation",
+  "operatingSystems",
+  "networking",
+  "devEnvironments",
+  "office",
+  "languages",
+]);
+export type SkillCategoryKey = z.infer<typeof SkillCategoryKeySchema>;
 
 /**
  * Represents a single skill with proficiency level and metadata.
@@ -93,18 +99,24 @@ export type SkillCategoryKey =
  * @property darkImage - Optional alternative logo for dark mode
  * @property experience - Optional duration of experience (e.g. `{ type: "years", count: 3 }`)
  */
-export interface SkillItem {
-  title: string;
-  category: SkillCategoryKey;
-  badgeKeys: string[];
-  staticBadges?: string[];
-  image: string;
-  imageAlt: string;
-  imageFallback: string;
-  level: number;
-  darkImage?: string;
-  experience?: { type: "years" | "months" | "month" | "year"; count: number };
-}
+export const SkillItemSchema = z.object({
+  title: z.string(),
+  category: SkillCategoryKeySchema,
+  badgeKeys: z.array(z.string()),
+  staticBadges: z.array(z.string()).optional(),
+  image: z.string(),
+  imageAlt: z.string(),
+  imageFallback: z.string(),
+  level: z.number(),
+  darkImage: z.string().optional(),
+  experience: z
+    .object({
+      type: z.enum(["years", "months", "month", "year"]),
+      count: z.number(),
+    })
+    .optional(),
+});
+export type SkillItem = z.infer<typeof SkillItemSchema>;
 
 /**
  * Represents a skill category heading used to group skills on the CV page.
@@ -112,10 +124,11 @@ export interface SkillItem {
  * @property key - The {@link SkillCategoryKey} identifier for this category
  * @property titleKey - Intlayer dictionary key for the category's localized title
  */
-export interface SkillCategory {
-  key: SkillCategoryKey;
-  titleKey: string;
-}
+export const SkillCategorySchema = z.object({
+  key: SkillCategoryKeySchema,
+  titleKey: z.string(),
+});
+export type SkillCategory = z.infer<typeof SkillCategorySchema>;
 
 /**
  * All education entries, ordered by data entry (use {@link sortByEndDate} for chronological display).

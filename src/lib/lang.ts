@@ -1,3 +1,6 @@
+import { Locales } from "intlayer";
+import { z } from "zod";
+
 /**
  * @module lang
  * @description Language configuration for the application's internationalization system.
@@ -11,8 +14,6 @@
  * @see {@link module:i18n} — Translation resolution helpers
  */
 
-import { Locales, type Locale } from "intlayer";
-
 /**
  * Represents a supported language in the application.
  *
@@ -21,12 +22,13 @@ import { Locales, type Locale } from "intlayer";
  * @property country - Country name in its own language (e.g. "Deutschland")
  * @property dir - Text direction: `"ltr"` for left-to-right or `"rtl"` for right-to-left
  */
-export interface Language {
-  code: Locale;
-  name: string;
-  country: string;
-  dir: "ltr" | "rtl";
-}
+export const LanguageSchema = z.object({
+  code: z.enum(Object.values(Locales) as [string, ...string[]]),
+  name: z.string(),
+  country: z.string(),
+  dir: z.enum(["ltr", "rtl"]),
+});
+export type Language = z.infer<typeof LanguageSchema>;
 
 /**
  * All languages supported by the application.

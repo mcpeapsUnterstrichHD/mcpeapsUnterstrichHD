@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 /**
  * @module contact
  * @description Contact information constants used across the CV, contact page, footer,
@@ -14,11 +16,8 @@
 /**
  * Enumeration of supported contact methods.
  */
-enum ContactType {
-  telephone = "telephone",
-  email = "email",
-  address = "address",
-}
+export const ContactType = z.enum(["telephone", "email", "address"]);
+export type ContactType = z.infer<typeof ContactType>;
 
 /**
  * Contact detail with a human-readable display string and an actionable link.
@@ -26,10 +25,11 @@ enum ContactType {
  * @property display - Human-readable contact value (e.g. phone number, email address)
  * @property link - Actionable URI for the contact method (e.g. `tel:`, `mailto:`)
  */
-interface ContactDetails {
-  display: string;
-  link: string;
-}
+export const ContactDetailsSchema = z.object({
+  display: z.string(),
+  link: z.url(),
+});
+export type ContactDetails = z.infer<typeof ContactDetailsSchema>;
 
 /**
  * Structured postal address with individual fields and a maps link.
@@ -40,13 +40,14 @@ interface ContactDetails {
  * @property country - Country name (may be an Intlayer dictionary key for localization)
  * @property link - Deep link to the address on Apple Maps
  */
-interface AddressDetails {
-  street: string;
-  zip: string;
-  city: string;
-  country: string;
-  link: string;
-}
+export const AddressDetailsSchema = z.object({
+  street: z.string(),
+  zip: z.string(),
+  city: z.string(),
+  country: z.string(),
+  link: z.url(),
+});
+export type AddressDetails = z.infer<typeof AddressDetailsSchema>;
 
 /**
  * All contact details for the site owner, keyed by {@link ContactType}.
@@ -63,19 +64,19 @@ interface AddressDetails {
  * ```
  */
 export const contactDetails: {
-  [ContactType.telephone]: ContactDetails;
-  [ContactType.email]: ContactDetails;
-  [ContactType.address]: AddressDetails;
+  telephone: ContactDetails;
+  email: ContactDetails;
+  address: AddressDetails;
 } = {
-  [ContactType.telephone]: {
+  telephone: {
     display: "+4917645172171",
     link: "tel:+4917645172171",
   },
-  [ContactType.email]: {
+  email: {
     display: "aps.fabian@mcpeapsunterstrichhd.dev",
     link: "mailto:aps.fabian@mcpeapsunterstrichhd.dev",
   },
-  [ContactType.address]: {
+  address: {
     street: "Ludwig-Renn-Straße 33",
     zip: "12679",
     city: "Cv.about.address.berlin",
