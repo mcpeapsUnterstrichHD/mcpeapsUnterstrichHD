@@ -43,7 +43,7 @@ import {
 } from "@lucide/svelte";
 import { useIntlayer, useLocale } from "svelte-intlayer";
 import LocalizedLink from "$lib/components/LocalizedLink.svelte";
-import { t, getLocalizedUrl } from "$lib/i18n";
+import { t, isActive } from "$lib/i18n";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
@@ -97,27 +97,6 @@ let connectLinks: SidebarLink[] = $derived([
 let legalLinks: SidebarLink[] = $derived([
   { title: t($sites, "impressum"), url: "/imprint/", icon: Scale },
 ]);
-
-/**
- * Determines whether a navigation link is "active" by comparing the current
- * `page.url.pathname` against the locale-prefixed version(s) of the link's route.
- *
- * Trailing slashes are stripped before comparison to avoid false negatives.
- *
- * @param {string} itemUrl - Primary route path to check (e.g. "/cv/").
- * @param {string} [itemUrl2] - Optional secondary route path (e.g. "/cv/ats/").
- * @returns {boolean} True when the current page matches either localized URL.
- */
-function isActive(itemUrl: string, itemUrl2?: string): boolean {
-  const currentLoc = $locale as Locale;
-  const path = page.url.pathname.replace(/\/$/, "") || "/";
-  const localized1 =
-    getLocalizedUrl(itemUrl, currentLoc).replace(/\/$/, "") || "/";
-  const localized2 = itemUrl2
-    ? getLocalizedUrl(itemUrl2, currentLoc).replace(/\/$/, "") || "/"
-    : undefined;
-  return path === localized1 || (!!localized2 && path === localized2);
-}
 
 const isMobile = new IsMobile();
 const isTablet = new IsTablet();
@@ -197,7 +176,7 @@ const isTablet = new IsTablet();
                       class={cn("flex-1 truncate group-data-[collapsible=icon]:hidden")}
                       >{item.title}</span
                     >
-                    {#if isActive(item.url, item.url2)}
+                    {#if isActive($locale as Locale, item.url, item.url2)}
                       <Dot
                         class={cn("text-primary shrink-0")}
                         size={72}
@@ -237,7 +216,7 @@ const isTablet = new IsTablet();
                       class={cn("flex-1 truncate group-data-[collapsible=icon]:hidden")}
                       >{item.title}</span
                     >
-                    {#if isActive(item.url)}
+                    {#if isActive($locale as Locale, item.url)}
                       <Dot
                         class={cn("text-primary shrink-0")}
                         size={72}
@@ -277,7 +256,7 @@ const isTablet = new IsTablet();
                       class={cn("flex-1 truncate group-data-[collapsible=icon]:hidden")}
                       >{item.title}</span
                     >
-                    {#if isActive(item.url)}
+                    {#if isActive($locale as Locale, item.url)}
                       <Dot
                         class={cn("text-primary shrink-0")}
                         size={72}

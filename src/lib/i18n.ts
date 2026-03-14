@@ -13,7 +13,9 @@
  * @see `src/lib/content/*.content.ts` — Intlayer dictionary definition files
  */
 
+import type { Locale } from "intlayer";
 import { languages, type Language } from "./lang";
+import { page } from "$app/state";
 
 /**
  * Resolves a localized string from an Intlayer dictionary store using dot or underscore
@@ -201,7 +203,12 @@ export function tArr(
 
 export function getLocalizedUrl(href: string, currentLocale: Language["code"]) {
   // 1. Externe Links oder E-Mails ignorieren wir
-  if (href.startsWith("http") || href.startsWith("mailto:")) return href;
+  if (
+    href.startsWith("http") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:")
+  )
+    return href;
 
   // 2. Wenn wir uns auf der Default-Sprache (ohne Kürzel) befinden, bleibt der Link wie er ist
   let isSupported = languages.some((l: Language) => l.code === currentLocale);
@@ -221,4 +228,35 @@ export function getLocalizedUrl(href: string, currentLocale: Language["code"]) {
   // 4. Das aktuelle Sprachkürzel an den Link anhängen
   const cleanHref = href === "/" ? "" : href; // Verhindert doppelte Slashes bei Home
   return `/${currentLocale}${cleanHref}`;
+}
+
+/**
+ * Determines whether a navigation link is "active" by comparing the current
+ * `page.url.pathname` against the locale-prefixed version(s) of the link's route.
+ *
+ * Trailing slashes are stripped before comparison to avoid false negatives.
+ *
+ * @param {string} itemUrl - Primary route path to check (e.g. "/cv/").
+ * @param {string} [itemUrl2] - Optional secondary route path (e.g. "/cv/ats/").
+ * @returns {boolean} True when the current page matches either localized URL.
+ */
+export function isActive(
+  currentLocale: Locale,
+  itemUrl: string,
+  itemUrl2?: string,
+): boolean {
+  let path = page.url.pathname.replace(/\/$/, "").concat("/") || "/";
+  const localized1 =
+    getLocalizedUrl(itemUrl, currentLocale).replace(/\/$/, "").concat("/") ||
+    "/";
+  const localized2 = itemUrl2
+    ? getLocalizedUrl(itemUrl2, currentLocale).replace(/\/$/, "").concat("/") ||
+      "/"
+    : undefined;
+  return (
+    path === localized1 ||
+    (!!localized2 && path === localized2) ||
+    path === itemUrl ||
+    (!!itemUrl2 && path === itemUrl2)
+  );
 }
