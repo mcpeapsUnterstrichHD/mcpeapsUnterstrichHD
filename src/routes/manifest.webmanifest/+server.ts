@@ -56,6 +56,7 @@ export const GET: RequestHandler = () => {
   const manifest = {
     short_name: "Fabian Aps",
     name: "Fabian Aps - Portfolio/Impressum",
+    description: "Persönliches Portfolio und Impressum von Fabian Aps",
     start_url: "/",
     scope: "/",
     display: "standalone",
