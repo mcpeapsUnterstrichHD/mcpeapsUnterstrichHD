@@ -43,7 +43,7 @@ import {
 } from "@lucide/svelte";
 import { useIntlayer, useLocale } from "svelte-intlayer";
 import LocalizedLink from "$lib/components/LocalizedLink.svelte";
-import { t, isActive } from "$lib/i18n";
+import { t, isActive, getLocalizedUrl } from "$lib/i18n";
 import { cn } from "$lib/utils";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
@@ -126,7 +126,7 @@ const isTablet = new IsTablet();
                 class={cn("flex w-full items-center gap-2 rounded-md p-2 text-left text-xs hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors overflow-hidden")}
               >
                 <LocalizedLink
-                  href="/"
+                  href={getLocalizedUrl(navigationLinks[0].url, $locale)}
                   class={cn("flex w-full items-center gap-2 overflow-hidden")}
                 >
                   <UserAvatar
@@ -169,7 +169,7 @@ const isTablet = new IsTablet();
 ])
           }>
                 {#snippet child({ props })}
-                  <LocalizedLink href={item.url} {...props}>
+                  <LocalizedLink href={getLocalizedUrl(item.url, $locale)} {...props}>
                     {@const Icon = item.icon}
                     <Icon title={item.title} />
                     <span
@@ -209,7 +209,7 @@ const isTablet = new IsTablet();
 ])
           }>
                 {#snippet child({ props })}
-                  <LocalizedLink href={item.url} {...props}>
+                  <LocalizedLink href={getLocalizedUrl(item.url, $locale)} {...props}>
                     {@const Icon = item.icon}
                     <Icon title={item.title} />
                     <span
@@ -249,7 +249,7 @@ const isTablet = new IsTablet();
 ])
           }>
                 {#snippet child({ props })}
-                  <LocalizedLink href={item.url} {...props}>
+                  <LocalizedLink href={getLocalizedUrl(item.url, $locale)} {...props}>
                     {@const Icon = item.icon}
                     <Icon title={item.title} />
                     <span
