@@ -275,7 +275,11 @@ const buttonClasses = $derived(
                 >{lang.name} ({lang.country})</span
               >
               {#if lang.code === $locale}
-                <Dot class={cn("text-primary")} size={32} strokeWidth={6} />
+              <Dot
+              class={cn("text-primary shrink-0")}
+              size={20}
+              strokeWidth={6}
+            />
               {/if}
             </LocalizedLink>
           {/each}
@@ -310,7 +314,11 @@ const buttonClasses = $derived(
                 >{lang.name} ({lang.country})</span
               >
               {#if lang.code === $locale}
-                <Dot class={cn("text-primary")} size={32} strokeWidth={6} />
+              <Dot
+              class={cn("text-primary shrink-0")}
+              size={20}
+              strokeWidth={6}
+            />
               {/if}
             </LocalizedLink>
           {/each}

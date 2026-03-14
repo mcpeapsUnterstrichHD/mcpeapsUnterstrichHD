@@ -20,11 +20,12 @@ import * as Command from "$lib/components/ui/command";
 
 import { Kbd } from "$lib/components/ui/kbd";
 import { languages, type Language } from "$lib/lang";
-import { getLocalizedUrl, t } from "$lib/i18n";
+import { getLocalizedUrl, isActive, t } from "$lib/i18n";
 import { cn } from "$lib/utils";
 import { useSidebar } from "$lib/components/ui/sidebar";
 import { createWebHaptics } from "web-haptics/svelte";
 import { onDestroy } from "svelte";
+import { type Locale } from "intlayer";
 const { trigger, destroy } = createWebHaptics();
 onDestroy(destroy);
 
@@ -56,41 +57,30 @@ const hapticPattern = [
 
 const navigationLinks = [
   { href: "/", label: () => t($sites, "root"), icon: House },
-  { href: "/aboutme", label: () => t($sites, "aboutme"), icon: User },
+  { href: "/aboutme/", label: () => t($sites, "aboutme"), icon: User },
   {
-    href: "/projects",
+    href: "/projects/",
     label: () => t($sites, "projects"),
     icon: FolderKanban,
   },
   {
-    href: "/cv",
-    href2: "/cv/ats",
+    href: "/cv/",
+    href2: "/cv/ats/",
     label: () => t($sites, "cv"),
     icon: FileText,
   },
-  { href: "/contact", label: () => t($sites, "contact"), icon: Mail },
+  { href: "/contact/", label: () => t($sites, "contact"), icon: Mail },
   {
-    href: "/linkhub",
+    href: "/linkhub/",
     label: () => t($sites, "linkhub"),
     icon: LinkIcon,
   },
   {
-    href: "/imprint",
+    href: "/imprint/",
     label: () => t($sites, "imprint"),
     icon: Scale,
   },
 ];
-
-function isActive(itemUrl: string, itemUrl2?: string): boolean {
-  const currentLoc = $locale as Language["code"];
-  const path = page.url.pathname.replace(/\/$/, "") || "/";
-  const localized1 =
-    getLocalizedUrl(itemUrl, currentLoc).replace(/\/$/, "") || "/";
-  const localized2 = itemUrl2
-    ? getLocalizedUrl(itemUrl2, currentLoc).replace(/\/$/, "") || "/"
-    : undefined;
-  return path === localized1 || (!!localized2 && path === localized2);
-}
 
 function navigateTo(href: string) {
   open = false;
@@ -172,12 +162,12 @@ onMount(() => {
             <span>{link.label()}</span>
           </span>
           <span class={cn("flex items-center gap-1")}>
-            {#if isActive(link.href, link.href2)}
-              <Dot
-                class={cn("text-primary")}
-                size={32}
-                strokeWidth={6}
-              />
+            {#if isActive($locale as Locale, link.href, link.href2)}
+            <Dot
+            class={cn("text-primary shrink-0")}
+            size={72}
+            strokeWidth={6}
+          />
             {/if}
             <Kbd>{i + 1}</Kbd>
           </span>
@@ -199,11 +189,11 @@ onMount(() => {
             <span>{lang.name} ({lang.country})</span>
           </span>
           {#if lang.code === $locale}
-            <Dot
-              class={cn("text-primary")}
-              size={32}
-              strokeWidth={6}
-            />
+          <Dot
+          class={cn("text-primary shrink-0")}
+          size={72}
+          strokeWidth={6}
+        />
           {/if}
         </Command.Item>
       {/each}
