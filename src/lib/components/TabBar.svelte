@@ -23,7 +23,7 @@ import { page } from "$app/state";
 import { useSidebar } from "$lib/components/ui/sidebar";
 import { useIntlayer, useLocale } from "svelte-intlayer";
 import { type Locale } from "intlayer";
-import { t, getLocalizedUrl } from "$lib/i18n";
+import { t, getLocalizedUrl, isActive } from "$lib/i18n";
 import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
 import { House, User, FolderKanban, FileText, Ellipsis } from "@lucide/svelte";
 import { cn } from "$lib/utils";
@@ -59,17 +59,6 @@ let tabs: TabItem[] = $derived([
   { title: t($sites, "projects"), url: "/projects/", icon: FolderKanban },
   { title: t($sites, "cv"), url: "/cv/", url2: "/cv/ats/", icon: FileText },
 ]);
-
-function isActive(itemUrl: string, itemUrl2?: string): boolean {
-  const currentLoc = $locale as Locale;
-  const path = page.url.pathname.replace(/\/$/, "") || "/";
-  const localized1 =
-    getLocalizedUrl(itemUrl, currentLoc).replace(/\/$/, "") || "/";
-  const localized2 = itemUrl2
-    ? getLocalizedUrl(itemUrl2, currentLoc).replace(/\/$/, "") || "/"
-    : undefined;
-  return path === localized1 || (!!localized2 && path === localized2);
-}
 
 function localizedHref(url: string): string {
   return getLocalizedUrl(url, $locale as Locale);
@@ -110,12 +99,12 @@ let moreIsActive: boolean = $derived(
         <NavigationMenu.Item>
           <NavigationMenu.Link
             href={localizedHref(tab.url)}
-            data-active={isActive(tab.url, tab.url2)}
+            data-active={isActive($locale as Locale, tab.url, tab.url2)}
             class={cn(
               "relative flex flex-col items-center justify-center gap-0.5 rounded-full px-2 py-2 min-h-11 min-w-11",
               "bg-transparent transition-all duration-200",
               "hover:bg-card/20 focus:bg-card/20",
-              isActive(tab.url, tab.url2)
+              isActive($locale as Locale, tab.url, tab.url2)
                 ? "bg-primary/15 text-primary data-[active=true]:bg-primary/15 data-[active=true]:hover:bg-primary/20 data-[active=true]:focus:bg-primary/20"
                 : "text-muted-foreground"
             )}
