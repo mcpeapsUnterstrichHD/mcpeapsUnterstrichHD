@@ -54,8 +54,8 @@ export const GET: RequestHandler = () => {
     }
   }
   const manifest = {
-    short_name: "mcpeaps_HD",
-    name: "mcpeapsUnterstrichHD",
+    short_name: "Fabian Aps",
+    name: "Fabian Aps - Portfolio/Impressum",
     start_url: "/",
     scope: "/",
     display: "standalone",
