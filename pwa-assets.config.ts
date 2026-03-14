@@ -4,9 +4,12 @@ import {
 } from "@vite-pwa/assets-generator/config";
 
 export default defineConfig({
+  root: ".",
+  overrideAssets: true,
+  manifestIconsEntry: false,
   headLinkOptions: {
     preset: "default",
-    basePath: "/pictures/",
+    //basePath: "/pictures/",
     xhtml: true,
   },
   preset: {
@@ -27,7 +30,7 @@ export default defineConfig({
         log: true,
         addMediaScreen: true,
         xhtml: true,
-        basePath: "/pictures/",
+        //basePath: "/pictures/",
       },
     }),
     apple: {

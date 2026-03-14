@@ -42,7 +42,12 @@ let isSupported = $derived(languages.some((l) => l.code === currentLocale));
 // Baue die finale, smarte URL zusammen
 let localizedHref = $derived(() => {
   // 1. Externe Links oder E-Mails ignorieren wir
-  if (href.startsWith("http") || href.startsWith("mailto:")) return href;
+  if (
+    href.startsWith("http") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:")
+  )
+    return href;
 
   // 2. Wenn wir uns auf der Default-Sprache (ohne Kürzel) befinden, bleibt der Link wie er ist
   if (!isSupported) return href;
