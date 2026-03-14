@@ -6,14 +6,35 @@ declare let self: ServiceWorkerGlobalScope;
 import { build, files, version } from "$service-worker";
 
 const CACHE = `cache-${version}`;
-const ASSETS = [...build, ...files];
+const filteredFiles = files.filter((file) => !file.includes("/."));
+const ASSETS = [...build, ...filteredFiles];
 
 // install service worker
 
+// 1. Filtere versteckte Dateien (wie /.assetsignore) aus dem SvelteKit-Array heraus,
+// install service worker
 self.addEventListener("install", (event) => {
   async function addFilesToCache() {
     const cache = await caches.open(CACHE);
-    await cache.addAll(ASSETS);
+
+    try {
+      // Versuch 1: Alles auf einmal laden (schneller)
+      await cache.addAll(ASSETS);
+    } catch (err) {
+      console.warn(
+        "cache.addAll schlug fehl. Versuche Dateien einzeln zu laden...",
+        err,
+      );
+      // Versuch 2: Falls EINE Datei kaputt ist, laden wir sie einzeln.
+      // So stürzt nicht der gesamte Service Worker ab!
+      for (const asset of ASSETS) {
+        try {
+          await cache.add(asset);
+        } catch (e) {
+          console.error(`Überspringe kaputte Datei für den Cache: ${asset}`, e);
+        }
+      }
+    }
   }
 
   event.waitUntil(addFilesToCache());
