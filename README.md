@@ -18,7 +18,7 @@
 ### 👨‍💻 Über mich
 
 - 🔭 **Aktuell:** Ich habe meine Webpräsenz neu strukturiert und arbeite an meinem Portfolio ([`mcpeapsUnterstrichHD-website`](https://github.com/mcpeapsUnterstrichHD/mcpeapsUnterstrichHD-website)), einer PWA basierend auf **SvelteKit**, **Vite** und **Tailwind CSS**.
-- 🎓 **Bildung:** Meine akademische und schulische Laufbahn umfasst die **TU Berlin** und das **OSZ IMT**.
+- 🎓 **Bildung:** Meine akademische und schulische Laufbahn umfasst die [**TU Berlin**](https://github.com/comboomPunkTsucht/TU-Berlin-repo-aps) und das [**OSZ IMT**](https://github.com/comboomPunkTsucht/OSZIMT-repo-ITA12_aps).
 - 💼 **Erfahrung:** Praktische Erfahrungen konnte ich unter anderem bei der **KfW**, **ADK Berlin**, **ToSa** und **Pfennigpfeiffer** sammeln.
 - 🎶 **Musik:** Wenn ich nicht code, produziere ich Tracks in **Logic Pro** oder höre neue Inspirationen auf Apple Music.
 - 🌱 **Lernfokus:** Ich erweitere stetig mein Wissen in **Rust**, **C++**, **Java**, sowie im DevOps-Bereich (z.B. **Ansible** & Netzwerke/Cisco).
